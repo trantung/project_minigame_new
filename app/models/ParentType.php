@@ -8,7 +8,7 @@ class ParentType extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'parent_types';
-    protected $fillable = ['type_id', 'category_parent_id'];
+    protected $fillable = ['type_id', 'category_parent_id', 'weight_number'];
     protected $dates = ['deleted_at'];
     
     public function type() 

@@ -16,6 +16,7 @@ class CreateParentTypeTable extends Migration {
             $table->increments('id');
             $table->integer('type_id')->nullable();
             $table->integer('category_parent_id')->nullable();
+            $table->integer('weight_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
