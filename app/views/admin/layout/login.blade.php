@@ -41,18 +41,20 @@
     <p class="login-box-msg">Đăng nhập tài khoản quản trị</p>
 
     <form action="#" method="post">
+    {{ Form::open(array('route' => 'admin.login')) }}
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Tên đăng nhập">
+        <input type="text" class="form-control" placeholder="Tên đăng nhập" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Mật khẩu">
+        <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
       </div>
     </form>
+    {{ Form::close() }}
     <br />
     <a href="#">Quên mật khẩu?</a>
 
