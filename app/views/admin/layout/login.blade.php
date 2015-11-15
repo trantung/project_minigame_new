@@ -8,7 +8,6 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
   {{HTML::style('admin/bootstrap/css/bootstrap.min.css') }}
-    </head>
   <!-- Font Awesome -->
   {{HTML::style('admin/dist/css/font-awesome.min.css') }}
   <!-- Ionicons -->
@@ -41,7 +40,6 @@
     <p class="login-box-msg">Đăng nhập tài khoản quản trị</p>
 
     <form action="#" method="post">
-    {{ Form::open(array('route' => 'admin.login')) }}
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Tên đăng nhập" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -54,7 +52,6 @@
         <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
       </div>
     </form>
-    {{ Form::close() }}
     <br />
     <a href="#">Quên mật khẩu?</a>
 
