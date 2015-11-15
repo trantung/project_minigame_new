@@ -12,13 +12,12 @@ class CreateCategoryTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('type_categories', function(Blueprint $table) {
+		Schema::create('category_parents', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('position')->nullable();
             $table->string('name', 256)->nullable();
             $table->string('description', 256)->nullable();
             $table->integer('weight_number')->nullable();
-            $table->integer('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,7 +30,7 @@ class CreateCategoryTypeTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('type_categories');
+        Schema::drop('category_parents');
 	}
 
 }

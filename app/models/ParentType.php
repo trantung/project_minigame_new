@@ -4,16 +4,16 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class GameRelation extends Eloquent
+class ParentType extends Eloquent
 {
 	use SoftDeletingTrait;
-    protected $table = 'game_category_parents';
-    protected $fillable = ['category_parent_id', 'game_id'];
+    protected $table = 'parent_types';
+    protected $fillable = ['type_id', 'category_parent_id'];
     protected $dates = ['deleted_at'];
-
-    public function game() 
+    
+    public function type() 
     {
-        return $this->belongsTo('Game', 'game_id', 'id');
+        return $this->belongsTo('Type', 'type_id', 'id');
     }
 
     public function categoryparent() 

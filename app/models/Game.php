@@ -23,8 +23,20 @@ class Game extends Eloquent
     {
         return $this->hasMany('GameRelation', 'game_id', 'id');
     }
+
+    public function categoryparents()
+    {
+        return $this->belongsToMany('CategoryParent', 'category_parents', 'game_id', 'category_parent_id');
+    }
+
+    public function gametypes()
+    {
+        return $this->hasMany('GameType', 'game_id', 'id');
+    }
+
     public function types()
     {
-        return $this->belongsToMany('TypeCategoryParent', 'game_type_categories','game_id', 'type_category_id');
+        return $this->belongsToMany('Type', 'game_types', 'game_id', 'type_id');
     }
+
 }
