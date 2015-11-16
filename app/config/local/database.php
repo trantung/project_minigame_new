@@ -28,7 +28,7 @@ return array(
 			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => 'lrv_',
+			'prefix'    => 'mig_',
 		),
 
 		'pgsql' => array(

@@ -11,7 +11,7 @@
 |
 */
 // dd(123);
-Route::group(['prefix' => 'admingame'], function () {
+Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/', 'AdminController');
 	Route::resource('/category_type', 'TypeCategoryController');
 });
