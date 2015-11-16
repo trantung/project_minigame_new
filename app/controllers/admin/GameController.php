@@ -1,6 +1,6 @@
 <?php
 
-class TypeCategoryController extends AdminController {
+class GameController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.

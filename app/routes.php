@@ -12,8 +12,15 @@
 */
 // dd(123);
 Route::group(['prefix' => 'admin'], function () {
+
+	Route::get('/login', array('uses' => 'AdminController@getLogin', 'as' => 'admin.get.login'));
+	Route::post('/login', array('uses' => 'AdminController@postLogin', 'as' => 'admin.post.login'));
 	Route::resource('/', 'AdminController');
-	Route::resource('/category_type', 'TypeCategoryController');
+
+	Route::resource('/category_parent', 'CategoryParentController');
+
+	Route::resource('/games', 'GameController');
+
 });
 
 
