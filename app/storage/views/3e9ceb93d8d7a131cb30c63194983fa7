@@ -69,6 +69,7 @@
           <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý phân trang</a></li>
         </ul>
       </li>
+      <?php if(Admin::isAdmin()): ?>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i> <span>Quản lý thành viên</span>
@@ -79,6 +80,7 @@
           <li><a href="<?php echo action('ManagerController@create'); ?>"><i class="fa fa-circle-o"></i> Thêm thành viên hệ thống</a></li>
         </ul>
       </li>
+      <?php endif; ?>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i> <span>Quản lý tài khoản</span>

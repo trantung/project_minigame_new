@@ -11,6 +11,7 @@ function genRole($roleId) {
 function selectRoleId()
 {
 	return array(
+		'' => '-- Lựa chọn',
 		ADMIN => 'ADMIN',
 		EDITOR => 'EDITOR',
 		SEO => 'SEO',

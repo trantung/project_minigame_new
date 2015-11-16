@@ -13,6 +13,16 @@ class ManagerController extends AdminController {
 		return View::make('admin.manager.index')->with(compact('data'));
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['keyword'] && !$input['role_id']) {
+			return Redirect::action('ManagerController@index');
+		}
+		$data = AdminManager::searchUserOperation($input);
+		return View::make('admin.manager.index')->with(compact('data'));
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
