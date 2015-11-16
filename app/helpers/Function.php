@@ -7,3 +7,16 @@ function genRole($roleId) {
 	);
 	return $role[$roleId];
 }
+
+function selectParentCategory()
+{
+	return array(
+		MENU => 'Trên Menu', 
+		CONTENT => 'Dưới content',
+		);
+}
+
+function textPerentCategory($input){
+	return array('placeholder' =>$input, 'class' =>'form-control');
+}
+

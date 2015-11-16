@@ -26,8 +26,8 @@ class CommonNormal
 		if ($name == NULL) {
 			$name = Request::segment(2);
 		}
-		if ($name == 'category_type') {
-			return 'TypeCategoryParent';
+		if ($name == 'category_parent') {
+			return 'CategoryParent';
 		}
 		if ($name == 'manager') {
 			return 'Admin';

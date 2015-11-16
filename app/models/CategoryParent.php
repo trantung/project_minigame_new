@@ -17,7 +17,7 @@ class CategoryParent extends Eloquent
     }
     public function games()
     {
-        return $this->belongsToMany('Game', 'category_parents', 'category_parent_id', 'game_id');
+        return $this->belongsToMany('Game', 'game_category_parents', 'category_parent_id', 'game_id');
     }
 
     public function parenttypes()

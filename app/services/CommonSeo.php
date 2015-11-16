@@ -2,7 +2,7 @@
 use Carbon\Carbon;
 class CommonSeo
 {
-	public function createSeo($input, $modelName, $modelId)
+	public static function createSeo($input, $modelName, $modelId)
 	{
 		$input['model_name'] = $modelName;
 		$input['model_id'] = $modelId;
@@ -10,12 +10,13 @@ class CommonSeo
 		return $id;
 	}
 
-	public function updateSeo($input, $modelName, $modelId)
+	public static function updateSeo($input, $modelName, $modelId)
 	{
 		$seo = AdminSeo::where('model_name', $modelName)
 						->where('model_id', $modelId)->first();
 		if (!$seo) {
-			dd('error modelName or modelId');
+			$id = self:: createSeo($input, $modelName, $modelId);
+			return $id;
 		}
 		AdminSeo::find($seo->id)->update($input);
 	}

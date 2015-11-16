@@ -9,7 +9,8 @@ class CategoryParentController extends AdminController {
 	 */
 	public function index()
 	{
-		return View::make('admin.category_parent.index');
+		$categoryParents = CategoryParent::orderBy('created_at',  'desc')->paginate(1);	
+		return View::make('admin.category_parent.index')->with(compact('categoryParents'));
 	}
 
 
@@ -20,10 +21,23 @@ class CategoryParentController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.category_parent.create');
 	}
 
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function postcreate()
+	{				
+		$inputCategory = Input::only('name', 'position', 'weight_number');
+		$id = CommonNormal::create($inputCategory);
+		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+		return Redirect::action('CategoryParentController@index') ;
 
+	}
 	/**
 	 * Store a newly created resource in storage.
 	 *
