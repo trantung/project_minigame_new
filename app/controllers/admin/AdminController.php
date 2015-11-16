@@ -9,7 +9,7 @@ class AdminController extends BaseController {
 	 */
 	public function index()
 	{
-		dd(213213);
+		//
 	}
 
 
