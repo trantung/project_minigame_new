@@ -1,6 +1,6 @@
 <?php
 
-class AdminGameController extends AdminController {
+class ManagerControler extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class AdminGameController extends AdminController {
 	 */
 	public function index()
 	{
-		dd(123);
+		return View::make('admin.manager.index');
 	}
 
 

@@ -7,7 +7,7 @@
 @section('content')
 
 <!-- inclue Search form -->
-@include('admin.users.search')
+@include('admin.manager.search')
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
@@ -26,10 +26,10 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>User</th>
-			  <th>Date</th>
-			  <th>Status</th>
-			  <th>Reason</th>
+			  <th>Role_id</th>
+			  <th>Email</th>
+			  <th>Password</th>
+			  <th>Username</th>
 			  <th style="width:200px;">&nbsp;</th>
 			</tr>
 			<tr>

@@ -18,9 +18,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
 	Route::resource('/', 'AdminController');
 
+	//Route::get('/manager', array('uses' => 'ManagerController@index', 'as' => 'admin.manager'))
+	//Route::resource('admins', 'ManagerController');
+
 	Route::resource('/category_parent', 'CategoryParentController');
 
-	Route::resource('/games', 'GameController');
+	Route::resource('games', 'AdminGameController');
 
 });
 

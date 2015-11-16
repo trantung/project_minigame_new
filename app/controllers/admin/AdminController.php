@@ -100,16 +100,16 @@ class AdminController extends BaseController {
         $input = Input::except('_token');
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return Redirect::route('login')
+            return Redirect::route('admin.login')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
             Auth::admin()->attempt($input);
             $checkLogin = Auth::admin()->check();
             if($checkLogin) {
-                return View::make('admin.dashboard');
+                return View::make('admin.games');
             } else {
-                return View::make('admin.layout.login');
+                return Redirect::route('admin.login');
             }
         }
     }
@@ -118,7 +118,6 @@ class AdminController extends BaseController {
     {
         Auth::admin()->logout();
         Session::flush();
-        Redirect::route('admin.login');
+        return Redirect::route('admin.login');
     }
-
 }
