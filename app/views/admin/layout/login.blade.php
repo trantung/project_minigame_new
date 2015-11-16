@@ -41,7 +41,7 @@
 
     {{ Form::open(array('action' => 'AdminController@doLogin')) }}
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Tên đăng nhập" name="email">
+        <input type="email" class="form-control" placeholder="Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

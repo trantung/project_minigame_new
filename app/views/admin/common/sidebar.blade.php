@@ -25,7 +25,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ action('GameController@index') }}"><i class="fa fa-circle-o"></i> Quản lý thể loại game</a></li>
+          <li><a href="{{ action('AdminGameController@index') }}"><i class="fa fa-circle-o"></i> Quản lý thể loại game</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý game</a></li>
         </ul>
       </li>
@@ -69,17 +69,18 @@
           <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý phân trang</a></li>
         </ul>
       </li>
+      @if(Admin::isAdmin())
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i> <span>Quản lý thành viên</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="/users"><i class="fa fa-circle-o"></i> Quản lý thành viên</a></li>
-          <li><a href="/users/create"><i class="fa fa-circle-o"></i> Thêm thành viên</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý phân quyền</a></li>
+          <li><a href="{{ action('ManagerController@index') }}"><i class="fa fa-circle-o"></i> Quản lý thành viên hệ thống</a></li>
+          <li><a href="{{ action('ManagerController@create') }}"><i class="fa fa-circle-o"></i> Thêm thành viên hệ thống</a></li>
         </ul>
       </li>
+      @endif
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i> <span>Quản lý tài khoản</span>

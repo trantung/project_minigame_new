@@ -18,13 +18,16 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
 	Route::resource('/', 'AdminController');
 
+	Route::get('/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
+	Route::resource('/manager', 'ManagerController');
+
 	Route::get('/category_parent/create', array('uses' => 'CategoryParentController@create', 'as' => 'create'));
 	Route::post('/category_parent/create', array('uses' => 'CategoryParentController@postcreate', 'as' => 'postcreate'));
 
-	Route::get('/category_parent/edit/{id}', array('uses' => 'CategoryParentController@edit', 'as' => 'edit'));
+
 	Route::resource('/category_parent', 'CategoryParentController');
 
-	Route::resource('/games', 'GameController');
+	Route::resource('/games', 'AdminGameController');
 
 });
 

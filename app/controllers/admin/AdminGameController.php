@@ -9,7 +9,7 @@ class AdminGameController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		dd(123);
 	}
 
 

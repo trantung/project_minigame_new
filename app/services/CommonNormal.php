@@ -29,6 +29,9 @@ class CommonNormal
 		if ($name == 'category_parent') {
 			return 'CategoryParent';
 		}
+		if ($name == 'manager') {
+			return 'Admin';
+		}
 	}
 	
 }
