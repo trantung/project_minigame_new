@@ -7,16 +7,21 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
-  {{HTML::style('adminlte/bootstrap/css/bootstrap.min.css') }}
+  <?php echo HTML::style('adminlte/bootstrap/css/bootstrap.min.css'); ?>
+
   <!-- Font Awesome -->
-  {{HTML::style('adminlte/dist/css/font-awesome.min.css') }}
+  <?php echo HTML::style('adminlte/dist/css/font-awesome.min.css'); ?>
+
   <!-- Ionicons -->
-  {{HTML::style('adminlte/dist/css/ionicons.min.css') }}
+  <?php echo HTML::style('adminlte/dist/css/ionicons.min.css'); ?>
+
   <!-- Theme style -->
-  {{HTML::style('adminlte/dist/css/AdminLTE.min.css') }}
+  <?php echo HTML::style('adminlte/dist/css/AdminLTE.min.css'); ?>
+
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  {{HTML::style('adminlte/dist/css/skins/_all-skins.min.css') }}
+  <?php echo HTML::style('adminlte/dist/css/skins/_all-skins.min.css'); ?>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,13 +38,14 @@
   <!-- /.login-logo -->
 
   <!-- Notifications: message/alert/waring -->
-  @include('admin.common.message')
+  <?php echo $__env->make('admin.common.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   <!-- ./ notifications: message/alert/waring -->
 
   <div class="login-box-body">
     <p class="login-box-msg">Đăng nhập tài khoản quản trị</p>
 
-    {{ Form::open(array('action' => 'AdminController@doLogin')) }}
+    <?php echo Form::open(array('action' => 'AdminController@doLogin')); ?>
+
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Tên đăng nhập" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -51,7 +57,8 @@
       <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
       </div>
-    {{ Form::close() }}
+    <?php echo Form::close(); ?>
+
     <br />
     <a href="#">Quên mật khẩu?</a>
 
@@ -61,9 +68,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 2.1.4 -->
-{{ HTML::script('adminlte/plugins/jQuery/jQuery-2.1.4.min.js') }}
+<?php echo HTML::script('adminlte/plugins/jQuery/jQuery-2.1.4.min.js'); ?>
+
 <!-- Bootstrap 3.3.5 -->
-{{ HTML::script('adminlte/bootstrap/js/bootstrap.min.js') }}
+<?php echo HTML::script('adminlte/bootstrap/js/bootstrap.min.js'); ?>
+
 
 </body>
 </html>
