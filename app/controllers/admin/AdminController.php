@@ -1,7 +1,8 @@
 <?php
-
 class AdminController extends BaseController {
-
+    public function __construct() {
+        $this->beforeFilter('admin', array('except'=>array('login','doLogin')));
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -11,8 +12,6 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -22,8 +21,6 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -33,8 +30,6 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -45,8 +40,6 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -57,8 +50,6 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -69,8 +60,6 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -81,6 +70,36 @@ class AdminController extends BaseController {
 	{
 		//
 	}
-
-
+    public function login()
+    {
+        return View::make('admin.layout.login');
+    }
+    public function doLogin()
+    {
+        $rules = array(
+            'email'   => 'required',
+            'password'   => 'required',
+        );
+        $input = Input::except('_token');
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Redirect::route('login')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            Auth::admin()->attempt($input);
+            $checkLogin = Auth::admin()->check();
+            if($checkLogin) {
+                return View::make('admin.dashboard');
+            } else {
+                return View::make('admin.layout.login');
+            }
+        }
+    }
+    public function logout()
+    {
+        Auth::admin()->logout();
+        Session::flush();
+        return Redirect::route('admin.login');
+    }
 }

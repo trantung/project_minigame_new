@@ -13,8 +13,9 @@
 // dd(123);
 Route::group(['prefix' => 'admin'], function () {
 
-	Route::get('/login', array('uses' => 'AdminController@getLogin', 'as' => 'admin.get.login'));
-	Route::post('/login', array('uses' => 'AdminController@postLogin', 'as' => 'admin.post.login'));
+	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
+	Route::post('/login', array('uses' => 'AdminController@doLogin'));
+	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
 	Route::resource('/', 'AdminController');
 
 	Route::get('/category_parent/create', array('uses' => 'CategoryParentController@create', 'as' => 'create'));
