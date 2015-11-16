@@ -35,6 +35,7 @@ class ManagerController extends AdminController {
 			'username'   => 'required',
             'password'   => 'required',
             'email'      => 'required|email',
+            'role_id'    => 'required',
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -91,11 +92,12 @@ class ManagerController extends AdminController {
             'username'   => 'required',
             'password'   => 'required',
             'email'      => 'required|email',
+            'role_id'    => 'required',
         );
         $input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
-			return Redirect::action('ManagerController@edit, $id')
+			return Redirect::action('ManagerController@edit', $id)
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
@@ -114,7 +116,6 @@ class ManagerController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		dd($id);
 		CommonNormal::delete($id);
         return Redirect::action('ManagerController@index');
 	}

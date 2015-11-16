@@ -38,9 +38,11 @@
 			  <td>{{ $value->username }}</td>
 			  <td>{{ genRole($value->role_id) }}</td>
 			  <td>
-			  	<a href="#" class="btn btn-success">Xem</a>
+				<a href="#" class="btn btn-success">Xem</a>
 				<a href="{{ action('ManagerController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-				<a href="{{ action('ManagerController@destroy', $value->id) }}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('ManagerController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
 			  </td>
 			</tr>
 			@endforeach

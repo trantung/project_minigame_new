@@ -17,7 +17,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            {{ Form::open(array('action' => 'ManagerController@store')) }}
+            {{ Form::open(array('action' => array('ManagerController@update', $data->id), 'method' => 'PUT')) }}
               <div class="box-body">
                 <div class="form-group">
                   <label for="username">Tên đăng nhập</label>
@@ -57,7 +57,6 @@
 
               <div class="box-footer">
                 <input type="submit" class="btn btn-primary" value="Lưu lại" />
-                <input type="reset" class="btn btn-default" value="Nhập lại" />
               </div>
             {{ Form::close() }}
           </div>
