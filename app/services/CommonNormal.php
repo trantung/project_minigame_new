@@ -30,4 +30,5 @@ class CommonNormal
 			return 'CategoryParent';
 		}
 	}
+	
 }

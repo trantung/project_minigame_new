@@ -20,5 +20,19 @@ class CommonSeo
 		}
 		AdminSeo::find($seo->id)->update($input);
 	}
+	/**
+	*uploadImage Upload image
+	*/
+	
+	public static function uploadImage($input, $path, $imageUrl)
+	{
+		$destinationPath = public_path().'/'.$path;
+		if(Input::hasFile($imageUrl)){
+			$file = Input::file($imageUrl);
+			$filename = $file->getClientOriginalName();
+			$uploadSuccess = $file->move($destinationPath, $filename);
+			return $filename;
+		}
+	}
 
 }

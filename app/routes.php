@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/category_parent/create', array('uses' => 'CategoryParentController@create', 'as' => 'create'));
 	Route::post('/category_parent/create', array('uses' => 'CategoryParentController@postcreate', 'as' => 'postcreate'));
+
+	Route::get('/category_parent/edit/{id}', array('uses' => 'CategoryParentController@edit', 'as' => 'edit'));
 	Route::resource('/category_parent', 'CategoryParentController');
 
 	Route::resource('/games', 'GameController');

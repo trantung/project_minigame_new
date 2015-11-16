@@ -10,3 +10,4 @@ function selectParentCategory()
 function textPerentCategory($input){
 	return array('placeholder' =>$input, 'class' =>'form-control');
 }
+

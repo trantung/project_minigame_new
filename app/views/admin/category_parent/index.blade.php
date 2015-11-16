@@ -39,7 +39,7 @@
 			  <td>{{ $categoryParent->name }}</td>			
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
-				<a href="/users/edit" class="btn btn-primary">Sửa</a>
+				<a href="{{ route('edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
 				<a href="#" class="btn btn-danger">Xóa</a>
 			  </td>
 

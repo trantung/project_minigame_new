@@ -30,15 +30,15 @@
 			  <th>Tổng số game</th>			  
 			  <th style="width:200px;">&nbsp;</th>
 			</tr>
-			 <?php foreach($categorypatent as $categorypatent): ?>
+			 <?php foreach($categoryParents as $categoryParent): ?>
 			<tr>
-			  <td><?php echo $categorypatent->id; ?></td>
-			  <td><?php echo $categorypatent->name; ?></td>
-			  <td><?php echo count($categorypatent->games); ?></td>
-			  <td><?php echo $categorypatent->name; ?></td>			
+			  <td><?php echo $categoryParent->id; ?></td>
+			  <td><?php echo $categoryParent->name; ?></td>
+			  <td><?php echo count($categoryParent->games); ?></td>
+			  <td><?php echo $categoryParent->name; ?></td>			
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
-				<a href="/users/edit" class="btn btn-primary">Sửa</a>
+				<a href="<?php echo route('edit', $categoryParent->id); ?>" class="btn btn-primary">Sửa</a>
 				<a href="#" class="btn btn-danger">Xóa</a>
 			  </td>
 
@@ -55,12 +55,13 @@
 <div class="row">
 	<div class="col-xs-12">
 		<ul class="pagination">
-			<?php echo $categorypatent->appends(Request::except('page'))->links(); ?>
+		<?php echo $categoryParents->appends(Request::except('page'))->links(); ?>
 
 		</ul>
 	</div>
 </div>
 
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
