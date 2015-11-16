@@ -75,9 +75,8 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="/users"><i class="fa fa-circle-o"></i> Quản lý thành viên</a></li>
-          <li><a href="/users/create"><i class="fa fa-circle-o"></i> Thêm thành viên</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý phân quyền</a></li>
+          <li><a href="{{ action('ManagerController@index') }}"><i class="fa fa-circle-o"></i> Quản lý thành viên hệ thống</a></li>
+          <li><a href="{{ action('ManagerController@create') }}"><i class="fa fa-circle-o"></i> Thêm thành viên hệ thống</a></li>
         </ul>
       </li>
       <li class="treeview">

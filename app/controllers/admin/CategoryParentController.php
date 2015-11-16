@@ -9,7 +9,7 @@ class CategoryParentController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('admin.category_parent.index');
 	}
 
 

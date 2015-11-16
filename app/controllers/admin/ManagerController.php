@@ -1,6 +1,6 @@
 <?php
 
-class ManagerControler extends AdminController {
+class ManagerController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +9,9 @@ class ManagerControler extends AdminController {
 	 */
 	public function index()
 	{
-		return View::make('admin.manager.index');
+		$data = Admin::all();
+		return View::make('admin.manager.index',array('data' => $data));
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -20,7 +20,7 @@ class ManagerControler extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.manager.create');
 	}
 
 
@@ -31,7 +31,26 @@ class ManagerControler extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$rules = array(
+			'username'   => 'required',
+            'password'   => 'required',
+            'email'      => 'required|email',
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('ManagerController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+        	$input['password'] = Hash::make($input['password']);
+        	$id = CommonNormal::create($input);
+        	if($id) {
+        		return Redirect::action('ManagerController@index');
+        	} else {
+        		dd('Error');
+        	}
+        }
 	}
 
 
