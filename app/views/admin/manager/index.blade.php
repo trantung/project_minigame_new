@@ -40,7 +40,7 @@
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
 				<a href="{{ action('ManagerController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-				<a href="{{ action('ManagerController@destroy', $value->id) }}" class="btn btn-danger">Xóa</a>
+				<a href="{{ action('ManagerController@destroy', $value->id) }}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
 			  </td>
 			</tr>
 			@endforeach
@@ -54,13 +54,7 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		<ul class="pagination">
-			<li class="previous disabled"><a href="#">Previous</a></li>
-			<li class="paginate_button active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li class="next"><a href="#">Next</a></li>
-		</ul>
+		{{ $data->appends(Request::except('page'))->links() }}
 	</div>
 </div>
 

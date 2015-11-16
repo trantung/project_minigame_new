@@ -8,12 +8,21 @@ function genRole($roleId) {
 	return $role[$roleId];
 }
 
+function selectRoleId()
+{
+	return array(
+		ADMIN => 'ADMIN',
+		EDITOR => 'EDITOR',
+		SEO => 'SEO',
+	);
+}
+
 function selectParentCategory()
 {
 	return array(
 		MENU => 'Trên Menu', 
 		CONTENT => 'Dưới content',
-		);
+	);
 }
 
 function textPerentCategory($input){

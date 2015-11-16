@@ -9,8 +9,8 @@ class ManagerController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Admin::all();
-		return View::make('admin.manager.index',array('data' => $data));
+		$data = Admin::orderBy('id', 'asc')->paginate(PAGINATE);
+		return View::make('admin.manager.index')->with(compact('data'));
 	}
 
 	/**
@@ -74,7 +74,8 @@ class ManagerController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data = Admin::find($id);
+        return View::make('admin.manager.edit', array('data'=>$data));
 	}
 
 
@@ -86,7 +87,22 @@ class ManagerController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+            'username'   => 'required',
+            'password'   => 'required',
+            'email'      => 'required|email',
+        );
+        $input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('ManagerController@edit, $id')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+        	$input['password'] = Hash::make($input['password']);
+        	CommonNormal::update($id, $input);
+    		return Redirect::action('ManagerController@index');
+        }
 	}
 
 
@@ -98,7 +114,9 @@ class ManagerController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		dd($id);
+		CommonNormal::delete($id);
+        return Redirect::action('ManagerController@index');
 	}
 
 

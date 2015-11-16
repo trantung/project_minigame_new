@@ -8,4 +8,4 @@ define('ADMIN', 1);
 define('EDITOR', 2);
 define('SEO', 3);
 
-
+define('PAGINATE', 20);
