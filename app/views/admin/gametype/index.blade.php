@@ -36,7 +36,7 @@
 				  <td>{{ $value->name }}</td>
 				  <td>{{ count($value->games) }}</td>
 				  <td>
-				  	<a href="#" class="btn btn-success">Xem</a>
+				  	{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 					<a href="{{ action('GameTypeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 					{{ Form::open(array('method'=>'DELETE', 'action' => array('GameTypeController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>

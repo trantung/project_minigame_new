@@ -9,7 +9,7 @@ class CategoryParentController extends AdminController {
 	 */
 	public function index()
 	{
-		$categoryParents = CategoryParent::orderBy('created_at',  'desc')->paginate(PAGINATE);	
+		$categoryParents = CategoryParent::orderBy('created_at',  'desc')->paginate(PAGINATE);
 		return View::make('admin.category_parent.index')->with(compact('categoryParents'));
 	}
 
@@ -25,29 +25,20 @@ class CategoryParentController extends AdminController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function postcreate()
-	{				
-		
-		$inputCategory = Input::only('name', 'position', 'weight_number');
-		$id = CommonNormal::create($inputCategory);
-		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
-		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
-		CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
-		return Redirect::action('CategoryParentController@index') ;
-	}
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		$inputCategory = Input::only('name', 'position', 'weight_number');
+		$id = CommonNormal::create($inputCategory);
+		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
+		CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
+		AdminManager::createParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id);
+		return Redirect::action('CategoryParentController@index') ;
 	}
 
 
@@ -73,8 +64,6 @@ class CategoryParentController extends AdminController {
 	{
 		$inputCategory = CategoryParent::find($id);
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
-		
-		
 		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo'));
 	}
 
@@ -87,13 +76,14 @@ class CategoryParentController extends AdminController {
 	public function update($id)
 	{
 		$rules = array(
-            'name'   => 'required'                      
+            'name'   => 'required'
         );
 		$inputCategory = Input::only('name', 'position', 'weight_number');
-		$id = CommonNormal::update($id,$inputCategory);
+		CommonNormal::update($id,$inputCategory);
 		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
+		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG, 'image_url_fb');
 		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+		AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id);
 		return Redirect::action('CategoryParentController@index') ;
 	}
 
@@ -106,10 +96,7 @@ class CategoryParentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		CommonSeo::deleteSeo($id, 'CategoryParent');
 		CommonNormal::delete($id);
-        return Redirect::action('CategoryParentController@index');
+        return Redirect::action('ManagerController@index');
 	}
-
-
 }

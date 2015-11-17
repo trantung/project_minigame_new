@@ -95,10 +95,10 @@ class GameTypeController extends AdminController {
 	            ->withErrors($validator);
         } else {
 			$inputCategory = Input::only('name');
-			$id = CommonNormal::update($id,$inputCategory);
+			CommonNormal::update($id,$inputCategory);
 			$inputSeo = Input::except('_token', 'name');
-			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAMETYPE, 'image_url_fb');
-			// dd($inputSeo['image_url_fb']);
+			$imageSeo = CommonSeo::getImageSeoUrl('Type', $id);
+			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAMETYPE, 'image_url_fb', $imageSeo);
 			CommonSeo::updateSeo($inputSeo, 'Type', $id);
 			return Redirect::action('GameTypeController@index') ;
         }

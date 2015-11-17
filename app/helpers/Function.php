@@ -97,4 +97,19 @@ function countGame($categoryParentId, $modelName)
 // 	$games = $modelName::find($categoryParentId)->games;
 // 	return count($games);
 // }
-
+function getWeightNumberType($typeId, $parentId)
+{
+	$weightNumber = ParentType::where('type_id', $typeId)->where('category_parent_id', $parentId)->first();
+	if ($weightNumber) {
+		return $weightNumber->weight_number;
+	}
+	return NULL;
+}
+function checkBoxChecked($typeId, $parentId)
+{
+	$check = getWeightNumberType($typeId, $parentId);
+	if (isset($check)) {
+		return 'checked';
+	}
+	return NULL;
+}
