@@ -1,15 +1,15 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa thể loại game' }}
+{{ $title='Sửa game' }}
 @stop
 
 @section('content')
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('GameTypeController@index') }}" class="btn btn-success">Danh sách thể loại game</a>
-		<a href="{{ action('GameTypeController@create') }}" class="btn btn-primary">Thêm thể loại game</a>
+		<a href="{{ action('AdminGameController@index') }}" class="btn btn-success">Danh sách game</a>
+		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
 	</div>
 </div>
 
@@ -17,13 +17,13 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 				<!-- form start -->
-				{{ Form::open(array('action' => array('GameTypeController@update', $inputType->id), 'method' => 'PUT', 'files' => true)) }}
+				{{ Form::open(array('action' => array('AdminGameController@update', $inputType->id), 'method' => 'PUT', 'files' => true)) }}
 					<div class="box-body">
 						<div class="form-group">
-							<label for="name">Tên thể loại game</label>
+							<label for="name">Tên game</label>
 							<div class="row">
 								<div class="col-sm-6">
-									 {{ Form::text('name', $inputType->name , textPerentCategory('Tên thể loại game')) }}
+									 {{ Form::text('name', $inputType->name , textPerentCategory('Tên game')) }}
 
 								</div>
 							</div>

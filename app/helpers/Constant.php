@@ -14,3 +14,5 @@ define('PAGINATE', 20);
 //url upload img
 define('UPLOADIMG', '/images');
 define('UPLOADIMG_GAMETYPE', '/images/gametype');
+define('UPLOADIMG_GAMEAVATAR', '/images/gameavatar');
+define('UPLOADIMG_GAME', '/images/game');

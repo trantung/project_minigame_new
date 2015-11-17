@@ -26,7 +26,7 @@ function selectParentCategory()
 	);
 }
 
-function textPerentCategory($input){
+function textParentCategory($input){
 	return array('placeholder' =>$input, 'class' =>'form-control');
 }
 //count game of parent category and category: $countGameCategoryParentCategory
@@ -112,4 +112,11 @@ function checkBoxChecked($typeId, $parentId)
 		return 'checked';
 	}
 	return NULL;
+}
+function saveScore()
+{
+	return array(
+		1 => 'Luu diem',
+		2 => 'Khong luu diem'
+		);
 }
