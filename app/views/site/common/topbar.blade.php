@@ -11,18 +11,20 @@
 					</form>
 	</div>
 	<ul>
-		 <li class='active'><a href='index.html' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
-		 <li><a href='#' class="color2"><i class="fa fa-android"></i> <span>Game Android</span></a></li>
-		 <li class='has-sub'><a href='#' class="color3"><i class="fa fa-html5"></i> <span>Game HTML5</span></a>
+		<li class='active'><a href='index.html' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
+		@foreach($data as $key => $value)
+			@if(count($value->types) == 0)
+			<li><a href='#' class="color2"><span>{{ $value->name }}</span></a></li>
+			@else
+			<li class='has-sub'><a href='#' class="color2"><span>{{ $value->name }}</span></a>
 				<ul>
-					 <li><a href='#'><span>Bé gái</span></a></li>
-					 <li><a href='#'><span>Bé trai</span></a></li>
-					 <li><a href='#'><span>Chiến thuật</span></a></li>
-					 <li><a href='#'><span>Hành động</span></a></li>
-					 <li><a href='#'><span>Nấu ăn</span></a></li>
-					 <li><a href='#'><span>Thời trang</span></a></li>
+				@foreach($value->types as $k => $v)
+					<li><a href='#'><span>{{ $v->name }}</span></a></li>
+				@endforeach
 				</ul>
-		 </li>
+			</li>
+			@endif
+		@endforeach
 	</ul>
 	<div class="menu-hide"><a onclick="menuhide()"><i class="fa fa-times-circle-o"></i> Đóng lại</a></div>
 </div>
