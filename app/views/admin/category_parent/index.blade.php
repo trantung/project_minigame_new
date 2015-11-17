@@ -35,8 +35,8 @@
 			<tr>
 			  <td>{{ $categoryParent->id }}</td>
 			  <td>{{ $categoryParent->name }}</td>
-			  <td>{{ count($categoryParent->games) }}</td>
-			  <td>{{ $categoryParent->name }}</td>			
+			  <td>{{ countCategory($categoryParent->id, 'CategoryParent') }}</td>
+			  <td>{{ countGame($categoryParent->id, 'CategoryParent') }}</td>
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
 				<a href="/users/edit" class="btn btn-primary">Sửa</a>

@@ -7,5 +7,7 @@ define('CONTENT', 2);
 define('ADMIN', 1);
 define('EDITOR', 2);
 define('SEO', 3);
+//game of parent category only
+define('GAME_OF_PARENT', 0);
 
 
