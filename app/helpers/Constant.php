@@ -7,9 +7,8 @@ define('CONTENT', 2);
 define('ADMIN', 1);
 define('EDITOR', 2);
 define('SEO', 3);
-//paginate
+//pagination manager admin
 define('PAGINATE', 20);
-
 //url upload img
 define('UPLOADIMG', '/images');
 

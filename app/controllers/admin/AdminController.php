@@ -48,8 +48,8 @@ class AdminController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
-	}
+	
+    }
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -58,7 +58,7 @@ class AdminController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
 	}
 	/**
 	 * Remove the specified resource from storage.
@@ -90,7 +90,7 @@ class AdminController extends BaseController {
             Auth::admin()->attempt($input);
             $checkLogin = Auth::admin()->check();
             if($checkLogin) {
-                return Redirect::action('ManagerController@index');
+        		return Redirect::action('ManagerController@index');
             } else {
                 return Redirect::route('admin.login');
             }
