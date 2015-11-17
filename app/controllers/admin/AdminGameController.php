@@ -56,25 +56,28 @@ class AdminGameController extends AdminController {
 
 
 		//up game zip ->file
-		$destinationPath = $this->createFolder('games'); //uploads
-		if(Input::hasFile('link_upload_game')){
-			$file = Input::file('link_upload_game');
-			$filename = $file->getClientOriginalName();
-			$upload_success = Input::file('link_upload_game')->move($destinationPath, $filename);
-		}
+		// $destinationPath = public_path().'/'.'games';
+		// if(Input::hasFile('link_upload_game')){
+		// 	$file = Input::file('link_upload_game');
+		// 	$filename = $file->getClientOriginalName();
+		// 	$uploadSuccess = $file->move($destinationPath, $filename);
+		// }
+		// dd(123);
 		// get the absolute path to $file
-		$path = pathinfo(realpath($destinationPath[0]), PATHINFO_DIRNAME).'/'.$destinationPath[1];
+		// $path = public_path().'/'.'game_unzip';
+		// $zip = new ZipArchive;
 
-		$zip = new ZipArchive;
-		$res = $zip->open($file);
-		if ($res === TRUE) {
-		  // extract it to the path we determined above
-		  $zip->extractTo($path);
-		  $zip->close();
-		  echo "OK!";
-		} else {
-		  echo "Error!";
-		}
+		// $res = $zip->open('file.zip');
+		// if ($res == TRUE) {
+		//   // extract it to the path we determined above
+		//   $zip->extractTo('game_unzip/');
+		//   $zip->close();
+		//   echo "OK!";
+		// } else {
+		//   echo "Error!";
+		// }
+		Zipper::make('public/games/file.zip')->extractTo('public/game_unzip/1');
+		dd(33);
 	}
 
 	private function createFolder($folder)
