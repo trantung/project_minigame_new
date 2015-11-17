@@ -1,10 +1,29 @@
 <?php
+function genRole($roleId) {
+	$role = array(
+		ADMIN => 'ADMIN',
+		EDITOR => 'EDITOR',
+		SEO => 'SEO',
+	);
+	return $role[$roleId];
+}
+
+function selectRoleId()
+{
+	return array(
+		'' => '-- Lựa chọn',
+		ADMIN => 'ADMIN',
+		EDITOR => 'EDITOR',
+		SEO => 'SEO',
+	);
+}
+
 function selectParentCategory()
 {
 	return array(
 		MENU => 'Trên Menu', 
 		CONTENT => 'Dưới content',
-		);
+	);
 }
 
 function textPerentCategory($input){
@@ -65,16 +84,17 @@ function countGame($categoryParentId, $modelName)
 	return count($countGame);
 }
 
-function countCategory($categoryParentId, $modelName)
-{
-	$countGame = countGame($categoryParentId, $modelName);
-	$countTotal = countTotal($categoryParentId, $modelName);
-	$countCategory = $countTotal - $countGame;
-	return $countCategory;
-}
+// function countCategory($categoryParentId, $modelName)
+// {
+// 	$countGame = countGame($categoryParentId, $modelName);
+// 	$countTotal = countTotal($categoryParentId, $modelName);
+// 	$countCategory1 = $countTotal - $countGame;
+// 	return $countCategory1;
+// }
 
-function countTotal($categoryParentId, $modelName)
-{
-	$games = $modelName::find($categoryParentId)->games;
-	return count($games);
-}
+// function countTotal($categoryParentId, $modelName)
+// {
+// 	$games = $modelName::find($categoryParentId)->games;
+// 	return count($games);
+// }
+

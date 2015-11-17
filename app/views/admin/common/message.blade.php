@@ -1,8 +1,7 @@
 @if (count($errors->all()) > 0)
 <div class="alert alert-danger alert-block">
-    <i class="fa fa-ban"></i>
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	Please check the form below for errors
+	{{ HTML::ul($errors->all()) }}
 </div>
 @endif
 

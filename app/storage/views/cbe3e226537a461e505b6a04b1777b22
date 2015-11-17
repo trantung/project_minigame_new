@@ -1,14 +1,13 @@
-@extends('admin.layout.default')
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Sửa chuyên mục'; ?>
 
-@section('title')
-{{ $title='Thêm chuyên mục' }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="row margin-bottom">
   <div class="col-xs-12">
-    <a href="/" class="btn btn-success">Danh sách chuyên mục</a>
+    <a href="/" class="btn btn-success">Sửa chuyên mục</a>
   </div>
 </div>
 
@@ -16,13 +15,16 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            {{ Form::open(array('route' => array('postcreate'), 'files' => true)) }}
+            <?php echo Form::open(array('action' => array('CategoryParentController@update', $inputCategory->id), 'method' => 'PUT')); ?>
+
               <div class="box-body">
                 <div class="form-group">
                   <label for="name">Tên chuyên mục</label>
                   <div class="row">
                   	<div class="col-sm-6">	                  	
-                       {{ Form::text('name', null , textPerentCategory('Tên chuyên mục')) }}
+                       <?php echo Form::text('name', $inputCategory->name , textPerentCategory('Tên chuyên mục')); ?>
+
+
 	                  </div>
                   </div>
                 </div>
@@ -30,15 +32,16 @@
                   <label for="name">Chọn vị trí</label>
                   <div class="row">
                     <div class="col-sm-6">                      
-                      {{ Form::select('position', selectParentCategory(), null, array('class' =>'form-control')) }}
+                      <?php echo Form::select('position', selectParentCategory(), $inputCategory->position , array('class' =>'form-control')); ?>
+
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="name">Mức ưu tiên</label>
+                  <label for="weight_number">Mức ưu tiên</label>
                   <div class="row">
                     <div class="col-sm-6">
-                      {{ Form::text('weight_number', null , textPerentCategory('Mức ưu tiên')) }}                                       
+                      <?php echo Form::text('weight_number', $inputCategory->weight_number , textPerentCategory('Mức ưu tiên')); ?>                                       
                     </div>
                   </div>
                 </div>
@@ -49,7 +52,8 @@
 	                  	<label for="title_site">Thẻ title</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('title_site','',textPerentCategory('Thẻ title')) }}
+                              <?php echo Form::text('title_site', $inputSeo->title_site ,textPerentCategory('Thẻ title')); ?>
+
                             </div>                          
                         </div>	                  		
 	              		</div>
@@ -57,7 +61,7 @@
                       <label for="description_site">Thẻ Descript site</label>
                         <div class="row">
                             <div class="col-sm-6">
-                             {{ Form::textarea('description_site', null , textPerentCategory('Thẻ Descript site')) }}                           
+                             <?php echo Form::text('description_site', $inputSeo->description_site , textPerentCategory('Thẻ Descript site')); ?>                           
                             </div>                          
                         </div>                        
                     </div>
@@ -65,7 +69,7 @@
                       <label for="keyword_site">Thẻ Keyword</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('keyword_site', null , textPerentCategory('Thẻ Keyword')) }}                              
+                              <?php echo Form::text('keyword_site', $inputSeo->keyword_site , textPerentCategory('Thẻ Keyword')); ?>                              
                             </div>                          
                         </div>                        
                     </div>
@@ -73,7 +77,7 @@
                       <label for="title_fb">Thẻ title facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('title_fb', null , textPerentCategory('Thẻ facebook')) }}                            
+                              <?php echo Form::text('title_fb', $inputSeo->title_fb , textPerentCategory('Thẻ facebook')); ?>                            
                             </div>                          
                         </div>                        
                     </div>
@@ -81,15 +85,7 @@
                       <label for="description_fb">Thẻ descript facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::textarea('description_fb', null , textPerentCategory('Thẻ descript facebook')) }}                              
-                            </div>                          
-                        </div>                        
-                    </div>
-                    <div class="form-group">
-                      <label for="image_url_fb">Upload ảnh</label>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                    {{ Form::file('image_url_fb') }}                   
+                              <?php echo Form::text('description_fb', $inputSeo->description_fb , textPerentCategory('Thẻ descript facebook')); ?>                              
                             </div>                          
                         </div>                        
                     </div>
@@ -100,12 +96,16 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                {{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+                <?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
               </div>
-            {{ Form::close() }}
+            <?php echo Form::close(); ?>
+
           </div>
           <!-- /.box -->
 	</div>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,6 +1,6 @@
 <?php
 
-class GameController extends AdminController {
+class admin/CategoryController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class GameController extends AdminController {
 	 */
 	public function index()
 	{
-		dd('11');
+		dd(999);
 	}
 
 

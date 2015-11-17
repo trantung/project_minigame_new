@@ -6,9 +6,9 @@
 
 @section('content')
 
-<!-- inclue Search form -->
-@include('admin.users.search')
+<!-- inclue Search form 
 
+-->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ route('create') }}" class="btn btn-primary">Thêm chuyên mục</a>
@@ -39,8 +39,10 @@
 			  <td>{{ countGame($categoryParent->id, 'CategoryParent') }}</td>
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
-				<a href="/users/edit" class="btn btn-primary">Sửa</a>
-				<a href="#" class="btn btn-danger">Xóa</a>
+				<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
+				    <button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
 			  </td>
 
 			</tr>

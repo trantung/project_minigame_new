@@ -12,13 +12,40 @@ class CommonSeo
 
 	public static function updateSeo($input, $modelName, $modelId)
 	{
-		$seo = AdminSeo::where('model_name', $modelName)
-						->where('model_id', $modelId)->first();
+		$seo = self::getIdSeo($modelId, $modelName);
 		if (!$seo) {
 			$id = self:: createSeo($input, $modelName, $modelId);
 			return $id;
 		}
 		AdminSeo::find($seo->id)->update($input);
+	}
+
+	public static function deleteSeo($modelId, $modelName)
+	{
+		$seo = self::getIdSeo($modelId, $modelName);
+		AdminSeo::find($seo->id)->delete();
+	}
+
+	public static function getIdSeo($modelId, $modelName)
+	{
+		return $seo = AdminSeo::where('model_name', $modelName)
+						->where('model_id', $modelId)->first();
+	}
+	/**
+	*uploadImage Upload image
+	*/
+	
+	public static function uploadImage($input,$id, $path, $imageUrl)
+	{
+		$destinationPath = public_path().'/'.$path.'/seo'.'/'.$id.'/';
+		if(Input::hasFile($imageUrl)){
+			$file = Input::file($imageUrl);
+			$filename = $file->getClientOriginalName();
+			$uploadSuccess = $file->move($destinationPath, $filename);
+			//check filenam unique
+
+			return $filename;
+		}
 	}
 
 }

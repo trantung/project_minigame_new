@@ -9,7 +9,7 @@ class CategoryParentController extends AdminController {
 	 */
 	public function index()
 	{
-		$categoryParents = CategoryParent::orderBy('created_at',  'desc')->paginate(1);	
+		$categoryParents = CategoryParent::orderBy('created_at',  'desc')->paginate(PAGINATE);	
 		return View::make('admin.category_parent.index')->with(compact('categoryParents'));
 	}
 
@@ -31,12 +31,14 @@ class CategoryParentController extends AdminController {
 	 */
 	public function postcreate()
 	{				
+		
 		$inputCategory = Input::only('name', 'position', 'weight_number');
 		$id = CommonNormal::create($inputCategory);
 		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
 		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
+		CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
 		return Redirect::action('CategoryParentController@index') ;
-
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -69,9 +71,12 @@ class CategoryParentController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputCategory = CategoryParent::find($id);
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
+		
+		
+		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo'));
 	}
-
 
 	/**
 	 * Update the specified resource in storage.
@@ -81,7 +86,15 @@ class CategoryParentController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+            'name'   => 'required'                      
+        );
+		$inputCategory = Input::only('name', 'position', 'weight_number');
+		$id = CommonNormal::update($id,$inputCategory);
+		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
+		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+		return Redirect::action('CategoryParentController@index') ;
 	}
 
 
@@ -93,7 +106,9 @@ class CategoryParentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonSeo::deleteSeo($id, 'CategoryParent');
+		CommonNormal::delete($id);
+        return Redirect::action('CategoryParentController@index');
 	}
 
 

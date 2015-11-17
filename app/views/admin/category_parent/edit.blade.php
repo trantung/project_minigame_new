@@ -1,14 +1,14 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm chuyên mục' }}
+{{ $title='Sửa chuyên mục' }}
 @stop
 
 @section('content')
 
 <div class="row margin-bottom">
   <div class="col-xs-12">
-    <a href="/" class="btn btn-success">Danh sách chuyên mục</a>
+    <a href="/" class="btn btn-success">Sửa chuyên mục</a>
   </div>
 </div>
 
@@ -16,13 +16,14 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            {{ Form::open(array('route' => array('postcreate'))) }}
+            {{ Form::open(array('action' => array('CategoryParentController@update', $inputCategory->id), 'method' => 'PUT')) }}
               <div class="box-body">
                 <div class="form-group">
                   <label for="name">Tên chuyên mục</label>
                   <div class="row">
                   	<div class="col-sm-6">	                  	
-                       {{ Form::text('name', null , textPerentCategory('Tên chuyên mục')) }}
+                       {{ Form::text('name', $inputCategory->name , textPerentCategory('Tên chuyên mục')) }}
+
 	                  </div>
                   </div>
                 </div>
@@ -30,15 +31,15 @@
                   <label for="name">Chọn vị trí</label>
                   <div class="row">
                     <div class="col-sm-6">                      
-                      {{ Form::select('position', selectParentCategory(), null, array('class' =>'form-control')) }}
+                      {{ Form::select('position', selectParentCategory(), $inputCategory->position , array('class' =>'form-control')) }}
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="name">Mức ưu tiên</label>
+                  <label for="weight_number">Mức ưu tiên</label>
                   <div class="row">
                     <div class="col-sm-6">
-                      {{ Form::text('weight_number', null , textPerentCategory('Mức ưu tiên')) }}                                       
+                      {{ Form::text('weight_number', $inputCategory->weight_number , textPerentCategory('Mức ưu tiên')) }}                                       
                     </div>
                   </div>
                 </div>
@@ -49,7 +50,7 @@
 	                  	<label for="title_site">Thẻ title</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('title_site','',textPerentCategory('Thẻ title')) }}
+                              {{ Form::text('title_site', $inputSeo->title_site ,textPerentCategory('Thẻ title')) }}
                             </div>                          
                         </div>	                  		
 	              		</div>
@@ -57,7 +58,7 @@
                       <label for="description_site">Thẻ Descript site</label>
                         <div class="row">
                             <div class="col-sm-6">
-                             {{ Form::text('description_site', null , textPerentCategory('Thẻ Descript site')) }}                           
+                             {{ Form::text('description_site', $inputSeo->description_site , textPerentCategory('Thẻ Descript site')) }}                           
                             </div>                          
                         </div>                        
                     </div>
@@ -65,7 +66,7 @@
                       <label for="keyword_site">Thẻ Keyword</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('keyword_site', null , textPerentCategory('Thẻ Keyword')) }}                              
+                              {{ Form::text('keyword_site', $inputSeo->keyword_site , textPerentCategory('Thẻ Keyword')) }}                              
                             </div>                          
                         </div>                        
                     </div>
@@ -73,7 +74,7 @@
                       <label for="title_fb">Thẻ title facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('title_fb', null , textPerentCategory('Thẻ facebook')) }}                            
+                              {{ Form::text('title_fb', $inputSeo->title_fb , textPerentCategory('Thẻ facebook')) }}                            
                             </div>                          
                         </div>                        
                     </div>
@@ -81,7 +82,7 @@
                       <label for="description_fb">Thẻ descript facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('description_fb', null , textPerentCategory('Thẻ descript facebook')) }}                              
+                              {{ Form::text('description_fb', $inputSeo->description_fb , textPerentCategory('Thẻ descript facebook')) }}                              
                             </div>                          
                         </div>                        
                     </div>
