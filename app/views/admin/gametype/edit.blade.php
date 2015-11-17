@@ -80,8 +80,7 @@
 														<img class="image_fb" src="{{ UPLOADIMG_GAMETYPE . '/seo'.'/'. $inputType->id . '/' . $inputSeo->image_url_fb }}" />
 													</div>
 											</div>
-									</div>
-									 </div>
+										</div>
 									</div>
 								</div>
 							</div>

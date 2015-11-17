@@ -106,8 +106,9 @@ class CategoryParentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		CommonSeo::deleteSeo($id, 'CategoryParent');
 		CommonNormal::delete($id);
-        return Redirect::action('ManagerController@index');
+        return Redirect::action('CategoryParentController@index');
 	}
 
 

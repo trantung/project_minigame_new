@@ -114,6 +114,7 @@ class GameTypeController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
+		CommonSeo::deleteSeo($id,'Type');
         return Redirect::action('GameTypeController@index');
 	}
 
