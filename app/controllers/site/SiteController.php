@@ -10,7 +10,6 @@ class SiteController extends \BaseController {
 	public function index()
 	{
 		$data = CategoryParent::orderBy('weight_number', 'asc')->get();
-		
 		return View::make('site.index', array('data' => $data));
 	}
 
