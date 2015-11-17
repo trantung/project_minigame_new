@@ -104,6 +104,9 @@ class ManagerController extends AdminController {
             'email'      => 'required|email',
             'role_id'    => 'required',
         );
+        if (!Admin::isAdmin()) {
+        	unset($rules['role_id']);
+        }
         $input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {

@@ -7,5 +7,5 @@ define('CONTENT', 2);
 define('ADMIN', 1);
 define('EDITOR', 2);
 define('SEO', 3);
-//pagination
+//pagination manager admin
 define('PAGINATE', 20);
