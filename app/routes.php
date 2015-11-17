@@ -26,8 +26,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/category_parent', 'CategoryParentController');
 
 	Route::resource('/category', 'CategoryController');
-	
+
 	Route::resource('/games', 'AdminGameController');
+
+	Route::resource('/gametype', 'GameTypeController');
 
 });
 

@@ -22,15 +22,33 @@
 				  <label for="name">Tên category</label>
 				  <div class="row">
 					<div class="col-sm-6">	                  	
-					   {{ Form::text('name', null , texrParentCategory('Tên category')) }}
+					   {{ Form::text('name', null , textParentCategory('Tên category')) }}
 					</div>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label for="category_parent_id">Chọn parent category</label>
 				  <div class="row">
-					<div class="col-sm-6">                      
+					<!-- <div class="col-sm-6">                      
 					  {{ Form::select('category_parent_id', [0 => 'Select'] + returnList('CategoryParent'), array('class' =>'form-control')) }}
+					</div> -->
+					<div class="col-sm-6">
+						<div class="box-body table-responsive no-padding">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên thể loại game</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(CategoryParent::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
 					</div>
 				  </div>
 				</div>
@@ -41,7 +59,7 @@
 						<label for="title_site">Thẻ title</label>
 						<div class="row">
 							<div class="col-sm-6">
-							  {{ Form::text('title_site','',texrParentCategory('Thẻ title')) }}
+							  {{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
 							</div>                          
 						</div>	                  		
 						</div>
@@ -49,7 +67,7 @@
 					  <label for="description_site">Thẻ Descript site</label>
 						<div class="row">
 							<div class="col-sm-6">
-							 {{ Form::textarea('description_site', null , texrParentCategory('Thẻ Descript site')) }}                           
+							 {{ Form::textarea('description_site', null , textParentCategory('Thẻ Descript site')) }}                           
 							</div>                          
 						</div>                        
 					</div>
@@ -57,7 +75,7 @@
 					  <label for="keyword_site">Thẻ Keyword</label>
 						<div class="row">
 							<div class="col-sm-6">
-							  {{ Form::text('keyword_site', null , texrParentCategory('Thẻ Keyword')) }}                              
+							  {{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}                              
 							</div>                          
 						</div>                        
 					</div>
@@ -65,7 +83,7 @@
 					  <label for="title_fb">Thẻ title facebook</label>
 						<div class="row">
 							<div class="col-sm-6">
-							  {{ Form::text('title_fb', null , texrParentCategory('Thẻ facebook')) }}                            
+							  {{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}                            
 							</div>                          
 						</div>                        
 					</div>
@@ -73,7 +91,7 @@
 					  <label for="description_fb">Thẻ descript facebook</label>
 						<div class="row">
 							<div class="col-sm-6">
-							  {{ Form::textarea('description_fb', null , texrParentCategory('Thẻ descript facebook')) }}                              
+							  {{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}                              
 							</div>                          
 						</div>                        
 					</div>

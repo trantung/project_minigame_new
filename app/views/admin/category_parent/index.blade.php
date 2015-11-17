@@ -35,12 +35,13 @@
 			<tr>
 			  <td>{{ $categoryParent->id }}</td>
 			  <td>{{ $categoryParent->name }}</td>
-			  <td>{{ count($categoryParent->games) }}</td>
-			  <td>{{ $categoryParent->name }}</td>			
+			  <td>1</td>
+			  <td>0</td>
 			  <td>
 				<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+
 				{{ Form::close() }}
 			  </td>
 

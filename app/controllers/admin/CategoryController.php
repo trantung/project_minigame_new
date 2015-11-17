@@ -46,9 +46,10 @@ class CategoryController extends AdminController {
         } else {
 			$inputCategory = Input::only('name');
 			$input['game_id'] = CommonNormal::create($inputCategory);
-			$input['category_parent_id'] = Input::get('category_parent_id');
-			CommonNormal::create($input, 'GameRelation');
-			
+			foreach (Input::get('type_id') as $value) {
+				$input['category_parent_id'] = $value;
+				CommonNormal::create($input, 'GameRelation');
+			}
 			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
 			CommonSeo::updateSeo($inputSeo, 'Game', $input['game_id']);
 			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$input['game_id'], UPLOADIMG, 'image_url_fb');
@@ -77,10 +78,11 @@ class CategoryController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$inputCategory = Game::find($id);
-		
-		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
-		return View::make('admin.category.edit')->with(compact('inputCategory', 'inputSeo'));
+		$parent = Game::find($id)->categoryparents;
+		$category = Game::find($id);
+		dd($category);
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'Game')->first();
+		return View::make('admin.category.edit')->with(compact('parent', 'inputSeo'));
 	}
 
 
@@ -92,7 +94,23 @@ class CategoryController extends AdminController {
 	 */
 	public function update($id)
 	{
-		
+		$rules = array(
+			'name'   => 'required'            
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+
+		if($validator->fails()) {
+			return Redirect::action('CategoryController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+			$inputCategory = Input::only('name');
+			$input['game_id'] = CommonNormal::Update($id, $inputCategory);
+			$input['category_parent_id'] = Input::get('category_parent_id');
+
+			CommonNormal::update($input, 'GameRelation');
+        }
 	}
 
 
@@ -104,7 +122,10 @@ class CategoryController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+		CommonSeo::deleteSeo($id,'Game');
+        return Redirect::action('CategoryController@index');
+	
 	}
 
 

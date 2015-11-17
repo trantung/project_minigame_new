@@ -42,6 +42,9 @@ class CommonNormal
 		if ($name == 'GameRelation') {
 			return 'GameRelation';
 		}
+		if ($name == 'gametype') {
+			return 'Type';
+		}
 	}
 	
 }
