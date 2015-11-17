@@ -33,4 +33,5 @@ class CommonNormal
 			return 'Admin';
 		}
 	}
+	
 }

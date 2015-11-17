@@ -9,3 +9,6 @@ define('EDITOR', 2);
 define('SEO', 3);
 //pagination manager admin
 define('PAGINATE', 20);
+//url upload img
+define('UPLOADIMG', '/images');
+

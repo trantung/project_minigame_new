@@ -16,7 +16,8 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            {{ Form::open(array('route' => array('postcreate'))) }}
+            
+            {{ Form::open(array('route' => array('postcreate'), 'files' => true)) }}
               <div class="box-body">
                 <div class="form-group">
                   <label for="name">Tên chuyên mục</label>
@@ -82,6 +83,14 @@
                         <div class="row">
                             <div class="col-sm-6">
                               {{ Form::text('description_fb', null , textPerentCategory('Thẻ descript facebook')) }}                              
+                            </div>                          
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                      <label for="image_url_fb">Upload ảnh</label>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                    {{ Form::file('image_url_fb') }}                   
                             </div>                          
                         </div>                        
                     </div>
