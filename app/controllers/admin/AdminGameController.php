@@ -56,15 +56,14 @@ class AdminGameController extends AdminController {
 
 
 		//up game zip ->file
-		$destinationPath = public_path().'/'.'games';
+		$destinationPath = $this->createFolder('games'); //uploads
 		if(Input::hasFile('link_upload_game')){
 			$file = Input::file('link_upload_game');
 			$filename = $file->getClientOriginalName();
-			$uploadSuccess = $file->move($destinationPath, $filename);
+			$upload_success = Input::file('link_upload_game')->move($destinationPath, $filename);
 		}
-
 		// get the absolute path to $file
-		$path = pathinfo(realpath($file), PATHINFO_DIRNAME);
+		$path = pathinfo(realpath($destinationPath[0]), PATHINFO_DIRNAME).'/'.$destinationPath[1];
 
 		$zip = new ZipArchive;
 		$res = $zip->open($file);
@@ -76,6 +75,16 @@ class AdminGameController extends AdminController {
 		} else {
 		  echo "Error!";
 		}
+	}
+
+	private function createFolder($folder)
+	{
+		$path = public_path().'/'.$folder;
+		if(!File::exists($path)) {
+		    // path does not exist
+		    File::makeDirectory($path, $mode = 0755, true, true);
+		}
+		return $path;
 	}
 
 
