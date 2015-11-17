@@ -11,7 +11,7 @@
 -->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ route('create') }}" class="btn btn-primary">Thêm chuyên mục</a>
+		<a href="{{ action('CategoryParentController@create') }}" class="btn btn-primary">Thêm chuyên mục</a>
 	</div>
 </div>
 

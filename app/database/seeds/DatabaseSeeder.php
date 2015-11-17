@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ParentTypeSeeder');
 		$this->call('GameTableSeeder');
 		$this->call('GameCategoryParent');
+		$this->call('AdminSeoSeeder');
 	}
 
 }
