@@ -37,9 +37,12 @@
 			  <td><?php echo count($categoryParent->games); ?></td>
 			  <td><?php echo $categoryParent->name; ?></td>			
 			  <td>
-			  	<a href="#" class="btn btn-success">Xem</a>
 				<a href="<?php echo action('CategoryParentController@edit', $categoryParent->id); ?>" class="btn btn-primary">Sửa</a>
-				<a href="<?php echo action('CategoryParentController@destroy', $categoryParent->id); ?>" class="btn btn-danger">Xóa</a>
+				<?php echo Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')); ?>
+
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				<?php echo Form::close(); ?>
+
 			  </td>
 
 			</tr>

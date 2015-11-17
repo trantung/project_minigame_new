@@ -26,7 +26,12 @@ function selectParentCategory()
 	);
 }
 
-function textPerentCategory($input){
+function texrParentCategory($input){
 	return array('placeholder' =>$input, 'class' =>'form-control');
 }
 
+function returnList($className)
+{
+	$list = $className::lists('name', 'id');
+	return $list;
+}

@@ -22,7 +22,7 @@
                   <label for="name">Tên chuyên mục</label>
                   <div class="row">
                   	<div class="col-sm-6">	                  	
-                       {{ Form::text('name', $inputCategory->name , textPerentCategory('Tên chuyên mục')) }}
+                       {{ Form::text('name', $inputCategory->name , texrParentCategory('Tên chuyên mục')) }}
 
 	                  </div>
                   </div>
@@ -39,7 +39,7 @@
                   <label for="weight_number">Mức ưu tiên</label>
                   <div class="row">
                     <div class="col-sm-6">
-                      {{ Form::text('weight_number', $inputCategory->weight_number , textPerentCategory('Mức ưu tiên')) }}                                       
+                      {{ Form::text('weight_number', $inputCategory->weight_number , texrParentCategory('Mức ưu tiên')) }}                                       
                     </div>
                   </div>
                 </div>
@@ -50,7 +50,7 @@
 	                  	<label for="title_site">Thẻ title</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('title_site', $inputSeo->title_site ,textPerentCategory('Thẻ title')) }}
+                              {{ Form::text('title_site', $inputSeo->title_site ,texrParentCategory('Thẻ title')) }}
                             </div>                          
                         </div>	                  		
 	              		</div>
@@ -58,7 +58,7 @@
                       <label for="description_site">Thẻ Descript site</label>
                         <div class="row">
                             <div class="col-sm-6">
-                             {{ Form::text('description_site', $inputSeo->description_site , textPerentCategory('Thẻ Descript site')) }}                           
+                             {{ Form::text('description_site', $inputSeo->description_site , texrParentCategory('Thẻ Descript site')) }}                           
                             </div>                          
                         </div>                        
                     </div>
@@ -66,7 +66,7 @@
                       <label for="keyword_site">Thẻ Keyword</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('keyword_site', $inputSeo->keyword_site , textPerentCategory('Thẻ Keyword')) }}                              
+                              {{ Form::text('keyword_site', $inputSeo->keyword_site , texrParentCategory('Thẻ Keyword')) }}                              
                             </div>                          
                         </div>                        
                     </div>
@@ -74,7 +74,7 @@
                       <label for="title_fb">Thẻ title facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('title_fb', $inputSeo->title_fb , textPerentCategory('Thẻ facebook')) }}                            
+                              {{ Form::text('title_fb', $inputSeo->title_fb , texrParentCategory('Thẻ facebook')) }}                            
                             </div>                          
                         </div>                        
                     </div>
@@ -82,7 +82,7 @@
                       <label for="description_fb">Thẻ descript facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('description_fb', $inputSeo->description_fb , textPerentCategory('Thẻ descript facebook')) }}                              
+                              {{ Form::text('description_fb', $inputSeo->description_fb , texrParentCategory('Thẻ descript facebook')) }}                              
                             </div>                          
                         </div>                        
                     </div>

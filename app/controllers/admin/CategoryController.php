@@ -1,6 +1,6 @@
 <?php
 
-class admin/CategoryController extends \BaseController {
+class CategoryController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,8 @@ class admin/CategoryController extends \BaseController {
 	 */
 	public function index()
 	{
-		dd(999);
+		$categories = Game::where('parent_id', NULL)->orderBy('created_at',  'desc')->paginate(PAGINATE);	
+		return View::make('admin.category.index')->with(compact('categories'));
 	}
 
 
@@ -20,7 +21,8 @@ class admin/CategoryController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$listCategory_patent = CategoryParent::lists('name', 'id');
+		return View::make('admin.category.create')->with(compact('listCategory_patent'));
 	}
 
 
@@ -31,7 +33,28 @@ class admin/CategoryController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$rules = array(
+			'name'   => 'required'            
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+
+		if($validator->fails()) {
+			return Redirect::action('CategoryController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+			$inputCategory = Input::only('name');
+			$input['game_id'] = CommonNormal::create($inputCategory);
+			$input['category_parent_id'] = Input::get('category_parent_id');
+			CommonNormal::create($input, 'GameRelation');
+			
+			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+			CommonSeo::updateSeo($inputSeo, 'Game', $input['game_id']);
+			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$input['game_id'], UPLOADIMG, 'image_url_fb');
+			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'Game', $input['game_id']);
+			return Redirect::action('CategoryController@index') ;
+		}
 	}
 
 
@@ -43,9 +66,8 @@ class admin/CategoryController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -55,7 +77,10 @@ class admin/CategoryController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputCategory = Game::find($id);
+		
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
+		return View::make('admin.category.edit')->with(compact('inputCategory', 'inputSeo'));
 	}
 
 
@@ -67,7 +92,7 @@ class admin/CategoryController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
 	}
 
 

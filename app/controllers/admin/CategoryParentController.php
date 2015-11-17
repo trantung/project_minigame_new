@@ -31,14 +31,25 @@ class CategoryParentController extends AdminController {
 	 */
 	public function postcreate()
 	{				
-		
-		$inputCategory = Input::only('name', 'position', 'weight_number');
-		$id = CommonNormal::create($inputCategory);
-		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
-		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
-		CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
-		return Redirect::action('CategoryParentController@index') ;
+		$rules = array(
+            'name'   => 'required' 
+        );
+        $input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+
+		if($validator->fails()) {
+			return Redirect::action('CategoryController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+			$inputCategory = Input::only('name', 'position', 'weight_number');
+			$id = CommonNormal::create($inputCategory);
+			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+			CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
+			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
+			return Redirect::action('CategoryParentController@index') ;
+		}
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -89,12 +100,22 @@ class CategoryParentController extends AdminController {
 		$rules = array(
             'name'   => 'required'                      
         );
-		$inputCategory = Input::only('name', 'position', 'weight_number');
-		$id = CommonNormal::update($id,$inputCategory);
-		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
-		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
-		return Redirect::action('CategoryParentController@index') ;
+        $input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+
+		if($validator->fails()) {
+			return Redirect::action('CategoryController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+			$inputCategory = Input::only('name', 'position', 'weight_number');
+			$id = CommonNormal::update($id,$inputCategory);
+			
+			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
+			CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+			return Redirect::action('CategoryParentController@index') ;
+		}
 	}
 
 
@@ -107,7 +128,7 @@ class CategoryParentController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-        return Redirect::action('ManagerController@index');
+        return Redirect::action('CategoryParentController@index');
 	}
 
 

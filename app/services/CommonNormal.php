@@ -17,6 +17,7 @@ class CommonNormal
 	public static function create($input, $name = NULL)
 	{
 		$name = self::commonName($name);
+		// dd($input);
 		$id = $name::create($input)->id;
 		return $id;
 	}
@@ -26,11 +27,20 @@ class CommonNormal
 		if ($name == NULL) {
 			$name = Request::segment(2);
 		}
-		if ($name == 'category_parent') {
+		if ($name == '') {
 			return 'CategoryParent';
+		}
+		if($name =='category_parent'){
+			return 'CategoryParent';
+		}
+		if($name =='category'){
+			return 'Game';
 		}
 		if ($name == 'manager') {
 			return 'Admin';
+		}
+		if ($name == 'GameRelation') {
+			return 'GameRelation';
 		}
 	}
 	
