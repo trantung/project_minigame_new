@@ -11,4 +11,4 @@ define('SEO', 3);
 define('PAGINATE', 20);
 //url upload img
 define('UPLOADIMG', '/images');
-
+define('UPLOADIMG_GAMETYPE', '/images/gametype');

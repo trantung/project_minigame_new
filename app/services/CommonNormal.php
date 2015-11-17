@@ -32,6 +32,9 @@ class CommonNormal
 		if ($name == 'manager') {
 			return 'Admin';
 		}
+		if ($name == 'gametype') {
+			return 'Type';
+		}
 	}
 	
 }

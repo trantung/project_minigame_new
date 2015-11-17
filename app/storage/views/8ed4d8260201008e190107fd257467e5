@@ -17,6 +17,8 @@
   <!-- Theme style -->
   <?php echo HTML::style('adminlte/dist/css/AdminLTE.min.css'); ?>
 
+  <?php echo HTML::style('adminlte/dist/css/admin.css'); ?>
+
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <?php echo HTML::style('adminlte/dist/css/skins/_all-skins.min.css'); ?>

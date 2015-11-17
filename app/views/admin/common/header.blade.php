@@ -13,6 +13,7 @@
   {{HTML::style('adminlte/dist/css/ionicons.min.css') }}
   <!-- Theme style -->
   {{HTML::style('adminlte/dist/css/AdminLTE.min.css') }}
+  {{HTML::style('adminlte/dist/css/admin.css') }}
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   {{HTML::style('adminlte/dist/css/skins/_all-skins.min.css') }}

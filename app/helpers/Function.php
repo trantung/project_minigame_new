@@ -1,5 +1,5 @@
 <?php
-function genRole($roleId) {
+function getRole($roleId) {
 	$role = array(
 		ADMIN => 'ADMIN',
 		EDITOR => 'EDITOR',

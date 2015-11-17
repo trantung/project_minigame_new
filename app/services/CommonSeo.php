@@ -23,7 +23,7 @@ class CommonSeo
 	/**
 	*uploadImage Upload image
 	*/
-	
+
 	public static function uploadImage($input,$id, $path, $imageUrl)
 	{
 		$destinationPath = public_path().'/'.$path.'/seo'.'/'.$id.'/';
@@ -32,7 +32,6 @@ class CommonSeo
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess = $file->move($destinationPath, $filename);
 			//check filenam unique
-
 			return $filename;
 		}
 	}

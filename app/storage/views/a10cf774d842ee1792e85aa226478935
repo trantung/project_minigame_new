@@ -38,7 +38,7 @@
 				  <td><?php echo $value->username; ?></td>
 				  <td><?php echo genRole($value->role_id); ?></td>
 				  <td>
-					<a href="#" class="btn btn-success">Xem</a>
+					<?php /* <a href="#" class="btn btn-success">Xem</a> */ ?>
 					<a href="<?php echo action('ManagerController@edit', $value->id); ?>" class="btn btn-primary">Sửa</a>
 					<?php echo Form::open(array('method'=>'DELETE', 'action' => array('ManagerController@destroy', $value->id), 'style' => 'display: inline-block;')); ?>
 
