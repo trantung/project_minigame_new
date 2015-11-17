@@ -53,4 +53,11 @@
 	<!-- AdminLTE App -->
 	{{ HTML::script('adminlte/dist/js/app.min.js') }}
 
+	<script>
+	  $(function () {
+	    //Date range picker
+	    $('#start_date').datepicker();
+	  });
+	</script>
+
 </head>
