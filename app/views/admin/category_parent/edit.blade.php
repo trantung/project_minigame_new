@@ -22,7 +22,7 @@
 						<div class="box-body">
 							<div class="form-group">
 								<label for="name">Tên chuyên mục</label>
-								{{ Form::text('name', $inputCategory->name , textPerentCategory('Tên chuyên mục')) }}
+								{{ Form::text('name', $inputCategory->name , textParentCategory('Tên chuyên mục')) }}
 							</div>
 							<div class="form-group">
 								<label for="name">Chọn vị trí</label>
@@ -30,30 +30,30 @@
 							</div>
 							<div class="form-group">
 								<label for="name">Mức ưu tiên</label>
-									{{ Form::text('weight_number', $inputCategory->weight_number , textPerentCategory('Mức ưu tiên')) }}
+									{{ Form::text('weight_number', $inputCategory->weight_number , textParentCategory('Mức ưu tiên')) }}
 							</div>
 							<div class="form-group">
 								<label for="metaname"><u>Thẻ meta</u></label>
 								<div class="box-body">
 									<div class="form-group">
 										<label for="title_site">Thẻ title</label>
-										{{ Form::text('title_site', $inputSeo->title_site, textPerentCategory('Thẻ title')) }}
+										{{ Form::text('title_site', $inputSeo->title_site, textParentCategory('Thẻ title')) }}
 									</div>
 									<div class="form-group">
 										<label for="description_site">Thẻ Descript site</label>
-										{{ Form::textarea('description_site', $inputSeo->description_site , textPerentCategory('Thẻ Descript site')) }}
+										{{ Form::textarea('description_site', $inputSeo->description_site , textParentCategory('Thẻ Descript site')) }}
 									</div>
 									<div class="form-group">
 										<label for="keyword_site">Thẻ Keyword</label>
-										{{ Form::text('keyword_site', $inputSeo->keyword_site , textPerentCategory('Thẻ Keyword')) }}
+										{{ Form::text('keyword_site', $inputSeo->keyword_site , textParentCategory('Thẻ Keyword')) }}
 									</div>
 									<div class="form-group">
 										<label for="title_fb">Thẻ title facebook</label>
-										{{ Form::text('title_fb', $inputSeo->title_fb , textPerentCategory('Thẻ facebook')) }}
+										{{ Form::text('title_fb', $inputSeo->title_fb , textParentCategory('Thẻ facebook')) }}
 									</div>
 									<div class="form-group">
 										<label for="description_fb">Thẻ descript facebook</label>
-										{{ Form::textarea('description_fb', $inputSeo->description_fb , textPerentCategory('Thẻ descript facebook')) }}
+										{{ Form::textarea('description_fb', $inputSeo->description_fb , textParentCategory('Thẻ descript facebook')) }}
 									</div>
 									<div class="form-group">
 										<label for="image_url_fb">Upload ảnh</label>

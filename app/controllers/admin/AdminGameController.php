@@ -80,6 +80,16 @@ class AdminGameController extends AdminController {
 		dd(33);
 	}
 
+	private function createFolder($folder)
+	{
+		$path = public_path().'/'.$folder;
+		if(!File::exists($path)) {
+		    // path does not exist
+		    File::makeDirectory($path, $mode = 0755, true, true);
+		}
+		return $path;
+	}
+
 
 	/**
 	 * Display the specified resource.

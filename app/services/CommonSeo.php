@@ -9,7 +9,6 @@ class CommonSeo
 		$id = AdminSeo::create($input)->id;
 		return $id;
 	}
-
 	public static function updateSeo($input, $modelName, $modelId)
 	{
 		$seo = self::getIdSeo($modelId, $modelName);
@@ -22,6 +21,7 @@ class CommonSeo
 
 	public static function deleteSeo($modelId, $modelName)
 	{
+		
 		$seo = self::getIdSeo($modelId, $modelName);
 		AdminSeo::find($seo->id)->delete();
 	}
@@ -59,5 +59,4 @@ class CommonSeo
 		}
 		return NULL;
 	}
-
 }

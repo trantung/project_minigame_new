@@ -11,7 +11,7 @@
 -->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="#" class="btn btn-primary">Thêm category</a>
+		<a href="{{ action('CategoryController@create') }}" class="btn btn-primary">Thêm category</a>
 	</div>
 </div>
 
@@ -32,21 +32,22 @@
 			  <th>Tổng dowload</th>	
 			  <th style="width:200px;">&nbsp;</th>
 			</tr>
-			 
+			 @foreach($categories as $category)
 			<tr>
-			  <td>1</td>
-			  <td>Hành động</td>
+			  <td>{{ $category->id }}</td>
+			  <td>{{ $category->name }}</td>
 			  <td>10</td>
-			  <td>10</td>			
-			  <td>20</td>
+			  <td>{{ $category->count_view }}</td>			
+			  <td>{{ $category->count_dowload }}</td>
 			  <td>
-			  	<a href="#" class="btn btn-success">Xem</a>
-				<a href="#" class="btn btn-primary">Sửa</a>
-				<a href="#" class="btn btn-danger">Xóa</a>
+				<a href="{{ action('CategoryController@edit', $category->id) }}" class="btn btn-primary">Sửa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryController@destroy', $category->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
 			  </td>
 
 			</tr>
-			  @endforeach
+			 @endforeach
 		  </table>
 		</div>
 		<!-- /.box-body -->
@@ -58,7 +59,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<ul class="pagination">
-		{{ $categoryParents->appends(Request::except('page'))->links() }}
+		{{ $categories->appends(Request::except('page'))->links() }}
 		</ul>
 	</div>
 </div>
