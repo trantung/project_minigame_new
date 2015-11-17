@@ -61,7 +61,7 @@
                       <label for="description_site">Thẻ Descript site</label>
                         <div class="row">
                             <div class="col-sm-6">
-                             <?php echo Form::text('description_site', null , textPerentCategory('Thẻ Descript site')); ?>                           
+                             <?php echo Form::textarea('description_site', null , textPerentCategory('Thẻ Descript site')); ?>                           
                             </div>                          
                         </div>                        
                     </div>
@@ -85,7 +85,7 @@
                       <label for="description_fb">Thẻ descript facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              <?php echo Form::text('description_fb', null , textPerentCategory('Thẻ descript facebook')); ?>                              
+                              <?php echo Form::textarea('description_fb', null , textPerentCategory('Thẻ descript facebook')); ?>                              
                             </div>                          
                         </div>                        
                     </div>

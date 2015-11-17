@@ -15,7 +15,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            <?php echo Form::open(array('route' => array('postcreate'))); ?>
+            <?php echo Form::open(array('action' => array('CategoryParentController@update', $inputCategory->id), 'method' => 'PUT')); ?>
 
               <div class="box-body">
                 <div class="form-group">

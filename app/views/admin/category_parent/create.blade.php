@@ -16,7 +16,6 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            
             {{ Form::open(array('route' => array('postcreate'), 'files' => true)) }}
               <div class="box-body">
                 <div class="form-group">
@@ -58,7 +57,7 @@
                       <label for="description_site">Thẻ Descript site</label>
                         <div class="row">
                             <div class="col-sm-6">
-                             {{ Form::text('description_site', null , textPerentCategory('Thẻ Descript site')) }}                           
+                             {{ Form::textarea('description_site', null , textPerentCategory('Thẻ Descript site')) }}                           
                             </div>                          
                         </div>                        
                     </div>
@@ -82,7 +81,7 @@
                       <label for="description_fb">Thẻ descript facebook</label>
                         <div class="row">
                             <div class="col-sm-6">
-                              {{ Form::text('description_fb', null , textPerentCategory('Thẻ descript facebook')) }}                              
+                              {{ Form::textarea('description_fb', null , textPerentCategory('Thẻ descript facebook')) }}                              
                             </div>                          
                         </div>                        
                     </div>

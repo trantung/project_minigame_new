@@ -24,13 +24,15 @@ class CommonSeo
 	*uploadImage Upload image
 	*/
 	
-	public static function uploadImage($input, $path, $imageUrl)
+	public static function uploadImage($input,$id, $path, $imageUrl)
 	{
-		$destinationPath = public_path().'/'.$path;
+		$destinationPath = public_path().'/'.$path.'/seo'.'/'.$id.'/';
 		if(Input::hasFile($imageUrl)){
 			$file = Input::file($imageUrl);
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess = $file->move($destinationPath, $filename);
+			//check filenam unique
+
 			return $filename;
 		}
 	}

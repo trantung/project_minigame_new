@@ -5,9 +5,9 @@
 
 <?php $__env->startSection('content'); ?>
 
-<!-- inclue Search form -->
-<?php echo $__env->make('admin.users.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<!-- inclue Search form 
 
+-->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="<?php echo route('create'); ?>" class="btn btn-primary">Thêm chuyên mục</a>
@@ -38,8 +38,8 @@
 			  <td><?php echo $categoryParent->name; ?></td>			
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
-				<a href="<?php echo route('edit', $categoryParent->id); ?>" class="btn btn-primary">Sửa</a>
-				<a href="#" class="btn btn-danger">Xóa</a>
+				<a href="<?php echo action('CategoryParentController@edit', $categoryParent->id); ?>" class="btn btn-primary">Sửa</a>
+				<a href="<?php echo action('CategoryParentController@destroy', $categoryParent->id); ?>" class="btn btn-danger">Xóa</a>
 			  </td>
 
 			</tr>

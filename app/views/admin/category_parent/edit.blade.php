@@ -16,7 +16,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
             <!-- form start -->
-            {{ Form::open(array('route' => array('postcreate'))) }}
+            {{ Form::open(array('action' => array('CategoryParentController@update', $inputCategory->id), 'method' => 'PUT')) }}
               <div class="box-body">
                 <div class="form-group">
                   <label for="name">Tên chuyên mục</label>

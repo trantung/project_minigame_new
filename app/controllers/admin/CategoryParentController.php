@@ -36,7 +36,7 @@ class CategoryParentController extends AdminController {
 		$id = CommonNormal::create($inputCategory);
 		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
 		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
-		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
+		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
 		CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
 		return Redirect::action('CategoryParentController@index') ;
 	}
@@ -73,7 +73,7 @@ class CategoryParentController extends AdminController {
 	{
 		$inputCategory = CategoryParent::find($id);
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
-		//dd($inputCategory);
+		
 		
 		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo'));
 	}
@@ -86,7 +86,15 @@ class CategoryParentController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+            'name'   => 'required'                      
+        );
+		$inputCategory = Input::only('name', 'position', 'weight_number');
+		$id = CommonNormal::update($id,$inputCategory);
+		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
+		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
+		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
+		return Redirect::action('CategoryParentController@index') ;
 	}
 
 
@@ -98,7 +106,8 @@ class CategoryParentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('ManagerController@index');
 	}
 
 

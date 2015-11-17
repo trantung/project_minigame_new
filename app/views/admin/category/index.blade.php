@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý cây thư mục' }}
+{{ $title='Quản lý category' }}
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 -->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ route('create') }}" class="btn btn-primary">Thêm chuyên mục</a>
+		<a href="#" class="btn btn-primary">Thêm category</a>
 	</div>
 </div>
 
@@ -19,28 +19,30 @@
 	<div class="col-xs-12">
 	  <div class="box">
 		<div class="box-header">
-		  <h3 class="box-title">Danh sách chuyên mục</h3>
+		  <h3 class="box-title">Danh sách category</h3>
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Tên chuyên mục</th>
-			  <th>Số category</th>
-			  <th>Tổng số game</th>			  
+			  <th>Tên Category</th>
+			  <th>Số game</th>
+			  <th>Tổng View</th>			  
+			  <th>Tổng dowload</th>	
 			  <th style="width:200px;">&nbsp;</th>
 			</tr>
-			 @foreach($categoryParents as $categoryParent)
+			 
 			<tr>
-			  <td>{{ $categoryParent->id }}</td>
-			  <td>{{ $categoryParent->name }}</td>
-			  <td>{{ count($categoryParent->games) }}</td>
-			  <td>{{ $categoryParent->name }}</td>			
+			  <td>1</td>
+			  <td>Hành động</td>
+			  <td>10</td>
+			  <td>10</td>			
+			  <td>20</td>
 			  <td>
 			  	<a href="#" class="btn btn-success">Xem</a>
-				<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
-				<a href="{{ action('CategoryParentController@destroy', $categoryParent->id) }}" class="btn btn-danger">Xóa</a>
+				<a href="#" class="btn btn-primary">Sửa</a>
+				<a href="#" class="btn btn-danger">Xóa</a>
 			  </td>
 
 			</tr>
