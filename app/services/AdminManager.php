@@ -18,10 +18,13 @@ class AdminManager
 	public static function createParentType($arrayTypeId, $arrayWeightNumber, $parentId)
 	{
 		$input = array();
-		foreach ($arrayTypeId as $value) {
-			$input = self::commonInputParentType($arrayWeightNumber, $value, $parentId);
-			ParentType::create($input);
+		if ($arrayTypeId) {
+			foreach ($arrayTypeId as $value) {
+				$input = self::commonInputParentType($arrayWeightNumber, $value, $parentId);
+				ParentType::create($input);
+			}
 		}
+		
 	}
 	public static function updateParentType($arrayTypeId, $arrayWeightNumber, $parentId)
 	{
