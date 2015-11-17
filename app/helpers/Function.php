@@ -119,3 +119,10 @@ function checkBoxChecked($typeId, $parentId)
 	return NULL;
 }
 
+function saveScore()
+{
+	return array(
+		1 => 'Luu diem',
+		2 => 'Khong luu diem'
+		);
+}

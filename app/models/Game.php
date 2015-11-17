@@ -8,8 +8,8 @@ class Game extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'games';
-    protected $fillable = ['parent_id', 'name', 'description', 
-	    'image_url', 'link_url', 'count_view', 'count_play', 
+    protected $fillable = ['parent_id', 'name', 'description',
+	    'image_url', 'link_url', 'count_view', 'count_play',
 	    'count_vote', 'count_download', 'vote_average',
 	     'weight_number', 'score_status', 'start_date'];
     protected $dates = ['deleted_at'];
