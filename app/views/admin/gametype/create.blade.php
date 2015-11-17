@@ -22,7 +22,7 @@
 							<label for="name">Tên thể loại</label>
 							<div class="row">
 								<div class="col-sm-6">
-									 {{ Form::text('name', null , textPerentCategory('Tên thể loại')) }}
+									 {{ Form::text('name', null , textParentCategory('Tên thể loại')) }}
 								</div>
 							</div>
 						</div>
@@ -33,7 +33,7 @@
 									<label for="title_site">Thẻ title</label>
 									<div class="row">
 										<div class="col-sm-6">
-											{{ Form::text('title_site','',textPerentCategory('Thẻ title')) }}
+											{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
 										</div>
 									</div>
 								</div>
@@ -41,7 +41,7 @@
 									<label for="description_site">Thẻ Descript site</label>
 										<div class="row">
 												<div class="col-sm-6">
-												 {{ Form::textarea('description_site', null , textPerentCategory('Thẻ Descript site')) }}
+												 {{ Form::textarea('description_site', null , textParentCategory('Thẻ Descript site')) }}
 												</div>
 										</div>
 								</div>
@@ -49,7 +49,7 @@
 									<label for="keyword_site">Thẻ Keyword</label>
 										<div class="row">
 												<div class="col-sm-6">
-													{{ Form::text('keyword_site', null , textPerentCategory('Thẻ Keyword')) }}
+													{{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}
 												</div>
 										</div>
 								</div>
@@ -57,7 +57,7 @@
 									<label for="title_fb">Thẻ title facebook</label>
 										<div class="row">
 												<div class="col-sm-6">
-													{{ Form::text('title_fb', null , textPerentCategory('Thẻ facebook')) }}
+													{{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}
 												</div>
 										</div>
 								</div>
@@ -65,7 +65,7 @@
 									<label for="description_fb">Thẻ descript facebook</label>
 										<div class="row">
 												<div class="col-sm-6">
-													{{ Form::textarea('description_fb', null , textPerentCategory('Thẻ descript facebook')) }}
+													{{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}
 												</div>
 										</div>
 								</div>
