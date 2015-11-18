@@ -72,19 +72,29 @@ function checkBoxGame($gameId, $parentId)
 	return NULL;
 }
 
-//count game or category in the game_category_parent table: $total
-function countTotalGameInParent($parentId)
+function countType($parentId)
 {
-	return count(CategoryParent::find($parentId)->games);
+	return count(ParentType::where('category_parent_id', $parentId)->get());
 }
-//count game in the category: $countGameInCategory
-function countGameInCategory($categoryId)
+
+function countParentGame($parentId)
+{
+	return count(GameRelation::where('category_parent_id', $parentId)->get());
+}
+
+function countCategoryGame($categoryId)
 {
 	return count(Game::where('parent_id', $categoryId)->get());
 }
-//count game in the direct parent category
-function countGameInOnlyParent($parentId)
+
+function countCategoryView($categoryId)
 {
-	$listGameId = GameRelation::where('parent_id', $parentId)->lists('game_id');
-	Game::where('parent_id', $categoryId);
+	return Game::where('parent_id', $categoryId)->sum('count_view');
 }
+function countCategoryDownload($categoryId)
+{
+	return Game::where('parent_id', $categoryId)->sum('count_download');
+}
+
+
+
