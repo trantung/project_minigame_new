@@ -22,7 +22,7 @@
 							<label for="name">Tên thể loại</label>
 							<div class="row">
 								<div class="col-sm-6">
-									 {{ Form::text('name', null , textParentCategory('Tên thể loại')) }}
+        							{{Form::textarea('description',"", array('class'=>'form-control',"rows"=>6, "id"=>'editor1'))}}
 								</div>
 							</div>
 						</div>
@@ -89,5 +89,18 @@
 			<!-- /.box -->
 	</div>
 </div>
-
+<script src="{{ asset('admins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{ asset('admins/ckeditor/adapters/jquery.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'editor1',
+                {
+                filebrowserBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Images',
+                filebrowserFlashBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                filebrowserUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                filebrowserFlashUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                } 
+                );
+</script>
 @stop
