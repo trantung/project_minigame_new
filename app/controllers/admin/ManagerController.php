@@ -85,6 +85,14 @@ class ManagerController extends AdminController {
 	 */
 	public function edit($id)
 	{
+		$currentUserId = Auth::admin()->get()->id;
+		$currentRoleId = Auth::admin()->get()->role_id;
+		if($currentRoleId <> ADMIN) {
+			if($id <> $currentUserId) {
+				dd('error permission');
+			}
+		}
+
 		$data = Admin::find($id);
         return View::make('admin.manager.edit', array('data'=>$data));
 	}
@@ -116,6 +124,11 @@ class ManagerController extends AdminController {
         } else {
         	$input['password'] = Hash::make($input['password']);
         	CommonNormal::update($id, $input);
+        	$currentUserId = Auth::admin()->get()->id;
+			$currentRoleId = Auth::admin()->get()->role_id;
+			if($currentRoleId <> ADMIN) {
+				return Redirect::action('ManagerController@edit', $id);
+			}
     		return Redirect::action('ManagerController@index');
         }
 	}

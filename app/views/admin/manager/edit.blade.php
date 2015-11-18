@@ -6,12 +6,14 @@
 
 @section('content')
 
+@if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('ManagerController@index') }}" class="btn btn-success">Danh sách thành viên</a>
 		<a href="{{ action('ManagerController@create') }}" class="btn btn-primary">Thêm thành viên</a>
 	</div>
 </div>
+@endif
 
 <div class="row">
 	<div class="col-xs-12">
