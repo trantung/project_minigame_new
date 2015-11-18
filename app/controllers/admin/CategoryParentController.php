@@ -49,7 +49,7 @@ class CategoryParentController extends AdminController {
 			CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
 			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb');
 			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'CategoryParent', $id);
-			AdminManager::createParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id);
+			AdminManager::createParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id, 'ParentType');
 			return Redirect::action('CategoryParentController@index') ;
 		}
 	}
@@ -99,21 +99,14 @@ class CategoryParentController extends AdminController {
 			return Redirect::action('CategoryController@create')
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
-        } else {
-			$inputCategory = Input::only('name', 'position', 'weight_number');
-			$id = CommonNormal::update($id,$inputCategory);
-			
-			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, UPLOADIMG, 'image_url_fb');
-			CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
-			return Redirect::action('CategoryParentController@index') ;
-		}
+        }
 		$inputCategory = Input::only('name', 'position', 'weight_number');
 		CommonNormal::update($id,$inputCategory);
 		$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-		$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG, 'image_url_fb');
+		$imageSeo = CommonSeo::getImageSeoUrl('CategoryParent', $id);
+		$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG, 'image_url_fb', $imageSeo);
 		CommonSeo::updateSeo($inputSeo, 'CategoryParent', $id);
-		AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id);
+		AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'), $id, 'ParentType');
 		return Redirect::action('CategoryParentController@index') ;
 	}
 

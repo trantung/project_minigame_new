@@ -5,12 +5,7 @@
 @stop
 
 @section('content')
-
-<div class="row margin-bottom">
-	<div class="col-xs-12">
-		<a href="/" class="btn btn-success">Danh sách chuyên mục</a>
-	</div>
-</div>
+@include('admin.category_parent.common')
 
 <div class="row">
 	<div class="col-xs-12">
@@ -58,6 +53,7 @@
 									<div class="form-group">
 										<label for="image_url_fb">Upload ảnh</label>
 										{{ Form::file('image_url_fb') }}
+										<img class="image_fb" src="{{ UPLOADIMG . '/seo'.'/'. $inputCategory->id . '/' . $inputSeo->image_url_fb }}" />
 									</div>
 								</div>
 							</div>
