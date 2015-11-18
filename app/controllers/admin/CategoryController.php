@@ -38,7 +38,6 @@ class CategoryController extends AdminController {
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
-
 		if($validator->fails()) {
 			return Redirect::action('CategoryController@create')
 	            ->withErrors($validator)
@@ -46,14 +45,12 @@ class CategoryController extends AdminController {
         } else {
 			$inputCategory = Input::only('name');
 			$input['game_id'] = CommonNormal::create($inputCategory);
-			foreach (Input::get('type_id') as $value) {
-				$input['category_parent_id'] = $value;
-				CommonNormal::create($input, 'GameRelation');
+			if (Input::get('category_parent_id')) {
+				foreach (Input::get('category_parent_id') as $value) {
+					$input['category_parent_id'] = $value;
+					CommonNormal::create($input, 'GameRelation');
+				}
 			}
-			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
-			CommonSeo::updateSeo($inputSeo, 'Game', $input['game_id']);
-			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$input['game_id'], UPLOADIMG, 'image_url_fb');
-			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'Game', $input['game_id']);
 			return Redirect::action('CategoryController@index') ;
 		}
 	}
@@ -78,11 +75,8 @@ class CategoryController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$parent = Game::find($id)->categoryparents;
-		$category = Game::find($id);
-		dd($category);
-		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'Game')->first();
-		return View::make('admin.category.edit')->with(compact('parent', 'inputSeo'));
+		$game = Game::find($id);
+		return View::make('admin.category.edit')->with(compact('game'));
 	}
 
 
@@ -105,12 +99,24 @@ class CategoryController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
-			$inputCategory = Input::only('name');
-			$input['game_id'] = CommonNormal::Update($id, $inputCategory);
-			$input['category_parent_id'] = Input::get('category_parent_id');
-
-			CommonNormal::update($input, 'GameRelation');
+        	//update gamerelation
+        	$listId = GameRelation::where('game_id', $id)->lists('id');
+			foreach ($listId as $gameRelationId){
+				GameRelation::destroy($gameRelationId);
+			}
+			$listParentId = Input::get('category_parent_id');
+			if (Input::get('category_parent_id')){
+				foreach ($listParentId as $parentId) {
+					$updateGameRelation['game_id'] = $id;
+					$updateGameRelation['category_parent_id'] = $parentId;
+					GameRelation::create($updateGameRelation);
+				}
+			}
+        	//update game
+			$inputCategory['name'] = $input['name'];
+			Game::find($id)->update($inputCategory);
         }
+        return Redirect::action('CategoryController@index');
 	}
 
 

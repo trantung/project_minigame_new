@@ -5,12 +5,7 @@
 @stop
 
 @section('content')
-
-<div class="row margin-bottom">
-	<div class="col-xs-12">
-		<a href="/" class="btn btn-success">Danh sách chuyên mục</a>
-	</div>
-</div>
+@include('admin.category_parent.common')
 
 <div class="row">
 	<div class="col-xs-12">
