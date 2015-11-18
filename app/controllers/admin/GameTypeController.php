@@ -42,10 +42,9 @@ class GameTypeController extends AdminController {
 	            ->withErrors($validator);
         } else {
 			$id = CommonNormal::create($input);
-			$inputSeo = Input::except('_token', 'name');
-			CommonSeo::updateSeo($inputSeo, 'Type', $id);
-			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAMETYPE, 'image_url_fb');
-			CommonSeo::updateSeo(['image_url_fb' => $inputSeo['image_url_fb']], 'Type', $id);
+
+			CommonSeo::createSeo('Type', $id, FOLDER_SEO_GAMETYPE);
+
 			return Redirect::action('GameTypeController@index') ;
         }
 	}
@@ -96,10 +95,9 @@ class GameTypeController extends AdminController {
         } else {
 			$inputCategory = Input::only('name');
 			CommonNormal::update($id,$inputCategory);
-			$inputSeo = Input::except('_token', 'name');
-			$imageSeo = CommonSeo::getImageSeoUrl('Type', $id);
-			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAMETYPE, 'image_url_fb', $imageSeo);
-			CommonSeo::updateSeo($inputSeo, 'Type', $id);
+
+			CommonSeo::updateSeo('Type', $id, FOLDER_SEO_GAMETYPE);
+
 			return Redirect::action('GameTypeController@index') ;
         }
 	}
@@ -114,7 +112,6 @@ class GameTypeController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-		CommonSeo::deleteSeo($id,'Type');
         return Redirect::action('GameTypeController@index');
 	}
 

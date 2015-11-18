@@ -11,7 +11,7 @@ class Game extends Eloquent
     protected $fillable = ['parent_id', 'name', 'description',
 	    'image_url', 'link_url', 'count_view', 'count_play',
 	    'count_vote', 'count_download', 'vote_average',
-	     'weight_number', 'score_status', 'start_date'];
+	     'weight_number', 'score_status', 'start_date', 'link_upload_game', 'slide_id'];
     protected $dates = ['deleted_at'];
 
     public function votes()

@@ -2,18 +2,24 @@
 use Carbon\Carbon;
 class CommonSeo
 {
-	public static function createSeo($input, $modelName, $modelId)
+	public static function createSeo($modelName, $modelId, $uploadFolder)
 	{
+		$input = self::getInputSeo();
+		$input['image_url_fb'] = CommonSeo::uploadImage($modelId, UPLOADIMG, 'image_url_fb', $uploadFolder);
 		$input['model_name'] = $modelName;
 		$input['model_id'] = $modelId;
 		$id = AdminSeo::create($input)->id;
 		return $id;
 	}
-	public static function updateSeo($input, $modelName, $modelId)
+	public static function updateSeo($modelName, $modelId, $uploadFolder)
 	{
+		$input = self::getInputSeo();
+		$imageSeo = CommonSeo::getImageSeoUrl($modelName, $modelId);
+		$input['image_url_fb']= CommonSeo::uploadImage($modelId, UPLOADIMG, 'image_url_fb', $uploadFolder, $imageSeo);
+
 		$seo = self::getIdSeo($modelId, $modelName);
 		if (!$seo) {
-			$id = self:: createSeo($input, $modelName, $modelId);
+			$id = self::createSeo($modelName, $modelId, $uploadFolder);
 			return $id;
 		}
 		AdminSeo::find($seo->id)->update($input);
@@ -21,7 +27,6 @@ class CommonSeo
 
 	public static function deleteSeo($modelId, $modelName)
 	{
-		
 		$seo = self::getIdSeo($modelId, $modelName);
 		AdminSeo::find($seo->id)->delete();
 	}
@@ -35,9 +40,9 @@ class CommonSeo
 	*uploadImage Upload image
 	*/
 
-	public static function uploadImage($input,$id, $path, $imageUrl, $imageSeo = NULL)
+	public static function uploadImage($id, $path, $imageUrl, $folder, $imageSeo = NULL)
 	{
-		$destinationPath = public_path().'/'.$path.'/seo'.'/'.$id.'/';
+		$destinationPath = public_path().'/'.$path.'/'.$folder.'/'.$id.'/';
 		if(Input::hasFile($imageUrl)){
 			$file = Input::file($imageUrl);
 			$filename = $file->getClientOriginalName();
@@ -59,4 +64,19 @@ class CommonSeo
 		}
 		return NULL;
 	}
+
+	public static function getInputSeo()
+	{
+		$input = Input::only(
+				'title_site',
+				'description_site',
+				'keyword_site',
+				'title_fb',
+				'description_fb',
+				'image_url_fb',
+				'header_script'
+			);
+		return $input;
+	}
+
 }

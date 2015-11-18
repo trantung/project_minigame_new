@@ -21,7 +21,7 @@
 	<!-- Daterange picker -->
 	{{HTML::style('adminlte/plugins/daterangepicker/daterangepicker-bs3.css') }}
 	<!-- bootstrap wysihtml5 - text editor -->
-	{{HTML::style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
+	{{-- {{HTML::style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} --}}
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +46,7 @@
 	<!-- datepicker -->
 	{{ HTML::script('adminlte/plugins/datepicker/bootstrap-datepicker.js') }}
 	<!-- Bootstrap WYSIHTML5 -->
-	{{ HTML::script('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}
+	{{-- {{ HTML::script('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }} --}}
 	<!-- FastClick -->
 	{{ HTML::script('adminlte/plugins/fastclick/fastclick.js') }}
 	<!-- AdminLTE App -->

@@ -45,6 +45,18 @@ class CommonNormal
 		if ($name == 'gametype') {
 			return 'Type';
 		}
+		if ($name == 'games') {
+			return 'Game';
+		}
+		if ($name == 'game_type') {
+			return 'GameType';
+		}
+		if ($name == 'history') {
+			return 'AdminHistory';
+		}
+		if ($name == 'log_edit') {
+			return 'LogEdit';
+		}
+
 	}
-	
 }
