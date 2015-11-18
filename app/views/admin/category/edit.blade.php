@@ -8,7 +8,7 @@
 
 <div class="row margin-bottom">
   <div class="col-xs-12">
-	<a href="/" class="btn btn-success">Danh sách category</a>
+	<a href="{{ action('CategoryController@index') }}" class="btn btn-success">Danh sách category</a>
   </div>
 </div>
 
@@ -29,8 +29,23 @@
 				<div class="form-group">
 				  <label for="category_parent_id">Chọn parent category</label>
 				  <div class="row">
-					<div class="col-sm-6">                      
-					  {{ Form::select('category_parent_id', [0 => 'Select'] + returnList('CategoryParent'), array('class' =>'form-control')) }}
+					<div class="col-sm-6">
+						<div class="box-body table-responsive no-padding">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên thể loại game</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(CategoryParent::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="type_id[]"  />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
 					</div>
 				  </div>
 				</div>
@@ -88,9 +103,7 @@
 					   </div>
 				  </div>                  
 				</div>  
-			  
 			  <!-- /.box-body -->
-
 			  <div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>

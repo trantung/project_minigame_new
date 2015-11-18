@@ -8,7 +8,7 @@
 
 <div class="row margin-bottom">
   <div class="col-xs-12">
-	<a href="/" class="btn btn-success">Danh sách category</a>
+	<a href="{{ action('CategoryController@index') }}" class="btn btn-success">Danh sách category</a>
   </div>
 </div>
 

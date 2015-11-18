@@ -46,13 +46,15 @@ class CategoryController extends AdminController {
         } else {
 			$inputCategory = Input::only('name');
 			$input['game_id'] = CommonNormal::create($inputCategory);
+
 			foreach (Input::get('type_id') as $value) {
 				$input['category_parent_id'] = $value;
 				CommonNormal::create($input, 'GameRelation');
 			}
 			$inputSeo = Input::except('_token', 'name', 'position', 'weight_number');
 			CommonSeo::updateSeo($inputSeo, 'Game', $input['game_id']);
-			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$input['game_id'], UPLOADIMG, 'image_url_fb');
+			$imageSeo = CommonSeo::getImageSeoUrl('Game', $input['game_id']);
+			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo,$input['game_id'], UPLOADIMG, 'image_url_fb',$imageSeo);
 			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'Game', $input['game_id']);
 			return Redirect::action('CategoryController@index') ;
 		}
@@ -78,11 +80,15 @@ class CategoryController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$parent = Game::find($id)->categoryparents;
-		$category = Game::find($id);
-		dd($category);
+		$parent = Game::find($id);
+		$inputgameRelation = GameRelation::where('game_id', $id);
+		//dd($inputgameRelation);
+		foreach ($inputgameRelation as $key => $value) {
+			echo $value;
+		}
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'Game')->first();
 		return View::make('admin.category.edit')->with(compact('parent', 'inputSeo'));
+
 	}
 
 
