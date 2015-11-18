@@ -87,6 +87,15 @@
 			                </div>
 		              	</div>
 
+		              	<div class="form-group">
+			                <label>Slide</label>
+			                <div class="row">
+								<div class="col-sm-6">
+			                  		{{ Form::select('slide') }}
+			                	</div>
+			                </div>
+		              	</div>
+
 						<hr />
 						<h1>SEO</h1>
 						<div class="form-group">
