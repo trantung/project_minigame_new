@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý thể loại game' }}
+{{ $title='Quản lý game' }}
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 -->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('GameTypeController@create') }}" class="btn btn-primary">Thêm thể loại game</a>
+		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
 	</div>
 </div>
 
@@ -19,15 +19,15 @@
 	<div class="col-xs-12">
 	  <div class="box">
 		<div class="box-header">
-		  <h3 class="box-title">Danh sách thể loại game</h3>
+		  <h3 class="box-title">Danh sách game</h3>
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Tên thể loại</th>
-			  <th>Tổng số game</th>
+			  <th>Tên game</th>
+			  <th>Thể loại</th>
 			  <th style="width:200px;">&nbsp;</th>
 			</tr>
 		 	@foreach($data as $value)
@@ -37,8 +37,8 @@
 				  <td>{{ count($value->games) }}</td>
 				  <td>
 				  	{{-- <a href="#" class="btn btn-success">Xem</a> --}}
-					<a href="{{ action('GameTypeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('GameTypeController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+					<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 				  </td>

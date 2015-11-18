@@ -45,6 +45,12 @@ class CommonNormal
 		if ($name == 'gametype') {
 			return 'Type';
 		}
+		if($name =='typenew'){
+			return 'TypeNew';
+		}
+		if($name =='news'){
+			return 'AdminNew';
+		}
 	}
 	
 }

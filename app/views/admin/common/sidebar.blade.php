@@ -39,7 +39,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý loại tin</a></li>
+          <li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
         </ul>
       </li>
