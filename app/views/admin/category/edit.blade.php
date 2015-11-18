@@ -26,29 +26,6 @@
 					</div>
 				  </div>
 				</div>
-				<div class="form-group">
-					<label for="category_parent_id">Chọn parent category</label>
-					  <div class="row">
-						<div class="col-sm-6">
-							<div class="box-body table-responsive no-padding">
-								<table class="table table-bordered">
-									<tr>
-										<th>Tên thể loại game</th>
-										<th>Chọn</th>
-									</tr>
-									@foreach(CategoryParent::all() as $key => $value)
-										<tr>
-											<td>{{ $value->name }}</td>
-											<td>
-												<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($game->id, $value->id) }} }} />
-											</td>
-										</tr>
-									@endforeach
-								</table>
-							</div>
-						</div>
-					 </div>
-				</div>
 			</div>  
 			  <!-- /.box-body -->
 			<div class="box-footer">

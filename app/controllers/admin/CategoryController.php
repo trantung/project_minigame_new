@@ -45,12 +45,12 @@ class CategoryController extends AdminController {
         } else {
 			$inputCategory = Input::only('name');
 			$input['game_id'] = CommonNormal::create($inputCategory);
-			if (Input::get('category_parent_id')) {
-				foreach (Input::get('category_parent_id') as $value) {
-					$input['category_parent_id'] = $value;
-					CommonNormal::create($input, 'GameRelation');
-				}
-			}
+			// if (Input::get('category_parent_id')) {
+			// 	foreach (Input::get('category_parent_id') as $value) {
+			// 		$input['category_parent_id'] = $value;
+			// 		CommonNormal::create($input, 'GameRelation');
+			// 	}
+			// }
 			return Redirect::action('CategoryController@index') ;
 		}
 	}
@@ -100,18 +100,18 @@ class CategoryController extends AdminController {
 	            ->withInput(Input::except('password'));
         } else {
         	//update gamerelation
-        	$listId = GameRelation::where('game_id', $id)->lists('id');
-			foreach ($listId as $gameRelationId){
-				GameRelation::destroy($gameRelationId);
-			}
-			$listParentId = Input::get('category_parent_id');
-			if (Input::get('category_parent_id')){
-				foreach ($listParentId as $parentId) {
-					$updateGameRelation['game_id'] = $id;
-					$updateGameRelation['category_parent_id'] = $parentId;
-					GameRelation::create($updateGameRelation);
-				}
-			}
+        	// $listId = GameRelation::where('game_id', $id)->lists('id');
+			// foreach ($listId as $gameRelationId){
+			// 	GameRelation::destroy($gameRelationId);
+			// }
+			// $listParentId = Input::get('category_parent_id');
+			// if (Input::get('category_parent_id')){
+			// 	foreach ($listParentId as $parentId) {
+			// 		$updateGameRelation['game_id'] = $id;
+			// 		$updateGameRelation['category_parent_id'] = $parentId;
+			// 		GameRelation::create($updateGameRelation);
+			// 	}
+			// }
         	//update game
 			$inputCategory['name'] = $input['name'];
 			Game::find($id)->update($inputCategory);
@@ -129,7 +129,7 @@ class CategoryController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-		CommonSeo::deleteSeo($id,'Game');
+		// CommonSeo::deleteSeo($id,'Game');
         return Redirect::action('CategoryController@index');
 	
 	}

@@ -36,9 +36,9 @@
 			<tr>
 			  <td>{{ $category->id }}</td>
 			  <td>{{ $category->name }}</td>
-			  <td>10</td>
-			  <td>{{ $category->count_view }}</td>			
-			  <td>{{ $category->count_dowload }}</td>
+			  <td>{{ countCategoryGame($category->id) }}</td>
+			  <td>{{ countCategoryView($category->id) }}</td>			
+			  <td>{{ countCategoryDownload($category->id)}}</td>
 			  <td>
 				<a href="{{ action('CategoryController@edit', $category->id) }}" class="btn btn-primary">Sửa</a>
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryController@destroy', $category->id), 'style' => 'display: inline-block;')) }}

@@ -27,26 +27,24 @@
 			<tr>
 			  <th>ID</th>
 			  <th>Tên chuyên mục</th>
-			  <th>Số category</th>
+			  <th>Tổng số thể loại</th>
 			  <th>Tổng số game</th>			  
-			  <th style="width:200px;">&nbsp;</th>
+			  <th style="width:200px;">Action</th>
 			</tr>
-			 @foreach($categoryParents as $categoryParent)
-			<tr>
-			  <td>{{ $categoryParent->id }}</td>
-			  <td>{{ $categoryParent->name }}</td>
-			  <td>1</td>
-			  <td>0</td>
-			  <td>
-				<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
-				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
-				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-
-				{{ Form::close() }}
-			  </td>
-
-			</tr>
-			  @endforeach
+			@foreach($categoryParents as $categoryParent)
+				<tr>
+				  	<td>{{ $categoryParent->id }}</td>
+					<td>{{ $categoryParent->name }}</td>
+					<td>{{ countType($categoryParent->id) }}</td>
+					<td>{{ countParentGame($categoryParent->id) }}</td>
+					<td>
+						<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
+						{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
+							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+						{{ Form::close() }}
+					</td>
+				</tr>
+			@endforeach
 		  </table>
 		</div>
 		<!-- /.box-body -->
