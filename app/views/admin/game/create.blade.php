@@ -15,85 +15,51 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
-				<!-- form start -->
-				{{ Form::open(array('action' => array('AdminGameController@store'), 'files' => true)) }}
+			<!-- form start -->
+			{{ Form::open(array('action' => array('AdminGameController@store'), 'files' => true)) }}
+			<div class="row">
+				<div class="col-sm-6">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name">Tên game</label>
-							<div class="row">
-								<div class="col-sm-6">
-									 {{ Form::text('name', null , textParentCategory('Tên game')) }}
-								</div>
-							</div>
+							{{ Form::text('name', null , textParentCategory('Tên game')) }}
 						</div>
 						<div class="form-group">
 							<label for="image_url_fb">Upload avatar</label>
-							<div class="row">
-								<div class="col-sm-6">
-									{{ Form::file('image_url') }}
-								</div>
-							</div>
+							{{ Form::file('image_url') }}
 						</div>
 						<div class="form-group">
 							<label for="name">Mô tả</label>
-							<div class="row">
-								<div class="col-sm-6">
-									 {{ Form::textarea('description', null , textParentCategory('Mô tả')) }}
-								</div>
-							</div>
+							{{ Form::textarea('description', null , textParentCategory('Mô tả')) }}
 						</div>
 						<div class="form-group">
 							<label for="image_url_fb">Upload game</label>
-							<div class="row">
-								<div class="col-sm-6">
-									{{ Form::file('link_upload_game') }}
-								</div>
-							</div>
+							{{ Form::file('link_upload_game') }}
 						</div>
 
 						<div class="form-group">
 							<label for="image_url_fb">Define game</label>
-							<div class="row">
-								<div class="col-sm-6">
-									 {{ Form::text('link_url', null , textParentCategory('Define game')) }}
-								</div>
-							</div>
+							{{ Form::text('link_url', null , textParentCategory('Define game')) }}
 						</div>
 
 						<div class="form-group">
 							<label for="image_url_fb">Mức ưu tiên</label>
-							<div class="row">
-								<div class="col-sm-6">
-									 {{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
-								</div>
-							</div>
+							{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
 						</div>
 
 						<div class="form-group">
 							<label for="image_url_fb">Cơ chế lưu điểm</label>
-							<div class="row">
-								<div class="col-sm-6">
-									 {{ Form::select('score_status', saveScore()) }}
-								</div>
-							</div>
+							{{ Form::select('score_status', saveScore()) }}
 						</div>
 
 						<div class="form-group">
 			                <label>Ngày đăng</label>
-			                <div class="row">
-								<div class="col-sm-6">
-			                  		<input type="text" class="form-control" name="start_date" id="start_date">
-			                	</div>
-			                </div>
+			                <input type="text" class="form-control" name="start_date" id="start_date">
 		              	</div>
 
 		              	<div class="form-group">
 			                <label>Slide</label>
-			                <div class="row">
-								<div class="col-sm-6">
-			                  		{{ Form::select('slide') }}
-			                	</div>
-			                </div>
+			                {{ Form::select('slide') }}
 		              	</div>
 
 						<hr />
@@ -103,62 +69,99 @@
 							<div class="box-body">
 								<div class="form-group">
 									<label for="title_site">Thẻ title</label>
-									<div class="row">
-										<div class="col-sm-6">
-											{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
-										</div>
-									</div>
+									{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
 								</div>
 								<div class="form-group">
 									<label for="description_site">Thẻ Descript site</label>
-										<div class="row">
-												<div class="col-sm-6">
-												 {{ Form::textarea('description_site', null , textParentCategory('Thẻ Descript site')) }}
-												</div>
-										</div>
+									{{ Form::textarea('description_site', null , textParentCategory('Thẻ Descript site')) }}
 								</div>
 								<div class="form-group">
 									<label for="keyword_site">Thẻ Keyword</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}
-												</div>
-										</div>
+									{{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}
 								</div>
 								<div class="form-group">
 									<label for="title_fb">Thẻ title facebook</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}
-												</div>
-										</div>
+									{{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}
 								</div>
 								<div class="form-group">
 									<label for="description_fb">Thẻ descript facebook</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}
-												</div>
-										</div>
+									{{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}
 								</div>
 								<div class="form-group">
 									<label for="image_url_fb">Upload ảnh</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::file('image_url_fb') }}
-												</div>
-										</div>
+									{{ Form::file('image_url_fb') }}
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /.box-body -->
-					<div class="box-footer">
-						{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+				</div>
+				<div class="col-sm-6">
+					<div class="box-body table-responsive">
+						<h4>Chọn thể loại game</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên thể loại game</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(Type::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
 					</div>
-				{{ Form::close() }}
+					<div class="box-body table-responsive">
+						<h4>Chọn chuyên mục</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên chuyên mục</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(CategoryParent::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
+					</div>
+					<div class="box-body table-responsive">
+						<h4>Chọn category</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên category</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(Game::where('parent_id', NULL)->get() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="parent_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- /.box -->
+			<div class="box-footer">
+				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+			</div>
+			{{ Form::close() }}
+		</div>
+		<!-- /.box -->
 	</div>
 </div>
 

@@ -9,7 +9,7 @@ class AdminGameController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Game::orderBy('id', 'asc')->paginate(PAGINATE);
+		$data = Game::where('parent_id', 'NOT NULL')->orderBy('id', 'asc')->paginate(PAGINATE);
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 
@@ -32,27 +32,40 @@ class AdminGameController extends AdminController {
 	 */
 	public function store()
 	{
-		// $rules = array(
-		// 	'name' => 'required',
-		// );
-		// $input = Input::except('_token');
-		// $validator = Validator::make($input,$rules);
-		// if($validator->fails()) {
-		// 	return Redirect::action('AdminGameController@create')
-	 //            ->withErrors($validator);
-  //       } else {
-		// 	$id = CommonNormal::create($input);
-		// 	$inputSeo = Input::except('_token', 'name');
-		// 	CommonSeo::updateSeo($inputSeo, 'Game', $id);
-		// 	$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAME, 'image_url_fb');
-		// 	CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'Type', $id);
-		// 	return Redirect::action('AdminGameController@index') ;
-  //       }
+		$rules = array(
+			'name' => 'required',
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('AdminGameController@create')
+	            ->withErrors($validator);
+        } else {
+        	dd($input);
+			$id = CommonNormal::create($input);
 
-		// assuming file.zip is in the same directory as the executing script.
-		//$file = public_path().'/download/'.'file.apk';
+			//SEO
+			$inputSeo = Input::except(
+				'_token',
+				'name',
+				'image_url',
+				'description',
+				'link_upload_game',
+				'link_url',
+				'weight_number',
+				'score_status',
+				'start_date',
+				'type_id',
+				'category_parent_id',
+				'parent_id',
+				'slide'
+			);
+			CommonSeo::updateSeo($inputSeo, 'Game', $id);
+			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAME, 'image_url_fb');
+			CommonSeo::updateSeo(['image_url_fb' => $inputSeo['image_url_fb']], 'Type', $id);
 
-		// get the absolute path to $file
+			return Redirect::action('AdminGameController@index') ;
+        }
 
 
 		//up game zip ->file
