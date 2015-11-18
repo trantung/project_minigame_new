@@ -1,4 +1,11 @@
 <?php
+/* mm/dd/yyyy to Y-m-d H:i:s */
+function convertDateTime($dateString, $paramString = '/')
+{
+	$array = explode($paramString,$dateString);
+	$datetime = $array[2].'-'.$array[0].'-'.$array[1].' 00:00:00';
+	return $datetime;
+}
 function getRole($roleId) {
 	$role = array(
 		ADMIN => 'ADMIN',
@@ -21,7 +28,7 @@ function selectRoleId()
 function selectParentCategory()
 {
 	return array(
-		MENU => 'Trên Menu', 
+		MENU => 'Trên Menu',
 		CONTENT => 'Dưới content',
 	);
 }
@@ -56,8 +63,8 @@ function checkBoxChecked($typeId, $parentId)
 function saveScore()
 {
 	return array(
-		1 => 'Luu diem',
-		2 => 'Khong luu diem'
+		1 => 'Lưu điểm',
+		2 => 'Không lưu điểm'
 		);
 }
 

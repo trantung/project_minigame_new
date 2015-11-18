@@ -44,8 +44,8 @@ class GameTypeController extends AdminController {
 			$id = CommonNormal::create($input);
 			$inputSeo = Input::except('_token', 'name');
 			CommonSeo::updateSeo($inputSeo, 'Type', $id);
-			$input['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAMETYPE, 'image_url_fb');
-			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'Type', $id);
+			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAMETYPE, 'image_url_fb');
+			CommonSeo::updateSeo(['image_url_fb' => $inputSeo['image_url_fb']], 'Type', $id);
 			return Redirect::action('GameTypeController@index') ;
         }
 	}
