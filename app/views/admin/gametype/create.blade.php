@@ -17,12 +17,13 @@
 		<div class="box box-primary">
 				<!-- form start -->
 				{{ Form::open(array('action' => array('GameTypeController@store'), 'files' => true)) }}
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="box-body">
-							<div class="form-group">
-								<label for="name">Tên thể loại</label>
-								{{ Form::text('name', null , textParentCategory('Tên thể loại')) }}
+					<div class="box-body">
+						<div class="form-group">
+							<label for="name">Tên thể loại</label>
+							<div class="row">
+								<div class="col-sm-6">
+        							{{Form::textarea('description',"", array('class'=>'form-control',"rows"=>6, "id"=>'editor1'))}}
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="metaname"><u>Thẻ meta</u></label>
@@ -66,5 +67,18 @@
 			<!-- /.box -->
 	</div>
 </div>
-
+<script src="{{ asset('admins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{ asset('admins/ckeditor/adapters/jquery.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'editor1',
+                {
+                filebrowserBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Images',
+                filebrowserFlashBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                filebrowserUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                filebrowserFlashUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                } 
+                );
+</script>
 @stop
