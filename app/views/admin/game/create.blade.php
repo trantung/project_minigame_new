@@ -29,31 +29,36 @@
 			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), NULL, array('class' => 'form-control')) }}
 		              	</div>
 						<div class="form-group">
-							<label for="image_url_fb">Upload avatar</label>
+							<label>Upload avatar</label>
 							{{ Form::file('image_url') }}
 						</div>
 						<div class="form-group">
-							<label for="name">Mô tả</label>
+							<label>Mô tả</label>
 					        {{ Form::textarea('description',"", array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 						</div>
 						<div class="form-group">
-							<label for="image_url_fb">Upload game</label>
+							<label>Upload game</label>
 							{{ Form::file('link_upload_game') }}
 						</div>
 
 						<div class="form-group">
-							<label for="image_url_fb">Define game</label>
+							<label>Define game</label>
 							{{ Form::text('link_url', null , textParentCategory('Define game')) }}
 						</div>
 
 						<div class="form-group">
-							<label for="image_url_fb">Mức ưu tiên</label>
+							<label>Mức ưu tiên</label>
 							{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
 						</div>
 
 						<div class="form-group">
-							<label for="image_url_fb">Cơ chế lưu điểm</label>
+							<label>Cơ chế lưu điểm</label>
 							{{ Form::select('score_status', saveScore()) }}
+						</div>
+
+						<div class="form-group">
+							<label>Gname</label>
+							{{ Form::text('gname', null , textParentCategory('Gname')) }}
 						</div>
 
 						<div class="form-group">
@@ -92,7 +97,7 @@
 									{{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}
 								</div>
 								<div class="form-group">
-									<label for="image_url_fb">Upload ảnh</label>
+									<label>Upload ảnh</label>
 									{{ Form::file('image_url_fb') }}
 								</div>
 							</div>

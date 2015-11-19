@@ -45,6 +45,10 @@ class AdminGameController extends AdminController {
 		$rules = array(
 			'name' => 'required',
 		);
+		if(Input::get('score_status') == SAVESCORE) {
+			$rules['gname'] = 'required';
+		}
+
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {

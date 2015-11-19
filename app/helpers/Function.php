@@ -63,8 +63,8 @@ function checkBoxChecked($typeId, $parentId)
 function saveScore()
 {
 	return array(
-		1 => 'Lưu điểm',
-		2 => 'Không lưu điểm'
+			UNSAVESCORE => 'Không lưu điểm',
+			SAVESCORE => 'Lưu điểm',
 		);
 }
 

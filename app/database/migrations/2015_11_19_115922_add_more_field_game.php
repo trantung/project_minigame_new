@@ -13,9 +13,11 @@ class AddMoreFieldGame extends Migration {
 	public function up()
 	{
 		Schema::table('games', function(Blueprint $table) {
+            $table->string('link_upload_game', 256)->after('link_url')->nullable();
             $table->string('link_download', 256)->after('link_upload_game')->nullable();
             $table->string('gname', 256)->after('link_upload_game')->nullable();
             $table->integer('status')->after('link_upload_game')->nullable();
+            $table->string('support_detail', 256)->after('link_upload_game')->nullable();
         });
 	}
 

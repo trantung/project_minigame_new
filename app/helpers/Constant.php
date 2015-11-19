@@ -17,7 +17,7 @@ define('UPLOADIMG', '/images');
 //url upload avatar game
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
-define('/', '/games');
+define('UPLOAD_GAME', '/games');
 //folder upload image facebook
 define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
@@ -34,4 +34,6 @@ define('ACTIVE', 1);
 //status game:
 define('DISABLED', 0);
 define('ENABLED', 1);
-
+//saveScore
+define('SAVESCORE', 1);
+define('UNSAVESCORE', 2);
