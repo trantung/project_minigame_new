@@ -34,7 +34,7 @@
 				<tr>
 				  <td>{{ $value->id }}</td>
 				  <td>{{ $value->name }}</td>
-				  <td>{{ count($value->games) }}</td>
+				  <td></td>
 				  <td>
 				  	{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 					<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>

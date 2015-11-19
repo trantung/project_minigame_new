@@ -32,7 +32,7 @@ class AdminManager
 		foreach ($listId as $listId){
 			$modelName::destroy($listId);
 		}
-		self::createParentType($arrayTypeId, $arrayWeightNumber, $parentId);
+		self::createParentType($arrayTypeId, $arrayWeightNumber, $parentId, $modelName);
 	}
 
 	public static function commonInputParentType($arrayWeightNumber, $typeId, $parentId)

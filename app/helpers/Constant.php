@@ -13,6 +13,19 @@ define('GAME_OF_PARENT', 0);
 define('PAGINATE', 20);
 //url upload img
 define('UPLOADIMG', '/images');
-define('UPLOADIMG_GAMETYPE', '/images/gametype');
-define('UPLOADIMG_GAMEAVATAR', '/images/gameavatar');
-define('UPLOADIMG_GAME', '/images/game');
+//url upload avatar game
+define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
+//url upload games
+define('UPLOAD_GAME', '/games');
+//folder upload image facebook
+define('FOLDER_SEO_GAME', 'fb_game');
+define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
+define('FOLDER_SEO_PARENT', 'fb_parent');
+define('FOLDER_NEWS', 'news');
+//device
+define('MOBILE', 1);
+define('COMPUTER', 2);
+//if upload file
+define('IS_UPLOAD_FILE', 1);
+define('IS_UPLOAD_UNIQUE', 1);
+

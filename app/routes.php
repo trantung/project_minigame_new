@@ -36,6 +36,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
 
+	Route::resource('/relation', 'RelationController');
+
 });
 
 Route::resource('/', 'SiteController');

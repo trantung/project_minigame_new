@@ -16,8 +16,9 @@ class NewsController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
+		$inputNew = NewsManager::seachNews($input);
 		
-		return View::make('admin.news.index')->with(compact('data'));
+		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
 
 	/**
@@ -60,10 +61,7 @@ class NewsController extends AdminController {
 			//chưa lam create history
 			
 			// insert ceo
-			$inputSeo = Input::except('type_new_id', 'title', 'description','start_date','image_url');
-			CommonSeo::updateSeo($inputSeo, 'AdminNew', $id);
-			$input['image_url_fb'] = CommonSeo::uploadImage($inputSeo,$id, UPLOADIMG, 'image_url_fb','seo');
-			CommonSeo::updateSeo(['image_url_fb' => $input['image_url_fb']], 'AdminNew', $id);
+			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_PARENT);
 
 			return Redirect::action('NewsController@index');
         }
@@ -126,10 +124,7 @@ class NewsController extends AdminController {
 			//chưa lam create history
 
 			//upadte ceo
-			$inputSeo = Input::except('_token', 'title', 'type_new_id', 'description','start_date');
-			$imageSeo = CommonSeo::getImageSeoUrl('AdminNew', $id);
-			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG, 'image_url_fb','seo', $imageSeo);
-			CommonSeo::updateSeo($inputSeo, 'AdminNew', $id);
+			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_PARENT);
 			return Redirect::action('NewsController@index') ;
         }
 	}

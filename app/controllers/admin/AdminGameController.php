@@ -9,7 +9,7 @@ class AdminGameController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Game::where('parent_id', 'NOT NULL')->orderBy('id', 'asc')->paginate(PAGINATE);
+		$data = Game::where('parent_id', '!=', '')->orderBy('id', 'asc')->paginate(PAGINATE);
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 
@@ -41,68 +41,42 @@ class AdminGameController extends AdminController {
 			return Redirect::action('AdminGameController@create')
 	            ->withErrors($validator);
         } else {
-        	dd($input);
-			$id = CommonNormal::create($input);
+
+        	//upload avatar
+        	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
+
+        	//upload game file
+        	$pathUpload = public_path().UPLOAD_GAME;
+
+        	// $folderName = substr($filename, 0, -4);
+        	//unzip game file , public/games/link_url/
+        	// $result = File::makeDirectory($pathUpload.'/'.$folderName, 0755);
+
+			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload);
+
+			//insert slide_id
+
+        	//insert game
+			$id = CommonNormal::create($inputGame);
+
+			//insert game_types: type_id, game_id
+			CommonGame::insertRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id);
+
+			//insert game_category_parents: category_parent_id, game_id
+			CommonGame::insertRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id);
+
+			//insert histories: model_name, model_id, last_time, device, last_ip
+			$history_id = CommonLog::insertHistory('Game', $id);
+
+			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+			CommonLog::insertLogEdit('Game', $id, $history_id);
 
 			//SEO
-			$inputSeo = Input::except(
-				'_token',
-				'name',
-				'image_url',
-				'description',
-				'link_upload_game',
-				'link_url',
-				'weight_number',
-				'score_status',
-				'start_date',
-				'type_id',
-				'category_parent_id',
-				'parent_id',
-				'slide'
-			);
-			CommonSeo::updateSeo($inputSeo, 'Game', $id);
-			$inputSeo['image_url_fb']= CommonSeo::uploadImage($inputSeo, $id, UPLOADIMG_GAME, 'image_url_fb');
-			CommonSeo::updateSeo(['image_url_fb' => $inputSeo['image_url_fb']], 'Type', $id);
+			CommonSeo::createSeo('Game', $id, FOLDER_SEO_GAME);
 
 			return Redirect::action('AdminGameController@index') ;
         }
-
-
-		//up game zip ->file
-		// $destinationPath = public_path().'/'.'games';
-		// if(Input::hasFile('link_upload_game')){
-		// 	$file = Input::file('link_upload_game');
-		// 	$filename = $file->getClientOriginalName();
-		// 	$uploadSuccess = $file->move($destinationPath, $filename);
-		// }
-		// dd(123);
-		// get the absolute path to $file
-		// $path = public_path().'/'.'game_unzip';
-		// $zip = new ZipArchive;
-
-		// $res = $zip->open('file.zip');
-		// if ($res == TRUE) {
-		//   // extract it to the path we determined above
-		//   $zip->extractTo('game_unzip/');
-		//   $zip->close();
-		//   echo "OK!";
-		// } else {
-		//   echo "Error!";
-		// }
-		Zipper::make('public/games/file.zip')->extractTo('public/game_unzip/1');
-		dd(33);
 	}
-
-	private function createFolder($folder)
-	{
-		$path = public_path().'/'.$folder;
-		if(!File::exists($path)) {
-		    // path does not exist
-		    File::makeDirectory($path, $mode = 0755, true, true);
-		}
-		return $path;
-	}
-
 
 	/**
 	 * Display the specified resource.
@@ -124,7 +98,9 @@ class AdminGameController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputGame = Game::find($id);
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'Game')->first();
+		return View::make('admin.game.edit')->with(compact('inputGame', 'inputSeo'));
 	}
 
 
@@ -136,7 +112,51 @@ class AdminGameController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+			'name' => 'required',
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('AdminGameController@edit', $id)
+	            ->withErrors($validator);
+        } else {
+        	$data = Game::find($id);
+        	$inputGameTypes = array();
+        	$inputGameCategoryParents = array();
+
+        	//upload avatar
+        	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
+
+        	//upload game file
+        	$pathUpload = public_path().UPLOAD_GAME;
+
+			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload);
+
+			//update slide_id
+
+        	//update game
+			CommonNormal::update($id, $inputGame);
+
+			dd(12);
+
+			//update game_types: type_id, game_id
+			$inputGameTypes['type_id'] = Input::get('type_id');
+			CommonGame::updateRelationshipGame($inputGameTypes['type_id'], 'type_id', 'game_type', $id);
+
+			//update game_category_parents: category_parent_id, game_id
+
+
+			//update histories: model_name, model_id, last_time, device, last_ip
+
+
+			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+
+			//SEO
+			CommonSeo::updateSeo('Game', $id, FOLDER_SEO_GAME);
+
+			return Redirect::action('AdminGameController@index') ;
+        }
 	}
 
 
@@ -148,7 +168,8 @@ class AdminGameController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('AdminGameController@index');
 	}
 
 

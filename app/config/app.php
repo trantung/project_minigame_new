@@ -122,6 +122,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		"Ollieread\Multiauth\MultiauthServiceProvider",
 		"Chumper\Zipper\ZipperServiceProvider",
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
 	),
 

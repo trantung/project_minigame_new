@@ -7,7 +7,7 @@ class CategoryController extends AdminController {
 	 */
 	public function index()
 	{
-		$categories = Game::where('parent_id', NULL)->orderBy('created_at',  'desc')->paginate(PAGINATE);	
+		$categories = Game::where('parent_id', NULL)->orderBy('created_at',  'desc')->paginate(PAGINATE);
 		return View::make('admin.category.index')->with(compact('categories'));
 	}
 	/**
@@ -28,7 +28,7 @@ class CategoryController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'name'   => 'required'            
+			'name'   => 'required'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -56,7 +56,7 @@ class CategoryController extends AdminController {
 	 */
 	public function show($id)
 	{
-		
+
 	}
 	/**
 	 * Show the form for editing the specified resource.
@@ -78,7 +78,7 @@ class CategoryController extends AdminController {
 	public function update($id)
 	{
 		$rules = array(
-			'name'   => 'required'            
+			'name'   => 'required'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -115,8 +115,6 @@ class CategoryController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-		// CommonSeo::deleteSeo($id,'Game');
         return Redirect::action('CategoryController@index');
-	
 	}
 }

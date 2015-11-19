@@ -25,12 +25,16 @@
 							{{ Form::text('name', null , textParentCategory('Tên game')) }}
 						</div>
 						<div class="form-group">
+			                <label>Chọn category</label>
+			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), NULL, array('class' => 'form-control')) }}
+		              	</div>
+						<div class="form-group">
 							<label for="image_url_fb">Upload avatar</label>
 							{{ Form::file('image_url') }}
 						</div>
 						<div class="form-group">
 							<label for="name">Mô tả</label>
-							{{ Form::textarea('description', null , textParentCategory('Mô tả')) }}
+					        {{ Form::textarea('description',"", array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 						</div>
 						<div class="form-group">
 							<label for="image_url_fb">Upload game</label>
@@ -59,7 +63,7 @@
 
 		              	<div class="form-group">
 			                <label>Slide</label>
-			                {{ Form::select('slide') }}
+			                {{ Form::select('slide_id') }}
 		              	</div>
 
 						<hr />
@@ -135,25 +139,6 @@
 							</table>
 						</div>
 					</div>
-					<div class="box-body table-responsive">
-						<h4>Chọn category</h4>
-						<div class="overflow-box">
-							<table class="table table-bordered">
-								<tr>
-									<th>Tên category</th>
-									<th>Chọn</th>
-								</tr>
-								@foreach(Game::where('parent_id', NULL)->get() as $key => $value)
-									<tr>
-										<td>{{ $value->name }}</td>
-										<td>
-											<input type="checkbox" name="parent_id[]" value="{{ $value->id }}" />
-										</td>
-									</tr>
-								@endforeach
-							</table>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="box-footer">
@@ -164,5 +149,7 @@
 		<!-- /.box -->
 	</div>
 </div>
+
+@include('admin.common.ckeditor')
 
 @stop

@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"ollieread/multiauth": "dev-master",
-		"chumper/zipper": "0.5.x"
+		"chumper/zipper": "0.5.x",
+		"cviebrock/eloquent-sluggable": "2.0.*"
 	},
 	"autoload": {
 		"classmap": [
