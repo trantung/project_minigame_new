@@ -25,8 +25,24 @@
 		  	<input type="text" name="end_date" class="form-control" maxlength="10" placeholder="Ngày kết thúc" id="end_date" />
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Sắp xếp</label>
-		  	{{ Form::select('sortBy', selectGameSortBy(), null, array('class' =>'form-control')) }}
+			<label>Sắp xếp theo lượt xem</label>
+		  	{{ Form::select('sortByCountView', selectSortBy('count_view'), null, array('class' =>'form-control')) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Sắp xếp theo lượt chơi</label>
+		  	{{ Form::select('sortByCountPlay', selectSortBy('count_play'), null, array('class' =>'form-control')) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Sắp xếp theo lượt vote</label>
+		  	{{ Form::select('sortByCountVote', selectSortBy('count_vote'), null, array('class' =>'form-control')) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Sắp xếp theo lượt tải</label>
+		  	{{ Form::select('sortByCountDownload', selectSortBy('count_download'), null, array('class' =>'form-control')) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Trạng thái</label>
+		  	{{ Form::select('status', ['' => '-- chọn'] + selectStatusGame(), null, array('class' =>'form-control')) }}
 		</div>
 		<div class="input-group" style="display: block; vertical-align: bottom; margin-top: 15px;">
 			<input type="submit" value="Search" class="btn btn-primary" />

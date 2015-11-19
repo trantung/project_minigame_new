@@ -19,7 +19,7 @@ class AdminGameController extends AdminController {
 		if (!$input['keyword']) {
 			return Redirect::action('AdminGameController@index');
 		}
-		$data = Game::searchAdminGame($input);
+		$data = CommonGame::searchAdminGame($input);
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 
