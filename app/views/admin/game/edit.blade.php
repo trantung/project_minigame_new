@@ -9,89 +9,160 @@
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@index') }}" class="btn btn-success">Danh sách game</a>
-		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
+		<a href="{{ action('AdminGameController@create') }}" class="btn btn-success">Thêm game</a>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
-				<!-- form start -->
-				{{ Form::open(array('action' => array('AdminGameController@update', $inputType->id), 'method' => 'PUT', 'files' => true)) }}
+			<!-- form start -->
+			{{ Form::open(array('action' => array('AdminGameController@update', $data->id), 'method' => 'PUT', 'files' => true)) }}
+			<div class="row">
+				<div class="col-sm-6">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name">Tên game</label>
-							<div class="row">
-								<div class="col-sm-6">
-									 {{ Form::text('name', $inputType->name , textParentCategory('Tên game')) }}
-
-								</div>
-							</div>
+							{{ Form::text('name', null , textParentCategory('Tên game')) }}
 						</div>
+						<div class="form-group">
+							<label for="image_url_fb">Upload avatar</label>
+							{{ Form::file('image_url') }}
+						</div>
+						<div class="form-group">
+							<label for="name">Mô tả</label>
+							{{ Form::textarea('description', null , textParentCategory('Mô tả')) }}
+						</div>
+						<div class="form-group">
+							<label for="image_url_fb">Upload game</label>
+							{{ Form::file('link_upload_game') }}
+						</div>
+
+						<div class="form-group">
+							<label for="image_url_fb">Define game</label>
+							{{ Form::text('link_url', null , textParentCategory('Define game')) }}
+						</div>
+
+						<div class="form-group">
+							<label for="image_url_fb">Mức ưu tiên</label>
+							{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
+						</div>
+
+						<div class="form-group">
+							<label for="image_url_fb">Cơ chế lưu điểm</label>
+							{{ Form::select('score_status', saveScore()) }}
+						</div>
+
+						<div class="form-group">
+			                <label>Ngày đăng</label>
+			                <input type="text" class="form-control" name="start_date" id="start_date">
+		              	</div>
+
+		              	<div class="form-group">
+			                <label>Slide</label>
+			                {{ Form::select('slide') }}
+		              	</div>
+
+						<hr />
+						<h1>SEO</h1>
 						<div class="form-group">
 							<label for="metaname"><u>Thẻ meta</u></label>
 							<div class="box-body">
 								<div class="form-group">
 									<label for="title_site">Thẻ title</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::text('title_site', $inputSeo->title_site ,textParentCategory('Thẻ title')) }}
-												</div>
-										</div>
+									{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
 								</div>
 								<div class="form-group">
 									<label for="description_site">Thẻ Descript site</label>
-										<div class="row">
-												<div class="col-sm-6">
-												 {{ Form::text('description_site', $inputSeo->description_site , textParentCategory('Thẻ Descript site')) }}
-												</div>
-										</div>
+									{{ Form::textarea('description_site', null , textParentCategory('Thẻ Descript site')) }}
 								</div>
 								<div class="form-group">
 									<label for="keyword_site">Thẻ Keyword</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::text('keyword_site', $inputSeo->keyword_site , textParentCategory('Thẻ Keyword')) }}
-												</div>
-										</div>
+									{{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}
 								</div>
 								<div class="form-group">
 									<label for="title_fb">Thẻ title facebook</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::text('title_fb', $inputSeo->title_fb , textParentCategory('Thẻ facebook')) }}
-												</div>
-										</div>
+									{{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}
 								</div>
 								<div class="form-group">
 									<label for="description_fb">Thẻ descript facebook</label>
-										<div class="row">
-												<div class="col-sm-6">
-													{{ Form::text('description_fb', $inputSeo->description_fb , textParentCategory('Thẻ descript facebook')) }}
-												</div>
-										</div>
+									{{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}
 								</div>
 								<div class="form-group">
-								<label for="image_url_fb">Upload ảnh</label>
-									<div class="row">
-											<div class="col-sm-6">
-													{{ Form::file('image_url_fb') }}
-											</div>
-											<div class="col-sm-6">
-												<img class="image_fb" src="{{ UPLOADIMG_GAMETYPE . '/seo'.'/'. $inputType->id . '/' . $inputSeo->image_url_fb }}" />
-											</div>
-									</div>
+									<label for="image_url_fb">Upload ảnh</label>
+									{{ Form::file('image_url_fb') }}
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /.box-body -->
-					<div class="box-footer">
-						{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+				</div>
+				<div class="col-sm-6">
+					<div class="box-body table-responsive">
+						<h4>Chọn thể loại game</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên thể loại game</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(Type::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
 					</div>
-				{{ Form::close() }}
+					<div class="box-body table-responsive">
+						<h4>Chọn chuyên mục</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên chuyên mục</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(CategoryParent::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
+					</div>
+					<div class="box-body table-responsive">
+						<h4>Chọn category</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên category</th>
+									<th>Chọn</th>
+								</tr>
+								@foreach(Game::where('parent_id', NULL)->get() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="parent_id[]" value="{{ $value->id }}" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- /.box -->
+			<div class="box-footer">
+				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+			</div>
+			{{ Form::close() }}
+		</div>
+		<!-- /.box -->
 	</div>
 </div>
 

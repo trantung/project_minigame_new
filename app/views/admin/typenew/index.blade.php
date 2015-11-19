@@ -11,7 +11,7 @@
 -->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('NewsTypeController@create') }}" class="btn btn-primary">Thêm category</a>
+		<a href="{{ action('NewsTypeController@create') }}" class="btn btn-primary">Thêm loại tin</a>
 	</div>
 </div>
 
@@ -35,7 +35,9 @@
 			  <td>{{ $newstype->name }}</td>
 			  <td>
 				<a href="{{ action('NewsTypeController@edit', $newstype->id) }}" class="btn btn-primary">Sửa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsTypeController@destroy', $newstype->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
 			  </td>
 
 			</tr>

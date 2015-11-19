@@ -12,4 +12,8 @@ class AdminNew extends Eloquent
     	'image_url', 'start_date'];
     protected $dates = ['deleted_at'];
 
+    public function typeNew()
+    {
+    	return $this->belongsTo('TypeNew', 'type_new_id', 'id');
+    }
 }

@@ -35,9 +35,9 @@ class CommonSeo
 	*uploadImage Upload image
 	*/
 
-	public static function uploadImage($input,$id, $path, $imageUrl, $imageSeo = NULL)
+	public static function uploadImage($input,$id, $path, $imageUrl, $folder, $imageSeo = NULL)
 	{
-		$destinationPath = public_path().'/'.$path.'/seo'.'/'.$id.'/';
+		$destinationPath = public_path().'/'.$path.'/'.$folder.'/'.$id.'/';
 		if(Input::hasFile($imageUrl)){
 			$file = Input::file($imageUrl);
 			$filename = $file->getClientOriginalName();

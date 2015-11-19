@@ -40,7 +40,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
+          <li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
         </ul>
       </li>
       @if(Admin::isAdmin())

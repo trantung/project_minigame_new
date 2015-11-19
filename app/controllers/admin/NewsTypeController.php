@@ -22,7 +22,7 @@ class NewsTypeController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.newstype.create');
+		return View::make('admin.typenew.create');
 	}
 
 
@@ -33,7 +33,20 @@ class NewsTypeController extends AdminController {
 	 */
 	public function store()
 	{
-		
+		$rules = array(
+			'name'   => 'required'            
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('NewstypeController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('name'));
+        } else {
+        	$inputNameTypeNew = Input::only('name');
+			CommonNormal::create($inputNameTypeNew);
+			return Redirect::action('NewsTypeController@index');
+        }
 	}
 
 
@@ -57,7 +70,8 @@ class NewsTypeController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		dd(123);
+		$inputTypeNew = TypeNew::find($id);
+		return View::make('admin.typenew.edit')->with(compact('inputTypeNew'));
 	}
 
 
@@ -69,7 +83,19 @@ class NewsTypeController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+            'name'   => 'required'
+        );
+        $input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('NewsTypeController@edit', $id)
+	            ->withErrors($validator);
+        } else {
+        	$inputNameTypeNew = Input::only('name');
+        	CommonNormal::update($id,$inputNameTypeNew);
+			return Redirect::action('NewsTypeController@index');
+        }
 	}
 
 
@@ -81,7 +107,8 @@ class NewsTypeController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+		return Redirect::action('NewsTypeController@index');
 	}
 
 
