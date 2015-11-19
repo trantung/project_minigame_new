@@ -42,4 +42,6 @@ define('ACTIVE', 1);
 //status game:
 define('DISABLED', 0);
 define('ENABLED', 1);
-
+//saveScore
+define('SAVESCORE', 1);
+define('UNSAVESCORE', 2);

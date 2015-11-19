@@ -60,6 +60,11 @@
 						</div>
 
 						<div class="form-group">
+							<label>Gname</label>
+							{{ Form::text('gname', null , textParentCategory('Gname')) }}
+						</div>
+
+						<div class="form-group">
 			                <label>Ngày đăng</label>
 			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
 		              	</div>

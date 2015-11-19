@@ -85,6 +85,14 @@ class RelationController extends AdminController {
 	{
 		//
 	}
+	public function ajax()
+	{
+		$parent = CategoryParent::where('position',2)->lists('name','id');
+		// dd(Response::json($parent));
+		// Response::json(['data' => $categories], 200);
+		dd(Response::json(['data' => $parent], 200));
+		return Response::json(['data' => $parent], 200);
+	}
 
 
 }
