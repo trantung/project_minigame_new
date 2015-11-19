@@ -13,6 +13,16 @@ class AdminGameController extends AdminController {
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['keyword']) {
+			return Redirect::action('ManagerController@index');
+		}
+		$data = Game::searchAdminGame($input);
+		return View::make('admin.game.index')->with(compact('data'));
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.

@@ -79,4 +79,16 @@ class CommonGame
 		return NULL;
 	}
 
+	public static function searchAdminGame($input)
+	{
+		$data = Game::where(function ($query) use ($input) {
+			$query->where('parent_id', '!=', '');
+			if ($input['keyword']) {
+				$query = $query->where('name', 'like', '%'.$input['keyword'].'%')
+								->orWhere('description', 'like', '%'.$input['keyword'].'%');
+			}
+		})->orderBy('id', 'asc')->paginate(PAGINATE);
+		return $data;
+	}
+
 }
