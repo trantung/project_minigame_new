@@ -33,6 +33,14 @@ function selectParentCategory()
 	);
 }
 
+function selectRelationType()
+{
+	return array(
+		PARENTRELATION => 'CategoryParent',
+		CATEGORYRELATION => 'Category',
+	);
+}
+
 function textParentCategory($input){
 	return array('placeholder' =>$input, 'class' =>'form-control');
 }

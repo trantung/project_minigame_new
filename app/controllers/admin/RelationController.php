@@ -9,7 +9,8 @@ class RelationController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$inputRelation = Relation::orderBy('id', 'asc')->paginate(PAGINATE);	
+		return View::make('admin.relation.index')->with(compact('inputRelation'));
 	}
 
 
@@ -20,7 +21,9 @@ class RelationController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		$arrCategoryParent = CategoryParent::orderBy('id', 'desc')->get();
+		$arrCategory = Game::where('parent_id',  null)->get();
+		return View::make('admin.relation.create')->with(compact('arrCategoryParent'),compact('arrCategory'));
 	}
 
 
@@ -32,6 +35,7 @@ class RelationController extends AdminController {
 	public function store()
 	{
 		//
+		dd(123);
 	}
 
 

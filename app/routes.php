@@ -18,7 +18,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
 	Route::resource('/', 'AdminController');
 
-	Route::get('/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
+	Route::get('/manager/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
 	Route::resource('/manager', 'ManagerController');
 
 	Route::get('/category_parent/create', array('uses' => 'CategoryParentController@create', 'as' => 'create'));
@@ -33,9 +33,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/newstype', 'NewsTypeController');
 
-	Route::get('/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
+	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
-
+	
 	Route::resource('/relation', 'RelationController');
 
 });

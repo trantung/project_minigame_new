@@ -16,7 +16,7 @@ class NewsController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		$inputNew = NewsManager::seachNews($input);
+		$inputNew = NewsManager::searchNews($input);
 		
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
@@ -55,13 +55,13 @@ class NewsController extends AdminController {
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
-			$input['image_url'] = CommonSeo::uploadImage($inputNews,$id, UPLOADIMG, 'image_url','news');
+			$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS);
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 
 			//chưa lam create history
 			
 			// insert ceo
-			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_PARENT);
+			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
 
 			return Redirect::action('NewsController@index');
         }
@@ -118,13 +118,13 @@ class NewsController extends AdminController {
 			
 			//update upload image 
 			$imageNews = AdminNew::find($id);
-			$input['image_url'] = CommonSeo::uploadImage($inputNews,$id, UPLOADIMG, 'image_url','news',$imageNews->image_url);
+			$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 
 			//chưa lam create history
 
 			//upadte ceo
-			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_PARENT);
+			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);
 			return Redirect::action('NewsController@index') ;
         }
 	}

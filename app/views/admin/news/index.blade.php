@@ -37,7 +37,9 @@
 			  <td>{{ AdminNew::find($value->id)->typeNew->name }}</td>
 			  <td>
 				<a href="{{  action('NewsController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
 			  </td>
 			</tr>
 			@endforeach

@@ -1,7 +1,7 @@
 <?php
 class NewsManager
 {
-	public static function seachNews($input)
+	public static function searchNews($input)
 	{
 		$data = AdminNew::where(function ($query) use ($input)
 		{
@@ -11,15 +11,13 @@ class NewsManager
 			if ($input['title']) {
 				$query = $query->where('title', 'like', '%'.$input['title'].'%');
 			}
-			if($input['fdate']){
-				$query = $query->where('start_date', '>=', $input['fdate']);
+			if($input['start_date']){
+				$query = $query->where('start_date', '>=', $input['start_date']);
 			}
-			if($input['fdate']){
-				$query = $query->where('start_date', '>=', $input['fdate']);
+			if($input['end_date']){
+				$query = $query->where('start_date', '>=', $input['end_date']);
 			}
-			if($input['tdate']){
-				$query = $query->where('start_date', '<=', $input['tdate']);
-			}
+			
 		})->orderBy('id', 'asc')->paginate(PAGINATE);
 		return $data;
 	}

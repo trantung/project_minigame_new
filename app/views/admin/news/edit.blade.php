@@ -81,7 +81,7 @@
 						<div class="form-group">
 							<label for="image_url_fb">Upload ảnh</label>
 							{{ Form::file('image_url_fb') }}
-							<img class="image_fb" src="{{ url(UPLOADIMG . '/seo'.'/'. $inputNew->id . '/' . $inputSeo->image_url_fb) }}" />
+							<img class="image_fb" src="{{ url(UPLOADIMG . '/'.FOLDER_SEO_NEWS.'/'. $inputNew->id . '/' . $inputSeo->image_url_fb) }}" />
 						</div>
 					</div>
 				</div>

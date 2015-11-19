@@ -99,6 +99,7 @@ class CategoryParentController extends AdminController {
         }
 		$inputCategory = Input::only('name', 'position', 'weight_number');
 		CommonNormal::update($id,$inputCategory);
+		
 		CommonSeo::updateSeo('CategoryParent', $id, FOLDER_SEO_PARENT);
 		AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'), $id, 'ParentType');
 		return Redirect::action('CategoryParentController@index') ;

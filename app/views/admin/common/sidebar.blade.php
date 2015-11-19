@@ -55,6 +55,7 @@
           <li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
         </ul>
       </li>
+     
       @if(Admin::isAdmin())
       <li>
         <a href="#">
@@ -103,6 +104,13 @@
           <li><a href="{{ action('ManagerController@index') }}"><i class="fa fa-circle-o"></i> Quản lý thành viên hệ thống</a></li>
           <li><a href="{{ action('ManagerController@create') }}"><i class="fa fa-circle-o"></i> Thêm thành viên hệ thống</a></li>
         </ul>
+      </li>
+      @endif
+      @if(Admin::isAdmin())
+       <li>
+        <a href="{{ action('RelationController@index') }}">
+          <i class="fa fa-users"></i> <span>Quản lý Relation</span>
+        </a>
       </li>
       @endif
       <li>

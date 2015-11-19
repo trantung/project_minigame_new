@@ -3,6 +3,9 @@
 define('MENU', 1);
 //content category_parent
 define('CONTENT', 2);
+//Relation parent
+define('PARENTRELATION', 1);
+define('CATEGORYRELATION', 2);
 //permission role
 define('ADMIN', 1);
 define('EDITOR', 2);
@@ -17,11 +20,14 @@ define('UPLOADIMG', '/images');
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
 define('UPLOAD_GAME', '/games');
+//url upload news
+define('UPLOAD_NEWS', '/news');
 //folder upload image facebook
 define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
 define('FOLDER_SEO_PARENT', 'fb_parent');
-define('FOLDER_NEWS', 'news');
+define('FOLDER_SEO_NEWS', 'fb_news');
+
 //device
 define('MOBILE', 1);
 define('COMPUTER', 2);
