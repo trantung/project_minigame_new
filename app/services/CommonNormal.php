@@ -20,7 +20,6 @@ class CommonNormal
 	public static function create($input, $name = NULL)
 	{
 		$name = self::commonName($name);
-		// dd($input);
 		$id = $name::create($input)->id;
 		return $id;
 	}
@@ -47,6 +46,12 @@ class CommonNormal
 		}
 		if ($name == 'gametype') {
 			return 'Type';
+		}
+		if($name =='newstype'){
+			return 'TypeNew';
+		}
+		if($name =='news'){
+			return 'AdminNew';
 		}
 		if ($name == 'games') {
 			return 'Game';

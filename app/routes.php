@@ -33,6 +33,13 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/gametype', 'GameTypeController');
 
+	Route::resource('/newstype', 'NewsTypeController');
+
+	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
+	Route::resource('/news', 'NewsController');
+	Route::post('/relation/ajax', 'RelationController@ajax');
+	Route::resource('/relation', 'RelationController');
+
 });
 
 Route::resource('/', 'SiteController');

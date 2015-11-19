@@ -1,7 +1,5 @@
 <?php
-
 class CategoryController extends AdminController {
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -12,8 +10,6 @@ class CategoryController extends AdminController {
 		$categories = Game::where('parent_id', NULL)->orderBy('created_at',  'desc')->paginate(PAGINATE);
 		return View::make('admin.category.index')->with(compact('categories'));
 	}
-
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -24,8 +20,6 @@ class CategoryController extends AdminController {
 		$listCategory_patent = CategoryParent::lists('name', 'id');
 		return View::make('admin.category.create')->with(compact('listCategory_patent'));
 	}
-
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -54,8 +48,6 @@ class CategoryController extends AdminController {
 			return Redirect::action('CategoryController@index') ;
 		}
 	}
-
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -66,7 +58,6 @@ class CategoryController extends AdminController {
 	{
 
 	}
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -78,8 +69,6 @@ class CategoryController extends AdminController {
 		$game = Game::find($id);
 		return View::make('admin.category.edit')->with(compact('game'));
 	}
-
-
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -93,9 +82,8 @@ class CategoryController extends AdminController {
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
-
 		if($validator->fails()) {
-			return Redirect::action('CategoryController@create')
+			return Redirect::action('CategoryController@edit',$id)
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
@@ -118,8 +106,6 @@ class CategoryController extends AdminController {
         }
         return Redirect::action('CategoryController@index');
 	}
-
-
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -131,6 +117,4 @@ class CategoryController extends AdminController {
 		CommonNormal::delete($id);
         return Redirect::action('CategoryController@index');
 	}
-
-
 }
