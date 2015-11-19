@@ -136,3 +136,18 @@ function checkedGameType($typeId, $gameId)
 	}
 	return NULL;
 }
+
+function selectGameSortBy()
+{
+	return array(
+		'' => '-- Sắp xếp',
+		'count_view_asc' => 'Lượt xem tăng dần',
+		'count_view_desc' => 'Lượt xem giảm dần',
+		'count_play_asc' => 'Lượt chơi tăng dần',
+		'count_play_desc' => 'Lượt chơi giảm dần',
+		'count_vote_asc' => 'Lượt vote tăng dần',
+		'count_vote_desc' => 'Lượt vote giảm dần',
+		'count_download_asc' => 'Lượt tải tăng dần',
+		'count_download_desc' => 'Lượt tải giảm dần',
+	);
+}

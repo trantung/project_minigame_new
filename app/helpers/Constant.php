@@ -28,4 +28,3 @@ define('COMPUTER', 2);
 //if upload file
 define('IS_UPLOAD_FILE', 1);
 define('IS_UPLOAD_UNIQUE', 1);
-

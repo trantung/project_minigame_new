@@ -12,18 +12,16 @@ class CommonGame
 		}
 	}
 
-	public static function updateRelationshipGame($input, $param, $name, $id)
+	public static function updateRelationshipGame($input, $param, $name, $id, $modelName)
 	{
-		if($input) {
-			foreach($input as $key => $value) {
-				if ($value) {
-					CommonNormal::create(array($param => $value, 'game_id' => $id), $name);
-				}
-			}
+		$listId = $modelName::where('game_id', $id)->lists('id');
+		foreach ($listId as $listId){
+			$modelName::destroy($listId);
 		}
+		self::insertRelationshipGame($input, $param, $name, $id);
 	}
 
-	public static function uploadAction($fileUpload, $pathUpload, $isFile = NULL, $isUnique = NULL)
+	public static function uploadAction($fileUpload, $pathUpload, $isFile = NULL, $issetFile = NULL, $isUnique = NULL)
 	{
 		if(Input::hasFile($fileUpload)){
 			$file = Input::file($fileUpload);
@@ -38,16 +36,25 @@ class CommonGame
 				Zipper::make($pathUpload.'/'.$filename)->extractTo($pathUpload);
 			}
 			return $filename;
- 		} else {
-			return NULL;
-		}
+ 		}
+ 		if($issetFile) {
+ 			return $issetFile;
+ 		}
+
 	}
 
-	public static function inputActionGame($pathAvatar, $pathUpload)
+	public static function inputActionGame($pathAvatar, $pathUpload, $id = NULL)
 	{
+		if($id) {
+			$issetFile = self::getIssetFile($id, TRUE);
+			$issetAvatar = self::getIssetFile($id);
+		} else {
+			$issetFile = '';
+			$issetAvatar = '';
+		}
 		$inputGame = array();
-		$inputGame['image_url'] = self::uploadAction('image_url', $pathAvatar, '', IS_UPLOAD_UNIQUE);
-		$inputGame['link_upload_game'] = CommonGame::uploadAction('link_upload_game', $pathUpload, IS_UPLOAD_FILE);
+		$inputGame['image_url'] = self::uploadAction('image_url', $pathAvatar, '', $issetAvatar,  IS_UPLOAD_UNIQUE);
+		$inputGame['link_upload_game'] = CommonGame::uploadAction('link_upload_game', $pathUpload, IS_UPLOAD_FILE, $issetFile);
 		$inputGame['name'] = Input::get('name');
     	$inputGame['description'] = Input::get('description');
     	$inputGame['link_url'] = Input::get('link_url');
@@ -58,4 +65,30 @@ class CommonGame
     	$inputGame['slide_id'] = Input::get('slide_id');
     	return $inputGame;
 	}
+
+	public static function getIssetFile($id, $isFile = NULL)
+	{
+		if($isFile){
+			$result = Game::find($id)->link_upload_game;
+		} else {
+			$result = Game::find($id)->image_url;
+		}
+		if ($result) {
+			return $result;
+		}
+		return NULL;
+	}
+
+	public static function searchAdminGame($input)
+	{
+		$data = Game::where(function ($query) use ($input) {
+			$query->where('parent_id', '!=', '');
+			if ($input['keyword']) {
+				$query = $query->where('name', 'like', '%'.$input['keyword'].'%')
+								->orWhere('description', 'like', '%'.$input['keyword'].'%');
+			}
+		})->orderBy('id', 'asc')->paginate(PAGINATE);
+		return $data;
+	}
+
 }

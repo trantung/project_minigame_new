@@ -13,6 +13,16 @@ class AdminGameController extends AdminController {
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['keyword']) {
+			return Redirect::action('AdminGameController@index');
+		}
+		$data = Game::searchAdminGame($input);
+		return View::make('admin.game.index')->with(compact('data'));
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -122,8 +132,6 @@ class AdminGameController extends AdminController {
 	            ->withErrors($validator);
         } else {
         	$data = Game::find($id);
-        	$inputGameTypes = array();
-        	$inputGameCategoryParents = array();
 
         	//upload avatar
         	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
@@ -131,26 +139,24 @@ class AdminGameController extends AdminController {
         	//upload game file
         	$pathUpload = public_path().UPLOAD_GAME;
 
-			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload);
+			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload, $id);
 
 			//update slide_id
 
         	//update game
 			CommonNormal::update($id, $inputGame);
 
-			dd(12);
-
 			//update game_types: type_id, game_id
-			$inputGameTypes['type_id'] = Input::get('type_id');
-			CommonGame::updateRelationshipGame($inputGameTypes['type_id'], 'type_id', 'game_type', $id);
+			CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
 
 			//update game_category_parents: category_parent_id, game_id
-
+			CommonGame::updateRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id, 'GameRelation');
 
 			//update histories: model_name, model_id, last_time, device, last_ip
-
+			$history_id = CommonLog::updateHistory('Game', $id);
 
 			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+			CommonLog::insertLogEdit('Game', $id, $history_id);
 
 			//SEO
 			CommonSeo::updateSeo('Game', $id, FOLDER_SEO_GAME);

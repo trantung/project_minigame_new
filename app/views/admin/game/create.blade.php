@@ -58,7 +58,7 @@
 
 						<div class="form-group">
 			                <label>Ngày đăng</label>
-			                <input type="text" class="form-control" name="start_date" id="start_date">
+			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date">
 		              	</div>
 
 		              	<div class="form-group">
