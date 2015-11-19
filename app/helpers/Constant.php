@@ -6,6 +6,7 @@ define('CONTENT', 2);
 //Relation parent
 define('PARENTRELATION', 1);
 define('CATEGORYRELATION', 2);
+define('CONTENT_SEGMENT', 'content');
 //permission role
 define('ADMIN', 1);
 define('EDITOR', 2);
@@ -22,6 +23,7 @@ define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 define('UPLOAD_GAME', '/games');
 //url upload news
 define('UPLOAD_NEWS', '/news');
+define('/', '/games');
 //folder upload image facebook
 define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
@@ -34,4 +36,10 @@ define('COMPUTER', 2);
 //if upload file
 define('IS_UPLOAD_FILE', 1);
 define('IS_UPLOAD_UNIQUE', 1);
+//status admin
+define('INACTIVE', 0);
+define('ACTIVE', 1);
+//status game:
+define('DISABLED', 0);
+define('ENABLED', 1);
 

@@ -21,8 +21,8 @@
 								{{ Form::text('name', null , textParentCategory('Tên chuyên mục')) }}
 							</div>
 							<div class="form-group">
-								<label for="name">Chọn vị trí</label>
-										{{ Form::select('position', selectParentCategory(), null, array('class' =>'form-control')) }}
+								<label for="name">Vị trí</label>
+								{{ Form::select('position', [1 => 'Menu'], null, array('class' =>'form-control')) }}
 							</div>
 							<div class="form-group">
 								<label for="name">Mức ưu tiên</label>

@@ -9,7 +9,12 @@ class CategoryParentController extends AdminController {
 	 */
 	public function index()
 	{
-		$categoryParents = CategoryParent::orderBy('created_at',  'desc')->paginate(PAGINATE);
+		$categoryParents = CategoryParent::where('position', MENU)->orderBy('created_at',  'desc')->paginate(PAGINATE);
+		return View::make('admin.category_parent.index')->with(compact('categoryParents'));
+	}
+	public function contentIndex()
+	{
+		$categoryParents = CategoryParent::where('position', CONTENT)->orderBy('created_at',  'desc')->paginate(PAGINATE);
 		return View::make('admin.category_parent.index')->with(compact('categoryParents'));
 	}
 
@@ -22,6 +27,11 @@ class CategoryParentController extends AdminController {
 	public function create()
 	{
 		return View::make('admin.category_parent.create');
+	}
+
+	public function contentCreate()
+	{
+		return View::make('admin.category_parent.create')->with(compact());
 	}
 
 	/**
