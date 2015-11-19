@@ -24,7 +24,11 @@
 			<label>Ngày kết thúc</label>
 		  	<input type="text" name="end_date" class="form-control" maxlength="10" placeholder="Ngày kết thúc" id="end_date" />
 		</div>
-		<div class="input-group" style="display: inline-block; vertical-align: bottom;">
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Sắp xếp</label>
+		  	{{ Form::select('sortBy', selectGameSortBy(), null, array('class' =>'form-control')) }}
+		</div>
+		<div class="input-group" style="display: block; vertical-align: bottom; margin-top: 15px;">
 			<input type="submit" value="Search" class="btn btn-primary" />
 		</div>
 	{{ Form::close() }}

@@ -28,10 +28,10 @@
 			  <th>ID</th>
 			  <th>Tên game</th>
 			  <th>Category</th>
-			  <th>Lượt tải</th>
-			  <th>Lượt chơi</th>
 			  <th>Lượt xem</th>
+			  <th>Lượt chơi</th>
 			  <th>Bình chọn</th>
+			  <th>Lượt tải</th>
 			  <th>Ngày sửa</th>
 			  <th>Ngày tạo</th>
 			  <th style="width:120px;">&nbsp;</th>
@@ -41,9 +41,9 @@
 				  	<td>{{ $value->id }}</td>
 				  	<td>{{ $value->name }}</td>
 				  	<td>{{ Game::where('id', $value->parent_id)->first()->name; }}</td>
-				  	<td>{{ $value->count_download }}</td>
+				  	<td>{{ $value->count_view }}</td>
 				  	<td>{{ $value->count_play }}</td>
-				  	<td>{{ $value->count_download }}</td>
+				  	<td>{{ $value->count_vote }}</td>
 				  	<td>{{ $value->count_download }}</td>
 				  	<td>{{ $value->created_at }}</td>
 				  	<td>{{ $value->updated_at }}</td>

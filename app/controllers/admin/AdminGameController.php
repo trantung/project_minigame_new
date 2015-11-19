@@ -17,7 +17,7 @@ class AdminGameController extends AdminController {
 	{
 		$input = Input::all();
 		if (!$input['keyword']) {
-			return Redirect::action('ManagerController@index');
+			return Redirect::action('AdminGameController@index');
 		}
 		$data = Game::searchAdminGame($input);
 		return View::make('admin.game.index')->with(compact('data'));
