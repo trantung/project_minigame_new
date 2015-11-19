@@ -10,12 +10,16 @@
 <script type="text/javascript">
 	function getState(val) {
 	$.ajax({
-	type: "POST",
-	url: "{{ action('RelationController@store') }}",
-	data:'model_id='+val,
-	success: function(data){
-		$("#state-list").html(data);
-	}
+	type: 'POST',
+	url: 'ajax',
+	// data:'model_id='+val,
+	// success: function(data){
+	// 	console.log(data);
+	// 	$("#state-list").html(data);
+	// }
+		success:function(response) {
+			console.log(response.data);
+		}
 	});
 }
 </script>
@@ -32,7 +36,7 @@
 							Model
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{  Form::select('type_model', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => javascript:sadf())  }}
+						   {{  Form::select('type_model', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => 'getState(1)'))  }}
 						</div>
 						<div class="col-sm-2  ">	                  	
 						    {{  Form::select('Model_id', selectRelationType(),null,array('class' => 'form-control' )) }}

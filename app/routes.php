@@ -41,5 +41,6 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/relation', 'RelationController');
 
 });
+Route::post('ajax', 'TestController@ajax');
 
 Route::resource('/', 'SiteController');
