@@ -17,51 +17,51 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdminGameController@update', $data->id), 'method' => 'PUT', 'files' => true)) }}
+			{{ Form::open(array('action' => array('AdminGameController@update', $inputGame->id), 'method' => 'PUT', 'files' => true)) }}
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name">Tên game</label>
-							{{ Form::text('name', $data->name , textParentCategory('Tên game')) }}
+							{{ Form::text('name', $inputGame->name , textParentCategory('Tên game')) }}
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>
-			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $data->parent_id, array('class' => 'form-control')) }}
+			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control')) }}
 		              	</div>
 						<div class="form-group">
 							<label for="">Upload avatar</label>
 							{{ Form::file('image_url') }}
-							<img class="image_fb" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $data->image_url) }}" />
+							<img class="image_fb" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $inputGame->image_url) }}" />
 						</div>
 						<div class="form-group">
 							<label for="name">Mô tả</label>
-							{{ Form::textarea('description', $data->description, array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+							{{ Form::textarea('description', $inputGame->description, array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 						</div>
 						<div class="form-group">
 							<label for="">Upload game</label>
 							{{ Form::file('link_upload_game') }}
-							<strong>{{ $data->link_upload_game }}</strong>
+							<strong>{{ $inputGame->link_upload_game }}</strong>
 						</div>
 
 						<div class="form-group">
 							<label for="">Define game</label>
-							{{ Form::text('link_url', $data->link_url , textParentCategory('Define game')) }}
+							{{ Form::text('link_url', $inputGame->link_url , textParentCategory('Define game')) }}
 						</div>
 
 						<div class="form-group">
 							<label for="">Mức ưu tiên</label>
-							{{ Form::text('weight_number', $data->weight_number , textParentCategory('Mức ưu tiên')) }}
+							{{ Form::text('weight_number', $inputGame->weight_number , textParentCategory('Mức ưu tiên')) }}
 						</div>
 
 						<div class="form-group">
 							<label for="">Cơ chế lưu điểm</label>
-							{{ Form::select('score_status', saveScore(), $data->score_status, array('class' => 'form-control')) }}
+							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control')) }}
 						</div>
 
 						<div class="form-group">
 			                <label>Ngày đăng</label>
-			                <input type="text" class="form-control" name="start_date" id="start_date" value="{{ $data->start_date }}">
+			                <input type="text" class="form-control" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
 		              	</div>
 
 		              	<div class="form-group">
@@ -97,7 +97,7 @@
 								<div class="form-group">
 									<label for="image_url_fb">Upload ảnh</label>
 									{{ Form::file('image_url_fb') }}
-									<img class="image_fb" src="{{ url(UPLOADIMG . '/'.FOLDER_SEO_GAME.'/'. $data->id . '/' . $inputSeo->image_url_fb) }}" />
+									<img class="image_fb" src="{{ url(UPLOADIMG . '/'.FOLDER_SEO_GAME.'/'. $inputGame->id . '/' . $inputSeo->image_url_fb) }}" />
 								</div>
 							</div>
 						</div>
@@ -117,7 +117,7 @@
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $data->id) }} />
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
 										</td>
 									</tr>
 								@endforeach
@@ -136,7 +136,7 @@
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($data->id, $value->id) }} />
+											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
 										</td>
 									</tr>
 								@endforeach

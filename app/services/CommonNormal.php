@@ -8,9 +8,12 @@ class CommonNormal
 		$name::find($id)->delete();
 	}
 
-	public static function update($id, $input)
+	public static function update($id, $input, $modelName = NULL)
 	{
 		$name = self::commonName();
+		if($modelName) {
+			$name = $modelName;
+		}
 		$name::find($id)->update($input);
 	}
 
