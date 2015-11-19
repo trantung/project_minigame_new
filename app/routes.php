@@ -21,8 +21,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
 	Route::resource('/manager', 'ManagerController');
 
-	Route::get('/category_parent/create', array('uses' => 'CategoryParentController@create', 'as' => 'create'));
-	Route::post('/category_parent/create', array('uses' => 'CategoryParentController@postcreate', 'as' => 'postcreate'));
+	// Route::post('/category_parent/create', array('uses' => 'CategoryParentController@postcreate', 'as' => 'postcreate'));
+	Route::get('/category_parent/content/create', array('uses' => 'CategoryParentController@contentCreate', 'as' => 'content.create'));
+	Route::get('/category_parent/content', array('uses' => 'CategoryParentController@contentIndex', 'as' => 'content.index'));
 	Route::resource('/category_parent', 'CategoryParentController');
 
 	Route::resource('/category', 'CategoryController');

@@ -3,6 +3,7 @@
 define('MENU', 1);
 //content category_parent
 define('CONTENT', 2);
+define('CONTENT_SEGMENT', 'content');
 //permission role
 define('ADMIN', 1);
 define('EDITOR', 2);
