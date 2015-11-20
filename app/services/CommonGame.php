@@ -57,6 +57,7 @@ class CommonGame
 		$inputGame['link_upload_game'] = CommonGame::uploadAction('link_upload_game', $pathUpload, IS_UPLOAD_FILE, $issetFile);
 		$inputGame['name'] = Input::get('name');
     	$inputGame['description'] = Input::get('description');
+    	$inputGame['link_download'] = Input::get('link_download');
     	$inputGame['link_url'] = Input::get('link_url');
     	$inputGame['parent_id'] = Input::get('parent_id');
     	$inputGame['weight_number'] = Input::get('weight_number');
