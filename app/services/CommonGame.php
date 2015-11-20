@@ -87,27 +87,26 @@ class CommonGame
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = Game::where(function ($query) use ($input) {
 			// $query = $query->where('parent_id', '!=', '');
-			if ($input['keyword']) {
-				$query = $query->where('name', 'like', '%'.$input['keyword'].'%')
-								->orWhere('description', 'like', '%'.$input['keyword'].'%');
+			if ($input['keyword'] != '') {
+				$query = $query->where('name', 'like', '%'.$input['keyword'].'%');
 			}
-			if($input['parent_id']) {
+			if($input['parent_id'] != '') {
 				$query = $query->where('parent_id', $input['parent_id']);
 			}
-			if(!$input['parent_id']) {
+			if($input['parent_id'] == '') {
 				$query = $query->where('parent_id', '!=', '');
 			}
-			if($input['category_parent_id']) {
+			if($input['category_parent_id'] != '') {
 				// $query = $query->where('category_parent_id', $input['category_parent_id']);
 				$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
 				$query = $query->whereIn('id', $list);
 				// dd($list);
 			}
-			if($input['type_id']) {
-				$listType = Type::find($input['type_id'])->parenttypes->lists('game_id');
+			if($input['type_id'] != '') {
+				$listType = Type::find($input['type_id'])->gametypes->lists('game_id');
 				$query = $query->whereIn('id', $listType);
 			}
-			if($input['status']) {
+			if($input['status'] != '') {
 				$query = $query->where('status', $input['status']);
 			}
 			/*if($input['start_date'] && $input['end_date']) {
@@ -116,7 +115,8 @@ class CommonGame
 		})
 		// ->get()->toArray();
 		// dd($data);
-		->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+		->orderBy($orderBy[0], $orderBy[1])
+		->paginate(PAGINATE);
 		// dd($data);
 		return $data;
 	}
