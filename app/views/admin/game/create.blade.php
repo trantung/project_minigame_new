@@ -122,7 +122,7 @@
 						<div class="form-group link_download">
 							<label>Link download game</label>
 							<input type="checkbox" id="checkLinkDownload" onclick="checkLinkDownloadAction();" />
-							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Url download game" />
+							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" />
 						</div>
 
 						<div class="form-group blockDisabled">
@@ -155,10 +155,10 @@
 			                {{ Form::select('status', selectStatusGame()) }}
 		              	</div>
 
-		              	<div class="form-group">
-			                <label>Slide</label>
-			                {{ Form::select('slide_id') }}
-		              	</div>
+		              	<!-- <div class="form-group">
+		              				                <label>Slide</label>
+		              				                {{ Form::select('slide_id') }}
+		              	</div> -->
 
 						<hr />
 						<h1>SEO</h1>

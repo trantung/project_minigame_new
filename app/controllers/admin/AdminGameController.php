@@ -44,9 +44,15 @@ class AdminGameController extends AdminController {
 	{
 		$rules = array(
 			'name' => 'required',
+			'parent_id' => 'required',
+			'type_id' => 'required',
+			'category_parent_id' => 'required'
 		);
 		if(Input::get('score_status') == SAVESCORE) {
 			$rules['gname'] = 'required';
+		}
+		if(Input::file('link_upload_game') == NULL) {
+			$rules['link_url'] = 'required';
 		}
 
 		$input = Input::except('_token');
