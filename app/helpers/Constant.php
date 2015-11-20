@@ -4,8 +4,8 @@ define('MENU', 1);
 //content category_parent
 define('CONTENT', 2);
 //Relation parent
-define('PARENTRELATION', 1);
-define('CATEGORYRELATION', 2);
+define('PARENTRELATION', 'CategoryParent');
+define('CATEGORYRELATION', 'Game');
 define('CONTENT_SEGMENT', 'content');
 //permission role
 define('ADMIN', 1);

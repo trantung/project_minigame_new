@@ -1,0 +1,69 @@
+@extends('admin.layout.default')
+
+@section('title')
+{{ $title='Quản lý Comnent' }}
+@stop
+
+@section('content')
+<!-- inclue Search form 
+
+-->
+<div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<div class="box-header">
+		  <h3 class="box-title">Danh sách Comnent</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+		  <table class="table table-hover">
+			<tr>
+			  <th>ID</th>
+			  <th>Tài khoản</th>
+			  <th>Nội dung comment</th>
+			  <th>Game</th>
+			  <th>Thời gian bình luận</th>
+			  <th>Device</th>
+			  <th>Ip</th>
+			  <th style="width:200px;">Action</th>
+			</tr>
+			 @foreach($inputComment as $value)
+			<tr>
+			  <td>{{ $value->id }}</td>
+			  <td>{{ User::find($value->user_id)->user_name }}</td>
+			  <td>{{ $value->description }}</td>
+			  <td>{{ Game::find($value->model_id)->name }}</td>
+			  <td>{{ $value->created_at }}</td>
+			  <td>{{ User::find($value->user_id)->device }}</td>
+			  <td>{{ User::find($value->user_id)->ip }}</td>
+			  <td>
+			  	@if($value->status == ACTIVE )
+				<a href="{{  action('CommentController@edit', $value->id) }}" class="btn btn-danger">DeActive</a>
+				@else
+				<a href="{{  action('CommentController@edit', $value->id) }}" class="btn btn-primary">Active</a>
+				@endif
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('CommentController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
+			  </td>
+			</tr>
+			@endforeach
+		  </table>
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="pagination">
+		<!-- phan trang -->
+		{{ $inputComment->appends(Request::except('page'))->links() }}
+		</ul>
+	</div>
+</div>
+
+@stop
+

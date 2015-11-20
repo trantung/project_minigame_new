@@ -198,5 +198,5 @@ function selectWeight_number()
 		4 => '4',
 		5 => '5',
 		);
-}
+
 }

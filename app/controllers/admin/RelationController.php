@@ -26,16 +26,17 @@ class RelationController extends AdminController {
 		return View::make('admin.relation.create')->with(compact('arrCategoryParent'),compact('arrCategory'));
 	}
 
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
-	{
-		//
-		dd(123);
+	{				
+
+		$inputRetation = Input::except('_token');
+		CommonNormal::create($inputRetation);
+		return Redirect::action('RelationController@index') ;	
 	}
 
 
@@ -59,7 +60,8 @@ class RelationController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputRelation = Relation::find($id);
+		return View::make('admin.relation.edit')->with(compact('inputRelation'));
 	}
 
 
@@ -71,7 +73,9 @@ class RelationController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$inputRetation = Input::except('_token');
+		CommonNormal::update($id, $inputRetation);
+		return Redirect::action('RelationController@index') ;	
 	}
 
 
@@ -83,16 +87,16 @@ class RelationController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('RelationController@index');
 	}
 	public function ajax()
 	{
-		$type_model = Input::get('type_model');
-
-		$parent = CategoryParent::where('position',$type_model)->lists('name','id')->get();
-		// dd(Response::json($parent));
-		// Response::json(['data' => $categories], 200);
-		// dd(Response::json(['data' => $parent], 200));
+		$type_model = Input::get('category');
+		if($type_model == PARENTRELATION)
+			$parent = CategoryParent::where('position',2)->lists('name','id');
+		else
+			$parent = Game::where('parent_id', null)->lists('name','id');
 		return Response::json($parent);
 	}
 

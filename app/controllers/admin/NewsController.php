@@ -59,6 +59,10 @@ class NewsController extends AdminController {
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 
 			//chưa lam create history
+			$history_id = CommonLog::insertHistory('AdminNew', $id);
+
+			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+			CommonLog::insertLogEdit('AdminNew', $id, $history_id);
 			
 			// insert ceo
 			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
@@ -122,6 +126,10 @@ class NewsController extends AdminController {
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 
 			//chưa lam create history
+			$history_id = CommonLog::updateHistory('AdminNew', $id);
+
+			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+			CommonLog::insertLogEdit('AdminNew', $id, $history_id);
 
 			//upadte ceo
 			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);

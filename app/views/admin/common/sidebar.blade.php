@@ -71,11 +71,16 @@
      
       @if(Admin::isAdmin())
       <li>
-        <a href="#">
+        <a href="{{ action('CommentController@index') }}">
           <i class="fa fa-comments"></i> <span>Quản lý comment</span>
         </a>
       </li>
       @endif
+      <li>
+        <a href="{{ action('ScoreManagerController@index') }}">
+          <i class="fa fa-comments"></i> <span>Quản lý điểm</span>
+        </a>
+      </li>
       @if(Admin::isAdmin())
       <li>
         <a href="#">

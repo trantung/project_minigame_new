@@ -7,33 +7,8 @@
 @section('content')
 
 @include('admin.relation.common')
-<script type="text/javascript">
-	$('#type_model').on('change',function(e){
-		console.log(e);
-		var type_model = e.target.value;
-		//ajax
-		$.get('ajax?type_model=' + type_model, function(data))
-		
-	})
 
-	function getState(val) {
-		var category = $('#category').val();
 
-		$.ajax({
-		type: 'POST',
-		data:{category:category},
-		url: 'ajax',
-			success:function(data) {
-				
-				$('#model_id').empty();
-					$.each(data ,function(index, subcatObj){
-						console.log(index);
-						$('#model_id').append('<option value="'+ subcatObj.id+'" >'+subcatObj.id+'</option>');
-					});
-			}
-		});
-	}
-</script>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
@@ -47,10 +22,10 @@
 							Model
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{  Form::select('type_model', selectRelationType(),null,array('class' => 'form-control' , 'id' =>'type_model'))  }}
+						   {{  Form::select('model_name', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => 'getRelationTypeModel()', 'id' =>'type_box_head'))  }}
 						</div>
 						<div class="col-sm-2  ">	                  	
-						    <select name="model_id" id="model_id">
+						    <select name="model_id" id="model_id" class="form-control">
 						    	
 						    </select>
 						
@@ -64,10 +39,12 @@
 							Model
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{ Form::text('name', null , textParentCategory('Tên thể loại tin')) }}
+						   {{  Form::select('relation_name', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => 'getRelationTypeCategory()', 'id' =>'type_box_botton'))  }}
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{ Form::text('name', null , textParentCategory('Tên thể loại tin')) }}
+						   <select name="relation_id" id="relation_id" class="form-control">
+						    	
+						    </select>
 						</div>
 					</div>
 				</div>
