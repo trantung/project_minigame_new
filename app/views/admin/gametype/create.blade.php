@@ -17,13 +17,12 @@
 		<div class="box box-primary">
 				<!-- form start -->
 				{{ Form::open(array('action' => array('GameTypeController@store'), 'files' => true)) }}
-					<div class="box-body">
-						<div class="form-group">
-							<label for="name">Tên thể loại</label>
-							<div class="row">
-								<div class="col-sm-6">
-        							{{ Form::text('name', '' , textParentCategory('Tên thể loại game')) }}
-								</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="name">Tên thể loại</label>
+								{{ Form::text('name', '' , textParentCategory('Tên thể loại game')) }}
 							</div>
 							<div class="form-group">
 								<label for="metaname"><u>Thẻ meta</u></label>
@@ -57,14 +56,14 @@
 						</div>
 						<!-- /.box-body -->
 					</div>
-					<div class="col-sm-6"></div>
-				</div>
-				<div class="box-footer">
-					{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
-				</div>
-				{{ Form::close() }}
+				<div class="col-sm-6"></div>
 			</div>
-			<!-- /.box -->
+			<div class="box-footer">
+				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+			</div>
+			{{ Form::close() }}
+		</div>
+		<!-- /.box -->
 	</div>
 </div>
 @stop
