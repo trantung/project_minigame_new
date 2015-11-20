@@ -6,6 +6,9 @@
 
 @section('content')
 
+{{-- //script for create game form --}}
+@include('admin.game.scriptcreate')
+
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@index') }}" class="btn btn-success">Danh sách game</a>
@@ -26,7 +29,7 @@
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>
-			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), NULL, array('class' => 'form-control')) }}
+			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), NULL, array('class' => 'form-control', 'onchange' => 'getFormGameOffline()')) }}
 		              	</div>
 						<div class="form-group">
 							<label>Upload avatar</label>
@@ -38,12 +41,19 @@
 						</div>
 						<div class="form-group">
 							<label>Upload game</label>
-							{{ Form::file('link_upload_game') }}
+							<input type="checkbox" id="checkUpload" onclick="checkUploadAction();" />
+							{{ Form::file('link_upload_game', array('id' => 'link_upload_game')) }}
 						</div>
 
-						<div class="form-group">
+						<div class="form-group link_download">
+							<label>Link download game</label>
+							<input type="checkbox" id="checkLinkDownload" onclick="checkLinkDownloadAction();" />
+							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" />
+						</div>
+
+						<div class="form-group blockDisabled">
 							<label>Define game</label>
-							{{ Form::text('link_url', null , textParentCategory('Define game')) }}
+							<input type="text" name="link_url" class="form-control blockDisabled" placeholder="Define game" />
 						</div>
 
 						<div class="form-group">
@@ -51,9 +61,9 @@
 							{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
 						</div>
 
-						<div class="form-group">
+						<div class="form-group blockDisabled">
 							<label>Cơ chế lưu điểm</label>
-							{{ Form::select('score_status', saveScore()) }}
+							{{ Form::select('score_status', saveScore(), '', array('class' => 'form-control blockDisabled')) }}
 						</div>
 
 						<div class="form-group">
@@ -63,13 +73,18 @@
 
 						<div class="form-group">
 			                <label>Ngày đăng</label>
-			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date">
+			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" placeholder="Ngày đăng" />
 		              	</div>
 
 		              	<div class="form-group">
-			                <label>Slide</label>
-			                {{ Form::select('slide_id') }}
+			                <label>Trạng thái</label>
+			                {{ Form::select('status', selectStatusGame(), '', array('class' => 'form-control')) }}
 		              	</div>
+
+		              	<!-- <div class="form-group">
+		              				                <label>Slide</label>
+		              				                {{ Form::select('slide_id') }}
+		              	</div> -->
 
 						<hr />
 						<h1>SEO</h1>

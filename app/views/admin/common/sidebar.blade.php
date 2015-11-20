@@ -25,12 +25,24 @@
       @if(Admin::isAdmin())
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
+          <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ action('GameTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản lý thể loại game</a></li>
-          <li><a href="{{ action('AdminGameController@index') }}"><i class="fa fa-circle-o"></i> Quản lý game</a></li>
+          <li><a href="{{ action('GameTypeController@create') }}"><i class="fa fa-circle-o"></i> Thêm thể loại game</a></li>
+        </ul>
+      </li>
+      @endif
+      @if(Admin::isAdmin())
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ action('AdminGameController@index') }}"><i class="fa fa-circle-o"></i> Quản lý danh sách game</a></li>
+          <li><a href="{{ action('AdminGameController@create') }}"><i class="fa fa-circle-o"></i> Thêm game</a></li>
         </ul>
       </li>
       @endif

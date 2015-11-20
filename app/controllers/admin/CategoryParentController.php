@@ -31,7 +31,8 @@ class CategoryParentController extends AdminController {
 
 	public function contentCreate()
 	{
-		return View::make('admin.category_parent.create')->with(compact());
+
+		return View::make('admin.category_parent.create');
 	}
 
 	/**
@@ -42,6 +43,7 @@ class CategoryParentController extends AdminController {
 
 	public function store()
 	{
+
 		$rules = array(
             'name'   => 'required'
         );
@@ -49,15 +51,18 @@ class CategoryParentController extends AdminController {
 		$validator = Validator::make($input,$rules);
 
 		if($validator->fails()) {
-			return Redirect::action('CategoryController@create')
+			return Redirect::action('CategoryParentController@create')
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
 			$inputCategory = Input::only('name', 'position', 'weight_number');
 			$id = CommonNormal::create($inputCategory);
 			CommonSeo::createSeo('CategoryParent', $id, FOLDER_SEO_PARENT);
-			AdminManager::createParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id, 'ParentType');
-			return Redirect::action('CategoryParentController@index') ;
+			if ($input['position'] != CONTENT) {
+				AdminManager::createParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id, 'ParentType');
+				return Redirect::action('CategoryParentController@index') ;
+			}
+			return Redirect::action('CategoryParentController@contentIndex') ;
 		}
 	}
 
@@ -89,6 +94,20 @@ class CategoryParentController extends AdminController {
 	}
 
 	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function contentedit($id)
+	{
+
+		$inputCategory = CategoryParent::find($id);
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
+		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo'));
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
@@ -111,8 +130,12 @@ class CategoryParentController extends AdminController {
 		CommonNormal::update($id,$inputCategory);
 		
 		CommonSeo::updateSeo('CategoryParent', $id, FOLDER_SEO_PARENT);
-		AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'), $id, 'ParentType');
-		return Redirect::action('CategoryParentController@index') ;
+		if ($input['position'] != CONTENT) {
+			AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'), $id, 'ParentType');
+			return Redirect::action('CategoryParentController@index') ;
+		}
+		return Redirect::action('CategoryParentController@contentIndex') ;
+		
 	}
 
 

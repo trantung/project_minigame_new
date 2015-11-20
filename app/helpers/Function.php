@@ -145,17 +145,58 @@ function checkedGameType($typeId, $gameId)
 	return NULL;
 }
 
-function selectGameSortBy()
+function selectSortBy($sortBy)
+{
+	switch ($sortBy) {
+		case 'count_view':
+			return array(
+				'' => '-- chọn',
+				'count_view_asc' => 'Lượt xem tăng dần',
+				'count_view_desc' => 'Lượt xem giảm dần',
+			);
+			break;
+		case 'count_play':
+			return array(
+				'' => '-- chọn',
+				'count_play_asc' => 'Lượt chơi tăng dần',
+				'count_play_desc' => 'Lượt chơi giảm dần',
+			);
+			break;
+		case 'count_vote':
+			return array(
+				'' => '-- chọn',
+				'count_vote_asc' => 'Lượt vote tăng dần',
+				'count_vote_desc' => 'Lượt vote giảm dần',
+			);
+			break;
+		case 'count_download':
+			return array(
+				'' => '-- chọn',
+				'count_download_asc' => 'Lượt tải tăng dần',
+				'count_download_desc' => 'Lượt tải giảm dần',
+			);
+			break;
+		default:
+			# code...
+			break;
+	}
+}
+
+function selectStatusGame()
 {
 	return array(
-		'' => '-- Sắp xếp',
-		'count_view_asc' => 'Lượt xem tăng dần',
-		'count_view_desc' => 'Lượt xem giảm dần',
-		'count_play_asc' => 'Lượt chơi tăng dần',
-		'count_play_desc' => 'Lượt chơi giảm dần',
-		'count_vote_asc' => 'Lượt vote tăng dần',
-		'count_vote_desc' => 'Lượt vote giảm dần',
-		'count_download_asc' => 'Lượt tải tăng dần',
-		'count_download_desc' => 'Lượt tải giảm dần',
+		ENABLED => 'Đã đăng',
+		DISABLED => 'Chưa đăng'
 	);
 }
+function selectWeight_number()
+{
+	return array(
+		1 => '1',
+		2 => '2',
+		3 => '3',
+		4 => '4',
+		5 => '5',
+		);
+}
+
