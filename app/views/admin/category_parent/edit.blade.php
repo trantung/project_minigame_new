@@ -22,11 +22,17 @@
 							</div>
 							<div class="form-group">
 								<label for="name">Chọn vị trí</label>
-										{{ Form::select('position', selectParentCategory(), $inputCategory->position, array('class' =>'form-control')) }}
+								@if(Request::segment(3) == CONTENT_SEGMENT)
+								
+								{{ Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')) }}
+								@else
+									{{ Form::select('position', [1 => 'Menu'], $inputCategory->position, array('class' =>'form-control')) }}
+								@endif
 							</div>
 							<div class="form-group">
 								<label for="name">Mức ưu tiên</label>
-									{{ Form::text('weight_number', $inputCategory->weight_number , textParentCategory('Mức ưu tiên')) }}
+									
+								{{ Form::select('weight_number', selectWeight_number() , $inputCategory->weight_number ,  array('class' =>'form-control')) }}
 							</div>
 							<div class="form-group">
 								<label for="metaname"><u>Thẻ meta</u></label>
@@ -61,6 +67,7 @@
 						</div>
 						<!-- /.box-body -->
 					</div>
+					@if(Request::segment(3) != CONTENT_SEGMENT)
 					<div class="col-sm-6">
 						<div class="box-body table-responsive no-padding">
 							<table class="table table-bordered">
@@ -81,6 +88,7 @@
 							</table>
 						</div>
 					</div>
+					@endif
 				</div>
 
 				<div class="box-footer">

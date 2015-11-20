@@ -7,7 +7,27 @@
 @section('content')
 
 @include('admin.relation.common')
+<script type="text/javascript">
 
+
+							function getState(val) {
+								var category = $('#category').val();
+
+								$.ajax({
+								type: 'POST',
+								data:{category:category},
+								url: 'ajax',
+									success:function(data) {
+										
+										$('#model_id').empty();
+											$.each(data ,function(index, subcatObj){
+												console.log(index);
+												$('#model_id').append('<option value="'+ subcatObj.id+'" >'+subcatObj.id+'</option>');
+											});
+									}
+								});
+							}
+</script>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
@@ -21,30 +41,13 @@
 							Model
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{  Form::select('type_model', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => 'getState(1)', 'id' =>'category'))  }}
+						   {{  Form::select('type_model', selectRelationType(),null,array('class' => 'form-control' , 'id' =>'type_model'))  }}
 						</div>
 						<div class="col-sm-2  ">	                  	
-						    {{  Form::select('Model_id', selectRelationType(),null,array('class' => 'form-control', 'id' =>'showName' )) }}
-						<script type="text/javascript">
-							function getState(val) {
-								var category = $('#category').val();
-								console.log(category);
-
-								$.ajax({
-								type: 'POST',
-								data:{category:category},
-								url: 'ajax',
-								// data:'model_id='+val,
-								// success: function(data){
-								// 	console.log(data);
-								// 	$("#state-list").html(data);
-								// }
-									success:function(data) {
-										console.log(data);
-									}
-								});
-							}
-						</script>
+						    <select name="model_id" id="model_id">
+						    	
+						    </select>
+						
 						</div>
 					</div>
 				</div>

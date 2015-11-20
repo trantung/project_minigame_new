@@ -159,3 +159,13 @@ function selectGameSortBy()
 		'count_download_desc' => 'Lượt tải giảm dần',
 	);
 }
+function selectWeight_number()
+{
+	return array(
+		1 => '1',
+		2 => '2',
+		3 => '3',
+		4 => '4',
+		5 => '5',
+		);
+}

@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	// Route::post('/category_parent/create', array('uses' => 'CategoryParentController@postcreate', 'as' => 'postcreate'));
 	Route::get('/category_parent/content/create', array('uses' => 'CategoryParentController@contentCreate', 'as' => 'content.create'));
+	Route::get('/category_parent/content/edit/{id}', array('uses' => 'CategoryParentController@contentedit', 'as' => 'content.edit'));
 	Route::get('/category_parent/content', array('uses' => 'CategoryParentController@contentIndex', 'as' => 'content.index'));
 	Route::resource('/category_parent', 'CategoryParentController');
 
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
+
 	Route::post('/relation/ajax', 'RelationController@ajax');
 	Route::resource('/relation', 'RelationController');
 

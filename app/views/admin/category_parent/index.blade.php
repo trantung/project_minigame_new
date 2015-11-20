@@ -45,7 +45,13 @@
 					@endif
 					<td>{{ countParentGame($categoryParent->id) }}</td>
 					<td>
-						<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
+					 	@if(Request::segment(3) == CONTENT_SEGMENT)
+					 	<!-- content -->
+					 	<a href="{{ route('content.edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
+					 	@else
+					 	<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
+					 	@endif
+						
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
 							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
