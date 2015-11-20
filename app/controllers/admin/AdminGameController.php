@@ -66,7 +66,11 @@ class AdminGameController extends AdminController {
         	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
 
         	//upload game file
-        	$pathUpload = public_path().UPLOAD_GAME;
+        	if($input['parent_id'] == GAMEOFFLINE) {
+        		$pathUpload = public_path().UPLOAD_GAMEOFFLINE;
+        	} else {
+        		$pathUpload = public_path().UPLOAD_GAMEONLINE;
+        	}
 
         	// $folderName = substr($filename, 0, -4);
         	//unzip game file , public/games/link_url/
@@ -157,7 +161,11 @@ class AdminGameController extends AdminController {
         	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
 
         	//upload game file
-        	$pathUpload = public_path().UPLOAD_GAME;
+        	if($input['parent_id'] == GAMEOFFLINE) {
+        		$pathUpload = public_path().UPLOAD_GAMEOFFLINE;
+        	} else {
+        		$pathUpload = public_path().UPLOAD_GAMEONLINE;
+        	}
 
 			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload, $id);
 
