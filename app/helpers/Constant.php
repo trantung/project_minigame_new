@@ -46,4 +46,4 @@ define('ENABLED', 1);
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game offline
-define('GAMGEOFFLINE', 3);
+define('GAMEOFFLINE', 3);

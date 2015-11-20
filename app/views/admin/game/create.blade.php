@@ -9,7 +9,7 @@
 <script>
 	function getFormGameOffline() {
 		parentId = $('select[name=parent_id]').val();
-		if (parentId == 3) {
+		if (parentId == {{ GAMEOFFLINE }}) {
 	        $('.blockDisabled').prop('disabled', 'disabled');
 	        $('.blockDisabled').hide();
 	        if ($('#checkUpload').is(':checked')) {
