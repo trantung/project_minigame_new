@@ -8,25 +8,31 @@
 
 @include('admin.relation.common')
 <script type="text/javascript">
+	$('#type_model').on('change',function(e){
+		console.log(e);
+		var type_model = e.target.value;
+		//ajax
+		$.get('ajax?type_model=' + type_model, function(data))
+		
+	})
 
+	function getState(val) {
+		var category = $('#category').val();
 
-							function getState(val) {
-								var category = $('#category').val();
-
-								$.ajax({
-								type: 'POST',
-								data:{category:category},
-								url: 'ajax',
-									success:function(data) {
-										
-										$('#model_id').empty();
-											$.each(data ,function(index, subcatObj){
-												console.log(index);
-												$('#model_id').append('<option value="'+ subcatObj.id+'" >'+subcatObj.id+'</option>');
-											});
-									}
-								});
-							}
+		$.ajax({
+		type: 'POST',
+		data:{category:category},
+		url: 'ajax',
+			success:function(data) {
+				
+				$('#model_id').empty();
+					$.each(data ,function(index, subcatObj){
+						console.log(index);
+						$('#model_id').append('<option value="'+ subcatObj.id+'" >'+subcatObj.id+'</option>');
+					});
+			}
+		});
+	}
 </script>
 <div class="row">
 	<div class="col-xs-12">
