@@ -36,10 +36,20 @@ function selectParentCategory()
 function selectRelationType()
 {
 	return array(
-		PARENTRELATION => 'CategoryParent',
-		CATEGORYRELATION => 'Category',
+		MENU_RELATION => 'Menu',
+		CONTENT_RELATION => 'Content',
+		TYPE_RELATION => 'Type',
 	);
 }
+
+function getModelNameRelation($modelName)
+{
+	if (Input::get($modelName) == MENU_RELATION || Input::get($modelName) == CONTENT_RELATION) {
+		return 'CategoryParent';
+	}
+	return 'Type';
+}
+
 
 function textParentCategory($input, $isSeoMeta = NULL)
 {
@@ -203,6 +213,7 @@ function selectWeight_number()
 		4 => '4',
 		5 => '5',
 		);
+
 }
 //get status game
 function getStatusGame($status) {

@@ -42,8 +42,13 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
 
-	Route::get('/relation/ajax', 'RelationController@ajax');
+	Route::post('/relation/ajax', 'RelationController@ajax');
+	Route::post('/relation/ajaxedit/{id}', array('uses' => 'RelationController@ajaxedit', 'as' => 'ajax.edit'));
 	Route::resource('/relation', 'RelationController');
+
+	Route::resource('/comment', 'CommentController');
+
+	Route::resource('/score', 'ScoreManagerController');	
 
 });
 
