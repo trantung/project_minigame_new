@@ -10,7 +10,12 @@ class AdminController extends BaseController {
 	 */
 	public function index()
 	{
-		//
+		$checkLogin = Auth::admin()->check();
+        if($checkLogin) {
+    		return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+        } else {
+            return View::make('admin.layout.login');
+        }
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -72,7 +77,12 @@ class AdminController extends BaseController {
 	}
     public function login()
     {
-        return View::make('admin.layout.login');
+    	$checkLogin = Auth::admin()->check();
+        if($checkLogin) {
+    		return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+        } else {
+            return View::make('admin.layout.login');
+        }
     }
     public function doLogin()
     {

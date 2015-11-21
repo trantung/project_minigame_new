@@ -26,16 +26,19 @@ class RelationController extends AdminController {
 		return View::make('admin.relation.create')->with(compact('arrCategoryParent'),compact('arrCategory'));
 	}
 
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
-	{
-		//
-		dd(123);
+	{				
+
+		$inputRelation = Input::except('_token', 'model_name','relation_name');
+		$inputRelation['model_name'] = getModelNameRelation();
+		$inputRelation['relation_name'] = getModelNameRelation();
+		CommonNormal::create($inputRelation);
+		return Redirect::action('RelationController@index') ;	
 	}
 
 
@@ -50,7 +53,6 @@ class RelationController extends AdminController {
 		//
 	}
 
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -59,7 +61,8 @@ class RelationController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputRelation = Relation::find($id);
+		return View::make('admin.relation.edit')->with(compact('inputRelation'));
 	}
 
 
@@ -71,7 +74,9 @@ class RelationController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$inputRetation = Input::except('_token');
+		CommonNormal::update($id, $inputRetation);
+		return Redirect::action('RelationController@index') ;	
 	}
 
 
@@ -83,17 +88,31 @@ class RelationController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('RelationController@index');
 	}
 	public function ajax()
 	{
-		$type_model = Input::get('type_model');
-		$parent = CategoryParent::where('position',$type_model)->lists('name','id')->get();
-		// dd(Response::json($parent));
-		// Response::json(['data' => $categories], 200);
-		// dd(Response::json(['data' => $parent], 200));
+		$type_model = Input::get('category');
+		if($type_model == MENU_RELATION)
+			$parent = CategoryParent::where('position',MENU_RELATION)->lists('name','id');
+		elseif($type_model == CONTENT_RELATION){
+			$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
+		}
+		else{
+			$parent = Type::lists('name','id');
+		}
 		return Response::json($parent);
 	}
-
-
+	public function ajaxedit($id)
+		{
+			$type_model = Input::get('category');
+			if($type_model == MENU_RELATION)
+				$parent = CategoryParent::where('position', MENU_RELATION)->lists('name','id');
+			elseif ($type_model == CONTENT_RELATION) 
+				$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
+			else
+				$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
+			return Response::json($parent);
+		}
 }

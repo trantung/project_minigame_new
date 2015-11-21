@@ -4,8 +4,10 @@ define('MENU', 1);
 //content category_parent
 define('CONTENT', 2);
 //Relation parent
-define('PARENTRELATION', 1);
-define('CATEGORYRELATION', 2);
+define('MENU_RELATION', '1');
+define('CONTENT_RELATION', '2');
+define('TYPE_RELATION', '3');
+
 define('CONTENT_SEGMENT', 'content');
 //permission role
 define('ADMIN', 1);

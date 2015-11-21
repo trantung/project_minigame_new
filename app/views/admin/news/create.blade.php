@@ -41,8 +41,8 @@
 				<div class="form-group">
 					<label for="description">Nội dung tin</label>
 					<div class="row">
-						<div class="col-sm-6">
-						   {{ Form::textarea('description', null , textParentCategory('Nội dung tin')) }}
+						<div class="col-sm-6">	                  	
+						   {{ Form::textarea('description', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 						</div>
 					</div>
 				</div>
@@ -74,4 +74,5 @@
 		  <!-- /.box -->
 	</div>
 </div>
+@include('admin.common.ckeditor')
 @stop

@@ -65,6 +65,9 @@ class CommonNormal
 		if ($name == 'log_edit') {
 			return 'LogEdit';
 		}
-
+		if($name == 'relation')
+			return 'Relation';
+		if($name == 'comment')
+			return 'Comment';
 	}
 }

@@ -7,7 +7,7 @@
 @section('content')
 
 {{-- //script for edit game form --}}
-{{-- @include('admin.game.scriptedit') --}}
+@include('admin.game.scriptedit')
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
@@ -42,14 +42,14 @@
 						</div>
 						<div class="form-group">
 							<label for="">Upload game</label>
-							<input type="checkbox" id="checkUpload" name="checkUpload" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" @endif disabled />
+							<input type="checkbox" id="checkUpload" name="checkUpload" onclick="checkUploadAction();" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" @endif disabled />
 							{{ Form::file('link_upload_game', array('id' => 'link_upload_game', 'disabled' => true)) }}
 							<strong id="fileNameUpload">{{ $inputGame->link_upload_game }}</strong>
 						</div>
 
 						<div class="form-group link_download">
 							<label>Link download game</label>
-							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" @if($inputGame->link_download) checked="checked" @endif disabled />
+							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" onclick="checkLinkDownloadAction();" @if($inputGame->link_download) checked="checked" @endif disabled />
 							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" value="{{ $inputGame->link_download }}" readonly />
 						</div>
 

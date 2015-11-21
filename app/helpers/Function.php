@@ -36,10 +36,20 @@ function selectParentCategory()
 function selectRelationType()
 {
 	return array(
-		PARENTRELATION => 'CategoryParent',
-		CATEGORYRELATION => 'Category',
+		MENU_RELATION => 'Menu',
+		CONTENT_RELATION => 'Content',
+		TYPE_RELATION => 'Type',
 	);
 }
+
+function getModelNameRelation()
+{
+	if (Input::get('model_name') == MENU_RELATION || Input::get('model_name') == CONTENT_RELATION) {
+		return 'CategoryParent';
+	}
+	return 'Type';
+}
+
 
 function textParentCategory($input, $isSeoMeta = NULL)
 {
@@ -203,4 +213,13 @@ function selectWeight_number()
 		4 => '4',
 		5 => '5',
 		);
+
+}
+//get status game
+function getStatusGame($status) {
+	$statusGame = array(
+		DISABLED => 'Đã đăng',
+		ENABLED => 'Chưa đăng'
+	);
+	return $statusGame[$status];
 }
