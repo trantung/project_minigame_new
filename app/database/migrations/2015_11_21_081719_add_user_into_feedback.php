@@ -12,7 +12,7 @@ class AddUserIntoFeedback extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('games', function(Blueprint $table) {
+		Schema::table('feedbacks', function(Blueprint $table) {
             $table->integer('user_id')->after('id')->nullable();
             $table->string('ip', 256)->after('description')->nullable();
             $table->string('device', 256)->after('description')->nullable();

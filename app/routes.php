@@ -45,5 +45,13 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/relation', 'RelationController');
 
 });
-
+Route::get('/test',function(){
+	$test = Game::find(1)->update(array());
+});
 Route::resource('/', 'SiteController');
+
+
+
+
+
+
