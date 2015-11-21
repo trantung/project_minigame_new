@@ -23,16 +23,14 @@
 							<div class="form-group">
 								<label for="name">Chọn vị trí</label>
 								@if(Request::segment(3) == CONTENT_SEGMENT)
-
-								{{ Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')) }}
+									{{ Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')) }}
 								@else
 									{{ Form::select('position', [1 => 'Menu'], $inputCategory->position, array('class' =>'form-control')) }}
 								@endif
 							</div>
 							<div class="form-group">
 								<label for="name">Mức ưu tiên</label>
-
-								{{ Form::select('weight_number', selectWeight_number() , $inputCategory->weight_number ,  array('class' =>'form-control')) }}
+								{{ Form::select('weight_number', selectWeight_number() ,$inputCategory->weight_number ,  array('class' =>'form-control')) }}
 							</div>
 
 							<hr />
