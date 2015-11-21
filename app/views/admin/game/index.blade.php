@@ -71,7 +71,7 @@
 					@endif
 					<td>{{ $value->start_date }}</td>
 					<td>
-						<a href="{{ action(AdminGameController@history) }}" class="btn btn-success">Lịch sử</a>
+						<a href="{{ action('AdminGameController@history') }}" class="btn btn-success">Lịch sử</a>
 						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(Admin::isAdmin())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

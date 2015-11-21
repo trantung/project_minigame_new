@@ -216,9 +216,9 @@ class AdminGameController extends AdminController {
         return Redirect::action('AdminGameController@index');
 	}
 
-	public function history($id)
+	public function history()
 	{
-		
+		dd(12);
 	}
 
 	public function deleteSelected()
