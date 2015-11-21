@@ -124,7 +124,11 @@ class AdminGameController extends AdminController {
 	{
 		$inputGame = Game::find($id);
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'Game')->first();
-		return View::make('admin.game.edit')->with(compact('inputGame', 'inputSeo'));
+		if(!Admin::isSeo()){
+			return View::make('admin.game.edit')->with(compact('inputGame', 'inputSeo'));
+		} else {
+			return View::make('admin.game.editForSeo')->with(compact('inputGame', 'inputSeo'));
+		}
 	}
 
 
