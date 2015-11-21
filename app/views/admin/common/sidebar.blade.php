@@ -9,7 +9,6 @@
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      @if(!Admin::isSeo())
       <li class="treeview">
         <a href="#">
           <i class="fa fa-list"></i> <span>Quản lý chuyên mục</span>
@@ -18,10 +17,11 @@
         <ul class="treeview-menu">
           <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Menu</a></li>
           <li><a href="{{ action('CategoryParentController@contentIndex') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Index</a></li>
+          @if(!Admin::isSeo())
           <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý category</a></li>
+          @endif
         </ul>
       </li>
-      @endif
       <li class="treeview">
         <a href="#">
           <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
