@@ -88,7 +88,6 @@ class RelationController extends AdminController {
 	public function ajax()
 	{
 		$type_model = Input::get('type_model');
-
 		$parent = CategoryParent::where('position',$type_model)->lists('name','id')->get();
 		// dd(Response::json($parent));
 		// Response::json(['data' => $categories], 200);
