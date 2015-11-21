@@ -7,14 +7,11 @@
 @section('content')
 
 {{-- //script for edit game form --}}
-@include('admin.game.scriptedit')
+{{-- @include('admin.game.scriptedit') --}}
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@index') }}" class="btn btn-success">Danh sách game</a>
-		@if(!Admin::isSeo())
-		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
-		@endif
 	</div>
 </div>
 
@@ -32,33 +29,33 @@
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>
-			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control', 'onchange' => 'getFormGameOffline()')) }}
+			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control', 'readonly' => true)) }}
 		              	</div>
 						<div class="form-group">
 							<label for="">Upload avatar</label>
-							{{ Form::file('image_url') }}
+							{{ Form::file('image_url', array('disabled' => true)) }}
 							<img class="image_fb" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $inputGame->image_url) }}" />
 						</div>
 						<div class="form-group">
 							<label for="name">Mô tả</label>
-							{{ Form::textarea('description', $inputGame->description, array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+							{{ Form::textarea('description', $inputGame->description, array('class' => 'form-control',"rows"=>6, 'readonly' => true)) }}
 						</div>
 						<div class="form-group">
 							<label for="">Upload game</label>
-							<input type="checkbox" id="checkUpload" name="checkUpload" onclick="checkUploadAction();" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" disabled @endif  />
-							{{ Form::file('link_upload_game', array('id' => 'link_upload_game')) }}
+							<input type="checkbox" id="checkUpload" name="checkUpload" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" @endif disabled />
+							{{ Form::file('link_upload_game', array('id' => 'link_upload_game', 'disabled' => true)) }}
 							<strong id="fileNameUpload">{{ $inputGame->link_upload_game }}</strong>
 						</div>
 
 						<div class="form-group link_download">
 							<label>Link download game</label>
-							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" onclick="checkLinkDownloadAction();" @if($inputGame->link_download) checked="checked"  disabled @endif />
-							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" value="{{ $inputGame->link_download }}" />
+							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" @if($inputGame->link_download) checked="checked" @endif disabled />
+							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" value="{{ $inputGame->link_download }}" readonly />
 						</div>
 
 						<div class="form-group blockDisabled">
 							<label for="">Define game</label>
-							<input type="text" name="link_url" class="form-control blockDisabled" placeholder="Define game" value="{{ $inputGame->link_url }}" />
+							<input type="text" name="link_url" class="form-control blockDisabled" placeholder="Define game" value="{{ $inputGame->link_url }}" readonly />
 						</div>
 
 						<div class="form-group">
@@ -68,7 +65,7 @@
 
 						<div class="form-group blockDisabled">
 							<label for="">Cơ chế lưu điểm</label>
-							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control blockDisabled')) }}
+							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control blockDisabled', 'readonly' => true)) }}
 						</div>
 
 						<div class="form-group">
@@ -78,12 +75,12 @@
 
 						<div class="form-group">
 			                <label>Ngày đăng</label>
-			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
+			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}" readonly />
 		              	</div>
 
 		              	<div class="form-group">
 			                <label>Trạng thái</label>
-			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
+			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control', 'readonly' => true)) }}
 		              	</div>
 
 		              	<!-- <div class="form-group">
@@ -113,7 +110,7 @@
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
+											<input type="checkbox" onclick="return false" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
 										</td>
 									</tr>
 								@endforeach
@@ -132,7 +129,7 @@
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
+											<input type="checkbox" onclick="return false" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
 										</td>
 									</tr>
 								@endforeach
@@ -150,6 +147,6 @@
 	</div>
 </div>
 
-@include('admin.common.ckeditor')
+{{-- @include('admin.common.ckeditor') --}}
 
 @stop

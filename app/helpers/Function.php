@@ -36,13 +36,28 @@ function selectParentCategory()
 function selectRelationType()
 {
 	return array(
-		PARENTRELATION => 'CategoryParent',
-		CATEGORYRELATION => 'Category',
+		MENU_RELATION => 'Menu',
+		CONTENT_RELATION => 'Content',
+		TYPE_RELATION => 'Type',
 	);
 }
 
-function textParentCategory($input){
-	return array('placeholder' =>$input, 'class' =>'form-control');
+function getModelNameRelation()
+{
+	if (Input::get('model_name') == MENU_RELATION || Input::get('model_name') == CONTENT_RELATION) {
+		return 'CategoryParent';
+	}
+	return 'Type';
+}
+
+
+function textParentCategory($input, $isSeoMeta = NULL)
+{
+	if(!Admin::isSeo() || $isSeoMeta) {
+		return array('placeholder' => $input, 'class' => 'form-control');
+	} else {
+		return array('placeholder' => $input, 'class' => 'form-control', 'readonly' => true);
+	}
 }
 
 function returnList($className)
@@ -200,4 +215,3 @@ function selectWeight_number()
 		);
 
 }
-

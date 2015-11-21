@@ -6,39 +6,35 @@
 
 @section('content')
 
-<script>
-	function toggle(source) {
-		checkboxes = document.getElementsByName('game_id[]');
-		for(var i=0, n=checkboxes.length;i<n;i++) {
-			checkboxes[i].checked = source.checked;
-		}
-	}
-</script>
+{{-- //script for index game --}}
+@include('admin.game.scriptindex')
 
 <!-- inclue Search form-->
 @include('admin.game.search')
 
-{{ Form::open(array('action' => 'AdminGameController@index', 'method' => 'PUT')) }}
-
+@if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
-		<a href="{{ action('AdminGameController@destroy') }}" class="btn btn-primary">Xóa</a>
-		<input type="submit" value="Cập nhật" class="btn btn-success" />
+		<a href="{{ action('AdminGameController@deleteSelected') }}" class="btn btn-primary">Xóa</a>
+		<a onclick="updateWeightNumber();" class="btn btn-success">Cập nhật</a>
 	</div>
 </div>
+@endif
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Danh sách game</h3>
+			<h3 class="box-title">Danh sách game<strong id="abc"></strong></h3>
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
 			<table class="table table-hover">
 			<tr>
+				@if(Admin::isAdmin())
 				<th><input type="checkbox" id="checkall" onClick="toggle(this)" /></th>
+				@endif
 				<th>ID</th>
 				<th>Tên game</th>
 				<th>Mức ưu tiên</th>
@@ -53,10 +49,12 @@
 			</tr>
 			@foreach($data as $key => $value)
 				<tr>
-					<td><input type="checkbox" name="game_id[]" value="{{ $value->id }}" /></td>
+					@if(Admin::isAdmin())
+					<td><input type="checkbox" class="game_id" name="game_id[]" value="{{ $value->id }}" /></td>
+					@endif
 					<td>{{ $value->id }}</td>
 					<td>{{ $value->name }}</td>
-					<td><input type="text" name="weight_number" value="{{ $value->weight_number }}" style="width: 50px; text-align: center;" /></td>
+					<td><input type="text" name="weight_number[]" value="{{ $value->weight_number }}" style="width: 50px; text-align: center;" /></td>
 					<td>{{ Game::find($value->id)->parent_id }}</td>
 					<td>{{ $value->count_view }}</td>
 					<td>{{ $value->count_play }}</td>
@@ -67,9 +65,11 @@
 					<td>
 						{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+						@if(Admin::isAdmin())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 						<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
+						@endif
 					</td>
 				</tr>
 			@endforeach
@@ -80,8 +80,6 @@
 		<!-- /.box -->
 	</div>
 </div>
-
-{{ Form::close() }}
 
 <div class="row">
 	<div class="col-xs-12">

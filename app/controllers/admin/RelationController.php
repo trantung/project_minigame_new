@@ -34,8 +34,10 @@ class RelationController extends AdminController {
 	public function store()
 	{				
 
-		$inputRetation = Input::except('_token');
-		CommonNormal::create($inputRetation);
+		$inputRelation = Input::except('_token', 'model_name','relation_name');
+		$inputRelation['model_name'] = getModelNameRelation();
+		$inputRelation['relation_name'] = getModelNameRelation();
+		CommonNormal::create($inputRelation);
 		return Redirect::action('RelationController@index') ;	
 	}
 
@@ -50,7 +52,6 @@ class RelationController extends AdminController {
 	{
 		//
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -93,20 +94,25 @@ class RelationController extends AdminController {
 	public function ajax()
 	{
 		$type_model = Input::get('category');
-		if($type_model == PARENTRELATION)
-			$parent = CategoryParent::where('position',2)->lists('name','id');
-		else
-			$parent = Game::where('parent_id', null)->lists('name','id');
+		if($type_model == MENU_RELATION)
+			$parent = CategoryParent::where('position',MENU_RELATION)->lists('name','id');
+		elseif($type_model == CONTENT_RELATION){
+			$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
+		}
+		else{
+			$parent = Type::lists('name','id');
+		}
 		return Response::json($parent);
 	}
 	public function ajaxedit($id)
 		{
 			$type_model = Input::get('category');
-			if($type_model == PARENTRELATION)
-				$parent = CategoryParent::where('position',2)->lists('name','id');
+			if($type_model == MENU_RELATION)
+				$parent = CategoryParent::where('position', MENU_RELATION)->lists('name','id');
+			elseif ($type_model == CONTENT_RELATION) 
+				$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
 			else
-				$parent = Game::where('parent_id', null)->lists('name','id');
+				$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
 			return Response::json($parent);
 		}
-
 }

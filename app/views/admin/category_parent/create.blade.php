@@ -32,35 +32,12 @@
 								<label for="name">Mức ưu tiên</label>
 									{{ Form::select('weight_number', selectWeight_number() , null ,  array('class' =>'form-control')) }}
 							</div>
-							<div class="form-group">
-								<label for="metaname"><u>Thẻ meta</u></label>
-								<div class="box-body">
-									<div class="form-group">
-										<label for="title_site">Thẻ title</label>
-										{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
-									</div>
-									<div class="form-group">
-										<label for="description_site">Thẻ Descript site</label>
-										{{ Form::textarea('description_site', null , textParentCategory('Thẻ Descript site')) }}
-									</div>
-									<div class="form-group">
-										<label for="keyword_site">Thẻ Keyword</label>
-										{{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}
-									</div>
-									<div class="form-group">
-										<label for="title_fb">Thẻ title facebook</label>
-										{{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}
-									</div>
-									<div class="form-group">
-										<label for="description_fb">Thẻ descript facebook</label>
-										{{ Form::textarea('description_fb', null , textParentCategory('Thẻ descript facebook')) }}
-									</div>
-									<div class="form-group">
-										<label for="image_url_fb">Upload ảnh</label>
-										{{ Form::file('image_url_fb') }}
-									</div>
-								</div>
-							</div>
+
+							<hr />
+							<h1>SEO META</h1>
+							{{-- include common/meta.blade.php --}}
+							@include('admin.common.meta')
+
 						</div>
 						<!-- /.box-body -->
 					</div>

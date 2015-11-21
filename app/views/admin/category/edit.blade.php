@@ -21,12 +21,12 @@
 				<div class="form-group">
 				  <label for="name">Tên category</label>
 				  <div class="row">
-					<div class="col-sm-6">	                  	
+					<div class="col-sm-6">
 					   {{ Form::text('name', $game->name , textParentCategory('Tên category')) }}
 					</div>
 				  </div>
 				</div>
-			</div>  
+			</div>
 			  <!-- /.box-body -->
 			<div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}

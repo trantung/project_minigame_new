@@ -17,7 +17,6 @@ class NewsManager
 			if($input['end_date']){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-			
 		})->orderBy('id', 'asc')->paginate(PAGINATE);
 		return $data;
 	}

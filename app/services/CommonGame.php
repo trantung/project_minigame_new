@@ -86,7 +86,6 @@ class CommonGame
 	{
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = Game::where(function ($query) use ($input) {
-			// $query = $query->where('parent_id', '!=', '');
 			if ($input['keyword'] != '') {
 				$query = $query->where('name', 'like', '%'.$input['keyword'].'%');
 			}
@@ -97,10 +96,8 @@ class CommonGame
 				$query = $query->whereNotNUll('parent_id');
 			}
 			if($input['category_parent_id'] != '') {
-				// $query = $query->where('category_parent_id', $input['category_parent_id']);
 				$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
 				$query = $query->whereIn('id', $list);
-				// dd($list);
 			}
 			if($input['type_id'] != '') {
 				$listType = Type::find($input['type_id'])->gametypes->lists('game_id');

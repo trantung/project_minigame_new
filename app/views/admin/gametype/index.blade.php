@@ -6,14 +6,15 @@
 
 @section('content')
 
-<!-- inclue Search form
+<!-- inclue Search form-->
 
--->
+@if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('GameTypeController@create') }}" class="btn btn-primary">Thêm thể loại game</a>
 	</div>
 </div>
+@endif
 
 <div class="row">
 	<div class="col-xs-12">
@@ -38,9 +39,11 @@
 				  <td>
 				  	{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 					<a href="{{ action('GameTypeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+					@if(!Admin::isSeo())
 					{{ Form::open(array('method'=>'DELETE', 'action' => array('GameTypeController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
+					@endif
 				  </td>
 				</tr>
 		  	@endforeach
