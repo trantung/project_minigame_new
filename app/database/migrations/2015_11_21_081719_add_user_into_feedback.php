@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFeedbackTable extends Migration {
+class AddUserIntoFeedback extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateFeedbackTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('feedbacks', function(Blueprint $table) {
+		Schema::table('games', function(Blueprint $table) {
             $table->integer('user_id')->after('id')->nullable();
             $table->string('ip', 256)->after('description')->nullable();
             $table->string('device', 256)->after('description')->nullable();
