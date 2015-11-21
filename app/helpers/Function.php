@@ -215,3 +215,11 @@ function selectWeight_number()
 		);
 
 }
+//get status game
+function getStatusGame($status) {
+	$statusGame = array(
+		DISABLED => 'Đã đăng',
+		ENABLED => 'Chưa đăng'
+	);
+	return $statusGame[$status];
+}

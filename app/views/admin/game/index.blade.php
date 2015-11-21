@@ -54,13 +54,21 @@
 					@endif
 					<td>{{ $value->id }}</td>
 					<td>{{ $value->name }}</td>
+					@if(Admin::isAdmin())
 					<td><input type="text" name="weight_number[]" value="{{ $value->weight_number }}" style="width: 50px; text-align: center;" /></td>
+					@else
+					<td>{{ $value->weight_number }}</td>
+					@endif
 					<td>{{ Game::find($value->id)->parent_id }}</td>
 					<td>{{ $value->count_view }}</td>
 					<td>{{ $value->count_play }}</td>
 					<td>{{ $value->count_vote }}</td>
 					<td>{{ $value->count_download }}</td>
+					@if(Admin::isAdmin())
 					<td>{{ Form::select('status', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
+					@else
+					<td>{{ getStatusGame($value->status) }}</td>
+					@endif
 					<td>{{ $value->start_date }}</td>
 					<td>
 						{{-- <a href="#" class="btn btn-success">Xem</a> --}}
