@@ -12,7 +12,9 @@
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@index') }}" class="btn btn-success">Danh sách game</a>
+		@if(!Admin::isSeo())
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
+		@endif
 	</div>
 </div>
 

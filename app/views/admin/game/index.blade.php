@@ -12,6 +12,7 @@
 <!-- inclue Search form-->
 @include('admin.game.search')
 
+@if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
@@ -19,6 +20,7 @@
 		<a onclick="updateWeightNumber();" class="btn btn-success">Cập nhật</a>
 	</div>
 </div>
+@endif
 
 <div class="row">
 	<div class="col-xs-12">
@@ -30,7 +32,9 @@
 		<div class="box-body table-responsive no-padding">
 			<table class="table table-hover">
 			<tr>
+				@if(Admin::isAdmin())
 				<th><input type="checkbox" id="checkall" onClick="toggle(this)" /></th>
+				@endif
 				<th>ID</th>
 				<th>Tên game</th>
 				<th>Mức ưu tiên</th>
@@ -45,7 +49,9 @@
 			</tr>
 			@foreach($data as $key => $value)
 				<tr>
+					@if(Admin::isAdmin())
 					<td><input type="checkbox" class="game_id" name="game_id[]" value="{{ $value->id }}" /></td>
+					@endif
 					<td>{{ $value->id }}</td>
 					<td>{{ $value->name }}</td>
 					<td><input type="text" name="weight_number[]" value="{{ $value->weight_number }}" style="width: 50px; text-align: center;" /></td>
@@ -59,9 +65,11 @@
 					<td>
 						{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+						@if(Admin::isAdmin())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 						<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
+						@endif
 					</td>
 				</tr>
 			@endforeach

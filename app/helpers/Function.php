@@ -41,9 +41,9 @@ function selectRelationType()
 	);
 }
 
-function textParentCategory($input, $noReadonly)
+function textParentCategory($input, $isSeoMeta = NULL)
 {
-	if(!Admin::isSeo() && $noReadonly) {
+	if(!Admin::isSeo() || $isSeoMeta) {
 		return array('placeholder' => $input, 'class' => 'form-control');
 	} else {
 		return array('placeholder' => $input, 'class' => 'form-control', 'readonly' => true);

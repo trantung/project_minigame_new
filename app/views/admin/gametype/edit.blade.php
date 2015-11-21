@@ -32,23 +32,23 @@
 								<div class="box-body">
 									<div class="form-group">
 										<label for="title_site">Thẻ title</label>
-										{{ Form::text('title_site', $inputSeo->title_site ,textParentCategory('Thẻ title')) }}
+										{{ Form::text('title_site', $inputSeo->title_site ,textParentCategory('Thẻ title', true)) }}
 									</div>
 									<div class="form-group">
 										<label for="description_site">Thẻ Descript site</label>
-										{{ Form::textarea('description_site', $inputSeo->description_site , textParentCategory('Thẻ Descript site')) }}
+										{{ Form::textarea('description_site', $inputSeo->description_site , textParentCategory('Thẻ Descript site', true)) }}
 									</div>
 									<div class="form-group">
 										<label for="keyword_site">Thẻ Keyword</label>
-										{{ Form::text('keyword_site', $inputSeo->keyword_site , textParentCategory('Thẻ Keyword')) }}
+										{{ Form::text('keyword_site', $inputSeo->keyword_site , textParentCategory('Thẻ Keyword', true)) }}
 									</div>
 									<div class="form-group">
 										<label for="title_fb">Thẻ title facebook</label>
-										{{ Form::text('title_fb', $inputSeo->title_fb , textParentCategory('Thẻ facebook')) }}
+										{{ Form::text('title_fb', $inputSeo->title_fb , textParentCategory('Thẻ facebook', true)) }}
 									</div>
 									<div class="form-group">
 										<label for="description_fb">Thẻ descript facebook</label>
-										{{ Form::textarea('description_fb', $inputSeo->description_fb , textParentCategory('Thẻ descript facebook')) }}
+										{{ Form::textarea('description_fb', $inputSeo->description_fb , textParentCategory('Thẻ descript facebook', true)) }}
 									</div>
 									<div class="form-group">
 										<label for="image_url_fb">Upload ảnh</label>
