@@ -9,7 +9,9 @@
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('GameTypeController@index') }}" class="btn btn-success">Danh sách thể loại game</a>
+		@if(!Admin::isSeo())
 		<a href="{{ action('GameTypeController@create') }}" class="btn btn-primary">Thêm thể loại game</a>
+		@endif
 	</div>
 </div>
 
@@ -34,7 +36,7 @@
 									</div>
 									<div class="form-group">
 										<label for="description_site">Thẻ Descript site</label>
-										{{ Form::text('description_site', $inputSeo->description_site , textParentCategory('Thẻ Descript site')) }}
+										{{ Form::textarea('description_site', $inputSeo->description_site , textParentCategory('Thẻ Descript site')) }}
 									</div>
 									<div class="form-group">
 										<label for="keyword_site">Thẻ Keyword</label>
@@ -46,7 +48,7 @@
 									</div>
 									<div class="form-group">
 										<label for="description_fb">Thẻ descript facebook</label>
-										{{ Form::text('description_fb', $inputSeo->description_fb , textParentCategory('Thẻ descript facebook')) }}
+										{{ Form::textarea('description_fb', $inputSeo->description_fb , textParentCategory('Thẻ descript facebook')) }}
 									</div>
 									<div class="form-group">
 										<label for="image_url_fb">Upload ảnh</label>

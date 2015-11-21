@@ -41,8 +41,13 @@ function selectRelationType()
 	);
 }
 
-function textParentCategory($input){
-	return array('placeholder' =>$input, 'class' =>'form-control');
+function textParentCategory($input, $noReadonly)
+{
+	if(!Admin::isSeo() && $noReadonly) {
+		return array('placeholder' => $input, 'class' => 'form-control');
+	} else {
+		return array('placeholder' => $input, 'class' => 'form-control', 'readonly' => true);
+	}
 }
 
 function returnList($className)
@@ -199,4 +204,3 @@ function selectWeight_number()
 		5 => '5',
 		);
 }
-

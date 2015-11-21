@@ -1,5 +1,5 @@
 @extends('admin.layout.default')
-
+@if(!Admin::isSeo())
 @section('title')
 {{ $title='Thêm thể loại game' }}
 @stop
@@ -66,4 +66,5 @@
 		<!-- /.box -->
 	</div>
 </div>
+@endif
 @stop

@@ -206,4 +206,14 @@ class AdminGameController extends AdminController {
         return Redirect::action('AdminGameController@index');
 	}
 
+	public function deleteSelected()
+	{
+
+	}
+
+	public function updateWeightNumber()
+	{
+
+	}
+
 }

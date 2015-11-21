@@ -22,7 +22,7 @@
         </ul>
       </li>
       @endif
-      @if(Admin::isAdmin())
+      @if(Admin::isAdmin() || Admin::isSeo())
       <li class="treeview">
         <a href="#">
           <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
@@ -34,7 +34,7 @@
         </ul>
       </li>
       @endif
-      @if(Admin::isAdmin())
+      @if(Admin::isAdmin() || Admin::isSeo())
       <li class="treeview">
         <a href="#">
           <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>

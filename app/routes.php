@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/category', 'CategoryController');
 
+	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');
+	Route::post('/games/updateWeightNumber', 'AdminGameController@updateWeightNumber');
 	Route::get('/games/search', array('uses' => 'AdminGameController@search', 'as' => 'admin.games.search'));
 	Route::resource('/games', 'AdminGameController');
 
