@@ -6,82 +6,8 @@
 
 @section('content')
 
-<script>
-	function getFormGameOffline() {
-		parentId = $('select[name=parent_id]').val();
-		if (parentId == {{ GAMEOFFLINE }}) {
-	        $('.blockDisabled').prop('disabled', 'disabled');
-	        $('.blockDisabled').hide();
-	        if ($('#checkUpload').is(':checked')) {
-	        	$('#checkUpload').prop('disabled', 'disabled');
-	        	$('#link_upload_game').prop('disabled', false);
-	        	$('#checkLinkDownload').prop('disabled', false);
-	        } else {
-	        	$('#checkUpload').prop('disabled', false);
-	        	$('#link_upload_game').prop('disabled', 'disabled');
-	        	$('#checkLinkDownload').prop('disabled', 'disabled');
-	        	$('#link_download').prop('disabled', false);
-	        }
-	        $('#link_upload_game').val('');
-	        $('#link_download').val('');
-	        $('#checkUpload').show();
-	    	$('#checkLinkDownload').show();
-	    	$('.link_download').show();
-	    }
-	    else {
-	    	$('.blockDisabled').prop('disabled', false);
-	    	$('.blockDisabled').show();
-
-	    	$('#checkUpload').hide();
-	    	$('#checkUpload').attr('checked', 'checked');
-	    	$('#checkUpload').prop('disabled', 'disabled');
-	    	$('#link_upload_game').prop('disabled', false);
-	    	$('#link_upload_game').val('');
-	    	$('#checkLinkDownload').hide();
-	    	$('#checkLinkDownload').prop('disabled', 'disabled');
-	    	$('#link_download').prop('disabled', 'disabled');
-	    	$('#link_download').val('');
-	    	$('.link_download').hide();
-	    }
-	}
-
-	$(function () {
-		getFormGameOffline();
-    });
-
-	function checkUploadAction() {
-		if ($('#checkUpload').is(':checked')) {
-			$('#checkUpload').prop('disabled', 'disabled');
-			$('#link_upload_game').prop('disabled', false);
-			$('#link_download').prop('disabled', 'disabled');
-			$('#link_download').val('');
-			$('#checkLinkDownload').attr('checked', false);
-			$('#checkLinkDownload').prop('disabled', false);
-		} else {
-			$('#checkUpload').prop('disabled', false);
-			$('#link_upload_game').prop('disabled', 'disabled');
-			$('#link_download').prop('disabled', false);
-			$('#checkLinkDownload').attr('checked', 'checked');
-		}
-	}
-
-	function checkLinkDownloadAction() {
-		if ($('#checkLinkDownload').is(':checked')) {
-			$('#checkLinkDownload').prop('disabled', 'disabled');
-			$('#link_upload_game').prop('disabled', 'disabled');
-			$('#link_upload_game').val('');
-			$('#link_download').prop('disabled', false);
-			$('#checkUpload').attr('checked', false);
-			$('#checkUpload').prop('disabled', false);
-		} else {
-			$('#checkLinkDownload').prop('disabled', false);
-			$('#link_upload_game').prop('disabled', false);
-			$('#link_download').prop('disabled', 'disabled');
-			$('#checkUpload').attr('checked', 'checked');
-		}
-	}
-
-</script>
+{{-- //script for create game form --}}
+@include('admin.game.scriptcreate')
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
@@ -137,7 +63,7 @@
 
 						<div class="form-group blockDisabled">
 							<label>Cơ chế lưu điểm</label>
-							{{ Form::select('score_status', saveScore(), '', array('class' => 'blockDisabled')) }}
+							{{ Form::select('score_status', saveScore(), '', array('class' => 'form-control blockDisabled')) }}
 						</div>
 
 						<div class="form-group">
@@ -152,7 +78,7 @@
 
 		              	<div class="form-group">
 			                <label>Trạng thái</label>
-			                {{ Form::select('status', selectStatusGame()) }}
+			                {{ Form::select('status', selectStatusGame(), '', array('class' => 'form-control')) }}
 		              	</div>
 
 		              	<!-- <div class="form-group">

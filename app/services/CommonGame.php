@@ -87,37 +87,40 @@ class CommonGame
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = Game::where(function ($query) use ($input) {
 			// $query = $query->where('parent_id', '!=', '');
-			if ($input['keyword']) {
-				$query = $query->where('name', 'like', '%'.$input['keyword'].'%')
-								->orWhere('description', 'like', '%'.$input['keyword'].'%');
+			if ($input['keyword'] != '') {
+				$query = $query->where('name', 'like', '%'.$input['keyword'].'%');
 			}
-			if($input['parent_id']) {
+			if($input['parent_id'] != '') {
 				$query = $query->where('parent_id', $input['parent_id']);
 			}
-			if(!$input['parent_id']) {
-				$query = $query->where('parent_id', '!=', '');
+			if($input['parent_id'] == '') {
+				$query = $query->whereNotNUll('parent_id');
 			}
-			if($input['category_parent_id']) {
+			if($input['category_parent_id'] != '') {
 				// $query = $query->where('category_parent_id', $input['category_parent_id']);
 				$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
 				$query = $query->whereIn('id', $list);
 				// dd($list);
 			}
-			if($input['type_id']) {
-				$listType = Type::find($input['type_id'])->parenttypes->lists('game_id');
+			if($input['type_id'] != '') {
+				$listType = Type::find($input['type_id'])->gametypes->lists('game_id');
 				$query = $query->whereIn('id', $listType);
 			}
-			if($input['status']) {
+			if($input['status'] != '') {
 				$query = $query->where('status', $input['status']);
 			}
-			/*if($input['start_date'] && $input['end_date']) {
-				$query = $query->whereBetween('created_at', array($input['start_date'], $input['end_date']));
-			}*/
+			if($input['start_date'] != ''){
+				$query = $query->where('start_date', '>=', $input['start_date']);
+			}
+			if($input['end_date'] != ''){
+				$query = $query->where('start_date', '<=', $input['end_date']);
+			}
 		})
 		// ->get()->toArray();
 		// dd($data);
-		->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
-		// dd($data);
+		->orderBy($orderBy[0], $orderBy[1])
+		->paginate(PAGINATE);
+		//dd(DB::getQueryLog());
 		return $data;
 	}
 
@@ -125,42 +128,42 @@ class CommonGame
 	{
 		$sortBy = 'id';
 		$sort = 'desc';
-		if($input['sortByCountView']) {
-			if($input['sortByCountView'] = 'count_view_asc') {
+		if($input['sortByCountView'] != '') {
+			if($input['sortByCountView'] == 'count_view_asc') {
 				$sortBy = 'count_view';
 				$sort = 'asc';
 			}
-			if($input['sortByCountView'] = 'count_view_desc') {
+			if($input['sortByCountView'] == 'count_view_desc') {
 				$sortBy = 'count_view';
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountPlay']) {
-			if($input['sortByCountPlay'] = 'count_play_asc') {
+		if($input['sortByCountPlay'] != '') {
+			if($input['sortByCountPlay'] == 'count_play_asc') {
 				$sortBy = 'count_play';
 				$sort = 'asc';
 			}
-			if($input['sortByCountPlay'] = 'count_play_desc') {
+			if($input['sortByCountPlay'] == 'count_play_desc') {
 				$sortBy = 'count_play';
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountVote']) {
-			if($input['sortByCountVote'] = 'count_vote_asc') {
+		if($input['sortByCountVote'] != '') {
+			if($input['sortByCountVote'] == 'count_vote_asc') {
 				$sortBy = 'count_vote';
 				$sort = 'asc';
 			}
-			if($input['sortByCountVote'] = 'count_vote_desc') {
+			if($input['sortByCountVote'] == 'count_vote_desc') {
 				$sortBy = 'count_vote';
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountDownload']) {
-			if($input['sortByCountDownload'] = 'count_download_asc') {
+		if($input['sortByCountDownload'] != '') {
+			if($input['sortByCountDownload'] == 'count_download_asc') {
 				$sortBy = 'count_download';
 				$sort = 'asc';
 			}
-			if($input['sortByCountDownload'] = 'count_download_desc') {
+			if($input['sortByCountDownload'] == 'count_download_desc') {
 				$sortBy = 'count_download';
 				$sort = 'desc';
 			}

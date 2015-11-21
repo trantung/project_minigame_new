@@ -21,9 +21,10 @@ define('UPLOADIMG', '/images');
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
 define('UPLOAD_GAME', '/games');
+define('UPLOAD_GAMEONLINE', '/games/online');
+define('UPLOAD_GAMEOFFLINE', '/games/offline');
 //url upload news
 define('UPLOAD_NEWS', '/news');
-define('/', '/games');
 //folder upload image facebook
 define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');

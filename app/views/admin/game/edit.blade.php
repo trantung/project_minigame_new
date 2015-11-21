@@ -6,6 +6,9 @@
 
 @section('content')
 
+{{-- //script for edit game form --}}
+@include('admin.game.scriptedit')
+
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@index') }}" class="btn btn-success">Danh sách game</a>
@@ -27,7 +30,7 @@
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>
-			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control')) }}
+			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control', 'onchange' => 'getFormGameOffline()')) }}
 		              	</div>
 						<div class="form-group">
 							<label for="">Upload avatar</label>
@@ -40,13 +43,20 @@
 						</div>
 						<div class="form-group">
 							<label for="">Upload game</label>
-							{{ Form::file('link_upload_game') }}
-							<strong>{{ $inputGame->link_upload_game }}</strong>
+							<input type="checkbox" id="checkUpload" name="checkUpload" onclick="checkUploadAction();" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" disabled @endif  />
+							{{ Form::file('link_upload_game', array('id' => 'link_upload_game')) }}
+							<strong id="fileNameUpload">{{ $inputGame->link_upload_game }}</strong>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group link_download">
+							<label>Link download game</label>
+							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" onclick="checkLinkDownloadAction();" @if($inputGame->link_download) checked="checked"  disabled @endif />
+							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" value="{{ $inputGame->link_download }}" />
+						</div>
+
+						<div class="form-group blockDisabled">
 							<label for="">Define game</label>
-							{{ Form::text('link_url', $inputGame->link_url , textParentCategory('Define game')) }}
+							<input type="text" name="link_url" class="form-control blockDisabled" placeholder="Define game" value="{{ $inputGame->link_url }}" />
 						</div>
 
 						<div class="form-group">
@@ -54,9 +64,9 @@
 							{{ Form::text('weight_number', $inputGame->weight_number , textParentCategory('Mức ưu tiên')) }}
 						</div>
 
-						<div class="form-group">
+						<div class="form-group blockDisabled">
 							<label for="">Cơ chế lưu điểm</label>
-							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control')) }}
+							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control blockDisabled')) }}
 						</div>
 
 						<div class="form-group">
@@ -71,13 +81,13 @@
 
 		              	<div class="form-group">
 			                <label>Trạng thái</label>
-			                {{ Form::select('status', selectStatusGame(), $inputGame->status) }}
+			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
 		              	</div>
 
-		              	<div class="form-group">
-			                <label>Slide</label>
-			                {{ Form::select('slide') }}
-		              	</div>
+		              	<!-- <div class="form-group">
+		              				                <label>Slide</label>
+		              				                {{ Form::select('slide') }}
+		              	</div> -->
 
 						<hr />
 						<h1>SEO</h1>

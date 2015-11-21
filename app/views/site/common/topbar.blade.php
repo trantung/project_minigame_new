@@ -18,8 +18,8 @@
 			@else
 			<li class='has-sub'><a href='#' class="color2"><span>{{ $value->name }}</span></a>
 				<ul>
-				@foreach($value->types as $k => $v)
-					<li><a href='#'><span>{{ $v->name }}</span></a></li>
+				@foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v)
+					<li><a href='#'><span>{{ Type::find($v)->name }}</span></a></li>
 				@endforeach
 				</ul>
 			</li>

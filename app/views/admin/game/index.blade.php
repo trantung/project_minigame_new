@@ -48,7 +48,7 @@
 				<th>Bình chọn</th>
 				<th>Lượt tải</th>
 				<th>Trạng thái</th>
-				<th>Ngày tạo</th>
+				<th>Ngày đăng</th>
 				<th style="width:120px;">&nbsp;</th>
 			</tr>
 			@foreach($data as $key => $value)
@@ -63,7 +63,7 @@
 					<td>{{ $value->count_vote }}</td>
 					<td>{{ $value->count_download }}</td>
 					<td>{{ Form::select('status', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
-					<td>{{ $value->updated_at }}</td>
+					<td>{{ $value->start_date }}</td>
 					<td>
 						{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
