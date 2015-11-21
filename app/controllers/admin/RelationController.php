@@ -37,7 +37,6 @@ class RelationController extends AdminController {
 		$inputRelation = Input::except('_token', 'model_name','relation_name');
 		$inputRelation['model_name'] = getModelNameRelation('model_name');
 		$inputRelation['relation_name'] = getModelNameRelation('relation_name');
-		dd($inputRelation);
 		CommonNormal::create($inputRelation);
 		return Redirect::action('RelationController@index') ;	
 	}
@@ -76,9 +75,8 @@ class RelationController extends AdminController {
 	public function update($id)
 	{
 		$inputRelation = Input::except('_token', 'model_name','relation_name');
-		$inputRelation['model_name'] = getModelNameRelation();
-		$inputRelation['relation_name'] = getModelNameRelation();
-		dd($inputRelation);
+		$inputRelation['model_name'] = getModelNameRelation('model_name');
+		$inputRelation['relation_name'] = getModelNameRelation('relation_name');
 		CommonNormal::update($id, $inputRelation);
 		return Redirect::action('RelationController@index') ;	
 	}
