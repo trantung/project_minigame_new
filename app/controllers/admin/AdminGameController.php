@@ -157,28 +157,33 @@ class AdminGameController extends AdminController {
         } else {
         	$data = Game::find($id);
 
-        	//upload avatar
-        	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
+        	//SEO cant update game
+        	if(!Admin::isSeo()) {
 
-        	//upload game file
-        	if($input['parent_id'] == GAMEOFFLINE) {
-        		$pathUpload = public_path().UPLOAD_GAMEOFFLINE;
-        	} else {
-        		$pathUpload = public_path().UPLOAD_GAMEONLINE;
-        	}
+	        	//upload avatar
+	        	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
 
-			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload, $id);
+	        	//upload game file
+	        	if($input['parent_id'] == GAMEOFFLINE) {
+	        		$pathUpload = public_path().UPLOAD_GAMEOFFLINE;
+	        	} else {
+	        		$pathUpload = public_path().UPLOAD_GAMEONLINE;
+	        	}
 
-			//update slide_id
+				$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload, $id);
 
-        	//update game
-			CommonNormal::update($id, $inputGame);
+				//update slide_id
 
-			//update game_types: type_id, game_id
-			CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
+	        	//update game
+				CommonNormal::update($id, $inputGame);
 
-			//update game_category_parents: category_parent_id, game_id
-			CommonGame::updateRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id, 'GameRelation');
+				//update game_types: type_id, game_id
+				CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
+
+				//update game_category_parents: category_parent_id, game_id
+				CommonGame::updateRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id, 'GameRelation');
+
+			}
 
 			//update histories: model_name, model_id, last_time, device, last_ip
 			$history_id = CommonLog::updateHistory('Game', $id);
