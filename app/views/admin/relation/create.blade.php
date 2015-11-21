@@ -19,7 +19,7 @@
 					<label for="name">Box trên</label>
 					<div class="row">
 						<div class="col-sm-2">
-							Model
+							Parent
 						</div>
 						<div class="col-sm-2">	                  	
 						   {{  Form::select('model_name', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => 'getRelationTypeModel()', 'id' =>'type_box_head'))  }}
@@ -36,7 +36,7 @@
 					<label for="name">Box dưới</label>
 					<div class="row">
 						<div class="col-sm-2">
-							Model
+							Game 
 						</div>
 						<div class="col-sm-2">	                  	
 						   {{  Form::select('relation_name', selectRelationType(),null,array('class' => 'form-control' ,'onchange' => 'getRelationTypeCategory()', 'id' =>'type_box_botton'))  }}

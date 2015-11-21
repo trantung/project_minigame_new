@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/news', 'NewsController');
 
 	Route::post('/relation/ajax', 'RelationController@ajax');
+	Route::post('/relation/ajaxedit/{id}', array('uses' => 'RelationController@ajaxedit', 'as' => 'ajax.edit'));
 	Route::resource('/relation', 'RelationController');
 
 	Route::resource('/comment', 'CommentController');

@@ -45,7 +45,7 @@
 	<div class="col-xs-12">
 		<ul class="pagination">
 		<!-- phan trang -->
-		{{ $inputComment->appends(Request::except('page'))->links() }}
+		{{ $inputScore->appends(Request::except('page'))->links() }}
 		</ul>
 	</div>
 </div>

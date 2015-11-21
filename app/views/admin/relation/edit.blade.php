@@ -17,12 +17,17 @@
 		$.ajax({
 		type: 'POST',
 		data:{category:category,id:{{$inputRelation->id }}},
-		url: 'ajax',
+		url: '{{ route('ajax.edit', $inputRelation->id) }}',
+
 			success:function(data) {
 				$('#model_id').empty();
 					$.each(data ,function(index, value){
-						$('#model_id').append('<option value="'+ index+'" >'+value+'</option>');
+						if(index == {{$inputRelation->relation_id}})
+							$('#model_id').append('<option value="'+ index+'" selected>'+value+'</option>');
+						else
+							$('#model_id').append('<option value="'+ index+'" >'+value+'</option>');
 					});
+
 			}
 		});
 	}
@@ -31,17 +36,25 @@
 		$.ajax({
 		type: 'POST',
 		data:{category:category},
-		url: 'ajax',
+		url: '{{ route('ajax.edit', $inputRelation->id) }}',
 			success:function(data) {
 				$('#relation_id').empty();
-				
 					$.each(data ,function(index, value){
-						$('#relation_id').append('<option value="'+ index+'" >'+value+'</option>');
+						if(index == {{$inputRelation->model_id}})
+							$('#relation_id').append('<option value="'+ index+'" selected>'+value+'</option>');
+						else
+							$('#relation_id').append('<option value="'+ index+'" >'+value+'</option>');
 					});
 			}
 		});
 	}
+
 </script>
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="{{ action('RelationController@index') }} " class="btn btn-success">Danh sách Relation</a>
+	</div>
+</div>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">

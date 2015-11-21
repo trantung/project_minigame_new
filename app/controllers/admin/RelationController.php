@@ -99,6 +99,14 @@ class RelationController extends AdminController {
 			$parent = Game::where('parent_id', null)->lists('name','id');
 		return Response::json($parent);
 	}
-
+	public function ajaxedit($id)
+		{
+			$type_model = Input::get('category');
+			if($type_model == PARENTRELATION)
+				$parent = CategoryParent::where('position',2)->lists('name','id');
+			else
+				$parent = Game::where('parent_id', null)->lists('name','id');
+			return Response::json($parent);
+		}
 
 }
