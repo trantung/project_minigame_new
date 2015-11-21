@@ -21,13 +21,13 @@
 				<div class="form-group">
 				  <label for="name">Tên category</label>
 				  <div class="row">
-					<div class="col-sm-6">	                  	
+					<div class="col-sm-6">
 					   {{ Form::text('name', null , textParentCategory('Tên category')) }}
 					</div>
 				  </div>
 				</div>
-			</div>  
-			  
+			</div>
+
 			  <!-- /.box-body -->
 
 			  <div class="box-footer">
