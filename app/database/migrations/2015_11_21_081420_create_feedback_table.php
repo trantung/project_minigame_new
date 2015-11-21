@@ -12,10 +12,13 @@ class CreateFeedbackTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('feedbacks', function(Blueprint $table) {
-            $table->integer('user_id')->after('id')->nullable();
-            $table->string('ip', 256)->after('description')->nullable();
-            $table->string('device', 256)->after('description')->nullable();
+		Schema::create('feedbacks', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('title', 256)->nullable();
+            $table->text('description')->nullable();
+            $table->integer('status')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
         });
 	}
 
@@ -26,7 +29,7 @@ class CreateFeedbackTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('feedbacks');
 	}
 
 }
