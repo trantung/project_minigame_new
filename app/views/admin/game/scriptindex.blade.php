@@ -17,5 +17,19 @@
 		  	return this.value + ',';
 		}).get();
 
+		$.ajax(
+		{
+			type:'post',
+			url: '/admin/games/updateWeightNumber',
+			data:{
+				'game_id': values1,
+				'weight_number': values2
+			},
+			success: function(data)
+			{
+				$('#testAjax').html(data);
+			}
+		});
+
 	}
 </script>

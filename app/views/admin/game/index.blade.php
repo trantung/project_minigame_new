@@ -18,6 +18,8 @@
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
 		<a href="{{ action('AdminGameController@deleteSelected') }}" class="btn btn-primary">Xóa</a>
 		<a onclick="updateWeightNumber();" class="btn btn-success">Cập nhật</a>
+		<form method="post" name="frmUpdateWeightNumber" id="frmUpdateWeightNumber"></form>
+		<b id="testAjax"></b>
 	</div>
 </div>
 @endif
@@ -45,7 +47,7 @@
 				<th>Lượt tải</th>
 				<th>Trạng thái</th>
 				<th>Ngày đăng</th>
-				<th style="width:120px;">&nbsp;</th>
+				<th style="width:200px;">&nbsp;</th>
 			</tr>
 			@foreach($data as $key => $value)
 				<tr>
@@ -71,7 +73,7 @@
 					@endif
 					<td>{{ $value->start_date }}</td>
 					<td>
-						{{-- <a href="#" class="btn btn-success">Xem</a> --}}
+						<a href="{{ action('AdminGameController@history') }}" class="btn btn-success">Lịch sử</a>
 						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(Admin::isAdmin())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
