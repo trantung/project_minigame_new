@@ -233,3 +233,5 @@ function getNameDevice($deviceId)
 		return COMPUTER_DEVICE;
 	}
 }
+
+

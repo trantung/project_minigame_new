@@ -9,6 +9,7 @@ class AdvertiseController extends AdminController {
 	 */
 	public function index()
 	{
+		$advertise = Advertise::where('position', '!=', 3)->get();
 		return View::make('admin.adverties.index');
 	}
 

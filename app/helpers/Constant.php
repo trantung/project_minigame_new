@@ -57,4 +57,9 @@ define('REMOVE', 'Remove');
 //define device
 define('SMART_DEVICE', 'Smart device');
 define('COMPUTER_DEVICE', 'Computer');
+//define advertise
+define('HEADER', 1);
+define('Footer', 2);
+define('CHILD_PAGE', 3);
+
 
