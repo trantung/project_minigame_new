@@ -7,7 +7,7 @@ return array(
     'separator'       => '-',
     'unique'          => true,
     'include_trashed' => false,
-    'on_update'       => false,
+    'on_update'       => true,
     'reserved'        => null,
     'use_cache'       => false,
 );

@@ -16,6 +16,22 @@ class AddSluggableColumns extends Migration {
 		{
 			$table->string('slug', 256)->after('name')->nullable();
 		});
+		Schema::table('news', function(Blueprint $table)
+		{
+			$table->string('slug', 256)->after('title')->nullable();
+		});
+		Schema::table('type_news', function(Blueprint $table)
+		{
+			$table->string('slug', 256)->after('name')->nullable();
+		});
+		Schema::table('types', function(Blueprint $table)
+		{
+			$table->string('slug', 256)->after('name')->nullable();
+		});
+		Schema::table('category_parents', function(Blueprint $table)
+		{
+			$table->string('slug', 256)->after('name')->nullable();
+		});
 	}
 
 	/**
@@ -26,6 +42,22 @@ class AddSluggableColumns extends Migration {
 	public function down()
 	{
 		Schema::table('games', function(Blueprint $table)
+		{
+			$table->dropColumn('slug');
+		});
+		Schema::table('news', function(Blueprint $table)
+		{
+			$table->dropColumn('slug');
+		});
+		Schema::table('type_news', function(Blueprint $table)
+		{
+			$table->dropColumn('slug');
+		});
+		Schema::table('types', function(Blueprint $table)
+		{
+			$table->dropColumn('slug');
+		});
+		Schema::table('category_parents', function(Blueprint $table)
 		{
 			$table->dropColumn('slug');
 		});
