@@ -48,10 +48,20 @@
 				}
 			}
 		});
-
+		window.location.reload();
 	}
 
 	function deleteSelected()
+	{
+		var check = $('input:checkbox:checked.game_id').val();
+		if(check) {
+			callDeleteSelected();
+		} else {
+			alert('Bạn chưa chọn game nào!');
+		}
+	}
+
+	function callDeleteSelected()
 	{
 		confirm = confirm('Bạn có chắc chắn muốn xóa?')
 		if(confirm) {

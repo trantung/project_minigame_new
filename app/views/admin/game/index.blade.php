@@ -59,7 +59,7 @@
 					@else
 					<td>{{ $value->weight_number }}</td>
 					@endif
-					<td>{{ Game::find($value->id)->parent_id }}</td>
+					<td>{{ Game::find($value->parent_id)->name }}</td>
 					<td>{{ $value->count_view }}</td>
 					<td>{{ $value->count_play }}</td>
 					<td>{{ $value->count_vote }}</td>
