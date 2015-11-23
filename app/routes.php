@@ -13,6 +13,8 @@
 // dd(123);
 Route::group(['prefix' => 'admin'], function () {
 
+	Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
+	Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
@@ -51,14 +53,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/comment', 'CommentController');
 
-	Route::resource('/score', 'ScoreManagerController');	
+	Route::resource('/score', 'ScoreManagerController');
 
 });
 
 Route::resource('/', 'SiteController');
-
-
-
-
-
 

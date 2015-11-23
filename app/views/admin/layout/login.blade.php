@@ -53,7 +53,7 @@
       </div>
     {{ Form::close() }}
     <br />
-    <a href="#">Quên mật khẩu?</a>
+    <a href="{{ action('PasswordController@index') }}">Quên mật khẩu?</a>
 
   </div>
   <!-- /.login-box-body -->
