@@ -18,6 +18,8 @@
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
 		<a href="{{ action('AdminGameController@deleteSelected') }}" class="btn btn-primary">Xóa</a>
 		<a onclick="updateWeightNumber();" class="btn btn-success">Cập nhật</a>
+		<form method="post" name="frmUpdateWeightNumber" id="frmUpdateWeightNumber"></form>
+		<b id="testAjax"></b>
 	</div>
 </div>
 @endif
