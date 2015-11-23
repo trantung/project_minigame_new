@@ -86,12 +86,10 @@ class AdminGameController extends AdminController {
 
 			$data = Game::find($id);
 
-			$data->types()->attach(Input::get('type_id'));
-
-			//insert game_category_parents: category_parent_id, game_id
-			//CommonGame::insertRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id);
-
-			$data->categoryparents()->attach(Input::get('category_parent_id'));
+			if($data) {
+				RelationBox::insertRelationship($data, 'types', Input::get('type_id'));
+				RelationBox::insertRelationship($data, 'categoryparents', Input::get('category_parent_id'));
+			}
 
 			//insert histories: model_name, model_id, last_time, device, last_ip
 			$history_id = CommonLog::insertHistory('Game', $id);
@@ -189,12 +187,8 @@ class AdminGameController extends AdminController {
 				CommonNormal::update($id, $inputGame);
 
 				if($data) {
-					//update game_types: type_id, game_id
-					// CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
-					$data->types()->sync(Input::get('type_id'));
-					//update game_category_parents: category_parent_id, game_id
-					//CommonGame::updateRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id, 'GameRelation');
-					$data->categoryparents()->sync(Input::get('category_parent_id'));
+					RelationBox::updateRelationship($data, 'types', Input::get('type_id'));
+					RelationBox::updateRelationship($data, 'categoryparents', Input::get('category_parent_id'));
 				}
 			}
 
@@ -225,9 +219,8 @@ class AdminGameController extends AdminController {
 			$history_id = CommonLog::updateHistory('Game', $id);
 			CommonLog::insertLogEdit('Game', $id, $history_id, REMOVE);
 
-			$data->types()->detach();
-
-			$data->categoryparents()->detach();
+			RelationBox::deleteRelationship($data, 'types');
+			RelationBox::deleteRelationship($data, 'categoryparents');
 
 			CommonNormal::delete($id);
 
