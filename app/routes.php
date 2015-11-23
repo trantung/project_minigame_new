@@ -10,8 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
 Route::group(['prefix' => 'admin'], function () {
 
+	Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
+	Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
@@ -20,7 +23,6 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/manager/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
 	Route::resource('/manager', 'ManagerController');
 
-	// Route::post('/category_parent/create', array('uses' => 'CategoryParentController@postcreate', 'as' => 'postcreate'));
 	Route::get('/category_parent/content/create', array('uses' => 'CategoryParentController@contentCreate', 'as' => 'content.create'));
 	Route::get('/category_parent/content/edit/{id}', array('uses' => 'CategoryParentController@contentedit', 'as' => 'content.edit'));
 	Route::get('/category_parent/content', array('uses' => 'CategoryParentController@contentIndex', 'as' => 'content.index'));
@@ -52,15 +54,13 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/score', 'ScoreManagerController');
 
+
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
-	Route::resource('/advertise', 'AdvertiseController');	
+	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
+	Route::resource('/advertise', 'AdvertiseController');
 
 });
 
 Route::resource('/', 'SiteController');
 
-
-
-
-
-
+Route::get('/{slug}.html', 'GameController@getGame');

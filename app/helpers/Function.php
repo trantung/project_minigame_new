@@ -234,4 +234,25 @@ function getNameDevice($deviceId)
 	}
 }
 
+function getPositionAdvertise($position)
+{
+	if ($position == HEADER) {
+		return 'Header';
+	}
+	if ($position == Footer) {
+		return 'Footer';
+	}
+	if ($position == CHILD_PAGE) {
+		return 'Content';
+	}
+}
+function getStatusAdvertise($status)
+{
+	if ($status == ENABLED) {
+		return 'Hiển thị';
+	}
+	if ($status == DISABLED) {
+		return 'Ẩn';
+	}
+}
 

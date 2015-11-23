@@ -48,7 +48,7 @@
 				}
 			}
 		});
-		window.location.reload();
+		// window.location.reload();
 	}
 
 	function deleteSelected()

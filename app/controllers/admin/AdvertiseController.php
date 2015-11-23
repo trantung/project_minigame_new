@@ -9,8 +9,8 @@ class AdvertiseController extends AdminController {
 	 */
 	public function index()
 	{
-		$advertise = Advertise::where('position', '!=', 3)->get();
-		return View::make('admin.adverties.index');
+		$advertise = Advertise::where('position', '!=', CHILD_PAGE)->get();
+		return View::make('admin.adverties.index')->with(compact('advertise'));
 	}
 
 
@@ -21,7 +21,7 @@ class AdvertiseController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.adverties.create');
 	}
 
 
@@ -32,7 +32,11 @@ class AdvertiseController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('_token');
+		$id = Advertise::create($input)->id;
+		$imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header');
+		Advertise::find($id)->update(array('image_url' => $imageUrl));
+		return Redirect::action('AdvertiseController@index')->with('message', 'tạo mới thành công');
 	}
 
 
@@ -56,7 +60,8 @@ class AdvertiseController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$advertise = Advertise::find($id);
+		return View::make('admin.adverties.edit')->with(compact('advertise'));
 	}
 
 
@@ -68,7 +73,12 @@ class AdvertiseController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token', '_method');
+		$advertise = Advertise::find($id);
+		$imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header', $advertise->image_url);
+		$input['image_url'] = $imageUrl;
+		$advertise->update($input);
+		return Redirect::action('AdvertiseController@index')->with('message', 'Thay đổi thành công');
 	}
 
 
@@ -80,12 +90,19 @@ class AdvertiseController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Advertise::find($id)->delete();
+		return Redirect::action('AdvertiseController@index')->with('message', 'Xoá thành công');
 	}
 
 	public function indexChild()
 	{
+		$advertise = Advertise::where('position', CHILD_PAGE)->get();
+		return View::make('admin.adverties.child_index')->with(compact('advertise'));
+	}
 
+	public function createChild()
+	{
+		
 	}
 
 }
