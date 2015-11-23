@@ -91,7 +91,7 @@ class AdminGameController extends AdminController {
 			$history_id = CommonLog::insertHistory('Game', $id);
 
 			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('Game', $id, $history_id);
+			CommonLog::insertLogEdit('Game', $id, $history_id, CREATE);
 
 			//SEO
 			CommonSeo::createSeo('Game', $id, FOLDER_SEO_GAME);
@@ -194,7 +194,7 @@ class AdminGameController extends AdminController {
 			$history_id = CommonLog::updateHistory('Game', $id);
 
 			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('Game', $id, $history_id);
+			CommonLog::insertLogEdit('Game', $id, $history_id, EDIT);
 
 			//SEO
 			CommonSeo::updateSeo('Game', $id, FOLDER_SEO_GAME);
