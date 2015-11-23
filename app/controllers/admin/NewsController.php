@@ -62,7 +62,7 @@ class NewsController extends AdminController {
 			$history_id = CommonLog::insertHistory('AdminNew', $id);
 
 			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('AdminNew', $id, $history_id);
+			CommonLog::insertLogEdit('AdminNew', $id, $history_id, CREATE);
 			
 			// insert ceo
 			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
@@ -129,7 +129,7 @@ class NewsController extends AdminController {
 			$history_id = CommonLog::updateHistory('AdminNew', $id);
 
 			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('AdminNew', $id, $history_id);
+			CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
 
 			//upadte ceo
 			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);

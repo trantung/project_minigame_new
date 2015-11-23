@@ -50,3 +50,7 @@ define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game offline
 define('GAMEOFFLINE', 3);
+//history action
+define('CREATE', 'Create');
+define('EDIT', 'Edit');
+define('REMOVE', 'Remove');
