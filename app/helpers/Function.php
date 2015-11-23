@@ -42,9 +42,9 @@ function selectRelationType()
 	);
 }
 
-function getModelNameRelation()
+function getModelNameRelation($modelName)
 {
-	if (Input::get('model_name') == MENU_RELATION || Input::get('model_name') == CONTENT_RELATION) {
+	if (Input::get($modelName) == MENU_RELATION || Input::get($modelName) == CONTENT_RELATION) {
 		return 'CategoryParent';
 	}
 	return 'Type';
