@@ -11,4 +11,8 @@ class TypeNew extends Eloquent
     protected $fillable = ['name'];
     protected $dates = ['deleted_at'];
 
+    public function news()
+    {
+        return $this->hasMany('AdminNew', 'type_new_id', 'id');
+    }
 }

@@ -12,4 +12,8 @@ class LogEdit extends Eloquent
     	'editor_time', 'editor_ip', 'action'];
     protected $dates = ['deleted_at'];
 
+    public function history()
+    {
+    	return $this->belongsTo('AdminHistory', 'history_id', 'id');
+    }
 }

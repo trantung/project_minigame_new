@@ -74,3 +74,10 @@
     @endif
 </div>
 @endif
+
+@if (Session::has('message'))
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><center>{{ Session::get('message') }}</center></strong>
+    </div>
+@endif

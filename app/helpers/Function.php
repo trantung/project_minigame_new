@@ -223,3 +223,13 @@ function getStatusGame($status) {
 	);
 	return $statusGame[$status];
 }
+
+function getNameDevice($deviceId)
+{
+	if ($deviceId == MOBILE) {
+		return COMPUTER;
+	}
+	if ($deviceId == COMPUTER) {
+		return COMPUTER_DEVICE;
+	}
+}
