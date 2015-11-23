@@ -82,10 +82,13 @@ class AdminGameController extends AdminController {
 			$id = CommonNormal::create($inputGame);
 
 			//insert game_types: type_id, game_id
-			CommonGame::insertRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id);
+			//CommonGame::insertRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id);
+			$data = Game::find($id);
 
-			//insert game_category_parents: category_parent_id, game_id
-			CommonGame::insertRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id);
+			if($data) {
+				RelationBox::insertRelationship($data, 'types', Input::get('type_id'));
+				RelationBox::insertRelationship($data, 'categoryparents', Input::get('category_parent_id'));
+			}
 			//insert histories: model_name, model_id, last_time, device, last_ip
 			$history_id = CommonLog::insertHistory('Game', $id);
 
@@ -95,7 +98,7 @@ class AdminGameController extends AdminController {
 			//SEO
 			CommonSeo::createSeo('Game', $id, FOLDER_SEO_GAME);
 
-			return Redirect::action('AdminGameController@index') ;
+			return Redirect::action('AdminGameController@index')->with('message', 'Đã thêm');
         }
 	}
 
@@ -181,12 +184,10 @@ class AdminGameController extends AdminController {
 	        	//update game
 				CommonNormal::update($id, $inputGame);
 
-				//update game_types: type_id, game_id
-				CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
-
-				//update game_category_parents: category_parent_id, game_id
-				CommonGame::updateRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id, 'GameRelation');
-
+				if($data) {
+					RelationBox::updateRelationship($data, 'types', Input::get('type_id'));
+					RelationBox::updateRelationship($data, 'categoryparents', Input::get('category_parent_id'));
+				}
 			}
 
 			//update histories: model_name, model_id, last_time, device, last_ip
@@ -198,7 +199,7 @@ class AdminGameController extends AdminController {
 			//SEO
 			CommonSeo::updateSeo('Game', $id, FOLDER_SEO_GAME);
 
-			return Redirect::action('AdminGameController@index') ;
+			return Redirect::action('AdminGameController@index')->with('message', 'Đã sửa');
         }
 	}
 
@@ -211,8 +212,19 @@ class AdminGameController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		CommonNormal::delete($id);
-        return Redirect::action('AdminGameController@index');
+		$data = Game::find($id);
+		if ($data) {
+			$history_id = CommonLog::updateHistory('Game', $id);
+			CommonLog::insertLogEdit('Game', $id, $history_id, REMOVE);
+
+			RelationBox::deleteRelationship($data, 'types');
+			RelationBox::deleteRelationship($data, 'categoryparents');
+
+			CommonNormal::delete($id);
+
+	        return Redirect::action('AdminGameController@index')->with('message', 'Đã xóa');
+		}
+		return Redirect::action('AdminGameController@index')->with('message', 'Game không tồn tại');
 	}
 
 	public function history($id)
@@ -224,7 +236,6 @@ class AdminGameController extends AdminController {
 			return View::make('admin.game.history')->with(compact('history', 'logEdit'));
 		}
 		return Redirect::action('AdminGameController@index')->with('message', 'Lịch sử game này đã bị xoá');
-		
 	}
 
 	public function deleteHistory($id)
@@ -235,17 +246,40 @@ class AdminGameController extends AdminController {
 			$history->delete();
 			return Redirect::action('AdminGameController@index')->with('message', 'Xoá lịch sử thành công');
 		}
-		return Redirect::action('AdminGameController@index');
+		return Redirect::action('AdminGameController@index')->with('message', 'Đã xóa');
 	}
 
+	// Delete all game selected
 	public function deleteSelected()
 	{
-
+		$gamesId = Input::get('game_id');
+		foreach($gamesId as $key => $value) {
+			$data = Game::find($value);
+			if($data) {
+				$history_id = CommonLog::updateHistory('Game', $value);
+				CommonLog::insertLogEdit('Game', $value, $history_id, REMOVE);
+				$data->types()->detach();
+				$data->categoryparents()->detach();
+				CommonNormal::delete($value);
+			}
+		}
+		dd(1);
 	}
 
-	public function updateWeightNumber()
+	// Edit weight number and status game index page
+	public function updateIndexData()
 	{
-
+		$gamesId = Input::get('game_id');
+		$weightNumber = Input::get('weight_number');
+		$statusGame = Input::get('statusGame');
+		foreach($gamesId as $key => $value) {
+			$input = array(
+				'weight_number' => $weightNumber[$key],
+				'status' => $statusGame[$key]
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
 	}
 
 }

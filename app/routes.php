@@ -10,7 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-// dd(123);
+dd(123);
 Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/category', 'CategoryController');
 
 	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');
-	Route::post('/games/updateWeightNumber', 'AdminGameController@updateWeightNumber');
+	Route::post('/games/updateIndexData', 'AdminGameController@updateIndexData');
 	Route::get('/games/search', array('uses' => 'AdminGameController@search', 'as' => 'admin.games.search'));
 	Route::get('/games/history/{id}', array('uses' => 'AdminGameController@history', 'as' => 'admin.games.history'));
 	Route::post('/games/history/{id}', array('uses' => 'AdminGameController@deleteHistory', 'as' => 'admin.games.history.delete'));
