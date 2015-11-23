@@ -3,13 +3,21 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class CategoryParent extends Eloquent
+class CategoryParent extends Eloquent implements SluggableInterface
 {
 	use SoftDeletingTrait;
+    use SluggableTrait;
     protected $table = 'category_parents';
-    protected $fillable = ['name', 'position', 'description', 'weight_number'];
+    protected $fillable = ['name', 'position', 'description', 'weight_number', 'slug'];
     protected $dates = ['deleted_at'];
+
+    protected $sluggable = array(
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    );
 
     public function categoryparentrelations()
     {
