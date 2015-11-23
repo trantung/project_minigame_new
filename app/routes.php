@@ -62,3 +62,4 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::resource('/', 'SiteController');
 
+Route::resource('/game', 'GameController');

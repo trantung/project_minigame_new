@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends BaseController {
+class GameController extends SiteController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +9,7 @@ class SiteController extends BaseController {
 	 */
 	public function index()
 	{
-		$data = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
-		return View::make('site.index', array('data' => $data));
+		//
 	}
 
 
