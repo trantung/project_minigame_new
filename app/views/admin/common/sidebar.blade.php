@@ -32,13 +32,13 @@
           <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
         </a>
       </li>
-      @if(Admin::isAdmin())
-      <li>
+      {{-- @if(Admin::isAdmin()) --}}
+      {{-- <li>
         <a href="#">
           <i class="fa fa-picture-o"></i> <span>Quản lý Slider</span>
         </a>
-      </li>
-      @endif
+      </li> --}}
+      {{-- @endif --}}
       <li class="treeview">
         <a href="#">
           <i class="fa fa-newspaper-o"></i> <span>Quản lý tin tức</span>

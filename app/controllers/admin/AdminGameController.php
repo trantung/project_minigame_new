@@ -82,7 +82,11 @@ class AdminGameController extends AdminController {
 			$id = CommonNormal::create($inputGame);
 
 			//insert game_types: type_id, game_id
-			CommonGame::insertRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id);
+			//CommonGame::insertRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id);
+
+			$data = Game::find($id);
+
+			$data->types()->attach(Input::get('type_id'));
 
 			//insert game_category_parents: category_parent_id, game_id
 			CommonGame::insertRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id);
@@ -183,7 +187,8 @@ class AdminGameController extends AdminController {
 				CommonNormal::update($id, $inputGame);
 
 				//update game_types: type_id, game_id
-				CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
+				// CommonGame::updateRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id, 'GameType');
+				$data->types()->sync(Input::get('type_id'));
 
 				//update game_category_parents: category_parent_id, game_id
 				CommonGame::updateRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id, 'GameRelation');
@@ -212,8 +217,20 @@ class AdminGameController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		CommonNormal::delete($id);
-        return Redirect::action('AdminGameController@index');
+		$data = Game::find($id);
+		if ($data) {
+			$data->types()->detach();
+
+			//update histories: model_name, model_id, last_time, device, last_ip
+			$history_id = CommonLog::updateHistory('Game', $id);
+			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+			CommonLog::insertLogEdit('Game', $id, $history_id, REMOVE);
+
+			CommonNormal::delete($id);
+
+	        return Redirect::action('AdminGameController@index')->with('message', 'da xoa');
+		}
+		return Redirect::action('AdminGameController@index')->with('message', 'game khong ton tai');
 	}
 
 	public function history()
@@ -223,12 +240,32 @@ class AdminGameController extends AdminController {
 
 	public function deleteSelected()
 	{
-
+		$gamesId = Input::get('game_id');
+		foreach($gamesId as $key => $value) {
+			$data = Game::find($value);
+			if($data) {
+				$data->types()->detach();
+			}
+			$history_id = CommonLog::updateHistory('Game', $value);
+			CommonLog::insertLogEdit('Game', $value, $history_id, REMOVE);
+			CommonNormal::delete($value);
+		}
+		dd(1);
 	}
 
-	public function updateWeightNumber()
+	public function updateIndexData()
 	{
-
+		$gamesId = Input::get('game_id');
+		$weightNumber = Input::get('weight_number');
+		$statusGame = Input::get('statusGame');
+		foreach($gamesId as $key => $value) {
+			$input = array(
+				'weight_number' => $weightNumber[$key],
+				'status' => $statusGame[$key]
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
 	}
 
 }

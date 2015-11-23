@@ -16,10 +16,8 @@
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
-		<a href="{{ action('AdminGameController@deleteSelected') }}" class="btn btn-primary">Xóa</a>
-		<a onclick="updateWeightNumber();" class="btn btn-success">Cập nhật</a>
-		<form method="post" name="frmUpdateWeightNumber" id="frmUpdateWeightNumber"></form>
-		<b id="testAjax"></b>
+		<a onclick="deleteSelected();" class="btn btn-primary">Xóa</a>
+		<a onclick="updateIndexData();" class="btn btn-success">Cập nhật</a>
 	</div>
 </div>
 @endif
@@ -67,7 +65,7 @@
 					<td>{{ $value->count_vote }}</td>
 					<td>{{ $value->count_download }}</td>
 					@if(Admin::isAdmin())
-					<td>{{ Form::select('status', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
+					<td>{{ Form::select('statusGame[]', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
 					@else
 					<td>{{ getStatusGame($value->status) }}</td>
 					@endif
