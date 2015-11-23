@@ -86,7 +86,6 @@ class AdminGameController extends AdminController {
 
 			//insert game_category_parents: category_parent_id, game_id
 			CommonGame::insertRelationshipGame(Input::get('category_parent_id'), 'category_parent_id', 'GameRelation', $id);
-
 			//insert histories: model_name, model_id, last_time, device, last_ip
 			$history_id = CommonLog::insertHistory('Game', $id);
 
