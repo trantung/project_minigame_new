@@ -62,4 +62,4 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::resource('/', 'SiteController');
 
-Route::resource('/game', 'GameController');
+Route::get('/{slug}.html', 'GameController@getGame');
