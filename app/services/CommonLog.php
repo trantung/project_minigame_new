@@ -39,4 +39,13 @@ class CommonLog
 		CommonNormal::create($input, 'log_edit');
 	}
 
+	public static function getIdHistory($modelName, $modelId)
+	{
+		$history = AdminHistory::where('model_name', $modelName)->where('model_id', $modelId)->first();
+		if ($history) {
+			return $history->id;
+		}
+		return null;
+	}
+
 }

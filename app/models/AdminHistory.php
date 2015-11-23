@@ -14,7 +14,7 @@ class AdminHistory extends Eloquent
 
     public function logedits()
     {
-    	return $this->belongsToMany();
+    	return $this->hasMany('LogEdit', 'history_id', 'id');
     }
 
 }

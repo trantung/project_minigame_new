@@ -216,9 +216,27 @@ class AdminGameController extends AdminController {
         return Redirect::action('AdminGameController@index');
 	}
 
-	public function history()
+	public function history($id)
 	{
-		dd(12);
+		$historyId = CommonLog::getIdHistory('Game', $id);
+		if ($historyId) {
+			$history = AdminHistory::find($historyId);
+			$logEdit = $history->logedits;
+			return View::make('admin.game.history')->with(compact('history', 'logEdit'));
+		}
+		return Redirect::action('AdminGameController@index')->with('message', 'Lịch sử game này đã bị xoá');
+		
+	}
+
+	public function deleteHistory($id)
+	{
+		$history = AdminHistory::find($id);
+		if ($history) {
+			$history->logedits()->where('history_id', $id)->delete();
+			$history->delete();
+			return Redirect::action('AdminGameController@index')->with('message', 'Xoá lịch sử thành công');
+		}
+		return Redirect::action('AdminGameController@index');
 	}
 
 	public function deleteSelected()

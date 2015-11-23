@@ -32,13 +32,16 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');
 	Route::post('/games/updateWeightNumber', 'AdminGameController@updateWeightNumber');
 	Route::get('/games/search', array('uses' => 'AdminGameController@search', 'as' => 'admin.games.search'));
-	Route::get('/games/history', array('uses' => 'AdminGameController@history', 'as' => 'admin.games.history'));
+	Route::get('/games/history/{id}', array('uses' => 'AdminGameController@history', 'as' => 'admin.games.history'));
+	Route::post('/games/history/{id}', array('uses' => 'AdminGameController@deleteHistory', 'as' => 'admin.games.history.delete'));
 	Route::resource('/games', 'AdminGameController');
 
 	Route::resource('/gametype', 'GameTypeController');
 
 	Route::resource('/newstype', 'NewsTypeController');
 
+	Route::post('/news/history/{id}', array('uses' => 'NewsController@deleteHistory', 'as' => 'admin.news.history.delete'));
+	Route::get('/news/history/{id}', array('uses' => 'NewsController@history', 'as' => 'admin.news.history'));
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::resource('/news', 'NewsController');
 

@@ -54,3 +54,7 @@ define('GAMEOFFLINE', 3);
 define('CREATE', 'Create');
 define('EDIT', 'Edit');
 define('REMOVE', 'Remove');
+//define device
+define('SMART_DEVICE', 'Smart device');
+define('COMPUTER_DEVICE', 'Computer');
+

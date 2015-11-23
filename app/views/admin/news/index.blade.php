@@ -36,9 +36,10 @@
 			  <td>{{ $value->title }}</td>
 			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>
+				<a href="{{ action('NewsController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
 				<a href="{{  action('NewsController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
-				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 				{{ Form::close() }}
 			  </td>
 			</tr>
