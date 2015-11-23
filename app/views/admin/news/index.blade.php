@@ -34,7 +34,7 @@
 			<tr>
 			  <td>{{ $value->id }}</td>
 			  <td>{{ $value->title }}</td>
-			  <td>{{ AdminNew::find($value->id)->username }}</td>
+			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>
 				<a href="{{  action('NewsController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

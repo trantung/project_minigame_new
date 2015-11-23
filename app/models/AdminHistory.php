@@ -12,4 +12,9 @@ class AdminHistory extends Eloquent
     	'device', 'last_ip'];
     protected $dates = ['deleted_at'];
 
+    public function logedits()
+    {
+    	return $this->belongsToMany();
+    }
+
 }
