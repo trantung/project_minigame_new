@@ -51,7 +51,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/comment', 'CommentController');
 
-	Route::resource('/score', 'ScoreManagerController');	
+	Route::resource('/score', 'ScoreManagerController');
+
+	Route::get('/advertise_child', 'AdvertiseController@indexChild');
+	Route::resource('/advertise', 'AdvertiseController');	
 
 });
 
