@@ -111,6 +111,9 @@ class AccountController extends SiteController {
 
 	public function account()
 	{
+		if(!CommonSite::isLogin()) {
+			return Redirect::action('AccountController@create');
+		}
 		$id = Auth::user()->get()->id;
 		$data = User::find($id);
         return View::make('site.user.account', array('data'=>$data));
@@ -118,6 +121,9 @@ class AccountController extends SiteController {
 
 	public function doAccount()
 	{
+		if(!CommonSite::isLogin()) {
+			return Redirect::action('AccountController@create');
+		}
 		$id = Auth::user()->get()->id;
 		$rules = array(
 			'password'   	=> 'required|min:6',
