@@ -41,6 +41,23 @@ function selectRelationType()
 		TYPE_RELATION => 'Type',
 	);
 }
+function selectEditRelationType($input)
+{
+	$test =CategoryParent::find($input->model_id)->where('position', MENU)->get();
+	if($input->model_name == TYPE || $input->relation_name == TYPE)
+	{
+		return TYPE_RELATION;
+	}
+	elseif ($input->model_name == CATEGORYPARENT || $input->relation_name == CATEGORYPARENT) {
+		$count = CategoryParent::where('id',$input->model_id)->where('position',MENU)->get();
+		if(count($count) > 0)
+			return MENU_RELATION;
+		else
+			return CONTENT_RELATION;
+	}
+
+	
+}
 
 function getModelNameRelation($modelName)
 {
@@ -68,7 +85,7 @@ function returnList($className)
 
 function getWeightNumberType($typeId, $parentId)
 {
-	$weightNumber = ParentType::where('type_id', $typeId)->where('category_parent_id', $parentId)->first();
+	$weightNumber = ParentType::where('type_id', $typeId)->where('categorty_parent_id', $parentId)->first();
 	if ($weightNumber) {
 		return $weightNumber->weight_number;
 	}

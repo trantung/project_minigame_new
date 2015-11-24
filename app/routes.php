@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/relation/ajaxedit/{id}', array('uses' => 'RelationController@ajaxedit', 'as' => 'ajax.edit'));
 	Route::resource('/relation', 'RelationController');
 
+
+	Route::post('/comment/deleteSelected', 'CommentController@deleteSelected');
+	Route::post('/comment/updateIndexData', 'CommentController@updateIndexData');
 	Route::resource('/comment', 'CommentController');
 
 	Route::resource('/score', 'ScoreManagerController');
@@ -62,6 +65,14 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::put('/edit/advertise_child/{id}/{model_id}', 'AdvertiseController@updateChild');
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
+
+	Route::resource('/feedback', 'FeedbackController');
+
+
+	Route::resource('/feedback_game', 'FeedbackGameController');
+
+
+	Route::resource('/seo', 'SeoController');
 
 });
 

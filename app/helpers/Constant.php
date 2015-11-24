@@ -8,6 +8,9 @@ define('MENU_RELATION', '1');
 define('CONTENT_RELATION', '2');
 define('TYPE_RELATION', '3');
 
+define('CATEGORYPARENT', 'CategoryParent');
+define('TYPE', 'Type');
+//End Relation
 define('CONTENT_SEGMENT', 'content');
 //permission role
 define('ADMIN', 1);
