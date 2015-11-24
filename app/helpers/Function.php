@@ -255,4 +255,10 @@ function getStatusAdvertise($status)
 		return 'Ẩn';
 	}
 }
+function getNameParentFromCommonModel($id)
+{	
+	$parentId = CommonModel::find($id)->model_id;
+	$name = CategoryParent::find($parentId)->name;
+	return $name;
+}
 

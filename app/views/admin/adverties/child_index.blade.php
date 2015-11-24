@@ -27,18 +27,18 @@
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
-			@foreach($advertise as $value)
+			@foreach($advertisePosition as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-				  	<td>{{  }}</td>
-					<td>{{ $value->image_link }}</td>
+				  	<td>{{ CategoryParent::find($value->common_model_id)->image_link }}</td>
+					<td>{{ Advertise::find($value->advertisement_id)->image_link }}</td>
 					<td>
-						<img src="{{ url(UPLOAD_ADVERTISE . '/header' .'/' .$value->id . '/' . $value->image_url) }}" ,width="100px", height="100px"  />
+						<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .$value->common_model_id . '/' . $value->image_url) }}" ,width="100px", height="100px"  />
 					</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
-					<a href="{{  action('AdvertiseController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdvertiseController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+					<a href="{{  action('AdvertiseController@editChild', $value->advertisement_id) }}" class="btn btn-primary">Sửa</a>
+						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdvertiseController@destroyChild', $value->advertisement_id), 'style' => 'display: inline-block;')) }}
 							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
 				  	</td>
