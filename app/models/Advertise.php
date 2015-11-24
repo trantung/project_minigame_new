@@ -11,4 +11,13 @@ class Advertise extends Eloquent
     protected $fillable = ['image_url', 'image_link', 'position', 'status'];
     protected $dates = ['deleted_at'];
 
-}
+    public function advertisePositions()
+    {
+        return $this->hasMany('AdvertisePosition', 'advertisement_id', 'id');
+    }
+
+    public function commonModels()
+    {
+        return $this->belongsToMany('CommonModel', 'advertise_positions', 'advertisement_id', 'common_model_id');
+    }
+}	
