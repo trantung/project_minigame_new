@@ -33,7 +33,7 @@
 					<td>{{ getPositionAdvertise($value->position) }}</td>
 					<td>{{ $value->image_link }}</td>
 					<td>
-						<img src="{{ url(UPLOAD_ADVERTISE . '/header' .'/' .$value->id . '/' . $value->image_url) }}" ,width="100px", height="100px"  />
+						<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer' .'/' .$value->id . '/' . $value->image_url) }}" ,width="100px", height="100px"  />
 					</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>

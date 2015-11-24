@@ -40,7 +40,7 @@
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::file('image_url', array('id' => 'image_url')) }}
-							<img src="{{ url(UPLOAD_ADVERTISE . '/header' .'/' .$advertise->id . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
+							<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer' .'/' .$advertise->id . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
 						</div>
 					</div>
 				</div>

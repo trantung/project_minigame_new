@@ -32,6 +32,10 @@
 		  	return this.value;
 		}).get();
 
+		var values4 = $('input[name^="count_play"]').map(function () {
+		  	return this.value;
+		}).get();
+
 		$.ajax(
 		{
 			type:'post',
@@ -39,7 +43,8 @@
 			data:{
 				'game_id': values1,
 				'weight_number': values2,
-				'statusGame': values3
+				'statusGame': values3,
+				'count_play': values4
 			},
 			success: function(data)
 			{

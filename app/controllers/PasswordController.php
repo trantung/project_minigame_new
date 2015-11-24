@@ -1,6 +1,6 @@
 <?php
 
-class PasswordController extends BaseController {
+class PasswordController extends HomeController {
 
 	/**
 	 * Display a listing of the resource.

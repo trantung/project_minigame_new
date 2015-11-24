@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
-@include('site.common.header')
-<body>
+	@include('site.common.header')
+	<body>
 
-	@include('site.common.topbar')
+		@include('site.common.menu')
+		@include('site.common.topbar')
 
-	@yield('content')
+		<div class="container">
+			<div class="row">
 
-	@include('site.common.footer')
-</body>
+		  	@include('site.common.navbar')
+
+			<div class="clearfix"></div>
+
+			<div class="main">
+
+				@include('site.common.ad')
+
+				@yield('content')
+
+				@include('site.common.ad')
+
+			</div>
+
+			@include('site.common.footer')
+
+			</div>
+	  	</div>
+
+	</body>
 </html>

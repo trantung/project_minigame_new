@@ -1,6 +1,13 @@
 <?php
 
-class SiteController extends BaseController {
+class SiteController extends HomeController {
+
+	public function __construct() {
+		$menu = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
+
+
+		View::share('menu', $menu);
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +16,7 @@ class SiteController extends BaseController {
 	 */
 	public function index()
 	{
-		$data = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
-		return View::make('site.index', array('data' => $data));
+		//
 	}
 
 
@@ -83,5 +89,49 @@ class SiteController extends BaseController {
 		//
 	}
 
+	public function login()
+    {
+    	$checkLogin = CommonSite::isLogin();
+        if($checkLogin) {
+    		return Redirect::to('/');
+        } else {
+            return View::make('site.user.login');
+        }
+    }
+
+    public function doLogin()
+    {
+        $rules = array(
+            'user_name'   => 'required',
+            'password'   => 'required',
+        );
+        $input = Input::except('_token');
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Redirect::action('SiteController@login')
+                // ->withErrors($validator);
+            	->with('error', 'Sai tên truy cập hoặc mật khẩu');
+        } else {
+            if(Auth::user()->attempt($input)) {
+            	$inputUser = CommonSite::ipDeviceUser();
+            	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
+        		return Redirect::to('/');
+            } else {
+                return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
+            }
+        }
+    }
+
+    public function logout()
+    {
+    	$checkLogin = CommonSite::isLogin();
+        if($checkLogin) {
+        	Auth::user()->logout();
+	        Session::flush();
+	        return Redirect::route('login');
+        } else {
+            return Redirect::to('/');
+        }
+    }
 
 }

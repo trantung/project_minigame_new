@@ -73,7 +73,9 @@ class CommonNormal
 			return 'Feedback';
 		if($name == 'feedback_game')
 			return 'GameErrors';
-		if($name == 'ceo')
+		if($name == 'seo')
 			return 'AdminCeo';
+		if($name == 'User')
+			return 'User';
 	}
 }

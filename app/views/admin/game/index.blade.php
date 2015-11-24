@@ -12,7 +12,7 @@
 <!-- inclue Search form-->
 @include('admin.game.search')
 
-@if(Admin::isAdmin())
+@if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
@@ -61,7 +61,11 @@
 					@endif
 					<td>{{ Game::find($value->parent_id)->name }}</td>
 					<td>{{ $value->count_view }}</td>
+					@if(Admin::isAdmin())
+					<td><input type="text" name="count_play[]" value="{{ $value->count_play }}" style="width: 50px; text-align: center;" /></td>
+					@else
 					<td>{{ $value->count_play }}</td>
+					@endif
 					<td>{{ $value->count_vote }}</td>
 					<td>{{ $value->count_download }}</td>
 					@if(Admin::isAdmin())
