@@ -12,7 +12,7 @@
 <!-- inclue Search form-->
 @include('admin.game.search')
 
-@if(Admin::isAdmin())
+@if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>

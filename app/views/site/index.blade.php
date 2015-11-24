@@ -5,12 +5,6 @@
 @stop
 
 @section('content')
-<div class="container">
-	<div class="row">
-
-	  @include('site.common.navbar')
-
-	<div class="clearfix"></div>
 
 	<div class="main">
 
@@ -548,8 +542,4 @@
 
 	</div>
 
-	@include('site.common.footer')
-
-	</div>
-  </div>
 @stop

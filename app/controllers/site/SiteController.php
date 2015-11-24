@@ -1,6 +1,13 @@
 <?php
 
-class SiteController extends BaseController {
+class SiteController extends HomeController {
+
+	public function __construct() {
+		$menu = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
+
+
+		View::share('menu', $menu);
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +16,7 @@ class SiteController extends BaseController {
 	 */
 	public function index()
 	{
-		$data = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
-		return View::make('site.index', array('data' => $data));
+		//
 	}
 
 
@@ -83,5 +89,46 @@ class SiteController extends BaseController {
 		//
 	}
 
+	public function login()
+    {
+    	$checkLogin = Auth::check();
+        if($checkLogin) {
+        	dd(12);
+    		return Redirect::to('/');
+        } else {
+            return View::make('site.user.login');
+        }
+    }
+
+    public function doLogin()
+    {
+        $rules = array(
+            'username'   => 'required',
+            'password'   => 'required',
+        );
+        $input = Input::except('_token');
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Redirect::route('login')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            Auth::attempt($input);
+            $checkLogin = Auth::check();
+            if($checkLogin) {
+            	dd(12);
+        		return Redirect::to('/');
+            } else {
+                return Redirect::route('login');
+            }
+        }
+    }
+
+    public function logout()
+    {
+        Auth::user()->logout();
+        Session::flush();
+        return Redirect::route('login');
+    }
 
 }
