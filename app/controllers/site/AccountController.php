@@ -31,7 +31,28 @@ class AccountController extends SiteController {
 	 */
 	public function store()
 	{
-		//
+		$rules = array(
+			'user_name'  => 'required',
+            'password'   => 'required|min:6',
+            'email'      => 'required|email',
+            'phone'      => 'required',
+            // 'code'		 => 'required'
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('SiteController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+        	$input['password'] = Hash::make($input['password']);
+        	$id = CommonNormal::create($input, 'User');
+        	if($id) {
+        		return Redirect::action('SiteController@login');
+        	} else {
+        		dd('Error');
+        	}
+        }
 	}
 
 

@@ -12,7 +12,15 @@
 
 			<div class="clearfix"></div>
 
-			@yield('content')
+			<div class="main">
+
+				@include('site.common.ad')
+
+				@yield('content')
+
+				@include('site.common.ad')
+
+			</div>
 
 			@include('site.common.footer')
 

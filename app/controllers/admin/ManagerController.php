@@ -52,7 +52,7 @@ class ManagerController extends AdminController {
 		if($validator->fails()) {
 			return Redirect::action('ManagerController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('name'));
+	            ->withInput(Input::except('password'));
         } else {
         	$input['password'] = Hash::make($input['password']);
         	$id = CommonNormal::create($input);
