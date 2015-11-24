@@ -116,7 +116,7 @@
 						</div>
 					</div>
 					<div class="box-body table-responsive">
-						<h4>Chọn chuyên mục</h4>
+						<h4>Chọn box hiển thị</h4>
 						<div class="overflow-box">
 							<table class="table table-bordered">
 								<tr>

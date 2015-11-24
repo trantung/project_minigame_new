@@ -58,8 +58,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
 	Route::post('/create/advertise_child', 'AdvertiseController@storeChild');
-	Route::get('/edit/advertise_child/{id}', 'AdvertiseController@editChild');
-	Route::put('/edit/advertise_child/{id}', 'AdvertiseController@updateChild');
+	Route::get('/edit/advertise_child/{id}/{model_id}', 'AdvertiseController@editChild');
+	Route::put('/edit/advertise_child/{id}/{model_id}', 'AdvertiseController@updateChild');
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
