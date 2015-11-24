@@ -88,4 +88,6 @@ Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'
 
 Route::resource('/', 'SiteIndexController');
 
-Route::get('/{slug}.html', 'GameController@getGame');
+Route::get('/{slug}', 'GameController@listgame');
+
+Route::get('{type}/{slug}.html', 'GameController@detailGame');
