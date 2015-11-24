@@ -12,7 +12,7 @@
 	</div>
 	<ul>
 		<li class='active'><a href='index.html' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
-		@foreach($data as $key => $value)
+		@foreach($menu as $key => $value)
 			@if(count($value->types) == 0)
 			<li><a href='#' class="color2"><span>{{ $value->name }}</span></a></li>
 			@else
