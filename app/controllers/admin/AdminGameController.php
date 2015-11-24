@@ -258,8 +258,8 @@ class AdminGameController extends AdminController {
 			if($data) {
 				$history_id = CommonLog::updateHistory('Game', $value);
 				CommonLog::insertLogEdit('Game', $value, $history_id, REMOVE);
-				$data->types()->detach();
-				$data->categoryparents()->detach();
+				RelationBox::deleteRelationship($data, 'types');
+				RelationBox::deleteRelationship($data, 'categoryparents');
 				CommonNormal::delete($value);
 			}
 		}

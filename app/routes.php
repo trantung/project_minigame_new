@@ -64,6 +64,15 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/advertise', 'AdvertiseController');
 
 });
-Route::resource('/', 'SiteController');
+
+// FRONTEND
+Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));
+Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
+Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logout'));
+
+Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
+Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@edit', 'as' => 'account'));
+
+Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}.html', 'GameController@getGame');

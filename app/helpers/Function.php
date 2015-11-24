@@ -261,4 +261,7 @@ function getNameParentFromCommonModel($id)
 	$name = CategoryParent::find($parentId)->name;
 	return $name;
 }
-
+function getNameBoxEnable()
+{
+	return CategoryParent::where('position',CONTENT)->lists('name', 'id');
+}

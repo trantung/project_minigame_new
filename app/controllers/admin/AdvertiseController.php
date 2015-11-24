@@ -102,11 +102,13 @@ class AdvertiseController extends AdminController {
 
 	public function createChild()
 	{
-		dd(123);
+		return View::make('admin.adverties.child_create');
 	}
 	public function storeChild()
 	{
-		dd(5566);
+		$input = Input::except('_token');
+		dd($input);
+
 	}
 	public function editChild($id)
 	{

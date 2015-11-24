@@ -24,7 +24,7 @@ class RelationBox
 
 	public static function deleteRelationship($data, $relation)
 	{
-		if($input && $data && $relation) {
+		if($data && $relation) {
 			$data->$relation()->detach();
 		}
 	}
