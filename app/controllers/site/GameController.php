@@ -82,5 +82,11 @@ class GameController extends SiteController {
 		//
 	}
 
+	public function getGame($slug)
+	{
+		// http://minigame.de/game-ban-ga-cuc-ki-hay.html
+		$game = Game::findBySlug($slug);
+		dd($game);
+	}
 
 }

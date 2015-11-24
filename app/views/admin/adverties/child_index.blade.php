@@ -7,7 +7,7 @@
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdvertiseController@create') }}" class="btn btn-primary">Thêm mới quảng cáo header/footer</a>
+		<a href="{{ action('AdvertiseController@createChild') }}" class="btn btn-primary">Thêm mới quảng cáo</a>
 	</div>
 </div>
 <div class="row">
@@ -21,7 +21,7 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Vị trí</th>
+			  <th>Content</th>
 			  <th>Link</th>
 			  <th>Image</th>
 			  <th>Status</th>
@@ -30,7 +30,7 @@
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-					<td>{{ getPositionAdvertise($value->position) }}</td>
+				  	<td>{{  }}</td>
 					<td>{{ $value->image_link }}</td>
 					<td>
 						<img src="{{ url(UPLOAD_ADVERTISE . '/header' .'/' .$value->id . '/' . $value->image_url) }}" ,width="100px", height="100px"  />
