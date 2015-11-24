@@ -27,7 +27,7 @@ class CommonLog
 		return $id;
 	}
 
-	public static function insertLogEdit($model_name, $model_id, $history_id)
+	public static function insertLogEdit($model_name, $model_id, $history_id, $action)
 	{
 		$input = array();
 		$input['history_id'] = $history_id;
@@ -35,7 +35,17 @@ class CommonLog
 		$input['editor_name'] = Auth::admin()->get()->username;
 		$input['editor_time'] = $model_name::find($model_id)->created_at;
 		$input['editor_ip'] = getIpAddress();
+		$input['action'] = $action;
 		CommonNormal::create($input, 'log_edit');
+	}
+
+	public static function getIdHistory($modelName, $modelId)
+	{
+		$history = AdminHistory::where('model_name', $modelName)->where('model_id', $modelId)->first();
+		if ($history) {
+			return $history->id;
+		}
+		return null;
 	}
 
 }

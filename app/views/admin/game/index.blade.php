@@ -16,8 +16,8 @@
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
-		<a href="{{ action('AdminGameController@deleteSelected') }}" class="btn btn-primary">Xóa</a>
-		<a onclick="updateWeightNumber();" class="btn btn-success">Cập nhật</a>
+		<a onclick="deleteSelected();" class="btn btn-primary">Xóa</a>
+		<a onclick="updateIndexData();" class="btn btn-success">Cập nhật</a>
 	</div>
 </div>
 @endif
@@ -45,7 +45,7 @@
 				<th>Lượt tải</th>
 				<th>Trạng thái</th>
 				<th>Ngày đăng</th>
-				<th style="width:120px;">&nbsp;</th>
+				<th style="width:200px;">&nbsp;</th>
 			</tr>
 			@foreach($data as $key => $value)
 				<tr>
@@ -59,19 +59,19 @@
 					@else
 					<td>{{ $value->weight_number }}</td>
 					@endif
-					<td>{{ Game::find($value->id)->parent_id }}</td>
+					<td>{{ Game::find($value->parent_id)->name }}</td>
 					<td>{{ $value->count_view }}</td>
 					<td>{{ $value->count_play }}</td>
 					<td>{{ $value->count_vote }}</td>
 					<td>{{ $value->count_download }}</td>
 					@if(Admin::isAdmin())
-					<td>{{ Form::select('status', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
+					<td>{{ Form::select('statusGame[]', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
 					@else
 					<td>{{ getStatusGame($value->status) }}</td>
 					@endif
 					<td>{{ $value->start_date }}</td>
 					<td>
-						{{-- <a href="#" class="btn btn-success">Xem</a> --}}
+						<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
 						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(Admin::isAdmin())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

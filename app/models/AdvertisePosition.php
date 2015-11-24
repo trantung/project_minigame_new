@@ -8,7 +8,7 @@ class AdvertisePosition extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'advertise_positions';
-    protected $fillable = ['name', 'common_model_id', 'advertisement_id'];
+    protected $fillable = ['name', 'common_model_id', 'advertisement_id', 'status'];
     protected $dates = ['deleted_at'];
 
 }

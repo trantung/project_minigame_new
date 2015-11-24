@@ -7,4 +7,26 @@ class RelationBox
 		$name = $className::find($input->model_id)->name;
 		return $name;
 	}
+
+	public static function insertRelationship($data, $relation, $input)
+	{
+		if($input && $data && $relation) {
+			$data->$relation()->attach($input);
+		}
+	}
+
+	public static function updateRelationship($data, $relation, $input)
+	{
+		if($input && $data && $relation) {
+			$data->$relation()->sync($input);
+		}
+	}
+
+	public static function deleteRelationship($data, $relation)
+	{
+		if($input && $data && $relation) {
+			$data->$relation()->detach();
+		}
+	}
+
 }

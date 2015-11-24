@@ -53,3 +53,19 @@ define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game offline
 define('GAMEOFFLINE', 3);
+//history action
+define('CREATE', 'Create');
+define('EDIT', 'Edit');
+define('REMOVE', 'Remove');
+//define device
+define('SMART_DEVICE', 'Smart device');
+define('COMPUTER_DEVICE', 'Computer');
+//define advertise position
+define('HEADER', 1);
+define('Footer', 2);
+define('CHILD_PAGE', 3);
+//advertise url image
+define('UPLOAD_ADVERTISE', '/images/advertise');
+
+
+

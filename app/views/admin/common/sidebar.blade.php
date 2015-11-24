@@ -32,13 +32,13 @@
           <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
         </a>
       </li>
-      @if(Admin::isAdmin())
-      <li>
+      {{-- @if(Admin::isAdmin()) --}}
+      {{-- <li>
         <a href="#">
           <i class="fa fa-picture-o"></i> <span>Quản lý Slider</span>
         </a>
-      </li>
-      @endif
+      </li> --}}
+      {{-- @endif --}}
       <li class="treeview">
         <a href="#">
           <i class="fa fa-newspaper-o"></i> <span>Quản lý tin tức</span>
@@ -73,8 +73,15 @@
       @if(Admin::isAdmin())
       <li>
         <a href="#">
-          <i class="fa fa-picture-o"></i> <span>Quản lý quảng cáo</span>
-        </a>
+            <i class="fa fa-newspaper-o"></i> <span>Quản lý quảng cáo</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header và Footer</a></li>
+            @if(!Admin::isSeo())
+            <li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Content</a></li>
+            @endif
+          </ul>
       </li>
       @endif
       @if(Admin::isAdmin())

@@ -7,6 +7,6 @@
 
 	@yield('content')
 
-	@include('admin.common.footer')
+	@include('site.common.footer')
 </body>
 </html>

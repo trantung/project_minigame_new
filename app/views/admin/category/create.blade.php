@@ -16,7 +16,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('CategoryController@store', 'files'=> true))) }}
+			{{ Form::open(array('action' => array('CategoryController@store'), 'files'=> true))) }}
 			  <div class="box-body">
 				<div class="form-group">
 				  <label for="name">Tên category</label>

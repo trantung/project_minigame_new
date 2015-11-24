@@ -62,6 +62,9 @@ class CommonGame
     	$inputGame['parent_id'] = Input::get('parent_id');
     	$inputGame['weight_number'] = Input::get('weight_number');
     	$inputGame['start_date'] = Input::get('start_date');
+    	if($inputGame['start_date'] == '') {
+    		$inputGame['start_date'] = date('m/d/Y');
+    	}
     	$inputGame['status'] = Input::get('status');
     	$inputGame['score_status'] = Input::get('score_status');
     	$inputGame['gname'] = Input::get('gname');

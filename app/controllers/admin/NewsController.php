@@ -62,7 +62,7 @@ class NewsController extends AdminController {
 			$history_id = CommonLog::insertHistory('AdminNew', $id);
 
 			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('AdminNew', $id, $history_id);
+			CommonLog::insertLogEdit('AdminNew', $id, $history_id, CREATE);
 			
 			// insert ceo
 			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
@@ -129,7 +129,7 @@ class NewsController extends AdminController {
 			$history_id = CommonLog::updateHistory('AdminNew', $id);
 
 			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('AdminNew', $id, $history_id);
+			CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
 
 			//upadte ceo
 			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);
@@ -149,4 +149,28 @@ class NewsController extends AdminController {
 		CommonNormal::delete($id);
 		return Redirect::action('NewsController@index') ;
 	}
+
+	public function history($id)
+	{
+		$historyId = CommonLog::getIdHistory('AdminNew', $id);
+		if ($historyId) {
+			$history = AdminHistory::find($historyId);
+			$logEdit = $history->logedits;
+			return View::make('admin.news.history')->with(compact('history', 'logEdit'));
+		}
+		return Redirect::action('NewsController@index')->with('message', 'Lịch sử game này đã bị xoá');
+		
+	}
+
+	public function deleteHistory($id)
+	{
+		$history = AdminHistory::find($id);
+		if ($history) {
+			$history->logedits()->where('history_id', $id)->delete();
+			$history->delete();
+			return Redirect::action('NewsController@index')->with('message', 'Xoá lịch sử thành công');
+		}
+		return Redirect::action('NewsController@index');
+	}
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends \BaseController {
+class SiteController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.

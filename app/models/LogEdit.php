@@ -9,7 +9,11 @@ class LogEdit extends Eloquent
 	use SoftDeletingTrait;
     protected $table = 'log_edits';
     protected $fillable = ['history_id', 'editor_id', 'editor_name',
-    	'editor_time', 'editor_ip'];
+    	'editor_time', 'editor_ip', 'action'];
     protected $dates = ['deleted_at'];
 
+    public function history()
+    {
+    	return $this->belongsTo('AdminHistory', 'history_id', 'id');
+    }
 }
