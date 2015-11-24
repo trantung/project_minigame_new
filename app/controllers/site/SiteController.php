@@ -108,14 +108,14 @@ class SiteController extends HomeController {
         $input = Input::except('_token');
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return Redirect::route('login')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
+            return Redirect::action('SiteController@login')
+                // ->withErrors($validator);
+            	->with('error', 'Sai tên truy cập hoặc mật khẩu');
         } else {
             if(Auth::user()->attempt($input)) {
         		return Redirect::to('/');
             } else {
-                return Redirect::route('login');
+                return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
             }
         }
     }

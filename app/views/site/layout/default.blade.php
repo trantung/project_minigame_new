@@ -3,6 +3,7 @@
 	@include('site.common.header')
 	<body>
 
+		@include('site.common.menu')
 		@include('site.common.topbar')
 
 		<div class="container">
