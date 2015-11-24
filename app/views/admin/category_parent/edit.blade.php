@@ -24,6 +24,10 @@
 								<label for="name">Chọn vị trí</label>
 								@if(Request::segment(3) == CONTENT_SEGMENT)
 									{{ Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')) }}
+									<div class="form-group">
+										<label for="name">Sắp xếp theo kiểu</label>
+											{{ Form::select('arrange', selectArrange(), $inputCategory->arrange,  array('class' =>'form-control')) }}
+									</div>
 								@else
 									{{ Form::select('position', [1 => 'Menu'], $inputCategory->position, array('class' =>'form-control')) }}
 								@endif

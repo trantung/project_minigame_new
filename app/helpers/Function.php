@@ -282,3 +282,13 @@ function getNameBoxEnable()
 {
 	return CategoryParent::where('position',CONTENT)->lists('name', 'id');
 }
+function selectArrange()
+{
+	return array(
+			HOT => 'Hot',
+			GAME_PLAY => 'Chơi nhiều',
+			GAME_VOTE => 'Bình chọn nhiều',
+			GAME_VIEW => 'Xem nhiều',
+			GAME_DOWNLOAD => 'Tải nhiều',
+		);
+}

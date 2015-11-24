@@ -67,6 +67,12 @@ define('CHILD_PAGE', 3);
 //advertise url image
 define('UPLOAD_ADVERTISE', '/images/advertise');
 define('BOTTOM', 'bottom');
+//arrange parent
+define('HOT', 1);
+define('GAME_PLAY', 2);
+define('GAME_VOTE', 3);
+define('GAME_VIEW', 4);
+define('GAME_DOWNLOAD', 5);
 
 
 
