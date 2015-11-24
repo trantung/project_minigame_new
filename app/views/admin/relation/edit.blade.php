@@ -89,7 +89,7 @@
 						</div>
 						<div class="col-sm-2">	                  	
 						   {{  Form::select('relation_name', selectRelationType(), 
-						  null,
+						  selectEditRelationType($inputRelation),
 						   array('class' => 'form-control' ,'onchange' => 'getRelationTypeCategory()', 'id' =>'type_box_botton'))  }}
 						</div>
 						<div class="col-sm-2">	                  	

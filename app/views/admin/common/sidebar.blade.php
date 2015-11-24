@@ -64,11 +64,22 @@
         </a>
       </li>
       @if(Admin::isAdmin())
-      <li>
+      <li class="treeview">
         <a href="#">
-          <i class="fa fa-comment"></i> <span>Quản lý góp ý báo lỗi</span>
+          <i class="fa fa-newspaper-o"></i> <span>Quản lý góp ý báo lỗi</span>
+          <i class="fa fa-angle-left pull-right"></i>
         </a>
-      </li>
+        <ul class="treeview-menu">
+          <li><a href="{{ action('FeedbackController@index') }}">
+              <i class="fa fa-comment"></i> <span>Quản lý góp ý</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ action('FeedbackGameController@index') }}">
+              <i class="fa fa-comment"></i> <span>Quản lý báo lỗi game</span>
+            </a>
+          </li>
+        </ul>
       @endif
       @if(Admin::isAdmin())
       <li>

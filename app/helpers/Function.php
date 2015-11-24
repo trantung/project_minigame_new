@@ -44,15 +44,15 @@ function selectRelationType()
 function selectEditRelationType($input)
 {
 	$test =CategoryParent::find($input->model_id)->where('position', MENU)->get();
-	dd($input->toArray());
-	if($input->model_name ==TYPE)
+	if($input->model_name == TYPE || $input->relation_name == TYPE)
 	{
 		return TYPE_RELATION;
 	}
-	elseif ($input->model_name == CATEGORYPARENT) {
-		if(count(CategoryParent::find($input->id)->where('position',MENU)) > 0)
+	elseif ($input->model_name == CATEGORYPARENT || $input->relation_name == CATEGORYPARENT) {
+		$count = CategoryParent::where('id',$input->model_id)->where('position',MENU)->get();
+		if(count($count) > 0)
 			return MENU_RELATION;
-		if(count(CategoryParent::find($input->id)->where('position',CONTENT)) > 0)
+		else
 			return CONTENT_RELATION;
 	}
 

@@ -1,6 +1,6 @@
 <?php 
 
-class CommentController extends AdminController {
+class FeedbackGameController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +9,8 @@ class CommentController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputComment =  Comment::orderBy('id', 'desc')->paginate(PAGINATE);
-		return View::make('admin.comment.index')->with(compact('inputComment'));
-
+		$inputFeedbackGame = GameErrors::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.feedback_game.index')->with(compact('inputFeedbackGame'));
 	}
 
 
@@ -57,9 +56,8 @@ class CommentController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$statusComment = Comment::find($id);
-	
-		if($statusComment->status == ACTIVE)
+		$status_feedback_game = GameErrors::find($id);
+		if($status_feedback_game->status == ACTIVE)
 		{
 			$input['status'] = INACTIVE;
 			CommonNormal::update($id, ['status' => $input['status']]);
@@ -68,7 +66,7 @@ class CommentController extends AdminController {
 			CommonNormal::update($id, ['status' => $input['status']]);
 		}
 
-		return Redirect::action('CommentController@index') ;
+		return Redirect::action('FeedbackGameController@index') ;
 	}
 
 
@@ -80,7 +78,7 @@ class CommentController extends AdminController {
 	 */
 	public function update($id)
 	{
-		
+		//
 	}
 
 
@@ -92,33 +90,8 @@ class CommentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		CommonNormal::delete($id);
-        return Redirect::action('CommentController@index');
+		//
 	}
 
-	// Delete all Comment selected
-	public function deleteSelected()
-	{
-		$commentId = Input::get('comment_id');
-		foreach($commentId as $key => $value) {
-			$data = Comment::find($value);
-				CommonNormal::delete($value);
-		}
-		dd(1);
-	}
-
-	// Edit weight number and status Comment index page
-	public function updateIndexData()
-	{
-		$commentId = Input::get('comment_id');
-		$statusGame = Input::get('status');
-		foreach($commentId as $key => $value) {
-			$input = array(
-				'status' => $statusGame[$key]
-				);
-			CommonNormal::update($value, $input);
-		}
-		dd(1);
-	}
 
 }

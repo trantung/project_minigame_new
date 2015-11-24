@@ -69,5 +69,11 @@ class CommonNormal
 			return 'Relation';
 		if($name == 'comment')
 			return 'Comment';
+		if($name == 'feedback')
+			return 'Feedback';
+		if($name == 'feedback_game')
+			return 'GameErrors';
+		if($name == 'ceo')
+			return 'AdminCeo';
 	}
 }
