@@ -11,7 +11,7 @@ class CategoryParent extends Eloquent implements SluggableInterface
 	use SoftDeletingTrait;
     use SluggableTrait;
     protected $table = 'category_parents';
-    protected $fillable = ['name', 'position', 'description', 'weight_number', 'slug'];
+    protected $fillable = ['name', 'position', 'description', 'weight_number', 'slug', 'arrange'];
     protected $dates = ['deleted_at'];
 
     protected $sluggable = array(

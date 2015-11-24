@@ -24,6 +24,10 @@
 								<label for="name">Vị trí</label>
 								@if(Request::segment(3) == CONTENT_SEGMENT)
 									{{ Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')) }}
+									<div class="form-group">
+										<label for="name">Sắp xếp theo kiểu</label>
+											{{ Form::select('arrange', selectArrange() , null ,  array('class' =>'form-control')) }}
+									</div>
 								@else
 									{{ Form::select('position', [1 => 'Menu'], null, array('class' =>'form-control')) }}
 								@endif
@@ -32,7 +36,6 @@
 								<label for="name">Mức ưu tiên</label>
 									{{ Form::select('weight_number', selectWeight_number() , null ,  array('class' =>'form-control')) }}
 							</div>
-
 							<hr />
 							<h1>SEO META</h1>
 							{{-- include common/meta.blade.php --}}
