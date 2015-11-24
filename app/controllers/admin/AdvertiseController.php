@@ -96,13 +96,31 @@ class AdvertiseController extends AdminController {
 
 	public function indexChild()
 	{
-		$advertise = Advertise::where('position', CHILD_PAGE)->get();
-		return View::make('admin.adverties.child_index')->with(compact('advertise'));
+		$advertisePosition = AdvertisePosition::all();
+		return View::make('admin.adverties.child_index')->with(compact('advertisePosition'));
 	}
 
 	public function createChild()
 	{
-		
+		return View::make('admin.adverties.child_create');
+	}
+	public function storeChild()
+	{
+		$input = Input::except('_token');
+		dd($input);
+
+	}
+	public function editChild($id)
+	{
+		dd(55);
+	}
+	public function updateChild($id)
+	{
+		dd(6);
+	}
+	public function destroyChild($id)
+	{
+		dd(555);
 	}
 
 }

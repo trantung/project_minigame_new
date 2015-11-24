@@ -6,7 +6,11 @@
 
 @section('content')
 
-@include('admin.typenew.common')
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="{{ action('AdvertiseController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-xs-12">
