@@ -63,7 +63,7 @@ define('Footer', 2);
 define('CHILD_PAGE', 3);
 //advertise url image
 define('UPLOAD_ADVERTISE', '/images/advertise');
-define('UPLOAD_ADVERTISE_CHILD', '/images/advertise/content');
+define('BOTTOM', 'bottom');
 
 
 

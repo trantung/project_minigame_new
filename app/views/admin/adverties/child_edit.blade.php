@@ -1,14 +1,13 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới quảng cáo header và footer' }}
+{{ $title='Thêm mới quảng cáo' }}
 @stop
 
 @section('content')
-
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdvertiseController@index') }} " class="btn btn-success">Danh sách quảng cáo header và footer</a>
+		<a href="{{ action('AdvertiseController@indexChild') }} " class="btn btn-success">Danh sách quảng cáo</a>
 	</div>
 </div>
 
@@ -16,13 +15,13 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdvertiseController@update', $advertise->id), 'method' => 'PUT','files' => true)) }}
+			{{ Form::open(array('action' => array('AdvertiseController@updateChild', $advertise->id, $modelId),'method' => 'PUT', 'files' => true)) }}
 			<div class="box-body">
 				<div class="form-group">
-					<label for="name">Vị trí</label>
+					<label for="name">Box hiển thị</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', [1 => 'Header', 2 => 'Footer'], $advertise->position) }}
+						   {{ Form::select('model_id', getNameBoxEnable(), CommonModel::find($modelId)->model_id) }}
 						</div>
 					</div>
 				</div>
@@ -40,15 +39,16 @@
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::file('image_url', array('id' => 'image_url')) }}
-							<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer' .'/' .$advertise->id . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
+							<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .$modelId . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
 						</div>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị'], $advertise->status) }}
+						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị'], $relate->status) }}
 						</div>
 					</div>
 				</div>

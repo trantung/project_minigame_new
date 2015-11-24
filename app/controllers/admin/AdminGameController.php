@@ -272,10 +272,12 @@ class AdminGameController extends AdminController {
 		$gamesId = Input::get('game_id');
 		$weightNumber = Input::get('weight_number');
 		$statusGame = Input::get('statusGame');
+		$count_play = Input::get('count_play');
 		foreach($gamesId as $key => $value) {
 			$input = array(
 				'weight_number' => $weightNumber[$key],
-				'status' => $statusGame[$key]
+				'status' => $statusGame[$key],
+				'count_play' => $count_play[$key]
 				);
 			CommonNormal::update($value, $input);
 		}

@@ -58,8 +58,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
 	Route::post('/create/advertise_child', 'AdvertiseController@storeChild');
-	Route::get('/edit/advertise_child/{id}', 'AdvertiseController@editChild');
-	Route::put('/edit/advertise_child/{id}', 'AdvertiseController@updateChild');
+	Route::get('/edit/advertise_child/{id}/{model_id}', 'AdvertiseController@editChild');
+	Route::put('/edit/advertise_child/{id}/{model_id}', 'AdvertiseController@updateChild');
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
@@ -71,7 +71,9 @@ Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
 Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logout'));
 
 Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
+Route::post('/dang-ky', array('uses' => 'AccountController@store'));
 Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@edit', 'as' => 'account'));
+Route::post('/thong-tin-tai-khoan', array('uses' => 'AccountController@update'));
 
 Route::resource('/', 'SiteIndexController');
 

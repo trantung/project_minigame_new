@@ -11,4 +11,8 @@ class CommonModel extends Eloquent
     protected $fillable = ['model_id', 'model_name'];
     protected $dates = ['deleted_at'];
 
+    public function advertisePositions()
+    {
+        return $this->hasMany('AdvertisePosition', 'common_model_id', 'id');
+    }
 }
