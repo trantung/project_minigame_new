@@ -19,4 +19,13 @@ class CommonSite
     	return $input;
     }
 
+    // get ip & device to update when user login account
+    public static function ipDeviceUser()
+    {
+        $input = array();
+        $input['ip'] = getIpAddress();
+        $input['device'] = getDevice();
+        return $input;
+    }
+
 }

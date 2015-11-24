@@ -72,8 +72,8 @@ Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logou
 
 Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
 Route::post('/dang-ky', array('uses' => 'AccountController@store'));
-Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@edit', 'as' => 'account'));
-Route::post('/thong-tin-tai-khoan', array('uses' => 'AccountController@update'));
+Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 'as' => 'account'));
+Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
 Route::resource('/', 'SiteIndexController');
 

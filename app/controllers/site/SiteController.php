@@ -113,6 +113,8 @@ class SiteController extends HomeController {
             	->with('error', 'Sai tên truy cập hoặc mật khẩu');
         } else {
             if(Auth::user()->attempt($input)) {
+            	$inputUser = CommonSite::ipDeviceUser();
+            	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
         		return Redirect::to('/');
             } else {
                 return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');

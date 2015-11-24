@@ -43,7 +43,7 @@ class AccountController extends SiteController {
 		if($validator->fails()) {
 			return Redirect::action('AccountController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password'));
+	            ->withInput(Input::except('password', 'code'));
         } else {
         	$input['password'] = Hash::make($input['password']);
         	$id = CommonNormal::create($input, 'User');
@@ -103,5 +103,36 @@ class AccountController extends SiteController {
 		//
 	}
 
+	public function account()
+	{
+		$id = Auth::user()->get()->id;
+		$data = User::find($id);
+        return View::make('site.user.account', array('data'=>$data));
+	}
+
+	public function doAccount()
+	{
+		$id = Auth::user()->get()->id;
+		$rules = array(
+			'password'   	=> 'required|min:6',
+			'password_new'  => 'required|min:6',
+			'password_new2' => 'required|min:6|same:password_new',
+            // 'email'      	=> 'required|email|unique:users'
+        );
+        if(Auth::user()->get()->email != Input::get('email')) {
+        	$rules['email'] = 'required|email|unique:users';
+        }
+        $input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('AccountController@account')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password', 'password_new', 'password_new2'));
+        } else {
+        	$input['password'] = Hash::make($input['password_new']);
+        	CommonNormal::update($id, $input, 'User');
+    		return Redirect::action('AccountController@account')->with('message', 'Cập nhật thành công');
+        }
+	}
 
 }
