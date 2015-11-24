@@ -31,7 +31,28 @@ class AccountController extends SiteController {
 	 */
 	public function store()
 	{
-		//
+		$rules = array(
+			'user_name'  => 'required|unique:users',
+            'password'   => 'required|min:6',
+            'email'      => 'required|email|unique:users',
+            'phone'      => 'required',
+            // 'code'		 => 'required'
+		);
+		$input = CommonSite::inputRegister();
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('AccountController@create')
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+        	$input['password'] = Hash::make($input['password']);
+        	$id = CommonNormal::create($input, 'User');
+        	if($id) {
+        		return Redirect::action('SiteController@login')->with('message', 'Tài khoản của bạn đã được tạo thành công. Hãy đăng nhập ngay!');
+        	} else {
+        		dd('Error');
+        	}
+        }
 	}
 
 

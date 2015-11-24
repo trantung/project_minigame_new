@@ -91,9 +91,8 @@ class SiteController extends HomeController {
 
 	public function login()
     {
-    	$checkLogin = Auth::check();
+    	$checkLogin = CommonSite::isLogin();
         if($checkLogin) {
-        	dd(12);
     		return Redirect::to('/');
         } else {
             return View::make('site.user.login');
@@ -103,32 +102,34 @@ class SiteController extends HomeController {
     public function doLogin()
     {
         $rules = array(
-            'username'   => 'required',
+            'user_name'   => 'required',
             'password'   => 'required',
         );
         $input = Input::except('_token');
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return Redirect::route('login')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
+            return Redirect::action('SiteController@login')
+                // ->withErrors($validator);
+            	->with('error', 'Sai tên truy cập hoặc mật khẩu');
         } else {
-            Auth::attempt($input);
-            $checkLogin = Auth::check();
-            if($checkLogin) {
-            	dd(12);
+            if(Auth::user()->attempt($input)) {
         		return Redirect::to('/');
             } else {
-                return Redirect::route('login');
+                return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
             }
         }
     }
 
     public function logout()
     {
-        Auth::user()->logout();
-        Session::flush();
-        return Redirect::route('login');
+    	$checkLogin = CommonSite::isLogin();
+        if($checkLogin) {
+        	Auth::user()->logout();
+	        Session::flush();
+	        return Redirect::route('login');
+        } else {
+            return Redirect::to('/');
+        }
     }
 
 }

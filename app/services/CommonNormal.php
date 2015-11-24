@@ -69,5 +69,7 @@ class CommonNormal
 			return 'Relation';
 		if($name == 'comment')
 			return 'Comment';
+		if($name == 'User')
+			return 'User';
 	}
 }
