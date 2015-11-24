@@ -68,7 +68,10 @@
 							Model
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{  Form::select('model_name', selectRelationType(), $inputRelation->model_name ,array('class' => 'form-control' ,'onchange' => 'getRelationTypeModel()', 'id' =>'type_box_head'))  }}
+						   {{  Form::select('model_name', selectRelationType(), 
+						   selectEditRelationType($inputRelation)
+
+						   ,array('class' => 'form-control' ,'onchange' => 'getRelationTypeModel()', 'id' =>'type_box_head'))  }}
 						</div>
 						<div class="col-sm-2  ">	                  	
 						    <select name="model_id" id="model_id" class="form-control">
@@ -85,7 +88,9 @@
 							Model
 						</div>
 						<div class="col-sm-2">	                  	
-						   {{  Form::select('relation_name', selectRelationType(), $inputRelation->relation_name,array('class' => 'form-control' ,'onchange' => 'getRelationTypeCategory()', 'id' =>'type_box_botton'))  }}
+						   {{  Form::select('relation_name', selectRelationType(), 
+						  null,
+						   array('class' => 'form-control' ,'onchange' => 'getRelationTypeCategory()', 'id' =>'type_box_botton'))  }}
 						</div>
 						<div class="col-sm-2">	                  	
 						   <select name="relation_id" id="relation_id" class="form-control">
