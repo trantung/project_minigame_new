@@ -127,7 +127,7 @@ class SiteController extends HomeController {
     	$checkLogin = CommonSite::isLogin();
         if($checkLogin) {
         	Auth::user()->logout();
-	        Session::flush();
+	        //Session::flush();
 	        return Redirect::route('login');
         } else {
             return Redirect::to('/');
