@@ -10,7 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-// dd(123);
+
 Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
+	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
 });
