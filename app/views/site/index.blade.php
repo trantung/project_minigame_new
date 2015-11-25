@@ -32,13 +32,14 @@
 			</div>
 	  	@endforeach
 	</div>
+	<div class="ad">
+	<a href="#"><img src="assets/images/ad2.jpg" alt="" height="271" width="322" /></a>
+	</div>
 	@endforeach
 
 	</div>
 
-	<div class="ad">
-	<a href="#"><img src="assets/images/ad2.jpg" alt="" height="271" width="322" /></a>
-	</div>
+	
 
 	</div>
 </div>
