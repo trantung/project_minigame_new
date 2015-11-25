@@ -26,13 +26,14 @@ class CommonGame
 		if(Input::hasFile($fileUpload)){
 			$file = Input::file($fileUpload);
 			$filename = $file->getClientOriginalName();
+			$extension = $file->getClientOriginalExtension();
 			if(isset($isUnique)) {
 				$filename = changeFileNameImage($filename);
 			}
 			$uploadSuccess = $file->move($pathUpload, $filename);
 		}
 		if(isset($uploadSuccess)) {
-			if(isset($isFile)) {
+			if(isset($isFile) && $extension != 'apk') {
 				Zipper::make($pathUpload.'/'.$filename)->extractTo($pathUpload);
 			}
 			return $filename;
