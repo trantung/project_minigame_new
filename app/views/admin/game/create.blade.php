@@ -103,12 +103,16 @@
 								<tr>
 									<th>Tên thể loại game</th>
 									<th>Chọn</th>
+									<th>Thể loại chính</th>
 								</tr>
 								@foreach(Type::all() as $key => $value)
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" />
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" id="type_id_{{ $value->id }}" onclick="checkType({{ $value->id }});" />
+										</td>
+										<td>
+										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="checkTypeMain({{ $value->id }});" />
 										</td>
 									</tr>
 								@endforeach

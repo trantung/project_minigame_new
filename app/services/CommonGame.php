@@ -69,6 +69,7 @@ class CommonGame
     	$inputGame['score_status'] = Input::get('score_status');
     	$inputGame['gname'] = Input::get('gname');
     	$inputGame['slide_id'] = Input::get('slide_id');
+    	$inputGame['type_main'] = Input::get('type_main');
     	return $inputGame;
 	}
 
