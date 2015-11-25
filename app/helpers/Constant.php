@@ -8,6 +8,9 @@ define('MENU_RELATION', '1');
 define('CONTENT_RELATION', '2');
 define('TYPE_RELATION', '3');
 
+define('CATEGORYPARENT', 'CategoryParent');
+define('TYPE', 'Type');
+//End Relation
 define('CONTENT_SEGMENT', 'content');
 //permission role
 define('ADMIN', 1);
@@ -64,6 +67,12 @@ define('CHILD_PAGE', 3);
 //advertise url image
 define('UPLOAD_ADVERTISE', '/images/advertise');
 define('BOTTOM', 'bottom');
+//arrange parent
+define('HOT', 1);
+define('GAME_PLAY', 2);
+define('GAME_VOTE', 3);
+define('GAME_VIEW', 4);
+define('GAME_DOWNLOAD', 5);
 
 
 

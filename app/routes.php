@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/relation/ajaxedit/{id}', array('uses' => 'RelationController@ajaxedit', 'as' => 'ajax.edit'));
 	Route::resource('/relation', 'RelationController');
 
+
+	Route::post('/comment/deleteSelected', 'CommentController@deleteSelected');
+	Route::post('/comment/updateIndexData', 'CommentController@updateIndexData');
 	Route::resource('/comment', 'CommentController');
 
 	Route::resource('/score', 'ScoreManagerController');
@@ -63,6 +66,14 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
+	Route::resource('/feedback', 'FeedbackController');
+
+	Route::resource('/feedback_game', 'FeedbackGameController');
+
+	Route::resource('/seo', 'SeoController');
+
+	Route::resource('/policy', 'PolicyController');
+
 });
 
 // FRONTEND
@@ -72,9 +83,11 @@ Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logou
 
 Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
 Route::post('/dang-ky', array('uses' => 'AccountController@store'));
-Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@edit', 'as' => 'account'));
-Route::post('/thong-tin-tai-khoan', array('uses' => 'AccountController@update'));
+Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 'as' => 'account'));
+Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
 Route::resource('/', 'SiteIndexController');
 
-Route::get('/{slug}.html', 'GameController@getGame');
+Route::get('/{slug}', 'GameController@listgame');
+
+Route::get('{type}/{slug}.html', 'GameController@detailGame');

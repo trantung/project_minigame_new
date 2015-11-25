@@ -5,7 +5,6 @@ class SiteController extends HomeController {
 	public function __construct() {
 		$menu = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
 
-
 		View::share('menu', $menu);
 	}
 
@@ -113,6 +112,8 @@ class SiteController extends HomeController {
             	->with('error', 'Sai tên truy cập hoặc mật khẩu');
         } else {
             if(Auth::user()->attempt($input)) {
+            	$inputUser = CommonSite::ipDeviceUser();
+            	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
         		return Redirect::to('/');
             } else {
                 return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
@@ -125,7 +126,7 @@ class SiteController extends HomeController {
     	$checkLogin = CommonSite::isLogin();
         if($checkLogin) {
         	Auth::user()->logout();
-	        Session::flush();
+	        //Session::flush();
 	        return Redirect::route('login');
         } else {
             return Redirect::to('/');

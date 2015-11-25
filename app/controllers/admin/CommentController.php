@@ -96,5 +96,29 @@ class CommentController extends AdminController {
         return Redirect::action('CommentController@index');
 	}
 
+	// Delete all Comment selected
+	public function deleteSelected()
+	{
+		$commentId = Input::get('comment_id');
+		foreach($commentId as $key => $value) {
+			$data = Comment::find($value);
+				CommonNormal::delete($value);
+		}
+		dd(1);
+	}
+
+	// Edit weight number and status Comment index page
+	public function updateIndexData()
+	{
+		$commentId = Input::get('comment_id');
+		$statusGame = Input::get('status');
+		foreach($commentId as $key => $value) {
+			$input = array(
+				'status' => $statusGame[$key]
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
 
 }

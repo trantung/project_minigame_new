@@ -48,7 +48,9 @@
           <li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
           @if(!Admin::isSeo())
           <li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
+          <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Quản chính sách liên hệ</a></li>
           @endif
+
         </ul>
       </li>
       @if(Admin::isAdmin())
@@ -64,11 +66,22 @@
         </a>
       </li>
       @if(Admin::isAdmin())
-      <li>
+      <li class="treeview">
         <a href="#">
-          <i class="fa fa-comment"></i> <span>Quản lý góp ý báo lỗi</span>
+          <i class="fa fa-newspaper-o"></i> <span>Quản lý góp ý báo lỗi</span>
+          <i class="fa fa-angle-left pull-right"></i>
         </a>
-      </li>
+        <ul class="treeview-menu">
+          <li><a href="{{ action('FeedbackController@index') }}">
+              <i class="fa fa-comment"></i> <span>Quản lý góp ý</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ action('FeedbackGameController@index') }}">
+              <i class="fa fa-comment"></i> <span>Quản lý báo lỗi game</span>
+            </a>
+          </li>
+        </ul>
       @endif
       @if(Admin::isAdmin())
       <li>
@@ -97,7 +110,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
+          <li><a href="{{ action('SeoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
           @if(!Admin::isSeo())
           <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý phân trang</a></li>
           @endif

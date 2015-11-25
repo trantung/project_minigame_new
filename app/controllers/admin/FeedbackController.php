@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-class SiteIndexController extends SiteController {
+class FeedbackController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,10 +9,9 @@ class SiteIndexController extends SiteController {
 	 */
 	public function index()
 	{
-		$categoryParent = CategoryParent::where('position', CONTENT)->orderBy('weight_number', 'asc')->get();
-		return View::make('site.index')->with(compact('categoryParent'));
+		$inputFeedback = Feedback::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.feedback.index')->with(compact('inputFeedback'));
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -56,7 +55,17 @@ class SiteIndexController extends SiteController {
 	 */
 	public function edit($id)
 	{
-		//
+		$statusFeedback = Feedback::find($id);
+		if($statusFeedback->status == ACTIVE)
+		{
+			$input['status'] = INACTIVE;
+			CommonNormal::update($id, ['status' => $input['status']]);
+		}else{
+			$input['status'] = ACTIVE;
+			CommonNormal::update($id, ['status' => $input['status']]);
+		}
+
+		return Redirect::action('FeedbackController@index') ;
 	}
 
 
@@ -80,7 +89,8 @@ class SiteIndexController extends SiteController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('FeedbackController@index');
 	}
 
 

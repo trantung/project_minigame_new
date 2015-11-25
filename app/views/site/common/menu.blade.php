@@ -2,8 +2,8 @@
 <div id='cssmenu'>
 	@if(CommonSite::isLogin())
 	<div class="menu-account">
-          <a href="#" class="account-name"><img src="assets/images/avatar.jpg" height="32" width="31" /> {{ Auth::user()->get()->user_name }}</a>
-          <a href="#" class="game-favorite"><i class="fa fa-thumbs-o-up"></i> Game bạn yêu thích</a>
+          <a href="{{ action('AccountController@account') }}" class="account-name"><img src="assets/images/avatar.jpg" height="32" width="31" /> {{ Auth::user()->get()->user_name }}</a>
+          {{-- <a href="#" class="game-favorite"><i class="fa fa-thumbs-o-up"></i> Game bạn yêu thích</a> --}}
           <a href="#" class="game-played"><i class="fa fa-gamepad"></i> Game bạn đã chơi</a>
           <a href="{{ action('SiteController@logout') }}" class="signout"><i class="fa fa-power-off"></i> Đăng xuất</a>
     </div>

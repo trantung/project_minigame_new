@@ -114,7 +114,7 @@ class RelationController extends AdminController {
 			elseif ($type_model == CONTENT_RELATION) 
 				$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
 			else
-				$parent = CategoryParent::where('position',CONTENT_RELATION)->lists('name','id');
+				$parent = Type::lists('name','id');
 			return Response::json($parent);
 		}
 }

@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-class SiteIndexController extends SiteController {
+class PolicyController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +9,8 @@ class SiteIndexController extends SiteController {
 	 */
 	public function index()
 	{
-		$categoryParent = CategoryParent::where('position', CONTENT)->orderBy('weight_number', 'asc')->get();
-		return View::make('site.index')->with(compact('categoryParent'));
+		$inputpolicy = Policy::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.policy.index')->with(compact('inputpolicy'));
 	}
 
 
@@ -21,7 +21,7 @@ class SiteIndexController extends SiteController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.policy.create');
 	}
 
 
@@ -32,7 +32,10 @@ class SiteIndexController extends SiteController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('_token');
+		
+		CommonNormal::create($input);
+		return Redirect::action('PolicyController@index');
 	}
 
 
@@ -56,7 +59,8 @@ class SiteIndexController extends SiteController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputpolicy = AdminSeo::find($id);
+		return View::make('admin.policy.edit')->with(compact('inputpolicy'));
 	}
 
 
@@ -68,7 +72,10 @@ class SiteIndexController extends SiteController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token');
+		
+		CommonNormal::update($id, $input);
+		return Redirect::action('PolicyController@index');
 	}
 
 
@@ -80,7 +87,8 @@ class SiteIndexController extends SiteController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+		return Redirect::action('PolicyController@index');
 	}
 
 

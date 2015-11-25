@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-class SiteIndexController extends SiteController {
+class FeedbackGameController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +9,8 @@ class SiteIndexController extends SiteController {
 	 */
 	public function index()
 	{
-		$categoryParent = CategoryParent::where('position', CONTENT)->orderBy('weight_number', 'asc')->get();
-		return View::make('site.index')->with(compact('categoryParent'));
+		$inputFeedbackGame = GameErrors::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.feedback_game.index')->with(compact('inputFeedbackGame'));
 	}
 
 
@@ -56,7 +56,17 @@ class SiteIndexController extends SiteController {
 	 */
 	public function edit($id)
 	{
-		//
+		$status_feedback_game = GameErrors::find($id);
+		if($status_feedback_game->status == ACTIVE)
+		{
+			$input['status'] = INACTIVE;
+			CommonNormal::update($id, ['status' => $input['status']]);
+		}else{
+			$input['status'] = ACTIVE;
+			CommonNormal::update($id, ['status' => $input['status']]);
+		}
+
+		return Redirect::action('FeedbackGameController@index') ;
 	}
 
 
