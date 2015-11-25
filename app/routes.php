@@ -68,11 +68,11 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/feedback', 'FeedbackController');
 
-
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
-
 	Route::resource('/seo', 'SeoController');
+
+	Route::resource('/policy', 'PolicyController');
 
 });
 

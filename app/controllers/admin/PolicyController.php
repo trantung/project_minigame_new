@@ -1,6 +1,6 @@
 <?php 
 
-class SeoController extends AdminController {
+class PolicyController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +9,8 @@ class SeoController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputSeo = AdminSeo::whereNull('model_id')->paginate(PAGINATE);
-		return View::make('admin.seo.index')->with(compact('inputSeo'));
+		$inputpolicy = Policy::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.policy.index')->with(compact('inputpolicy'));
 	}
 
 
@@ -21,7 +21,7 @@ class SeoController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.seo.create');
+		return View::make('admin.policy.create');
 	}
 
 
@@ -33,11 +33,9 @@ class SeoController extends AdminController {
 	public function store()
 	{
 		$input = Input::except('_token');
-		if (!$input['header_script'] && !$input['footer_script']) {
-			return Redirect::action('SeoController@create')->with('message', 'Phải nhập thông tin header hoặc footer');
-		}
+		
 		CommonNormal::create($input);
-		return Redirect::action('SeoController@index');
+		return Redirect::action('PolicyController@index');
 	}
 
 
@@ -61,8 +59,8 @@ class SeoController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$inputSeo = AdminSeo::find($id);
-		return View::make('admin.seo.edit')->with(compact('inputSeo'));
+		$inputpolicy = AdminSeo::find($id);
+		return View::make('admin.policy.edit')->with(compact('inputpolicy'));
 	}
 
 
@@ -75,11 +73,9 @@ class SeoController extends AdminController {
 	public function update($id)
 	{
 		$input = Input::except('_token');
-		if (!$input['header_script'] && !$input['footer_script']) {
-			return Redirect::action('SeoController@edit',$id)->with('message', 'Phải nhập thông tin header hoặc footer');
-		}
+		
 		CommonNormal::update($id, $input);
-		return Redirect::action('SeoController@index');
+		return Redirect::action('PolicyController@index');
 	}
 
 
@@ -92,7 +88,7 @@ class SeoController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-		return Redirect::action('SeoController@index');
+		return Redirect::action('PolicyController@index');
 	}
 
 

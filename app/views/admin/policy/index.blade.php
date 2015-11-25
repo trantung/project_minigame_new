@@ -1,51 +1,53 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý SEO' }}
+{{ $title='Quản lý Chính sách liên hệ' }}
 @stop
 
 @section('content')
+
 <!-- inclue Search form 
 
 -->
-@if(count($inputSeo) == 0)
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('SeoController@create') }}" class="btn btn-primary">Thêm Seo</a>
+		<a href="{{ action('CategoryController@create') }}" class="btn btn-primary">Thêm chính sách liên hệ</a>
 	</div>
 </div>
-@endif
+
 <div class="row">
 	<div class="col-xs-12">
 	  <div class="box">
 		<div class="box-header">
-		  <h3 class="box-title">Danh sách Seo</h3>
+		  <h3 class="box-title">Danh sách chính sách liên hê</h3>
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
 		  <table class="table table-hover">
 			<tr>
-			 
 			  <th>ID</th>
-			  <th>Header</th>
-			  <th>Footer</th>
-			  <th>Thời gian tạo</th>
+			  <th>Tiêu đề</th>
+			  <th>Mô tả</th>
+			  <th>Thể loại</th>			  
+			  <th>Trạng thái</th>	
 			  <th style="width:200px;">Action</th>
 			</tr>
-			 @foreach($inputSeo as $value)
+			 @foreach($inputpolicy as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
-			  <td>{{{ $value->header_script }}}</td>
-			  <td>{{{ $value->footer_script }}}</td>
-			  <td>{{ $value->created_at }}</td>
+			  <td>{{ $value->title }}</td>
+			  <td>{{ $value->description }}</td>
+			  <td>{{ $value->type_policy }}</td>			
+			  <td>{{ $value->status }}</td>
 			  <td>
-				<a href="{{  action('SeoController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-				{{ Form::open(array('method'=>'DELETE', 'action' => array('SeoController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+				<a href="{{ action('CategoryController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryController@destroy', $category->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 				{{ Form::close() }}
 			  </td>
+
 			</tr>
-			@endforeach
+			 @endforeach
 		  </table>
 		</div>
 		<!-- /.box-body -->
@@ -57,8 +59,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<ul class="pagination">
-		<!-- phan trang -->
-		{{ $inputSeo->appends(Request::except('page'))->links() }}
+		{{ $inputpolicy->appends(Request::except('page'))->links() }}
 		</ul>
 	</div>
 </div>

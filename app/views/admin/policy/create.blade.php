@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa Seo' }}
+{{ $title='Thêm mới bài viết chính sách' }}
 @stop
 
 @section('content')
@@ -11,13 +11,13 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-		{{ Form::open(array('action' => array('SeoController@update', $inputSeo->id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('PolicyController@store'), 'files'=> true)) }}
 			<div class="box-body">
 				<div class="form-group">
-				  	<label for="name">SEO Header</label>
+				  	<label for="name">Tiêu đề</label>
 				  	<div class="row">
 						<div class="col-sm-12">
-						   {{ Form::textarea('header_script', $inputSeo->header_script , textParentCategory('Nhập script seo header vào đây')) }}
+						   {{ Form::tex('title', null , textParentCategory('Nhập tiêu đề')) }}
 						</div>
 				  </div>
 				</div>
@@ -25,7 +25,7 @@
 				  	<label for="name">SEO Footer</label>
 				  	<div class="row">
 						<div class="col-sm-12">
-						   {{ Form::textarea('footer_script', $inputSeo->footer_script , textParentCategory('Nhập script seo footer vào đây')) }}
+						   {{ Form::textarea('footer_script', null , textParentCategory('Nhập script seo footer vào đây')) }}
 						</div>
 				  </div>
 				</div>
