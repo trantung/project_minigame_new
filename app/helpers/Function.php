@@ -85,7 +85,7 @@ function returnList($className)
 
 function getWeightNumberType($typeId, $parentId)
 {
-	$weightNumber = ParentType::where('type_id', $typeId)->where('categorty_parent_id', $parentId)->first();
+	$weightNumber = ParentType::where('type_id', $typeId)->where('category_parent_id', $parentId)->first();
 	if ($weightNumber) {
 		return $weightNumber->weight_number;
 	}
