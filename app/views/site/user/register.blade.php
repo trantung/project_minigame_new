@@ -43,10 +43,11 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="code" class="col-sm-4 control-label">Mã xác nhận (*):</label>
+			<label for="captcha" class="col-sm-4 control-label">Mã xác nhận (*):</label>
 			<div class="col-sm-4">
-				<input type="text" name="code" class="form-control" id="code" placeholder="Mã xác nhận" maxlength="255" >
-				<br /><p class="form-control cachar" >choi nhanh</p>
+				<input type="text" name="captcha" class="form-control" id="captcha" placeholder="Mã xác nhận" maxlength="255" >
+				<br />
+				{{ HTML::image(URL::to('simplecaptcha'),'Captcha') }}
 			</div>
 		</div>
 		<div class="form-group">

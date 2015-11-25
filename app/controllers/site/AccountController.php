@@ -36,14 +36,20 @@ class AccountController extends SiteController {
             'password'   => 'required|min:6',
             'email'      => 'required|email|unique:users',
             'phone'      => 'required',
-            // 'code'		 => 'required'
+            'captcha'    => 'required'
 		);
+		$checkCaptcha = SimpleCaptcha::check(Input::get('captcha'));
+		if($checkCaptcha == false) {
+		    return Redirect::action('AccountController@create')
+	            ->with('error', 'Bạn nhập sai mã xác nhận')
+	            ->withInput(Input::except('password', 'captcha'));
+		}
 		$input = CommonSite::inputRegister();
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('AccountController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password', 'code'));
+	            ->withInput(Input::except('password', 'captcha'));
         } else {
         	$input['password'] = Hash::make($input['password']);
         	$id = CommonNormal::create($input, 'User');
@@ -105,6 +111,9 @@ class AccountController extends SiteController {
 
 	public function account()
 	{
+		if(!CommonSite::isLogin()) {
+			return Redirect::action('AccountController@create');
+		}
 		$id = Auth::user()->get()->id;
 		$data = User::find($id);
         return View::make('site.user.account', array('data'=>$data));
@@ -112,6 +121,9 @@ class AccountController extends SiteController {
 
 	public function doAccount()
 	{
+		if(!CommonSite::isLogin()) {
+			return Redirect::action('AccountController@create');
+		}
 		$id = Auth::user()->get()->id;
 		$rules = array(
 			'password'   	=> 'required|min:6',

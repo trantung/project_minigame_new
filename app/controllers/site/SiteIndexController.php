@@ -9,7 +9,8 @@ class SiteIndexController extends SiteController {
 	 */
 	public function index()
 	{
-		return View::make('site.index');
+		$categoryParent = CategoryParent::where('position', CONTENT)->orderBy('weight_number', 'asc')->get();
+		return View::make('site.index')->with(compact('categoryParent'));
 	}
 
 
