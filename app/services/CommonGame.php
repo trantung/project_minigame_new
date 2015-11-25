@@ -69,6 +69,7 @@ class CommonGame
     	$inputGame['score_status'] = Input::get('score_status');
     	$inputGame['gname'] = Input::get('gname');
     	$inputGame['slide_id'] = Input::get('slide_id');
+    	$inputGame['type_main'] = Input::get('type_main');
     	return $inputGame;
 	}
 
@@ -170,5 +171,13 @@ class CommonGame
 		}
 		return [$sortBy, $sort];
 	}
+
+
+	// get games, orderBy arrange category parent, paging
+    public static function boxGameByCategoryParent($data)
+    {
+    	//$arrange = getArrange($data->arrange);
+        //return $data->games->orderBy('weight_number', 'desc')->take(12);
+    }
 
 }

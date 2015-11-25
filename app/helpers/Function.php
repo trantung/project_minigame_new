@@ -292,3 +292,23 @@ function selectArrange()
 			GAME_DOWNLOAD => 'Tải nhiều',
 		);
 }
+
+function getArrange($arrange)
+{
+	$arrangeArray = array(
+			HOT => 'weight_number',
+			GAME_PLAY => 'count_play',
+			GAME_VOTE => 'count_vote',
+			GAME_VIEW => 'count_view',
+			GAME_DOWNLOAD => 'count_download',
+		);
+	return $arrangeArray[$arrange];
+}
+
+function checkedGameTypeMain($typeId, $gameTypeMain)
+{
+	if ($typeId == $gameTypeMain) {
+		return 'checked';
+	}
+	return NULL;
+}
