@@ -172,4 +172,12 @@ class CommonGame
 		return [$sortBy, $sort];
 	}
 
+
+	// get games, orderBy arrange category parent, paging
+    public static function boxGameByCategoryParent($data)
+    {
+    	//$arrange = getArrange($data->arrange);
+        //return $data->games->orderBy('weight_number', 'desc')->take(12);
+    }
+
 }
