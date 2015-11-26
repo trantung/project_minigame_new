@@ -99,9 +99,9 @@ class UserController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		$inputComment = User::searchComment($input);
+		$inputUser = CommonSearch::seachUser($input);
 		
-		return View::make('admin.comment.index')->with(compact('inputComment'));
+		return View::make('admin.user.index')->with(compact('inputUser'));
 	}
 
 }

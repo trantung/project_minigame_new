@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-@include('admin.score.search')
+@include('admin.user.search')
 <!-- inclue Search form 
 
 -->
@@ -20,13 +20,13 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>user name</th>
+			  <th>Tài khoản</th>
 			  <th>email</th>
 			  <th>Tên</th>
-			  <th>Trạng thái</th>
-			  <th>ip</th>
+			  <th>Ip</th>
 			  <th>Device</th>
-			  <th>đăng nhập cuối</th>
+			  <th>Đăng nhập cuối</th>
+			  <th>Trạng thái</th>
 			  <th>Action</th>
 			</tr>
 			@foreach($inputUser as $value)
@@ -35,15 +35,15 @@
 			  <td>{{ $value->user_name }}</td>
 			  <td>{{ $value->email }}</td>
 			  <td>{{ $value->fullname }}</td>
-			  <td>{{ $value->status }}</td>
 			  <td>{{ $value->ip }}</td>
 			  <td>{{ $value->device }}</td>
 			  <td>{{ $value->update_at }}</td>
+			  <td>{{ $value->status }}</td>
 			  <td>
 			  	@if($value->status == ACTIVE )
-				<a href="{{action('UserController@edit', $value->id) }}" class="btn btn-danger">DeActive</a>
+				<a href="{{action('UserController@edit', $value->id) }}" class="btn btn-danger">Hủy</a>
 				@else
-				<a href="{{action('CommentController@edit', $value->id) }}" class="btn btn-primary">Active</a>
+				<a href="{{action('UserController@edit', $value->id) }}" class="btn btn-primary">Kích hoạt</a>
 				@endif
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('UserController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>

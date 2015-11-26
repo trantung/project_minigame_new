@@ -112,9 +112,7 @@ class CommonSearch
 			if($input['user_name'] != '') {
 				$listGame = $query->where('user_name', 'like', '%'.$input['user_name'].'%');
 			}
-			if($input['status'] != '') {
-				$listGame = $query->where('status',  $input['status']);
-			}
+			
 			if($input['start_date'] != ''){
 				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
 			}
