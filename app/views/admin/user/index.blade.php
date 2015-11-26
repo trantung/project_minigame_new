@@ -21,6 +21,7 @@
 			<tr>
 			  <th>ID</th>
 			  <th>Tài khoản</th>
+			  <th>Loại tài khoản</th>
 			  <th>email</th>
 			  <th>Tên</th>
 			  <th>Ip</th>
@@ -32,13 +33,14 @@
 			@foreach($inputUser as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
-			  <td>{{ $value->user_name }}</td>
+			  <td>{{ UserManager::getUsername($value->id)['user_name'] }}</td>
+			  <td>{{ UserManager::getUsername($value->id)['type_user'] }}</td>
 			  <td>{{ $value->email }}</td>
 			  <td>{{ $value->fullname }}</td>
 			  <td>{{ $value->ip }}</td>
 			  <td>{{ $value->device }}</td>
-			  <td>{{ $value->update_at }}</td>
-			  <td>{{ $value->status }}</td>
+			  <td>{{ $value->updated_at }}</td>
+			  <td>{{ UserManager::getStatus($value->status) }}</td>
 			  <td>
 			  	@if($value->status == ACTIVE )
 				<a href="{{action('UserController@edit', $value->id) }}" class="btn btn-danger">Hủy</a>

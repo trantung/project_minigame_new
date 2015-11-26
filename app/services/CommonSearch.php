@@ -119,6 +119,12 @@ class CommonSearch
 			if($input['end_date'] != ''){
 				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
 			}
+			if($input['from_update_at'] != ''){
+				$query = $query->where('updated_at', '>=', convertDateTime($input['from_update_at']));
+			}
+			if($input['to_update_at'] != ''){
+				$query = $query->where('updated_at', '<=', convertDateTime($input['to_update_at']));
+			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
 	}

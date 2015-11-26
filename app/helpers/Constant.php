@@ -82,3 +82,14 @@ define('ABOUT_POLICY', 2);
 //define paging frontend
 define('PAGINATE_BOXGAME', 12);
 define('PAGINATE_LISTGAME', 6);
+//status user
+define('ACTIVEUSER', 'Kích hoạt');
+define('INACTIVEUSER', 'Chưa kích hoạt');
+define('TYPESYSTEM', 'Hệ thống');
+define('TYPEFACEBOOK', 'Facebook');
+define('TYPEGOOGLE', 'Google');
+//define slide type name
+define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
+define('UPLOAD_IMAGE_SLIDE', '/slide/image');
+
+
