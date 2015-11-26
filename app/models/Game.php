@@ -16,7 +16,7 @@ class Game extends Eloquent implements SluggableInterface
 	    'count_vote', 'count_download', 'vote_average',
 	     'weight_number', 'score_status', 'start_date', 'status',
          'support_detail', 'gname', 'link_download',
-         'link_upload_game', 'slide_id', 'slug'];
+         'link_upload_game', 'slide_id', 'slug', 'type_main'];
     protected $dates = ['deleted_at'];
 
     protected $sluggable = array(

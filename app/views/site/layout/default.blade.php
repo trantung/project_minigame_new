@@ -15,11 +15,11 @@
 
 			<div class="main">
 
-				@include('site.common.ad')
+				@include('site.common.ad', array('adPosition' => HEADER))
 
 				@yield('content')
 
-				@include('site.common.ad')
+				@include('site.common.ad', array('adPosition' => Footer))
 
 			</div>
 

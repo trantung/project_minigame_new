@@ -88,4 +88,26 @@
 		}
 	}
 
+	function checkType(id) {
+		if ($('#type_main_'+id).is(':checked')) {
+			alert('Không thể bỏ chọn thể loại chính');
+			$('#type_id_'+id).prop("checked", true);
+			exit();
+		}
+		return;
+	}
+
+	function checkTypeMain(id) {
+		if ($('#type_main_'+id).is(':checked')) {
+			if($('#type_id_'+id).is(':checked')) {
+				return;
+			} else {
+				alert('Thể loại chưa được chọn');
+				$('input[name=type_main]').attr('checked',false);
+				exit();
+			}
+		}
+		return;
+	}
+
 </script>

@@ -26,13 +26,14 @@ class CommonGame
 		if(Input::hasFile($fileUpload)){
 			$file = Input::file($fileUpload);
 			$filename = $file->getClientOriginalName();
+			$extension = $file->getClientOriginalExtension();
 			if(isset($isUnique)) {
 				$filename = changeFileNameImage($filename);
 			}
 			$uploadSuccess = $file->move($pathUpload, $filename);
 		}
 		if(isset($uploadSuccess)) {
-			if(isset($isFile)) {
+			if(isset($isFile) && $extension != 'apk') {
 				Zipper::make($pathUpload.'/'.$filename)->extractTo($pathUpload);
 			}
 			return $filename;
@@ -69,6 +70,7 @@ class CommonGame
     	$inputGame['score_status'] = Input::get('score_status');
     	$inputGame['gname'] = Input::get('gname');
     	$inputGame['slide_id'] = Input::get('slide_id');
+    	$inputGame['type_main'] = Input::get('type_main');
     	return $inputGame;
 	}
 
@@ -170,5 +172,14 @@ class CommonGame
 		}
 		return [$sortBy, $sort];
 	}
+
+
+	// get games, orderBy arrange category parent, paging
+    public static function boxGameByCategoryParent($data)
+    {
+    	$arrange = getArrange($data->arrange);
+    	$game = $data->games;
+    	return $game->take(12)->sortByDesc($arrange);
+    }
 
 }

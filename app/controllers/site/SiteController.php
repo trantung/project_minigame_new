@@ -4,7 +4,6 @@ class SiteController extends HomeController {
 
 	public function __construct() {
 		$menu = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
-
 		View::share('menu', $menu);
 	}
 

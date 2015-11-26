@@ -82,10 +82,27 @@ class GameController extends SiteController {
 		//
 	}
 
-	public function getGame($slug)
+	public function listGame($slug, $page = 1)
 	{
-		// http://minigame.de/game-ban-ga-cuc-ki-hay.html
+		$categoryParent = CategoryParent::findBySlug($slug);
+		$type = Type::findBySlug($slug);
+		if($categoryParent) {
+			$categoryParentId = $categoryParent->id;
+			$arrange = getArrange($categoryParent->arrange);
+
+			$games = $categoryParent->games->take()->sortByDesc($arrange);
+			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
+		}
+		if($type) {
+			// return View::make('site.game.type')->with(compact('data'));
+		}
+	}
+
+	public function detailGame($type, $slug)
+	{
+		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
+		// $type = Type::findBySlug($slug);
 		dd($game);
 	}
 

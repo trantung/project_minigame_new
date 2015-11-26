@@ -1,7 +1,7 @@
 <script>
 
 	$(document).ready(function() {
-	    checkInputWeightNumber();
+	    checkInputNumber();
 	});
 
 	function toggle(source) {
@@ -11,9 +11,12 @@
 		}
 	}
 
-	function checkInputWeightNumber()
+	function checkInputNumber()
 	{
 		$('input[name^="weight_number"]').keypress(function(event) {
+	        return /\d/.test(String.fromCharCode(event.keyCode));
+	    });
+	    $('input[name^="count_play"]').keypress(function(event) {
 	        return /\d/.test(String.fromCharCode(event.keyCode));
 	    });
 	}
