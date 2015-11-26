@@ -25,9 +25,10 @@ define('UPLOADIMG', '/images');
 //url upload avatar game
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
+define('UPLOAD_GAMEZIP', '/games-zip');
 define('UPLOAD_GAME', '/games');
-define('UPLOAD_GAMEONLINE', '/games/online');
-define('UPLOAD_GAMEOFFLINE', '/games/offline');
+define('UPLOAD_FLASH', '/games-flash');
+define('UPLOAD_GAMEOFFLINE', '/games-offline');
 //url upload news
 define('UPLOAD_NEWS', '/news');
 //folder upload image facebook
