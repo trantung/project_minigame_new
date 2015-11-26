@@ -100,7 +100,7 @@
       @endif
       @if(Admin::isAdmin())
       <li>
-        <a href="#">
+        <a href="{{ action('UserController@index') }}">
           <i class="fa fa-users"></i> <span>Quản lý users</span>
         </a>
       </li>
