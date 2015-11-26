@@ -78,5 +78,6 @@ define('GAME_DOWNLOAD', 5);
 //type policy
 define('POLICY', 1);
 define('ABOUT_POLICY', 2);
-
-
+//define paging frontend
+define('PAGINATE_BOXGAME', 12);
+define('PAGINATE_LISTGAME', 6);

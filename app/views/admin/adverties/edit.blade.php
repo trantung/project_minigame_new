@@ -45,6 +45,15 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="name">Adsense</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::textarea('adsense', $advertise->adsense, textParentCategory('code adsense')) }}
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
