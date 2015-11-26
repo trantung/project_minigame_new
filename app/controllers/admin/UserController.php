@@ -9,7 +9,8 @@ class UserController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$inputUser = User::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.user.index')->with(compact('inputUser'));
 	}
 
 
@@ -55,7 +56,18 @@ class UserController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$statusUser = User::find($id);
+	
+		if($statusUser->status == ACTIVE)
+		{
+			$input['status'] = INACTIVE;
+			CommonNormal::update($id, ['status' => $input['status']]);
+		}else{
+			$input['status'] = ACTIVE;
+			CommonNormal::update($id, ['status' => $input['status']]);
+		}
+
+		return Redirect::action('UserController@index') ;
 	}
 
 
@@ -79,8 +91,17 @@ class UserController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+		return Redirect::action('UserController@index');
 	}
 
+	//search data
+	public function search()
+	{
+		$input = Input::all();
+		$inputComment = User::searchComment($input);
+		
+		return View::make('admin.comment.index')->with(compact('inputComment'));
+	}
 
 }
