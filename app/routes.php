@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/policy', 'PolicyController');
 
+	Route::resource('/slider', 'AdminSlideController');
+
 });
 
 // FRONTEND
