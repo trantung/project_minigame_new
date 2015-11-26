@@ -10,6 +10,8 @@ define('TYPE_RELATION', '3');
 
 define('CATEGORYPARENT', 'CategoryParent');
 define('TYPE', 'Type');
+define('CONTENTREATION', 'Content');
+define('MENURELATION', 'Menu');
 //End Relation
 define('CONTENT_SEGMENT', 'content');
 //permission role

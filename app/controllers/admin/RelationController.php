@@ -74,6 +74,7 @@ class RelationController extends AdminController {
 	 */
 	public function update($id)
 	{
+		//dd(Input::all());
 		$inputRelation = Input::except('_token', 'model_name','relation_name');
 		$inputRelation['model_name'] = getModelNameRelation('model_name');
 		$inputRelation['relation_name'] = getModelNameRelation('relation_name');

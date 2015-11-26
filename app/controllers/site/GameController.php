@@ -89,7 +89,6 @@ class GameController extends SiteController {
 		if($categoryParent) {
 			$categoryParentId = $categoryParent->id;
 			$arrange = getArrange($categoryParent->arrange);
-
 			$games = $categoryParent->games->take()->sortByDesc($arrange);
 			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
 		}
@@ -103,7 +102,7 @@ class GameController extends SiteController {
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
 		// $type = Type::findBySlug($slug);
-		dd($game);
+		return View::make('site.game.gameDownload')->with(compact('game'));
 	}
 
 }

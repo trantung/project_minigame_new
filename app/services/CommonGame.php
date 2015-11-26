@@ -178,8 +178,27 @@ class CommonGame
     public static function boxGameByCategoryParent($data)
     {
     	$arrange = getArrange($data->arrange);
-    	$game = $data->games;
-    	return $game->take(12)->sortByDesc($arrange);
+		$game = $data->games->first();
+    	if ($game) {
+    		$listGame = Game::where('parent_id', $game->id)->orderBy($arrange)->take(12);
+    		dd($listGame);
+    		return $listGame;
+    	}
+    	return null;
+    	// return $game->take(12)->sortByDesc($arrange);
     }
+
+    // public static function getUrlGame($slug)
+    // {
+    // 	$game = Game::findBySlug($slug);
+    // 	if($game) {
+    // 		return '' . $type->slug . '' . $slug . '.html';
+    // 	} else {
+    // 		$type = Type::find($game->type_main);
+    // 	}
+    	
+    // 	if()
+    	
+    // }
 
 }

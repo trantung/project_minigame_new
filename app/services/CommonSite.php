@@ -55,4 +55,14 @@ class CommonSite
         }
     }
 
+    public static function getRelationModel($id) {
+        $model = Relation::where('model_name', 'CategoryParent')
+                        ->where('model_id', $id)
+                        ->first();
+        if ($model) {
+            return CategoryParent::find($model->relation_id);
+        }
+        return null;
+    }
+
 }
