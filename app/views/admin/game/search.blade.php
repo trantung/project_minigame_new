@@ -8,10 +8,10 @@
 			<label>Category</label>
 		  	{{ Form::select('parent_id', ['' => '-- chọn'] + Game::where('parent_id', NULL)->lists('name', 'id'), null, array('class' =>'form-control')) }}
 		</div>
-		<div class="input-group" style="width: 150px; display:inline-block;">
+		{{-- <div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Chuyên mục</label>
 		  	{{ Form::select('category_parent_id', ['' => '-- chọn'] + CategoryParent::lists('name', 'id'), null, array('class' =>'form-control')) }}
-		</div>
+		</div> --}}
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Thể loại game</label>
 		  	{{ Form::select('type_id', ['' => '-- chọn'] + Type::lists('name', 'id'), null, array('class' =>'form-control')) }}

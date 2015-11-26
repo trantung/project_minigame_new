@@ -124,7 +124,7 @@
 							</table>
 						</div>
 					</div>
-					<div class="box-body table-responsive">
+					{{-- <div class="box-body table-responsive">
 						<h4>Chọn chuyên mục</h4>
 						<div class="overflow-box">
 							<table class="table table-bordered">
@@ -142,7 +142,7 @@
 								@endforeach
 							</table>
 						</div>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 			<div class="box-footer">
