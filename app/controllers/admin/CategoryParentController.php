@@ -59,7 +59,14 @@ class CategoryParentController extends AdminController {
 			CommonSeo::createSeo('CategoryParent', $id, FOLDER_SEO_PARENT);
 			if ($input['position'] != CONTENT) {
 				AdminManager::createParentType(Input::get('type_id'),Input::get('weight_number_gametype'),$id, 'ParentType');
+			
+
 				return Redirect::action('CategoryParentController@index') ;
+			}else{
+				//insert data to game category parent
+				$game_category_parent['category_parent_id']= $id;
+				$game_category_parent['game_id']= Input::get('game_id');				
+				CommonNormal::create($game_category_parent,'GameRelation');
 			}
 			return Redirect::action('CategoryParentController@contentIndex') ;
 		}
@@ -132,7 +139,12 @@ class CategoryParentController extends AdminController {
 		if ($input['position'] != CONTENT) {
 			AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'), $id, 'ParentType');
 			return Redirect::action('CategoryParentController@index') ;
-		}
+		}else{
+				//insert data to game category parent
+				$game_category_parent['category_parent_id']= $id;
+				$game_category_parent['game_id']= Input::get('game_id');				
+				GameRelation::where('category_parent_id', $id)->update($game_category_parent);
+			}
 		return Redirect::action('CategoryParentController@contentIndex') ;
 		
 	}

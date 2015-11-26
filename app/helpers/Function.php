@@ -332,3 +332,8 @@ function checkedGameTypeMain($typeId, $gameTypeMain)
 	}
 	return NULL;
 }
+//get category
+function getListCategory()
+{
+	return Game::whereNull('parent_id')->lists( 'name','id');
+}
