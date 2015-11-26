@@ -175,16 +175,33 @@ class CommonGame
 
 
 	// get games, orderBy arrange category parent, paging
-    public static function boxGameByCategoryParent($data)
+    public static function boxGameByCategoryParent($data, $paginate = null)
     {
     	$arrange = getArrange($data->arrange);
 		$game = $data->games->first();
-    	if ($game) {
-    		$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(12)->get();
+    	if($game) {
+    		if($paginate) {
+    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    		} else {
+    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    		}
     		return $listGame;
     	}
     	return null;
-    	// return $game->take(12)->sortByDesc($arrange);
+    }
+
+    public static function boxGameByType($data, $paginate = null)
+    {
+		$games = Type::find($data->id)->gametypes->lists('game_id');
+    	if($games) {
+    		if($paginate) {
+    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    		} else {
+    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    		}
+    		return $listGame;
+    	}
+    	return null;
     }
 
     // public static function getUrlGame($slug)
@@ -195,9 +212,9 @@ class CommonGame
     // 	} else {
     // 		$type = Type::find($game->type_main);
     // 	}
-    	
+
     // 	if()
-    	
+
     // }
 
 }

@@ -26,17 +26,17 @@
 		@endforeach
 	</div>
 
-	{{-- <div class="row">
+	<div class="row">
 		<div class="col-xs-12">
 			<ul class="pagination">
 			{{ $games->appends(Request::except('page'))->links() }}
 			</ul>
 		</div>
-	</div> --}}
+	</div>
 
 </div>
 
-@if($relationModel = CommonSite::getRelationModel($categoryParent->id))
+@if($relationModel = CommonSite::getRelationModel($categoryParent->id, 'CategoryParent'))
 	<div class="box">
 		<h1>{{ $relationModel->name }}<a href="{{ $relationModel->slug }}" class="box-more">Xem thêm</a></h1>
 		<div class="row">

@@ -8,7 +8,7 @@
 
 <div class="box">
 	@foreach($categoryParent as $value)
-	<h3><a href="{{ url($value->slug) }}">{{ $value->name }}</a><a href="#" class="box-more">Xem thêm</a></h3>
+	<h3><a href="{{ url($value->slug) }}">{{ $value->name }}</a><a href="{{ url($value->slug) }}" class="box-more">Xem thêm</a></h3>
 	@if($games = CommonGame::boxGameByCategoryParent($value))
 		<div class="row">
 			@foreach($games as $game)
