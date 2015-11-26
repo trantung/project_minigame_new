@@ -205,14 +205,18 @@ class CommonGame
     	return null;
     }
 
-    public static function getUrlGame($slug)
+    public static function getUrlGame($slug=null)
     {
     	$game = Game::findBySlug($slug);
     	if($game) {
     		$type = Type::find($game->type_main);
-    		return '/' . $type->slug . '/' . $slug . '.html';
+    		if($type) {
+    			return '/' . $type->slug . '/' . $slug . '.html';
+    		} else {
+    			dd('Đường dẫn sai');
+    		}
     	} else {
-    		return null;
+    		return '/';
     	}
     }
 

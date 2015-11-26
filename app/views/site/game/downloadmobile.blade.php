@@ -20,7 +20,7 @@
 			{{ $game->description }}
 		</p>
 		<p>
-			<a href="{{ url(UPLOAD_GAMEOFFLINE.$game->link_upload_file) }}" class="download"><i class="fa fa-download"></i> Download</a>
+			<a href="{{ url(UPLOAD_GAMEOFFLINE.'/'.$game->link_upload_game) }}" class="download"><i class="fa fa-download"></i> Download</a>
 		</p>
 		<div class="stars">
 			<strong>Đánh giá: </strong>

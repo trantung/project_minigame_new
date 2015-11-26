@@ -25,7 +25,7 @@
 			</form>
 		</div>
 		<p>
-		<a href="{{ url(UPLOAD_GAMEOFFLINE.$game->link_upload_file) }}" class="download"><i class="fa fa-download"></i> Download</a>
+		<a href="{{ url(UPLOAD_GAMEOFFLINE.'/'.$game->link_upload_game) }}" class="download"><i class="fa fa-download"></i> Download</a>
 		</p>
 		<p>
 		<a href="#"><img src="/assets/images/likeFacebook.png"></a>
