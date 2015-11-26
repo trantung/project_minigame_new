@@ -41,21 +41,18 @@ function selectRelationType()
 		TYPE_RELATION => 'Type',
 	);
 }
-function selectEditRelationType($input)
+function selectEditRelationType($input, $modelName, $modelId)
 {
-	$test =CategoryParent::find($input->model_id)->where('position', MENU)->get();
-	if($input->model_name == TYPE || $input->relation_name == TYPE)
-	{
-		return TYPE_RELATION;
-	}
-	elseif ($input->model_name == CATEGORYPARENT || $input->relation_name == CATEGORYPARENT) {
-		$count = CategoryParent::where('id',$input->model_id)->where('position',MENU)->get();
-		if(count($count) > 0)
+	if($input->$modelName == CATEGORYPARENT) {
+		$position = CategoryParent::find($input->$modelId)->position;
+		if ($position == MENU) {
 			return MENU_RELATION;
-		else
+		}
+		if ($position == CONTENT) {
 			return CONTENT_RELATION;
+		}
 	}
-
+	return TYPE_RELATION;
 }
 function selectType_Policy(){
 	return array(

@@ -25,15 +25,20 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Model Name</th>
-			  <th>Retation Name</th>
+			 
+			  <th>Thể loại box trên</th>
+			   <th>Name box above</th>
+			  <th>Thể loại box dưới</th>
+			  <th>Tên box dưới</th>
 			  <th style="width:200px;">Adcion</th>
 			</tr>
 			 @foreach($inputRelation as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
-			  <td>{{ $value->model_name }}</td>
-			  <td>{{ $value->relation_name }}</td>
+			  <td>{{ RelationBox::getNameBox($value, 'model_name', 'model_id') }}</td>
+			  <td>{{  RelationBox::getCategoryRelation($value->model_id, $value->model_name) }}</td>
+			  <td>{{ RelationBox::getNameBox($value, 'relation_name','relation_id') }}</td>
+			  <td>{{ RelationBox::getCategoryRelation($value->relation_id, $value->relation_name) }}</td>
 			  <td>
 				<a href="{{  action('RelationController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('RelationController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
