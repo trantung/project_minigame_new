@@ -33,7 +33,7 @@ class CommonGame
 			$uploadSuccess = $file->move($pathUpload, $filename);
 		}
 		if(isset($uploadSuccess)) {
-			if(isset($isFile) && $extension != 'apk') {
+			if(isset($isFile) && $extension == 'zip') {
 				Zipper::make($pathUpload.'/'.$filename)->extractTo($pathUpload);
 			}
 			return $filename;
