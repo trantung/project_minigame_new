@@ -33,7 +33,7 @@ class CommonLog
 		$input['history_id'] = $history_id;
 		$input['editor_id'] = Auth::admin()->get()->id;
 		$input['editor_name'] = Auth::admin()->get()->username;
-		$input['editor_time'] = $model_name::find($model_id)->created_at;
+		$input['editor_time'] = $model_name::find($model_id)->updated_at;
 		$input['editor_ip'] = getIpAddress();
 		$input['action'] = $action;
 		CommonNormal::create($input, 'log_edit');

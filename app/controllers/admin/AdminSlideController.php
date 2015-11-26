@@ -20,7 +20,7 @@ class AdminSlideController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.slider.create');
 	}
 
 
@@ -31,7 +31,24 @@ class AdminSlideController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+		$input = Input::except('_token', 'image_url');
+		$input['type_name'] = SLIDE_TYPE_NAME;
+		$slideId = AdminSlide::create($input)->id;
+		$inputAll = Input::all();
+		$listImage = $inputAll['image_url'];
+		foreach ($inputAll['image_url'] as $key => $value) {
+			if ($value) {
+				$path = UPLOAD_IMAGE_SLIDE;
+				$destinationPath = public_path().$path.'/'.$slideId;
+				$filename = $value->getClientOriginalName();
+				$uploadSuccess   =  $value->move($destinationPath, $filename);
+				$adminImage['slider_id'] = $slideId;
+				$adminImage['image_url'] = $filename;
+				$imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
+			}
+		}
+		return Redirect::action('AdminSlideController@index');
 	}
 
 
