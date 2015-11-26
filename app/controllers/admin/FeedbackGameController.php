@@ -93,5 +93,17 @@ class FeedbackGameController extends AdminController {
 		//
 	}
 
+	/**
+	 * Seach Feedback game.
+	 *
+	 * @param  
+	 * @return Response
+	 */
+	public function search(){
+		$input = Input::all();
+		$inputFeedbackGame = CommonSearch::seachFeedbackGame($input);
+		return View::make('admin.feedback_game.index')->with(compact('inputFeedbackGame'));
+	}
+
 
 }

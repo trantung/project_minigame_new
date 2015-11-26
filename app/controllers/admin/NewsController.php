@@ -106,35 +106,37 @@ class NewsController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$rules = array(
-			'title'   => 'required' 
-		);
-		$input = Input::except('_token');
-		$validator = Validator::make($input,$rules);
-		if($validator->fails()) {
-			return Redirect::action('NewsController@edit',$id)
-	            ->withErrors($validator)
-	            ->withInput(Input::except('name'));
-        } else {
-        	//update News
-        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date');
-			CommonNormal::update($id, $inputNews);
-			
-			//update upload image 
-			$imageNews = AdminNew::find($id);
-			$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
-			CommonNormal::update($id, ['image_url' => $input['image_url']] );
-
-			//chưa lam create history
+		if(!Admin::isSeo()){
+			$rules = array(
+				'title'   => 'required' 
+			);
+			$input = Input::except('_token');
+			$validator = Validator::make($input,$rules);
+			if($validator->fails()) {
+				return Redirect::action('NewsController@edit',$id)
+		            ->withErrors($validator)
+		            ->withInput(Input::except('name'));
+	        } else {
+	        	//update News
+	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date');
+				CommonNormal::update($id, $inputNews);
+				
+				//update upload image 
+				$imageNews = AdminNew::find($id);
+				$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
+				CommonNormal::update($id, ['image_url' => $input['image_url']] );
+				}
+        	}
+        	//create history
 			$history_id = CommonLog::updateHistory('AdminNew', $id);
 
 			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
+        	//upadte ceo
 
-			//upadte ceo
 			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);
 			return Redirect::action('NewsController@index') ;
-        }
+    	
 	}
 
 

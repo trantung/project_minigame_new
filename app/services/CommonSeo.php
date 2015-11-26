@@ -15,6 +15,7 @@ class CommonSeo
 	{
 		$input = self::getInputSeo();
 		$imageSeo = CommonSeo::getImageSeoUrl($modelName, $modelId);
+
 		$input['image_url_fb']= CommonSeo::uploadImage($modelId, UPLOADIMG, 'image_url_fb', $uploadFolder, $imageSeo);
 		
 		$seo = self::getIdSeo($modelId, $modelName);
@@ -62,6 +63,7 @@ class CommonSeo
 		if ($inputSeoImage->image_url_fb) {
 			return $inputSeoImage->image_url_fb;
 		}
+		
 		return NULL;
 	}
 

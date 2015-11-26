@@ -56,7 +56,27 @@ function selectEditRelationType($input)
 			return CONTENT_RELATION;
 	}
 
-	
+}
+function selectType_Policy(){
+	return array(
+		POLICY => 'Chính sách', 
+		ABOUT_POLICY => 'Giới thiệu', 
+		);
+}
+function getType_Policy($id){
+	$policyarr = array(
+		POLICY => 'Chính sách', 
+		ABOUT_POLICY => 'Giới thiệu', 
+		);
+	return $policyarr[$id];
+}
+
+function orderByScore(){
+	return array(
+				'' => '--chọn',
+				'score_asc' => 'Điểm tăng dần',
+				'score_desc' => 'Điểm giảm dần',
+			);
 }
 
 function getModelNameRelation($modelName)
@@ -85,7 +105,7 @@ function returnList($className)
 
 function getWeightNumberType($typeId, $parentId)
 {
-	$weightNumber = ParentType::where('type_id', $typeId)->where('categorty_parent_id', $parentId)->first();
+	$weightNumber = ParentType::where('type_id', $typeId)->where('category_parent_id', $parentId)->first();
 	if ($weightNumber) {
 		return $weightNumber->weight_number;
 	}

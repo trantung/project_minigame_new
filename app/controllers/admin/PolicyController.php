@@ -32,10 +32,18 @@ class PolicyController extends AdminController {
 	 */
 	public function store()
 	{
+		$rules = array(
+            'title'   => 'required'
+        );
 		$input = Input::except('_token');
-		
-		CommonNormal::create($input);
-		return Redirect::action('PolicyController@index');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('PolicyController@create')
+	            ->withErrors($validator);
+        } else {
+			CommonNormal::create($input);
+			return Redirect::action('PolicyController@index');
+		}
 	}
 
 
@@ -59,7 +67,7 @@ class PolicyController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$inputpolicy = AdminSeo::find($id);
+		$inputpolicy = Policy::find($id);
 		return View::make('admin.policy.edit')->with(compact('inputpolicy'));
 	}
 
@@ -72,10 +80,18 @@ class PolicyController extends AdminController {
 	 */
 	public function update($id)
 	{
+		$rules = array(
+            'title'   => 'required'
+        );
 		$input = Input::except('_token');
-		
-		CommonNormal::update($id, $input);
-		return Redirect::action('PolicyController@index');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('PolicyController@edit', $id)
+	            ->withErrors($validator);
+        } else {
+			CommonNormal::update($id, $input);
+			return Redirect::action('PolicyController@index');
+		}
 	}
 
 

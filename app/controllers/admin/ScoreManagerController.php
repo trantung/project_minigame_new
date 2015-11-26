@@ -10,7 +10,6 @@ class ScoreManagerController extends AdminController {
 	public function index()
 	{
 		$inputScore = Score::orderBy('id', 'desc')->paginate(PAGINATE);
-		//dd($inputScore->toArray());
 		return View::make('admin.score.index')->with(compact('inputScore'));
 	}
 
@@ -83,5 +82,11 @@ class ScoreManagerController extends AdminController {
 		//
 	}
 
-
+	//search data
+	public function search()
+	{
+		$input = Input::all();
+		$inputScore = CommonSearch::searchScore($input);
+		return View::make('admin.score.index')->with(compact('inputScore'));
+	}
 }
