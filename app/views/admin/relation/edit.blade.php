@@ -22,7 +22,7 @@
 			success:function(data) {
 				$('#model_id').empty();
 					$.each(data ,function(index, value){
-						if(index == {{$inputRelation->relation_id}})
+						if(index == {{$inputRelation->model_id}})
 							$('#model_id').append('<option value="'+ index+'" selected>'+value+'</option>');
 						else
 							$('#model_id').append('<option value="'+ index+'" >'+value+'</option>');
@@ -40,7 +40,7 @@
 			success:function(data) {
 				$('#relation_id').empty();
 					$.each(data ,function(index, value){
-						if(index == {{$inputRelation->model_id}})
+						if(index == {{$inputRelation->relation_id}})
 							$('#relation_id').append('<option value="'+ index+'" selected>'+value+'</option>');
 						else
 							$('#relation_id').append('<option value="'+ index+'" >'+value+'</option>');
@@ -67,17 +67,14 @@
 						<div class="col-sm-2">
 							Model
 						</div>
-						<div class="col-sm-2">	                  	
+						<div class="col-sm-2">	 
 						   {{  Form::select('model_name', selectRelationType(), 
-						   selectEditRelationType($inputRelation)
-
+						   selectEditRelationType($inputRelation, 'model_name', 'model_id')
 						   ,array('class' => 'form-control' ,'onchange' => 'getRelationTypeModel()', 'id' =>'type_box_head'))  }}
 						</div>
 						<div class="col-sm-2  ">	                  	
 						    <select name="model_id" id="model_id" class="form-control">
-						    	
 						    </select>
-						
 						</div>
 					</div>
 				</div>
@@ -89,7 +86,7 @@
 						</div>
 						<div class="col-sm-2">	                  	
 						   {{  Form::select('relation_name', selectRelationType(), 
-						  selectEditRelationType($inputRelation),
+						  selectEditRelationType($inputRelation, 'relation_name', 'relation_id'),
 						   array('class' => 'form-control' ,'onchange' => 'getRelationTypeCategory()', 'id' =>'type_box_botton'))  }}
 						</div>
 						<div class="col-sm-2">	                  	

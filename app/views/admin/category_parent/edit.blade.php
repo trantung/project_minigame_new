@@ -39,7 +39,7 @@
 							@if(Request::segment(3) == CONTENT_SEGMENT)
 							<div class="form-group">
 								<label for="name">Chọn category</label>
-									{{ Form::select('game_id', getListCategory() , null ,  array('class' =>'form-control')) }}
+									{{ Form::select('game_id', getListCategory() , $inputgame_category_parent->game_id ,  array('class' =>'form-control')) }}
 							</div>
 							@endif
 							<hr />
