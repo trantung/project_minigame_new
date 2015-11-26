@@ -111,6 +111,9 @@ class SiteController extends HomeController {
             	->with('error', 'Sai tên truy cập hoặc mật khẩu');
         } else {
             if(Auth::user()->attempt($input)) {
+            	if(Auth::user()->get()->status == INACTIVE) {
+            		dd('Tài khoản của bạn đã bị khóa');
+            	}
             	$inputUser = CommonSite::ipDeviceUser();
             	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
         		return Redirect::to('/');

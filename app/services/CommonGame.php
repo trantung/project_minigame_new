@@ -101,10 +101,10 @@ class CommonGame
 			if($input['parent_id'] == '') {
 				$query = $query->whereNotNUll('parent_id');
 			}
-			if($input['category_parent_id'] != '') {
-				$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
-				$query = $query->whereIn('id', $list);
-			}
+			// if($input['category_parent_id'] != '') {
+			// 	$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
+			// 	$query = $query->whereIn('id', $list);
+			// }
 			if($input['type_id'] != '') {
 				$listType = Type::find($input['type_id'])->gametypes->lists('game_id');
 				$query = $query->whereIn('id', $listType);
