@@ -87,15 +87,12 @@ class GameController extends SiteController {
 		$categoryParent = CategoryParent::findBySlug($slug);
 		$type = Type::findBySlug($slug);
 		if($categoryParent) {
-			$games = CommonGame::boxGameByCategoryParent($categoryParent);
-			// $categoryParentId = $categoryParent->id;
-			// $arrange = getArrange($categoryParent->arrange);
-			// $games = Game::where('parent_id', $categoryParent->id)->orderBy($arrange, 'desc')->paginate(1);
-			// // $games = $categoryParent->games->sortByDesc($arrange);
+			$games = CommonGame::boxGameByCategoryParent($categoryParent, true);
 			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
 		}
 		if($type) {
-			// return View::make('site.game.type')->with(compact('data'));
+			$games = CommonGame::boxGameByType($type, true);
+			return View::make('site.game.type')->with(compact('games', 'type'));
 		}
 	}
 
@@ -103,6 +100,7 @@ class GameController extends SiteController {
 	{
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
+		dd($game);
 		// $type = Type::findBySlug($slug);
 		return View::make('site.game.gameDownload')->with(compact('game'));
 	}
