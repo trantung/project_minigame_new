@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+@include('admin.feedback_game.search')
 <!-- inclue Search form 
 
 -->

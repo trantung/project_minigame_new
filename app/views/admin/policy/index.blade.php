@@ -11,7 +11,7 @@
 -->
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('CategoryController@create') }}" class="btn btn-primary">Thêm chính sách liên hệ</a>
+		<a href="{{ action('PolicyController@create') }}" class="btn btn-primary">Thêm chính sách liên hệ</a>
 	</div>
 </div>
 
@@ -27,21 +27,17 @@
 			<tr>
 			  <th>ID</th>
 			  <th>Tiêu đề</th>
-			  <th>Mô tả</th>
 			  <th>Thể loại</th>			  
-			  <th>Trạng thái</th>	
 			  <th style="width:200px;">Action</th>
 			</tr>
 			 @foreach($inputpolicy as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
 			  <td>{{ $value->title }}</td>
-			  <td>{{ $value->description }}</td>
-			  <td>{{ $value->type_policy }}</td>			
-			  <td>{{ $value->status }}</td>
+			  <td>{{ getType_Policy( $value->type_policy) }}</td>			
 			  <td>
-				<a href="{{ action('CategoryController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-				{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryController@destroy', $category->id), 'style' => 'display: inline-block;')) }}
+				<a href="{{ action('PolicyController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+				{{ Form::open(array('method'=>'DELETE', 'action' => array('PolicyController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 				{{ Form::close() }}
 			  </td>

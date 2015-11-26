@@ -1,16 +1,16 @@
 <div class="margin-bottom">
-    {{ Form::open(array('action' => 'ScoreManagerController@search', 'method' => 'GET')) }}
+    {{ Form::open(array('action' => 'FeedbackController@search', 'method' => 'GET')) }}
         <div class="input-group" style="width: 150px; display:inline-block;">
-            <label>Tài khoản</label>
-            <input type="text" name="user_name" class="form-control" placeholder="Tài khoản" />
+            <label>Tên</label>
+            <input type="text" name="name" class="form-control" placeholder="Tên người góp ý" />
         </div>
         <div class="input-group" style="width: 150px; display:inline-block;">
-            <label>Game</label>
-            <input type="text" name="game_name" class="form-control" placeholder="Tài khoản" />
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" placeholder="Email người góp ý" />
         </div>
         <div class="input-group" style="width: 150px; display:inline-block;">
-            <label>Sắp xếp điểm</label>
-            {{ Form::select('sortByScore', orderByScore(), null, array('class' =>'form-control')) }}
+            <label>Tiêu đề</label>
+            <input type="text" name="title" class="form-control" placeholder="Tiêu đề người góp ý" />
         </div>
         <div class="input-group" style="width: 150px; display:inline-block;">
             <label>Từ ngày</label>

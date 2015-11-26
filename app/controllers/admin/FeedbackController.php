@@ -93,5 +93,16 @@ class FeedbackController extends AdminController {
         return Redirect::action('FeedbackController@index');
 	}
 
+	/**
+	*Seach feedback
+	*
+	*
+	*/
+	public function search(){
+		$input = Input::all();
+		$inputFeedback = CommonSearch::seachFeedback($input);
+		return View::make('admin.feedback.index')->with(compact('inputFeedback'));
+	}
+
 
 }

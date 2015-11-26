@@ -26,7 +26,11 @@
 					<label for="name">Thể loại tin</label>
 					<div class="row">
 						<div class="col-sm-6">
+							@if(!Admin::isSeo()) 
 						   {{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control' )) }}
+						   	@else
+						   	{{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control', 'disabled'=>'true' )) }}
+						   	@endif
 						</div>
 					</div>
 				</div>
@@ -34,16 +38,25 @@
 					<label for="image_url">Upload ảnh tin</label>
 					<div class="row">
 						<div class="col-sm-6">
+							@if(Admin::isSeo())         
+							{{ Form::file('image_url', array('disabled' => 'true' )) }}
+							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $inputNew->id . '/' . $inputNew->image_url) }}" />
+							@else
 							{{ Form::file('image_url') }}
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $inputNew->id . '/' . $inputNew->image_url) }}" />
+							@endif
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="description">Nội dung tin</label>
 					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+						<div class="col-sm-6">	 
+							@if(!Admin::isSeo())                 	
+						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1'  )) }}
+						   	@else                 	
+						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1', 'disabled' =>'true'  )) }}
+						   	@endif
 						</div>
 					</div>
 				</div>

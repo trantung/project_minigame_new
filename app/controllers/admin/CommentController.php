@@ -120,5 +120,13 @@ class CommentController extends AdminController {
 		}
 		dd(1);
 	}
+	//search data
+	public function search()
+	{
+		$input = Input::all();
+		$inputComment = CommonSearch::searchComment($input);
+		
+		return View::make('admin.comment.index')->with(compact('inputComment'));
+	}
 
 }

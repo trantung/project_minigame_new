@@ -73,6 +73,8 @@ define('GAME_PLAY', 2);
 define('GAME_VOTE', 3);
 define('GAME_VIEW', 4);
 define('GAME_DOWNLOAD', 5);
-
+//type policy
+define('POLICY', 1);
+define('ABOUT_POLICY', 2);
 
 
