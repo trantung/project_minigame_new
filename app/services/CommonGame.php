@@ -180,8 +180,7 @@ class CommonGame
     	$arrange = getArrange($data->arrange);
 		$game = $data->games->first();
     	if ($game) {
-    		$listGame = Game::where('parent_id', $game->id)->orderBy($arrange)->take(12);
-    		dd($listGame);
+    		$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(12)->get();
     		return $listGame;
     	}
     	return null;

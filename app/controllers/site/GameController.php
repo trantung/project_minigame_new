@@ -87,9 +87,11 @@ class GameController extends SiteController {
 		$categoryParent = CategoryParent::findBySlug($slug);
 		$type = Type::findBySlug($slug);
 		if($categoryParent) {
-			$categoryParentId = $categoryParent->id;
-			$arrange = getArrange($categoryParent->arrange);
-			$games = $categoryParent->games->take()->sortByDesc($arrange);
+			$games = CommonGame::boxGameByCategoryParent($categoryParent);
+			// $categoryParentId = $categoryParent->id;
+			// $arrange = getArrange($categoryParent->arrange);
+			// $games = Game::where('parent_id', $categoryParent->id)->orderBy($arrange, 'desc')->paginate(1);
+			// // $games = $categoryParent->games->sortByDesc($arrange);
 			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
 		}
 		if($type) {

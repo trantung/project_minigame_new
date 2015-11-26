@@ -40,7 +40,7 @@
 	<div class="box">
 		<h1>{{ $relationModel->name }}<a href="{{ $relationModel->slug }}" class="box-more">Xem thêm</a></h1>
 		<div class="row">
-			@foreach($relationModel->games->take(12) as $game)
+			@foreach(CommonGame::boxGameByCategoryParent($relationModel) as $game)
 				<div class="col-xs-6 col-sm-3 col-md-2">
 					<div class="item">
 						<div class="item-image">
