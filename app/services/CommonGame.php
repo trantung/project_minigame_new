@@ -204,17 +204,15 @@ class CommonGame
     	return null;
     }
 
-    // public static function getUrlGame($slug)
-    // {
-    // 	$game = Game::findBySlug($slug);
-    // 	if($game) {
-    // 		return '' . $type->slug . '' . $slug . '.html';
-    // 	} else {
-    // 		$type = Type::find($game->type_main);
-    // 	}
-
-    // 	if()
-
-    // }
+    public static function getUrlGame($slug)
+    {
+    	$game = Game::findBySlug($slug);
+    	if($game) {
+    		$type = Type::find($game->type_main);
+    		return '/' . $type->slug . '/' . $slug . '.html';
+    	} else {
+    		return null;
+    	}
+    }
 
 }

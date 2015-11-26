@@ -100,6 +100,7 @@ class GameController extends SiteController {
 	{
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
+		dd($game);
 		// $type = Type::findBySlug($slug);
 		return View::make('site.game.gameDownload')->with(compact('game'));
 	}
