@@ -16,11 +16,6 @@ class ScoreTableSeeder extends Seeder {
 			]);
 		Score::create([
 					'user_id' => '1',
-					'game_id' => '10',
-					'score' => '300',
-			]);
-		Score::create([
-					'user_id' => '1',
 					'game_id' => '11',
 					'score' => '2500',
 			]);
