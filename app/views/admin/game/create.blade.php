@@ -81,10 +81,10 @@
 			                {{ Form::select('status', selectStatusGame(), '', array('class' => 'form-control')) }}
 		              	</div>
 
-		              	<!-- <div class="form-group">
-		              				                <label>Slide</label>
-		              				                {{ Form::select('slide_id') }}
-		              	</div> -->
+		              	<div class="form-group">
+			                <label>Slide</label>
+			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide()) }}
+		              	</div>
 
 						<hr />
 						<h1>SEO META</h1>

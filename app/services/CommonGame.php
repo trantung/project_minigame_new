@@ -298,6 +298,11 @@ class CommonGame
 			$style = 'width: 100%; height: 450px;';
 		}
 		return $style;
+	}
+
+    public static function getSlide()
+    {
+    	return AdminSlide::lists('name', 'id');
     }
 
 }

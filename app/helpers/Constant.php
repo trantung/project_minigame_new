@@ -92,7 +92,8 @@ define('TYPEFACEBOOK', 'Facebook');
 define('TYPEGOOGLE', 'Google');
 //define slide type name
 define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
-define('UPLOAD_IMAGE_SLIDE', '/slide/image');
 //define limited box game related
 define('GAME_RELATED_MOBILE', 6);
 define('GAME_RELATED_WEB', 12);
+define('UPLOAD_IMAGE_SLIDE', '/slide');
+define('PAGINATE_SLIDE', 10);

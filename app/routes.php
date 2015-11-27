@@ -76,7 +76,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/seo', 'SeoController');
 
 	Route::resource('/policy', 'PolicyController');
-
+	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::resource('/slider', 'AdminSlideController');
 	
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
