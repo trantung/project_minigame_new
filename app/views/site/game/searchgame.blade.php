@@ -25,7 +25,7 @@
 				</a>
 				</br>						
 				<!-- todo -->
-				<!-- <img alt="" src="images/star.png" height="20" width="122" /> -->
+				<img alt="" src="images/star.png" height="20" width="122" />
 				</br>					
 				{{ $value->count_play }} người chơi
 				</br>						

@@ -76,7 +76,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/seo', 'SeoController');
 
 	Route::resource('/policy', 'PolicyController');
-
+	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::resource('/slider', 'AdminSlideController');
 	
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
@@ -102,6 +102,8 @@ Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' 
 
 
 Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
+
+Route::get('/chi-tiet-bai-viet/{id}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
 
 Route::resource('/', 'SiteIndexController');
 

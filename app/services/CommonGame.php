@@ -205,13 +205,14 @@ class CommonGame
     	return null;
     }
 
+    // url game
     public static function getUrlGame($slug = null)
     {
     	$game = Game::findBySlug($slug);
     	if($game) {
     		$type = Type::find($game->type_main);
     		if($type) {
-    			return '/' . $type->slug . '/' . $slug . '.html';
+				return '/' . $type->slug . '/' . $slug . '.html';
     		} else {
     			dd('Đường dẫn sai');
     		}
@@ -220,6 +221,7 @@ class CommonGame
     	}
     }
 
+    // url download game
     public static function getUrlDownload($game = null)
     {
     	if($game) {
@@ -230,6 +232,77 @@ class CommonGame
     		}
     	}
     	return '/';
+    }
+
+    // Other games by parent_id with limit
+    public static function getRelateGame($parentId, $limit)
+    {
+    	if($parentId && $limit) {
+    		$listGame = Game::where('parent_id', $parentId)->limit($limit)->get();
+    		return $listGame;
+    	}
+    	return null;
+    }
+
+    // link to file folder play game online
+    public static function getLinkGame($game = null)
+    {
+		if($game) {
+			// $ext = getExtension($game->link_upload_game);
+			$filename = getFilename($game->link_upload_game);
+    		if($game->parent_id == GAMEFLASH) {
+    			if($game->link_url != '') {
+					$link = UPLOAD_FLASH . '/' . $game->link_url;
+		    	} else {
+		    		$link = UPLOAD_FLASH . '/' . $game->link_upload_game;
+		    	}
+		    	$box = self::getBoxGame($link, $game->parent_id);
+    			return $box;
+    		}
+    		if($game->parent_id == GAMEHTML5) {
+    			if($game->link_url != '') {
+					$link = UPLOAD_GAME . '/' . $game->link_url . '/index.html';
+		    	} else {
+		    		$link = UPLOAD_GAME . '/' . $filename . '/index.html';
+		    	}
+		    	$box = self::getBoxGame($link, $game->parent_id);
+    			return $box;
+    		}
+    	}
+    	return null;
+    }
+
+    public static function getBoxGame($link, $parentId)
+    {
+    	if($parentId == GAMEFLASH) {
+    		$style = self::getStyle();
+    		$box = '<object style="' . $style . '">
+					    <param name="movie" value="' . $link .'">
+					    <embed src="' . $link .'">
+					    </embed>
+					</object>';
+    		return $box;
+    	}
+    	if($parentId == GAMEHTML5) {
+    		$style = self::getStyle();
+    		$box = '<iframe width="100%" height="100%" src="' . $link . '" style="' . $style . '" allowfullscreen="true"></iframe>';
+    		return $box;
+    	}
+    }
+
+    public static function getStyle()
+    {
+    	if(getDevice() == MOBILE) {
+			$style = 'width: 100%; height: 100%;';
+		} else {
+			$style = 'width: 100%; height: 450px;';
+		}
+		return $style;
+	}
+
+    public static function getSlide()
+    {
+    	return AdminSlide::lists('name', 'id');
     }
 
 }

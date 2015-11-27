@@ -85,12 +85,10 @@
 			                <label>Trạng thái</label>
 			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
 		              	</div>
-
-		              	<!-- <div class="form-group">
-		              				                <label>Slide</label>
-		              				                {{ Form::select('slide') }}
-		              	</div> -->
-
+		              	<div class="form-group">
+			                <label>Slide</label>
+			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id) }}
+		              	</div>
 						<hr />
 						<h1>SEO META</h1>
 
