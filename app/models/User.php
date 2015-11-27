@@ -29,4 +29,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'fullname', 'status', 'ip', 'device', 'phone');
     protected $dates = ['deleted_at'];
 
+    public function gamehistories()
+    {
+        return $this->hasMany('GameHistory', 'user_id', 'id');
+    }
+    public function games()
+    {
+        return $this->belongsToMany('Game', 'game_histories', 'user_id', 'game_id');
+    }
 }
