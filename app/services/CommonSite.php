@@ -28,4 +28,31 @@ class CommonSite
         return $input;
     }
 
+    // get advertise
+    public static function getAdvertise($position, $modelName = null, $modelId = null)
+    {
+        // Header & Footer
+        if($modelName == null && $modelId == null) {
+            $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->first();
+            return $ad;
+        }
+        // Content
+        else {
+            //check Common models
+            $common_model = CommonModel::where(array('model_name' => $modelName, 'model_id' => $modelId))->first();
+            if ($common_model) {
+                $common_model_id = $common_model->id;
+                if($advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first()) {
+                    $advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first()->advertisement_id;
+                    $ad = Advertise::find($advertisement_id);
+                    return $ad;
+                }
+                return null;
+            }
+            else {
+                return null;
+            }
+        }
+    }
+
 }

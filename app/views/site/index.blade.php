@@ -10,10 +10,7 @@
 	@foreach($categoryParent as $value)
 	<h3><a href="{{ url($value->slug) }}">{{ $value->name }}</a><a href="#" class="box-more">Xem thêm</a></h3>
 	<div class="row">
-	{{-- if($value->arrange == 1){
-		return $value->games->orderBy('created_at', 'desc')->take(12);
-	} --}}
-		@foreach($value->games as $game)
+		@foreach(CommonGame::boxGameByCategoryParent($value) as $game)
 			<div class="col-xs-6 col-sm-3 col-md-2">
 				<div class="item">
 				    <div class="item-image">
@@ -30,16 +27,11 @@
 			</div>
 	  	@endforeach
 	</div>
-	<div class="ad">
-	<a href="#"><img src="assets/images/ad2.jpg" alt="" height="271" width="322" /></a>
-	</div>
+
+	@include('site.common.ad', array('adPosition' => CHILD_PAGE, 'modelName' => 'CategoryParent', 'modelId' => $value->id))
+
 	@endforeach
 
-	</div>
-
-	
-
-	</div>
 </div>
 
 @stop

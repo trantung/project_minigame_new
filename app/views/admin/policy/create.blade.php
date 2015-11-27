@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-@include('admin.seo.common')
+@include('admin.policy.common')
 
 <div class="row">
 	<div class="col-xs-12">
@@ -17,15 +17,23 @@
 				  	<label for="name">Tiêu đề</label>
 				  	<div class="row">
 						<div class="col-sm-12">
-						   {{ Form::tex('title', null , textParentCategory('Nhập tiêu đề')) }}
+						   {{ Form::text('title', null , textParentCategory('Nhập tiêu đề')) }}
 						</div>
 				  </div>
 				</div>
 				<div class="form-group">
-				  	<label for="name">SEO Footer</label>
+				  	<label for="name">Thể loại</label>
 				  	<div class="row">
 						<div class="col-sm-12">
-						   {{ Form::textarea('footer_script', null , textParentCategory('Nhập script seo footer vào đây')) }}
+						{{ Form::select('type_policy', selectType_Policy(), null, array('class' =>'form-control')) }}
+						</div>
+				  </div>
+				</div>
+				<div class="form-group">
+				  	<label for="name">Mô tả</label>
+				  	<div class="row">
+						<div class="col-sm-12">
+						    {{ Form::textarea('description', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 						</div>
 				  </div>
 				</div>
@@ -41,4 +49,5 @@
 		  <!-- /.box -->
 	</div>
 </div>
+@include('admin.common.ckeditor')
 @stop

@@ -50,11 +50,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/relation/ajaxedit/{id}', array('uses' => 'RelationController@ajaxedit', 'as' => 'ajax.edit'));
 	Route::resource('/relation', 'RelationController');
 
-
+	Route::get('/comment/search', array('uses' =>  'CommentController@search', 'as' => 'admin.comment.search'));
 	Route::post('/comment/deleteSelected', 'CommentController@deleteSelected');
 	Route::post('/comment/updateIndexData', 'CommentController@updateIndexData');
 	Route::resource('/comment', 'CommentController');
 
+	Route::get('/score/search', array('uses' =>  'ScoreManagerController@search', 'as' => 'admin.score.search'));
 	Route::resource('/score', 'ScoreManagerController');
 
 
@@ -66,8 +67,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
+	Route::get('/feedback/search', array('uses' =>  'FeedbackController@search', 'as' => 'admin.feedback.search'));
 	Route::resource('/feedback', 'FeedbackController');
 
+	Route::get('/feedback_game/search', array('uses' =>  'FeedbackGameController@search', 'as' => 'admin.feedback_game.search'));
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
 	Route::resource('/seo', 'SeoController');
@@ -88,7 +91,6 @@ Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'
 
 Route::resource('/', 'SiteIndexController');
 
-Route::get('/{slug}', 'GameController@listgame');
 Route::get('/{slug}/{page}', 'GameController@listgame');
 
-Route::get('{type}/{slug}.html', 'GameController@detailGame');
+Route::get('/{type}/{slug}.html', 'GameController@detailGame');

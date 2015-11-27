@@ -6,6 +6,7 @@
 
 @section('content')
 @include('admin.comment.scriptindex')
+/@include('admin.comment.search')
 <!-- inclue Search form 
 
 -->

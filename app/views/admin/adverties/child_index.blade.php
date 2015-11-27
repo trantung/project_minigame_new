@@ -33,7 +33,7 @@
 				  	<td>{{ CategoryParent::find(CommonModel::find($value->common_model_id)->model_id)->name }}</td>
 					<td>{{ Advertise::find($value->advertisement_id)->image_link }}</td>
 					<td>
-						<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .$value->common_model_id . '/' . Advertise::find($value->advertisement_id)->image_url) }}" ,width="100px", height="100px"  />
+						<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .$value->common_model_id . '/' . Advertise::find($value->advertisement_id)->image_url) }}" max-width="400px" height="100px" />
 					</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>

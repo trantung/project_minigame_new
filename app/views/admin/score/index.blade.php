@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+@include('admin.score.search')
 <!-- inclue Search form 
 
 -->

@@ -56,7 +56,27 @@ function selectEditRelationType($input)
 			return CONTENT_RELATION;
 	}
 
-	
+}
+function selectType_Policy(){
+	return array(
+		POLICY => 'Chính sách', 
+		ABOUT_POLICY => 'Giới thiệu', 
+		);
+}
+function getType_Policy($id){
+	$policyarr = array(
+		POLICY => 'Chính sách', 
+		ABOUT_POLICY => 'Giới thiệu', 
+		);
+	return $policyarr[$id];
+}
+
+function orderByScore(){
+	return array(
+				'' => '--chọn',
+				'score_asc' => 'Điểm tăng dần',
+				'score_desc' => 'Điểm giảm dần',
+			);
 }
 
 function getModelNameRelation($modelName)
@@ -311,4 +331,9 @@ function checkedGameTypeMain($typeId, $gameTypeMain)
 		return 'checked';
 	}
 	return NULL;
+}
+//get category
+function getListCategory()
+{
+	return Game::whereNull('parent_id')->lists( 'name','id');
 }

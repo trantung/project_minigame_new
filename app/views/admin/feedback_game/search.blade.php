@@ -1,16 +1,8 @@
 <div class="margin-bottom">
-    {{ Form::open(array('action' => 'ScoreManagerController@search', 'method' => 'GET')) }}
+    {{ Form::open(array('action' => 'FeedbackGameController@search', 'method' => 'GET')) }}
         <div class="input-group" style="width: 150px; display:inline-block;">
-            <label>Tài khoản</label>
-            <input type="text" name="user_name" class="form-control" placeholder="Tài khoản" />
-        </div>
-        <div class="input-group" style="width: 150px; display:inline-block;">
-            <label>Game</label>
-            <input type="text" name="game_name" class="form-control" placeholder="Tài khoản" />
-        </div>
-        <div class="input-group" style="width: 150px; display:inline-block;">
-            <label>Sắp xếp điểm</label>
-            {{ Form::select('sortByScore', orderByScore(), null, array('class' =>'form-control')) }}
+            <label>Tên game</label>
+            <input type="text" name="name" class="form-control" placeholder="Tên game" />
         </div>
         <div class="input-group" style="width: 150px; display:inline-block;">
             <label>Từ ngày</label>

@@ -12,4 +12,5 @@ class Comment extends Eloquent
 	    'model_id', 'description'];
     protected $dates = ['deleted_at'];
 
+
 }

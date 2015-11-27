@@ -36,6 +36,12 @@
 								<label for="name">Mức ưu tiên</label>
 									{{ Form::select('weight_number', selectWeight_number() , null ,  array('class' =>'form-control')) }}
 							</div>
+							@if(Request::segment(3) == CONTENT_SEGMENT)
+							<div class="form-group">
+								<label for="name">Chọn category</label>
+									{{ Form::select('game_id', getListCategory() , null ,  array('class' =>'form-control')) }}
+							</div>
+							@endif
 							<hr />
 							<h1>SEO META</h1>
 							{{-- include common/meta.blade.php --}}

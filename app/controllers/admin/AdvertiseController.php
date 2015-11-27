@@ -112,7 +112,7 @@ class AdvertiseController extends AdminController {
 		$inputChild['position'] = CHILD_PAGE;
 		$id = Advertise::create($inputChild)->id;
 		$commonModelId = CommonModel::create(array('model_name' => 'CategoryParent', 'model_id' => Input::get('model_id')))->id;
-		$imageUrl = CommonSeo::uploadImage($commonModelId, UPLOAD_ADVERTISE, 'image_url', 'content');
+		$imageUrl = CommonSeo::uploadImage(Input::get('model_id'), UPLOAD_ADVERTISE, 'image_url', 'content');
 		Advertise::find($id)->update(array('image_url' => $imageUrl));
 		AdvertisePosition::create(array(
 			'common_model_id' => $commonModelId,
@@ -134,7 +134,7 @@ class AdvertiseController extends AdminController {
 		$status = Input::get('status');
 		$input = Input::except('_token', '_method', 'status', 'position');
 		$advertise = Advertise::find($id);
-		$imageUrl = CommonSeo::uploadImage($modelId, UPLOAD_ADVERTISE, 'image_url', 'content', $advertise->image_url);
+		$imageUrl = CommonSeo::uploadImage(CommonModel::find($modelId)->model_id, UPLOAD_ADVERTISE, 'image_url', 'content', $advertise->image_url);
 		$input['image_url'] = $imageUrl;
 		$advertise->update($input);
 		CommonModel::find($modelId)->update(['model_id' => Input::get('model_id')]);
