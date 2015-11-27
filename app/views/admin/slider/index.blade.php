@@ -15,23 +15,23 @@
 	<tr>
 	  	<th>ID</th>
 	  	<th>Tên slide</th>
-	  	<th>Link</th>
-	  	<th>Image</th>
-	  	<th>Status</th>
+	  	<th>Auto Play</th>
+	  	<th>prev/next</th>
+	  	<th>Paginate</th>
+	  	<th>Time</th>
 	  	<th style="width:200px;">Action</th>
 	</tr>
-		@foreach($advertise as $value)
+		@foreach($slides as $value)
 			<tr>
 			  	<td>{{ $value->id }}</td>
-				<td>{{ getPositionAdvertise($value->position) }}</td>
-				<td>{{ $value->image_link }}</td>
+				<td>{{ $value->name }}</td>
+				<td>{{ Slider::getStatusSliderOption($value->autoplay) }}</td>
+				<td>{{ Slider::getStatusSliderOption($value->navigation) }}</td>
+				<td>{{ Slider::getStatusSliderOption($value->pagination) }}</td>
+				<td>{{ $value->config_time }}</td>
 				<td>
-					<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer' .'/' .$value->id . '/' . $value->image_url) }}" ,width="100px", height="100px"  />
-				</td>
-				<td>{{ getStatusAdvertise($value->status) }} </td>
-				<td>
-				<a href="{{  action('AdvertiseController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('AdvertiseController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+				<a href="{{  action('AdminSlideController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminSlideController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 						<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 			  	</td>

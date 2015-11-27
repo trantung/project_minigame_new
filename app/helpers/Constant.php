@@ -90,7 +90,7 @@ define('TYPEFACEBOOK', 'Facebook');
 define('TYPEGOOGLE', 'Google');
 //define slide type name
 define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
-define('UPLOAD_IMAGE_SLIDE', '/slide/image');
+define('UPLOAD_IMAGE_SLIDE', '/slide');
 define('PAGINATE_SLIDE', 10);
 
 
