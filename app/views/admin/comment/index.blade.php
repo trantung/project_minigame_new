@@ -50,7 +50,7 @@
 			  <td>{{ $value->description }}</td>
 			  <td>{{ Game::find($value->model_id)->name }}</td>
 			  <td>{{ $value->created_at }}</td>
-			  <td>{{ User::find($value->user_id)->device }}</td>
+			  <td>{{ getNameDevice(User::find($value->user_id)->device) }}</td>
 			  <td>{{ User::find($value->user_id)->ip }}</td>
 			  <td>
 			  	@if($value->status == ACTIVE )

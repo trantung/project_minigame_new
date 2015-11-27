@@ -94,8 +94,18 @@ Route::post('/dang-ky', array('uses' => 'AccountController@store'));
 Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 'as' => 'account'));
 Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
+Route::get('/gop-y', array('uses' => 'SiteFeedbackController@create', 'as' =>'feedback'));
+Route::post('/gop-y', array('uses' => 'SiteFeedbackController@store'));
+Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGame', 'as' =>'error_game'));
+Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
+Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));
+
+
+Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}.html', 'GameController@detailGame');
+

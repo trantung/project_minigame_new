@@ -57,7 +57,8 @@ function selectEditRelationType($input, $modelName, $modelId)
 function selectType_Policy(){
 	return array(
 		POLICY => 'Chính sách', 
-		ABOUT_POLICY => 'Giới thiệu', 
+		//cuongnt tạm thời ẩn phần này
+		//ABOUT_POLICY => 'Giới thiệu', 
 		);
 }
 function getType_Policy($id){
@@ -191,7 +192,7 @@ function checkedGameType($typeId, $gameId)
 	if ($check) {
 		return 'checked';
 	}
-	return '';
+	return NULL;
 }
 
 function selectSortBy($sortBy)
@@ -261,7 +262,7 @@ function getStatusGame($status) {
 function getNameDevice($deviceId)
 {
 	if ($deviceId == MOBILE) {
-		return COMPUTER;
+		return SMART_DEVICE;
 	}
 	if ($deviceId == COMPUTER) {
 		return COMPUTER_DEVICE;
@@ -310,7 +311,7 @@ function selectArrange()
 		);
 }
 
-function getArrange($arrange = '')
+function getArrange($arrange)
 {
 	$arrangeArray = array(
 			HOT => 'weight_number',
@@ -318,7 +319,6 @@ function getArrange($arrange = '')
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
-			'' => 'id'
 		);
 	return $arrangeArray[$arrange];
 }
@@ -328,18 +328,10 @@ function checkedGameTypeMain($typeId, $gameTypeMain)
 	if ($typeId == $gameTypeMain) {
 		return 'checked';
 	}
-	return '';
+	return NULL;
 }
 //get category
 function getListCategory()
 {
 	return Game::whereNull('parent_id')->lists( 'name','id');
-}
-// show 0 for null
-function getZero($number = null)
-{
-	if($number != '') {
-		return $number;
-	}
-	return 0;
 }
