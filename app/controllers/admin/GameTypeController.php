@@ -84,17 +84,25 @@ class GameTypeController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$rules = array(
-            'name'   => 'required'
-        );
+		if(!Admin::isSeo()) {
+			$rules = array(
+	            'name'   => 'required'
+	        );
+        } else {
+        	$rules = array();
+        }
         $input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('GameTypeController@edit', $id)
 	            ->withErrors($validator);
         } else {
-			$inputCategory = Input::only('name');
-			CommonNormal::update($id,$inputCategory);
+
+        	//SEO cant update
+        	if(!Admin::isSeo()) {
+				$inputCategory = Input::only('name');
+				CommonNormal::update($id,$inputCategory);
+			}
 
 			CommonSeo::updateSeo('Type', $id, FOLDER_SEO_GAMETYPE);
 

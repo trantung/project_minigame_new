@@ -17,7 +17,7 @@
 	    		$('#link_download').prop('disabled', 'disabled');
 	    		$('#link_upload_game').val('{{ $inputGame->link_upload_game }}');
 	    	}
-	    	if('{{ $inputGame->link_download }}') {
+	    	else if('{{ $inputGame->link_download }}') {
 	    		$('#checkUpload').attr('checked', false);
 	    		$('#checkUpload').prop('disabled', false);
 	    		$('#link_upload_game').val('');
@@ -27,6 +27,16 @@
 	    		$('#link_download').val('{{ $inputGame->link_download }}');
 	    		$('#link_download').prop('disabled', false);
 	    		$('#fileNameUpload').html('');
+	    	}
+	    	else {
+	    		$('#checkUpload').attr('checked', 'checked');
+	    		$('#checkUpload').prop('disabled', 'disabled');
+	    		$('#link_upload_game').prop('disabled', false);
+	    		$('#checkLinkDownload').attr('checked', false);
+	    		$('#checkLinkDownload').prop('disabled', false);
+	    		$('#link_download').val('');
+	    		$('#link_download').prop('disabled', 'disabled');
+	    		$('#link_upload_game').val('');
 	    	}
 	    }
 	    else {

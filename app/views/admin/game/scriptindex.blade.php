@@ -13,11 +13,10 @@
 
 	function checkInputNumber()
 	{
-		$('input[name^="weight_number"]').keypress(function(event) {
-	        return /\d/.test(String.fromCharCode(event.keyCode));
-	    });
-	    $('input[name^="count_play"]').keypress(function(event) {
-	        return /\d/.test(String.fromCharCode(event.keyCode));
+		$('.onlyNumber').keypress(function(e) {
+	        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	           	return false;
+		    }
 	    });
 	}
 

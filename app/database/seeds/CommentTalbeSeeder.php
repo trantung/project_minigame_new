@@ -8,21 +8,21 @@ class CommentTalbeSeeder extends Seeder {
 					'user_id' => '1',
 					'status' => '1',
 					'model_name' => 'Game',
-					'model_id' => '8',
+					'model_id' => '4',
 					'description'=> 'Game hay vãi',
 			]);
 		Comment::create([
 					'user_id' => '1',
 					'status' => '0',
 					'model_name' => 'Game',
-					'model_id' => '16',
+					'model_id' => '4',
 					'description'=> 'Tải game nay về chơi thích quá! ace tải về nhé!',
 			]);
 		Comment::create([
 					'user_id' => '1',
 					'status' => '0',
 					'model_name' => 'Game',
-					'model_id' => '10',
+					'model_id' => '4',
 					'description'=> 'Game chán!',
 			]);
 	}

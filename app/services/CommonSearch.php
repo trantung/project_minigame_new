@@ -105,4 +105,28 @@ class CommonSearch
 		return $data;
 	}
 
+	//User search
+	public static function seachUser($input){
+		$data = User::where(function ($query) use ($input)
+		{
+			if($input['user_name'] != '') {
+				$listGame = $query->where('user_name', 'like', '%'.$input['user_name'].'%');
+			}
+			
+			if($input['start_date'] != ''){
+				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
+			}
+			if($input['end_date'] != ''){
+				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
+			}
+			if($input['from_update_at'] != ''){
+				$query = $query->where('updated_at', '>=', convertDateTime($input['from_update_at']));
+			}
+			if($input['to_update_at'] != ''){
+				$query = $query->where('updated_at', '<=', convertDateTime($input['to_update_at']));
+			}
+		})->orderBy('id', 'desc')->paginate(PAGINATE);
+		return $data;
+	}
+
 }

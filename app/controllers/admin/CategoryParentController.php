@@ -110,7 +110,8 @@ class CategoryParentController extends AdminController {
 
 		$inputCategory = CategoryParent::find($id);
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
-		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo'));
+		$inputgame_category_parent = GameRelation::where('category_parent_id', $id)->first();
+		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo','inputgame_category_parent'));
 	}
 
 	/**

@@ -10,6 +10,8 @@ define('TYPE_RELATION', '3');
 
 define('CATEGORYPARENT', 'CategoryParent');
 define('TYPE', 'Type');
+define('CONTENTREATION', 'Content');
+define('MENURELATION', 'Menu');
 //End Relation
 define('CONTENT_SEGMENT', 'content');
 //permission role
@@ -25,9 +27,10 @@ define('UPLOADIMG', '/images');
 //url upload avatar game
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
+define('UPLOAD_GAMEZIP', '/games-zip');
 define('UPLOAD_GAME', '/games');
-define('UPLOAD_GAMEONLINE', '/games/online');
-define('UPLOAD_GAMEOFFLINE', '/games/offline');
+define('UPLOAD_FLASH', '/games-flash');
+define('UPLOAD_GAMEOFFLINE', '/games-offline');
 //url upload news
 define('UPLOAD_NEWS', '/news');
 //folder upload image facebook
@@ -76,5 +79,17 @@ define('GAME_DOWNLOAD', 5);
 //type policy
 define('POLICY', 1);
 define('ABOUT_POLICY', 2);
+//define paging frontend
+define('PAGINATE_BOXGAME', 12);
+define('PAGINATE_LISTGAME', 6);
+//status user
+define('ACTIVEUSER', 'Kích hoạt');
+define('INACTIVEUSER', 'Chưa kích hoạt');
+define('TYPESYSTEM', 'Hệ thống');
+define('TYPEFACEBOOK', 'Facebook');
+define('TYPEGOOGLE', 'Google');
+//define slide type name
+define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
+define('UPLOAD_IMAGE_SLIDE', '/slide/image');
 
 

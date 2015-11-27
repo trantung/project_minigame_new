@@ -62,34 +62,22 @@ class AdminGameController extends AdminController {
 	            ->withErrors($validator)->withInput($input);
         } else {
 
-        	//upload avatar
-        	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
-
-        	//upload game file
-        	if($input['parent_id'] == GAMEOFFLINE) {
-        		$pathUpload = public_path().UPLOAD_GAMEOFFLINE;
-        	} else {
-        		$pathUpload = public_path().UPLOAD_GAMEONLINE;
-        	}
-
         	// $folderName = substr($filename, 0, -4);
         	//unzip game file , public/games/link_url/
         	// $result = File::makeDirectory($pathUpload.'/'.$folderName, 0755);
 
-			$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload);
+			$inputGame = CommonGame::inputActionGame();
 
 			//insert slide_id
 
         	//insert game
 			$id = CommonNormal::create($inputGame);
 
-			//insert game_types: type_id, game_id
-			//CommonGame::insertRelationshipGame(Input::get('type_id'), 'type_id', 'game_type', $id);
 			$data = Game::find($id);
 
 			if($data) {
 				RelationBox::insertRelationship($data, 'types', Input::get('type_id'));
-				RelationBox::insertRelationship($data, 'categoryparents', Input::get('category_parent_id'));
+				// RelationBox::insertRelationship($data, 'categoryparents', Input::get('category_parent_id'));
 			}
 			//insert histories: model_name, model_id, last_time, device, last_ip
 			$history_id = CommonLog::insertHistory('Game', $id);
@@ -171,17 +159,7 @@ class AdminGameController extends AdminController {
         	//SEO cant update game
         	if(!Admin::isSeo()) {
 
-	        	//upload avatar
-	        	$pathAvatar = public_path().UPLOAD_GAME_AVATAR;
-
-	        	//upload game file
-	        	if($input['parent_id'] == GAMEOFFLINE) {
-	        		$pathUpload = public_path().UPLOAD_GAMEOFFLINE;
-	        	} else {
-	        		$pathUpload = public_path().UPLOAD_GAMEONLINE;
-	        	}
-
-				$inputGame = CommonGame::inputActionGame($pathAvatar, $pathUpload, $id);
+				$inputGame = CommonGame::inputActionGame($id);
 
 				//update slide_id
 
@@ -190,7 +168,7 @@ class AdminGameController extends AdminController {
 
 				if($data) {
 					RelationBox::updateRelationship($data, 'types', Input::get('type_id'));
-					RelationBox::updateRelationship($data, 'categoryparents', Input::get('category_parent_id'));
+					// RelationBox::updateRelationship($data, 'categoryparents', Input::get('category_parent_id'));
 				}
 			}
 

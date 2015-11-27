@@ -57,6 +57,8 @@
 	    //Date range picker
 	    $('#start_date').datepicker();
 	    $('#end_date').datepicker();
+	    $('#start_update_date').datepicker();
+	    $('#end_update_date').datepicker();
 	  });
 	</script>
 

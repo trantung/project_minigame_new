@@ -75,7 +75,7 @@ class CommonNormal
 			return 'GameErrors';
 		if($name == 'seo')
 			return 'AdminSeo';
-		if($name == 'User')
+		if($name == 'user')
 			return 'User';
 		if($name == 'policy')
 			return 'Policy';

@@ -105,6 +105,7 @@
 								<tr>
 									<th>Tên thể loại game</th>
 									<th>Chọn</th>
+									<th>Thể loại chính</th>
 								</tr>
 								@foreach(Type::all() as $key => $value)
 									<tr>
@@ -112,30 +113,33 @@
 										<td>
 											<input type="checkbox" onclick="return false" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
 										</td>
-									</tr>
-								@endforeach
-							</table>
-						</div>
-					</div>
-					<div class="box-body table-responsive">
-						<h4>Chọn chuyên mục</h4>
-						<div class="overflow-box">
-							<table class="table table-bordered">
-								<tr>
-									<th>Tên chuyên mục</th>
-									<th>Chọn</th>
-								</tr>
-								@foreach(CategoryParent::all() as $key => $value)
-									<tr>
-										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" onclick="return false" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
+										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="return false" {{ checkedGameTypeMain($value->id, $inputGame->type_main) }} />
 										</td>
 									</tr>
 								@endforeach
 							</table>
 						</div>
 					</div>
+					{{-- <div class="box-body table-responsive">
+						<h4>Chọn chuyên mục</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên chuyên mục</th>
+									<th>Chọn</th>
+								</tr> --}}
+								{{-- @foreach(CategoryParent::all() as $key => $value) --}}
+									{{-- <tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" onclick="return false" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
+										</td>
+									</tr> --}}
+								{{-- @endforeach --}}
+							{{-- </table>
+						</div>
+					</div> --}}
 				</div>
 			</div>
 			<div class="box-footer">

@@ -23,13 +23,13 @@
 	<ul>
 		<li class='active'><a href='/' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
 		@foreach($menu as $key => $value)
-			@if(count($value->types) == 0)
-			<li><a href='#' class="color2"><span>{{ $value->name }}</span></a></li>
+			@if(count($value->parenttypes) == 0)
+			<li><a href="{{ '/' . $value->slug }}" class="color2"><span>{{ $value->name }}</span></a></li>
 			@else
 			<li class='has-sub'><a href='#' class="color2"><span>{{ $value->name }}</span></a>
 				<ul>
 				@foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v)
-					<li><a href='#'><span>{{ Type::find($v)->name }}</span></a></li>
+					<li><a href="{{ '/' . Type::find($v)->slug }}"><span>{{ Type::find($v)->name }}</span></a></li>
 				@endforeach
 				</ul>
 			</li>

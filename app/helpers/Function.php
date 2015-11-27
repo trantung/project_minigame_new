@@ -41,21 +41,18 @@ function selectRelationType()
 		TYPE_RELATION => 'Type',
 	);
 }
-function selectEditRelationType($input)
+function selectEditRelationType($input, $modelName, $modelId)
 {
-	$test =CategoryParent::find($input->model_id)->where('position', MENU)->get();
-	if($input->model_name == TYPE || $input->relation_name == TYPE)
-	{
-		return TYPE_RELATION;
-	}
-	elseif ($input->model_name == CATEGORYPARENT || $input->relation_name == CATEGORYPARENT) {
-		$count = CategoryParent::where('id',$input->model_id)->where('position',MENU)->get();
-		if(count($count) > 0)
+	if($input->$modelName == CATEGORYPARENT) {
+		$position = CategoryParent::find($input->$modelId)->position;
+		if ($position == MENU) {
 			return MENU_RELATION;
-		else
+		}
+		if ($position == CONTENT) {
 			return CONTENT_RELATION;
+		}
 	}
-
+	return TYPE_RELATION;
 }
 function selectType_Policy(){
 	return array(
@@ -194,7 +191,7 @@ function checkedGameType($typeId, $gameId)
 	if ($check) {
 		return 'checked';
 	}
-	return NULL;
+	return '';
 }
 
 function selectSortBy($sortBy)
@@ -313,7 +310,7 @@ function selectArrange()
 		);
 }
 
-function getArrange($arrange)
+function getArrange($arrange = '')
 {
 	$arrangeArray = array(
 			HOT => 'weight_number',
@@ -321,6 +318,7 @@ function getArrange($arrange)
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
+			'' => 'id'
 		);
 	return $arrangeArray[$arrange];
 }
@@ -330,10 +328,18 @@ function checkedGameTypeMain($typeId, $gameTypeMain)
 	if ($typeId == $gameTypeMain) {
 		return 'checked';
 	}
-	return NULL;
+	return '';
 }
 //get category
 function getListCategory()
 {
 	return Game::whereNull('parent_id')->lists( 'name','id');
+}
+// show 0 for null
+function getZero($number = null)
+{
+	if($number != '') {
+		return $number;
+	}
+	return 0;
 }

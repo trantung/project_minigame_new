@@ -1,27 +1,7 @@
 <?php
 class CommonGame
 {
-	public static function insertRelationshipGame($input, $param, $name, $id)
-	{
-		if($input) {
-			foreach($input as $key => $value) {
-				if ($value) {
-					CommonNormal::create(array($param => $value, 'game_id' => $id), $name);
-				}
-			}
-		}
-	}
-
-	public static function updateRelationshipGame($input, $param, $name, $id, $modelName)
-	{
-		$listId = $modelName::where('game_id', $id)->lists('id');
-		foreach ($listId as $listId){
-			$modelName::destroy($listId);
-		}
-		self::insertRelationshipGame($input, $param, $name, $id);
-	}
-
-	public static function uploadAction($fileUpload, $pathUpload, $isFile = NULL, $issetFile = NULL, $isUnique = NULL)
+	public static function uploadAction($fileUpload, $isFile = NULL, $issetFile = NULL, $isUnique = NULL)
 	{
 		if(Input::hasFile($fileUpload)){
 			$file = Input::file($fileUpload);
@@ -30,21 +10,42 @@ class CommonGame
 			if(isset($isUnique)) {
 				$filename = changeFileNameImage($filename);
 			}
+			if($isFile != '') {
+				$pathUpload = self::getPathFile($extension);
+			} else {
+				$pathUpload = public_path().UPLOAD_GAME_AVATAR;
+			}
 			$uploadSuccess = $file->move($pathUpload, $filename);
 		}
 		if(isset($uploadSuccess)) {
-			if(isset($isFile) && $extension != 'apk') {
-				Zipper::make($pathUpload.'/'.$filename)->extractTo($pathUpload);
+			if(isset($isFile) && $extension == 'zip') {
+				$pathUnzip = public_path().UPLOAD_GAME;
+				Zipper::make($pathUpload.'/'.$filename)->extractTo($pathUnzip);
 			}
 			return $filename;
  		}
  		if($issetFile) {
  			return $issetFile;
  		}
-
 	}
 
-	public static function inputActionGame($pathAvatar, $pathUpload, $id = NULL)
+	public static function getPathFile($extension = null)
+	{
+		if($extension) {
+			if($extension == 'zip') {
+				return public_path().UPLOAD_GAMEZIP;
+			}
+			if($extension == 'swf') {
+				return public_path().UPLOAD_FLASH;
+			}
+			if($extension == 'apk') {
+				return public_path().UPLOAD_GAMEOFFLINE;
+			}
+		}
+		return null;
+	}
+
+	public static function inputActionGame($id = NULL)
 	{
 		if($id) {
 			$issetFile = self::getIssetFile($id, TRUE);
@@ -54,8 +55,8 @@ class CommonGame
 			$issetAvatar = '';
 		}
 		$inputGame = array();
-		$inputGame['image_url'] = self::uploadAction('image_url', $pathAvatar, '', $issetAvatar,  IS_UPLOAD_UNIQUE);
-		$inputGame['link_upload_game'] = CommonGame::uploadAction('link_upload_game', $pathUpload, IS_UPLOAD_FILE, $issetFile);
+		$inputGame['image_url'] = self::uploadAction('image_url', '', $issetAvatar,  IS_UPLOAD_UNIQUE);
+		$inputGame['link_upload_game'] = self::uploadAction('link_upload_game', IS_UPLOAD_FILE, $issetFile);
 		$inputGame['name'] = Input::get('name');
     	$inputGame['description'] = Input::get('description');
     	$inputGame['link_download'] = Input::get('link_download');
@@ -100,10 +101,10 @@ class CommonGame
 			if($input['parent_id'] == '') {
 				$query = $query->whereNotNUll('parent_id');
 			}
-			if($input['category_parent_id'] != '') {
-				$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
-				$query = $query->whereIn('id', $list);
-			}
+			// if($input['category_parent_id'] != '') {
+			// 	$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
+			// 	$query = $query->whereIn('id', $list);
+			// }
 			if($input['type_id'] != '') {
 				$listType = Type::find($input['type_id'])->gametypes->lists('game_id');
 				$query = $query->whereIn('id', $listType);
@@ -175,11 +176,60 @@ class CommonGame
 
 
 	// get games, orderBy arrange category parent, paging
-    public static function boxGameByCategoryParent($data)
+    public static function boxGameByCategoryParent($data, $paginate = null)
     {
     	$arrange = getArrange($data->arrange);
-    	$game = $data->games;
-    	return $game->take(12)->sortByDesc($arrange);
+    	$game = $data->games->first();
+    	if($game) {
+    		if($paginate) {
+    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    		} else {
+    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    		}
+    		return $listGame;
+    	}
+    	return null;
+    }
+
+    public static function boxGameByType($data, $paginate = null)
+    {
+		$games = Type::find($data->id)->gametypes->lists('game_id');
+    	if($games) {
+    		if($paginate) {
+    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    		} else {
+    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    		}
+    		return $listGame;
+    	}
+    	return null;
+    }
+
+    public static function getUrlGame($slug = null)
+    {
+    	$game = Game::findBySlug($slug);
+    	if($game) {
+    		$type = Type::find($game->type_main);
+    		if($type) {
+    			return '/' . $type->slug . '/' . $slug . '.html';
+    		} else {
+    			dd('Đường dẫn sai');
+    		}
+    	} else {
+    		return '/';
+    	}
+    }
+
+    public static function getUrlDownload($game = null)
+    {
+    	if($game) {
+    		if($game->link_download != '') {
+    			return $game->link_download;
+    		} else {
+    			return UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game;
+    		}
+    	}
+    	return '/';
     }
 
 }

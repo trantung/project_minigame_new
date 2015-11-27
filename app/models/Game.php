@@ -49,4 +49,9 @@ class Game extends Eloquent implements SluggableInterface
         return $this->belongsToMany('Type', 'game_types', 'game_id', 'type_id');
     }
 
+    public function slide()
+    {
+        return $this->belongsTo('AdminSlide', 'slide_id', 'id');
+    }
+
 }

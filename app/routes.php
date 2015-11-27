@@ -77,6 +77,11 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/policy', 'PolicyController');
 
+	Route::resource('/slider', 'AdminSlideController');
+	
+	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
+	Route::resource('/user', 'UserController');
+
 });
 
 // FRONTEND
@@ -91,6 +96,6 @@ Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'
 
 Route::resource('/', 'SiteIndexController');
 
-Route::get('/{slug}/{page}', 'GameController@listgame');
+Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}.html', 'GameController@detailGame');
