@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="menu-show"><a onclick="menushow()"><i class="fa fa-navicon"></i></a></div>
 			<div class="logo">
-				<a href="/"><img src="assets/images/logo.jpg" alt="" /></a>
+				<a href="/"><img src="/assets/images/logo.jpg" alt="" /></a>
 			</div>
 			<div class="search">
 				<a class="iconfacebook"><i class="fa fa-facebook"></i></a>

@@ -55,19 +55,19 @@
 					<td>{{ $value->id }}</td>
 					<td>{{ $value->name }}</td>
 					@if(Admin::isAdmin())
-					<td><input type="text" name="weight_number[]" value="{{ $value->weight_number }}" style="width: 50px; text-align: center;" /></td>
+					<td><input type="text" name="weight_number[]" value="{{ getZero($value->weight_number) }}" class="only_number" style="width: 50px; text-align: center;" /></td>
 					@else
-					<td>{{ $value->weight_number }}</td>
+					<td>{{ getZero($value->weight_number) }}</td>
 					@endif
 					<td>{{ Game::find($value->parent_id)->name }}</td>
-					<td>{{ $value->count_view }}</td>
+					<td>{{ getZero($value->count_view) }}</td>
 					@if(Admin::isAdmin())
-					<td><input type="text" name="count_play[]" value="{{ $value->count_play }}" style="width: 50px; text-align: center;" /></td>
+					<td><input type="text" name="count_play[]" value="{{ getZero($value->count_play) }}" class="onlyNumber" style="width: 50px; text-align: center;" /></td>
 					@else
-					<td>{{ $value->count_play }}</td>
+					<td>{{ getZero($value->count_play) }}</td>
 					@endif
-					<td>{{ $value->count_vote }}</td>
-					<td>{{ $value->count_download }}</td>
+					<td>{{ getZero($value->count_vote) }}</td>
+					<td>{{ getZero($value->count_download) }}</td>
 					@if(Admin::isAdmin())
 					<td>{{ Form::select('statusGame[]', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
 					@else
@@ -75,12 +75,14 @@
 					@endif
 					<td>{{ $value->start_date }}</td>
 					<td>
-						<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
-						<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(Admin::isAdmin())
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
-						<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-						{{ Form::close() }}
+							<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
+						@endif
+							<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+						@if(Admin::isAdmin())
+							{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+							{{ Form::close() }}
 						@endif
 					</td>
 				</tr>

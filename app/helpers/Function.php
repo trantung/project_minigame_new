@@ -191,7 +191,7 @@ function checkedGameType($typeId, $gameId)
 	if ($check) {
 		return 'checked';
 	}
-	return NULL;
+	return '';
 }
 
 function selectSortBy($sortBy)
@@ -310,7 +310,7 @@ function selectArrange()
 		);
 }
 
-function getArrange($arrange)
+function getArrange($arrange = '')
 {
 	$arrangeArray = array(
 			HOT => 'weight_number',
@@ -318,6 +318,7 @@ function getArrange($arrange)
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
+			'' => 'id'
 		);
 	return $arrangeArray[$arrange];
 }
@@ -327,10 +328,18 @@ function checkedGameTypeMain($typeId, $gameTypeMain)
 	if ($typeId == $gameTypeMain) {
 		return 'checked';
 	}
-	return NULL;
+	return '';
 }
 //get category
 function getListCategory()
 {
 	return Game::whereNull('parent_id')->lists( 'name','id');
+}
+// show 0 for null
+function getZero($number = null)
+{
+	if($number != '') {
+		return $number;
+	}
+	return 0;
 }

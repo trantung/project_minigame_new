@@ -1,5 +1,5 @@
 @extends('admin.layout.default')
-
+@if(!Admin::isSeo())
 @section('title')
 {{ $title='Thêm game' }}
 @stop
@@ -126,16 +126,16 @@
 								<tr>
 									<th>Tên chuyên mục</th>
 									<th>Chọn</th>
-								</tr>
-								@foreach(CategoryParent::all() as $key => $value)
-									<tr>
+								</tr> --}}
+								{{-- @foreach(CategoryParent::all() as $key => $value) --}}
+									{{-- <tr>
 										<td>{{ $value->name }}</td>
 										<td>
 											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" />
 										</td>
-									</tr>
-								@endforeach
-							</table>
+									</tr> --}}
+								{{-- @endforeach --}}
+							{{-- </table>
 						</div>
 					</div> --}}
 				</div>
@@ -152,3 +152,4 @@
 @include('admin.common.ckeditor')
 
 @stop
+@endif

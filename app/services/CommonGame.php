@@ -101,10 +101,10 @@ class CommonGame
 			if($input['parent_id'] == '') {
 				$query = $query->whereNotNUll('parent_id');
 			}
-			if($input['category_parent_id'] != '') {
-				$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
-				$query = $query->whereIn('id', $list);
-			}
+			// if($input['category_parent_id'] != '') {
+			// 	$list = CategoryParent::find($input['category_parent_id'])->categoryparentrelations->lists('game_id');
+			// 	$query = $query->whereIn('id', $list);
+			// }
 			if($input['type_id'] != '') {
 				$listType = Type::find($input['type_id'])->gametypes->lists('game_id');
 				$query = $query->whereIn('id', $listType);
@@ -179,7 +179,7 @@ class CommonGame
     public static function boxGameByCategoryParent($data, $paginate = null)
     {
     	$arrange = getArrange($data->arrange);
-		$game = $data->games->first();
+    	$game = $data->games->first();
     	if($game) {
     		if($paginate) {
     			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
@@ -205,15 +205,31 @@ class CommonGame
     	return null;
     }
 
-    public static function getUrlGame($slug)
+    public static function getUrlGame($slug = null)
     {
     	$game = Game::findBySlug($slug);
     	if($game) {
     		$type = Type::find($game->type_main);
-    		return '/' . $type->slug . '/' . $slug . '.html';
+    		if($type) {
+    			return '/' . $type->slug . '/' . $slug . '.html';
+    		} else {
+    			dd('Đường dẫn sai');
+    		}
     	} else {
-    		return null;
+    		return '/';
     	}
+    }
+
+    public static function getUrlDownload($game = null)
+    {
+    	if($game) {
+    		if($game->link_download != '') {
+    			return $game->link_download;
+    		} else {
+    			return UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game;
+    		}
+    	}
+    	return '/';
     }
 
 }

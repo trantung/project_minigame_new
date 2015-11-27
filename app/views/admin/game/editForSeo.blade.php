@@ -105,12 +105,16 @@
 								<tr>
 									<th>Tên thể loại game</th>
 									<th>Chọn</th>
+									<th>Thể loại chính</th>
 								</tr>
 								@foreach(Type::all() as $key => $value)
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
 											<input type="checkbox" onclick="return false" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
+										</td>
+										<td>
+										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="return false" {{ checkedGameTypeMain($value->id, $inputGame->type_main) }} />
 										</td>
 									</tr>
 								@endforeach
@@ -124,16 +128,16 @@
 								<tr>
 									<th>Tên chuyên mục</th>
 									<th>Chọn</th>
-								</tr>
-								@foreach(CategoryParent::all() as $key => $value)
-									<tr>
+								</tr> --}}
+								{{-- @foreach(CategoryParent::all() as $key => $value) --}}
+									{{-- <tr>
 										<td>{{ $value->name }}</td>
 										<td>
 											<input type="checkbox" onclick="return false" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
 										</td>
-									</tr>
-								@endforeach
-							</table>
+									</tr> --}}
+								{{-- @endforeach --}}
+							{{-- </table>
 						</div>
 					</div> --}}
 				</div>

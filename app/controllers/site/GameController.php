@@ -82,7 +82,7 @@ class GameController extends SiteController {
 		//
 	}
 
-	public function listGame($slug, $page = 1)
+	public function listGame($slug)
 	{
 		$categoryParent = CategoryParent::findBySlug($slug);
 		$type = Type::findBySlug($slug);
@@ -100,9 +100,18 @@ class GameController extends SiteController {
 	{
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
-		dd($game);
-		// $type = Type::findBySlug($slug);
-		return View::make('site.game.gameDownload')->with(compact('game'));
+		return $this->getViewGame($game->parent_id, $game);
 	}
+
+	public function getViewGame($parentId, $game)
+    {
+    	if($parentId && $game) {
+    		if($parentId == GAMEOFFLINE) {
+    			return View::make('site.game.download')->with(compact('game'));
+    		} else {
+    			return View::make('site.game.online')->with(compact('game'));
+    		}
+    	}
+    }
 
 }

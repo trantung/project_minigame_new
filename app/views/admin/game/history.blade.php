@@ -1,5 +1,5 @@
 @extends('admin.layout.default')
-
+@if(Admin::isAdmin())
 @section('title')
 {{ $title='Quản lý lịch sử game' }}
 @stop
@@ -52,4 +52,4 @@
 </div>
 
 @stop
-
+@endif
