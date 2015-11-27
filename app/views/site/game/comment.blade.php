@@ -1,5 +1,4 @@
 <h4>Bình luận</h4>
-
 <div class="comment">
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">

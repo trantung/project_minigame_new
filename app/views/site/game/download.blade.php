@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-{{ $title=$game->name }}
+{{ $title = $game->name }}
 @stop
 
 @section('content')

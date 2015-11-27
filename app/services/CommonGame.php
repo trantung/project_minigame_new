@@ -179,7 +179,7 @@ class CommonGame
     public static function boxGameByCategoryParent($data, $paginate = null)
     {
     	$arrange = getArrange($data->arrange);
-		$game = $data->games->first();
+    	$game = $data->games->first();
     	if($game) {
     		if($paginate) {
     			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
@@ -205,7 +205,7 @@ class CommonGame
     	return null;
     }
 
-    public static function getUrlGame($slug=null)
+    public static function getUrlGame($slug = null)
     {
     	$game = Game::findBySlug($slug);
     	if($game) {
@@ -218,6 +218,18 @@ class CommonGame
     	} else {
     		return '/';
     	}
+    }
+
+    public static function getUrlDownload($game = null)
+    {
+    	if($game) {
+    		if($game->link_download != '') {
+    			return $game->link_download;
+    		} else {
+    			return UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game;
+    		}
+    	}
+    	return '/';
     }
 
 }

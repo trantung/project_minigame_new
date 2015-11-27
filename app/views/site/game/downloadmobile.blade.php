@@ -8,7 +8,7 @@
 
 		<h1 class="title mobile-title">{{ $game->name }}</h1><img class="startitle" src="/assets/images/star.png" height="20" width="122" />
 
-		<p>{{ $game->count_play }} người chơi</p>
+		<p>{{ getZero($game->count_play) }} người chơi</p>
 
 	</div>
 
@@ -20,7 +20,7 @@
 			{{ $game->description }}
 		</p>
 		<p>
-			<a href="{{ url(UPLOAD_GAMEOFFLINE.'/'.$game->link_upload_game) }}" class="download"><i class="fa fa-download"></i> Download</a>
+			<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Download</a>
 		</p>
 		<div class="stars">
 			<strong>Đánh giá: </strong>

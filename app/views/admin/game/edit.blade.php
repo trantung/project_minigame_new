@@ -131,16 +131,16 @@
 								<tr>
 									<th>Tên chuyên mục</th>
 									<th>Chọn</th>
-								</tr>
-								@foreach(CategoryParent::all() as $key => $value)
-									<tr>
+								</tr> --}}
+								{{-- @foreach(CategoryParent::all() as $key => $value) --}}
+									{{-- <tr>
 										<td>{{ $value->name }}</td>
 										<td>
 											<input type="checkbox" name="category_parent_id[]" value="{{ $value->id }}" {{ checkBoxGame($inputGame->id, $value->id) }} />
 										</td>
-									</tr>
-								@endforeach
-							</table>
+									</tr> --}}
+								{{-- @endforeach --}}
+							{{-- </table>
 						</div>
 					</div> --}}
 				</div>

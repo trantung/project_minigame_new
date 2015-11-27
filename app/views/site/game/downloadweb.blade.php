@@ -6,7 +6,7 @@
 	</div>
 	<div class="col-sm-6 ">
 		<h1 class="title">{{ $game->name }}</h1><img class="startitle" src="/assets/images/star.png" height="20" width="122" />
-		<p>{{ $game->count_play }} người chơi</p>
+		<p>{{ getZero($game->count_play) }} người chơi</p>
 		<p>{{ $game->description }}</p>
 		<div class="stars">
 			<strong>Đánh giá: </strong>
@@ -25,7 +25,7 @@
 			</form>
 		</div>
 		<p>
-		<a href="{{ url(UPLOAD_GAMEOFFLINE.'/'.$game->link_upload_game) }}" class="download"><i class="fa fa-download"></i> Download</a>
+		<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Download</a>
 		</p>
 		<p>
 		<a href="#"><img src="/assets/images/likeFacebook.png"></a>
