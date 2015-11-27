@@ -54,7 +54,9 @@ define('ENABLED', 1);
 //saveScore
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
-//category game offline
+//category game
+define('GAMEFLASH', 1);
+define('GAMEHTML5', 2);
 define('GAMEOFFLINE', 3);
 //history action
 define('CREATE', 'Create');
@@ -91,5 +93,6 @@ define('TYPEGOOGLE', 'Google');
 //define slide type name
 define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
 define('UPLOAD_IMAGE_SLIDE', '/slide/image');
-
-
+//define limited box game related
+define('GAME_RELATED_MOBILE', 6);
+define('GAME_RELATED_WEB', 12);

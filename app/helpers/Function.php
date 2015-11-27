@@ -261,7 +261,7 @@ function getStatusGame($status) {
 function getNameDevice($deviceId)
 {
 	if ($deviceId == MOBILE) {
-		return COMPUTER;
+		return SMART_DEVICE;
 	}
 	if ($deviceId == COMPUTER) {
 		return COMPUTER_DEVICE;
@@ -342,4 +342,20 @@ function getZero($number = null)
 		return $number;
 	}
 	return 0;
+}
+//get extension from filename
+function getExtension($filename = null)
+{
+	if($filename != '') {
+		return pathinfo($filename, PATHINFO_EXTENSION);
+	}
+	return null;
+}
+//get filename from filename
+function getFilename($filename = null)
+{
+	if($filename != '') {
+		return pathinfo($filename, PATHINFO_FILENAME);
+	}
+	return null;
 }

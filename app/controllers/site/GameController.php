@@ -100,16 +100,28 @@ class GameController extends SiteController {
 	{
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
-		return $this->getViewGame($game->parent_id, $game);
+		$play = Input::get('play');
+		return $this->getViewGame($game->parent_id, $game, $play);
 	}
 
-	public function getViewGame($parentId, $game)
+	public function getViewGame($parentId, $game, $play)
     {
     	if($parentId && $game) {
-    		if($parentId == GAMEOFFLINE) {
-    			return View::make('site.game.download')->with(compact('game'));
+    		if(getDevice() == MOBILE) {
+    			if($parentId == GAMEOFFLINE) {
+	    			return View::make('site.game.downloadmobile')->with(compact('game'));
+	    		} else {
+	    			if($play == 'true') {
+	    				return View::make('site.game.onlinemobileplay')->with(compact('game'));
+	    			}
+	    			return View::make('site.game.onlinemobile')->with(compact('game'));
+	    		}
     		} else {
-    			return View::make('site.game.online')->with(compact('game'));
+    			if($parentId == GAMEOFFLINE) {
+	    			return View::make('site.game.downloadweb')->with(compact('game'));
+	    		} else {
+	    			return View::make('site.game.onlineweb')->with(compact('game'));
+	    		}
     		}
     	}
     }

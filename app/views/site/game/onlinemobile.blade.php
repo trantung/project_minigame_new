@@ -24,24 +24,22 @@
 
 		</div>
 
-		<div class="col-xs-12">
+	  	<div class="col-xs-12">
 
 			<div class="imgGamedowload">
 				<img alt="" src="/assets/images/taive.png" />
 			</div>
 
+			<p>{{ $game->description }}</p>
 			<p>
-				{{ $game->description }}
-			</p>
-			<p>
-				<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Tải về</a>
+				<a href="{{ Request::url() }}?play=true" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</p>
 
 			@include('site.game.vote')
 
 			@include('site.game.social')
 
-		</div>
+	  	</div>
 
 	</div>
 
@@ -52,4 +50,3 @@
 @include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_MOBILE))
 
 @stop
-
