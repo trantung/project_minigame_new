@@ -26,8 +26,8 @@
 
 		<div class="col-xs-12">
 
-			<div class="imgGamedowload">
-				<img alt="" src="/assets/images/taive.png" />
+			<div class="slideGame">
+				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
 
 			<p>
