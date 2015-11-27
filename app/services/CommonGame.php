@@ -232,4 +232,9 @@ class CommonGame
     	return '/';
     }
 
+    public static function getSlide()
+    {
+    	return AdminSlide::lists('name', 'id');
+    }
+
 }
