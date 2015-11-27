@@ -96,14 +96,18 @@ class AdminSlideController extends AdminController {
 			$images = $input['image'];
 			if ($images) {
 				foreach ($images as $key => $image) {
-				if ($image[$key]) {
-					$filename = CommonSeo::uploadImage($key, UPLOAD_IMAGE_SLIDE, 'image', 'image');
-					AdminImage::find($key)->update(['image_url' => $filename]);
+					if ($images[$key]) {
+						$path = UPLOAD_IMAGE_SLIDE;
+						$destinationPath = public_path().$path.'/image' . '/' . $id;
+						$filename = $image->getClientOriginalName();
+						$uploadSuccess   =  $image->move($destinationPath, $filename);
+						AdminImage::find($key)->update(['image_url' => $filename]);
+					}
 				}
-			}
 			}
 			
 		}
+		AdminSlide::find($id)->update(Input::except('_token', '_method', 'image_url', 'image'));
 		return Redirect::action('AdminSlideController@index');
 	}
 
@@ -130,7 +134,8 @@ class AdminSlideController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		AdminSlide::find($id)->delete();
+		return Redirect::action('AdminSlideController@index');
 	}
 
 	public function deleteSlide($id)

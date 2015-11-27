@@ -58,7 +58,7 @@
 					<label for="name">Thời gian slide chạy</label>
 					<div class="row">
 						<div class="col-sm-6">	
-							{{ Form::text('config_time', null , textParentCategory('Time'), $slide->config_time) }}
+							{{ Form::text('config_time', $slide->config_time , textParentCategory('Time')) }}
 						</div>
 					</div>
 				</div>
