@@ -91,5 +91,7 @@ define('TYPEGOOGLE', 'Google');
 //define slide type name
 define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
 define('UPLOAD_IMAGE_SLIDE', '/slide/image');
+define('PAGINATE_SLIDE', 10);
+
 
 

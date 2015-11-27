@@ -9,7 +9,8 @@ class AdminSlideController extends AdminController {
 	 */
 	public function index()
 	{
-		return View::make('admin.slider.index');
+		$slides = AdminSlide::orderBy('id', 'asc')->paginate(PAGINATE_SLIDE);
+		return View::make('admin.slider.index')->with(compact('slides'));
 	}
 
 
