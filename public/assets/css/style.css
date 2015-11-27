@@ -157,6 +157,11 @@ a.icongoogleplus {
     top: -2px;
 }
 
+.box img {
+    max-width: 100%;
+    height: auto;
+}
+
 .item {
     border: 1px solid #f7a14d;
 
@@ -174,7 +179,8 @@ a.icongoogleplus {
     color: #888;
     display: block;
     font-size: 16px;
-    margin-top: 5px
+    margin-top: 5px;
+    height: 45px;
 }
 .item-star {
     text-align: center;
@@ -580,12 +586,25 @@ a.download i.fa {
     font-size: 16px;
 }
 
-.mobile {
+/*.mobile {
     display: none;
 }
 .web {
     display: block;
+}*/
+.mobile_avatar {
+    width: 40%;
+    padding: 0 15px;
+    display: inline-block;
+    vertical-align: top;
 }
+.mobile_title {
+    width: 58%;
+    padding: 0 15px 0 0;
+    vertical-align: top;
+    display: inline-block;
+}
+
 .cachar {
     background: #2b74a1;
     border-radius: 0px;
@@ -595,7 +614,7 @@ a.download i.fa {
     width: 50%;
     font-size: 13px;
     padding-top: 1px;
-	height: 19px; 
+	height: 19px;
 }
 #code{
     width: 50%;
@@ -608,12 +627,12 @@ a.download i.fa {
 	.label-text{
 		display:none;
 	}
-    .mobile {
+    /*.mobile {
         display: block;
     }
     .web {
         display: none;
-    }
+    }*/
 
     .social {
         text-align: center;
@@ -659,7 +678,7 @@ a.download i.fa {
         font-size: 12px;
     }
     .item-image strong {
-        font-size: 13px;
+        font-size: 16px;
     }
     .box > h3 > a,
     .box > h1 > a {
@@ -788,7 +807,7 @@ a.download i.fa {
     .menu-static ul li {
         padding-left: 15px;
     }
-	
+
 }
 @media (min-width: 670px) and (max-width: 1024px) {
     .menu-static ul li {
@@ -904,9 +923,9 @@ h1.title {
 
 /*trang tai ve*/
 .imgGamedowload{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     text-align: left;
-
 }
 .imgGamedowload img{
     width: 100%;
@@ -946,10 +965,10 @@ h1.title {
 }
 .table_container{
      display:table;
-     width:90%;     
-     border-collapse: collapse;     
+     width:90%;
+     border-collapse: collapse;
     }
-.heading{ 
+.heading{
      font-weight: bold;
      display:table-row;
      background-color:#C91622;
@@ -958,14 +977,14 @@ h1.title {
      font-size: 14px;
      font-family:georgia;
      color:#fff;
-  }  
+  }
 .table-row{
       display:table-row;
       text-align: left;
-  }  
+  }
 .col{
  	display:table-cell;
-  	border: 0px solid #CCC;  
+  	border: 0px solid #CCC;
 	vertical-align: top;
 	padding-left:20px;
 }
