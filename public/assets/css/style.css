@@ -922,12 +922,14 @@ h1.title {
 /*seach*/
 
 /*trang tai ve*/
-.imgGamedowload{
+.imgGamedowload,
+.slideGame {
     margin-bottom: 10px;
     margin-top: 10px;
     text-align: left;
 }
-.imgGamedowload img{
+.imgGamedowload img,
+.slideGame img {
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -952,7 +954,8 @@ h1.title {
 		.imgGame img{
 			width: auto;
 		}
-		.imgGamedowload img{
+		.imgGamedowload img,
+        .slideGame img {
 			 width: auto;
 		}
 		.col {
