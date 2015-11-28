@@ -90,7 +90,8 @@ class FeedbackGameController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('FeedbackGameController@index');
 	}
 
 	/**
