@@ -79,5 +79,7 @@ class CommonNormal
 			return 'User';
 		if($name == 'policy')
 			return 'Policy';
+		if($name == 'GameVote')
+			return 'GameVote';
 	}
 }

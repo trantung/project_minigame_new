@@ -78,13 +78,15 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/policy', 'PolicyController');
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::resource('/slider', 'AdminSlideController');
-	
+
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
 });
 
 // FRONTEND
+Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
+
 Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));
 Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
 Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logout'));

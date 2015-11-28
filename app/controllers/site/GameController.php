@@ -126,4 +126,19 @@ class GameController extends SiteController {
     	}
     }
 
+    public function voteGame()
+    {
+    	$input = array();
+    	$input['game_id'] = Input::get('id');
+    	$input['vote_rate'] = Input::get('rate');
+    	GameVote::create($input);
+    	$voteCount = GameVote::where('game_id', $input['game_id'])->count();
+    	$voteAverage = GameVote::where('game_id', $input['game_id'])->avg('vote_rate');
+    	$inputGame = array();
+    	$inputGame['count_vote'] = $voteCount;
+    	$inputGame['vote_average'] = round($voteAverage);
+    	Game::find($input['game_id'])->update($inputGame);
+    	dd(1);
+    }
+
 }

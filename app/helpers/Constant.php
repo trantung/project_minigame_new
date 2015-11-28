@@ -97,3 +97,5 @@ define('GAME_RELATED_MOBILE', 6);
 define('GAME_RELATED_WEB', 12);
 define('UPLOAD_IMAGE_SLIDE', '/slide');
 define('PAGINATE_SLIDE', 10);
+//define vote type
+define('VOTE_GAME', 'Game');

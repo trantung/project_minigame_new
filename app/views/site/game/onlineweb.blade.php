@@ -12,7 +12,9 @@
 	<!-- WEB -->
 	<div class="web">
 		<h1 class="title">{{ $game->name }}</h1>
-		<img class="startitle" src="/assets/images/star.png" height="20" width="122" />
+
+		@include('site.common.rate', array('vote_average' => $game->vote_average))
+
 		<p>{{ getZero($game->count_play) }} người chơi</p>
 		<p>{{ $game->description }}</p>
 		<div class="row">
@@ -28,7 +30,7 @@
 
 		<p>{{ $game->description }}</p>
 
-		@include('site.game.vote')
+		@include('site.game.vote', array('id' => $game->id))
 
 		@include('site.game.social')
 

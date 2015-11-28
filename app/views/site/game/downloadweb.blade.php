@@ -16,11 +16,14 @@
 			<img alt="" src="/assets/images/taive.png" />
 		</div>
 		<div class="col-sm-6 ">
-			<h1 class="title">{{ $game->name }}</h1><img class="startitle" src="/assets/images/star.png" height="20" width="122" />
+			<h1 class="title">{{ $game->name }}</h1>
+
+			@include('site.common.rate', array('vote_average' => $game->vote_average))
+
 			<p>{{ getZero($game->count_play) }} người chơi</p>
 			<p>{{ $game->description }}</p>
 
-			@include('site.game.vote')
+			@include('site.game.vote', array('id' => $game->id))
 
 			<p>
 				<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Download</a>
