@@ -38,7 +38,7 @@
 			  <td>{{ $value->email }}</td>
 			  <td>{{ $value->fullname }}</td>
 			  <td>{{ $value->ip }}</td>
-			  <td>{{ $value->device }}</td>
+			  <td>{{ getNameDevice($value->device) }}</td>
 			  <td>{{ $value->updated_at }}</td>
 			  <td>{{ UserManager::getStatus($value->status) }}</td>
 			  <td>
