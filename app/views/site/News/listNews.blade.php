@@ -2,22 +2,20 @@
 @extends('site.layout.default')
 
 @section('title')
-{{ $title='Tìm kiếm game' }}
+{{ $title='Danh sách tin tức' }}
 @stop
 
 @section('content')
 
 
-<div class="ad">
-		<h4>Kết quả tìm kiếm game</h4>
-	</div>
-@foreach($inputsearchGame as $value)
+
+@foreach($inputListNews as $value)
 <div class="box">
 	<hr/>
 	<div class="table_container">
 		<div class="table-row">
-			<div class="col col_image_avata">
-				<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
+			<div class="col">
+				<img class="image_fb" src="{{ url(UPLOADIMG . '/game_avatar'.'/'. $value->id . '/' . $value->image_url) }}" />
 			</div>
 			<div class="col">					
 				<a href="#">
@@ -38,7 +36,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<ul class="pagination">
-		{{ $inputsearchGame->appends(Request::except('page'))->links() }}
+		{{ $inputListNews->appends(Request::except('page'))->links() }}
 		</ul>
 	</div>
 </div>
