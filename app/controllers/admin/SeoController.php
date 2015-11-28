@@ -36,11 +36,12 @@ class SeoController extends AdminController {
 		if (!$input['header_script'] && !$input['footer_script']) {
 			return Redirect::action('SeoController@create')->with('message', 'Phải nhập thông tin header hoặc footer');
 		}
+		$input['model_name'] = SEO_SCRIPT;
 		CommonNormal::create($input);
 		return Redirect::action('SeoController@index');
 	}
-
-
+	
+	
 	/**
 	 * Display the specified resource.
 	 *
