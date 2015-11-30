@@ -319,6 +319,7 @@ function getArrange($arrange)
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
+			'' => 'id',
 		);
 	return $arrangeArray[$arrange];
 }

@@ -101,10 +101,13 @@ class GameController extends SiteController {
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
 		$play = Input::get('play');
-		return $this->getViewGame($game->parent_id, $game, $play);
+		if($game) {
+			return $this->getViewGame($game->parent_id, $game, $play);
+		}
+		dd('Game không tồn tại');
 	}
 
-	public function getViewGame($parentId, $game, $play)
+	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
     		if(getDevice() == MOBILE) {
