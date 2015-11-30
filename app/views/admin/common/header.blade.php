@@ -55,10 +55,18 @@
 	<script>
 	  $(function () {
 	    //Date range picker
-	    $('#start_date').datepicker();
-	    $('#end_date').datepicker();
-	    $('#start_update_date').datepicker();
-	    $('#end_update_date').datepicker();
+	    $('#start_date').datepicker({
+	    	format: 'yyyy-mm-dd',
+	    });
+	    $('#end_date').datepicker({
+	    	format: 'yyyy-mm-dd',
+	    });
+	    $('#start_update_date').datepicker({
+	    	format: 'yyyy-mm-dd',
+	    });
+	    $('#end_update_date').datepicker({
+	    	format: 'yyyy-mm-dd',
+	    });
 	  });
 	</script>
 

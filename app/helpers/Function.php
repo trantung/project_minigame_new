@@ -2,9 +2,10 @@
 /* mm/dd/yyyy to Y-m-d H:i:s */
 function convertDateTime($dateString, $paramString = '/')
 {
-	$array = explode($paramString,$dateString);
-	$datetime = $array[2].'-'.$array[0].'-'.$array[1].' 00:00:00';
-	return $datetime;
+	return $dateString . ' 00:00:00';
+	// $array = explode($paramString,$dateString);
+	// $datetime = $array[2].'-'.$array[0].'-'.$array[1].' 00:00:00';
+	// return $datetime;
 }
 function getRole($roleId) {
 	$role = array(
