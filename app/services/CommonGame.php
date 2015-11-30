@@ -182,9 +182,17 @@ class CommonGame
     	$game = $data->games->first();
     	if($game) {
     		if($paginate) {
-    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::where('parent_id', $game->id)->where('parent_id', '!=', GAMEFLASH)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    			} else {
+    				$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    			}
     		} else {
-    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::where('parent_id', $game->id)->where('parent_id', '!=', GAMEFLASH)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			} else {
+    				$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			}
     		}
     		return $listGame;
     	}
@@ -196,9 +204,17 @@ class CommonGame
 		$games = Type::find($data->id)->gametypes->lists('game_id');
     	if($games) {
     		if($paginate) {
-    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::whereIn('id', $games)->where('parent_id', '!=', GAMEFLASH)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    			} else {
+    				$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    			}
     		} else {
-    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::whereIn('id', $games)->where('parent_id', '!=', GAMEFLASH)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			} else {
+    				$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			}
     		}
     		return $listGame;
     	}
@@ -238,7 +254,11 @@ class CommonGame
     public static function getRelateGame($parentId, $limit)
     {
     	if($parentId && $limit) {
-    		$listGame = Game::where('parent_id', $parentId)->limit($limit)->get();
+    		if(getDevice() == MOBILE) {
+    			$listGame = Game::where('parent_id', $parentId)->where('parent_id', '!=', GAMEFLASH)->limit($limit)->get();
+    		} else {
+    			$listGame = Game::where('parent_id', $parentId)->limit($limit)->get();
+    		}
     		return $listGame;
     	}
     	return null;
