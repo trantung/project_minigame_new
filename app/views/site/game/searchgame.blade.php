@@ -22,10 +22,12 @@
 			<div class="col">					
 				<a href="#">
 					<strong>{{ $value->name }}</strong>
+					
 				</a>
+				
 				</br>						
 				<!-- todo -->
-				<img alt="" src="images/star.png" height="20" width="122" />
+				@include('site.common.rate', array('vote_average' => $value->vote_average))
 				</br>					
 				{{ $value->count_play }} người chơi
 				</br>						

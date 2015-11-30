@@ -84,13 +84,15 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/policy', 'PolicyController');
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::resource('/slider', 'AdminSlideController');
-	
+
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
 });
 
 // FRONTEND
+Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
+
 Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));
 Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
 Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logout'));
@@ -112,9 +114,15 @@ Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' 
 Route::get('/chi-tiet-bai-viet/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
 Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
+
+Route::get('/game-android', 'GameController@getListGameAndroid');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}.html', 'GameController@detailGame');
+
+//route vote many
+
 

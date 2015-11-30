@@ -132,11 +132,15 @@ class CommonSearch
 	public static function searchGame($input){
 		$data = Game::where(function ($query) use ($input)
 		{
+			if(getDevice() == MOBILE) 
+			{
+				$listGame = $query->where('parent_id', '!=', GAMEFLASH);
+			}
 			if($input['search'] != '') {
 				$listGame = $query->where('name', 'like', '%'.$input['search'].'%');
 			}
 			
-		})->whereNotNull('parent_id')->paginate(PAGINATE);
+		})->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
 		return $data;
 	}
 }

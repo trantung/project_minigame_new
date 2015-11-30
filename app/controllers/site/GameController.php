@@ -9,7 +9,7 @@ class GameController extends SiteController {
 	 */
 	public function index()
 	{
-		//
+		
 	}
 
 
@@ -101,10 +101,13 @@ class GameController extends SiteController {
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
 		$play = Input::get('play');
-		return $this->getViewGame($game->parent_id, $game, $play);
+		if($game) {
+			return $this->getViewGame($game->parent_id, $game, $play);
+		}
+		dd('Game không tồn tại');
 	}
 
-	public function getViewGame($parentId, $game, $play)
+	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
     		if(getDevice() == MOBILE) {
@@ -126,4 +129,27 @@ class GameController extends SiteController {
     	}
     }
 
+    public function voteGame()
+    {
+    	$input = array();
+    	$input['game_id'] = Input::get('id');
+    	$input['vote_rate'] = Input::get('rate');
+    	GameVote::create($input);
+    	$voteCount = GameVote::where('game_id', $input['game_id'])->count();
+    	$voteAverage = GameVote::where('game_id', $input['game_id'])->avg('vote_rate');
+    	$inputGame = array();
+    	$inputGame['count_vote'] = $voteCount;
+    	$inputGame['vote_average'] = round($voteAverage);
+    	Game::find($input['game_id'])->update($inputGame);
+    	dd(1);
+    }
+    /*
+    * Get list game android
+    * @ return listAndroid
+    */
+    public function getListGameAndroid(){
+    	$inputGame = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
+    	return View:make('site.game.showlistgameandroid')->with(compact('inputGame'));
+    }
+    
 }

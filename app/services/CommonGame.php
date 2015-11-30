@@ -182,9 +182,17 @@ class CommonGame
     	$game = $data->games->first();
     	if($game) {
     		if($paginate) {
-    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::where('parent_id', $game->id)->where('parent_id', '!=', GAMEFLASH)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    			} else {
+    				$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->paginate(PAGINATE_LISTGAME);
+    			}
     		} else {
-    			$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::where('parent_id', $game->id)->where('parent_id', '!=', GAMEFLASH)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			} else {
+    				$listGame = Game::where('parent_id', $game->id)->orderBy($arrange, 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			}
     		}
     		return $listGame;
     	}
@@ -196,9 +204,17 @@ class CommonGame
 		$games = Type::find($data->id)->gametypes->lists('game_id');
     	if($games) {
     		if($paginate) {
-    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::whereIn('id', $games)->where('parent_id', '!=', GAMEFLASH)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    			} else {
+    				$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->paginate(PAGINATE_LISTGAME);
+    			}
     		} else {
-    			$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			if(getDevice() == MOBILE) {
+    				$listGame = Game::whereIn('id', $games)->where('parent_id', '!=', GAMEFLASH)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			} else {
+    				$listGame = Game::whereIn('id', $games)->orderBy('id', 'desc')->limit(PAGINATE_BOXGAME)->get();
+    			}
     		}
     		return $listGame;
     	}
@@ -212,7 +228,10 @@ class CommonGame
     	if($game) {
     		$type = Type::find($game->type_main);
     		if($type) {
-				return '/' . $type->slug . '/' . $slug . '.html';
+    			
+    			$url = '/' . $type->slug . '/' . $slug . '.html';
+				// return '/' . $type->slug . '/' . $slug . '.html';
+				return $url;
     		} else {
     			dd('Đường dẫn sai');
     		}
@@ -238,7 +257,11 @@ class CommonGame
     public static function getRelateGame($parentId, $limit)
     {
     	if($parentId && $limit) {
-    		$listGame = Game::where('parent_id', $parentId)->limit($limit)->get();
+    		if(getDevice() == MOBILE) {
+    			$listGame = Game::where('parent_id', $parentId)->where('parent_id', '!=', GAMEFLASH)->limit($limit)->get();
+    		} else {
+    			$listGame = Game::where('parent_id', $parentId)->limit($limit)->get();
+    		}
     		return $listGame;
     	}
     	return null;
@@ -252,7 +275,7 @@ class CommonGame
 			$filename = getFilename($game->link_upload_game);
     		if($game->parent_id == GAMEFLASH) {
     			if($game->link_url != '') {
-					$link = UPLOAD_FLASH . '/' . $game->link_url;
+					$link = UPLOAD_FLASH . '/' . $game->link_url . '.swf';
 		    	} else {
 		    		$link = UPLOAD_FLASH . '/' . $game->link_upload_game;
 		    	}
@@ -261,9 +284,14 @@ class CommonGame
     		}
     		if($game->parent_id == GAMEHTML5) {
     			if($game->link_url != '') {
-					$link = UPLOAD_GAME . '/' . $game->link_url . '/index.html';
+					$link = UPLOAD_GAME . '/' . $game->link_url;
 		    	} else {
-		    		$link = UPLOAD_GAME . '/' . $filename . '/index.html';
+		    		$link = UPLOAD_GAME . '/' . $filename;
+		    	}
+		    	if(file_exists($link . '/index.html')) {
+		    		$link = $link . '/index.html';
+		    	} else {
+		    		$link = $link . '/index.htm';
 		    	}
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;

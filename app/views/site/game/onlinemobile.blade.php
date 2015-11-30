@@ -18,7 +18,8 @@
 		<div class="mobile_title">
 
 			<h1 class="title mobile-title">{{ $game->name }}</h1>
-			<img class="startitle" src="/assets/images/star.png" height="20" width="122" />
+
+			@include('site.common.rate', array('vote_average' => $game->vote_average))
 
 			<p>{{ getZero($game->count_play) }} người chơi</p>
 
@@ -30,14 +31,15 @@
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
 
-			<p>{{ $game->description }}</p>
+			<div class="detail">{{ $game->description }}</div>
+
 			<p>
 				<a href="{{ Request::url() }}?play=true" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</p>
 
-			@include('site.game.vote')
+			@include('site.game.vote', array('id' => $game->id))
 
-			@include('site.game.social')
+			@include('site.game.social', array('id' => $game->id))
 
 	  	</div>
 

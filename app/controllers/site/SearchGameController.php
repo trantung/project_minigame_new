@@ -11,7 +11,6 @@ class SearchGameController extends SiteController {
 	{
 		$input = Input::all();
 		$inputsearchGame = CommonSearch::searchGame($input);
-		// dd($inputsearchGame);
 		return View::make('site.game.searchgame')->with(compact('inputsearchGame'));
 	}
 
