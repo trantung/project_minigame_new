@@ -1039,3 +1039,29 @@ h1.title {
         margin-left: -10px;
     }
 }
+
+/*trang chi tiet game tai ve*/
+.web_avatar {
+    width: 15%;
+    padding: 0 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+.web_title {
+    width: 83%;
+    padding: 0 15px 0 0;
+    vertical-align: top;
+    display: inline-block;
+}
+.detail {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.detail img,
+.detail table {
+    max-width: 100%;
+    height: auto;
+}
+.center {
+    /*text-align: center;*/
+}

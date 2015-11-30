@@ -31,16 +31,17 @@
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
 
-			<p>
+			<div class="detail">
 				{{ $game->description }}
-			</p>
+			</div>
+
 			<p>
 				<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Tải về</a>
 			</p>
 
 			@include('site.game.vote', array('id' => $game->id))
 
-			@include('site.game.social')
+			@include('site.game.social', array('id' => $game->id))
 
 		</div>
 

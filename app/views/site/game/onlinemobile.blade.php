@@ -31,14 +31,15 @@
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
 
-			<p>{{ $game->description }}</p>
+			<div class="detail">{{ $game->description }}</div>
+
 			<p>
 				<a href="{{ Request::url() }}?play=true" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</p>
 
 			@include('site.game.vote', array('id' => $game->id))
 
-			@include('site.game.social')
+			@include('site.game.social', array('id' => $game->id))
 
 	  	</div>
 

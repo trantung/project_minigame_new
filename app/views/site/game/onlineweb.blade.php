@@ -28,11 +28,11 @@
 			</div>
 		</div>
 
-		<p>{{ $game->description }}</p>
+		<div class="detail">{{ $game->description }}</div>
 
 		@include('site.game.vote', array('id' => $game->id))
 
-		@include('site.game.social')
+		@include('site.game.social', array('id' => $game->id))
 
 	</div>
 
