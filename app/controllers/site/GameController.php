@@ -9,7 +9,7 @@ class GameController extends SiteController {
 	 */
 	public function index()
 	{
-		//
+		
 	}
 
 
@@ -149,6 +149,15 @@ class GameController extends SiteController {
     	Game::find($input['game_id'])->update($inputGame);
     	dd(1);
     }
+    /*
+    * Get list game android
+    * @ return listAndroid
+    */
+    public function getListGameAndroid(){
+    	$inputGame = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
+    	return View:make('site.game.showlistgameandroid')->with(compact('inputGame'));
+    }
+    
 
     public function countPlay()
     {

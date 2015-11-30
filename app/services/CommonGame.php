@@ -228,7 +228,10 @@ class CommonGame
     	if($game) {
     		$type = Type::find($game->type_main);
     		if($type) {
-				return '/' . $type->slug . '/' . $slug . '.html';
+    			
+    			$url = '/' . $type->slug . '/' . $slug . '.html';
+				// return '/' . $type->slug . '/' . $slug . '.html';
+				return $url;
     		} else {
     			dd('Đường dẫn sai');
     		}

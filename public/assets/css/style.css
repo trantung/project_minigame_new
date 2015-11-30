@@ -1008,9 +1008,10 @@ h1.title {
 		.col img {
 			width: 77px;
 		}
+        
 }
 .table_container{
-     display:table;
+     display: table;
      width:90%;
      border-collapse: collapse;
     }

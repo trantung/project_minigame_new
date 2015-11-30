@@ -119,6 +119,7 @@ class GameTypeController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		$parent = Type::find($id)->games()->detach();
 		CommonNormal::delete($id);
         return Redirect::action('GameTypeController@index');
 	}
