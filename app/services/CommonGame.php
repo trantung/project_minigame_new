@@ -285,7 +285,8 @@ class CommonGame
 		    	} else {
 		    		$link = UPLOAD_GAME . '/' . $filename;
 		    	}
-		    	if(file_exists($link . '/index.html')) {
+		    	$linkFile = 'http://' . $_SERVER['HTTP_HOST'] . $link . '/index.html';
+		    	if(remoteFileExists($linkFile)) {
 		    		$link = $link . '/index.html';
 		    	} else {
 		    		$link = $link . '/index.htm';
@@ -310,7 +311,7 @@ class CommonGame
     	}
     	if($parentId == GAMEHTML5) {
     		$style = self::getStyle();
-    		$box = '<iframe width="100%" height="100%" src="' . $link . '" style="' . $style . '" allowfullscreen="true"></iframe>';
+    		$box = '<iframe src="' . $link . '" style="' . $style . '" allowfullscreen="true"></iframe>';
     		return $box;
     	}
     }

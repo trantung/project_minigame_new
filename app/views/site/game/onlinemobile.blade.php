@@ -34,8 +34,10 @@
 			<div class="detail">{{ $game->description }}</div>
 
 			<p>
-				<a href="{{ Request::url() }}?play=true" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+				<a onclick="countplaymobile()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</p>
+
+			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
 
 			@include('site.game.vote', array('id' => $game->id))
 

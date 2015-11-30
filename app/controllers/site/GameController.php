@@ -102,7 +102,13 @@ class GameController extends SiteController {
 		$game = Game::findBySlug($slug);
 		$play = Input::get('play');
 		if($game) {
-			return $this->getViewGame($game->parent_id, $game, $play);
+			$count_view = $game->count_view+1;
+			$game->update(array('count_view' => $count_view));
+			if(getDevice() == COMPUTER) {
+				$count_play = $game->count_play+1;
+				$game->update(array('count_play' => $count_play));
+			}
+ 			return $this->getViewGame($game->parent_id, $game, $play);
 		}
 		dd('Game không tồn tại');
 	}
@@ -141,6 +147,28 @@ class GameController extends SiteController {
     	$inputGame['count_vote'] = $voteCount;
     	$inputGame['vote_average'] = round($voteAverage);
     	Game::find($input['game_id'])->update($inputGame);
+    	dd(1);
+    }
+
+    public function countPlay()
+    {
+    	$id = Input::get('id');
+    	$game = Game::find($id);
+    	if($game) {
+    		$count_play = $game->count_play+1;
+			$game->update(array('count_play' => $count_play));
+    	}
+    	dd(1);
+    }
+
+    public function countDownload()
+    {
+    	$id = Input::get('id');
+    	$game = Game::find($id);
+    	if($game) {
+    		$count_download = $game->count_download+1;
+			$game->update(array('count_download' => $count_download));
+    	}
     	dd(1);
     }
 

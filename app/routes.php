@@ -86,6 +86,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 // FRONTEND
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
+Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
+Route::post('/count-download', array('uses' => 'GameController@countDownload', 'as' => 'count-download'));
 
 Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));
 Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
