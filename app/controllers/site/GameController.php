@@ -155,9 +155,8 @@ class GameController extends SiteController {
     */
     public function getListGameAndroid(){
     	$inputGame = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
-    	return View:make('site.game.showlistgameandroid')->with(compact('inputGame'));
+    	return View::make('site.game.showlistgameandroid')->with(compact('inputGame'));
     }
-    
 
     public function countPlay()
     {
