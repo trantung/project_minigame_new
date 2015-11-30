@@ -15,19 +15,19 @@
 	<div class="table_container">
 		<div class="table-row">
 			<div class="col">
-				<img class="image_fb" src="{{ url(UPLOADIMG . '/game_avatar'.'/'. $value->id . '/' . $value->image_url) }}" />
+				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
+				<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
+				</a>
 			</div>
 			<div class="col">					
-				<a href="#">
-					<strong>{{ $value->name }}</strong>
+				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
+					<strong>{{ $value->title }}</strong>
 				</a>
 				</br>						
 				<!-- todo -->
-				<img alt="" src="images/star.png" height="20" width="122" />
-				</br>					
-				{{ $value->count_play }} người chơi
+				{{ $value->count_view }} người xem
 				</br>						
-				{{ $value->description }}							
+				{{ limit_text($value->description, SIZETEXT) }}							
 			</div>
 		</div>
 	</div>

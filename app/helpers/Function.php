@@ -319,6 +319,7 @@ function getArrange($arrange)
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
+			'' => 'id',
 		);
 	return $arrangeArray[$arrange];
 }
@@ -359,3 +360,24 @@ function getFilename($filename = null)
 	}
 	return null;
 }
+//cut trim text
+function limit_text($text, $len) {
+        if (strlen($text) < $len) {
+            return $text;
+        }
+        $text_words = explode(' ', $text);
+        $out = null;
+
+
+        foreach ($text_words as $word) {
+            if ((strlen($word) > $len) && $out == null) {
+
+                return substr($word, 0, $len) . "...";
+            }
+            if ((strlen($out) + strlen($word)) > $len) {
+                return $out . "...";
+            }
+            $out.=" " . $word;
+        }
+        return $out;
+    }

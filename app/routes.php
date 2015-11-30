@@ -73,6 +73,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/feedback_game/search', array('uses' =>  'FeedbackGameController@search', 'as' => 'admin.feedback_game.search'));
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
+	 
+
+	Route::get('/addseometa', 'SeoController@seoMeta');
+	Route::post('/seo/addseometa', array('uses' => 'SeoController@addSeoMeta'));
+	Route::get('/seo/addseometa/{id}', array('uses' => 'SeoController@editSeoMeta'));
+	Route::put('/seo/addseometa/{id}', array('uses' => 'SeoController@doEditSeoMeta'));
 	Route::resource('/seo', 'SeoController');
 
 	Route::resource('/policy', 'PolicyController');
@@ -103,7 +109,8 @@ Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' 
 
 Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
 
-Route::get('/chi-tiet-bai-viet/{id}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
+Route::get('/chi-tiet-bai-viet/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
+Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
 Route::resource('/', 'SiteIndexController');
 

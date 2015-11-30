@@ -1,6 +1,6 @@
-<?php 
+<?php namespace site;
 
-class SiteNewsController extends SiteController {
+class SiteVotedController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +9,7 @@ class SiteNewsController extends SiteController {
 	 */
 	public function index()
 	{
-		$inputListNews = AdminNeW::orderBy('id', 'desc')->paginate(FRONENDPAGINATE);
-		return View::make('site.News.listNews')->with(compact('inputListNews'));
-		
+		//
 	}
 
 
@@ -43,10 +41,9 @@ class SiteNewsController extends SiteController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($slug)
+	public function show($id)
 	{
-		$inputNew = AdminNeW::findBySlug($slug);
-		return View::make('site.News.showNews')->with(compact('inputNew'));
+		//
 	}
 
 

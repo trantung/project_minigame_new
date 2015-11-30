@@ -26,7 +26,7 @@
 		<div class="form-group">
 			<label for="image_url_fb">Upload ảnh</label>
 			{{ Form::file('image_url_fb') }}
-			<img class="image_fb" src="{{ $pathToImageSeo . $inputSeo->image_url_fb }}" />
+			<img class="image_fb" src="{{ url($pathToImageSeo . $inputSeo->image_url_fb) }}" />
 		</div>
 	</div>
 </div>
