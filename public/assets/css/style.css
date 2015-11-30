@@ -576,6 +576,7 @@ a.download {
     background: #ed933b none repeat scroll 0 0;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
     display: inline-block;
     font-weight: bold;
     padding: 8px 20px;

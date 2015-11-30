@@ -33,8 +33,10 @@
 			</div>
 
 			<p class="center">
-				<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Tải về</a>
+				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
 			</p>
+
+			@include('site.game.scriptcountdownload', array('id' => $game->id, 'url' => CommonGame::getUrlDownload($game)))
 
 			<div class="center">
 				@include('site.game.vote', array('id' => $game->id))
