@@ -103,6 +103,7 @@ define('PAGINATE_SLIDE', 10);
 //define seo model name:
 define('SEO_SCRIPT', 'Seo_Script');
 define('SEO_META', 'Seo_Meta');
+//define check time count download
+define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
-

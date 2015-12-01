@@ -156,8 +156,8 @@ class GameController extends SiteController {
     public function getListGameAndroid(){
     	$inputGameandroi = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
     	return View::make('site.game.showlistandroid')->with(compact('inputGameandroi'));
+
     }
-    
 
     public function countPlay()
     {
@@ -175,10 +175,21 @@ class GameController extends SiteController {
     	$id = Input::get('id');
     	$game = Game::find($id);
     	if($game) {
-    		$count_download = $game->count_download+1;
-			$game->update(array('count_download' => $count_download));
+    		$session = GameSession::where('game_id', $id)->first();
+    		if(!$session) {
+    			GameSession::create(array('session_id' => Session::getId(), 'game_id' => $id, 'start_time' => Carbon\Carbon::now()));
+    			$count_download = $game->count_download+1;
+				$game->update(array('count_download' => $count_download));
+    		} else {
+    			$start_time = strtotime($session->start_time);
+    			$current_time = strtotime(Carbon\Carbon::now());
+    			if($current_time - $start_time > TIMELIMITED) {
+    				$session->update(array('start_time' => Carbon\Carbon::now()));
+	    			$count_download = $game->count_download+1;
+					$game->update(array('count_download' => $count_download));
+    			}
+    		}
     	}
-    	dd(1);
     }
 
 }

@@ -65,4 +65,17 @@ class CommonSite
         return null;
     }
 
+    public static function getLatestNews()
+    {
+        $now = Carbon\Carbon::now();
+        $news =  AdminNew::where('start_date', '<=', $now)
+            ->orderBy('created_at', 'desc')
+            ->first();
+        if($news) {
+            return $news;
+        } else {
+            return null;
+        }
+    }
+
 }
