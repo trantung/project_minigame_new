@@ -130,6 +130,8 @@ class AdminGameController extends AdminController {
 	 */
 	public function update($id)
 	{
+		$data = Game::find($id);
+
 		if(!Admin::isSeo()) {
 			$rules = array(
 				'name' => 'required',
@@ -140,7 +142,8 @@ class AdminGameController extends AdminController {
 			if(Input::get('score_status') == SAVESCORE) {
 				$rules['gname'] = 'required';
 			}
-			if(Input::file('link_upload_game') == NULL && Input::get('parent_id') != GAMEOFFLINE) {
+
+			if((Input::file('link_upload_game') == NULL && Input::get('parent_id') != GAMEOFFLINE) && $data->link_upload_game == '') {
 				$rules['link_url'] = 'required';
 			}
 		} else {
@@ -154,7 +157,7 @@ class AdminGameController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput($input);
         } else {
-        	$data = Game::find($id);
+        	// $data = Game::find($id);
 
         	//SEO cant update game
         	if(!Admin::isSeo()) {

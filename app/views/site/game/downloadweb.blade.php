@@ -12,34 +12,38 @@
 	<!-- WEB -->
 	<div class="row web">
 
-		<div class="col-sm-6 imgGamedowload">
-			<img alt="" src="/assets/images/taive.png" />
+		<div class="web_avatar">
+			<img alt="{{ $game->name }}" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $game->image_url) }}" />
 		</div>
-		<div class="col-sm-6 ">
-			<h1 class="title">{{ $game->name }}</h1><img class="startitle" src="/assets/images/star.png" height="20" width="122" />
+		<div class="web_title">
+
+			<h1 class="title">{{ $game->name }}</h1>
+
+			@include('site.common.rate', array('vote_average' => $game->vote_average))
+
 			<p>{{ getZero($game->count_play) }} người chơi</p>
-			<p>{{ $game->description }}</p>
 
-			@include('site.game.vote')
+			@include('site.game.social', array('id' => $game->id))
 
-			<p>
-				<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Download</a>
+		</div>
+
+		<div class="col-xs-12">
+			<div class="detail">
+				{{ $game->description }}
+			</div>
+
+			<p class="center">
+				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
 			</p>
 
-			@include('site.game.social')
+			@include('site.game.scriptcountdownload', array('id' => $game->id, 'url' => url(CommonGame::getUrlDownload($game))))
 
-			{{-- <div class="img_game_detail">
-				<a href="#"><img src="/assets/images/detai_game1.png"></a>
-				 &nbsp&nbsp&nbsp
-				 <a href="#"><img src="/assets/images/detai_game2.png"></a>
-				 &nbsp&nbsp&nbsp
-				 <a href="#"><img src="/assets/images/detai_game3.png"></a>
-				 &nbsp&nbsp&nbsp
-				 <a href="#"><img src="/assets/images/detai_game1.png"></a>
-				 &nbsp&nbsp&nbsp
-				 <a href="#"><img src="/assets/images/detai_game2.png"></a>
-				 &nbsp
-			</div> --}}
+			<div class="center">
+				@include('site.game.vote', array('id' => $game->id))
+
+				@include('site.game.social', array('id' => $game->id))
+			</div>
+
 		</div>
 
 	</div>

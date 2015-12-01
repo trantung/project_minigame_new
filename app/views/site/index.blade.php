@@ -6,6 +6,12 @@
 
 @section('content')
 
+@if($news = CommonSite::getLatestNews())
+<div class="box">
+	<a class="homenews" href="{{ action('SiteNewsController@show', $news->slug) }}"><i class="fa fa-caret-right"></i> {{ $news->title }}</a>
+</div>
+@endif
+
 <div class="box">
 	@foreach($categoryParent as $value)
 	<h3><a href="{{ url($value->slug) }}">{{ $value->name }}</a><a href="{{ url($value->slug) }}" class="box-more">Xem thêm</a></h3>

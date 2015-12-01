@@ -9,7 +9,7 @@ class GameController extends SiteController {
 	 */
 	public function index()
 	{
-		//
+		
 	}
 
 
@@ -101,10 +101,19 @@ class GameController extends SiteController {
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		$game = Game::findBySlug($slug);
 		$play = Input::get('play');
-		return $this->getViewGame($game->parent_id, $game, $play);
+		if($game) {
+			$count_view = $game->count_view+1;
+			$game->update(array('count_view' => $count_view));
+			if(getDevice() == COMPUTER) {
+				$count_play = $game->count_play+1;
+				$game->update(array('count_play' => $count_play));
+			}
+ 			return $this->getViewGame($game->parent_id, $game, $play);
+		}
+		dd('Game không tồn tại');
 	}
 
-	public function getViewGame($parentId, $game, $play)
+	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
     		if(getDevice() == MOBILE) {
@@ -122,6 +131,62 @@ class GameController extends SiteController {
 	    		} else {
 	    			return View::make('site.game.onlineweb')->with(compact('game'));
 	    		}
+    		}
+    	}
+    }
+
+    public function voteGame()
+    {
+    	$input = array();
+    	$input['game_id'] = Input::get('id');
+    	$input['vote_rate'] = Input::get('rate');
+    	GameVote::create($input);
+    	$voteCount = GameVote::where('game_id', $input['game_id'])->count();
+    	$voteAverage = GameVote::where('game_id', $input['game_id'])->avg('vote_rate');
+    	$inputGame = array();
+    	$inputGame['count_vote'] = $voteCount;
+    	$inputGame['vote_average'] = round($voteAverage);
+    	Game::find($input['game_id'])->update($inputGame);
+    	dd(1);
+    }
+    /*
+    * Get list game android
+    * @ return listAndroid
+    */
+    public function getListGameAndroid(){
+    	$inputGame = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
+    	return View::make('site.game.showlistgameandroid')->with(compact('inputGame'));
+    }
+
+    public function countPlay()
+    {
+    	$id = Input::get('id');
+    	$game = Game::find($id);
+    	if($game) {
+    		$count_play = $game->count_play+1;
+			$game->update(array('count_play' => $count_play));
+    	}
+    	dd(1);
+    }
+
+    public function countDownload()
+    {
+    	$id = Input::get('id');
+    	$game = Game::find($id);
+    	if($game) {
+    		$session = GameSession::where('game_id', $id)->first();
+    		if(!$session) {
+    			GameSession::create(array('session_id' => Session::getId(), 'game_id' => $id, 'start_time' => Carbon\Carbon::now()));
+    			$count_download = $game->count_download+1;
+				$game->update(array('count_download' => $count_download));
+    		} else {
+    			$start_time = strtotime($session->start_time);
+    			$current_time = strtotime(Carbon\Carbon::now());
+    			if($current_time - $start_time > TIMELIMITED) {
+    				$session->update(array('start_time' => Carbon\Carbon::now()));
+	    			$count_download = $game->count_download+1;
+					$game->update(array('count_download' => $count_download));
+    			}
     		}
     	}
     }

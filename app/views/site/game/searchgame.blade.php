@@ -16,16 +16,18 @@
 	<hr/>
 	<div class="table_container">
 		<div class="table-row">
-			<div class="col">
-				<img class="image_fb" src="{{ url(UPLOADIMG . '/game_avatar'.'/'. $value->id . '/' . $value->image_url) }}" />
+			<div class="col col_image_avata">
+				<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
 			</div>
 			<div class="col">					
 				<a href="#">
 					<strong>{{ $value->name }}</strong>
+					
 				</a>
+				
 				</br>						
 				<!-- todo -->
-				<img alt="" src="images/star.png" height="20" width="122" />
+				@include('site.common.rate', array('vote_average' => $value->vote_average))
 				</br>					
 				{{ $value->count_play }} người chơi
 				</br>						

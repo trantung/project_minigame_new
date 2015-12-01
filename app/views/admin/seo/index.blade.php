@@ -8,13 +8,21 @@
 <!-- inclue Search form 
 
 -->
-@if(count($inputSeo) == 0)
+
+
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('SeoController@create') }}" class="btn btn-primary">Thêm Seo</a>
+	@if(!$seoScript)
+		<a href="{{ action('SeoController@create') }}" class="btn btn-primary">Thêm Seo Script</a>
+	@elseif(!$seoMeta)
+		<a href="{{ action('SeoController@seoMeta') }}" class="btn btn-primary">Thêm Seo Meta</a>
+	@endif
 	</div>
 </div>
-@endif
+
+
+
+
 <div class="row">
 	<div class="col-xs-12">
 	  <div class="box">
@@ -39,7 +47,11 @@
 			  <td>{{{ $value->footer_script }}}</td>
 			  <td>{{ $value->created_at }}</td>
 			  <td>
+			  	@if($value->model_name == SEO_SCRIPT)
 				<a href="{{  action('SeoController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+				@elseif($value->model_name == SEO_META)
+				<a href="{{  action('SeoController@editSeoMeta', $value->id) }}" class="btn btn-primary">Sửa Meta</a>
+				@endif
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('SeoController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 				{{ Form::close() }}
@@ -51,15 +63,6 @@
 		<!-- /.box-body -->
 	  </div>
 	  <!-- /.box -->
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-xs-12">
-		<ul class="pagination">
-		<!-- phan trang -->
-		{{ $inputSeo->appends(Request::except('page'))->links() }}
-		</ul>
 	</div>
 </div>
 

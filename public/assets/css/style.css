@@ -576,6 +576,7 @@ a.download {
     background: #ed933b none repeat scroll 0 0;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
     display: inline-block;
     font-weight: bold;
     padding: 8px 20px;
@@ -816,6 +817,47 @@ a.download i.fa {
 
 }
 /*star*/
+
+/*  Second Example with big stars */
+.rate-ex2-cnt {
+    width:150px;
+    height: 30px;
+}
+.rate-ex2-cnt .rate-btn {
+    width: 30px;
+    height:30px;
+    float: left;
+    background: url(../images/rate-btn2.png) no-repeat;
+    cursor: pointer;
+}
+.rate-ex2-cnt .rate-btn:hover, .rate-ex2-cnt  .rate-btn-hover, .rate-ex2-cnt  .rate-btn-active {
+
+    background: url(../images/rate-btn2-hover.png) no-repeat;
+}
+/* End second Example with big stars */
+
+/* rate result */
+.rate-result-cnt {
+    width: 82px;
+    height: 18px;
+    position: relative;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: inline-block;
+}
+.rate-stars {
+    width: 82px;
+    height: 18px;
+    background: url(../images/rate-stars.png) no-repeat;
+    position: absolute;
+}
+.rate-bg {
+    height: 17px;
+    background-color: #ffbe10;
+    position: absolute;
+}
+/*end rate result*/
+
 .startitle {
     position: relative;
     right: -10px;
@@ -823,6 +865,7 @@ a.download i.fa {
 }
 div.stars {
     /*text-align: center;*/
+    margin-bottom: 15px;
 }
 div.stars strong {
     position: relative;
@@ -965,9 +1008,10 @@ h1.title {
 		.col img {
 			width: 77px;
 		}
+        
 }
 .table_container{
-     display:table;
+     display: table;
      width:90%;
      border-collapse: collapse;
     }
@@ -996,4 +1040,30 @@ h1.title {
         margin-right: -10px;
         margin-left: -10px;
     }
+}
+
+/*trang chi tiet game tai ve*/
+.web_avatar {
+    width: 15%;
+    padding: 0 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+.web_title {
+    width: 83%;
+    padding: 0 15px 0 0;
+    vertical-align: top;
+    display: inline-block;
+}
+.detail {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.detail img,
+.detail table {
+    max-width: 100%;
+    height: auto;
+}
+.center {
+    /*text-align: center;*/
 }

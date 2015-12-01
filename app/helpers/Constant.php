@@ -22,6 +22,8 @@ define('SEO', 3);
 define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
+//pagination frontend 
+define('FRONENDPAGINATE', 15);
 //url upload img
 define('UPLOADIMG', '/images');
 //url upload avatar game
@@ -38,6 +40,7 @@ define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
 define('FOLDER_SEO_PARENT', 'fb_parent');
 define('FOLDER_SEO_NEWS', 'fb_news');
+define('FOLDER_SEO', 'seo');
 
 //device
 define('MOBILE', 1);
@@ -100,4 +103,7 @@ define('PAGINATE_SLIDE', 10);
 //define seo model name:
 define('SEO_SCRIPT', 'Seo_Script');
 define('SEO_META', 'Seo_Meta');
-
+//define check time count download
+define('TIMELIMITED', 60);
+//define size cut off text descript
+define('SIZETEXT', '200');

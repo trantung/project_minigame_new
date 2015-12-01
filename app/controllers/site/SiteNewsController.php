@@ -9,6 +9,8 @@ class SiteNewsController extends SiteController {
 	 */
 	public function index()
 	{
+		$inputListNews = AdminNeW::orderBy('id', 'desc')->paginate(FRONENDPAGINATE);
+		return View::make('site.News.listNews')->with(compact('inputListNews'));
 		
 	}
 
@@ -41,9 +43,9 @@ class SiteNewsController extends SiteController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		$inputNew = AdminNeW::find($id);
+		$inputNew = AdminNeW::findBySlug($slug);
 		return View::make('site.News.showNews')->with(compact('inputNew'));
 	}
 
