@@ -9,6 +9,7 @@
 
 
 <div class="box">
+
 	<h3>Chi tiết bài viết</h3>
 	<div class=" ad">
 		<h4><b>{{ $inputNew->title }}</b></h4>

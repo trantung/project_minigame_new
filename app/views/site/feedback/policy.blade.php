@@ -7,7 +7,7 @@
 
 @section('content')
 
-
+@if($input_policy)
 <div class="box">
 	<h3>Chính sách</h3>
 	<div class=" ad">
@@ -24,5 +24,5 @@
 	</div>
 	<div class="clearfix"></div>
 </div>
-
+@endif
 @stop
