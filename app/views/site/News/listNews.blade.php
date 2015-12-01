@@ -1,4 +1,3 @@
-
 @extends('site.layout.default')
 
 @section('title')
@@ -6,8 +5,6 @@
 @stop
 
 @section('content')
-
-
 
 @foreach($inputListNews as $value)
 <div class="box">
@@ -19,15 +16,15 @@
 				<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
 				</a>
 			</div>
-			<div class="col">					
+			<div class="col">
 				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
 					<strong>{{ $value->title }}</strong>
 				</a>
-				</br>						
+				</br>
 				<!-- todo -->
 				{{ $value->count_view }} người xem
-				</br>						
-				{{ limit_text($value->description, SIZETEXT) }}							
+				</br>
+				{{ limit_text($value->description, SIZETEXT) }}
 			</div>
 		</div>
 	</div>

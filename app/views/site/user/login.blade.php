@@ -40,7 +40,7 @@
 			<div class="col-sm-offset-4 col-sm-6">
 			Đăng nhập bằng<br>
 				<a type="submit" href="{{  action('LoginFacebookController@loginfb') }}" class="fa fa-facebook" id="register"></a>
-				<a type="submit" class="fa fa-google" id="register"></a>
+				<a class="btn" href="{{ GoogleOAuth::getAuthorizationUri(); }}"><i class="fa fa-google"></i>Login Google</a>
 			</div>
 		</div>
 	{{ Form::close() }}

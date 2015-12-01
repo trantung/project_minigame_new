@@ -124,6 +124,7 @@ return array(
 		"Chumper\Zipper\ZipperServiceProvider",
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Iorme\SimpleCaptcha\SimpleCaptchaServiceProvider',
+	    'Edisonthk\GoogleOAuth\GoogleOAuthServiceProvider',
 
 	),
 
@@ -193,6 +194,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Zipper' 		  => 'Chumper\Zipper\Zipper',
 		'SimpleCaptcha'   => 'Iorme\SimpleCaptcha\Facades\SimpleCaptcha',
+		'GoogleOAuth'     => 'Edisonthk\GoogleOAuth\Facade\GoogleOAuth',
 
 	),
 
