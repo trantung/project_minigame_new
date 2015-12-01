@@ -24,7 +24,11 @@
 		<li class='active'><a href='/' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
 		@foreach($menu as $key => $value)
 			@if(count($value->parenttypes) == 0)
-			<li><a href="{{ '/' . $value->slug }}" class="color2"><span>{{ $value->name }}</span></a></li>
+				@if($value->id == 1)
+					<li><a href="{{ action('GameController@getListGameAndroid') }}" class="color2"><span>{{ $value->name }}</span></a></li>
+				@else
+					<li><a href="{{ '/' . $value->slug }}" class="color2"><span>{{ $value->name }}</span></a></li>
+				@endif
 			@else
 			<li class='has-sub'><a href='#' class="color2"><span>{{ $value->name }}</span></a>
 				<ul>

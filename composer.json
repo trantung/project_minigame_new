@@ -8,7 +8,8 @@
 		"ollieread/multiauth": "dev-master",
 		"chumper/zipper": "0.5.x",
 		"cviebrock/eloquent-sluggable": "2.0.*",
-		"iorme/simplecaptcha": "dev-master"
+		"iorme/simplecaptcha": "dev-master",
+		"facebook/php-sdk-v4": "4.*"
 	},
 	"autoload": {
 		"classmap": [
