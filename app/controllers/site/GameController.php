@@ -191,4 +191,25 @@ class GameController extends SiteController {
     	}
     }
 
+    public function score()
+    {
+    	$gname = Input::get('gname');
+    	$score = Input::get('score');
+    	if($user_id = Auth::user()->get()->id) {
+    		$game = Game::where('gname', $gname)
+    					->where('score_status', SAVESCORE)
+    					->first();
+    		if($game) {
+    			$game_id = $game->id;
+    			$input = array(
+    				'user_id' => $user_id,
+    				'gname' => $gname,
+    				'game_id' => $game_id,
+    				'score' => $score
+    				);
+    			Score::create($input);
+    		}
+    	}
+    }
+
 }

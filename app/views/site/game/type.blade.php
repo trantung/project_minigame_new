@@ -1,4 +1,4 @@
-@extends('site.layout.default')
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Type', $type->id), 'seoImage' => FOLDER_SEO_GAMETYPE . '/' . $type->id))
 
 @section('title')
 {{ $title=$type->name }}

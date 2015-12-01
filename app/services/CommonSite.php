@@ -78,4 +78,20 @@ class CommonSite
         }
     }
 
+    public static function getMetaSeo($modelName, $modelId = null)
+    {
+        if(!$modelId) {
+            $seoMeta = AdminSeo::where('model_name', $modelName)
+                    ->first();
+        } else {
+            $seoMeta = AdminSeo::where('model_name', $modelName)
+                    ->where('model_id', $modelId)
+                    ->first();
+        }
+        if($seoMeta)
+            return $seoMeta;
+        else
+            return null;
+    }
+
 }

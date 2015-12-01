@@ -5,6 +5,21 @@
 
 	<title>@yield('title')</title>
 
+	@if(isset($seoMeta))
+		<meta name="title" content="{{ $seoMeta->title_site }}">
+		<meta name="description" content="{{ $seoMeta->description_site }}">
+		<meta name="keywords" content="{{ $seoMeta->keyword_site }}">
+
+		<meta property="og:url" content="{{ Request::url() }}" />
+		<meta property="og:title" content="{{ $seoMeta->title_fb }}" />
+		<meta property="og:description" content="{{ $seoMeta->description_fb }}" />
+		@if(isset($seoImage))
+			<meta property="og:image" content="{{ url(UPLOADIMG . '/' . $seoImage . '/' . $seoMeta->image_url_fb) }}" />
+		@else
+			<meta property="og:image" content="{{ url(UPLOADIMG . '/' . FOLDER_SEO . '/' . $seoMeta->image_url_fb) }}" />
+		@endif
+	@endif
+
 	{{HTML::style('assets/css/font-awesome.min.css') }}
 	{{HTML::style('assets/css/bootstrap.min.css') }}
 	{{HTML::style('assets/css/style.css') }}
@@ -19,5 +34,9 @@
 	{{ HTML::script('assets/js/jquery-2.1.4.min.js') }}
 	{{ HTML::script('assets/js/bootstrap.min.js') }}
 	{{ HTML::script('assets/js/script.js') }}
+
+	@if($script)
+		{{ $script->header_script }}
+	@endif
 
 </head>

@@ -90,10 +90,20 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+// $games = Game::all();
+// foreach ($games as $key => $value) {
+// 	if($value->start_date) {
+// 		$startDate = convertDateTime($value->start_date);
+// 		$value->update(array('start_date' => $startDate));
+// 	}
+// }
+// dd(12);
+
 // FRONTEND
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
 Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
 Route::post('/count-download', array('uses' => 'GameController@countDownload', 'as' => 'count-download'));
+Route::post('/score-gname', array('uses' => 'GameController@score', 'as' => 'score-gname'));
 
 Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));
 Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
@@ -113,7 +123,7 @@ Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' 
 
 Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
 
-Route::get('/chi-tiet-bai-viet/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
+Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
 Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
 

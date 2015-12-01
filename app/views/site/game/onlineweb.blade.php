@@ -1,4 +1,4 @@
-@extends('site.layout.default')
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Game', $game->id), 'seoImage' => FOLDER_SEO_GAME . '/' . $game->id))
 
 @section('title')
 {{ $title = $game->name }}
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="col-sm-3">
-				@include('site.game.score')
+				@include('site.game.score', array('id' => $game->id))
 			</div>
 		</div>
 

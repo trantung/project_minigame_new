@@ -52,7 +52,7 @@ class AccountController extends SiteController {
 	            ->withInput(Input::except('password', 'captcha'));
         } else {
         	$input['password'] = Hash::make($input['password']);
-        	$id = CommonNormal::create($input, 'User');
+        	$id = CommonNormal::create($input, 'user');
         	if($id) {
         		return Redirect::action('SiteController@login')->with('message', 'Tài khoản của bạn đã được tạo thành công. Hãy đăng nhập ngay!');
         	} else {
