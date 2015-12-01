@@ -122,7 +122,14 @@ class SiteController extends HomeController {
             	$inputUser = CommonSite::ipDeviceUser();
             	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
         		return Redirect::to('/');
-            } else {
+            }
+            // google check login
+            if(SocialLogin::checkLoginGoogle()) {
+            	return Redirect::to('/');
+            }
+            //facebook check login
+
+            else {
                 return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
             }
         }

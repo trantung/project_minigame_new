@@ -100,6 +100,9 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(12);
 
 // FRONTEND
+// Route::get('/gauth/{auth?}', array('uses' => 'GoogleController@googlelogin', 'as' => 'googlelogin'));
+//Route::get('/success', array('uses' => 'GoogleController@getSuccess', 'as' => 'success'));
+
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
 Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
 Route::post('/count-download', array('uses' => 'GameController@countDownload', 'as' => 'count-download'));

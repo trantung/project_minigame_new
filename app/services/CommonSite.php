@@ -5,7 +5,8 @@ class CommonSite
     {
         if (Auth::user()->check()) {
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
