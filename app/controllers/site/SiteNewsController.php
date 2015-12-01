@@ -9,7 +9,8 @@ class SiteNewsController extends SiteController {
 	 */
 	public function index()
 	{
-		$inputListNews = AdminNeW::orderBy('id', 'desc')->paginate(FRONENDPAGINATE);
+		$now = date('Y-m-d');
+		$inputListNews = AdminNeW::whereDate('start_date', '<= ', $now)->orderBy('id', 'desc')->paginate(FRONENDPAGINATE);
 		return View::make('site.News.listNews')->with(compact('inputListNews'));
 		
 	}

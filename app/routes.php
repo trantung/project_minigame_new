@@ -99,6 +99,10 @@ Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'
 Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
 Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logout'));
 
+//login facebook
+Route::get('/login_fb', 'LoginFacebookController@loginfb');
+Route::get('/login-fb-callback', 'LoginFacebookController@callback');
+
 Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
 Route::post('/dang-ky', array('uses' => 'AccountController@store'));
 Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 'as' => 'account'));
@@ -125,6 +129,7 @@ Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}.html', 'GameController@detailGame');
 
-//route vote many
+
+
 
 

@@ -39,8 +39,8 @@
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-6">
 			Đăng nhập bằng<br>
-				<button type="submit" class="fa fa-facebook" id="register"></button>
-				<button type="submit" class="fa fa-google" id="register"></button>
+				<a type="submit" href="{{  action('LoginFacebookController@loginfb') }}" class="fa fa-facebook" id="register"></a>
+				<a type="submit" class="fa fa-google" id="register"></a>
 			</div>
 		</div>
 	{{ Form::close() }}

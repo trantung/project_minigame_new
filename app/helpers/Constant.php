@@ -107,3 +107,6 @@ define('SEO_META', 'Seo_Meta');
 define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
+//facebook
+define('APP_ID', '1722201724675276');
+define('APP_SECRET', 'c93744f89822691d4141bd7a7b779822');
