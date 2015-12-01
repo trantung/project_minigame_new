@@ -29,5 +29,22 @@ class AdminSeoSeeder extends Seeder {
 			'model_id' => 5,
 			'description_site' => 'This is des parent 5',
 		]);
+		//type game 
+		AdminSeo::create([
+			'model_name'=> 'Type',
+			'model_id' => 1,
+			'description_site' => 'This is type game',
+		]);
+		AdminSeo::create([
+			'model_name'=> 'Type',
+			'model_id' => 2,
+			'description_site' => 'This is type game',
+		]);
+		AdminSeo::create([
+			'model_name'=> 'Type',
+			'model_id' => 3,
+			'description_site' => 'This is type game',
+		]);
+		
 	}
 }

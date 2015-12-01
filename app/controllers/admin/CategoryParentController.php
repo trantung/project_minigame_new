@@ -93,7 +93,6 @@ class CategoryParentController extends AdminController {
 	 */
 	public function edit($id)
 	{
-
 		$inputCategory = CategoryParent::find($id);
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
 		return View::make('admin.category_parent.edit')->with(compact('inputCategory', 'inputSeo'));
