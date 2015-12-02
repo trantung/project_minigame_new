@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('CategoryParent', $categoryParent->id), 'seoImage' => FOLDER_SEO_PARENT . '/' . $categoryParent->id))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('CategoryParent', 1), 'seoImage' => FOLDER_SEO_PARENT . '/' . 1))
 
 @section('title')
 {{ $title= 'Game Android'}}

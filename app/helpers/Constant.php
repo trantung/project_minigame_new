@@ -112,3 +112,5 @@ define('APP_ID', '1722201724675276');
 define('APP_SECRET', 'c93744f89822691d4141bd7a7b779822');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
+//defune page comment fron-end
+define('PAGE_COMMENT', 5);
