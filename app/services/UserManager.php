@@ -10,23 +10,19 @@ class UserManager
 	public static function getUsername($value)
 	{
 		$resultUserName = User::find($value);
-
-		if($resultUserName->user_name)
-		{
-			$input['user_name'] = $resultUserName->user_name;
-			$input['type_user'] = TYPESYSTEM;
-			return  $input;
-		}
-		if($resultUserName->uname){
+		if($resultUserName->uid){
 			$input['user_name'] = $resultUserName->uname;
 			$input['type_user'] = TYPEFACEBOOK;
 			return  $input;
 		}
-		if($resultUserName->google_name){
+		if($resultUserName->google_id){
 			$input['user_name'] = $resultUserName->google_name;
 			$input['type_user'] = TYPEGOOGLE;
 			return  $input;
 		}
+		$input['user_name'] = $resultUserName->user_name;
+		$input['type_user'] = TYPESYSTEM;
+		return  $input;
 	}
 	
 }

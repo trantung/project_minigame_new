@@ -1,4 +1,4 @@
-<?php namespace site;
+<?php 
 
 class SiteCommentController extends SiteController {
 
@@ -21,7 +21,7 @@ class SiteCommentController extends SiteController {
 	public function create()
 	{
 		$input = Input::except('_token');
-		$input['model_id'] = Auth::user()->get()->id;
+		$input['user_id'] = Auth::user()->get()->id;
 		
 
 	}
@@ -34,7 +34,12 @@ class SiteCommentController extends SiteController {
 	 */
 	public function store()
 	{
-		//
+		 // $input = Input::except('_token');
+		 // $input['user_id'] = Auth::user()->get()->id;
+		 // $input['model_name'] = ;
+		 // $input['model_id'] = ''
+		 // $input['status'] = INACTION;
+
 	}
 
 

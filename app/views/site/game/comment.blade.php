@@ -7,9 +7,40 @@
 	</ul>
 	<!-- Tab panes -->
 	<div class="tab-content">
+		
 		<div role="tabpanel" class="tab-pane active" id="comment1">
-			comment choinhanh.vn
+		{{ Form::open(array('action' => array('SiteCommentController@store'))) }}
+		<!-- comment cho game -->
+			<div class="box-body">
+				<div class="form-group">
+					<label for="name">Comment choi nhanh</label>
+					<div class="row">
+						<div class="col-sm-12">
+						    {{ Form::textarea('description', '' , array('class' => 'form-control')) }}
+						</div>
+					 </div>
+				</div>
+			</div>
+			<div class="box-footer">
+				{{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
+			</div>
+		<!-- hiển thị comment cho game -->
+		<div class="box-body ">
+			<table class="table table-hover">
+
+			 @foreach($inputComment as $value)
+			<tr>
+			  <td>Ảnh</td>
+			  <td><b>{{ User::find($value->user_id)->user_name.User::find($value->user_id)->uname.User::find($value->user_id)->google_name }}</b></td>
+			  <td>{{ $value->description }}</td>			
+			</tr>
+			@endforeach
+			</table>
 		</div>
+		{{ Form::close() }}
+		</div>
+			
+		
 		<div role="tabpanel" class="tab-pane" id="comment2">
 			<div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="5"></div>
 		</div>
