@@ -1,50 +1,59 @@
-<!-- MOBILE <= 500px -->
-<div class="row mobile">
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Game', $game->id), 'seoImage' => FOLDER_SEO_GAME . '/' . $game->id))
 
-	<div class="col-xs-3">
-		<img alt="" src="/assets/images/detai_game3.png" />
-	</div>
-	<div class="col-xs-9">
+@section('title')
+{{ $title = $game->name }}
+@stop
 
-		<h1 class="title mobile-title">{{ $game->name }}</h1><img class="startitle" src="/assets/images/star.png" height="20" width="122" />
+@section('content')
 
-		<p>{{ getZero($game->count_play) }} người chơi</p>
+<div class="box">
+	<h3>{{ $game->name }}</h3>
 
-	</div>
+	<!-- MOBILE <= 500px -->
+	<div class="row mobile">
 
-	<div class="col-xs-12">
-		<div class="imgGamedowload">
-			<img alt="" src="/assets/images/taive.png" />
+		<div class="mobile_avatar">
+			<img alt="{{ $game->name }}" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $game->image_url) }}" />
 		</div>
-		<p>
-			{{ $game->description }}
-		</p>
-		<p>
-			<a href="{{ CommonGame::getUrlDownload($game) }}" class="download"><i class="fa fa-download"></i> Download</a>
-		</p>
-		<div class="stars">
-			<strong>Đánh giá: </strong>
-			<form action="">
-				<input class="star star-5" id="star-5" type="radio" name="star"/>
-				<label class="star star-5" for="star-5"></label>
-				<input class="star star-4" id="star-4" type="radio" name="star"/>
-				<label class="star star-4" for="star-4"></label>
-				<input class="star star-3" id="star-3" type="radio" name="star"/>
-				<label class="star star-3" for="star-3"></label>
-				<input class="star star-2" id="star-2" type="radio" name="star"/>
-				<label class="star star-2" for="star-2"></label>
-				<input class="star star-1" id="star-1" type="radio" name="star"/>
-				<label class="star star-1" for="star-1"></label>
-				<div class="clearfix"></div>
-			</form>
+		<div class="mobile_title">
+
+			<h1 class="title mobile-title">{{ $game->name }}</h1>
+
+			@include('site.common.rate', array('vote_average' => $game->vote_average))
+
+			<p>{{ getZero($game->count_play) }} người chơi</p>
+
 		</div>
 
-		<p class="social">
-			<a href="#"><img src="/assets/images/likeFacebook.png" width="80px" height="22px" ></a>
-			<a href="#"><img src="/assets/images/shareFacebook.png" width="80px" height="22px"></a>
-			<a href="#"><img src="/assets/images/shareGoogle.png" width="80px" height="22px"></a>
-			<a href="#" class="report-error"><i class="fa fa-warning"></i> Báo lỗi</a>
-		</p>
+		<div class="col-xs-12">
+
+			<div class="slideGame">
+				@include('site.game.slide', array('slideId' => $game->slide_id))
+			</div>
+
+			<div class="detail">
+				{{ $game->description }}
+			</div>
+
+			<p>
+				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
+			</p>
+
+			@include('site.game.scriptcountdownload', array('id' => $game->id, 'url' => CommonGame::getUrlDownload($game)))
+
+			@include('site.game.vote', array('id' => $game->id))
+
+			@include('site.game.social', array('id' => $game->id))
+
+		</div>
+
 	</div>
+
+	@include('site.game.comment')
 
 </div>
+
+@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_MOBILE))
+
+@stop
+

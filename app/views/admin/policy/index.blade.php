@@ -9,11 +9,13 @@
 <!-- inclue Search form 
 
 -->
+@if(count($inputpolicy) < 1)
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('PolicyController@create') }}" class="btn btn-primary">Thêm chính sách liên hệ</a>
 	</div>
 </div>
+@endif
 
 <div class="row">
 	<div class="col-xs-12">

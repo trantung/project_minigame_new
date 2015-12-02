@@ -37,7 +37,7 @@
 			  <td>{{ $value->title }}</td>
 			  <td>{{ $value->description }}</td>
 			  <td>{{ $value->created_at }}</td>
-			  <td>{{ $value->device }}</td>
+			  <td>{{ getNameDevice($value->device) }}</td>
 			  <td>{{ $value->ip }}</td>
 			  <td>
 			  	@if($value->status == ACTIVE )

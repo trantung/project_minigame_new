@@ -22,6 +22,8 @@ define('SEO', 3);
 define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
+//pagination frontend 
+define('FRONENDPAGINATE', 15);
 //url upload img
 define('UPLOADIMG', '/images');
 //url upload avatar game
@@ -38,6 +40,7 @@ define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
 define('FOLDER_SEO_PARENT', 'fb_parent');
 define('FOLDER_SEO_NEWS', 'fb_news');
+define('FOLDER_SEO', 'seo');
 
 //device
 define('MOBILE', 1);
@@ -54,7 +57,9 @@ define('ENABLED', 1);
 //saveScore
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
-//category game offline
+//category game
+define('GAMEFLASH', 1);
+define('GAMEHTML5', 2);
 define('GAMEOFFLINE', 3);
 //history action
 define('CREATE', 'Create');
@@ -90,8 +95,20 @@ define('TYPEFACEBOOK', 'Facebook');
 define('TYPEGOOGLE', 'Google');
 //define slide type name
 define('SLIDE_TYPE_NAME', 'Kiểu slide chạy ngang');
+//define limited box game related
+define('GAME_RELATED_MOBILE', 6);
+define('GAME_RELATED_WEB', 12);
 define('UPLOAD_IMAGE_SLIDE', '/slide');
 define('PAGINATE_SLIDE', 10);
-
-
-
+//define seo model name:
+define('SEO_SCRIPT', 'Seo_Script');
+define('SEO_META', 'Seo_Meta');
+//define check time count download
+define('TIMELIMITED', 60);
+//define size cut off text descript
+define('SIZETEXT', '200');
+//facebook
+define('APP_ID', '1722201724675276');
+define('APP_SECRET', 'c93744f89822691d4141bd7a7b779822');
+//define limit scores
+define('GAMESCORE_LIMITED', 5);

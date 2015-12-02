@@ -9,8 +9,10 @@ class SeoController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputSeo = AdminSeo::whereNull('model_id')->paginate(PAGINATE);
-		return View::make('admin.seo.index')->with(compact('inputSeo'));
+		$seoScript = AdminSeo::whereNull('model_id')->where('model_name', SEO_SCRIPT)->first();
+		$seoMeta = AdminSeo::whereNull('model_id')->where('model_name', SEO_META)->first();
+		$inputSeo = AdminSeo::whereNull('model_id')->get();
+		return View::make('admin.seo.index')->with(compact('inputSeo', 'seoScript', 'seoMeta'));
 	}
 
 
@@ -36,11 +38,12 @@ class SeoController extends AdminController {
 		if (!$input['header_script'] && !$input['footer_script']) {
 			return Redirect::action('SeoController@create')->with('message', 'Phải nhập thông tin header hoặc footer');
 		}
+		$input['model_name'] = SEO_SCRIPT;
 		CommonNormal::create($input);
 		return Redirect::action('SeoController@index');
 	}
-
-
+	
+	
 	/**
 	 * Display the specified resource.
 	 *
@@ -92,6 +95,48 @@ class SeoController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
+		return Redirect::action('SeoController@index');
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function seoMeta()
+	{
+		return View::make('admin.seo.addseometa');
+	}
+
+	/**
+	* Add seo meta
+	*
+	*/
+	public function addSeoMeta()
+	{
+		CommonSeo::createSeo(SEO_META, null , FOLDER_SEO);
+		return Redirect::action('SeoController@index');
+	}
+
+	/**
+	* Show form edit meta
+	* @param id
+	* @return Response
+	*/
+	public function editSeoMeta($id)
+	{
+		$inputSeo = AdminSeo::find($id);
+		return View::make('admin.seo.editMeta')->with(compact('inputSeo'));
+	}
+
+	/**
+	* Edit seo meta
+	* @param id
+	* @return Response
+	*/
+	public function doEditSeoMeta($id)
+	{
+		CommonSeo::updateSeo(SEO_META, null, FOLDER_SEO);
 		return Redirect::action('SeoController@index');
 	}
 

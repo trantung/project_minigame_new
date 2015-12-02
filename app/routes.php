@@ -73,29 +73,77 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/feedback_game/search', array('uses' =>  'FeedbackGameController@search', 'as' => 'admin.feedback_game.search'));
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
+	 
+
+	Route::get('/addseometa', 'SeoController@seoMeta');
+	Route::post('/seo/addseometa', array('uses' => 'SeoController@addSeoMeta'));
+	Route::get('/seo/addseometa/{id}', array('uses' => 'SeoController@editSeoMeta'));
+	Route::put('/seo/addseometa/{id}', array('uses' => 'SeoController@doEditSeoMeta'));
 	Route::resource('/seo', 'SeoController');
 
 	Route::resource('/policy', 'PolicyController');
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::resource('/slider', 'AdminSlideController');
-	
+
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
 });
 
+// $games = Game::all();
+// foreach ($games as $key => $value) {
+// 	if($value->start_date) {
+// 		$startDate = convertDateTime($value->start_date);
+// 		$value->update(array('start_date' => $startDate));
+// 	}
+// }
+// dd(12);
+
 // FRONTEND
+
+Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
+Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
+Route::post('/count-download', array('uses' => 'GameController@countDownload', 'as' => 'count-download'));
+Route::post('/score-gname', array('uses' => 'GameController@score', 'as' => 'score-gname'));
+
 Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));
 Route::post('/dang-nhap', array('uses' => 'SiteController@doLogin'));
 Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logout'));
+
+//login facebook
+Route::get('/login_fb', 'LoginFacebookController@loginfb');
+Route::get('/login-fb-callback', 'LoginFacebookController@callback');
+
+//login google
+Route::get('/login_google', 'GoogleController@logingoogle');
 
 Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
 Route::post('/dang-ky', array('uses' => 'AccountController@store'));
 Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 'as' => 'account'));
 Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
+Route::get('/gop-y', array('uses' => 'SiteFeedbackController@create', 'as' =>'feedback'));
+Route::post('/gop-y', array('uses' => 'SiteFeedbackController@store'));
+Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGame', 'as' =>'error_game'));
+Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
+Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));
+
+
+Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
+
+Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
+Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
+
+
+Route::get('/game-android', 'GameController@getListGameAndroid');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}.html', 'GameController@detailGame');
+
+
+
+
+

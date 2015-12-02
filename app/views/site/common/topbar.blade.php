@@ -6,9 +6,9 @@
 				<a href="/"><img src="/assets/images/logo.jpg" alt="" /></a>
 			</div>
 			<div class="search">
-				<a class="iconfacebook"><i class="fa fa-facebook"></i></a>
+				<a class="iconfacebook" href="#"><i class="fa fa-facebook"></i></a>
 				<a class="icongoogleplus" ><i class="fa fa-google-plus"></i></a>
-				<form action="#">
+				<form action="{{ action('SearchGameController@index') }}">
 					<input type="text" name="search" value="" title="search" placeholder="Tìm kiếm game" />
 					<input type="submit" value="search" title="submit" />
 				</form>

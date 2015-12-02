@@ -12,6 +12,10 @@ class GameCategoryParent extends Seeder {
 					'category_parent_id' => 4,
 					'game_id'=> 2,
 			]);
+		GameRelation::create([
+					'category_parent_id' => 5,
+					'game_id'=> 2,
+			]);
 	}
 
 }

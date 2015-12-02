@@ -2,9 +2,10 @@
 /* mm/dd/yyyy to Y-m-d H:i:s */
 function convertDateTime($dateString, $paramString = '/')
 {
-	$array = explode($paramString,$dateString);
-	$datetime = $array[2].'-'.$array[0].'-'.$array[1].' 00:00:00';
-	return $datetime;
+	return $dateString . ' 00:00:00';
+	// $array = explode($paramString,$dateString);
+	// $datetime = $array[2].'-'.$array[0].'-'.$array[1].' 00:00:00';
+	// return $datetime;
 }
 function getRole($roleId) {
 	$role = array(
@@ -57,7 +58,8 @@ function selectEditRelationType($input, $modelName, $modelId)
 function selectType_Policy(){
 	return array(
 		POLICY => 'Chính sách', 
-		ABOUT_POLICY => 'Giới thiệu', 
+		//cuongnt tạm thời ẩn phần này
+		//ABOUT_POLICY => 'Giới thiệu', 
 		);
 }
 function getType_Policy($id){
@@ -191,7 +193,7 @@ function checkedGameType($typeId, $gameId)
 	if ($check) {
 		return 'checked';
 	}
-	return '';
+	return NULL;
 }
 
 function selectSortBy($sortBy)
@@ -261,7 +263,7 @@ function getStatusGame($status) {
 function getNameDevice($deviceId)
 {
 	if ($deviceId == MOBILE) {
-		return COMPUTER;
+		return SMART_DEVICE;
 	}
 	if ($deviceId == COMPUTER) {
 		return COMPUTER_DEVICE;
@@ -310,7 +312,7 @@ function selectArrange()
 		);
 }
 
-function getArrange($arrange = '')
+function getArrange($arrange)
 {
 	$arrangeArray = array(
 			HOT => 'weight_number',
@@ -318,7 +320,7 @@ function getArrange($arrange = '')
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
-			'' => 'id'
+			'' => 'id',
 		);
 	return $arrangeArray[$arrange];
 }
@@ -328,7 +330,7 @@ function checkedGameTypeMain($typeId, $gameTypeMain)
 	if ($typeId == $gameTypeMain) {
 		return 'checked';
 	}
-	return '';
+	return NULL;
 }
 //get category
 function getListCategory()
@@ -342,4 +344,67 @@ function getZero($number = null)
 		return $number;
 	}
 	return 0;
+}
+//get extension from filename
+function getExtension($filename = null)
+{
+	if($filename != '') {
+		return pathinfo($filename, PATHINFO_EXTENSION);
+	}
+	return null;
+}
+//get filename from filename
+function getFilename($filename = null)
+{
+	if($filename != '') {
+		return pathinfo($filename, PATHINFO_FILENAME);
+	}
+	return null;
+}
+//cut trim text
+function limit_text($text, $len) {
+        if (strlen($text) < $len) {
+            return $text;
+        }
+        $text_words = explode(' ', $text);
+        $out = null;
+
+
+        foreach ($text_words as $word) {
+            if ((strlen($word) > $len) && $out == null) {
+
+                return substr($word, 0, $len) . "...";
+            }
+            if ((strlen($out) + strlen($word)) > $len) {
+                return $out . "...";
+            }
+            $out.=" " . $word;
+        }
+        return $out;
+    }
+//check file exist
+function remoteFileExists($url) {
+    $curl = curl_init($url);
+
+    //don't fetch the actual page, you only want to check the connection is ok
+    curl_setopt($curl, CURLOPT_NOBODY, true);
+
+    //do request
+    $result = curl_exec($curl);
+
+    $ret = false;
+
+    //if request did not fail
+    if ($result !== false) {
+        //if request was ok, check response code
+        $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        if ($statusCode == 200) {
+            $ret = true;
+        }
+    }
+
+    curl_close($curl);
+
+    return $ret;
 }

@@ -1,4 +1,4 @@
-@extends('site.layout.default')
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('CategoryParent', $categoryParent->id), 'seoImage' => FOLDER_SEO_PARENT . '/' . $categoryParent->id))
 
 @section('title')
 {{ $title=$categoryParent->name }}
@@ -19,7 +19,7 @@
 						</a>
 					</div>
 					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="assets/images/play.png"></i></a>
+						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play"><img src="assets/images/play.png"></i></a>
 					</div>
 				</div>
 			</div>

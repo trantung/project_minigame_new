@@ -3,7 +3,12 @@
 class SiteController extends HomeController {
 
 	public function __construct() {
-		$menu = CategoryParent::where('position', MENU)->orderBy('weight_number', 'asc')->get();
+		$menu = CategoryParent::where('position', MENU)
+			->orderBy('weight_number', 'asc')->get();
+		$script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
+		if($script) {
+			View::share('script', $script);
+		}
 		View::share('menu', $menu);
 	}
 
@@ -117,7 +122,14 @@ class SiteController extends HomeController {
             	$inputUser = CommonSite::ipDeviceUser();
             	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
         		return Redirect::to('/');
-            } else {
+            }
+            // google check login
+            if(SocialLogin::checkLoginGoogle()) {
+            	return Redirect::to('/');
+            }
+            //facebook check login
+
+            else {
                 return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
             }
         }

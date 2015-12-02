@@ -1,10 +1,16 @@
-@extends('site.layout.default')
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META)))
 
 @section('title')
 {{ $title='Trang chủ' }}
 @stop
 
 @section('content')
+
+@if($news = CommonSite::getLatestNews())
+<div class="box">
+	<a class="homenews" href="{{ action('SiteNewsController@show', $news->slug) }}"><i class="fa fa-caret-right"></i> {{ $news->title }}</a>
+</div>
+@endif
 
 <div class="box">
 	@foreach($categoryParent as $value)
@@ -21,8 +27,8 @@
 							</a>
 					    </div>
 					    <div class="item-play">
-							<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play">
-							<img src="assets/images/play.png"></i></a>
+							<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play">
+							<img src="/assets/images/play.png"></i></a>
 					    </div>
 					</div>
 				</div>

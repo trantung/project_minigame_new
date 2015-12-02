@@ -5,10 +5,12 @@ class CommonSite
     {
         if (Auth::user()->check()) {
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
+  
 
     public static function inputRegister()
     {
@@ -63,6 +65,35 @@ class CommonSite
             return $relationType::find($model->relation_id);
         }
         return null;
+    }
+
+    public static function getLatestNews()
+    {
+        $now = Carbon\Carbon::now();
+        $news =  AdminNew::where('start_date', '<=', $now)
+            ->orderBy('created_at', 'desc')
+            ->first();
+        if($news) {
+            return $news;
+        } else {
+            return null;
+        }
+    }
+
+    public static function getMetaSeo($modelName, $modelId = null)
+    {
+        if(!$modelId) {
+            $seoMeta = AdminSeo::where('model_name', $modelName)
+                    ->first();
+        } else {
+            $seoMeta = AdminSeo::where('model_name', $modelName)
+                    ->where('model_id', $modelId)
+                    ->first();
+        }
+        if($seoMeta)
+            return $seoMeta;
+        else
+            return null;
     }
 
 }

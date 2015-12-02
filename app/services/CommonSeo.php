@@ -17,7 +17,6 @@ class CommonSeo
 		$imageSeo = CommonSeo::getImageSeoUrl($modelName, $modelId);
 
 		$input['image_url_fb']= CommonSeo::uploadImage($modelId, UPLOADIMG, 'image_url_fb', $uploadFolder, $imageSeo);
-		
 		$seo = self::getIdSeo($modelId, $modelName);
 		if (!$seo) {
 			$id = self::createSeo($modelName, $modelId, $uploadFolder);

@@ -53,5 +53,14 @@ class Game extends Eloquent implements SluggableInterface
     {
         return $this->belongsTo('AdminSlide', 'slide_id', 'id');
     }
+    public function gamehistories()
+    {
+        return $this->hasMany('GameHistory', 'game_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('User', 'game_histories', 'game_id', 'user_id');
+    }
 
 }
