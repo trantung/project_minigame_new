@@ -1,8 +1,9 @@
 <!-- menu -->
 <div id='cssmenu'>
-	@if(CommonSite::isLogin())
+
+	@if(CommonSite::isLogin() )
 	<div class="menu-account">
-          <a href="{{ action('AccountController@account') }}" class="account-name"><img src="assets/images/avatar.jpg" height="32" width="31" /> {{ Auth::user()->get()->user_name }}</a>
+          <a href="{{ action('AccountController@account') }}" class="account-name"><img src="assets/images/avatar.jpg" height="32" width="31" /> {{ Auth::user()->get()->user_name.Auth::user()->get()->uname.Auth::user()->get()->google_name }}</a>
           {{-- <a href="#" class="game-favorite"><i class="fa fa-thumbs-o-up"></i> Game bạn yêu thích</a> --}}
           <a href="#" class="game-played"><i class="fa fa-gamepad"></i> Game bạn đã chơi</a>
           <a href="{{ action('SiteController@logout') }}" class="signout"><i class="fa fa-power-off"></i> Đăng xuất</a>
@@ -30,7 +31,7 @@
 					<li><a href="{{ '/' . $value->slug }}" class="color2"><span>{{ $value->name }}</span></a></li>
 				@endif
 			@else
-			<li class='has-sub'><a href='#' class="color2"><span>{{ $value->name }}</span></a>
+			<li class='has-sub'><a href= '#' class="color2"><span>{{ $value->name }}</span></a>
 				<ul>
 				@foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v)
 					<li><a href="{{ '/' . Type::find($v)->slug }}"><span>{{ Type::find($v)->name }}</span></a></li>
