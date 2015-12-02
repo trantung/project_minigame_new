@@ -10,6 +10,7 @@ class CommonSite
             return false;
         }
     }
+  
 
     public static function inputRegister()
     {
