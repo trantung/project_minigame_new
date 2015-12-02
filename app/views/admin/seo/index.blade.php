@@ -52,9 +52,7 @@
 				@elseif($value->model_name == SEO_META)
 				<a href="{{  action('SeoController@editSeoMeta', $value->id) }}" class="btn btn-primary">Sửa Meta</a>
 				@endif
-				{{ Form::open(array('method'=>'DELETE', 'action' => array('SeoController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
-				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-				{{ Form::close() }}
+				
 			  </td>
 			</tr>
 			@endforeach

@@ -134,6 +134,7 @@ Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' 
 Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
 Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
+Route::put('/comment/{id}', array('uses' => 'SiteCommentController@update'));
 
 Route::get('/game-android', 'GameController@getListGameAndroid');
 
