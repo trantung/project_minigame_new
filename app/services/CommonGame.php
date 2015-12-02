@@ -310,18 +310,18 @@ class CommonGame
 			$filename = getFilename($game->link_upload_game);
     		if($game->parent_id == GAMEFLASH) {
     			if($game->link_url != '') {
-					$link = url(UPLOAD_FLASH . '/' . $game->link_url . '.swf');
+					$link = UPLOAD_FLASH . '/' . $game->link_url . '.swf';
 		    	} else {
-		    		$link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
+		    		$link = UPLOAD_FLASH . '/' . $game->link_upload_game;
 		    	}
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;
     		}
     		if($game->parent_id == GAMEHTML5) {
     			if($game->link_url != '') {
-					$link = url(UPLOAD_GAME . '/' . $game->link_url);
+					$link = UPLOAD_GAME . '/' . $game->link_url;
 		    	} else {
-		    		$link = url(UPLOAD_GAME . '/' . $filename);
+		    		$link = UPLOAD_GAME . '/' . $filename;
 		    	}
 		    	$linkFile = 'http://' . $_SERVER['HTTP_HOST'] . $link . '/index.html';
 		    	if(remoteFileExists($linkFile)) {
