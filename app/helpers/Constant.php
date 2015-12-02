@@ -22,7 +22,7 @@ define('SEO', 3);
 define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
-//pagination frontend 
+//pagination frontend
 define('FRONENDPAGINATE', 15);
 //url upload img
 define('UPLOADIMG', '/images');
@@ -30,7 +30,8 @@ define('UPLOADIMG', '/images');
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
 define('UPLOAD_GAMEZIP', '/games-zip');
-define('UPLOAD_GAME', '/games');
+define('UPLOAD_GAME', '/gametest');
+//define('UPLOAD_GAME', '/games');
 define('UPLOAD_FLASH', '/games-flash');
 define('UPLOAD_GAMEOFFLINE', '/games-offline');
 //url upload news
