@@ -100,8 +100,6 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(12);
 
 // FRONTEND
-// Route::get('/gauth/{auth?}', array('uses' => 'GoogleController@googlelogin', 'as' => 'googlelogin'));
-//Route::get('/success', array('uses' => 'GoogleController@getSuccess', 'as' => 'success'));
 
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
 Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
@@ -115,6 +113,9 @@ Route::get('/dang-xuat', array('uses' => 'SiteController@logout', 'as' => 'logou
 //login facebook
 Route::get('/login_fb', 'LoginFacebookController@loginfb');
 Route::get('/login-fb-callback', 'LoginFacebookController@callback');
+
+//login google
+Route::get('/login_google', 'GoogleController@logingoogle');
 
 Route::get('/dang-ky', array('uses' => 'AccountController@create', 'as' => 'register'));
 Route::post('/dang-ky', array('uses' => 'AccountController@store'));
