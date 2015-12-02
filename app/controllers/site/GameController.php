@@ -104,7 +104,7 @@ class GameController extends SiteController {
 		if($game) {
 			$count_view = $game->count_view+1;
 			$game->update(array('count_view' => $count_view));
-			if(getDevice() == COMPUTER) {
+			if(getDevice() == COMPUTER && $game->parent_id != GAMEOFFLINE) {
 				$count_play = $game->count_play+1;
 				$game->update(array('count_play' => $count_play));
 			}
@@ -166,8 +166,10 @@ class GameController extends SiteController {
     	$id = Input::get('id');
     	$game = Game::find($id);
     	if($game) {
-    		$count_play = $game->count_play+1;
-			$game->update(array('count_play' => $count_play));
+    		if($game->parent_id != GAMEOFFLINE) {
+    			$count_play = $game->count_play+1;
+				$game->update(array('count_play' => $count_play));
+    		}
     	}
     	dd(1);
     }
