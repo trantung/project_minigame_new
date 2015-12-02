@@ -6,7 +6,7 @@
 				@foreach($scores as $key => $value)
 					<li>
 						<div class="charts-image">
-							<img alt="" src="{{ url('/assets/images/xep-hang-'.$key+1.'.jpg') }}" height="55" width="30" />
+							<img alt="" src="{{ url('/assets/images/xep-hang-'.($key+1).'.jpg') }}" height="55" width="30" />
 						</div>
 						<div class="charts-text">
 							<strong>
