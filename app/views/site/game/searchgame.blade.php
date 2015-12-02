@@ -1,4 +1,3 @@
-
 @extends('site.layout.default')
 
 @section('title')
@@ -19,19 +18,19 @@
 			<div class="col col_image_avata">
 				<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
 			</div>
-			<div class="col">					
+			<div class="col">
 				<a href="#">
 					<strong>{{ $value->name }}</strong>
-					
+
 				</a>
-				
-				</br>						
+
+				</br>
 				<!-- todo -->
 				@include('site.common.rate', array('vote_average' => $value->vote_average))
-				</br>					
+				</br>
 				{{ $value->count_play }} người chơi
-				</br>						
-				{{ $value->description }}							
+				</br>
+				{{ $value->description }}
 			</div>
 		</div>
 	</div>

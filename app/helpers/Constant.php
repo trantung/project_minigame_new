@@ -107,3 +107,5 @@ define('SEO_META', 'Seo_Meta');
 define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
+//define limit scores
+define('GAMESCORE_LIMITED', 5);

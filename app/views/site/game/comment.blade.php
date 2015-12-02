@@ -11,7 +11,7 @@
 			comment choinhanh.vn
 		</div>
 		<div role="tabpanel" class="tab-pane" id="comment2">
-			comment facebook
+			<div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="5"></div>
 		</div>
 	</div>
 </div>

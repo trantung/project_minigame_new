@@ -1,5 +1,4 @@
-
-@extends('site.layout.default')
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('AdminNew', $inputNew->id), 'seoImage' => FOLDER_SEO_NEWS . '/' . $inputNew->id))
 
 @section('title')
 {{ $title= $inputNew->title }}
@@ -7,10 +6,8 @@
 
 @section('content')
 
-
 <div class="box">
-
-	<h3>Chi tiết bài viết</h3>
+	<h3>{{ $inputNew->title }}</h3>
 	<div class=" ad">
 		<h4><b>{{ $inputNew->title }}</b></h4>
 	</div>
