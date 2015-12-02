@@ -310,9 +310,9 @@ class CommonGame
 			$filename = getFilename($game->link_upload_game);
     		if($game->parent_id == GAMEFLASH) {
     			if($game->link_url != '') {
-					$link = url(UPLOAD_FLASH . '/' . $game->link_url . '.swf');
+					$link = UPLOAD_FLASH . '/' . $game->link_url . '.swf';
 		    	} else {
-		    		$link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
+		    		$link = UPLOAD_FLASH . '/' . $game->link_upload_game;
 		    	}
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;
