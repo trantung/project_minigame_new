@@ -30,7 +30,7 @@ define('UPLOADIMG', '/images');
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
 define('UPLOAD_GAMEZIP', '/games-zip');
-define('UPLOAD_GAME', '/games');
+define('UPLOAD_GAME', '/gametest');
 define('UPLOAD_FLASH', '/games-flash');
 define('UPLOAD_GAMEOFFLINE', '/games-offline');
 //url upload news
