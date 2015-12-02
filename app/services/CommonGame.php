@@ -325,9 +325,9 @@ class CommonGame
 		    	}
 		    	$linkFile = 'http://' . $_SERVER['HTTP_HOST'] . $link . '/index.html';
 		    	if(remoteFileExists($linkFile)) {
-		    		$link = $link . '/index.html';
+		    		$link = url($link . '/index.html');
 		    	} else {
-		    		$link = $link . '/index.htm';
+		    		$link = url($link . '/index.htm');
 		    	}
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;
