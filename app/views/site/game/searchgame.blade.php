@@ -7,6 +7,7 @@
 @section('content')
 
 
+@include('site.common.ad', array('adPosition' => CHILD_PAGE, 'modelName' => 'CategoryParent', 'modelId' => 1))
 <div class="ad">
 		<h4>Kết quả tìm kiếm game</h4>
 	</div>
@@ -16,16 +17,16 @@
 	<div class="table_container">
 		<div class="table-row">
 			<div class="col col_image_avata">
-				<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
+				<a href="{{ CommonGame::getUrlGame($value->slug) }}">	
+					<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
+				</a>
 			</div>
 			<div class="col">
-				<a href="#">
+				<a href="{{ CommonGame::getUrlGame($value->slug) }}">
 					<strong>{{ $value->name }}</strong>
-
 				</a>
-
 				</br>
-				<!-- todo -->
+		
 				@include('site.common.rate', array('vote_average' => $value->vote_average))
 				</br>
 				{{ $value->count_play }} người chơi

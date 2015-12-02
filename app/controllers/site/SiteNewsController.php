@@ -46,7 +46,7 @@ class SiteNewsController extends SiteController {
 	 */
 	public function show($slug)
 	{
-		$inputNew = AdminNeW::findBySlug($slug);
+		$inputNew = AdminNew::findBySlug($slug);
 		return View::make('site.News.showNews')->with(compact('inputNew'));
 	}
 
