@@ -116,7 +116,7 @@ class GameController extends SiteController {
 	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
-    		$inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->get();
+    		$inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->orderBy('id', 'desc')->paginate(PAGE_COMMENT);
 
     		if(getDevice() == MOBILE) {
     			if($parentId == GAMEOFFLINE) {

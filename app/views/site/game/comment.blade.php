@@ -9,8 +9,9 @@
 	<div class="tab-content">
 		
 		<div role="tabpanel" class="tab-pane active" id="comment1">
-		{{ Form::open(array('action' => array('SiteCommentController@store'))) }}
+		{{ Form::open(array('action' => array('SiteCommentController@update', $game->id), 'method' => 'PUT')) }}
 		<!-- comment cho game -->
+		@if(Auth::user()->check() && Auth::user()->get()->user_name)
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Comment choi nhanh</label>
@@ -24,18 +25,29 @@
 			<div class="box-footer">
 				{{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
 			</div>
+		@else
+		<b>Bạn phải đăng nhập để comment!</b>
+		@endif
 		<!-- hiển thị comment cho game -->
 		<div class="box-body ">
 			<table class="table table-hover">
 
 			 @foreach($inputComment as $value)
 			<tr>
-			  <td>Ảnh</td>
 			  <td><b>{{ User::find($value->user_id)->user_name.User::find($value->user_id)->uname.User::find($value->user_id)->google_name }}</b></td>
 			  <td>{{ $value->description }}</td>			
 			</tr>
 			@endforeach
 			</table>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="pagination">
+				<!-- phan trang -->
+				{{ $inputComment->appends(Request::except('page'))->links() }}
+				</ul>
+			</div>
 		</div>
 		{{ Form::close() }}
 		</div>
