@@ -121,7 +121,8 @@ class GoogleController extends BaseController {
 	            $input['google_id'] = $result['id'];
 	            $input['google_name'] = $result['name'];
 	        	$userId = User::create($input)->id;
-
+			$user = User::find($userId);
+			Auth::user()->login($user);
                 return Redirect::action('SiteIndexController@index');
                 // return Redirect::back()->withErrors(['Your account have been created. It is awaiting activation by your manager']);
             }
