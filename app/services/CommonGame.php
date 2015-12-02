@@ -324,15 +324,9 @@ class CommonGame
     		}
     		if($game->parent_id == GAMEHTML5) {
     			if($game->link_url != '') {
-					$link = UPLOAD_GAME . '/' . $game->link_url;
+					$link = url(UPLOAD_GAME . '/' . $game->link_url);
 		    	} else {
-		    		$link = UPLOAD_GAME . '/' . $filename;
-		    	}
-		    	$linkFile = 'http://' . $_SERVER['HTTP_HOST'] . $link . '/index.html';
-		    	if(remoteFileExists($linkFile)) {
-		    		$link = url($link . '/index.html');
-		    	} else {
-		    		$link = url($link . '/index.htm');
+		    		$link = url(UPLOAD_GAME . '/' . $filename);
 		    	}
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;
