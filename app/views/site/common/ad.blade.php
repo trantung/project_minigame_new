@@ -1,6 +1,6 @@
 @if($adPosition == HEADER || $adPosition == Footer)
 	@if($ad = CommonSite::getAdvertise($adPosition))
-	<div class="adsense">
+	<div class="center">
 		@if($ad->adsense)
 			{{ $ad->adsense }}
 		@else
@@ -17,7 +17,7 @@
 @endif
 @if($adPosition == CHILD_PAGE)
 	@if($ad = CommonSite::getAdvertise($adPosition, $modelName, $modelId))
-	<div class="adsense">
+	<div class="center">
 		@if($ad->adsense)
 			{{ $ad->adsense }}
 		@else
