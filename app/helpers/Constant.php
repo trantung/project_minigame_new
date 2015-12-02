@@ -114,3 +114,7 @@ define('APP_SECRET', 'c93744f89822691d4141bd7a7b779822');
 define('GAMESCORE_LIMITED', 5);
 //defune page comment fron-end
 define('PAGE_COMMENT', 5);
+//define google app
+define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
+define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
+define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');

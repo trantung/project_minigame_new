@@ -14,12 +14,12 @@
 				<div class="item">
 					<div class="item-image">
 						<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" alt="" />
+							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
 							<strong>{{ $game->name }}</strong>
 						</a>
 					</div>
 					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play"><img src="assets/images/play.png"></i></a>
+						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
 					</div>
 				</div>
 			</div>
@@ -45,12 +45,12 @@
 					<div class="item">
 						<div class="item-image">
 							<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" alt="" />
+								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
 								<strong>{{ $game->name }}</strong>
 							</a>
 						</div>
 						<div class="item-play">
-							<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="assets/images/play.png"></i></a>
+							<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
 						</div>
 					</div>
 				</div>
