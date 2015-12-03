@@ -855,10 +855,7 @@ a.download i.fa {
     vertical-align: middle;
     width: 82px;
 }
-.mobile .rate-result-cnt,
-.web .rate-result-cnt {
-    left: 0;
-}
+
 .rate-stars {
     width: 82px;
     height: 18px;
