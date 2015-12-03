@@ -23,7 +23,7 @@
 			</div>
 			<div class="col">
 				<a href="{{ CommonGame::getUrlGame($value->slug) }}">
-					<strong>{{ $value->name }}</strong>
+					<strong>{{ limit_text($value->name, TEXTLENGH) }}</strong>
 				</a>
 				</br>
 		

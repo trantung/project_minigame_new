@@ -11,7 +11,7 @@
 
 	<!-- WEB -->
 	<div class="web">
-		<h1 class="title">{{ $game->name }}</h1>
+		<h1 class="title">{{ limit_text($game->name, TEXTLENGH) }}</h1>
 
 		@include('site.common.rate', array('vote_average' => $game->vote_average))
 

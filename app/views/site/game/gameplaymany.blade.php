@@ -18,7 +18,7 @@
 						<div class="item-image">
 							<a href="{{ CommonGame::getUrlGame($game->slug) }}">
 								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-								<strong>{{ $game->name }}</strong>
+								<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
 								
 							</a>
 						</div>
@@ -49,7 +49,7 @@
 					<div class="item-image">
 						<a href="{{ CommonGame::getUrlGame($game->slug) }}">
 							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-							<strong>{{ $game->name }}</strong>
+							<strong>{{ limit_text($game->name, TEXTLENGH)}}</strong>
 							@include('site.common.rate', array('vote_average' => $game->vote_average))
 						</a>
 					</div>

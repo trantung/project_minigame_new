@@ -187,8 +187,11 @@ function getIpAddress()
 //add time to filename
 function changeFileNameImage($filename)
 {
+	$file = getFilename($filename);
 	$str = strtotime(date('Y-m-d H:i:s'));
-	return $str.'-'.$filename;
+	$fileNameAfter = $file. '-' . $str;
+	$extension = getExtension($filename);
+	return $fileNameAfter.'.'.$extension;
 }
 
 function checkedGameType($typeId, $gameId)
@@ -369,25 +372,23 @@ function getFilename($filename = null)
 }
 //cut trim text
 function limit_text($text, $len) {
-        if (strlen($text) < $len) {
-            return $text;
-        }
-        $text_words = explode(' ', $text);
-        $out = null;
-
-
-        foreach ($text_words as $word) {
-            if ((strlen($word) > $len) && $out == null) {
-
-                return substr($word, 0, $len) . "...";
-            }
-            if ((strlen($out) + strlen($word)) > $len) {
-                return $out . "...";
-            }
-            $out.=" " . $word;
-        }
-        return $out;
+    if (strlen($text) < $len) {
+        return $text;
     }
+    $text_words = explode(' ', $text);
+    $out = null;
+    foreach ($text_words as $word) {
+        if ((strlen($word) > $len) && $out == null) {
+
+            return substr($word, 0, $len) . "...";
+        }
+        if ((strlen($out) + strlen($word)) > $len) {
+            return $out . "...";
+        }
+        $out.=" " . $word;
+    }
+    return $out;
+}
 //check file exist
 function remoteFileExists($url) {
     $curl = curl_init($url);
