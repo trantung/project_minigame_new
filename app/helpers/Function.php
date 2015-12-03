@@ -187,8 +187,11 @@ function getIpAddress()
 //add time to filename
 function changeFileNameImage($filename)
 {
+	$file = getFilename($filename);
 	$str = strtotime(date('Y-m-d H:i:s'));
-	return $str.'-'.$filename;
+	$fileNameAfter = $file. '-' . $str;
+	$extension = getExtension($filename);
+	return $fileNameAfter.'.'.$extension;
 }
 
 function checkedGameType($typeId, $gameId)
