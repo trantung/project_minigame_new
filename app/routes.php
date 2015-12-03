@@ -138,6 +138,10 @@ Route::put('/comment/{id}', array('uses' => 'SiteCommentController@update'));
 
 Route::get('/game-android', 'GameController@getListGameAndroid');
 
+Route::get('/game-binh-chon-nhieu', 'GameController@getListGameVote');
+
+Route::get('/game-choi-nhieu', 'GameController@getListGameplay');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');

@@ -161,6 +161,30 @@ class GameController extends SiteController {
 
     }
 
+    /**
+    * Get list game vote many
+    * @return list game vote
+    *
+    */
+    public function getListGameVote()
+    {
+    	$inputGameVote = Game::whereNotNull('parent_id')->orderBy('count_vote', 'desc')->paginate(PAGINATE_BOXGAME);
+    	$inputGameplay = Game::whereNotNull('parent_id')->orderBy('count_play', 'desc')->get();
+    	return View::make('site.game.gamevotemany')->with(compact('inputGameVote','inputGameplay'));
+
+    }
+	/**
+    * Get list game vote many
+    * @return list game vote
+    *
+    */
+    public function getListGameplay()
+    {
+		$inputGameVote = Game::whereNotNull('parent_id')->orderBy('count_vote', 'desc')->get();
+    	$inputGameplay = Game::whereNotNull('parent_id')->orderBy('count_play', 'desc')->paginate(PAGINATE_BOXGAME);
+    	return View::make('site.game.gameplaymany')->with(compact('inputGameVote','inputGameplay'));
+    }
+
     public function countPlay()
     {
     	$id = Input::get('id');
