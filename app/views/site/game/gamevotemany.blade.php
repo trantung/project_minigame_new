@@ -1,25 +1,25 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Type', $type->id), 'seoImage' => FOLDER_SEO_GAMETYPE . '/' . $type->id))
+@extends('site.layout.default')
 
 @section('title')
-{{ $title=$type->name }}
+{{ $title= 'Game bình chọn nhiền'}}
 @stop
 
 @section('content')
-
 <div class="box">
-	<h1>{{ $type->name }}</h1>
+	<h1>Game bình chọn nhiều</h1>
 	<div class="row">
-		@foreach($games as $game)
+		@foreach($inputGameVote as $game)
 			<div class="col-xs-6 col-sm-3 col-md-2">
 				<div class="item">
 					<div class="item-image">
 						<a href="{{ CommonGame::getUrlGame($game->slug) }}">
 							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
 							<strong>{{ $game->name }}</strong>
+							@include('site.common.rate', array('vote_average' => $game->vote_average))
 						</a>
 					</div>
 					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
+						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
 					</div>
 				</div>
 			</div>
@@ -29,18 +29,18 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<ul class="pagination">
-			{{ $games->appends(Request::except('page'))->links() }}
+			{{ $inputGameVote->appends(Request::except('page'))->links() }}
 			</ul>
 		</div>
 	</div>
-
 </div>
+<!-- game play many todo -->
 
-@if($relationModel = CommonSite::getRelationModel($type->id, 'Type'))
+@if($inputGameplay)
 	<div class="box">
-		<h1>{{ $relationModel->name }}<a href="{{ $relationModel->slug }}" class="box-more">Xem thêm</a></h1>
+		<h1>Game chơi nhiều nhất<a href="{{ action('GameController@getListGameplay') }}" class="box-more">Xem thêm</a></h1>
 		<div class="row">
-			@foreach(CommonGame::boxGameByType($relationModel) as $game)
+			@foreach($inputGameplay as $game)
 				<div class="col-xs-6 col-sm-3 col-md-2">
 					<div class="item">
 						<div class="item-image">
@@ -55,6 +55,13 @@
 					</div>
 				</div>
 			@endforeach
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="pagination">
+			{{ $inputGameplay->appends(Request::except('page'))->links() }}
+			</ul>
 		</div>
 	</div>
 @endif

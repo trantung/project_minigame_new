@@ -227,13 +227,15 @@ class CommonGame
     		if($paginate) {
     			if(getDevice() == MOBILE) {
     				$listGame = Game::whereIn('id', $games)
-    					->where('parent_id', '!=', GAMEFLASH)
+                        ->where('parent_id', '!=', GAMEFLASH)
+    					->where('parent_id', '!=', GAMEOFFLINE)
     					->where('start_date', '<=', $now)
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			} else {
     				$listGame = Game::whereIn('id', $games)
     					->where('start_date', '<=', $now)
+                        ->where('parent_id', '!=', GAMEOFFLINE)
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			}
@@ -241,12 +243,14 @@ class CommonGame
     			if(getDevice() == MOBILE) {
     				$listGame = Game::whereIn('id', $games)
     					->where('parent_id', '!=', GAMEFLASH)
+                        ->where('parent_id', '!=', GAMEOFFLINE)
     					->where('start_date', '<=', $now)
     					->orderBy('id', 'desc')
     					->limit(PAGINATE_BOXGAME)->get();
     			} else {
     				$listGame = Game::whereIn('id', $games)
     					->where('start_date', '<=', $now)
+                        ->where('parent_id', '!=', GAMEOFFLINE)
     					->orderBy('id', 'desc')
     					->limit(PAGINATE_BOXGAME)->get();
     			}
@@ -348,7 +352,7 @@ class CommonGame
     	}
     	if($parentId == GAMEHTML5) {
     		$style = self::getStyle();
-    		$box = '<iframe src="' . $link . '" style="' . $style . '" allowfullscreen="true"></iframe>';
+    		$box = '<iframe src="' . $link . '" style="border: 0; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
     		return $box;
     	}
     }
