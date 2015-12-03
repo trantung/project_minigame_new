@@ -17,7 +17,7 @@
 		</div>
 		<div class="mobile_title">
 
-			<h1 class="title mobile-title">{{ $game->name }}</h1>
+			<h1 class="title mobile-title">{{ limit_text($game->name, TEXTLENGH) }}</h1>
 
 			@include('site.common.rate', array('vote_average' => $game->vote_average))
 
