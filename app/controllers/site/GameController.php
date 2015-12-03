@@ -132,7 +132,8 @@ class GameController extends SiteController {
 	    			return View::make('site.game.downloadweb')->with(compact('game','inputComment'));
 	    		} else {
 	    			if($play == 'true') {
-	    				return View::make('site.game.onlinemobileplay')->with(compact('game','inputComment'));
+	    				//return View::make('site.game.onlinemobileplay')->with(compact('game','inputComment'));
+	    				return View::make('site.game.onlinewebplay')->with(compact('game','inputComment'));
 	    			}
 	    			return View::make('site.game.onlineweb')->with(compact('game','inputComment'));
 	    		}

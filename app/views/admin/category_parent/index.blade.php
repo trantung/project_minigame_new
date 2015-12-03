@@ -40,8 +40,8 @@
 				<tr>
 				  	<td>{{ $categoryParent->id }}</td>
 					<td>{{ $categoryParent->name }}</td>
-					 @if(!Request::segment(3) == CONTENT_SEGMENT)
-					<td>{{ countType($categoryParent->id) }}</td>
+					@if(!Request::segment(3) == CONTENT_SEGMENT)
+						<td>{{ countType($categoryParent->id) }}</td>
 					@endif
 					<td>{{ countParentGame($categoryParent->id) }}</td>
 					<td>
