@@ -57,6 +57,13 @@
 			@endforeach
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="pagination">
+			{{ $inputGameplay->appends(Request::except('page'))->links() }}
+			</ul>
+		</div>
+	</div>
 @endif
 
 @stop
