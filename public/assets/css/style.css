@@ -857,6 +857,10 @@ a.download i.fa {
     margin-top: 5px;
     width: 82px;
 }
+.mobile .rate-result-cnt,
+.web .rate-result-cnt {
+    left: 0;
+}
 .rate-stars {
     width: 82px;
     height: 18px;
