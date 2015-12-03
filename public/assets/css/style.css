@@ -101,6 +101,7 @@ a.icongoogleplus {
 /* main */
 .main {
     background: #fff;
+    padding-top: 15px;
 }
 
 /*advertisement*/
@@ -129,7 +130,6 @@ a.icongoogleplus {
     padding-bottom: 5px;
     position: relative;
     text-transform: uppercase;
-
 }
 .box > h3 > a,
 .box > h1 > a {
