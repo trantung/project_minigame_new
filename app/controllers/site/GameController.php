@@ -94,6 +94,7 @@ class GameController extends SiteController {
 			$games = CommonGame::boxGameByType($type, true);
 			return View::make('site.game.type')->with(compact('games', 'type'));
 		}
+		//TODO 404
 	}
 
 	public function detailGame($type, $slug)

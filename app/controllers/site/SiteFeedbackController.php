@@ -128,7 +128,6 @@ class SiteFeedbackController extends SiteController {
 	public function createErrorGame($id)
 	{
 		$input = Input::except('_token');
-		// dd($input);
 		$rules = array(
             'description'    => 'required'
 		);

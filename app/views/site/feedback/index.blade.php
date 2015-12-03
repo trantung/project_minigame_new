@@ -6,7 +6,6 @@
 
 @section('content')
 
-
 <div class="box">
 	<h3>Góp ý</h3>
 	<div class=" ad">
@@ -18,7 +17,7 @@
 		</div>
 	</div>
 	<div class="clearfix"></div>
-	{{ Form::open(array('action' => 'SiteFeedbackController@createErrorGame', 'class' => 'form-horizontal')) }}
+	{{ Form::open(array('action' => 'SiteFeedbackController@store', 'class' => 'form-horizontal')) }}
 		<div class="form-group">
 			<label for="username" class="col-sm-4 control-label label-text">Tên của bạn:</label>
 			<div class="col-sm-4">
