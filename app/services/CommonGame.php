@@ -348,7 +348,7 @@ class CommonGame
     	}
     	if($parentId == GAMEHTML5) {
     		$style = self::getStyle();
-    		$box = '<iframe src="' . $link . '" style="' . $style . '" allowfullscreen="true"></iframe>';
+    		$box = '<iframe src="' . $link . '" style="border: 0; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
     		return $box;
     	}
     }
