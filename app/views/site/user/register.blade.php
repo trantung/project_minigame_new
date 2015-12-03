@@ -64,16 +64,11 @@
 		function checkAgree() {
 			if (!$('#vehicle').is(':checked')) {
 				alert('Bạn chưa đồng ý với các quy định trên.');
+				return false;
 			}
 		}
 		</script>
-		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-6">
-			Đăng ký bằng<br>
-				<button type="submit" class="fa fa-facebook" id="register"></button>
-				<button type="submit" class="fa fa-google" id="register"></button>
-			</div>
-		</div>
+
 	{{ Form::close() }}
 	<div class="clearfix"></div>
 </div>

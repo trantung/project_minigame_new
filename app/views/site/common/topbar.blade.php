@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="menu-show"><a onclick="menushow()"><i class="fa fa-navicon"></i></a></div>
 			<div class="logo">
-				<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.jpg') }}" alt="" /></a>
+				<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
 			</div>
 			<div class="search">
 				<a class="iconfacebook" href="#"><i class="fa fa-facebook"></i></a>
