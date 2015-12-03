@@ -145,7 +145,13 @@ function countType($parentId)
 
 function countParentGame($parentId)
 {
-	return count(GameRelation::where('category_parent_id', $parentId)->get());
+	$category =  GameRelation::where('category_parent_id', $parentId)->first();
+	if ($category) {
+		$gameId = $category->game_id;
+		$games = Game::where('parent_id', $gameId)->get();
+		return count($games);
+	}
+	return NO_GAME;
 }
 
 function countCategoryGame($categoryId)
