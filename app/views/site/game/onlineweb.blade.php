@@ -19,9 +19,11 @@
 		<p>{{ $game->description }}</p>
 		<div class="row">
 			<div class="col-sm-9">
-				<div class="game">
-					{{ CommonGame::getLinkGame($game) }}
-				</div>
+			<p>
+				<a onclick="countplaymobile()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+			</p>
+			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
+				
 			</div>
 			<div class="col-sm-3">
 				@include('site.game.score', array('id' => $game->id))
