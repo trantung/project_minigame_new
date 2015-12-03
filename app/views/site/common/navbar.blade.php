@@ -6,6 +6,7 @@
 		<li><a href="{{ action('GameController@getListGameplay') }}"><i class="fa fa-gamepad"></i><span>Hay nhất</span></a></li>
 		<li><a href="{{ action('SiteNewsController@index') }}"><i class="fa fa-newspaper-o"></i><span>Tin tức</span></a></li>
 		<li><a href="{{ action('GameController@getListGameAndroid') }}"><i class="fa fa-android"></i><span>Game android</span></a></li>
+
 	  </ul>
 	</div>
 </div>
