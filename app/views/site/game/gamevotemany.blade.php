@@ -18,9 +18,7 @@
 							@include('site.common.rate', array('vote_average' => $game->vote_average))
 						</a>
 					</div>
-					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
-					</div>
+
 				</div>
 			</div>
 		@endforeach
