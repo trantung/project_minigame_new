@@ -8,7 +8,6 @@ a {
     background: #2b74a1;
     padding-top: 10px;
     padding-bottom: 15px;
-	margin-bottom:20px;
 }
 .logo {
     display: inline-block;
@@ -101,7 +100,7 @@ a.icongoogleplus {
 /* main */
 .main {
     background: #fff;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 
 /*advertisement*/
@@ -304,7 +303,7 @@ i.play {
 }
 .menu-static ul li a span {
     display: block;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
 }
 
 .menu-hide {
@@ -659,7 +658,6 @@ a.download i.fa {
         background: #2b74a1;
         padding-top: 10px;
         padding-bottom: 8px;
-        margin-bottom:20px;
     }
     .menu-top {
         background: #ebebeb;
@@ -700,15 +698,15 @@ a.download i.fa {
         display: none !important;
     }
     .menu-static ul li {
-        padding-left: 7px;
-        padding-right: 7px;
+        padding-left: 3px;
+        width: 58px;
+        padding-right: 3px;
     }
     .menu-static ul li a i.fa {
         font-size: 25px;
     }
     .menu-static ul li a span {
-        font-size: 7px;
-
+        font-size: 10px;
     }
     .box {
         padding-left: 5px;
@@ -728,6 +726,9 @@ a.download i.fa {
 
     .logo {
         width: 40%;
+    }
+    .logo img {
+        height: 40px;
     }
     .search {
 
@@ -1069,8 +1070,8 @@ h1.title {
 }
 .adsense {
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .adsense img {
     height: auto;
