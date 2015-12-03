@@ -5,9 +5,9 @@ a {
     text-decoration: none;
 }
 .top {
-    background: #2b74a1;
-    padding-top: 10px;
-    padding-bottom: 15px;
+    background: #2b74a1 none repeat scroll 0 0;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 .logo {
     display: inline-block;
@@ -128,7 +128,6 @@ a.icongoogleplus {
     margin-bottom: 15px;
     padding-bottom: 5px;
     position: relative;
-    text-transform: uppercase;
 }
 .box > h3 > a,
 .box > h1 > a {
@@ -162,8 +161,7 @@ a.icongoogleplus {
 }
 
 .item {
-    border: 1px solid #f7a14d;
-
+    border: 1px solid #c8c8c8;
     margin-bottom: 30px;
 }
 .item-image {
@@ -177,9 +175,12 @@ a.icongoogleplus {
 .item-image strong {
     color: #888;
     display: block;
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: bold;
     margin-top: 5px;
-    height: 45px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: left;
 }
 .item-star {
     text-align: center;
@@ -202,7 +203,8 @@ a.icongoogleplus {
     display: block;
 }
 .item-play span {
-	color: #F7A14D
+	color: #908c8c;
+    font-size: 12px;
 }
 .item-play i.fa {
     float: right;
@@ -232,7 +234,7 @@ i.play {
     list-style: outside none none;
     margin-bottom: 0;
     padding-left: 0;
-    padding-top: 20px;
+    padding-top: 10px;
     text-align: center;
 }
 .footer ul li {
@@ -243,7 +245,7 @@ i.play {
 }
 .footer ul li a {
     display: block;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     color: #888;
     text-align: center;
     text-transform: uppercase;
@@ -257,6 +259,7 @@ i.play {
     border-bottom-color: #2b74a1;
 }
 .copyright {
+    background: #ebebeb none repeat scroll 0 0;
     color: #888;
     padding-bottom: 12px;
     padding-top: 18px;
@@ -266,7 +269,7 @@ i.play {
 /*menu*/
 .menu-top {
     background: #ebebeb;
-	height: 70px;
+	height: 68px;
 }
 .menu-static {
     padding-top: 10px;
@@ -665,7 +668,7 @@ a.download i.fa {
     }
     .item-play span {
 
-        font-size:13px;
+        font-size:12px;
     }
     .top .menu-show {
         display: inline-block;
@@ -673,11 +676,15 @@ a.download i.fa {
         display: none;
     }
     .footer {
-        padding-top: 20px;
         font-size: 12px;
+        padding-top: 0;
     }
     .item-image strong {
-        font-size: 16px;
+        font-size: 12px;
+        color: #908c8c;
+        text-align: left;
+        padding-left: 3px;
+        padding-right: 3px;
     }
     .box > h3 > a,
     .box > h1 > a {
@@ -717,11 +724,12 @@ a.download i.fa {
         padding-right: 5px;
     }
     .box a.box-more {
-        height: 26px;
+        height: 20px;
         padding-left: 17px;
-        padding-top: 8px;
+        padding-top: 3px;
         padding-right: 6px;
         font-size: 13px;
+        top: 2px;
     }
 
     .logo {
@@ -839,12 +847,15 @@ a.download i.fa {
 
 /* rate result */
 .rate-result-cnt {
-    width: 82px;
+    display: inline-block;
     height: 18px;
+    left: -35px;
+    margin-bottom: 8px;
+    margin-left: 10px;
     position: relative;
     vertical-align: middle;
-    margin-left: 10px;
-    display: inline-block;
+    margin-top: 5px;
+    width: 82px;
 }
 .rate-stars {
     width: 82px;
@@ -992,24 +1003,23 @@ h1.title {
     width: 76%;
     max-width: 100%;
     height: auto;
-
 }
 @media (max-width: 767px) {
-		.imgGame img{
-			width: auto;
-		}
-		.imgGamedowload img,
-        .slideGame img {
-			 width: auto;
-		}
-		.col {
-			font-size:11px;
-			padding-left: 15px;
-		}
-		.col img {
-			width: 77px;
-		}
-        
+	.imgGame img{
+		width: auto;
+	}
+	.imgGamedowload img,
+    .slideGame img {
+		 width: auto;
+	}
+	.col {
+		font-size:11px;
+		padding-left: 15px;
+	}
+	.col img {
+		width: 77px;
+	}
+
 }
 .table_container{
      display: table;
@@ -1076,4 +1086,20 @@ h1.title {
 .adsense img {
     height: auto;
     max-width: 100%;
+}
+
+.homenews {
+    color: #727272;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@media (max-width: 400px) {
+    .col-xs-6 {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .item {
+        margin-bottom: 10px;
+    }
 }
