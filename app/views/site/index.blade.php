@@ -27,8 +27,14 @@
 							</a>
 					    </div>
 					    <div class="item-play">
-							<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play">
-							<img src="/assets/images/play.png"></i></a>
+							<a href="{{ CommonGame::getUrlGame($game->slug) }}">
+							@if($game->parent_id == GAMEOFFLINE)
+								<span>{{ getZero($game->count_download) }} lượt tải</span><i class="play">
+								<img src="/assets/images/tai.png"></i></a>
+							@else
+								<span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play">
+								<img src="/assets/images/play.png"></i></a>
+							@endif
 					    </div>
 					</div>
 				</div>
