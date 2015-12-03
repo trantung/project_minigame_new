@@ -4,7 +4,7 @@
 		$.ajax(
 		{
 			type:'post',
-			url: '/count-play',
+			url: '{{ url("/count-play") }}',
 			data: {
 				'id': {{ $id }}
 			},

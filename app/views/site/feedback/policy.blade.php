@@ -10,6 +10,7 @@
 @if($input_policy)
 <div class="box">
 	<h3>Chính sách</h3>
+
 	<div class=" ad">
 		<h4><b>{{ $input_policy->title }}</b></h4>
 	</div>
@@ -25,4 +26,5 @@
 	<div class="clearfix"></div>
 </div>
 @endif
+
 @stop

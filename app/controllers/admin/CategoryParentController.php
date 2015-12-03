@@ -158,7 +158,10 @@ class CategoryParentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		$dataParent = CategoryParent::find($id)->first();
 		CommonNormal::delete($id);
-        return Redirect::action('CategoryParentController@index');
+		if($dataParent->position ==  CONTENT) 
+			return Redirect::action('CategoryParentController@index');
+        return Redirect::action('CategoryParentController@contentIndex');
 	}
 }

@@ -22,7 +22,7 @@ define('SEO', 3);
 define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
-//pagination frontend 
+//pagination frontend
 define('FRONENDPAGINATE', 15);
 //url upload img
 define('UPLOADIMG', '/images');
@@ -30,7 +30,8 @@ define('UPLOADIMG', '/images');
 define('UPLOAD_GAME_AVATAR', '/images/game_avatar');
 //url upload games
 define('UPLOAD_GAMEZIP', '/games-zip');
-define('UPLOAD_GAME', '/games');
+define('UPLOAD_GAME', '/gametest');
+//define('UPLOAD_GAME', '/games');
 define('UPLOAD_FLASH', '/games-flash');
 define('UPLOAD_GAMEOFFLINE', '/games-offline');
 //url upload news
@@ -108,7 +109,13 @@ define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
 //facebook
-define('APP_ID', '1722201724675276');
-define('APP_SECRET', 'c93744f89822691d4141bd7a7b779822');
+define('APP_ID', '797256200383541');
+define('APP_SECRET', '7d11391cdb8f8091087f1d617daa7a6a');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
+//defune page comment fron-end
+define('PAGE_COMMENT', 5);
+//define google app
+define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
+define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
+define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');

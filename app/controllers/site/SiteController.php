@@ -96,7 +96,7 @@ class SiteController extends HomeController {
     {
     	$checkLogin = CommonSite::isLogin();
         if($checkLogin) {
-    		return Redirect::to('/');
+    		return Redirect::action('SiteIndexController@index');
         } else {
             return View::make('site.user.login');
         }
@@ -121,14 +121,8 @@ class SiteController extends HomeController {
             	}
             	$inputUser = CommonSite::ipDeviceUser();
             	CommonNormal::update(Auth::user()->get()->id, $inputUser, 'User');
-        		return Redirect::to('/');
+        		return Redirect::action('SiteIndexController@index');
             }
-            // google check login
-            if(SocialLogin::checkLoginGoogle()) {
-            	return Redirect::to('/');
-            }
-            //facebook check login
-
             else {
                 return Redirect::route('login')->with('error', 'Sai tên truy cập hoặc mật khẩu');
             }
@@ -143,7 +137,7 @@ class SiteController extends HomeController {
 	        //Session::flush();
 	        return Redirect::route('login');
         } else {
-            return Redirect::to('/');
+            return Redirect::action('SiteIndexController@index');
         }
     }
 

@@ -60,7 +60,12 @@ class CommonGame
 		$inputGame['name'] = Input::get('name');
     	$inputGame['description'] = Input::get('description');
     	$inputGame['link_download'] = Input::get('link_download');
-    	$inputGame['link_url'] = Input::get('link_url');
+    	//check link upload game , link_url
+    	if(Input::get('link_url')) {
+    		$inputGame['link_url'] = Input::get('link_url');
+    	} elseif(!Input::get('link_url') && $inputGame['link_upload_game']) {
+    		$inputGame['link_url'] = getFilename($inputGame['link_upload_game']);
+    	}
     	$inputGame['parent_id'] = Input::get('parent_id');
     	$inputGame['weight_number'] = Input::get('weight_number');
     	$inputGame['start_date'] = Input::get('start_date');
@@ -322,12 +327,6 @@ class CommonGame
 					$link = url(UPLOAD_GAME . '/' . $game->link_url);
 		    	} else {
 		    		$link = url(UPLOAD_GAME . '/' . $filename);
-		    	}
-		    	$linkFile = 'http://' . $_SERVER['HTTP_HOST'] . $link . '/index.html';
-		    	if(remoteFileExists($linkFile)) {
-		    		$link = url($link . '/index.html');
-		    	} else {
-		    		$link = url($link . '/index.htm');
 		    	}
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;

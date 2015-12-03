@@ -21,7 +21,7 @@
 
 			@include('site.common.rate', array('vote_average' => $game->vote_average))
 
-			<p>{{ getZero($game->count_play) }} người chơi</p>
+			<p>{{ getZero($game->count_play) }} lượt tải</p>
 
 			@include('site.game.social', array('id' => $game->id))
 

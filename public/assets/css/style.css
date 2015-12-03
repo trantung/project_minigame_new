@@ -1065,5 +1065,14 @@ h1.title {
     height: auto;
 }
 .center {
-    /*text-align: center;*/
+    text-align: center;
+}
+.adsense {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.adsense img {
+    height: auto;
+    max-width: 100%;
 }

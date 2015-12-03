@@ -19,12 +19,12 @@ return array(
 	'consumers' => array(
 
 		/**
-		 * Facebook
+		 * Google
 		 */
         'Google' => array(
-            'client_id'     => '414594207498-vnpqr3cb4e8bov5ejtlgill52v84elac.apps.googleusercontent.com',
-            'client_secret' => 'EHPS9wXHEjKgdLsUB21Ov_R_',
-            'redirect_url'	=> 'http://minigame.de/dang-nhap',
+            'client_id'     => GOOGLE_CLIENT_ID,
+            'client_secret' => GOOGLE_CLIENT_SECRET,
+            'redirect_url'	=> GOOGLE_REDIRECT_URL,
             'scope'         => array('userinfo_email', 'userinfo_profile'),
         ),
 
