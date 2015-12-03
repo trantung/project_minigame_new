@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-{{ $title= 'Game bình chọn nhiền'}}
+{{ $title= 'Game bình chọn nhiều'}}
 @stop
 
 @section('content')
