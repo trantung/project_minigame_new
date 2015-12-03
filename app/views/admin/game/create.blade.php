@@ -51,9 +51,9 @@
 							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" />
 						</div>
 
-						<div class="form-group blockDisabled">
-							<label>Define game</label>
-							<input type="text" name="link_url" class="form-control blockDisabled" placeholder="Define game" />
+						<div class="form-group">
+							<label>Tên game</label>
+							<input type="text" name="link_url" class="form-control" placeholder="Tên game" />
 						</div>
 
 						<div class="form-group">

@@ -21,7 +21,7 @@ a {
 /*search*/
 .search {
     float: right;
-    margin-top: 6px;
+    margin-top: 20px;
     text-align: right;
     width: auto;
 
@@ -1065,5 +1065,14 @@ h1.title {
     height: auto;
 }
 .center {
-    /*text-align: center;*/
+    text-align: center;
+}
+.adsense {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.adsense img {
+    height: auto;
+    max-width: 100%;
 }

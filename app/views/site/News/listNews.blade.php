@@ -22,8 +22,8 @@
 				</a>
 				</br>
 				<!-- todo -->
-				{{ $value->count_view }} người xem
-				</br>
+				{{-- {{ $value->count_view }} người xem --}}
+				{{-- </br> --}}
 				{{ limit_text($value->description, SIZETEXT) }}
 			</div>
 		</div>

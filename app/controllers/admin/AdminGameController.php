@@ -46,13 +46,11 @@ class AdminGameController extends AdminController {
 			'name' => 'required',
 			'parent_id' => 'required',
 			'type_id' => 'required',
-			'type_main' => 'required'
+			'type_main' => 'required',
+			'link_url' => 'required'
 		);
 		if(Input::get('score_status') == SAVESCORE) {
 			$rules['gname'] = 'required';
-		}
-		if(Input::file('link_upload_game') == NULL && Input::get('parent_id') != GAMEOFFLINE) {
-			$rules['link_url'] = 'required';
 		}
 
 		$input = Input::except('_token');
@@ -137,14 +135,11 @@ class AdminGameController extends AdminController {
 				'name' => 'required',
 				'parent_id' => 'required',
 				'type_id' => 'required',
-				'type_main' => 'required'
+				'type_main' => 'required',
+				'link_url' => 'required'
 			);
 			if(Input::get('score_status') == SAVESCORE) {
 				$rules['gname'] = 'required';
-			}
-
-			if((Input::file('link_upload_game') == NULL && Input::get('parent_id') != GAMEOFFLINE) && $data->link_upload_game == '') {
-				$rules['link_url'] = 'required';
 			}
 		} else {
 			$rules = array();
