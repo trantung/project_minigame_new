@@ -130,14 +130,16 @@ class CommonSearch
 	}
 	//fronend search game
 	public static function searchGame($input){
-		$data = Game::where(function ($query) use ($input)
+		$data = DB::table('games')->where(function ($query) use ($input)
 		{
 			if(getDevice() == MOBILE) 
 			{
 				$listGame = $query->where('parent_id', '!=', GAMEFLASH);
 			}
 			if($input['search'] != '') {
-				$listGame = $query->where('name', 'like', '%'.$input['search'].'%');
+				// $listGame = $query->where('name', 'like', 'N%'.$input['search'].'%');
+				$condition = array( '%'.$input['search'].'%' );
+				$listGame = $query->whereRaw( 'games.name like ?', $condition);
 			}
 			
 		})->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
