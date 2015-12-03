@@ -847,14 +847,12 @@ a.download i.fa {
 
 /* rate result */
 .rate-result-cnt {
-    display: inline-block;
     height: 18px;
-    left: -35px;
     margin-bottom: 8px;
     margin-left: 10px;
+    margin-top: 5px;
     position: relative;
     vertical-align: middle;
-    margin-top: 5px;
     width: 82px;
 }
 .mobile .rate-result-cnt,
