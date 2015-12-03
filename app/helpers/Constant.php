@@ -119,7 +119,7 @@ define('PAGE_COMMENT', 5);
 define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
 define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
 define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');
-define('TEXTLENGH', 5);
+define('TEXTLENGH', 15);
 //define total game if count = 0
 define('NO_GAME', 0);
 
