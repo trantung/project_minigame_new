@@ -9,7 +9,7 @@ class AdminGameController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Game::where('parent_id', '!=', '')->orderBy('id', 'asc')->paginate(PAGINATE);
+		$data = Game::where('parent_id', '!=', '')->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 

@@ -227,13 +227,15 @@ class CommonGame
     		if($paginate) {
     			if(getDevice() == MOBILE) {
     				$listGame = Game::whereIn('id', $games)
-    					->where('parent_id', '!=', GAMEFLASH)
+                        ->where('parent_id', '!=', GAMEFLASH)
+    					->where('parent_id', '!=', GAMEOFFLINE)
     					->where('start_date', '<=', $now)
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			} else {
     				$listGame = Game::whereIn('id', $games)
     					->where('start_date', '<=', $now)
+                        ->where('parent_id', '!=', GAMEOFFLINE)
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			}
@@ -241,12 +243,14 @@ class CommonGame
     			if(getDevice() == MOBILE) {
     				$listGame = Game::whereIn('id', $games)
     					->where('parent_id', '!=', GAMEFLASH)
+                        ->where('parent_id', '!=', GAMEOFFLINE)
     					->where('start_date', '<=', $now)
     					->orderBy('id', 'desc')
     					->limit(PAGINATE_BOXGAME)->get();
     			} else {
     				$listGame = Game::whereIn('id', $games)
     					->where('start_date', '<=', $now)
+                        ->where('parent_id', '!=', GAMEOFFLINE)
     					->orderBy('id', 'desc')
     					->limit(PAGINATE_BOXGAME)->get();
     			}
@@ -346,11 +350,45 @@ class CommonGame
 					</object>';
     		return $box;
     	}
-    	if($parentId == GAMEHTML5) {
-    		$style = self::getStyle();
-    		$box = '<iframe src="' . $link . '" style="border: 0; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-    		return $box;
-    	}
+
+        if(getDevice() == COMPUTER) {
+            if($parentId == GAMEHTML5) {
+                $box = '<iframe src="' . $link . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
+                return $box;
+            }
+        } else {
+            if($parentId == GAMEHTML5) {
+                $style = self::getStyle();
+                $box = '<iframe src="' . $link . '" style="border:none; margin:0; padding:0; overflow:hidden; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
+                return $box;
+            }
+        }
+    }
+
+    //get link play game
+    public static function getLinkPlayGame($game = null)
+    {
+        if($game) {
+            // $ext = getExtension($game->link_upload_game);
+            $filename = getFilename($game->link_upload_game);
+            if($game->parent_id == GAMEFLASH) {
+                if($game->link_url != '') {
+                    $link = url(UPLOAD_FLASH . '/' . $game->link_url . '.swf');
+                } else {
+                    $link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
+                }
+                return $link;
+            }
+            if($game->parent_id == GAMEHTML5) {
+                if($game->link_url != '') {
+                    $link = url(UPLOAD_GAME . '/' . $game->link_url);
+                } else {
+                    $link = url(UPLOAD_GAME . '/' . $filename);
+                }
+                return $link;
+            }
+        }
+        return null;
     }
 
     public static function getStyle()
