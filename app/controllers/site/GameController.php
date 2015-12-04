@@ -87,8 +87,17 @@ class GameController extends SiteController {
 		$categoryParent = CategoryParent::findBySlug($slug);
 		$type = Type::findBySlug($slug);
 		if($categoryParent) {
-			$games = CommonGame::boxGameByCategoryParent($categoryParent, true);
-			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
+			// $games = CommonGame::boxGameByCategoryParent($categoryParent, true);
+			// return View::make('site.game.category')->with(compact('games', 'categoryParent'));
+
+			//haynhat
+			$games = CommonGame::boxGameByCategoryParent($categoryParent);
+			// dd($games->get()->toArray());
+			// $count = $games->paginate(5);
+			// dd($games);
+			$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+			// dd($count);
+			return View::make('site.game.category')->with(compact('games', 'categoryParent', 'count'));
 		}
 		if($type) {
 			//haynhat

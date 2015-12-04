@@ -15,7 +15,7 @@
 <div class="box">
 	@foreach($categoryParent as $value)
 	<h3><a href="{{ url($value->slug) }}">{{ $value->name }}</a><a href="{{ url($value->slug) }}" class="box-more">Xem thêm</a></h3>
-	@if($games = CommonGame::boxGameByCategoryParent($value))
+	@if($games = CommonGame::boxGameByCategoryParentIndex($value))
 		<div class="row">
 			@foreach($games as $game)
 				<div class="col-xs-6 col-sm-3 col-md-2">

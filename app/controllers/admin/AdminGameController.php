@@ -132,7 +132,7 @@ class AdminGameController extends AdminController {
 
 		if(!Admin::isSeo()) {
 			$rules = array(
-				'name' => 'required|unique:games',
+				'name' => 'required',
 				'parent_id' => 'required',
 				'type_id' => 'required',
 				'type_main' => 'required',
