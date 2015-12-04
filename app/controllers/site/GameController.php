@@ -82,6 +82,11 @@ class GameController extends SiteController {
 		//
 	}
 
+	public function listgamenew()
+	{
+		dd(123);
+	}
+
 	public function listGame($slug)
 	{
 		$categoryParent = CategoryParent::findBySlug($slug);
