@@ -86,7 +86,7 @@ define('GAME_DOWNLOAD', 5);
 define('POLICY', 1);
 define('ABOUT_POLICY', 2);
 //define paging frontend
-define('PAGINATE_BOXGAME', 12);
+define('PAGINATE_BOXGAME', 1);
 define('PAGINATE_LISTGAME', 6);
 //status user
 define('ACTIVEUSER', 'Kích hoạt');

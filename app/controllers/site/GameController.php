@@ -91,8 +91,14 @@ class GameController extends SiteController {
 			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
 		}
 		if($type) {
-			$games = CommonGame::boxGameByType($type, true);
-			return View::make('site.game.type')->with(compact('games', 'type'));
+			//haynhat
+			$games = CommonGame::boxGameByType($type);
+			// dd($games->get()->toArray());
+			// $count = $games->paginate(5);
+			// dd($games);
+			$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+			// dd($count);
+			return View::make('site.game.type')->with(compact('games', 'type', 'count'));
 		}
 		//TODO 404
 	}

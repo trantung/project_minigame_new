@@ -233,6 +233,7 @@ class CommonGame
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			} else {
+
     				$listGame = Game::whereIn('id', $games)
     					->where('start_date', '<=', $now)
                         ->where('parent_id', '!=', GAMEOFFLINE)
@@ -250,9 +251,13 @@ class CommonGame
     			} else {
     				$listGame = Game::whereIn('id', $games)
     					->where('start_date', '<=', $now)
-                        ->where('parent_id', '!=', GAMEOFFLINE)
-    					->orderBy('id', 'desc')
-    					->limit(PAGINATE_BOXGAME)->get();
+                        ->where('parent_id', '!=', GAMEOFFLINE);
+         //                ->orderBy('count_play', 'desc')
+    					// ->orderBy('id', 'desc');
+                        // ->get();
+                    // $test = $listGame->toArray();
+                    // dd($listGame->getPerPage());
+    					// ->get();
     			}
     		}
     		return $listGame;
