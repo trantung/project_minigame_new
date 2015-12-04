@@ -57,7 +57,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="">Tên game</label>
+							<label for="">Tên file</label>
 							<input type="text" name="link_url" class="form-control" placeholder="Tên game" value="{{ $inputGame->link_url }}" />
 						</div>
 

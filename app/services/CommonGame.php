@@ -281,13 +281,13 @@ class CommonGame
     public static function getUrlDownload($game = null)
     {
     	if($game) {
-    		if($game->link_download != '') {
-    			return $game->link_download;
-    		} else {
-    			return url(UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game);
-    		}
+            if($game->link_url != '') {
+                return url(UPLOAD_GAMEOFFLINE . '/' . $game->link_url);
+            } elseif($game->link_download != '') {
+                return url(UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game);
+            }
     	}
-    	return url('/');
+    	return '#';
     }
 
     // Other games by parent_id with limit
@@ -318,7 +318,7 @@ class CommonGame
 			$filename = getFilename($game->link_upload_game);
     		if($game->parent_id == GAMEFLASH) {
     			if($game->link_url != '') {
-					$link = url(UPLOAD_FLASH . '/' . $game->link_url . '.swf');
+					$link = url(UPLOAD_FLASH . '/' . $game->link_url); // . '.swf'
 		    	} else {
 		    		$link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
 		    	}
