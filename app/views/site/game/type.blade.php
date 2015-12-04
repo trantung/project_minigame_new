@@ -18,9 +18,7 @@
 							<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
 						</a>
 					</div>
-					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
-					</div>
+					{{-- @include('site.game.item-play', array('game' => $game)) --}}
 				</div>
 			</div>
 		@endforeach
@@ -49,9 +47,7 @@
 								<strong>{{ $game->name }}</strong>
 							</a>
 						</div>
-						<div class="item-play">
-							<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
-						</div>
+						{{-- @include('site.game.item-play', array('game' => $game)) --}}
 					</div>
 				</div>
 			@endforeach
