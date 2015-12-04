@@ -16,16 +16,16 @@ class CommonSearch
 				$query = $query->whereIn('model_id', $listGame);
 			}
 			if($input['start_date'] != ''){
-				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
+				$query = $query->whereDate('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
+				$query = $query->whereDate('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy('id', 'asc')->paginate(PAGINATE);
 		return $data;
 	}
 
-	//search score 
+	//search score
 	public static function searchScore($input)
 	{
 		$orderBy = self::searchScoreSortBy($input);
@@ -42,10 +42,10 @@ class CommonSearch
 			}
 
 			if($input['start_date'] != ''){
-				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
+				$query = $query->whereDate('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
+				$query = $query->whereDate('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		return $data;
@@ -78,10 +78,10 @@ class CommonSearch
 				$query = $query->where('title','like' ,'%'.$input['title'].'%');
 			}
 			if($input['start_date'] != ''){
-				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
+				$query = $query->whereDate('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
+				$query = $query->whereDate('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -96,10 +96,10 @@ class CommonSearch
 				$query = $query->whereIn('game_id', $listGame);
 			}
 			if($input['start_date'] != ''){
-				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
+				$query = $query->whereDate('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
+				$query = $query->whereDate('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -112,18 +112,18 @@ class CommonSearch
 			if($input['user_name'] != '') {
 				$listGame = $query->where('user_name', 'like', '%'.$input['user_name'].'%');
 			}
-			
+
 			if($input['start_date'] != ''){
-				$query = $query->where('created_at', '>=', convertDateTime($input['start_date']));
+				$query = $query->whereDate('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', convertDateTime($input['end_date']));
+				$query = $query->whereDate('created_at', '<=', $input['end_date']);
 			}
 			if($input['from_update_at'] != ''){
-				$query = $query->where('updated_at', '>=', convertDateTime($input['from_update_at']));
+				$query = $query->whereDate('updated_at', '>=', $input['from_update_at']);
 			}
 			if($input['to_update_at'] != ''){
-				$query = $query->where('updated_at', '<=', convertDateTime($input['to_update_at']));
+				$query = $query->whereDate('updated_at', '<=', $input['to_update_at']);
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -132,7 +132,7 @@ class CommonSearch
 	public static function searchGame($input){
 		$data = DB::table('games')->where(function ($query) use ($input)
 		{
-			if(getDevice() == MOBILE) 
+			if(getDevice() == MOBILE)
 			{
 				$listGame = $query->where('parent_id', '!=', GAMEFLASH);
 			}
@@ -141,7 +141,7 @@ class CommonSearch
 				$condition = array( '%'.$input['search'].'%' );
 				$listGame = $query->whereRaw( 'games.name like ?', $condition);
 			}
-			
+
 		})->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
 		return $data;
 	}

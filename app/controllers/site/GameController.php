@@ -110,6 +110,7 @@ class GameController extends SiteController {
 			return View::make('site.game.type')->with(compact('games', 'type', 'count'));
 		}
 		//TODO 404
+		return View::make('404');
 	}
 
 	public function detailGame($type, $slug)
@@ -126,7 +127,7 @@ class GameController extends SiteController {
 			}
  			return $this->getViewGame($game->parent_id, $game, $play);
 		}
-		dd('Game không tồn tại');
+		return View::make('404');
 	}
 
 	public function getViewGame($parentId = null, $game = null, $play = null)
