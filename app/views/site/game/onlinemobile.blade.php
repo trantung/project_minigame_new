@@ -27,6 +27,10 @@
 
 	  	<div class="col-xs-12">
 
+	  		<p>
+				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+			</p>
+
 			<div class="slideGame">
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
