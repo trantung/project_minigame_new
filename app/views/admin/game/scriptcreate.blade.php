@@ -91,8 +91,9 @@
 			if($('#type_id_'+id).is(':checked')) {
 				return;
 			} else {
-				alert('Thể loại chưa được chọn');
-				$('input[name=type_main]').attr('checked',false);
+				$('#type_id_'+id).prop("checked", true);
+				// alert('Thể loại chưa được chọn');
+				// $('input[name=type_main]').attr('checked',false);
 				exit();
 			}
 		}

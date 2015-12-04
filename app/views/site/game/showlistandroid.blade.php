@@ -19,9 +19,7 @@
 							<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
 						</a>
 					</div>
-					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ getZero($game->count_download) }} lượt tải</span><i class="play"><img src="{{ url('/assets/images/tai.png') }}"></i></a>
-					</div>
+					{{-- @include('site.game.item-play', array('game' => $game)) --}}
 				</div>
 			</div>
 		@endforeach

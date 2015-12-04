@@ -43,7 +43,7 @@ class AdminGameController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'name' => 'required',
+			'name' => 'required|unique:games',
 			'parent_id' => 'required',
 			'type_id' => 'required',
 			'type_main' => 'required',
@@ -132,7 +132,7 @@ class AdminGameController extends AdminController {
 
 		if(!Admin::isSeo()) {
 			$rules = array(
-				'name' => 'required',
+				'name' => 'required|unique:games',
 				'parent_id' => 'required',
 				'type_id' => 'required',
 				'type_main' => 'required',

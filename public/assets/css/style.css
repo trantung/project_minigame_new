@@ -849,7 +849,6 @@ a.download i.fa {
 .rate-result-cnt {
     height: 18px;
     margin-bottom: 8px;
-    margin-left: 10px;
     margin-top: 5px;
     position: relative;
     vertical-align: middle;
@@ -891,13 +890,14 @@ a.report-error {
     border-radius: 5px;
     color: #ed933b;
     display: inline-block;
+    font-size: 12px;
     font-weight: bold;
-    margin-left: 20px;
-    padding: 3px 10px;
+    margin-left: 15px;
+    padding: 1px 10px;
     position: relative;
     text-decoration: none;
-    /*top: 2px;*/
 }
+
 input.star { display: none; }
 
 label.star {
@@ -1101,4 +1101,8 @@ h1.title {
     .item {
         margin-bottom: 10px;
     }
+}
+
+.social div {
+    vertical-align: middle !important;
 }
