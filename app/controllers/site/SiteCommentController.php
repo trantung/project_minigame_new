@@ -71,16 +71,15 @@ class SiteCommentController extends SiteController {
 	public function update($id)
 	{
 		$game = Game::find($id);
-		 $input = Input::except('_token');
-		if($input['description'])
-		{
-		 $input['user_id'] = Auth::user()->get()->id;
-		 $input['model_name'] = 'Game';
-		 $input['model_id'] = $id;
-		 $input['status'] = INACTIVE;
-		 CommonNormal::create($input,'comment');
+		$input = Input::except('_token');
+		if($input['description']) {
+			$input['user_id'] = Auth::user()->get()->id;
+			$input['model_name'] = 'Game';
+			$input['model_id'] = $id;
+			$input['status'] = INACTIVE;
+			CommonNormal::create($input,'comment');
 		}
-		 return  Redirect::to(CommonGame::getUrlGame($game->slug));
+		return  Redirect::to(CommonGame::getUrlGame($game->slug))->with('comment', COMMENT_MESSAGE);
 	}
 
 
