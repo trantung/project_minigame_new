@@ -121,9 +121,9 @@ class GameController extends SiteController {
 		if($game) {
 			$count_view = $game->count_view+1;
 			$game->update(array('count_view' => $count_view));
-			if(getDevice() == COMPUTER && $game->parent_id != GAMEOFFLINE) {
+			if(getDevice() == COMPUTER && $game->parent_id == GAMEFLASH) {
 				$count_play = $game->count_play+1;
-				$game->update(array('count_play' => $count_play, 'slug' => $game->slug));
+				$game->update(array('count_play' => $count_play));
 			}
  			return $this->getViewGame($game->parent_id, $game, $play);
 		}
@@ -168,7 +168,7 @@ class GameController extends SiteController {
     	$voteAverage = GameVote::where('game_id', $input['game_id'])->avg('vote_rate');
     	$inputGame = array();
     	$inputGame['count_vote'] = $voteCount;
-    	$inputGame['vote_average'] = round($voteAverage);
+    	$inputGame['vote_average'] = round($voteAverage, 1);
     	Game::find($input['game_id'])->update($inputGame);
     	dd(1);
     }

@@ -615,7 +615,7 @@ a.download {
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
-    padding: 8px 20px;
+    padding: 8px 45px;
     text-align: center;
     text-decoration: none;
 }
@@ -631,6 +631,12 @@ a.download i.fa {
 }
 .btn-block-center a.download {
     padding: 10px;
+    width: 100%;
+}
+.btn-click {
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-top: 15px;
     width: 100%;
 }
 
@@ -1191,3 +1197,11 @@ h1.title {
     padding-right: 10px;
 }
 
+.playbox {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+.social-top .social {
+    text-align: left;
+}

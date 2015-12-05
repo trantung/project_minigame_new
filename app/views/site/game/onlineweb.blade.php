@@ -23,21 +23,31 @@
 
 			<p>{{ getZero($game->count_play) }} lượt chơi</p>
 
-			<div class="btn-block">
+			<div class="social-top">@include('site.game.social', array('id' => $game->id))</div>
+
+		</div>
+
+		@if($game->parent_id == GAMEHTML5)
+			<div class="btn-click">
 				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</div>
 
 			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
+		@endif
 
-		</div>
+		@if($game->parent_id == GAMEFLASH)
+			<div class="playbox">{{ CommonGame::getLinkGame($game) }}</div>
+		@endif
 
 		{{-- @include('site.game.score', array('id' => $game->id)) --}}
 
 		<div class="detail">{{ $game->description }}</div>
 
-		<div class="btn-block-center">
-			<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-		</div>
+		@if($game->parent_id == GAMEHTML5)
+			<div class="btn-block-center">
+				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+			</div>
+		@endif
 
 		@include('site.game.vote', array('id' => $game->id))
 

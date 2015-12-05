@@ -59,7 +59,7 @@ define('ENABLED', 1);
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game
-define('GAMEFLASH', 7);
+define('GAMEFLASH', 1);
 define('GAMEHTML5', 2);
 define('GAMEOFFLINE', 3);
 //history action
