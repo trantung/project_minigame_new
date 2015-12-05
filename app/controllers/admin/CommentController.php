@@ -125,7 +125,6 @@ class CommentController extends AdminController {
 	{
 		$input = Input::all();
 		$inputComment = CommonSearch::searchComment($input);
-		
 		return View::make('admin.comment.index')->with(compact('inputComment'));
 	}
 

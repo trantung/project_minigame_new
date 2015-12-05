@@ -30,6 +30,7 @@
 			  <th>Tiêu đề</th>
 			  <th>Thể loại</th>
 			  <th>Số lượt view</th>
+			  <th>Ngày xuất bản</th>
 			  <th style="width:200px;">Adcion</th>
 			</tr>
 			 @foreach($inputNew as $value)
@@ -38,6 +39,7 @@
 			  <td>{{ $value->title }}</td>
 			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>{{ $value->count_view }}</td>
+			  <td>{{ $value->start_date }}</td>
 			  <td>
 				<a href="{{ action('NewsController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
 				<a href="{{  action('NewsController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>

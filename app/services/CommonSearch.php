@@ -15,13 +15,16 @@ class CommonSearch
 				$listGame = Game::where('name', 'like', '%'.$input['game_name'].'%')->lists('id');
 				$query = $query->whereIn('model_id', $listGame);
 			}
+			if ($input['status'] != '') {
+				$query = $query->where('status', $input['status']);
+			}
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('created_at', '>=', $input['start_date']);
+				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
-		})->orderBy('id', 'asc')->paginate(PAGINATE);
+		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
 	}
 

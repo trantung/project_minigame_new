@@ -77,7 +77,7 @@
 						</div>
 
 						<div class="form-group">
-			                <label>Ngày đăng</label>
+			                <label>Lịch xuất bản</label>
 			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
 		              	</div>
 

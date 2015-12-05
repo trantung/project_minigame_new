@@ -232,6 +232,8 @@ function countTypeDownload($typeId)
 	return 0;
 }
 
+
+
 function getDevice()
 {
 	$useragent = $_SERVER['HTTP_USER_AGENT'];
