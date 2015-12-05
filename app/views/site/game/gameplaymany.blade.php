@@ -13,17 +13,7 @@
 		<h1>Game chơi nhiều nhất</h1>
 		<div class="row">
 			@foreach($inputGameplay as $game)
-				<div class="col-xs-6 col-sm-3 col-md-2">
-					<div class="item">
-						<div class="item-image">
-							<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-								<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
-							</a>
-						</div>
-						{{-- @include('site.game.item-play', array('game' => $game)) --}}
-					</div>
-				</div>
+				@include('site.game.gameitem', array('game' => $game))
 			@endforeach
 		</div>
 	</div>
@@ -41,20 +31,7 @@
 	<h1>Game bình chọn nhiều <a href="{{ action('GameController@getListGameVote') }}" class="box-more">Xem thêm</a></h1>
 	<div class="row">
 		@foreach($inputGameVote as $game)
-			<div class="col-xs-6 col-sm-3 col-md-2">
-				<div class="item">
-					<div class="item-image">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-							<strong>{{ limit_text($game->name, TEXTLENGH)}}</strong>
-							@include('site.common.rate', array('vote_average' => $game->vote_average))
-						</a>
-					</div>
-					<div class="item-play">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}"><span>{{ $game->count_play }} lượt chơi</span><i class="play"><img src="{{ url('/assets/images/play.png') }}"></i></a>
-					</div>
-				</div>
-			</div>
+			@include('site.game.gameitem', array('game' => $game))
 		@endforeach
 	</div>
 

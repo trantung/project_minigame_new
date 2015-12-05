@@ -45,10 +45,10 @@ class CommonSearch
 			}
 
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('created_at', '>=', $input['start_date']);
+				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		return $data;
@@ -81,10 +81,10 @@ class CommonSearch
 				$query = $query->where('title','like' ,'%'.$input['title'].'%');
 			}
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('created_at', '>=', $input['start_date']);
+				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -99,10 +99,10 @@ class CommonSearch
 				$query = $query->whereIn('game_id', $listGame);
 			}
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('created_at', '>=', $input['start_date']);
+				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -117,16 +117,16 @@ class CommonSearch
 			}
 
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('created_at', '>=', $input['start_date']);
+				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
 			if($input['from_update_at'] != ''){
-				$query = $query->whereDate('updated_at', '>=', $input['from_update_at']);
+				$query = $query->where('updated_at', '>=', $input['from_update_at']);
 			}
 			if($input['to_update_at'] != ''){
-				$query = $query->whereDate('updated_at', '<=', $input['to_update_at']);
+				$query = $query->where('updated_at', '<=', $input['to_update_at']);
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;

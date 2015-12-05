@@ -17,7 +17,7 @@
 	<div class="table_container">
 		<div class="table-row">
 			<div class="col col_image_avata">
-				<a href="{{ CommonGame::getUrlGame($value->slug) }}">	
+				<a href="{{ CommonGame::getUrlGame($value->slug) }}">
 					<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
 				</a>
 			</div>
@@ -26,7 +26,6 @@
 					<strong>{{ limit_text($value->name, TEXTLENGH) }}</strong>
 				</a>
 				</br>
-		
 				@include('site.common.rate', array('vote_average' => $value->vote_average))
 				</br>
 				{{ getZero($value->count_play) }} lượt chơi
