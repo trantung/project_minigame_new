@@ -26,7 +26,8 @@
 		],
 		"files": [
             "app/helpers/Constant.php",
-            "app/helpers/Function.php"
+            "app/helpers/Function.php",
+            "app/helpers/FacebookHelper.php"
         ]
 	},
 	"scripts": {
