@@ -28,9 +28,7 @@
 		<div class="box-body table-responsive no-padding">
 		  <table class="table table-hover">
 			<tr>
-			  @if(Admin::isAdmin())
-			  <th><input type="checkbox" id="checkall" onClick="toggle(this)" /></th>
-			  @endif
+			 
 			  <th>ID</th>
 			  <th>Tài khoản</th>
 			  <th>Nội dung comment</th>
@@ -42,9 +40,7 @@
 			</tr>
 			 @foreach($inputComment as $value)
 			<tr>
-				@if(Admin::isAdmin())
-				<td><input type="checkbox" class="comment_id" name="comment_id[]" value="{{ $value->id }}" /></td>
-				@endif
+			
 			  <td>{{ $value->id }}</td>
 			  <td>{{ User::find($value->user_id)->user_name }}</td>
 			  <td>{{ $value->description }}</td>

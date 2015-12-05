@@ -172,8 +172,8 @@ function countBoxGame($categoryParentId)
 {
 	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
 	if ($categoryParent) {
-		$game = Game::where('parent_id', $categoryParent->game_id)->get();
-		return count($game);
+		$game = Game::where('parent_id', $categoryParent->game_id)->count();
+		return $game;
 	}
 	return 0;
 }
@@ -231,6 +231,8 @@ function countTypeDownload($typeId)
 		return $countview;
 	return 0;
 }
+
+
 
 function getDevice()
 {
