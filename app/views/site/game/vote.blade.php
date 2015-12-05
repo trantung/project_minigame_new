@@ -30,17 +30,11 @@
                 url : "{{ route('vote-game') }}",
                 data: dataRate,
                 success:function(data){
-                    // rateClickFalse();
+                    window.location.reload();
                 }
             });
 
         });
     });
-
-    // function rateClickFalse() {
-    //     $('.rate-btn').click(function() {
-    //         return false;
-    //     })
-    // }
 
 </script>

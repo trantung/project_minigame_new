@@ -36,11 +36,7 @@
 	</div>
 </div>
 @endforeach
-<div class="row">
-	<div class="col-xs-12">
-		<ul class="pagination">
-		{{ $inputsearchGame->appends(Request::except('page'))->links() }}
-		</ul>
-	</div>
-</div>
+
+@include('site.common.paginate', array('input' => $inputsearchGame))
+
 @stop
