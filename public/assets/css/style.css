@@ -163,7 +163,7 @@ a.icongoogleplus {
 .item {
     border: 1px solid #c8c8c8;
     margin-bottom: 30px;
-    height: 180px;
+    height: 160px;
 }
 
 .item-image {
@@ -623,6 +623,17 @@ a.download i.fa {
     font-size: 16px;
 }
 
+/*play*/
+.btn-block-center {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+}
+.btn-block-center a.download {
+    padding: 10px;
+    width: 100%;
+}
+
 /*.mobile {
     display: none;
 }
@@ -637,6 +648,20 @@ a.download i.fa {
 }
 .mobile_title {
     width: 58%;
+    padding: 0 15px 0 0;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.game_avatar {
+    width: 20%;
+    padding: 0 15px 0 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.game_title {
+    width: 78%;
     padding: 0 15px 0 0;
     vertical-align: top;
     display: inline-block;
@@ -853,8 +878,13 @@ a.download i.fa {
 }
 /*star*/
 
+.rating {
+    text-align: center;
+}
+
 /*  Second Example with big stars */
 .rate-ex2-cnt {
+    display: inline-block;
     width:150px;
     height: 30px;
 }
@@ -1130,11 +1160,20 @@ h1.title {
     }
 }
 
+.social {
+    text-align: center;
+}
+
 .social div {
     vertical-align: middle !important;
 }
 
 /*BOOTSTRAP ROW COL*/
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
 .container {
     padding-left: 5px;
     padding-right: 5px;
@@ -1151,3 +1190,4 @@ h1.title {
     padding-left: 10px;
     padding-right: 10px;
 }
+

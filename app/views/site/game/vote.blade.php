@@ -1,4 +1,4 @@
-<div id="rating">
+<div id="rating" class="rating">
     <div class="rate-ex2-cnt stars">
         <div id="1" class="rate-btn-1 rate-btn"></div>
         <div id="2" class="rate-btn-2 rate-btn"></div>

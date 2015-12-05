@@ -17,7 +17,7 @@
 		</div>
 		<div class="mobile_title">
 
-			<h1 class="title mobile-title">{{ limit_text($game->name, TEXTLENGH) }}</h1>
+			<h1 class="title mobile-title">{{ $game->name }}</h1>
 
 			@include('site.common.rate', array('vote_average' => $game->vote_average))
 
@@ -27,9 +27,9 @@
 
 	  	<div class="col-xs-12">
 
-	  		<p>
+	  		<div class="btn-block-center">
 				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-			</p>
+			</div>
 
 			<div class="slideGame">
 				@include('site.game.slide', array('slideId' => $game->slide_id))
@@ -37,9 +37,9 @@
 
 			<div class="detail">{{ $game->description }}</div>
 
-			<p>
+			<div class="btn-block-center">
 				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-			</p>
+			</div>
 
 			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
 

@@ -28,5 +28,3 @@ function menushow(){
 function menuhide(){
   $('#cssmenu').removeClass('menushow');
 }
-
-
