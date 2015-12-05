@@ -27,24 +27,36 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Link</label>
+					<label for="name">Loại quảng cáo</label>
 					<div class="row">
 						<div class="col-sm-6">
-							{{ Form::text('image_link', $advertise->image_link , textParentCategory('Link')) }}
+						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" <?php if($advertise->image_url){echo 'checked=""';} ?> />
+						   <label for="ad-select-image" onclick="adSelect()">Quảng cáo ảnh</label>&nbsp;&nbsp;&nbsp;
+						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()"  <?php if($advertise->adsense){echo 'checked=""';} ?> />
+						   <label for="ad-select-adsense" onclick="adSelect()">Quảng cáo Adsense</label>
 						</div>
 					</div>
 				</div>
-
-				<div class="form-group">
-					<label for="name">Image</label>
-					<div class="row">
-						<div class="col-sm-6">
-							{{ Form::file('image_url', array('id' => 'image_url')) }}
-							<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer' .'/' .$advertise->id . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
+				<div class="ad-image">
+					<div class="form-group">
+						<label for="name">Link</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::text('image_link', $advertise->image_link , textParentCategory('Link')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name">Image</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::file('image_url', array('id' => 'image_url')) }}
+								<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer' .'/' .$advertise->id . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group ad-adsense">
 					<label for="name">Adsense</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -52,7 +64,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
@@ -61,12 +72,17 @@
 						</div>
 					</div>
 				</div>
+
 			  <div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>
 			{{ Form::close() }}
 		  </div>
 		  <!-- /.box -->
+		</div>
 	</div>
 </div>
+
+@include('admin.adverties.script')
+
 @stop
