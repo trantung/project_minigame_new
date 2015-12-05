@@ -39,24 +39,25 @@ class CommonSearch
 				$query = $query->whereIn('user_id', $listUser);
 			}
 			if ($input['game_name'] != '') {
-
 				$listGame = Game::where('name', 'like', '%'.$input['game_name'].'%')->lists('id');
-				$query = $query->whereIn('model_id', $listGame);
+				$query = $query->whereIn('game_id', $listGame);
 			}
-
+			if($input['status'] != '')
+				$query = $query->where('status', $input['status']);
 			if($input['start_date'] != ''){
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
 				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
-		})->groupBy('game_id')->groupBy('user_id')->paginate(PAGINATE);
+		})->orderBy($orderBy[0], $orderBy[1])
+		->paginate(PAGINATE);
 		return $data;
 	}
 	public static function searchScoreSortBy($input){
-			$sortBy = 'id';
-			$sort = 'desc';
-			if($input['sortByScore'] != '') {
+		$sortBy = 'id';
+		$sort = 'desc';
+		if($input['sortByScore'] != '') {
 			if($input['sortByScore'] == 'score_asc') {
 				$sortBy = 'score';
 				$sort = 'asc';
@@ -65,8 +66,10 @@ class CommonSearch
 				$sortBy = 'score';
 				$sort = 'desc';
 			}
-			return [$sortBy, $sort];
+		// dd(123);
+		return [$sortBy, $sort];
 		}
+		return [$sortBy, $sort];
 	}
 
 	//feedback search

@@ -9,27 +9,11 @@ class ScoreManagerController extends AdminController {
 	 */
 	public function index()
 	{
-
-
-		$inputScore = self::getGameScore();
-		// $score = self::getGameScore();
-		// dd($score->toArray());
+		$inputScore = Score::orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.score.index')->with(compact('inputScore'));
 	}
 
-   	public static function getGameScore()
-    {
-    	$score = Score::orderBy('score', 'desc')
-    				->groupBy('game_id')
-    				->groupBy('user_id')
-    				->limit(GAMESCORE_LIMITED)
-    				->orderBy('id', 'desc')->paginate(PAGINATE);
-    	if($score) {
-    		return $score;
-    	} else {
-    		return null;
-    	}
-    }
+   	
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -72,7 +56,8 @@ class ScoreManagerController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$input = Input::except('_token');
+		dd($input);
 	}
 
 
@@ -96,7 +81,8 @@ class ScoreManagerController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('ScoreManagerController@index');
 	}
 
 	//search data
@@ -105,5 +91,18 @@ class ScoreManagerController extends AdminController {
 		$input = Input::all();
 		$inputScore = CommonSearch::searchScore($input);
 		return View::make('admin.score.index')->with(compact('inputScore'));
+	}
+
+	public function updateScore(){
+
+		$scoreID = Input::get('id');
+		$statusScore = Input::get('status');
+		foreach($scoreID as $key => $value) {
+			$input = array(
+				'status' => $statusScore[$key],
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
 	}
 }
