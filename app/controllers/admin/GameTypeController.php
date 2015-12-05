@@ -124,5 +124,14 @@ class GameTypeController extends AdminController {
         return Redirect::action('GameTypeController@index');
 	}
 
+	/**
+	* Search type game
+	*
+	*
+	*/
+	public function search()
+	{
+		//$input 
+	}
 
 }

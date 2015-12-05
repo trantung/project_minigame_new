@@ -41,7 +41,7 @@
 
     {{ Form::open(array('action' => 'AdminController@doLogin')) }}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="text" class="form-control" placeholder="User name" name="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -53,7 +53,7 @@
       </div>
     {{ Form::close() }}
     <br />
-    <a href="{{ action('PasswordController@index') }}">Quên mật khẩu?</a>
+    <!-- <a href="{{ action('PasswordController@index') }}">Quên mật khẩu?</a> -->
 
   </div>
   <!-- /.login-box-body -->

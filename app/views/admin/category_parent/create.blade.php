@@ -21,7 +21,7 @@
 								{{ Form::text('name', null , textParentCategory('Tên chuyên mục')) }}
 							</div>
 							<div class="form-group">
-								<label for="name">Vị trí</label>
+								<label for="name">Vị trí hiển thị</label>
 								@if(Request::segment(3) == CONTENT_SEGMENT)
 									{{ Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')) }}
 									<div class="form-group">
