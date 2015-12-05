@@ -163,10 +163,12 @@ a.icongoogleplus {
 .item {
     border: 1px solid #c8c8c8;
     margin-bottom: 30px;
+    height: 180px;
 }
+
 .item-image {
     text-align: center;
-
+    position: relative;
 }
 .item-image img {
     height: auto;
@@ -182,16 +184,50 @@ a.icongoogleplus {
     padding-right: 5px;
     text-align: left;
 }
+.item-image i.fa {
+    color: #fff;
+    font-size: 30px;
+    left: 43%;
+    position: absolute;
+    top: 40%;
+}
+.overlay {
+    background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    transition: opacity 0.25s ease 0s;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+}
+
+.item:hover .overlay {
+    opacity: 1;
+}
+
 .item-star {
     text-align: center;
     margin-bottom: 5px;
 }
 .item a {
     text-decoration: none;
+    display: block;
 }
 .item a:hover,
 .item a:focus {
     text-decoration: none;
+}
+.item-title {
+    color: #888;
+    display: block;
+    padding: 5px;
+}
+.item-title a {
+    color: #888;
+    font-size: 13px;
 }
 .item-play {
 
@@ -269,10 +305,9 @@ i.play {
 /*menu*/
 .menu-top {
     background: #ebebeb;
-	height: 68px;
 }
 .menu-static {
-    padding-top: 10px;
+    padding-top: 15px;
 }
 .menu-static ul {
     list-style: outside none none;
@@ -282,11 +317,10 @@ i.play {
 }
 .menu-static ul li {
     display: inline-block;
-    width: auto;
-    padding-left: 47px;
-    padding-right: 28px;
-
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
 .menu-static ul li a {
     color: #888;
     display: block;
@@ -664,7 +698,6 @@ a.download i.fa {
     }
     .menu-top {
         background: #ebebeb;
-        height: 55px;
     }
     .item-play span {
 
@@ -705,15 +738,20 @@ a.download i.fa {
         display: none !important;
     }
     .menu-static ul li {
-        padding-left: 3px;
-        width: 59px;
-        padding-right: 3px;
+        width: 18%;
+        padding-left: 0;
+        padding-right: 0;
     }
     .menu-static ul li a i.fa {
         font-size: 25px;
     }
     .menu-static ul li a span {
-        font-size: 10px;
+        font-size: 9px;
+    }
+    .menu-static ul li a:hover,
+    .menu-static ul li a:focus,
+    .menu-static ul li a.active {
+        border-bottom-color: transparent;
     }
     .box {
         padding-left: 5px;
@@ -794,12 +832,6 @@ a.download i.fa {
 
 }
 @media (min-width: 501px) and (max-width: 1024px) {
-    .menu-static ul li {
-        display: inline-block;
-        width: auto;
-        padding-left: 35px;
-        padding-right: 12px;
-    }
 
     .search form {
         width: auto;
@@ -814,15 +846,9 @@ a.download i.fa {
     a.iconfacebook, a.icongoogleplus {
         vertical-align: baseline;
     }
-    .menu-static ul li {
-        padding-left: 15px;
-    }
 
 }
 @media (min-width: 670px) and (max-width: 1024px) {
-    .menu-static ul li {
-        padding-left: 35px;
-    }
 
 }
 /*star*/
@@ -1099,10 +1125,29 @@ h1.title {
         padding-right: 5px;
     }
     .item {
+        height: 120px;
         margin-bottom: 10px;
     }
 }
 
 .social div {
     vertical-align: middle !important;
+}
+
+/*BOOTSTRAP ROW COL*/
+.container {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.box {
+    padding-left: 10px;
+    padding-right: 10px;
 }

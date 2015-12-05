@@ -29,6 +29,9 @@
 			  <th>ID</th>
 			  <th>Tên thể loại</th>
 			  <th>Tổng số game</th>
+			  <th>Tổng số view</th>
+			  <th>Tổng số play</th>
+			  <th>Tổng số download</th>
 			  <th style="width:200px;">&nbsp;</th>
 			</tr>
 		 	@foreach($data as $value)
@@ -36,6 +39,9 @@
 				  <td>{{ $value->id }}</td>
 				  <td>{{ $value->name }}</td>
 				  <td>{{ count($value->games) }}</td>
+				  <td>{{ countTypeView($value->id) }}</td>
+				  <td>{{ countTypePlay($value->id) }}</td>
+				  <td>{{ countTypeDownload($value->id) }}</td>
 				  <td>
 				  	{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 					<a href="{{ action('GameTypeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>

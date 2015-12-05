@@ -18,7 +18,7 @@
 			</div>
 			<div class="col">
 				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
-					<strong>{{ $value->title }}</strong>
+					<strong>[{{ $value->typeNew->name }}] {{ $value->title }}</strong>
 				</a>
 				</br>
 				<!-- todo -->

@@ -17,11 +17,13 @@
 			 folder instead of downloading all of them to reduce the load. -->
 	{{HTML::style('adminlte/dist/css/skins/_all-skins.min.css') }}
 	<!-- Date Picker -->
-	{{HTML::style('adminlte/plugins/datepicker/datepicker3.css') }}
+	{{-- {{HTML::style('adminlte/plugins/datepicker/datepicker3.css') }} --}}
 	<!-- Daterange picker -->
-	{{HTML::style('adminlte/plugins/daterangepicker/daterangepicker-bs3.css') }}
+	{{-- {{HTML::style('adminlte/plugins/daterangepicker/daterangepicker-bs3.css') }} --}}
 	<!-- bootstrap wysihtml5 - text editor -->
 	{{-- {{HTML::style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} --}}
+	<!-- Date Time Picker -->
+	{{HTML::style('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,12 +43,14 @@
 	<!-- Bootstrap 3.3.5 -->
 	{{ HTML::script('adminlte/bootstrap/js/bootstrap.min.js') }}
 	<!-- daterangepicker -->
-	{{ HTML::script('adminlte/plugins/daterangepicker/moment.min.js') }}
-	{{ HTML::script('adminlte/plugins/daterangepicker/daterangepicker.js') }}
+	{{-- {{ HTML::script('adminlte/plugins/daterangepicker/moment.min.js') }} --}}
+	{{-- {{ HTML::script('adminlte/plugins/daterangepicker/daterangepicker.js') }} --}}
 	<!-- datepicker -->
-	{{ HTML::script('adminlte/plugins/datepicker/bootstrap-datepicker.js') }}
+	{{-- {{ HTML::script('adminlte/plugins/datepicker/bootstrap-datepicker.js') }} --}}
 	<!-- Bootstrap WYSIHTML5 -->
 	{{-- {{ HTML::script('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }} --}}
+	<!-- datetimepicker -->
+	{{ HTML::script('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}
 	<!-- FastClick -->
 	{{ HTML::script('adminlte/plugins/fastclick/fastclick.js') }}
 	<!-- AdminLTE App -->
@@ -54,18 +58,37 @@
 
 	<script>
 	  $(function () {
-	    //Date range picker
-	    $('#start_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#start_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
-	    $('#end_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#end_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
-	    $('#start_update_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#start_update_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
-	    $('#end_update_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#end_update_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
 	  });
 	</script>

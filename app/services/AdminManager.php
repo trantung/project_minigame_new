@@ -11,6 +11,13 @@ class AdminManager
 				$query = $query->where('email', 'like', '%'.$input['keyword'].'%')
 								->orWhere('username', 'like', '%'.$input['keyword'].'%');
 			}
+			// todo
+			if ($input['status'] != '') 
+				$query = $query->where('status', '=' ,$input['status']);
+			if ($input['start_date']) 
+				$query = $query->where('updated_at', '>=' ,$input['start_date']);
+			if ($input['end_date']) 
+				$query = $query->where('updated_at', '<=' ,$input['end_date']);
 		})->orderBy('id', 'asc')->paginate(PAGINATE);
 		return $users;
 	}

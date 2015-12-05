@@ -66,6 +66,7 @@ define('GAMEOFFLINE', 3);
 define('CREATE', 'Create');
 define('EDIT', 'Edit');
 define('REMOVE', 'Remove');
+define('LOGIN', 'Login');
 //define device
 define('SMART_DEVICE', 'Smart device');
 define('COMPUTER_DEVICE', 'Computer');
@@ -86,7 +87,7 @@ define('GAME_DOWNLOAD', 5);
 define('POLICY', 1);
 define('ABOUT_POLICY', 2);
 //define paging frontend
-define('PAGINATE_BOXGAME', 3);
+define('PAGINATE_BOXGAME', 6);
 define('PAGINATE_LISTGAME', 6);
 //status user
 define('ACTIVEUSER', 'Kích hoạt');
@@ -119,7 +120,7 @@ define('PAGE_COMMENT', 5);
 define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
 define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
 define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');
-define('TEXTLENGH', 18);
+define('TEXTLENGH', 30);
 //define total game if count = 0
 define('NO_GAME', 0);
 //define message comment

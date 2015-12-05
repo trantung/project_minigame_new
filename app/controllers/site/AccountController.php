@@ -36,20 +36,14 @@ class AccountController extends SiteController {
             'password'   => 'required|min:6',
             'email'      => 'required|email|unique:users',
             'phone'      => 'required',
-            'captcha'    => 'required'
+            // 'vehicle'	 => 'required'
 		);
-		$checkCaptcha = SimpleCaptcha::check(Input::get('captcha'));
-		if($checkCaptcha == false) {
-		    return Redirect::action('AccountController@create')
-	            ->with('error', 'Bạn nhập sai mã xác nhận')
-	            ->withInput(Input::except('password', 'captcha'));
-		}
 		$input = CommonSite::inputRegister();
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('AccountController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password', 'captcha'));
+	            ->withInput(Input::except('password'));
         } else {
         	$input['password'] = Hash::make($input['password']);
         	$id = CommonNormal::create($input, 'user');

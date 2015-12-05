@@ -119,10 +119,24 @@ class GameTypeController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		$parent = Type::find($id)->games()->detach();
-		CommonNormal::delete($id);
+		$count = Type::find($id)->gametypes()->count();
+		if($count > 0)
+		{
+			return Redirect::action('GameTypeController@index')->with('message', 'Thể loại này tồn tại game không xóa được!');
+		}
+		$parent = Type::find($id->games()->detach());				
+		CommonNormal::delete($id);	
         return Redirect::action('GameTypeController@index');
 	}
 
+	/**
+	* Search type game
+	*
+	*
+	*/
+	public function search()
+	{
+		//$input 
+	}
 
 }

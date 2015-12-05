@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="box">
-	<h1>Game {{ $categoryParent->name }} hay nhất</h1>
+	<h1>{{ $categoryParent->name }} hay nhất</h1>
 	<div id="owl1" class="owl-carousel">
 		@for($i = 0; $i < $count ; $i ++)
 			<div class="boxgame">
@@ -16,17 +16,7 @@
 					$listGame = $games->orderBy('count_play', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
 				?>
 					@foreach($listGame as $game)
-						<div class="col-xs-6 col-sm-3 col-md-2">
-							<div class="item">
-								<div class="item-image">
-									<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-										<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-										<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
-									</a>
-								</div>
-								{{-- @include('site.game.item-play', array('game' => $game)) --}}
-							</div>
-						</div>
+						@include('site.game.gameitem', array('game' => $game))
 					@endforeach
 				</div>
 			</div>
@@ -41,12 +31,12 @@
 
 
 {{-- quang cao --}}
-<div>Quang cao</div>
+<div class="adsense">Quang cao</div>
 
 @include('site.game.scriptgame')
 
 <div class="box">
-	<h1>Game {{ $categoryParent->name }} mới nhất</h1>
+	<h1>{{ $categoryParent->name }} mới nhất</h1>
 	<div id="owl2" class="owl-carousel">
 		@for($i = 0; $i < $count ; $i ++)
 			<div class="boxgame">
@@ -55,17 +45,7 @@
 					$listGame = $games->orderBy('id', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
 				?>
 					@foreach($listGame as $game)
-						<div class="col-xs-6 col-sm-3 col-md-2">
-							<div class="item">
-								<div class="item-image">
-									<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-										<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-										<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
-									</a>
-								</div>
-								{{-- @include('site.game.item-play', array('game' => $game)) --}}
-							</div>
-						</div>
+						@include('site.game.gameitem', array('game' => $game))
 					@endforeach
 				</div>
 			</div>

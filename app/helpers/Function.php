@@ -168,6 +168,72 @@ function countCategoryDownload($categoryId)
 	return Game::where('parent_id', $categoryId)->sum('count_download');
 }
 
+function countBoxGame($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->count();
+		return $game;
+	}
+	return 0;
+}
+
+function countBoxPlay($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->sum('count_play');
+		return $game;
+	}
+	return 0;
+}
+
+function countBoxView($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->sum('count_view');
+		return $game;
+	}
+	return 0;
+}
+function countBoxDowload($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->sum('count_download');
+		return $game;
+	}
+	return 0;
+}
+
+function countTypeView($typeId)
+{
+	$input  = GameType::where('type_id', $typeId)->lists('game_id');
+	$countview = Game::whereIn('id', $input)->sum('count_view');
+	if($countview)
+		return $countview;
+	return 0;
+}
+function countTypePlay($typeId)
+{
+	$input  = GameType::where('type_id', $typeId)->lists('game_id');
+	$countview = Game::whereIn('id', $input)->sum('count_play');
+	if($countview)
+		return $countview;
+	return 0;
+}
+function countTypeDownload($typeId)
+{
+	$input  = GameType::where('type_id', $typeId)->lists('game_id');
+	$countview = Game::whereIn('id', $input)->sum('count_download');
+	if($countview)
+		return $countview;
+	return 0;
+}
+
+
+
 function getDevice()
 {
 	$useragent = $_SERVER['HTTP_USER_AGENT'];
@@ -423,4 +489,20 @@ function checkActive($uri = '')
 		return 'class = "active"';
 	}
 	return;
+}
+
+function checkActiveUser($status)
+{
+	if($status == ACTIVE)
+		return ACTIVEUSER;
+	else 
+		return INACTIVEUSER;
+	
+}
+function selectActive()
+{
+	return array(
+		ACTIVE => ACTIVEUSER,
+		INACTIVE => INACTIVEUSER,
+	);
 }
