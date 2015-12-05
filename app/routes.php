@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/comment/updateIndexData', 'CommentController@updateIndexData');
 	Route::resource('/comment', 'CommentController');
 
+	Route::post('/score/updateScore', 'ScoreManagerController@updateScore');
 	Route::get('/score/search', array('uses' =>  'ScoreManagerController@search', 'as' => 'admin.score.search'));
 	Route::resource('/score', 'ScoreManagerController');
 

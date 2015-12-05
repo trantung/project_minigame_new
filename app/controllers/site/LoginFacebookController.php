@@ -20,7 +20,7 @@ class LoginFacebookController extends \BaseController {
 		if(!$this->fb->generateSessionFromRedirect())
 			return Redirect::to('/')->with('message', 'Error login facebook');
 		$user_fb = $this->fb->getGraph();
-		// dd($user_fb->getProperty('id'));
+		 // dd($user_fb);
 		$user = User::where('uid', $user_fb->getProperty('id'))->first();
 		if(empty($user))
 		{

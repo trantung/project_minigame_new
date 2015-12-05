@@ -81,5 +81,7 @@ class CommonNormal
 			return 'Policy';
 		if($name == 'GameVote')
 			return 'GameVote';
+		if($name == 'score')
+			return 'Score';
 	}
 }

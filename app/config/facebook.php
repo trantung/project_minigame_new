@@ -3,6 +3,6 @@
 return array(
 	'app_id' =>  APP_ID,
 	'app_secret' => APP_SECRET,
-	'app_scope'	=> array('user_birthday','email'),
+	'app_scope'	=> array('email'),
 
 	);

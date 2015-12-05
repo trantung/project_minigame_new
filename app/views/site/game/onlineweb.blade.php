@@ -11,26 +11,33 @@
 
 	<!-- WEB -->
 	<div class="web">
-		<h1 class="title">{{ $game->name }}</h1>
 
-		@include('site.common.rate', array('vote_average' => $game->vote_average))
+		<div class="game_avatar">
+			<img alt="{{ $game->name }}" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $game->image_url) }}" />
+		</div>
+		<div class="game_title">
 
-		<p>{{ getZero($game->count_play) }} lượt chơi</p>
+			<h1 class="title">{{ $game->name }}</h1>
 
-		<div class="row">
-			<div class="col-sm-9">
-				<p>
-					<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-				</p>
+			@include('site.common.rate', array('vote_average' => $game->vote_average))
 
-				@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
+			<p>{{ getZero($game->count_play) }} lượt chơi</p>
+
+			<div class="btn-block">
+				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</div>
-			<div class="col-sm-3">
-				@include('site.game.score', array('id' => $game->id))
-			</div>
+
+			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
+
 		</div>
 
+		{{-- @include('site.game.score', array('id' => $game->id)) --}}
+
 		<div class="detail">{{ $game->description }}</div>
+
+		<div class="btn-block-center">
+			<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+		</div>
 
 		@include('site.game.vote', array('id' => $game->id))
 
