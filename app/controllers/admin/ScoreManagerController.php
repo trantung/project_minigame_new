@@ -9,10 +9,27 @@ class ScoreManagerController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputScore = Score::orderBy('id', 'desc')->paginate(PAGINATE);
+
+
+		$inputScore = self::getGameScore();
+		// $score = self::getGameScore();
+		// dd($score->toArray());
 		return View::make('admin.score.index')->with(compact('inputScore'));
 	}
 
+   	public static function getGameScore()
+    {
+    	$score = Score::orderBy('score', 'desc')
+    				->groupBy('game_id')
+    				->groupBy('user_id')
+    				->limit(GAMESCORE_LIMITED)
+    				->orderBy('id', 'desc')->paginate(PAGINATE);
+    	if($score) {
+    		return $score;
+    	} else {
+    		return null;
+    	}
+    }
 	/**
 	 * Show the form for creating a new resource.
 	 *

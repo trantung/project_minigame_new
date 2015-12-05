@@ -28,6 +28,7 @@
 			@foreach($inputScore as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
+			  <td>{{ Game::find($value->game_id)->name }}</td>
 			  <td>{{ $value->score }}</td>
 			  <td>{{ User::find($value->user_id)->user_name  }}</td>
 			  <td>{{ $value->created_at }}</td>

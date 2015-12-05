@@ -50,10 +50,12 @@ class CommonSearch
 			if($input['end_date'] != ''){
 				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
-		})->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+		})->groupBy('game_id')->groupBy('user_id')->paginate(PAGINATE);
 		return $data;
 	}
 	public static function searchScoreSortBy($input){
+			$sortBy = 'id';
+			$sort = 'desc';
 			if($input['sortByScore'] != '') {
 			if($input['sortByScore'] == 'score_asc') {
 				$sortBy = 'score';
