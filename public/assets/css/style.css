@@ -164,9 +164,10 @@ a.icongoogleplus {
     border: 1px solid #c8c8c8;
     margin-bottom: 30px;
 }
+
 .item-image {
     text-align: center;
-
+    position: relative;
 }
 .item-image img {
     height: auto;
@@ -182,16 +183,50 @@ a.icongoogleplus {
     padding-right: 5px;
     text-align: left;
 }
+.item-image i.fa {
+    color: #fff;
+    font-size: 30px;
+    left: 43%;
+    position: absolute;
+    top: 40%;
+}
+.overlay {
+    background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    transition: opacity 0.25s ease 0s;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+}
+
+.item:hover .overlay {
+    opacity: 1;
+}
+
 .item-star {
     text-align: center;
     margin-bottom: 5px;
 }
 .item a {
     text-decoration: none;
+    display: block;
 }
 .item a:hover,
 .item a:focus {
     text-decoration: none;
+}
+.item-title {
+    color: #888;
+    display: block;
+    padding: 5px;
+}
+.item-title a {
+    color: #888;
+    font-size: 13px;
 }
 .item-play {
 

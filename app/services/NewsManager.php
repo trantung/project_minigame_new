@@ -12,10 +12,10 @@ class NewsManager
 				$query = $query->where('title', 'like', '%'.$input['title'].'%');
 			}
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('start_date', '>=', $input['start_date']);
+				$query = $query->where('start_date', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('start_date', '<=', $input['end_date']);
+				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
 
 		})->orderBy('id', 'asc')->paginate(PAGINATE);

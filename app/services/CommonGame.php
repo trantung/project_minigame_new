@@ -118,10 +118,10 @@ class CommonGame
 				$query = $query->where('status', $input['status']);
 			}
 			if($input['start_date'] != ''){
-				$query = $query->whereDate('start_date', '>=', $input['start_date']);
+				$query = $query->where('start_date', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->whereDate('start_date', '<=', $input['end_date']);
+				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
 		})
 		// ->get()->toArray();
@@ -192,13 +192,13 @@ class CommonGame
     				$listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
     					->where('parent_id', '!=', GAMEFLASH)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
     					->orderBy($arrange, 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			} else {
     				$listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
     					->orderBy($arrange, 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			}
@@ -207,13 +207,13 @@ class CommonGame
     				$listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
     					->where('parent_id', '!=', GAMEFLASH)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
     					->orderBy($arrange, 'desc');
     					// ->limit(PAGINATE_BOXGAME)->get();
     			} else {
     				$listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
     					->orderBy($arrange, 'desc');
     					// ->limit(PAGINATE_BOXGAME)->get();
     			}
@@ -234,14 +234,14 @@ class CommonGame
                         ->where('status', ENABLED)
                         ->where('parent_id', '!=', GAMEFLASH)
     					->where('parent_id', '!=', GAMEOFFLINE)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
     			} else {
 
     				$listGame = Game::whereIn('id', $games)
                         ->where('status', ENABLED)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
                         ->where('parent_id', '!=', GAMEOFFLINE)
     					->orderBy('id', 'desc')
     					->paginate(PAGINATE_LISTGAME);
@@ -252,13 +252,13 @@ class CommonGame
                         ->where('status', ENABLED)
     					->where('parent_id', '!=', GAMEFLASH)
                         ->where('parent_id', '!=', GAMEOFFLINE)
-    					->whereDate('start_date', '<=', $now);
+    					->where('start_date', '<=', $now);
     					// ->orderBy('id', 'desc')
     					// ->limit(PAGINATE_BOXGAME)->get();
     			} else {
     				$listGame = Game::whereIn('id', $games)
                         ->where('status', ENABLED)
-    					->whereDate('start_date', '<=', $now)
+    					->where('start_date', '<=', $now)
                         ->where('parent_id', '!=', GAMEOFFLINE);
          //                ->orderBy('count_play', 'desc')
     					// ->orderBy('id', 'desc');
@@ -284,13 +284,13 @@ class CommonGame
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
                         ->where('parent_id', '!=', GAMEFLASH)
-                        ->whereDate('start_date', '<=', $now)
+                        ->where('start_date', '<=', $now)
                         ->orderBy($arrange, 'desc')
                         ->paginate(PAGINATE_LISTGAME);
                 } else {
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
-                        ->whereDate('start_date', '<=', $now)
+                        ->where('start_date', '<=', $now)
                         ->orderBy($arrange, 'desc')
                         ->paginate(PAGINATE_LISTGAME);
                 }
@@ -299,13 +299,13 @@ class CommonGame
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
                         ->where('parent_id', '!=', GAMEFLASH)
-                        ->whereDate('start_date', '<=', $now)
+                        ->where('start_date', '<=', $now)
                         ->orderBy($arrange, 'desc')
                         ->limit(PAGINATE_BOXGAME)->get();
                 } else {
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
-                        ->whereDate('start_date', '<=', $now)
+                        ->where('start_date', '<=', $now)
                         ->orderBy($arrange, 'desc')
                         ->limit(PAGINATE_BOXGAME)->get();
                 }
@@ -353,13 +353,13 @@ class CommonGame
     		if(getDevice() == MOBILE) {
     			$listGame = Game::where('parent_id', $parentId)
                     ->where('status', ENABLED)
-    				->whereDate('start_date', '<=', $now)
+    				->where('start_date', '<=', $now)
     				->where('parent_id', '!=', GAMEFLASH)
     				->limit($limit)->get();
     		} else {
     			$listGame = Game::where('parent_id', $parentId)
                     ->where('status', ENABLED)
-    				->whereDate('start_date', '<=', $now)
+    				->where('start_date', '<=', $now)
     				->limit($limit)->get();
     		}
     		return $listGame;

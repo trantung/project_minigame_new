@@ -9,19 +9,8 @@
 <div class="box">
 	<h1>Game Android</h1>
 	<div class="row">
-
 		@foreach($inputGameandroi as $game)
-			<div class="col-xs-6 col-sm-3 col-md-2">
-				<div class="item">
-					<div class="item-image">
-						<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
-							<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
-						</a>
-					</div>
-					{{-- @include('site.game.item-play', array('game' => $game)) --}}
-				</div>
-			</div>
+			@include('site.game.gameitem', array('game' => $game))
 		@endforeach
 	</div>
 
