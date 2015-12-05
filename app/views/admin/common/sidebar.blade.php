@@ -11,14 +11,14 @@
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-list"></i> <span>Quản lý chuyên mục</span>
+          <i class="fa fa-list"></i> <span>Quản lý hiển thị</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Menu</a></li>
           <li><a href="{{ action('CategoryParentController@contentIndex') }}"><i class="fa fa-circle-o"></i> Quản lý box hiển thị</a></li>
           @if(!Admin::isSeo())
-          <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý category</a></li>
+          <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý kiểu game</a></li>
           @endif
         </ul>
       </li>
@@ -133,8 +133,8 @@
       </li>
       @endif
       <li>
-        <a href="{{ action('ManagerController@edit', Auth::admin()->get()->id) }}">
-          <i class="fa fa-users"></i> <span>Sửa thông tin tài khoản</span>
+        <a href="{{ action('ManagerController@index') }}">
+          <i class="fa fa-users"></i> <span>Quản lý tài khoản hệ thống</span>
         </a>
       </li>
     </ul>

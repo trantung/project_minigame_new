@@ -29,7 +29,10 @@
 				  <th>Email</th>
 				  <th>Username</th>
 				  <th>Quyền hạn</th>
-				  <th style="width:200px;">&nbsp;</th>
+				  <th>Đăng nhập cuối</th>
+				  <th>Ip</th>
+				  <th>Trạng thái</th>
+				  <th style="width:200px;">Action</th>
 				</tr>
 				@foreach($data as $key => $value)
 				<tr>
@@ -37,8 +40,12 @@
 				  <td>{{ $value->email }}</td>
 				  <td>{{ $value->username }}</td>
 				  <td>{{ getRole($value->role_id) }}</td>
+				  <td>{{ $value->updated_at }}</td>
+				  <td>{{ $value->ip }}</td>
+				  <td>{{ checkActiveUser($value->status) }}</td>
 				  <td>
 					{{-- <a href="#" class="btn btn-success">Xem</a> --}}
+					<a href="{{ action('ManagerController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
 					<a href="{{ action('ManagerController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 					{{ Form::open(array('method'=>'DELETE', 'action' => array('ManagerController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>

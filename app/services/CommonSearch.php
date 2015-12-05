@@ -145,4 +145,18 @@ class CommonSearch
 		})->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
 		return $data;
 	}
+	//backend search history
+	public static function searchlogHistory($input){
+		$data = LogEdit::where(function ($query) use ($input)
+		{
+				$query = $query->where('editor_name', Auth::admin()->get()->username);
+				$query = $query->where('action', LOGIN);
+			if($input['start_date'] != '')
+				$query = $query->where('updated_at', '>=', convertDateTime($input['start_date']));
+			if($input['end_date'] != '')
+				$query = $query->where('updated_at', '<=', convertDateTime($input['end_date']));
+
+		})->orderBy('id', 'desc')->get();
+		return $data;
+	}
 }
