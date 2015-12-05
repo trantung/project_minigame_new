@@ -8,7 +8,7 @@ class Score extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'scores';
-    protected $fillable = ['user_id', 'game_id', 'gname', 'score'];
+    protected $fillable = ['user_id', 'game_id', 'gname', 'score', 'status'];
     protected $dates = ['deleted_at'];
 
 }

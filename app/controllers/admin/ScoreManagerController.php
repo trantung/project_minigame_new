@@ -13,6 +13,7 @@ class ScoreManagerController extends AdminController {
 		return View::make('admin.score.index')->with(compact('inputScore'));
 	}
 
+   	
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -55,7 +56,8 @@ class ScoreManagerController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$input = Input::except('_token');
+		dd($input);
 	}
 
 
@@ -79,7 +81,8 @@ class ScoreManagerController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id);
+        return Redirect::action('ScoreManagerController@index');
 	}
 
 	//search data
@@ -88,5 +91,18 @@ class ScoreManagerController extends AdminController {
 		$input = Input::all();
 		$inputScore = CommonSearch::searchScore($input);
 		return View::make('admin.score.index')->with(compact('inputScore'));
+	}
+
+	public function updateScore(){
+
+		$scoreID = Input::get('id');
+		$statusScore = Input::get('status');
+		foreach($scoreID as $key => $value) {
+			$input = array(
+				'status' => $statusScore[$key],
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
 	}
 }

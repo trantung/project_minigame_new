@@ -110,8 +110,8 @@ define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
 //facebook
-define('APP_ID', '797256200383541');
-define('APP_SECRET', '7d11391cdb8f8091087f1d617daa7a6a');
+define('APP_ID', '1008308405878197');
+define('APP_SECRET', 'a758055e09aef79f81eb7dd4f4588be7');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
 //defune page comment fron-end
