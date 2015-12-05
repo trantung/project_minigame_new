@@ -15,7 +15,7 @@
 <div class="box">
 	@foreach($categoryParent as $value)
 	<h3><a href="{{ url($value->slug) }}">{{ $value->name }}</a><a href="{{ url($value->slug) }}" class="box-more">Xem thêm</a></h3>
-	@if($games = CommonGame::boxGameByCategoryParent($value))
+	@if($games = CommonGame::boxGameByCategoryParentIndex($value))
 		<div class="row">
 			@foreach($games as $game)
 				<div class="col-xs-6 col-sm-3 col-md-2">
@@ -26,17 +26,7 @@
 								<strong>{{ limit_text($game->name, TEXTLENGH) }}</strong>
 							</a>
 					    </div>
-					    <div class="item-play">
-							<a href="{{ CommonGame::getUrlGame($game->slug) }}">
-							@if($game->parent_id == GAMEOFFLINE)
-								<span>{{ getZero($game->count_download) }} lượt tải</span><i class="play">
-								<img src="{{ url('/assets/images/tai.png') }}"></i>
-							@else
-								<span>{{ getZero($game->count_play) }} lượt chơi</span><i class="play">
-								<img src="{{ url('/assets/images/play.png') }}"></i>
-							@endif
-							</a>
-					    </div>
+					    {{-- @include('site.game.item-play', array('game' => $game)) --}}
 					</div>
 				</div>
 		  	@endforeach

@@ -87,14 +87,30 @@ class GameController extends SiteController {
 		$categoryParent = CategoryParent::findBySlug($slug);
 		$type = Type::findBySlug($slug);
 		if($categoryParent) {
-			$games = CommonGame::boxGameByCategoryParent($categoryParent, true);
-			return View::make('site.game.category')->with(compact('games', 'categoryParent'));
+			// $games = CommonGame::boxGameByCategoryParent($categoryParent, true);
+			// return View::make('site.game.category')->with(compact('games', 'categoryParent'));
+
+			//haynhat
+			$games = CommonGame::boxGameByCategoryParent($categoryParent);
+			// dd($games->get()->toArray());
+			// $count = $games->paginate(5);
+			// dd($games);
+			$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+			// dd($count);
+			return View::make('site.game.category')->with(compact('games', 'categoryParent', 'count'));
 		}
 		if($type) {
-			$games = CommonGame::boxGameByType($type, true);
-			return View::make('site.game.type')->with(compact('games', 'type'));
+			//haynhat
+			$games = CommonGame::boxGameByType($type);
+			// dd($games->get()->toArray());
+			// $count = $games->paginate(5);
+			// dd($games);
+			$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+			// dd($count);
+			return View::make('site.game.type')->with(compact('games', 'type', 'count'));
 		}
 		//TODO 404
+		return View::make('404');
 	}
 
 	public function detailGame($type, $slug)
@@ -111,32 +127,32 @@ class GameController extends SiteController {
 			}
  			return $this->getViewGame($game->parent_id, $game, $play);
 		}
-		dd('Game không tồn tại');
+		return View::make('404');
 	}
 
 	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
-    		$inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->orderBy('id', 'desc')->paginate(PAGE_COMMENT);
+    		// $inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->orderBy('id', 'desc')->paginate(PAGE_COMMENT);
 
     		if(getDevice() == MOBILE) {
     			if($parentId == GAMEOFFLINE) {
-	    			return View::make('site.game.downloadmobile')->with(compact('game','inputComment'));
+	    			return View::make('site.game.downloadmobile')->with(compact('game'));
 	    		} else {
 	    			if($play == 'true') {
-	    				return View::make('site.game.onlinemobileplay')->with(compact('game','inputComment'));
+	    				return View::make('site.game.onlinemobileplay')->with(compact('game'));
 	    			}
-	    			return View::make('site.game.onlinemobile')->with(compact('game','inputComment'));
+	    			return View::make('site.game.onlinemobile')->with(compact('game'));
 	    		}
     		} else {
     			if($parentId == GAMEOFFLINE) {
-	    			return View::make('site.game.downloadweb')->with(compact('game','inputComment'));
+	    			return View::make('site.game.downloadweb')->with(compact('game'));
 	    		} else {
 	    			if($play == 'true') {
-	    				//return View::make('site.game.onlinemobileplay')->with(compact('game','inputComment'));
-	    				return View::make('site.game.onlinewebplay')->with(compact('game','inputComment'));
+	    				//return View::make('site.game.onlinemobileplay')->with(compact('game'));
+	    				return View::make('site.game.onlinewebplay')->with(compact('game'));
 	    			}
-	    			return View::make('site.game.onlineweb')->with(compact('game','inputComment'));
+	    			return View::make('site.game.onlineweb')->with(compact('game'));
 	    		}
     		}
     	}

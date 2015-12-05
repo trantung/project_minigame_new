@@ -94,13 +94,13 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-// $games = AdminNew::all();
- //foreach ($games as $key => $value) {
- //	if($value->start_date) {
- //		$startDate = convertDateTime($value->start_date);
- //		$value->update(array('start_date' => $startDate));
- //	}
- //}
+// $games = Game::all();
+//  foreach ($games as $key => $value) {
+//  	if($value->start_date) {
+//  		$startDate = convertDateTime($value->start_date);
+//  		$value->update(array('start_date' => $startDate));
+//  	}
+//  }
 // dd(12);
 
 // FRONTEND
@@ -150,7 +150,7 @@ Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
 
-Route::get('/{type}/{slug}.html', 'GameController@detailGame');
+Route::get('/{type}/{slug}', 'GameController@detailGame');
 
 
 

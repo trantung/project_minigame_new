@@ -52,7 +52,7 @@
 						</div>
 
 						<div class="form-group">
-							<label>Tên game</label>
+							<label>Tên file</label>
 							<input type="text" name="link_url" class="form-control" placeholder="Tên game" />
 						</div>
 
