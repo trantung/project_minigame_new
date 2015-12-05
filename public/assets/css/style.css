@@ -747,7 +747,12 @@ a.download i.fa {
         font-size: 25px;
     }
     .menu-static ul li a span {
-        font-size: 10px;
+        font-size: 9px;
+    }
+    .menu-static ul li a:hover,
+    .menu-static ul li a:focus,
+    .menu-static ul li a.active {
+        border-bottom-color: transparent;
     }
     .box {
         padding-left: 5px;
