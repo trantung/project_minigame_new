@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="box">
-	<h1>Game {{ $categoryParent->name }} hay nhất</h1>
+	<h1>{{ $categoryParent->name }} hay nhất</h1>
 	<div id="owl1" class="owl-carousel">
 		@for($i = 0; $i < $count ; $i ++)
 			<div class="boxgame">
@@ -31,12 +31,12 @@
 
 
 {{-- quang cao --}}
-<div>Quang cao</div>
+<div class="adsense">Quang cao</div>
 
 @include('site.game.scriptgame')
 
 <div class="box">
-	<h1>Game {{ $categoryParent->name }} mới nhất</h1>
+	<h1>{{ $categoryParent->name }} mới nhất</h1>
 	<div id="owl2" class="owl-carousel">
 		@for($i = 0; $i < $count ; $i ++)
 			<div class="boxgame">
