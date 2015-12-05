@@ -176,34 +176,43 @@ class GameController extends SiteController {
     * Get list game android
     * @ return listAndroid
     */
-    public function getListGameAndroid(){
+    public function getListGameAndroid()
+    {
     	$inputGameandroi = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
     	return View::make('site.game.showlistandroid')->with(compact('inputGameandroi'));
 
     }
 
-    /**
-    * Get list game vote many
-    * @return list game vote
-    *
-    */
     public function getListGameVote()
     {
-    	$inputGameVote = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_vote', 'desc')->paginate(PAGINATE_BOXGAME);
-    	$inputGameplay = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_play', 'desc')->paginate(PAGINATE_BOXGAME);
-    	return View::make('site.game.gamevotemany')->with(compact('inputGameVote','inputGameplay'));
-
+    	return self::getListGame('vote');
     }
-	/**
-    * Get list game vote many
-    * @return list game vote
-    *
-    */
+
     public function getListGameplay()
     {
-		$inputGameVote = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_vote', 'desc')->paginate(PAGINATE_BOXGAME);
-    	$inputGameplay = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_play', 'desc')->paginate(PAGINATE_BOXGAME);
-    	return View::make('site.game.gameplaymany')->with(compact('inputGameVote','inputGameplay'));
+    	return self::getListGame('play');
+    }
+
+	/**
+    * Get list game for binh chon nhieu + hay nhat
+    * @return list game
+    *
+    */
+    public function getListGame()
+    {
+    	$now = Carbon\Carbon::now();
+    	if(getDevice() == MOBILE) {
+			$games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+				->where('parent_id', '!=', GAMEFLASH)
+				->where('start_date', '<=', $now);
+		} else {
+			$games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+				->where('start_date', '<=', $now);
+		}
+		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+		return View::make('site.game.gameplaymany')->with(compact('games', 'count'));
     }
 
     public function countPlay()
@@ -211,7 +220,7 @@ class GameController extends SiteController {
     	$id = Input::get('id');
     	$game = Game::find($id);
     	if($game) {
-    		if($game->parent_id != GAMEOFFLINE) {
+    		if($game->parent_id == GAMEHTML5) {
     			$count_play = $game->count_play+1;
 				$game->update(array('count_play' => $count_play));
     		}

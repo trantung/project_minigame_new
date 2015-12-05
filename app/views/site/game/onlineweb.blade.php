@@ -32,7 +32,7 @@
 				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</div>
 
-			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
+			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => CommonGame::getLinkPlayGameHtml5($game)))
 		@endif
 
 		@if($game->parent_id == GAMEFLASH)

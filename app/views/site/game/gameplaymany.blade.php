@@ -1,12 +1,10 @@
 @extends('site.layout.default')
 
 @section('title')
-{{ $title= 'Game bình chọn nhiền'}}
+{{ $title = 'Game chơi nhiều nhất'}}
 @stop
 
 @section('content')
-
-<!-- game play many todo -->
 
 @if($inputGameplay)
 	<div class="box">
@@ -37,11 +35,11 @@
 
 </div>
 <div class="row">
-		<div class="col-xs-12">
-			<ul class="pagination">
-			{{ $inputGameVote->appends(Request::except('page'))->links() }}
-			</ul>
-		</div>
+	<div class="col-xs-12">
+		<ul class="pagination">
+		{{ $inputGameVote->appends(Request::except('page'))->links() }}
+		</ul>
 	</div>
+</div>
 
 @stop
