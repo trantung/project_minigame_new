@@ -6,7 +6,7 @@
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Game</label>
-			<input type="text" name="game_name" class="form-control" placeholder="Tài khoản" />
+			<input type="text" name="game_name" class="form-control" placeholder="Tên game" />
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Trạng thái</label>

@@ -3,27 +3,27 @@
 ;
 
 	function toggle(source) {
-		checkboxes = document.getElementsByName('comment_id[]');
+		checkboxes = document.getElementsByName('feedback_game_id[]');
 		for(var i=0, n=checkboxes.length;i<n;i++) {
 			checkboxes[i].checked = source.checked;
 		}
 	}
 
-	function updateComment()
+	function updateFeedbackGame()
 	{
-		var check = $('input:checkbox:checked.comment_id').val();
+		var check = $('input:checkbox:checked.feedback_game_id').val();
 		if(!check) 
-			alert('Bạn chưa chọn comment nào!');
-		var values1 = $('input:checkbox:checked.comment_id').map(function () {
+			alert('Bạn chưa chọn báo lỗi game nào!');
+		var values1 = $('input:checkbox:checked.feedback_game_id').map(function () {
 			  	return this.value;
 			}).get();
 		// alert(values1);
 		$.ajax(
 		{
 			type:'post',
-			url: '{{ url("/admin/comment/updateIndexData")}}',
+			url: '{{ url("/admin/feedback_game/updateIndexData")}}',
 			data:{
-				'comment_id': values1,
+				'feedback_game_id': values1,
 			},
 			success: function(data)
 			{
@@ -35,21 +35,21 @@
 		// window.location.reload();
 	}
 
-	function updateCommentInactive()
+	function updateInActive()
 	{
-		var check = $('input:checkbox:checked.comment_id').val();
+		var check = $('input:checkbox:checked.feedback_game_id').val();
 		if(!check) 
-			alert('Bạn chưa chọn comment nào!');
-		var values1 = $('input:checkbox:checked.comment_id').map(function () {
+			alert('Bạn chưa chọn báo lỗi game nào!');
+		var values1 = $('input:checkbox:checked.feedback_game_id').map(function () {
 			  	return this.value;
 			}).get();
 		// alert(values1);
 		$.ajax(
 		{
 			type:'post',
-			url: '{{ url("/admin/comment/updateCommentInactive")}}',
+			url: '{{ url("/admin/feedback_game/updateInActive")}}',
 			data:{
-				'comment_id': values1,
+				'feedback_game_id': values1,
 			},
 			success: function(data)
 			{
@@ -63,7 +63,7 @@
 
 	function deleteSelected()
 	{
-		var check = $('input:checkbox:checked.comment_id').val();
+		var check = $('input:checkbox:checked.feedback_game_id').val();
 		if(check) {
 			callDeleteSelected();
 		} else {
@@ -75,7 +75,7 @@
 	{
 		confirm = confirm('Bạn có chắc chắn muốn xóa?')
 		if(confirm) {
-			var values1 = $('input:checkbox:checked.comment_id').map(function () {
+			var values1 = $('input:checkbox:checked.feedback_game_id').map(function () {
 			  	return this.value;
 			}).get();
 
@@ -84,7 +84,7 @@
 				type:'post',
 				url: '/admin/comment/deleteSelected',
 				data:{
-					'comment_id': values1
+					'feedback_game_id': values1
 				},
 				success: function(data)
 				{

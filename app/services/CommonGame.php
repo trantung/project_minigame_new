@@ -136,7 +136,7 @@ class CommonGame
 	{
 		$sortBy = 'id';
 		$sort = 'desc';
-		if($input['sortByCountView'] != '') {
+		if(isset($input['sortByCountView']) && $input['sortByCountView'] != '') {
 			if($input['sortByCountView'] == 'count_view_asc') {
 				$sortBy = 'count_view';
 				$sort = 'asc';
@@ -156,7 +156,7 @@ class CommonGame
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountVote'] != '') {
+		if(isset($input['sortByCountVote']) && $input['sortByCountVote'] != '') {
 			if($input['sortByCountVote'] == 'count_vote_asc') {
 				$sortBy = 'count_vote';
 				$sort = 'asc';
@@ -166,7 +166,7 @@ class CommonGame
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountDownload'] != '') {
+		if(isset($input['sortByCountDownload']) && $input['sortByCountDownload'] != '') {
 			if($input['sortByCountDownload'] == 'count_download_asc') {
 				$sortBy = 'count_download';
 				$sort = 'asc';
@@ -176,6 +176,17 @@ class CommonGame
 				$sort = 'desc';
 			}
 		}
+        // weight_number
+        if($input['sortByweightNumber'] != '') {
+            if($input['sortByweightNumber'] == 'weight_number_asc') {
+                $sortBy = 'weight_number';
+                $sort = 'asc';
+            }
+            if($input['sortByweightNumber'] == 'weight_number_desc') {
+                $sortBy = 'weight_number';
+                $sort = 'desc';
+            }
+        }
 		return [$sortBy, $sort];
 	}
 

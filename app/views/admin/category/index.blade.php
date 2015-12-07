@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý category' }}
+{{ $title='Quản lý kiểu game' }}
 @stop
 
 @section('content')

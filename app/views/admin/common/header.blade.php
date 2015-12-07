@@ -5,6 +5,7 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.5 -->
+	{{ HTML::style('adminlte/plugins/jQueryUI/jquery-ui.css') }}
 	{{HTML::style('adminlte/bootstrap/css/bootstrap.min.css') }}
 	<!-- Font Awesome -->
 	{{HTML::style('adminlte/dist/css/font-awesome.min.css') }}
@@ -37,6 +38,7 @@
 	<!-- jQuery UI 1.11.4 -->
 	{{ HTML::script('adminlte/plugins/jQueryUI/jquery-ui.min.js') }}
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
 	</script>
