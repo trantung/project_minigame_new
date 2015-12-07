@@ -207,26 +207,35 @@ function countBoxDowload($categoryParentId)
 	return 0;
 }
 
-function countTypeView($typeId)
+function countTypeView($typeId, $parent_id = '')
 {
 	$input  = GameType::where('type_id', $typeId)->lists('game_id');
-	$countview = Game::whereIn('id', $input)->sum('count_view');
+	$countview = Game::whereIn('id', $input);
+	if($parent_id)
+		$countview = $countview->where('parent_id', $parent_id);
+	$countview = $countview->sum('count_view');
 	if($countview)
 		return $countview;
 	return 0;
 }
-function countTypePlay($typeId)
+function countTypePlay($typeId, $parent_id = '')
 {
 	$input  = GameType::where('type_id', $typeId)->lists('game_id');
-	$countview = Game::whereIn('id', $input)->sum('count_play');
+	$countview = Game::whereIn('id', $input);
+	if($parent_id)
+		$countview = $countview->where('parent_id', $parent_id);
+	$countview = $countview->sum('count_play');
 	if($countview)
 		return $countview;
 	return 0;
 }
-function countTypeDownload($typeId)
+function countTypeDownload($typeId, $parent_id = '')
 {
 	$input  = GameType::where('type_id', $typeId)->lists('game_id');
-	$countview = Game::whereIn('id', $input)->sum('count_download');
+	$countview = Game::whereIn('id', $input);
+	if($parent_id)
+		$countview = $countview->where('parent_id', $parent_id);
+	$countview = $countview->sum('count_download');
 	if($countview)
 		return $countview;
 	return 0;
@@ -300,6 +309,12 @@ function selectSortBy($sortBy)
 				'' => '-- chọn',
 				'count_download_asc' => 'Lượt tải tăng dần',
 				'count_download_desc' => 'Lượt tải giảm dần',
+			);
+		case 'weight_number':
+			return array(
+				'' => '-- chọn',
+				'weight_number_asc' => 'Trọng số tăng dần',
+				'weight_number_desc' => 'Trọng số giảm dần',
 			);
 			break;
 		default:
@@ -490,14 +505,21 @@ function checkActive($uri = '')
 	}
 	return;
 }
-
+//kich hoat or chua kich hoat
 function checkActiveUser($status)
 {
 	if($status == ACTIVE)
 		return ACTIVEUSER;
 	else 
-		return INACTIVEUSER;
-	
+		return INACTIVEUSER;	
+}
+// đã duyệt or chưa duyệt
+function checkApproveOrReject($status)
+{
+	if($status == ACTIVE)
+		return 'Đã duyệt';
+	else 
+		return 'Chưa duyệt';	
 }
 function selectActive()
 {

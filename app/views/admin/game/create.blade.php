@@ -31,14 +31,48 @@
 			                <label>Chọn category</label>
 			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), NULL, array('class' => 'form-control', 'onchange' => 'getFormGameOffline()')) }}
 		              	</div>
-						<div class="form-group">
+		              	<div class="form-group">
 							<label>Upload avatar</label>
 							{{ Form::file('image_url') }}
 						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="box-body table-responsive">
+						<h4>Chọn thể loại game</h4>
+						<div class="overflow-box">
+							<table class="table table-bordered">
+								<tr>
+									<th>Tên thể loại game</th>
+									<th>Chọn</th>
+									<th>Thể loại chính</th>
+								</tr>
+								@foreach(Type::all() as $key => $value)
+									<tr>
+										<td>{{ $value->name }}</td>
+										<td>
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" id="type_id_{{ $value->id }}" onclick="checkType({{ $value->id }});" />
+										</td>
+										<td>
+										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="checkTypeMain({{ $value->id }});" />
+										</td>
+									</tr>
+								@endforeach
+							</table>
+						</div>
+					</div>
+				</div>
+			
+		        <div class="col-sm-12">
+					<div class="box-body">
 						<div class="form-group">
 							<label>Mô tả</label>
 					        {{ Form::textarea('description',"", array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
 						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="box-body">
 						<div class="form-group">
 							<label>Upload game</label>
 							<input type="checkbox" id="checkUpload" onclick="checkUploadAction();" />
@@ -81,11 +115,11 @@
 			                {{ Form::select('status', selectStatusGame(), '', array('class' => 'form-control')) }}
 		              	</div>
 
-		              	<div class="form-group">
+		              	<div class="ui-widget">
 			                <label>Slide</label>
-			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide()) }}
+			                <!-- {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide()) }} -->
+			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), '', array('id' => 'combobox')) }}
 		              	</div>
-
 						<hr />
 						<h1>SEO META</h1>
 
@@ -95,30 +129,7 @@
 					</div>
 					<!-- /.box-body -->
 				</div>
-				<div class="col-sm-6">
-					<div class="box-body table-responsive">
-						<h4>Chọn thể loại game</h4>
-						<div class="overflow-box">
-							<table class="table table-bordered">
-								<tr>
-									<th>Tên thể loại game</th>
-									<th>Chọn</th>
-									<th>Thể loại chính</th>
-								</tr>
-								@foreach(Type::all() as $key => $value)
-									<tr>
-										<td>{{ $value->name }}</td>
-										<td>
-											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" id="type_id_{{ $value->id }}" onclick="checkType({{ $value->id }});" />
-										</td>
-										<td>
-										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="checkTypeMain({{ $value->id }});" />
-										</td>
-									</tr>
-								@endforeach
-							</table>
-						</div>
-					</div>
+				
 					{{-- <div class="box-body table-responsive">
 						<h4>Chọn box hiển thị</h4>
 						<div class="overflow-box">
@@ -138,7 +149,7 @@
 							{{-- </table>
 						</div>
 					</div> --}}
-				</div>
+				<!-- </div> -->
 			</div>
 			<div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}

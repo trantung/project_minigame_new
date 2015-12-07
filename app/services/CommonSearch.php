@@ -85,6 +85,9 @@ class CommonSearch
 			if ($input['title'] != '') {
 				$query = $query->where('title','like' ,'%'.$input['title'].'%');
 			}
+			if ($input['status'] != '') {
+				$query = $query->where('status', $input['status']);
+			}
 			if($input['start_date'] != ''){
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
@@ -102,6 +105,9 @@ class CommonSearch
 			if($input['name'] != '') {
 				$listGame = Game::where('name', 'like', '%'.$input['name'].'%')->lists('id');
 				$query = $query->whereIn('game_id', $listGame);
+			}
+			if ($input['status'] != '') {
+				$query = $query->where('status', $input['status']);
 			}
 			if($input['start_date'] != ''){
 				$query = $query->where('created_at', '>=', $input['start_date']);
@@ -165,6 +171,27 @@ class CommonSearch
 				$query = $query->where('updated_at', '<=', convertDateTime($input['end_date']));
 
 		})->orderBy('id', 'desc')->get();
+		return $data;
+	}
+	//backend search type game
+	public static function searchTypeGame($input){
+		//dd($input);
+		$data = Type::where(function ($query) use ($input)
+		{
+			if($input['type_id'])
+			{
+				$query = $query->where('id', $input['type_id'] );
+			}
+			if($input['parent_id'])
+			{
+				$listgametype  = GameType::where('type_id', $input['type_id'])->lists('game_id');
+				$games =  Game::whereIn('id', $listgametype)->where('parent_id', $input['parent_id'])->lists('id');
+				$listtypegame = GameType::whereIn('game_id', $games)->lists('type_id');
+				$query = $query->whereIn('id', $listtypegame );
+				
+			}
+
+		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
 	}
 }

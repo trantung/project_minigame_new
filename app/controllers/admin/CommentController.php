@@ -9,7 +9,7 @@ class CommentController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputComment =  Comment::orderBy('id', 'desc')->paginate(PAGINATE);
+		$inputComment =  Comment::where('status', INACTIVE)->orderBy('status', 'asc')->paginate(PAGINATE);
 		return View::make('admin.comment.index')->with(compact('inputComment'));
 
 	}
@@ -110,12 +110,20 @@ class CommentController extends AdminController {
 	// Edit weight number and status Comment index page
 	public function updateIndexData()
 	{
+		$input = array();
 		$commentId = Input::get('comment_id');
-		$statusGame = Input::get('status');
 		foreach($commentId as $key => $value) {
-			$input = array(
-				'status' => $statusGame[$key]
-				);
+			$input['status'] = ACTIVE;
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+	public function updateCommentInactive()
+	{
+		$input = array();
+		$commentId = Input::get('comment_id');
+		foreach($commentId as $key => $value) {
+			$input['status'] = INACTIVE;
 			CommonNormal::update($value, $input);
 		}
 		dd(1);

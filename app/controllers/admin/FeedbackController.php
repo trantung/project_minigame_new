@@ -9,7 +9,7 @@ class FeedbackController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputFeedback = Feedback::orderBy('id', 'desc')->paginate(PAGINATE);
+		$inputFeedback = Feedback::where('status', INACTIVE)->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.feedback.index')->with(compact('inputFeedback'));
 	}
 
@@ -103,6 +103,25 @@ class FeedbackController extends AdminController {
 		$inputFeedback = CommonSearch::seachFeedback($input);
 		return View::make('admin.feedback.index')->with(compact('inputFeedback'));
 	}
-
-
+// Edit weight number and status Comment index page
+	public function updateIndexData()
+	{
+		$input = array();
+		$commentId = Input::get('feedback_id');
+		foreach($commentId as $key => $value) {
+			$input['status'] = ACTIVE;
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+	public function updateInActive()
+	{
+		$input = array();
+		$commentId = Input::get('feedback_id');
+		foreach($commentId as $key => $value) {
+			$input['status'] = INACTIVE;
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
 }
