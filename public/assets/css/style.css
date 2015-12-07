@@ -512,7 +512,7 @@ a.game-played {
 }
 #cssmenu ul ul a {
     background: #ebebeb none repeat scroll 0 0;
-    border-left: 4px solid #2b74a1;
+    border-left: 8px solid #2b74a1;
     color: #888;
     display: block;
 }
