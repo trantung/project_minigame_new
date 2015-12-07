@@ -23,6 +23,16 @@
 		{{ $inputNew->description }}
 	</div>
 	<div class="clearfix"></div>
+	@if($inputRelated)
+	<div class="related">
+		<h3>Tin liên quan</h3>
+		<ul>
+			@foreach($inputRelated as $value)
+			<li><a href="{{ url($value->slug) }}" title=""><i class="fa fa-caret-right"></i> [{{ $value->typeNew->name }}] {{ $value->title }}</a></li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
 </div>
 
 @stop

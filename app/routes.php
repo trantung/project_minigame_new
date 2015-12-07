@@ -152,8 +152,3 @@ Route::resource('/', 'SiteIndexController');
 Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}', 'GameController@detailGame');
-
-
-
-
-

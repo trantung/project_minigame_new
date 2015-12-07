@@ -126,3 +126,4 @@ define('NO_GAME', 0);
 //define message comment
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
 define('TEXTLENGH_DESCRIPTION', 120);
+define('PAGINATE_RELATED', 6);
