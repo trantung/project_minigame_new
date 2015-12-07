@@ -8,7 +8,7 @@
 
 @if($news = CommonSite::getLatestNews())
 <div class="box">
-	<a class="homenews" href="{{ action('SiteNewsController@show', $news->slug) }}"><i class="fa fa-caret-right"></i> {{ $news->title }}</a>
+	<a class="homenews" href="{{ action('SiteNewsController@show', $news->slug) }}"><i class="fa fa-caret-right"></i> [{{ $news->typeNew->name }}] {{ $news->title }}</a>
 </div>
 @endif
 

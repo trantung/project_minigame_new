@@ -1,47 +1,60 @@
 @extends('site.layout.default')
 
 @section('title')
-{{ $title= 'Game bình chọn nhiền'}}
+{{ $title = 'Game chơi nhiều nhất'}}
 @stop
 
 @section('content')
 
-<!-- game play many todo -->
-
-@if($inputGameplay)
-	<div class="box">
-		<h1>Game chơi nhiều nhất</h1>
-		<div class="row">
-			@foreach($inputGameplay as $game)
-				@include('site.game.gameitem', array('game' => $game))
-			@endforeach
-		</div>
+<div class="box">
+	<h1>Game chơi nhiều nhất</h1>
+	<div id="owl1" class="owl-carousel">
+		@for($i = 0; $i < $count ; $i ++)
+			<div class="boxgame">
+				<div class="row">
+				<?php
+					$listGame = $games->orderBy('count_play', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+				?>
+					@foreach($listGame as $game)
+						@include('site.game.gameitem', array('game' => $game))
+					@endforeach
+				</div>
+			</div>
+		@endfor
 	</div>
-
-	<div class="row">
-		<div class="col-xs-12">
-			<ul class="pagination">
-			{{ $inputGameplay->appends(Request::except('page'))->links() }}
-			</ul>
-		</div>
+	<div class="boxgame-pagination">
+		<a class="prev" id="prev1"><i class="fa fa-caret-left"></i> Trang trước</a>
+		<div class="boxgame-pagenumber"><span id="numberPage1"></span>/{{ $count }}</div>
+		<a class="next" id="next1">Trang sau <i class="fa fa-caret-right"></i></a>
 	</div>
-@endif
+</div>
+
+{{-- quang cao --}}
+<div class="adsense">Quang cao</div>
+
+@include('site.game.scriptgame')
 
 <div class="box">
-	<h1>Game bình chọn nhiều <a href="{{ action('GameController@getListGameVote') }}" class="box-more">Xem thêm</a></h1>
-	<div class="row">
-		@foreach($inputGameVote as $game)
-			@include('site.game.gameitem', array('game' => $game))
-		@endforeach
+	<h1>Game bình chọn nhiều</h1>
+	<div id="owl2" class="owl-carousel">
+		@for($i = 0; $i < $count ; $i ++)
+			<div class="boxgame">
+				<div class="row">
+				<?php
+					$listGame = $games->orderBy('vote_average', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+				?>
+					@foreach($listGame as $game)
+						@include('site.game.gameitem', array('game' => $game))
+					@endforeach
+				</div>
+			</div>
+		@endfor
 	</div>
-
+	<div class="boxgame-pagination">
+		<a class="prev" id="prev2"><i class="fa fa-caret-left"></i> Trang trước</a>
+		<div class="boxgame-pagenumber"><span id="numberPage2"></span>/{{ $count }}</div>
+		<a class="next" id="next2">Trang sau <i class="fa fa-caret-right"></i></a>
+	</div>
 </div>
-<div class="row">
-		<div class="col-xs-12">
-			<ul class="pagination">
-			{{ $inputGameVote->appends(Request::except('page'))->links() }}
-			</ul>
-		</div>
-	</div>
 
 @stop

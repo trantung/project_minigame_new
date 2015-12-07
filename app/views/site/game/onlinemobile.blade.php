@@ -7,7 +7,8 @@
 @section('content')
 
 <div class="box">
-	<h3>{{ $game->name }}</h3>
+
+	@include('site.game.breadcrumbgame', array('game' => $game))
 
 	<!-- MOBILE <= 500px -->
 	<div class="row mobile">
@@ -41,7 +42,9 @@
 				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</div>
 
-			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
+			{{-- @include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true')) --}}
+
+			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => CommonGame::getLinkPlayGameHtml5($game)))
 
 			@include('site.game.vote', array('id' => $game->id))
 

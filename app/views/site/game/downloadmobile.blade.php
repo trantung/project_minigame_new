@@ -7,7 +7,8 @@
 @section('content')
 
 <div class="box">
-	<h3>{{ $game->name }}</h3>
+
+	@include('site.game.breadcrumbgame', array('game' => $game))
 
 	<!-- MOBILE <= 500px -->
 	<div class="row mobile">

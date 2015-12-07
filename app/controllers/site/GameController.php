@@ -121,9 +121,9 @@ class GameController extends SiteController {
 		if($game) {
 			$count_view = $game->count_view+1;
 			$game->update(array('count_view' => $count_view));
-			if(getDevice() == COMPUTER && $game->parent_id != GAMEOFFLINE) {
+			if(getDevice() == COMPUTER && $game->parent_id == GAMEFLASH) {
 				$count_play = $game->count_play+1;
-				$game->update(array('count_play' => $count_play, 'slug' => $game->slug));
+				$game->update(array('count_play' => $count_play));
 			}
  			return $this->getViewGame($game->parent_id, $game, $play);
 		}
@@ -168,7 +168,7 @@ class GameController extends SiteController {
     	$voteAverage = GameVote::where('game_id', $input['game_id'])->avg('vote_rate');
     	$inputGame = array();
     	$inputGame['count_vote'] = $voteCount;
-    	$inputGame['vote_average'] = round($voteAverage);
+    	$inputGame['vote_average'] = round($voteAverage, 1);
     	Game::find($input['game_id'])->update($inputGame);
     	dd(1);
     }
@@ -176,34 +176,54 @@ class GameController extends SiteController {
     * Get list game android
     * @ return listAndroid
     */
-    public function getListGameAndroid(){
-    	$inputGameandroi = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
-    	return View::make('site.game.showlistandroid')->with(compact('inputGameandroi'));
-
+    public function getListGameAndroid()
+    {
+    	return self::getListGame('android');
     }
 
-    /**
-    * Get list game vote many
-    * @return list game vote
-    *
-    */
     public function getListGameVote()
     {
-    	$inputGameVote = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_vote', 'desc')->paginate(PAGINATE_BOXGAME);
-    	$inputGameplay = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_play', 'desc')->paginate(PAGINATE_BOXGAME);
-    	return View::make('site.game.gamevotemany')->with(compact('inputGameVote','inputGameplay'));
-
+    	return self::getListGame('vote');
     }
-	/**
-    * Get list game vote many
-    * @return list game vote
-    *
-    */
+
     public function getListGameplay()
     {
-		$inputGameVote = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_vote', 'desc')->paginate(PAGINATE_BOXGAME);
-    	$inputGameplay = Game::whereNotNull('parent_id')->where('parent_id','<>' , GAMEOFFLINE)->orderBy('count_play', 'desc')->paginate(PAGINATE_BOXGAME);
-    	return View::make('site.game.gameplaymany')->with(compact('inputGameVote','inputGameplay'));
+    	return self::getListGame('play');
+    }
+
+	/**
+    * Get list game for binh chon nhieu + hay nhat + download
+    * @return list game
+    *
+    */
+    public function getListGame($view = null)
+    {
+    	$now = Carbon\Carbon::now();
+    	if(getDevice() == MOBILE) {
+			$games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+				->where('parent_id', '!=', GAMEFLASH)
+				->where('start_date', '<=', $now);
+		} else {
+			$games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+				->where('start_date', '<=', $now);
+		}
+		//check game category
+		if($view == 'android') {
+			$games = $games->where('parent_id', GAMEOFFLINE);
+		}
+		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+		if($view == 'vote') {
+			return View::make('site.game.gamevotemany')->with(compact('games', 'count'));
+		}
+		if($view == 'play') {
+			return View::make('site.game.gameplaymany')->with(compact('games', 'count'));
+		}
+		if($view == 'android') {
+			return View::make('site.game.showlistandroid')->with(compact('games', 'count'));
+		}
+		return null;
     }
 
     public function countPlay()
@@ -211,7 +231,7 @@ class GameController extends SiteController {
     	$id = Input::get('id');
     	$game = Game::find($id);
     	if($game) {
-    		if($game->parent_id != GAMEOFFLINE) {
+    		if($game->parent_id == GAMEHTML5) {
     			$count_play = $game->count_play+1;
 				$game->update(array('count_play' => $count_play));
     		}
