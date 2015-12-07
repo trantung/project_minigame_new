@@ -44,6 +44,10 @@
 			<label>Trạng thái</label>
 		  	{{ Form::select('status', ['' => '-- chọn'] + selectStatusGame(), null, array('class' =>'form-control')) }}
 		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Trọng số hiển thị</label>
+		  	{{ Form::select('sortByweightNumber', selectSortBy('weight_number'), null, array('class' =>'form-control')) }}
+		</div>
 		<div class="input-group" style="display: block; vertical-align: bottom; margin-top: 15px;">
 			<input type="submit" value="Search" class="btn btn-primary" />
 		</div>
