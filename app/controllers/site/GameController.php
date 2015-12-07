@@ -282,4 +282,11 @@ class GameController extends SiteController {
     	}
     }
 
+    public function testMenu()
+    {
+    	$menu = CategoryParent::where('position', MENU)
+			->orderBy('weight_number', 'asc')->get();
+    	return View::make('site.common.menu_import', array('menu' => $menu));
+    }
+
 }

@@ -147,6 +147,8 @@ Route::get('/game-binh-chon-nhieu', 'GameController@getListGameVote');
 
 Route::get('/game-choi-nhieu', 'GameController@getListGameplay');
 
+Route::post('/test-menu', 'GameController@testMenu');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
