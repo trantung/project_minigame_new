@@ -196,7 +196,7 @@ class GameController extends SiteController {
     * @return list game
     *
     */
-    public function getListGame($view)
+    public function getListGame($view = null)
     {
     	$now = Carbon\Carbon::now();
     	if(getDevice() == MOBILE) {
@@ -209,8 +209,9 @@ class GameController extends SiteController {
                 ->where('status', ENABLED)
 				->where('start_date', '<=', $now);
 		}
+		//check game category
 		if($view == 'android') {
-			$games->where('parent_id', GAMEOFFLINE);
+			$games = $games->where('parent_id', GAMEOFFLINE);
 		}
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
 		if($view == 'vote') {
