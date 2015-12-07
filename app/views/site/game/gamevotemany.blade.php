@@ -41,7 +41,7 @@
 			<div class="boxgame">
 				<div class="row">
 				<?php
-					$listGame = $games->where('parent_id', '!=', GAMEOFFLINE)->orderBy('count_play', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+					$listGame = $games->orderBy('count_play', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
 				?>
 					@foreach($listGame as $game)
 						@include('site.game.gameitem', array('game' => $game))

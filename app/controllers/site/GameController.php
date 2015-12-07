@@ -192,7 +192,7 @@ class GameController extends SiteController {
     }
 
 	/**
-    * Get list game for binh chon nhieu + hay nhat
+    * Get list game for binh chon nhieu + hay nhat + download
     * @return list game
     *
     */
