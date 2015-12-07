@@ -99,9 +99,9 @@ class AdminController extends BaseController {
         } else {
             Auth::admin()->attempt($input);
             $checkLogin = Auth::admin()->check();
-            $inputUser = CommonSite::ipDeviceUser();
-            CommonNormal::update(Auth::admin()->get()->id, $inputUser, 'Admin');            
             if($checkLogin) {
+            	$inputUser = CommonSite::ipDeviceUser();
+            	CommonNormal::update(Auth::admin()->get()->id, $inputUser, 'Admin');
 				//update history
 				$inputHistory = AdminHistory::where('model_name', 'Admin')->where('model_id', Auth::admin()->get()->id)->first();
 				$history_id = CommonLog::updateHistory('Admin', Auth::admin()->get()->id);

@@ -8,7 +8,6 @@
 		"ollieread/multiauth": "dev-master",
 		"chumper/zipper": "0.5.x",
 		"cviebrock/eloquent-sluggable": "2.0.*",
-		"iorme/simplecaptcha": "dev-master",
 		"edisonthk/google-oauth-laravel4": "dev-master",
 		"facebook/php-sdk-v4": "4.*"
 	},

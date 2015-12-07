@@ -178,9 +178,7 @@ class GameController extends SiteController {
     */
     public function getListGameAndroid()
     {
-    	$inputGameandroi = Game::where('parent_id', GAMEOFFLINE)->paginate(PAGINATE_BOXGAME);
-    	return View::make('site.game.showlistandroid')->with(compact('inputGameandroi'));
-
+    	return self::getListGame('android');
     }
 
     public function getListGameVote()
@@ -198,7 +196,7 @@ class GameController extends SiteController {
     * @return list game
     *
     */
-    public function getListGame()
+    public function getListGame($view)
     {
     	$now = Carbon\Carbon::now();
     	if(getDevice() == MOBILE) {
@@ -211,8 +209,20 @@ class GameController extends SiteController {
                 ->where('status', ENABLED)
 				->where('start_date', '<=', $now);
 		}
+		if($view == 'android') {
+			$games->where('parent_id', GAMEOFFLINE);
+		}
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
-		return View::make('site.game.gameplaymany')->with(compact('games', 'count'));
+		if($view == 'vote') {
+			return View::make('site.game.gamevotemany')->with(compact('games', 'count'));
+		}
+		if($view == 'play') {
+			return View::make('site.game.gameplaymany')->with(compact('games', 'count'));
+		}
+		if($view == 'android') {
+			return View::make('site.game.showlistandroid')->with(compact('games', 'count'));
+		}
+		return null;
     }
 
     public function countPlay()
