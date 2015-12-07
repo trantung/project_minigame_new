@@ -6,30 +6,30 @@
 
 @section('content')
 
-@foreach($inputListNews as $value)
-<div class="box">
-	<hr/>
-	<div class="table_container">
-		<div class="table-row">
-			<div class="col">
+<div class="list">
+
+	<div class="title_center">
+		<h1>Danh sách tin tức</h1>
+	</div>
+
+	@foreach($inputListNews as $value)
+		<div class="list-item">
+			<div class="list-image">
 				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
-				<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
+					<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
 				</a>
 			</div>
-			<div class="col">
-				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
-					<strong>[{{ $value->typeNew->name }}] {{ $value->title }}</strong>
-				</a>
-				</br>
-				<!-- todo -->
-				{{-- {{ $value->count_view }} người xem --}}
-				{{-- </br> --}}
-				{{ limit_text($value->description, SIZETEXT) }}
+			<div class="list-text">
+				<h3>
+					<a href="{{ action('SiteNewsController@show', $value->slug) }}">
+						[{{ $value->typeNew->name }}] {{ limit_text($value->title, TEXTLENGH) }}
+					</a>
+				</h3>
+				<p>{{ limit_text($value->description, TEXTLENGH_DESCRIPTION) }}</p>
 			</div>
 		</div>
-	</div>
+	@endforeach
 </div>
-@endforeach
 
 @include('site.common.paginate', array('input' => $inputListNews))
 
