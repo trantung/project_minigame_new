@@ -1285,5 +1285,8 @@ h1.title {
 }
 .breadcrumb i.fa {
     color: #2b74a1;
+    padding-left: 10px;
+    padding-right: 5px;
 }
+
 
