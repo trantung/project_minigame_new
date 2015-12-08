@@ -9,7 +9,7 @@
 		$.ajax(
 		{
 			type:'post',
-			url: url + '/test-menu',
+			url: url + '/import-menu',
 			data: {
 				'currentUrl': window.location.href,
 			},
