@@ -9,6 +9,7 @@
 <!-- inclue Search form 
 
 -->
+@if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		@if(!Request::segment(3) == CONTENT_SEGMENT)
@@ -18,6 +19,7 @@
 		@endif
 	</div>
 </div>
+@endif
 <div class="row">
 	<div class="col-xs-12">
 	  <div class="box">
@@ -64,10 +66,11 @@
 					 	@else
 					 	<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
 					 	@endif
-						
+						@if(!Admin::isSeo())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
 							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
+						@endif
 					</td>
 				</tr>
 			@endforeach

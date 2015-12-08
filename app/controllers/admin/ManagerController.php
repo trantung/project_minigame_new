@@ -113,7 +113,7 @@ class ManagerController extends AdminController {
 	{
 		$rules = array(
             'username'   => 'required',
-            'password'   => 'required',
+            // 'password'   => 'required',
             'email'      => 'required|email',
             'role_id'    => 'required',
         );
@@ -128,7 +128,7 @@ class ManagerController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
-        	$input['password'] = Hash::make($input['password']);
+        	// $input['password'] = Hash::make($input['password']);
         	$input += CommonSite::ipDeviceUser() ;
         	CommonNormal::update($id, $input);
         	$currentUserId = Auth::admin()->get()->id;

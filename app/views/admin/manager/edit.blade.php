@@ -29,7 +29,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+				<!-- 	<div class="form-group">
 						<label for="password">Password</label>
 						<div class="row">
 							<div class="col-sm-6">
@@ -37,7 +37,7 @@
 						" name="password">
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="email">Email</label>
 							<div class="row">

@@ -9,25 +9,27 @@
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-list"></i> <span>Quản lý hiển thị</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Menu</a></li>
-          <li><a href="{{ action('CategoryParentController@contentIndex') }}"><i class="fa fa-circle-o"></i> Quản lý box hiển thị</a></li>
-          @if(!Admin::isSeo())
-          <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý kiểu game</a></li>
-          @endif
-          <li>
-                <a href="{{ action('GameTypeController@index') }}">
-                    <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
-                </a>
-          </li>
-        </ul>
-      </li>
-      
+      @if(Admin::isAdmin() || Admin::isSeo())
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list"></i> <span>Quản lý hiển thị</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Menu</a></li>
+            <li><a href="{{ action('CategoryParentController@contentIndex') }}"><i class="fa fa-circle-o"></i> Quản lý box hiển thị</a></li>
+            @if(Admin::isAdmin())
+              <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý kiểu game</a></li>
+            @endif
+            <li>
+                  <a href="{{ action('GameTypeController@index') }}">
+                      <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
+                  </a>
+            </li>
+          </ul>
+        </li>
+      @endif
+
        <li class="treeview">
         <a href="#">
           <i class="fa fa-list"></i> <span>Quản lý nội dung</span>
@@ -52,11 +54,13 @@
             @endif
         </ul>
       </li>      
+      @if(Admin::isAdmin())
       <li>
         <a href="{{ action('AdminGameController@statisticGame') }}">
           <i class="fa fa-gamepad"></i> <span>Thống kê Game</span>
         </a>
-      </li>             
+      </li>      
+      @endif       
       @if(!Admin::isSeo())
       <li>
         <a href="{{ action('CommentController@index') }}">
@@ -64,12 +68,14 @@
         </a>
       </li>
       @endif
+      @if(Admin::isAdmin())
       <li>
         <a href="{{ action('ScoreManagerController@index') }}">
           <i class="fa fa-comments"></i> <span>Quản lý điểm</span>
         </a>
       </li>
-      @if(Admin::isAdmin())
+      @endif
+      @if(Admin::isAdmin() || Admin::isEditor())
       <li class="treeview">
         <a href="#">
           <i class="fa fa-newspaper-o"></i> <span>Quản lý góp ý báo lỗi</span>
@@ -101,26 +107,27 @@
           </ul>
       </li>
       @endif
-      @if(Admin::isAdmin())
+      @if(Admin::isAdmin() || Admin::isEditor())
       <li>
         <a href="{{ action('UserController@index') }}">
           <i class="fa fa-users"></i> <span>Quản lý users</span>
         </a>
       </li>
       @endif
+       @if(Admin::isAdmin() || Admin::isSeo())
       <li class="treeview">
         <a href="#">
           <i class="fa fa-cogs"></i> <span>Cấu hình chung</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Quản chính sách liên hệ</a></li>
-          <li><a href="{{ action('SeoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
-          @if(!Admin::isSeo())
-          <li><a href="#"><i class="fa fa-circle-o"></i> Quản lý phân trang</a></li>
+          @if(Admin::isAdmin())
+            <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Quản chính sách liên hệ</a></li>
           @endif
+          <li><a href="{{ action('SeoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
         </ul>
       </li>
+      @endif
       @if(Admin::isAdmin())
       <li>
         <a href="{{ action('ManagerController@index') }}">
@@ -128,18 +135,14 @@
         </a>
       </li>
       @endif
-      @if(Admin::isAdmin())
+     <!--  @if(Admin::isAdmin())
        <li>
         <a href="{{ action('RelationController@index') }}">
           <i class="fa fa-users"></i> <span>Quản lý Relation</span>
         </a>
       </li>
-      @endif
-      <li>
-        <a href="{{ action('ManagerController@index') }}">
-          <i class="fa fa-users"></i> <span>Quản lý tài khoản hệ thống</span>
-        </a>
-      </li>
+      @endif -->
+   
     </ul>
   </section>
   <!-- /.sidebar -->
