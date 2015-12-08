@@ -95,6 +95,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/policy', 'PolicyController');
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
+	Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
 	Route::resource('/slider', 'AdminSlideController');
 
 	Route::get('/user/chanpassword/{id}', array('uses' =>  'UserController@changePassword', 'as' => 'admin.user.chanpassword'));
