@@ -284,11 +284,24 @@ class GameController extends SiteController {
     	}
     }
 
-    public function testMenu()
+    public function importMenu()
     {
     	$menu = CategoryParent::where('position', MENU)
 			->orderBy('weight_number', 'asc')->get();
     	return View::make('site.common.menu_import', array('menu' => $menu));
+    }
+
+    public function importBxh()
+    {
+		$currentUrl = Input::get('currentUrl');
+		$link_url = Input::get('link_url');
+		if($link_url) {
+			$game = Game::where('link_url', $link_url)->first();
+			if($game) {
+				return View::make('site.common.score_import', array('id' => $game->id));
+			}
+		}
+    	return false;
     }
 
 }
