@@ -1358,5 +1358,8 @@ h1.title {
     #cssmenu a {
         padding: 5px 10px;
     }
+    .menu-login a.signin, .menu-login a.signup {
+        width: 98px;
+    }
 }
 
