@@ -1,4 +1,4 @@
-@if($adPosition == HEADER || $adPosition == Footer)
+@if($adPosition == HEADER || $adPosition == Footer || $adPosition == CHILD_PAGE_RELATION)
 	@if($ad = CommonSite::getAdvertise($adPosition))
 	<div class="adsense center">
 		@if($ad->adsense)

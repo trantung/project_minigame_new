@@ -30,7 +30,7 @@
 </div>
 
 {{-- quang cao --}}
-<div class="adsense">Quang cao</div>
+@include('site.common.ad', array('adPosition' => CHILD_PAGE_RELATION))
 
 @include('site.game.scriptgame')
 
