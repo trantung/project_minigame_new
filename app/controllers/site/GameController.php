@@ -94,6 +94,7 @@ class GameController extends SiteController {
 			$games = CommonGame::boxGameByType($type, true);
 			return View::make('site.game.type')->with(compact('games', 'type'));
 		}
+		//TODO 404
 	}
 
 	public function detailGame($type, $slug)
@@ -116,26 +117,26 @@ class GameController extends SiteController {
 	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
-    		$inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->orderBy('id', 'desc')->paginate(PAGE_COMMENT);
+    		// $inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->orderBy('id', 'desc')->paginate(PAGE_COMMENT);
 
     		if(getDevice() == MOBILE) {
     			if($parentId == GAMEOFFLINE) {
-	    			return View::make('site.game.downloadmobile')->with(compact('game','inputComment'));
+	    			return View::make('site.game.downloadmobile')->with(compact('game'));
 	    		} else {
 	    			if($play == 'true') {
-	    				return View::make('site.game.onlinemobileplay')->with(compact('game','inputComment'));
+	    				return View::make('site.game.onlinemobileplay')->with(compact('game'));
 	    			}
-	    			return View::make('site.game.onlinemobile')->with(compact('game','inputComment'));
+	    			return View::make('site.game.onlinemobile')->with(compact('game'));
 	    		}
     		} else {
     			if($parentId == GAMEOFFLINE) {
-	    			return View::make('site.game.downloadweb')->with(compact('game','inputComment'));
+	    			return View::make('site.game.downloadweb')->with(compact('game'));
 	    		} else {
 	    			if($play == 'true') {
-	    				//return View::make('site.game.onlinemobileplay')->with(compact('game','inputComment'));
-	    				return View::make('site.game.onlinewebplay')->with(compact('game','inputComment'));
+	    				//return View::make('site.game.onlinemobileplay')->with(compact('game'));
+	    				return View::make('site.game.onlinewebplay')->with(compact('game'));
 	    			}
-	    			return View::make('site.game.onlineweb')->with(compact('game','inputComment'));
+	    			return View::make('site.game.onlineweb')->with(compact('game'));
 	    		}
     		}
     	}

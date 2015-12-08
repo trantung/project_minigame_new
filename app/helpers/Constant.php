@@ -122,4 +122,6 @@ define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.g
 define('TEXTLENGH', 15);
 //define total game if count = 0
 define('NO_GAME', 0);
+//define message comment
+define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
 
