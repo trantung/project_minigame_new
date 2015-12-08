@@ -8,7 +8,7 @@
 	@include('site.common.message_comment')
 	<!-- Tab panes -->
 	<div class="tab-content">
-		
+
 		<div role="tabpanel" class="tab-pane active" id="comment1">
 		{{ Form::open(array('action' => array('SiteCommentController@update', $game->id), 'method' => 'PUT')) }}
 		<!-- comment cho game -->
@@ -18,7 +18,7 @@
 					<label for="name">Comment choi nhanh</label>
 					<div class="row">
 						<div class="col-sm-12">
-						    {{ Form::textarea('description', '' , array('class' => 'form-control')) }}
+						    {{ Form::textarea('description', '' , array('class' => 'form-control', 'rows' => 3)) }}
 						</div>
 					 </div>
 				</div>
@@ -36,7 +36,7 @@
 			 @foreach($inputComment = SiteComment::getCommentGame($game) as $value)
 			<tr>
 			  <td><b>{{ User::find($value->user_id)->user_name.User::find($value->user_id)->uname.User::find($value->user_id)->google_name }}</b></td>
-			  <td>{{ $value->description }}</td>			
+			  <td>{{ $value->description }}</td>
 			</tr>
 			@endforeach
 			</table>

@@ -16,9 +16,6 @@ class AdminGameController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		// if (!$input['keyword']) {
-		// 	return Redirect::action('AdminGameController@index');
-		// }
 		$data = CommonGame::searchAdminGame($input);
 		return View::make('admin.game.index')->with(compact('data'));
 	}
@@ -264,4 +261,15 @@ class AdminGameController extends AdminController {
 		dd(1);
 	}
 
+	public function statisticGame(){
+		$data = Game::where('parent_id', '!=', '')->orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.game.statistic')->with(compact('data'));
+	}
+
+	public function searchStatisticGame()
+	{
+		$input = Input::all();
+		$data = CommonGame::searchAdminGame($input);
+		return View::make('admin.game.statistic')->with(compact('data'));
+	}
 }

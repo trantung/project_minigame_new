@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-
+@include('admin.gametype.search')
 <!-- inclue Search form-->
 
 @if(!Admin::isSeo())

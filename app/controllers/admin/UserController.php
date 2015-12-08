@@ -32,7 +32,7 @@ class UserController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+
 	}
 
 
@@ -79,7 +79,26 @@ class UserController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+			'password'   => 'required',
+			'repassword' => 'required|same:password'
+
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('UserController@changePassword',$id)
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+        	// dd(Hash::make($input['password']));
+        		$inputPass['password'] = Hash::make($input['password']);
+        		CommonNormal::update($id, $inputPass);
+        	
+        	
+        }
+        return Redirect::action('UserController@index') ;
+		
 	}
 
 
@@ -102,6 +121,13 @@ class UserController extends AdminController {
 		$inputUser = CommonSearch::seachUser($input);
 		
 		return View::make('admin.user.index')->with(compact('inputUser'));
+	}
+
+	//change password
+	public function changePassword($id)
+	{
+		$inputUser = User::find($id);
+		return View::make('admin.user.changepassword')->with(compact('inputUser'));
 	}
 
 }

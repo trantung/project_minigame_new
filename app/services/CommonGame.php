@@ -136,7 +136,7 @@ class CommonGame
 	{
 		$sortBy = 'id';
 		$sort = 'desc';
-		if($input['sortByCountView'] != '') {
+		if(isset($input['sortByCountView']) && $input['sortByCountView'] != '') {
 			if($input['sortByCountView'] == 'count_view_asc') {
 				$sortBy = 'count_view';
 				$sort = 'asc';
@@ -156,7 +156,7 @@ class CommonGame
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountVote'] != '') {
+		if(isset($input['sortByCountVote']) && $input['sortByCountVote'] != '') {
 			if($input['sortByCountVote'] == 'count_vote_asc') {
 				$sortBy = 'count_vote';
 				$sort = 'asc';
@@ -166,7 +166,7 @@ class CommonGame
 				$sort = 'desc';
 			}
 		}
-		if($input['sortByCountDownload'] != '') {
+		if(isset($input['sortByCountDownload']) && $input['sortByCountDownload'] != '') {
 			if($input['sortByCountDownload'] == 'count_download_asc') {
 				$sortBy = 'count_download';
 				$sort = 'asc';
@@ -176,6 +176,17 @@ class CommonGame
 				$sort = 'desc';
 			}
 		}
+        // weight_number
+        if($input['sortByweightNumber'] != '') {
+            if($input['sortByweightNumber'] == 'weight_number_asc') {
+                $sortBy = 'weight_number';
+                $sort = 'asc';
+            }
+            if($input['sortByweightNumber'] == 'weight_number_desc') {
+                $sortBy = 'weight_number';
+                $sort = 'desc';
+            }
+        }
 		return [$sortBy, $sort];
 	}
 
@@ -382,15 +393,15 @@ class CommonGame
 		    	$box = self::getBoxGame($link, $game->parent_id);
     			return $box;
     		}
-    		if($game->parent_id == GAMEHTML5) {
-    			if($game->link_url != '') {
-					$link = url(UPLOAD_GAME . '/' . $game->link_url);
-		    	} else {
-		    		$link = url(UPLOAD_GAME . '/' . $filename);
-		    	}
-		    	$box = self::getBoxGame($link, $game->parent_id);
-    			return $box;
-    		}
+    	// 	if($game->parent_id == GAMEHTML5) {
+    	// 		if($game->link_url != '') {
+					// $link = url(UPLOAD_GAME . '/' . $game->link_url);
+		   //  	} else {
+		   //  		$link = url(UPLOAD_GAME . '/' . $filename);
+		   //  	}
+		   //  	$box = self::getBoxGame($link, $game->parent_id);
+    	// 		return $box;
+    	// 	}
     	}
     	return null;
     }
@@ -398,43 +409,39 @@ class CommonGame
     public static function getBoxGame($link, $parentId)
     {
     	if($parentId == GAMEFLASH) {
-    		$style = self::getStyle();
-    		$box = '<object style="' . $style . '">
+    		$box = '<object >
 					    <param name="movie" value="' . $link .'">
-					    <embed src="' . $link .'">
-					    </embed>
+                        <param name="wmode" value="direct">
+                        <param name="allowScriptAccess" value="always">
+                        <param name="scale" value="exactfit">
+                        <param name="allowFullScreenInteractive" value="true">
+                        <param name="allowFullScreen" value="true">
+                        <param name="quality" value="high" />
+					    <embed src="' . $link .'"></embed>
 					</object>';
     		return $box;
     	}
 
-        if(getDevice() == COMPUTER) {
-            if($parentId == GAMEHTML5) {
-                $box = '<iframe src="' . $link . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-                return $box;
-            }
-        } else {
-            if($parentId == GAMEHTML5) {
-                $style = self::getStyle();
-                $box = '<iframe src="' . $link . '" style="border:none; margin:0; padding:0; overflow:hidden; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-                return $box;
-            }
-        }
+        //user iframe
+        // if(getDevice() == COMPUTER) {
+        //     if($parentId == GAMEHTML5) {
+        //         $box = '<iframe src="' . $link . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
+        //         return $box;
+        //     }
+        // } else {
+        //     if($parentId == GAMEHTML5) {
+        //         $style = self::getStyle();
+        //         $box = '<iframe src="' . $link . '" style="border:none; margin:0; padding:0; overflow:hidden; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
+        //         return $box;
+        //     }
+        // }
     }
 
-    //get link play game
-    public static function getLinkPlayGame($game = null)
+    //get link play game for games HTML5
+    public static function getLinkPlayGameHtml5($game = null)
     {
         if($game) {
-            // $ext = getExtension($game->link_upload_game);
             $filename = getFilename($game->link_upload_game);
-            if($game->parent_id == GAMEFLASH) {
-                if($game->link_url != '') {
-                    $link = url(UPLOAD_FLASH . '/' . $game->link_url . '.swf');
-                } else {
-                    $link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
-                }
-                return $link;
-            }
             if($game->parent_id == GAMEHTML5) {
                 if($game->link_url != '') {
                     $link = url(UPLOAD_GAME . '/' . $game->link_url);
@@ -444,7 +451,7 @@ class CommonGame
                 return $link;
             }
         }
-        return null;
+        return View::make('404');
     }
 
     public static function getStyle()

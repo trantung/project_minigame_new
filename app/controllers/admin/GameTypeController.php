@@ -9,6 +9,8 @@ class GameTypeController extends AdminController {
 	 */
 	public function index()
 	{
+		// $input['type_id'] =null;
+		// $input['parent_id'] =null;
 		$data = Type::orderBy('id', 'asc')->paginate(PAGINATE);
 		return View::make('admin.gametype.index')->with(compact('data'));
 	}
@@ -136,7 +138,9 @@ class GameTypeController extends AdminController {
 	*/
 	public function search()
 	{
-		//$input 
+		$input  = Input::except('_token');
+		$data = CommonSearch::searchTypeGame($input);
+		return View::make('admin.gametype.index')->with(compact('data'));
 	}
 
 }

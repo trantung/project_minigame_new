@@ -59,7 +59,7 @@ define('ENABLED', 1);
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game
-define('GAMEFLASH', 7);
+define('GAMEFLASH', 1);
 define('GAMEHTML5', 2);
 define('GAMEOFFLINE', 3);
 //history action
@@ -126,4 +126,5 @@ define('TEXTLENGH', 30);
 define('NO_GAME', 0);
 //define message comment
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
-
+define('TEXTLENGH_DESCRIPTION', 120);
+define('PAGINATE_RELATED', 6);

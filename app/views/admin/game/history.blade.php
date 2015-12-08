@@ -29,7 +29,7 @@
 			<tr>
 			  <td>{{ $logedit->id }}</td>
 			  <td>{{ $logedit->editor_name }}</td>
-			  <td>{{ $logedit->editor_time }}</td>
+			  <td>{{ $logedit->updated_at }}</td>
 			  <td>{{ $logedit->editor_ip }}</td>
 			  <td>{{ getNameDevice($logedit->history->device )}}</td>
 			  <td>{{ $logedit->action }}</td>

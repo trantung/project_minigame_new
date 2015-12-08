@@ -33,6 +33,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/category', 'CategoryController');
 
+	Route::get('/games/Searchstatistic', array('uses' => 'AdminGameController@searchStatisticGame', 'as' => 'admin.games.statistic'));
+	Route::get('/games/statistic', 'AdminGameController@statisticGame');
 	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');
 	Route::post('/games/updateIndexData', 'AdminGameController@updateIndexData');
 	Route::get('/games/search', array('uses' => 'AdminGameController@search', 'as' => 'admin.games.search'));
@@ -57,6 +59,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/comment/search', array('uses' =>  'CommentController@search', 'as' => 'admin.comment.search'));
 	Route::post('/comment/deleteSelected', 'CommentController@deleteSelected');
 	Route::post('/comment/updateIndexData', 'CommentController@updateIndexData');
+	Route::post('/comment/updateCommentInactive', 'CommentController@updateCommentInactive');
 	Route::resource('/comment', 'CommentController');
 
 	Route::post('/score/updateScore', 'ScoreManagerController@updateScore');
@@ -72,9 +75,13 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
+	Route::post('/feedback/updateIndexData', 'FeedbackController@updateIndexData');
+	Route::post('/feedback/updateInActive', 'FeedbackController@updateInActive');
 	Route::get('/feedback/search', array('uses' =>  'FeedbackController@search', 'as' => 'admin.feedback.search'));
 	Route::resource('/feedback', 'FeedbackController');
 
+	Route::post('/feedback_game/updateIndexData', 'FeedbackGameController@updateIndexData');
+	Route::post('/feedback_game/updateInActive', 'FeedbackGameController@updateInActive');
 	Route::get('/feedback_game/search', array('uses' =>  'FeedbackGameController@search', 'as' => 'admin.feedback_game.search'));
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
@@ -90,6 +97,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
 	Route::resource('/slider', 'AdminSlideController');
 
+	Route::get('/user/chanpassword/{id}', array('uses' =>  'UserController@changePassword', 'as' => 'admin.user.chanpassword'));
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
@@ -147,13 +155,10 @@ Route::get('/game-binh-chon-nhieu', 'GameController@getListGameVote');
 
 Route::get('/game-choi-nhieu', 'GameController@getListGameplay');
 
+Route::post('/test-menu', 'GameController@testMenu');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}', 'GameController@detailGame');
-
-
-
-
-
