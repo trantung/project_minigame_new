@@ -9,7 +9,8 @@ class AdvertiseController extends AdminController {
 	 */
 	public function index()
 	{
-		$advertise = Advertise::where('position', '!=', CHILD_PAGE)->get();
+		$advertise = Advertise::where('position', '!=', CHILD_PAGE)
+								->get();
 		return View::make('admin.adverties.index')->with(compact('advertise'));
 	}
 
@@ -33,10 +34,16 @@ class AdvertiseController extends AdminController {
 	public function store()
 	{
 		$input = Input::except('_token');
-		$id = Advertise::create($input)->id;
-		$imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header_footer');
-		Advertise::find($id)->update(array('image_url' => $imageUrl));
-		return Redirect::action('AdvertiseController@index')->with('message', 'tạo mới thành công');
+		if ($input['ad-select'] == 1) {
+			$id = Advertise::create($input)->id;
+			$imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header_footer');
+			Advertise::find($id)->update(array('image_url' => $imageUrl));
+			return Redirect::action('AdvertiseController@index')->with('message', 'tạo mới thành công');
+		}
+		else {
+			$id = Advertise::create($input)->id;
+			return Redirect::action('AdvertiseController@index')->with('message', 'tạo mới thành công');
+		}
 	}
 
 
@@ -75,9 +82,17 @@ class AdvertiseController extends AdminController {
 	{
 		$input = Input::except('_token', '_method');
 		$advertise = Advertise::find($id);
-		$imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header_footer', $advertise->image_url);
-		$input['image_url'] = $imageUrl;
-		$advertise->update($input);
+		if ($input['ad-select'] == 1) {
+			$imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header_footer', $advertise->image_url);
+			$input['image_url'] = $imageUrl;
+			$advertise->update($input);
+		}
+		else {
+			$advertise->update($input);
+		}
+		// $imageUrl = CommonSeo::uploadImage($id, UPLOAD_ADVERTISE, 'image_url', 'header_footer', $advertise->image_url);
+		// $input['image_url'] = $imageUrl;
+		// $advertise->update($input);
 		return Redirect::action('AdvertiseController@index')->with('message', 'Thay đổi thành công');
 	}
 
@@ -107,21 +122,35 @@ class AdvertiseController extends AdminController {
 	public function storeChild()
 	{
 		$input = Input::except('_token');
-		$inputChild['image_url'] = $input['image_url'];
-		$inputChild['image_link'] = $input['image_link'];
-		$inputChild['position'] = CHILD_PAGE;
-		$inputChild['adsense'] = Input::get('adsense');
-		$id = Advertise::create($inputChild)->id;
-		$commonModelId = CommonModel::create(array('model_name' => 'CategoryParent', 'model_id' => Input::get('model_id')))->id;
-		$imageUrl = CommonSeo::uploadImage(Input::get('model_id'), UPLOAD_ADVERTISE, 'image_url', 'content');
-		Advertise::find($id)->update(array('image_url' => $imageUrl));
-		AdvertisePosition::create(array(
-			'common_model_id' => $commonModelId,
-			'advertisement_id' => $id,
-			'name' => BOTTOM,
-			'status' => Input::get('status'),
-		));
-		return Redirect::action('AdvertiseController@indexChild')->with('message', 'tạo mới thành công');
+		if ($input['ad-select'] == 1) {
+			$inputChild['image_url'] = $input['image_url'];
+			$inputChild['image_link'] = $input['image_link'];
+			$inputChild['position'] = CHILD_PAGE;
+			$id = Advertise::create($inputChild)->id;
+			$commonModelId = CommonModel::create(array('model_name' => 'CategoryParent', 'model_id' => Input::get('model_id')))->id;
+			$imageUrl = CommonSeo::uploadImage(Input::get('model_id'), UPLOAD_ADVERTISE, 'image_url', 'content');
+			Advertise::find($id)->update(array('image_url' => $imageUrl));
+			AdvertisePosition::create(array(
+				'common_model_id' => $commonModelId,
+				'advertisement_id' => $id,
+				'name' => BOTTOM,
+				'status' => Input::get('status'),
+			));
+			return Redirect::action('AdvertiseController@indexChild')->with('message', 'tạo mới thành công');
+		}
+		else {
+			$inputChild['adsense'] = Input::get('adsense');
+			$inputChild['position'] = CHILD_PAGE;
+			$id = Advertise::create($inputChild)->id;
+			$commonModelId = CommonModel::create(array('model_name' => 'CategoryParent', 'model_id' => Input::get('model_id')))->id;
+			AdvertisePosition::create(array(
+				'common_model_id' => $commonModelId,
+				'advertisement_id' => $id,
+				'name' => BOTTOM,
+				'status' => Input::get('status'),
+			));
+			return Redirect::action('AdvertiseController@indexChild')->with('message', 'tạo mới thành công');
+		}
 
 	}
 	public function editChild($id, $modelId)
@@ -135,16 +164,30 @@ class AdvertiseController extends AdminController {
 		$status = Input::get('status');
 		$input = Input::except('_token', '_method', 'status', 'position');
 		$advertise = Advertise::find($id);
-		$imageUrl = CommonSeo::uploadImage(CommonModel::find($modelId)->model_id, UPLOAD_ADVERTISE, 'image_url', 'content', $advertise->image_url);
-		$input['image_url'] = $imageUrl;
-		$input['adsense'] = Input::get('adsense');
-		$advertise->update($input);
-		CommonModel::find($modelId)->update(['model_id' => Input::get('model_id')]);
-		AdvertisePosition::where('common_model_id', $modelId)
-							->where('advertisement_id', $id)
-							->first()
-							->update(['status' => $status]);
-		return Redirect::action('AdvertiseController@indexChild')->with('message', 'Tạo mới thành công');
+		// dd($input);
+		if ($input['ad-select'] == 1) {
+			$imageUrl = CommonSeo::uploadImage(CommonModel::find($modelId)->model_id, UPLOAD_ADVERTISE, 'image_url', 'content', $advertise->image_url);
+			$input['image_url'] = $imageUrl;
+			$advertise->update($input);
+			CommonModel::find($modelId)->update(['model_id' => Input::get('model_id')]);
+			AdvertisePosition::where('common_model_id', $modelId)
+								->where('advertisement_id', $id)
+								->first()
+								->update(['status' => $status]);
+			return Redirect::action('AdvertiseController@indexChild')->with('message', 'Tạo mới thành công');
+
+		}
+		else {
+			$input['adsense'] = Input::get('adsense');
+			$advertise->update($input);
+			CommonModel::find($modelId)->update(['model_id' => Input::get('model_id')]);
+			AdvertisePosition::where('common_model_id', $modelId)
+								->where('advertisement_id', $id)
+								->first()
+								->update(['status' => $status]);
+			return Redirect::action('AdvertiseController@indexChild')->with('message', 'Tạo mới thành công');
+		}
+
 	}
 
 	public function destroyChild($id)
