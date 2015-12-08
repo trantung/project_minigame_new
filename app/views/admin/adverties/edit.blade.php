@@ -22,7 +22,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::select('position', [1 => 'Header', 2 => 'Footer'], $advertise->position) }}
+						   {{ Form::select('position', [1 => 'Header', 2 => 'Footer', 4 => 'Content'], $advertise->position) }}
 						</div>
 					</div>
 				</div>
@@ -30,9 +30,9 @@
 					<label for="name">Loại quảng cáo</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" <?php if($advertise->image_url){echo 'checked=""';} ?> />
+						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" <?php if($advertise->image_url){echo 'checked=""';} ?> value="1"/>
 						   <label for="ad-select-image" onclick="adSelect()">Quảng cáo ảnh</label>&nbsp;&nbsp;&nbsp;
-						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()"  <?php if($advertise->adsense){echo 'checked=""';} ?> />
+						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()"  <?php if($advertise->adsense){echo 'checked=""';} ?> value="2"/>
 						   <label for="ad-select-adsense" onclick="adSelect()">Quảng cáo Adsense</label>
 						</div>
 					</div>

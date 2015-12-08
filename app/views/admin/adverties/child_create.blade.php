@@ -29,9 +29,9 @@
 					<label for="name">Loại quảng cáo</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" checked="" />
+						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" checked="" value="1" />
 						   <label for="ad-select-image" onclick="adSelect()">Quảng cáo ảnh</label>&nbsp;&nbsp;&nbsp;
-						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()" />
+						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()" value="2" />
 						   <label for="ad-select-adsense" onclick="adSelect()">Quảng cáo Adsense</label>
 						</div>
 					</div>

@@ -356,6 +356,9 @@ function getPositionAdvertise($position)
 	if ($position == CHILD_PAGE) {
 		return 'Content';
 	}
+	if ($position == CHILD_PAGE_RELATION) {
+		return 'Content';
+	}
 }
 function getStatusAdvertise($status)
 {

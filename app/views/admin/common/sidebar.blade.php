@@ -93,7 +93,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header và Footer</a></li>
             @if(!Admin::isSeo())
-            <li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Content</a></li>
+            <li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Box hiển thị</a></li>
             @endif
           </ul>
       </li>
