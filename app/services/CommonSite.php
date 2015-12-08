@@ -106,9 +106,9 @@ class CommonSite
         if($seoMeta->description_fb == '') {
             $seoMeta->description_fb = limit_text(strip_tags($meta->description), TEXTLENGH_DESCRIPTION);
         }
-        if($seoMeta->image_url_fb == '') {
-            $seoMeta->image_url_fb = url(UPLOAD_GAME_AVATAR . '/' . $meta->image_url);
-        }
+        // if($seoMeta->image_url_fb == '') {
+        //     $seoMeta->image_url_fb = url(UPLOAD_GAME_AVATAR . '/' . $meta->image_url);
+        // }
         return $seoMeta;
     }
 
