@@ -28,6 +28,10 @@
 
 		</div>
 
+		<div class="slideGame">
+			@include('site.game.slide', array('slideId' => $game->slide_id))
+		</div>
+
 		<div class="detail">{{ $game->description }}</div>
 
 		<div class="btn-block-center">
