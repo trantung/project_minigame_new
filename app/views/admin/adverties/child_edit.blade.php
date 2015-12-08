@@ -29,9 +29,9 @@
 					<label for="name">Loại quảng cáo</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" <?php if($advertise->image_url){echo 'checked=""';} ?> />
+						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" <?php if($advertise->image_url){echo 'checked=""';} ?> value="1"/>
 						   <label for="ad-select-image" onclick="adSelect()">Quảng cáo ảnh</label>&nbsp;&nbsp;&nbsp;
-						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()"  <?php if($advertise->adsense){echo 'checked=""';} ?> />
+						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()"  <?php if($advertise->adsense){echo 'checked=""';} ?> value="2"/>
 						   <label for="ad-select-adsense" onclick="adSelect()">Quảng cáo Adsense</label>
 						</div>
 					</div>
@@ -50,7 +50,7 @@
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::file('image_url', array('id' => 'image_url')) }}
-								<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .$modelId . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
+								<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .CommonModel::find($modelId)->model_id . '/' . $advertise->image_url) }}" ,width="100px", height="100px"  />
 							</div>
 						</div>
 					</div>

@@ -46,7 +46,7 @@ class SiteNewsController extends SiteController {
 	public function show($slug)
 	{
 		$inputNew = AdminNew::findBySlug($slug);
-		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->limit(PAGINATE_RELATED)->get();
+		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
 		return View::make('site.News.showNews')->with(compact('inputNew', 'inputRelated'));
 	}
 
