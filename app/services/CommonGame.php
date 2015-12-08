@@ -366,11 +366,13 @@ class CommonGame
                     ->where('status', ENABLED)
     				->where('start_date', '<=', $now)
     				->where('parent_id', '!=', GAMEFLASH)
+                    ->orderBy(DB::raw('RAND()'))
     				->limit($limit)->get();
     		} else {
     			$listGame = Game::where('parent_id', $parentId)
                     ->where('status', ENABLED)
     				->where('start_date', '<=', $now)
+                    ->orderBy(DB::raw('RAND()'))
     				->limit($limit)->get();
     		}
     		return $listGame;
