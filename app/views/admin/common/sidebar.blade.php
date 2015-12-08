@@ -142,11 +142,7 @@
         </a>
       </li>
       @endif -->
-      <li>
-        <a href="{{ action('ManagerController@index') }}">
-          <i class="fa fa-users"></i> <span>Quản lý tài khoản hệ thống</span>
-        </a>
-      </li>
+   
     </ul>
   </section>
   <!-- /.sidebar -->
