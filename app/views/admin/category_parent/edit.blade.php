@@ -50,27 +50,29 @@
 						</div>
 						<!-- /.box-body -->
 					</div>
-					@if(Request::segment(3) != CONTENT_SEGMENT)
-					<div class="col-sm-6">
-						<div class="box-body table-responsive no-padding">
-							<table class="table table-bordered">
-								<tr>
-									<th>Tên thể loại game</th>
-									<th style="width: 10px;">Mức ưu tiên</th>
-									<th>Chọn</th>
-								</tr>
-								@foreach(Type::all() as $key => $value)
+					@if(!Admin::isSeo())
+						@if(Request::segment(3) != CONTENT_SEGMENT)
+						<div class="col-sm-6">
+							<div class="box-body table-responsive no-padding">
+								<table class="table table-bordered">
 									<tr>
-										<td>{{ $value->name }}</td>
-										<td><input type="text" value="{{ getWeightNumberType($value->id, $inputCategory->id) }}" name="weight_number_gametype[{{ $value->id }}]" /></td>
-										<td>
-											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" {{ checkBoxChecked($value->id, $inputCategory->id) }} />
-										</td>
+										<th>Tên thể loại game</th>
+										<th style="width: 10px;">Mức ưu tiên</th>
+										<th>Chọn</th>
 									</tr>
-								@endforeach
-							</table>
+									@foreach(Type::all() as $key => $value)
+										<tr>
+											<td>{{ $value->name }}</td>
+											<td><input type="text" value="{{ getWeightNumberType($value->id, $inputCategory->id) }}" name="weight_number_gametype[{{ $value->id }}]" /></td>
+											<td>
+												<input type="checkbox" name="type_id[]" value="{{ $value->id }}" {{ checkBoxChecked($value->id, $inputCategory->id) }} />
+											</td>
+										</tr>
+									@endforeach
+								</table>
+							</div>
 						</div>
-					</div>
+						@endif
 					@endif
 				</div>
 
