@@ -143,4 +143,15 @@ class AdminSlideController extends AdminController {
 		AdminImage::find($id)->delete();
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['keyword']) {
+			return Redirect::action('AdminSlideController@index');
+		}
+		$slides = AdminSlide::where('name', 'like', '%'.$input['keyword'].'%')->paginate(PAGINATE_SLIDE);
+		// dd($input);
+		return View::make('admin.slider.index')->with(compact('slides'));
+	}
+
 }

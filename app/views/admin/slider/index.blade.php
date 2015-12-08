@@ -5,6 +5,18 @@
 @stop
 
 @section('content')
+<div class="margin-bottom">
+	{{ Form::open(array('action' => 'AdminSlideController@search', 'method' => 'GET')) }}
+		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Từ khóa</label>
+		  	<input type="text" name="keyword" class="form-control" placeholder="Search" />
+		</div>
+		<div class="input-group" style="display: inline-block; vertical-align: bottom; margin-top: 15px;">
+			<input type="submit" value="Search" class="btn btn-primary" />
+		</div>
+	{{ Form::close() }}
+</div>
+
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('AdminSlideController@create') }}" class="btn btn-primary">Thêm mới slide</a>
