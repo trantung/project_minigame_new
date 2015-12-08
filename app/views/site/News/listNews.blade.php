@@ -25,7 +25,7 @@
 						[{{ $value->typeNew->name }}] {{ limit_text($value->title, TEXTLENGH) }}
 					</a>
 				</h3>
-				<p>{{ limit_text($value->description, TEXTLENGH_DESCRIPTION) }}</p>
+				<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
 			</div>
 		</div>
 	@endforeach

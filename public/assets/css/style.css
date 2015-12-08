@@ -1194,12 +1194,6 @@ h1.title {
     padding: 0 10px 10px
 }
 
-<<<<<<< HEAD
-/*admin cuongnt todo*/
-
-
-=======
->>>>>>> 998151f570f2e981dd0386f833e8d18032f84901
 .playbox {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -1252,18 +1246,44 @@ h1.title {
 .list-text p {
     text-align: justify;
 }
+@media (max-width: 1024px) {
+    .list-text {
+        width: 680px;
+    }
+}
+@media (max-width: 768px) {
+    .list-text {
+        width: 480px;
+    }
+}
+@media (max-width: 600px) {
+    .list-text {
+        width: 320px;
+    }
+}
 @media (max-width: 480px) {
     .list-image {
         width: 100px;
     }
     .list-text {
         padding-left: 5px;
+        width: 270px;
     }
     .list-text h3 {
         margin-bottom: 0;
     }
     .list-text p {
         margin-bottom: 0;
+    }
+}
+@media (max-width: 400px) {
+    .list-text {
+        width: 220px;
+    }
+}
+@media (max-width: 320px) {
+    .list-text {
+        width: 180px;
     }
 }
 

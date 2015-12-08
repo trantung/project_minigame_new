@@ -9,7 +9,7 @@ class GameController extends SiteController {
 	 */
 	public function index()
 	{
-		
+
 	}
 
 
@@ -170,8 +170,10 @@ class GameController extends SiteController {
     	$inputGame['count_vote'] = $voteCount;
     	$inputGame['vote_average'] = round($voteAverage, 1);
     	Game::find($input['game_id'])->update($inputGame);
-    	dd(1);
+    	echo '<p><strong>Đánh giá: ' . $inputGame['vote_average'] . '/5</strong></p>';
+    	exit();
     }
+
     /*
     * Get list game android
     * @ return listAndroid
