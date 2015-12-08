@@ -9,6 +9,7 @@
 <!-- inclue Search form 
 
 -->
+@if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		@if(!Request::segment(3) == CONTENT_SEGMENT)
@@ -18,6 +19,7 @@
 		@endif
 	</div>
 </div>
+@endif
 <div class="row">
 	<div class="col-xs-12">
 	  <div class="box">
