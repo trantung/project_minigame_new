@@ -144,7 +144,7 @@ class CommonSearch
 	}
 	//fronend search game
 	public static function searchGame($input){
-		$data = DB::table('games')->where(function ($query) use ($input)
+		$data = Game::where(function ($query) use ($input)
 		{
 			if(getDevice() == MOBILE)
 			{

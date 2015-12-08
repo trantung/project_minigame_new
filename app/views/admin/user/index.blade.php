@@ -51,9 +51,9 @@
 					@if(UserManager::getUsername($value->id)['type_user'] == TYPESYSTEM)
 						<a href="{{action('UserController@changePassword', $value->id) }}" class="btn btn-primary">Đổi mật khẩu</a>
 					@endif
-				{{ Form::open(array('method'=>'DELETE', 'action' => array('UserController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+		<!-- 		{{ Form::open(array('method'=>'DELETE', 'action' => array('UserController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-				{{ Form::close() }}
+				{{ Form::close() }} -->
 				@endif
 			  </td>
 			  </td>
