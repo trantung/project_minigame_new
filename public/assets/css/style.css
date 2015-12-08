@@ -1195,27 +1195,9 @@ h1.title {
     padding-right: 10px;
 }
 
-<<<<<<< HEAD
 /*admin cuongnt todo*/
 
-  .custom-combobox {
-    position: relative;
-    display: inline-block;
-    background: #000000;
-  }
-  .custom-combobox-toggle {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-left: -1px;
-    padding: 0;
-  }
-  .custom-combobox-input {
-    margin: 0;
-    padding: 5px 10px;
 
-  }
-=======
 .playbox {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -1333,4 +1315,3 @@ h1.title {
 .related ul li a i.fa {
 
 }
->>>>>>> 4d6c9deb8a31c16110be08a6862d99a770ac7fda
