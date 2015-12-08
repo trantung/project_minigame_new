@@ -297,7 +297,7 @@ class CommonGame
                         ->where('parent_id', '!=', GAMEFLASH)
                         ->where('start_date', '<=', $now)
                         ->orderBy($arrange, 'desc')
-                        ->paginate(PAGINATE_LISTGAME);
+                        ->paginate(PAGINATE_MOBILE);
                 } else {
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
@@ -312,7 +312,7 @@ class CommonGame
                         ->where('parent_id', '!=', GAMEFLASH)
                         ->where('start_date', '<=', $now)
                         ->orderBy($arrange, 'desc')
-                        ->limit(PAGINATE_BOXGAME)->get();
+                        ->limit(PAGINATE_MOBILE)->get();
                 } else {
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
