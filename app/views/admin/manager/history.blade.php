@@ -12,9 +12,13 @@
 	  <div class="box">
 		<div class="box-header">
 			<h3 class="box-title">Lịch sử đăng nhập</h3>
-			{{ Form::open(array('method'=>'POST', 'action' => array('ManagerController@deleteHistory', $logEdit->first()->history_id), 'style' => 'display: inline-block;')) }}
-				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-			{{ Form::close() }}
+			@if($logEdit->first())
+				{{ Form::open(array('method'=>'POST', 'action' => array('ManagerController@deleteHistory', $logEdit->first()->history_id), 'style' => 'display: inline-block;')) }}
+					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				{{ Form::close() }}
+			@else
+				Thành viên này chưa đăng nhập lần nào
+			@endif
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
