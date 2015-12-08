@@ -59,7 +59,7 @@ define('ENABLED', 1);
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game
-define('GAMEFLASH', 1);
+define('GAMEFLASH', 7);
 define('GAMEHTML5', 2);
 define('GAMEOFFLINE', 3);
 //history action
@@ -88,8 +88,8 @@ define('GAME_DOWNLOAD', 5);
 define('POLICY', 1);
 define('ABOUT_POLICY', 2);
 //define paging frontend
-define('PAGINATE_BOXGAME', 6);
-define('PAGINATE_LISTGAME', 6);
+define('PAGINATE_BOXGAME', 12);
+define('PAGINATE_LISTGAME', 12);
 //status user
 define('ACTIVEUSER', 'Kích hoạt');
 define('INACTIVEUSER', 'Chưa kích hoạt');
@@ -126,5 +126,5 @@ define('TEXTLENGH', 30);
 define('NO_GAME', 0);
 //define message comment
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
-define('TEXTLENGH_DESCRIPTION', 120);
+define('TEXTLENGH_DESCRIPTION', 154);
 define('PAGINATE_RELATED', 6);

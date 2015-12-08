@@ -7,6 +7,24 @@
         <div id="5" class="rate-btn-5 rate-btn"></div>
     </div>
 </div>
+<div id="modal-vote-alert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">Cảm ơn bạn đã bình chọn!</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     // rating script
     $(function(){
@@ -31,6 +49,8 @@
                 data: dataRate,
                 success:function(data){
                     // window.location.reload();
+                    $('#modal-vote-alert').modal();
+                    $('#rating').html(data);
                 }
             });
 
