@@ -7,15 +7,16 @@
 @section('content')
 
 <div class="box">
-	<h3>{{ $game->name }}</h3>
+
+	@include('site.game.breadcrumbgame', array('game' => $game))
 
 	<!-- WEB -->
-	<div class="row web">
+	<div class="web">
 
-		<div class="web_avatar">
+		<div class="game_avatar">
 			<img alt="{{ $game->name }}" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $game->image_url) }}" />
 		</div>
-		<div class="web_title">
+		<div class="game_title">
 
 			<h1 class="title">{{ $game->name }}</h1>
 
@@ -23,28 +24,21 @@
 
 			<p>{{ getZero($game->count_download) }} lượt tải</p>
 
-			@include('site.game.social', array('id' => $game->id))
+			<div class="social-top">@include('site.game.social', array('id' => $game->id))</div>
 
 		</div>
 
-		<div class="col-xs-12">
-			<div class="detail">
-				{{ $game->description }}
-			</div>
+		<div class="detail">{{ $game->description }}</div>
 
-			<p class="center">
-				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
-			</p>
-
-			@include('site.game.scriptcountdownload', array('id' => $game->id, 'url' => url(CommonGame::getUrlDownload($game))))
-
-			<div class="center">
-				@include('site.game.vote', array('id' => $game->id))
-
-				@include('site.game.social', array('id' => $game->id))
-			</div>
-
+		<div class="btn-block-center">
+			<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
 		</div>
+
+		@include('site.game.scriptcountdownload', array('id' => $game->id, 'url' => url(CommonGame::getUrlDownload($game))))
+
+		@include('site.game.vote', array('id' => $game->id))
+
+		@include('site.game.social', array('id' => $game->id))
 
 	</div>
 

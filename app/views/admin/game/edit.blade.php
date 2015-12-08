@@ -39,64 +39,7 @@
 							{{ Form::file('image_url') }}
 							<img class="image_fb" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $inputGame->image_url) }}" />
 						</div>
-						<div class="form-group">
-							<label for="name">Mô tả</label>
-							{{ Form::textarea('description', $inputGame->description, array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
-						</div>
-						<div class="form-group">
-							<label for="">Upload game</label>
-							<input type="checkbox" id="checkUpload" name="checkUpload" onclick="checkUploadAction();" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" disabled @endif  />
-							{{ Form::file('link_upload_game', array('id' => 'link_upload_game')) }}
-							<strong id="fileNameUpload">{{ $inputGame->link_upload_game }}</strong>
-						</div>
-
-						<div class="form-group link_download">
-							<label>Link download game</label>
-							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" onclick="checkLinkDownloadAction();" @if($inputGame->link_download) checked="checked"  disabled @endif />
-							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" value="{{ $inputGame->link_download }}" />
-						</div>
-
-						<div class="form-group">
-							<label for="">Tên game</label>
-							<input type="text" name="link_url" class="form-control" placeholder="Tên game" value="{{ $inputGame->link_url }}" />
-						</div>
-
-						<div class="form-group">
-							<label for="">Mức ưu tiên</label>
-							{{ Form::text('weight_number', $inputGame->weight_number , textParentCategory('Mức ưu tiên')) }}
-						</div>
-
-						<div class="form-group blockDisabled">
-							<label for="">Cơ chế lưu điểm</label>
-							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control blockDisabled')) }}
-						</div>
-
-						<div class="form-group">
-							<label>Gname</label>
-							{{ Form::text('gname', $inputGame->gname , textParentCategory('Gname')) }}
-						</div>
-
-						<div class="form-group">
-			                <label>Ngày đăng</label>
-			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
-		              	</div>
-
-		              	<div class="form-group">
-			                <label>Trạng thái</label>
-			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
-		              	</div>
-		              	<div class="form-group">
-			                <label>Slide</label>
-			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id) }}
-		              	</div>
-						<hr />
-						<h1>SEO META</h1>
-
-						{{-- include common/meta.blade.php --}}
-						@include('admin.common.meta', array('inputSeo' => $inputSeo, 'pathToImageSeo' => UPLOADIMG . '/'.FOLDER_SEO_GAME.'/'. $inputGame->id . '/'))
-
 					</div>
-					<!-- /.box-body -->
 				</div>
 				<div class="col-sm-6">
 					<div class="box-body table-responsive">
@@ -122,6 +65,73 @@
 							</table>
 						</div>
 					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="box-body">
+						<div class="form-group">
+							<label for="name">Mô tả</label>
+							{{ Form::textarea('description', $inputGame->description, array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="box-body">
+						<div class="form-group">
+							<label for="">Upload game</label>
+							<input type="checkbox" id="checkUpload" name="checkUpload" onclick="checkUploadAction();" @if($inputGame->link_upload_game && !$inputGame->link_download) checked="checked" disabled @endif  />
+							{{ Form::file('link_upload_game', array('id' => 'link_upload_game')) }}
+							<strong id="fileNameUpload">{{ $inputGame->link_upload_game }}</strong>
+						</div>
+
+						<div class="form-group link_download">
+							<label>Link download game</label>
+							<input type="checkbox" id="checkLinkDownload" name="checkLinkDownload" onclick="checkLinkDownloadAction();" @if($inputGame->link_download) checked="checked"  disabled @endif />
+							<input type="text" name="link_download" id="link_download" class="form-control link_download" placeholder="Link download game" value="{{ $inputGame->link_download }}" />
+						</div>
+
+						<div class="form-group">
+							<label for="">Tên file</label>
+							<input type="text" name="link_url" class="form-control" placeholder="Tên game" value="{{ $inputGame->link_url }}" />
+						</div>
+
+						<div class="form-group">
+							<label for="">Mức ưu tiên</label>
+							{{ Form::text('weight_number', $inputGame->weight_number , textParentCategory('Mức ưu tiên')) }}
+						</div>
+
+						<div class="form-group blockDisabled">
+							<label for="">Cơ chế lưu điểm</label>
+							{{ Form::select('score_status', saveScore(), $inputGame->score_status, array('class' => 'form-control blockDisabled')) }}
+						</div>
+
+						<div class="form-group">
+							<label>Gname</label>
+							{{ Form::text('gname', $inputGame->gname , textParentCategory('Gname')) }}
+						</div>
+
+						<div class="form-group">
+			                <label>Lịch xuất bản</label>
+			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
+		              	</div>
+
+		              	<div class="form-group">
+			                <label>Trạng thái</label>
+			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
+		              	</div>
+		              	<div class="form-group">
+			                <label>Slide</label>
+			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id) }}
+		              	</div>
+						<hr />
+						<h1>SEO META</h1>
+
+						{{-- include common/meta.blade.php --}}
+						@include('admin.common.meta', array('inputSeo' => $inputSeo, 'pathToImageSeo' => UPLOADIMG . '/'.FOLDER_SEO_GAME.'/'. $inputGame->id . '/'))
+
+					</div>
+					<!-- /.box-body -->
+				</div>
+				
 					{{-- <div class="box-body table-responsive">
 						<h4>Chọn chuyên mục</h4>
 						<div class="overflow-box">
@@ -141,7 +151,6 @@
 							{{-- </table>
 						</div>
 					</div> --}}
-				</div>
 			</div>
 			<div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}

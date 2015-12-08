@@ -16,7 +16,11 @@ class CommonLog
 
 	public static function updateHistory($model_name, $model_id)
 	{
-		$id = AdminHistory::where(array('model_name' => $model_name, 'model_id' => $model_id))->first()->id;
+		$history = AdminHistory::where(array('model_name' => $model_name, 'model_id' => $model_id))->first();
+		if(!$history) {
+			return self::insertHistory($model_name, $model_id);
+		}
+		$id = $history->id;
 		$input = array();
 		$input['model_name'] = $model_name;
 		$input['model_id'] = $model_id;

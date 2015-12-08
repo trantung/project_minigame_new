@@ -59,13 +59,14 @@ define('ENABLED', 1);
 define('SAVESCORE', 1);
 define('UNSAVESCORE', 2);
 //category game
-define('GAMEFLASH', 7);
+define('GAMEFLASH', 1);
 define('GAMEHTML5', 2);
 define('GAMEOFFLINE', 3);
 //history action
 define('CREATE', 'Create');
 define('EDIT', 'Edit');
 define('REMOVE', 'Remove');
+define('LOGIN', 'Login');
 //define device
 define('SMART_DEVICE', 'Smart device');
 define('COMPUTER_DEVICE', 'Computer');
@@ -73,6 +74,7 @@ define('COMPUTER_DEVICE', 'Computer');
 define('HEADER', 1);
 define('Footer', 2);
 define('CHILD_PAGE', 3);
+define('CHILD_PAGE_RELATION', 4);
 //advertise url image
 define('UPLOAD_ADVERTISE', '/images/advertise');
 define('BOTTOM', 'bottom');
@@ -86,7 +88,7 @@ define('GAME_DOWNLOAD', 5);
 define('POLICY', 1);
 define('ABOUT_POLICY', 2);
 //define paging frontend
-define('PAGINATE_BOXGAME', 12);
+define('PAGINATE_BOXGAME', 6);
 define('PAGINATE_LISTGAME', 6);
 //status user
 define('ACTIVEUSER', 'Kích hoạt');
@@ -109,8 +111,8 @@ define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
 //facebook
-define('APP_ID', '797256200383541');
-define('APP_SECRET', '7d11391cdb8f8091087f1d617daa7a6a');
+define('APP_ID', '1008308405878197');
+define('APP_SECRET', 'a758055e09aef79f81eb7dd4f4588be7');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
 //defune page comment fron-end
@@ -119,9 +121,10 @@ define('PAGE_COMMENT', 5);
 define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
 define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
 define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');
-define('TEXTLENGH', 15);
+define('TEXTLENGH', 30);
 //define total game if count = 0
 define('NO_GAME', 0);
 //define message comment
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
-
+define('TEXTLENGH_DESCRIPTION', 120);
+define('PAGINATE_RELATED', 6);

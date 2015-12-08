@@ -9,7 +9,7 @@ class FeedbackGameController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputFeedbackGame = GameErrors::orderBy('id', 'desc')->paginate(PAGINATE);
+		$inputFeedbackGame = GameErrors::where('status', INACTIVE)->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.feedback_game.index')->with(compact('inputFeedbackGame'));
 	}
 
@@ -105,6 +105,26 @@ class FeedbackGameController extends AdminController {
 		$inputFeedbackGame = CommonSearch::seachFeedbackGame($input);
 		return View::make('admin.feedback_game.index')->with(compact('inputFeedbackGame'));
 	}
-
+	// Edit weight number and status Comment index page
+	public function updateIndexData()
+	{
+		$input = array();
+		$commentId = Input::get('feedback_game_id');
+		foreach($commentId as $key => $value) {
+			$input['status'] = ACTIVE;
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+	public function updateInActive()
+	{
+		$input = array();
+		$commentId = Input::get('feedback_game_id');
+		foreach($commentId as $key => $value) {
+			$input['status'] = INACTIVE;
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
 
 }

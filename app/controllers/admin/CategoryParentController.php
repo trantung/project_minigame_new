@@ -159,9 +159,23 @@ class CategoryParentController extends AdminController {
 	public function destroy($id)
 	{
 		$dataParent = CategoryParent::find($id)->first();
+		
+		if($dataParent->position !=  CONTENT)
+		{
+			$countgame =  countBoxGame($id);
+			if(!$countgame)
+			{
+				CommonNormal::delete($id);
+				return Redirect::action('CategoryParentController@contentIndex');
+			}
+			return Redirect::action('CategoryParentController@contentIndex')->with('message', 'Chuyên mục này tồn tại game không xóa được!');
+		}
 		CommonNormal::delete($id);
-		if($dataParent->position ==  CONTENT) 
+		if($dataParent->position ==  CONTENT)
+		{
+			dd(991);
 			return Redirect::action('CategoryParentController@index');
-        return Redirect::action('CategoryParentController@contentIndex');
+		} 
+       
 	}
 }

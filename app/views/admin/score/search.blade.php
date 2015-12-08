@@ -12,6 +12,10 @@
             <label>Sắp xếp điểm</label>
             {{ Form::select('sortByScore', orderByScore(), null, array('class' =>'form-control')) }}
         </div>
+         <div class="input-group" style="width: 150px; display:inline-block;">
+            <label>Trạng thái</label>
+            {{ Form::select('status', ['' => '--chọn' ]+selectActive(), null, array('class' =>'form-control')) }}
+        </div>
         <div class="input-group" style="width: 150px; display:inline-block;">
             <label>Từ ngày</label>
             <input type="text" name="start_date" class="form-control" id="start_date" placeholder="Từ ngày" />

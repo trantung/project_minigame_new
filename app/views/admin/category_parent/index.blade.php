@@ -33,7 +33,13 @@
 			  @if(!Request::segment(3) == CONTENT_SEGMENT)
 			  	<th>Tổng số thể loại</th>
 			  @endif
-			  <th>Tổng số game</th>			  
+			  
+			  @if(!Request::segment(3) != CONTENT_SEGMENT)		
+			  <th>Tổng số game</th>	  
+			  <th>Tổng số xem</th>			  
+			  <th>Tổng số chơi</th>			  
+			  <th>Tổng số tải</th>	
+			  @endif		  
 			  <th style="width:200px;">Action</th>
 			</tr>
 			@foreach($categoryParents as $categoryParent)
@@ -43,7 +49,14 @@
 					@if(!Request::segment(3) == CONTENT_SEGMENT)
 						<td>{{ countType($categoryParent->id) }}</td>
 					@endif
-					<td>{{ countParentGame($categoryParent->id) }}</td>
+					
+					<!-- todo -->
+					 @if(!Request::segment(3) != CONTENT_SEGMENT)	
+					 <td>{{ countBoxGame($categoryParent->id) }}</td>
+					<td>{{ countBoxView($categoryParent->id) }}</td>
+					<td>{{ countBoxPlay($categoryParent->id) }}</td>
+					<td>{{ countBoxDowload($categoryParent->id) }}</td>
+					@endif
 					<td>
 					 	@if(Request::segment(3) == CONTENT_SEGMENT)
 					 	<!-- content -->

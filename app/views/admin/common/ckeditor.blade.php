@@ -1,5 +1,4 @@
 <script src="{{ asset('admins/ckeditor/ckeditor.js')}}"></script>
-<script src="{{ asset('admins/ckeditor/adapters/jquery.js') }}"></script>
 <script>
     CKEDITOR.replace( 'editor1',
     {

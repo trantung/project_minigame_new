@@ -6,42 +6,38 @@
 
 @section('content')
 
-
 @include('site.common.ad', array('adPosition' => CHILD_PAGE, 'modelName' => 'CategoryParent', 'modelId' => 1))
-<div class="ad">
-		<h4>Kết quả tìm kiếm game</h4>
+
+<div class="list">
+
+	<div class="title_center">
+		<h1>Kết quả tìm kiếm game</h1>
 	</div>
-@foreach($inputsearchGame as $value)
-<div class="box">
-	<hr/>
-	<div class="table_container">
-		<div class="table-row">
-			<div class="col col_image_avata">
-				<a href="{{ CommonGame::getUrlGame($value->slug) }}">	
+
+	@foreach($inputsearchGame as $value)
+		<div class="list-item">
+			<div class="list-image">
+				<a href="{{ CommonGame::getUrlGame($value->slug) }}">
 					<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
 				</a>
 			</div>
-			<div class="col">
-				<a href="{{ CommonGame::getUrlGame($value->slug) }}">
-					<strong>{{ limit_text($value->name, TEXTLENGH) }}</strong>
-				</a>
-				</br>
-		
-				@include('site.common.rate', array('vote_average' => $value->vote_average))
-				</br>
-				{{ getZero($value->count_play) }} lượt chơi
-				</br>
-				{{ $value->description }}
+			<div class="list-text">
+				<h3>
+					<a href="{{ CommonGame::getUrlGame($value->slug) }}">
+						{{ limit_text($value->name, TEXTLENGH) }}
+					</a>
+				</h3>
+				@if($value->parent_id == GAMEOFFLINE)
+					<span>{{ getZero($value->count_download) }} lượt tải</span>
+				@else
+					<span>{{ getZero($value->count_play) }} lượt chơi</span>
+				@endif
+				<p>{{ $value->description }}</p>
 			</div>
 		</div>
-	</div>
+	@endforeach
 </div>
-@endforeach
-<div class="row">
-	<div class="col-xs-12">
-		<ul class="pagination">
-		{{ $inputsearchGame->appends(Request::except('page'))->links() }}
-		</ul>
-	</div>
-</div>
+
+@include('site.common.paginate', array('input' => $inputsearchGame))
+
 @stop

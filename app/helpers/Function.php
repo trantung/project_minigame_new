@@ -168,6 +168,81 @@ function countCategoryDownload($categoryId)
 	return Game::where('parent_id', $categoryId)->sum('count_download');
 }
 
+function countBoxGame($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->count();
+		return $game;
+	}
+	return 0;
+}
+
+function countBoxPlay($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->sum('count_play');
+		return $game;
+	}
+	return 0;
+}
+
+function countBoxView($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->sum('count_view');
+		return $game;
+	}
+	return 0;
+}
+function countBoxDowload($categoryParentId)
+{
+	$categoryParent = GameRelation::where('category_parent_id', $categoryParentId)->first();
+	if ($categoryParent) {
+		$game = Game::where('parent_id', $categoryParent->game_id)->sum('count_download');
+		return $game;
+	}
+	return 0;
+}
+
+function countTypeView($typeId, $parent_id = '')
+{
+	$input  = GameType::where('type_id', $typeId)->lists('game_id');
+	$countview = Game::whereIn('id', $input);
+	if($parent_id)
+		$countview = $countview->where('parent_id', $parent_id);
+	$countview = $countview->sum('count_view');
+	if($countview)
+		return $countview;
+	return 0;
+}
+function countTypePlay($typeId, $parent_id = '')
+{
+	$input  = GameType::where('type_id', $typeId)->lists('game_id');
+	$countview = Game::whereIn('id', $input);
+	if($parent_id)
+		$countview = $countview->where('parent_id', $parent_id);
+	$countview = $countview->sum('count_play');
+	if($countview)
+		return $countview;
+	return 0;
+}
+function countTypeDownload($typeId, $parent_id = '')
+{
+	$input  = GameType::where('type_id', $typeId)->lists('game_id');
+	$countview = Game::whereIn('id', $input);
+	if($parent_id)
+		$countview = $countview->where('parent_id', $parent_id);
+	$countview = $countview->sum('count_download');
+	if($countview)
+		return $countview;
+	return 0;
+}
+
+
+
 function getDevice()
 {
 	$useragent = $_SERVER['HTTP_USER_AGENT'];
@@ -235,6 +310,12 @@ function selectSortBy($sortBy)
 				'count_download_asc' => 'Lượt tải tăng dần',
 				'count_download_desc' => 'Lượt tải giảm dần',
 			);
+		case 'weight_number':
+			return array(
+				'' => '-- chọn',
+				'weight_number_asc' => 'Trọng số tăng dần',
+				'weight_number_desc' => 'Trọng số giảm dần',
+			);
 			break;
 		default:
 			# code...
@@ -288,6 +369,9 @@ function getPositionAdvertise($position)
 		return 'Footer';
 	}
 	if ($position == CHILD_PAGE) {
+		return 'Content';
+	}
+	if ($position == CHILD_PAGE_RELATION) {
 		return 'Content';
 	}
 }
@@ -423,4 +507,27 @@ function checkActive($uri = '')
 		return 'class = "active"';
 	}
 	return;
+}
+//kich hoat or chua kich hoat
+function checkActiveUser($status)
+{
+	if($status == ACTIVE)
+		return ACTIVEUSER;
+	else 
+		return INACTIVEUSER;	
+}
+// đã duyệt or chưa duyệt
+function checkApproveOrReject($status)
+{
+	if($status == ACTIVE)
+		return 'Đã duyệt';
+	else 
+		return 'Chưa duyệt';	
+}
+function selectActive()
+{
+	return array(
+		ACTIVE => ACTIVEUSER,
+		INACTIVE => INACTIVEUSER,
+	);
 }

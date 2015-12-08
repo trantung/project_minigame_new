@@ -14,7 +14,7 @@
 	<div class="col-xs-12">
 	  <div class="box">
 		<div class="box-header">
-		  <h3 class="box-title">Danh sách loại tin</h3>
+		  <h3 class="box-title">Danh sách quảng cáo</h3>
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body table-responsive no-padding">
@@ -24,6 +24,7 @@
 			  <th>Box hiển thị</th>
 			  <th>Link</th>
 			  <th>Image</th>
+			  <th>Adsense</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
@@ -33,8 +34,9 @@
 				  	<td>{{ CategoryParent::find(CommonModel::find($value->common_model_id)->model_id)->name }}</td>
 					<td>{{ Advertise::find($value->advertisement_id)->image_link }}</td>
 					<td>
-						<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .$value->common_model_id . '/' . Advertise::find($value->advertisement_id)->image_url) }}" max-width="400px" height="100px" />
+						<img src="{{ url(UPLOAD_ADVERTISE . '/content' .'/' .CommonModel::find($value->common_model_id)->model_id . '/' . Advertise::find($value->advertisement_id)->image_url) }}" max-width="400px" height="100px" />
 					</td>
+					<td>{{ Advertise::find($value->advertisement_id)->adsense }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
 					<a href="{{  action('AdvertiseController@editChild', [$value->advertisement_id, $value->common_model_id]) }}" class="btn btn-primary">Sửa</a>

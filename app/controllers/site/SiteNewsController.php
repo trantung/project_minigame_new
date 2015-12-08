@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class SiteNewsController extends SiteController {
 
@@ -12,7 +12,6 @@ class SiteNewsController extends SiteController {
 		$now = date('Y-m-d');
 		$inputListNews = AdminNew::whereDate('start_date', '<= ', $now)->orderBy('id', 'desc')->paginate(FRONENDPAGINATE);
 		return View::make('site.News.listNews')->with(compact('inputListNews'));
-		
 	}
 
 
@@ -47,9 +46,9 @@ class SiteNewsController extends SiteController {
 	public function show($slug)
 	{
 		$inputNew = AdminNew::findBySlug($slug);
-		return View::make('site.News.showNews')->with(compact('inputNew'));
+		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
+		return View::make('site.News.showNews')->with(compact('inputNew', 'inputRelated'));
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.

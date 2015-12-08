@@ -11,50 +11,53 @@
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-list"></i> <span>Quản lý chuyên mục</span>
+          <i class="fa fa-list"></i> <span>Quản lý hiển thị</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Menu</a></li>
           <li><a href="{{ action('CategoryParentController@contentIndex') }}"><i class="fa fa-circle-o"></i> Quản lý box hiển thị</a></li>
           @if(!Admin::isSeo())
-          <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý category</a></li>
+          <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý kiểu game</a></li>
           @endif
+          <li>
+                <a href="{{ action('GameTypeController@index') }}">
+                    <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
+                </a>
+          </li>
         </ul>
       </li>
-      <li>
-        <a href="{{ action('GameTypeController@index') }}">
-          <i class="fa fa-gamepad"></i> <span>Quản lý thể loại game</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ action('AdminGameController@index') }}">
-          <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
-        </a>
-      </li>
-      @if(!Admin::isSeo())
-       <li>
-        <a href="{{ action('AdminSlideController@index') }}">
-          <i class="fa fa-picture-o"></i> <span>Quản lý Slider</span>
-        </a>
-      </li>
-      @endif 
-      <li class="treeview">
+      
+       <li class="treeview">
         <a href="#">
-          <i class="fa fa-newspaper-o"></i> <span>Quản lý tin tức</span>
+          <i class="fa fa-list"></i> <span>Quản lý nội dung</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          @if(!Admin::isSeo())
-          <li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
-          @endif
-          <li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
-          
-         
-
+            <li>
+                <a href="{{ action('AdminGameController@index') }}">
+                    <i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
+                </a>
+            </li>
+            @if(!Admin::isSeo())
+                <li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
+            @endif
+            <li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
+            @if(!Admin::isSeo())
+            <li>
+                <a href="{{ action('AdminSlideController@index') }}">
+                    <i class="fa fa-picture-o"></i> <span>Quản lý Slider</span>
+                </a>
+            </li>
+            @endif
         </ul>
-      </li>
-      @if(Admin::isAdmin())
+      </li>      
+      <li>
+        <a href="{{ action('AdminGameController@statisticGame') }}">
+          <i class="fa fa-gamepad"></i> <span>Thống kê Game</span>
+        </a>
+      </li>             
+      @if(!Admin::isSeo())
       <li>
         <a href="{{ action('CommentController@index') }}">
           <i class="fa fa-comments"></i> <span>Quản lý comment</span>
@@ -93,7 +96,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header và Footer</a></li>
             @if(!Admin::isSeo())
-            <li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Content</a></li>
+            <li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Box hiển thị</a></li>
             @endif
           </ul>
       </li>
@@ -133,8 +136,8 @@
       </li>
       @endif
       <li>
-        <a href="{{ action('ManagerController@edit', Auth::admin()->get()->id) }}">
-          <i class="fa fa-users"></i> <span>Sửa thông tin tài khoản</span>
+        <a href="{{ action('ManagerController@index') }}">
+          <i class="fa fa-users"></i> <span>Quản lý tài khoản hệ thống</span>
         </a>
       </li>
     </ul>

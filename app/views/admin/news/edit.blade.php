@@ -51,7 +51,7 @@
 				<div class="form-group">
 					<label for="description">Nội dung tin</label>
 					<div class="row">
-						<div class="col-sm-6">	 
+						<div class="col-sm-12">	 
 							@if(!Admin::isSeo())                 	
 						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1'  )) }}
 						   	@else                 	

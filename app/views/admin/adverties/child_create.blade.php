@@ -20,29 +20,41 @@
 				<div class="form-group">
 					<label for="name">Box hiển thị</label>
 					<div class="row">
-						<div class="col-sm-6">	                  	
+						<div class="col-sm-6">
 						   {{ Form::select('model_id', getNameBoxEnable()) }}
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Link</label>
-					<div class="row">
-						<div class="col-sm-6">	
-							{{ Form::text('image_link', null , textParentCategory('Link')) }}
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="name">Image</label>
+					<label for="name">Loại quảng cáo</label>
 					<div class="row">
 						<div class="col-sm-6">
-							{{ Form::file('image_url', array('id' => 'image_url')) }}
+						   <input name="ad-select" id="ad-select-image" type="radio" onclick="adSelect()" checked="" value="1" />
+						   <label for="ad-select-image" onclick="adSelect()">Quảng cáo ảnh</label>&nbsp;&nbsp;&nbsp;
+						   <input name="ad-select" id="ad-select-adsense" type="radio" onclick="adSelect()" value="2" />
+						   <label for="ad-select-adsense" onclick="adSelect()">Quảng cáo Adsense</label>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="ad-image">
+					<div class="form-group">
+						<label for="name">Link</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::text('image_link', null , textParentCategory('Link')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name">Image</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::file('image_url', array('id' => 'image_url')) }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group ad-adsense">
 					<label for="name">Adsense</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -53,7 +65,7 @@
 				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
-						<div class="col-sm-6">	                  	
+						<div class="col-sm-6">
 						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị']) }}
 						</div>
 					</div>
@@ -64,6 +76,10 @@
 			{{ Form::close() }}
 		  </div>
 		  <!-- /.box -->
+		</div>
 	</div>
 </div>
+
+@include('admin.adverties.script')
+
 @stop

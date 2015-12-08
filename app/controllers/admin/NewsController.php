@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class NewsController extends AdminController {
 
@@ -9,7 +9,7 @@ class NewsController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputNew = AdminNew::orderBy('id', 'asc')->paginate(PAGINATE);		
+		$inputNew = AdminNew::orderBy('id', 'desc')->paginate(PAGINATE);
 
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
@@ -17,7 +17,7 @@ class NewsController extends AdminController {
 	{
 		$input = Input::all();
 		$inputNew = NewsManager::searchNews($input);
-		
+
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
 
@@ -40,8 +40,8 @@ class NewsController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'title'   => 'required' 
-			
+			'title'   => 'required'
+
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -52,6 +52,9 @@ class NewsController extends AdminController {
         } else {
         	//create news
         	$inputNews = Input::only('type_new_id', 'title', 'description','start_date');
+        	if($inputNews['start_date'] == '') {
+        		$inputNews['start_date'] = Carbon\Carbon::now();
+        	}
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
@@ -63,7 +66,7 @@ class NewsController extends AdminController {
 
 			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, CREATE);
-			
+
 			// insert ceo
 			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
 
@@ -108,7 +111,7 @@ class NewsController extends AdminController {
 	{
 		if(!Admin::isSeo()){
 			$rules = array(
-				'title'   => 'required' 
+				'title'   => 'required'
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
@@ -119,9 +122,12 @@ class NewsController extends AdminController {
 	        } else {
 	        	//update News
 	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date');
+	        	if($inputNews['start_date'] == '') {
+	        		$inputNews['start_date'] = Carbon\Carbon::now();
+	        	}
 				CommonNormal::update($id, $inputNews);
-				
-				//update upload image 
+
+				//update upload image
 				$imageNews = AdminNew::find($id);
 				$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
 				CommonNormal::update($id, ['image_url' => $input['image_url']] );
@@ -136,7 +142,7 @@ class NewsController extends AdminController {
 
 			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);
 			return Redirect::action('NewsController@index') ;
-    	
+
 	}
 
 
@@ -161,7 +167,7 @@ class NewsController extends AdminController {
 			return View::make('admin.news.history')->with(compact('history', 'logEdit'));
 		}
 		return Redirect::action('NewsController@index')->with('message', 'Lịch sử game này đã bị xoá');
-		
+
 	}
 
 	public function deleteHistory($id)

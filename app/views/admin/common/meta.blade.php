@@ -28,6 +28,9 @@
 			{{ Form::file('image_url_fb') }}
 			<img class="image_fb" src="{{ url($pathToImageSeo . $inputSeo->image_url_fb) }}" />
 		</div>
+		<div class="form-group">
+			<label for="image_url_fb">{{ $inputSeo->image_url_fb }}</label>
+		</div>
 	</div>
 </div>
 @else

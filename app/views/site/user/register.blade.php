@@ -8,9 +8,6 @@
 
 <div class="box">
 	<h3>Đăng ký tài khoản</h3>
-	<div class=" ad">
-		<h4>Đăng ký tài khoản</h4>
-	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-4">
 			@include('site.common.message')
@@ -43,16 +40,14 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="captcha" class="col-sm-4 control-label">Mã xác nhận (*):</label>
+			<label for="email" class="col-sm-4 control-label label-text">Điều khoản:</label>
 			<div class="col-sm-4">
-				<input type="text" name="captcha" class="form-control" id="captcha" placeholder="Mã xác nhận" maxlength="255" >
-				<br />
-				{{ HTML::image(URL::to('simplecaptcha'),'Captcha') }}
+				<textarea readonly="" class="form-control" name="">{{ Config::get('policy.policy') }}</textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-6">
-				<input type="checkbox" name="vehicle" id="vehicle" value="check" checked> Tôi đồng ý với các quy đinh trên<br>
+				<input type="checkbox" name="vehicle" id="vehicle" value="check" required> Tôi đồng ý với các quy định trên<br>
 			</div>
 		</div>
 		<div class="form-group">
@@ -60,14 +55,6 @@
 				<input type="submit" class="btn btn-primary form-control" value="Đăng ký" onclick="checkAgree();" />
 			</div>
 		</div>
-		<script>
-		function checkAgree() {
-			if (!$('#vehicle').is(':checked')) {
-				alert('Bạn chưa đồng ý với các quy định trên.');
-				return false;
-			}
-		}
-		</script>
 
 	{{ Form::close() }}
 	<div class="clearfix"></div>

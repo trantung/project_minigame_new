@@ -1,8 +1,6 @@
 <script>
 
-	$(document).ready(function() {
-	    checkInputWeightNumber();
-	});
+;
 
 	function toggle(source) {
 		checkboxes = document.getElementsByName('comment_id[]');
@@ -11,31 +9,47 @@
 		}
 	}
 
-	function checkInputWeightNumber()
+	function updateComment()
 	{
-		$('input[name^="weight_number"]').keypress(function(event) {
-	        return /\d/.test(String.fromCharCode(event.keyCode));
-	    });
-	}
-
-	function updateIndexData()
-	{
-		var values1 = $('input:checkbox.comment_id').map(function () {
-		  	return this.value;
-		}).get();
-
-		var values3 = $('select[name^="status"]').map(function () {
-		  	return this.value;
-		}).get();
-
+		var check = $('input:checkbox:checked.comment_id').val();
+		if(!check) 
+			alert('Bạn chưa chọn comment nào!');
+		var values1 = $('input:checkbox:checked.comment_id').map(function () {
+			  	return this.value;
+			}).get();
+		// alert(values1);
 		$.ajax(
 		{
 			type:'post',
-			url: '/admin/comment/updateIndexData',
+			url: '{{ url("/admin/comment/updateIndexData")}}',
 			data:{
 				'comment_id': values1,
-				'weight_number': values2,
-				'statusGame': values3
+			},
+			success: function(data)
+			{
+				if(data) {
+					window.location.reload();
+				}
+			}
+		});
+		// window.location.reload();
+	}
+
+	function updateCommentInactive()
+	{
+		var check = $('input:checkbox:checked.comment_id').val();
+		if(!check) 
+			alert('Bạn chưa chọn comment nào!');
+		var values1 = $('input:checkbox:checked.comment_id').map(function () {
+			  	return this.value;
+			}).get();
+		// alert(values1);
+		$.ajax(
+		{
+			type:'post',
+			url: '{{ url("/admin/comment/updateCommentInactive")}}',
+			data:{
+				'comment_id': values1,
 			},
 			success: function(data)
 			{

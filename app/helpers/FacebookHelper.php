@@ -39,7 +39,7 @@ class FacebookHelper
 
 	public function getGraph()
 	{
-		$request = new FacebookRequest($this->session, 'GET', '/me');
+		$request = new FacebookRequest($this->session, 'GET', '/me?fields=id,name,email');
 		$response = $request->execute();
 		return $response->getGraphObject();
 	}

@@ -21,6 +21,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/', 'AdminController');
 
 	Route::get('/manager/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
+	Route::get('/manager/searchHistory', array('uses' => 'ManagerController@searchHistory', 'as' => 'admin.manager.search'));
+	Route::get('/manager/search/{id}', array('uses' => 'ManagerController@history', 'as' => 'admin.manager.history'));
+	Route::post('/manager/search/{id}', array('uses' => 'ManagerController@deleteHistory', 'as' => 'admin.manager.history.delete'));
 	Route::resource('/manager', 'ManagerController');
 
 	Route::get('/category_parent/content/create', array('uses' => 'CategoryParentController@contentCreate', 'as' => 'content.create'));
@@ -30,6 +33,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/category', 'CategoryController');
 
+	Route::get('/games/Searchstatistic', array('uses' => 'AdminGameController@searchStatisticGame', 'as' => 'admin.games.statistic'));
+	Route::get('/games/statistic', 'AdminGameController@statisticGame');
 	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');
 	Route::post('/games/updateIndexData', 'AdminGameController@updateIndexData');
 	Route::get('/games/search', array('uses' => 'AdminGameController@search', 'as' => 'admin.games.search'));
@@ -37,6 +42,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/games/history/{id}', array('uses' => 'AdminGameController@deleteHistory', 'as' => 'admin.games.history.delete'));
 	Route::resource('/games', 'AdminGameController');
 
+	Route::get('/gametype/search', array('uses' => 'GameTypeController@search', 'as' => 'admin.gametype.search'));
 	Route::resource('/gametype', 'GameTypeController');
 
 	Route::resource('/newstype', 'NewsTypeController');
@@ -53,8 +59,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/comment/search', array('uses' =>  'CommentController@search', 'as' => 'admin.comment.search'));
 	Route::post('/comment/deleteSelected', 'CommentController@deleteSelected');
 	Route::post('/comment/updateIndexData', 'CommentController@updateIndexData');
+	Route::post('/comment/updateCommentInactive', 'CommentController@updateCommentInactive');
 	Route::resource('/comment', 'CommentController');
 
+	Route::post('/score/updateScore', 'ScoreManagerController@updateScore');
 	Route::get('/score/search', array('uses' =>  'ScoreManagerController@search', 'as' => 'admin.score.search'));
 	Route::resource('/score', 'ScoreManagerController');
 
@@ -67,9 +75,13 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::delete('/delete/advertise_child/{id}', 'AdvertiseController@destroyChild');
 	Route::resource('/advertise', 'AdvertiseController');
 
+	Route::post('/feedback/updateIndexData', 'FeedbackController@updateIndexData');
+	Route::post('/feedback/updateInActive', 'FeedbackController@updateInActive');
 	Route::get('/feedback/search', array('uses' =>  'FeedbackController@search', 'as' => 'admin.feedback.search'));
 	Route::resource('/feedback', 'FeedbackController');
 
+	Route::post('/feedback_game/updateIndexData', 'FeedbackGameController@updateIndexData');
+	Route::post('/feedback_game/updateInActive', 'FeedbackGameController@updateInActive');
 	Route::get('/feedback_game/search', array('uses' =>  'FeedbackGameController@search', 'as' => 'admin.feedback_game.search'));
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
@@ -83,20 +95,22 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/policy', 'PolicyController');
 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
+	Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
 	Route::resource('/slider', 'AdminSlideController');
 
+	Route::get('/user/chanpassword/{id}', array('uses' =>  'UserController@changePassword', 'as' => 'admin.user.chanpassword'));
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
 });
 
-// $games = AdminNew::all();
- //foreach ($games as $key => $value) {
- //	if($value->start_date) {
- //		$startDate = convertDateTime($value->start_date);
- //		$value->update(array('start_date' => $startDate));
- //	}
- //}
+// $games = Game::all();
+//  foreach ($games as $key => $value) {
+//  	if($value->start_date) {
+//  		$startDate = convertDateTime($value->start_date);
+//  		$value->update(array('start_date' => $startDate));
+//  	}
+//  }
 // dd(12);
 
 // FRONTEND
@@ -123,7 +137,7 @@ Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 
 Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
 Route::get('/gop-y', array('uses' => 'SiteFeedbackController@create', 'as' =>'feedback'));
-Route::post('/gop-y', array('uses' => 'SiteFeedbackController@store'));
+Route::post('/egop-y', array('uss' => 'SiteFeedbackController@store'));
 Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGame', 'as' =>'error_game'));
 Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
 Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));
@@ -142,13 +156,10 @@ Route::get('/game-binh-chon-nhieu', 'GameController@getListGameVote');
 
 Route::get('/game-choi-nhieu', 'GameController@getListGameplay');
 
+Route::post('/test-menu', 'GameController@testMenu');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');
 
-Route::get('/{type}/{slug}.html', 'GameController@detailGame');
-
-
-
-
-
+Route::get('/{type}/{slug}', 'GameController@detailGame');

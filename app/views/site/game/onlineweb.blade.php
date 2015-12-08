@@ -7,30 +7,48 @@
 @section('content')
 
 <div class="box">
-	<h3>{{ $game->name }}</h3>
+
+	@include('site.game.breadcrumbgame', array('game' => $game))
 
 	<!-- WEB -->
 	<div class="web">
-		<h1 class="title">{{ $game->name }}</h1>
 
-		@include('site.common.rate', array('vote_average' => $game->vote_average))
+		<div class="game_avatar">
+			<img alt="{{ $game->name }}" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $game->image_url) }}" />
+		</div>
+		<div class="game_title">
 
-		<p>{{ getZero($game->count_play) }} lượt chơi</p>
-		<p>{{ $game->description }}</p>
-		<div class="row">
-			<div class="col-sm-9">
-				<p>
-					<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-				</p>
+			<h1 class="title">{{ $game->name }}</h1>
 
-				@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => Request::url() . '?play=true'))
-			</div>
-			<div class="col-sm-3">
-				@include('site.game.score', array('id' => $game->id))
-			</div>
+			@include('site.common.rate', array('vote_average' => $game->vote_average))
+
+			<p>{{ getZero($game->count_play) }} lượt chơi</p>
+
+			<div class="social-top">@include('site.game.social', array('id' => $game->id))</div>
+
 		</div>
 
+		@if($game->parent_id == GAMEHTML5)
+			<div class="btn-click">
+				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+			</div>
+
+			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => CommonGame::getLinkPlayGameHtml5($game)))
+		@endif
+
+		@if($game->parent_id == GAMEFLASH)
+			<div class="playbox">{{ CommonGame::getLinkGame($game) }}</div>
+		@endif
+
+		{{-- @include('site.game.score', array('id' => $game->id)) --}}
+
 		<div class="detail">{{ $game->description }}</div>
+
+		@if($game->parent_id == GAMEHTML5)
+			<div class="btn-block-center">
+				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+			</div>
+		@endif
 
 		@include('site.game.vote', array('id' => $game->id))
 

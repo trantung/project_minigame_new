@@ -45,10 +45,7 @@
 				<th>Tên game</th>
 				<th>Mức ưu tiên</th>
 				<th>Category</th>
-				<th>Lượt xem</th>
 				<th>Lượt chơi</th>
-				<th>Bình chọn</th>
-				<th>Lượt tải</th>
 				<th>Trạng thái</th>
 				<th>Ngày đăng</th>
 				<th style="width:200px;">&nbsp;</th>
@@ -65,15 +62,12 @@
 					@else
 					<td>{{ getZero($value->weight_number) }}</td>
 					@endif
-					<td>{{ Game::find($value->parent_id)->name }}</td>
-					<td>{{ getZero($value->count_view) }}</td>
+					<td>{{ Game::find($value->parent_id)->name.'-'.Type::find($value->type_main)->name }}</td>
 					@if(Admin::isAdmin())
 					<td><input type="text" name="count_play[]" value="{{ getZero($value->count_play) }}" class="onlyNumber" style="width: 50px; text-align: center;" /></td>
 					@else
 					<td>{{ getZero($value->count_play) }}</td>
 					@endif
-					<td>{{ getZero($value->count_vote) }}</td>
-					<td>{{ getZero($value->count_download) }}</td>
 					@if(Admin::isAdmin())
 					<td>{{ Form::select('statusGame[]', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
 					@else

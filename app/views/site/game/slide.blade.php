@@ -4,9 +4,10 @@
 	{{ HTML::style('assets/css/owl.theme.css') }}
 	<!-- Demo -->
 	<style>
-	#owl-demo .item img{
+	#owl-demo .item img {
+		text-align: center;
 		display: block;
-		width: 100%;
+		max-width: 100%;
 		height: auto;
 	}
 	</style>

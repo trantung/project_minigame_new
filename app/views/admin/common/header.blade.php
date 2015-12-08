@@ -5,6 +5,7 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.5 -->
+	{{ HTML::style('adminlte/plugins/jQueryUI/jquery-ui.css') }}
 	{{HTML::style('adminlte/bootstrap/css/bootstrap.min.css') }}
 	<!-- Font Awesome -->
 	{{HTML::style('adminlte/dist/css/font-awesome.min.css') }}
@@ -17,11 +18,13 @@
 			 folder instead of downloading all of them to reduce the load. -->
 	{{HTML::style('adminlte/dist/css/skins/_all-skins.min.css') }}
 	<!-- Date Picker -->
-	{{HTML::style('adminlte/plugins/datepicker/datepicker3.css') }}
+	{{-- {{HTML::style('adminlte/plugins/datepicker/datepicker3.css') }} --}}
 	<!-- Daterange picker -->
-	{{HTML::style('adminlte/plugins/daterangepicker/daterangepicker-bs3.css') }}
+	{{-- {{HTML::style('adminlte/plugins/daterangepicker/daterangepicker-bs3.css') }} --}}
 	<!-- bootstrap wysihtml5 - text editor -->
 	{{-- {{HTML::style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} --}}
+	<!-- Date Time Picker -->
+	{{HTML::style('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,18 +38,21 @@
 	<!-- jQuery UI 1.11.4 -->
 	{{ HTML::script('adminlte/plugins/jQueryUI/jquery-ui.min.js') }}
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
 	</script>
 	<!-- Bootstrap 3.3.5 -->
 	{{ HTML::script('adminlte/bootstrap/js/bootstrap.min.js') }}
 	<!-- daterangepicker -->
-	{{ HTML::script('adminlte/plugins/daterangepicker/moment.min.js') }}
-	{{ HTML::script('adminlte/plugins/daterangepicker/daterangepicker.js') }}
+	{{-- {{ HTML::script('adminlte/plugins/daterangepicker/moment.min.js') }} --}}
+	{{-- {{ HTML::script('adminlte/plugins/daterangepicker/daterangepicker.js') }} --}}
 	<!-- datepicker -->
-	{{ HTML::script('adminlte/plugins/datepicker/bootstrap-datepicker.js') }}
+	{{-- {{ HTML::script('adminlte/plugins/datepicker/bootstrap-datepicker.js') }} --}}
 	<!-- Bootstrap WYSIHTML5 -->
 	{{-- {{ HTML::script('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }} --}}
+	<!-- datetimepicker -->
+	{{ HTML::script('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}
 	<!-- FastClick -->
 	{{ HTML::script('adminlte/plugins/fastclick/fastclick.js') }}
 	<!-- AdminLTE App -->
@@ -54,18 +60,37 @@
 
 	<script>
 	  $(function () {
-	    //Date range picker
-	    $('#start_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#start_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
-	    $('#end_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#end_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
-	    $('#start_update_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#start_update_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
-	    $('#end_update_date').datepicker({
-	    	format: 'yyyy-mm-dd',
+	    $('#end_update_date').datetimepicker({
+	    	format: "yyyy-mm-dd hh:ii:00",
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			forceParse: 0,
 	    });
 	  });
 	</script>

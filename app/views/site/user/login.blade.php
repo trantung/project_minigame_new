@@ -8,9 +8,6 @@
 
 <div class="box">
 	<h3>Đăng nhập tài khoản</h3>
-	<div class=" ad">
-		<h4>Đăng nhập tài khoản</h4>
-	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-4">
 			@include('site.common.message')
