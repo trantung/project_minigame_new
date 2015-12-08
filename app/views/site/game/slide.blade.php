@@ -4,12 +4,13 @@
 	{{ HTML::style('assets/css/owl.theme.css') }}
 	<!-- Demo -->
 	<style>
-	#owl-demo .item img {
-		text-align: center;
-		display: block;
-		max-width: 100%;
-		height: auto;
-	}
+		#owl-demo .itemslide img {
+			text-align: center;
+			display: block;
+			max-width: 100% !important;
+			height: auto;
+			margin: 0 auto;
+		}
 	</style>
 	<script>
 		var time = @if($slide->config_time){{ $slide->config_time * 100 }}@endif;
@@ -29,9 +30,9 @@
 	</script>
 	<div id="demo">
 		<div id="owl-demo" class="owl-carousel">
-		@foreach($slide->images as $image)
-			<div class=""><img src="{{ url(UPLOAD_IMAGE_SLIDE . '/image'. '/' . $slideId . '/' . $image->image_url) }}" alt=""></div>
-		@endforeach
+			@foreach($slide->images as $image)
+				<div class="itemslide"><img src="{{ url(UPLOAD_IMAGE_SLIDE . '/image'. '/' . $slideId . '/' . $image->image_url) }}" alt=""></div>
+			@endforeach
 		</div>
 	</div>
 @endif

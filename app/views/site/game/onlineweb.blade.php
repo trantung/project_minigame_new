@@ -42,6 +42,10 @@
 
 		{{-- @include('site.game.score', array('id' => $game->id)) --}}
 
+		<div class="slideGame">
+			@include('site.game.slide', array('slideId' => $game->slide_id))
+		</div>
+
 		<div class="detail">{{ $game->description }}</div>
 
 		@if($game->parent_id == GAMEHTML5)
