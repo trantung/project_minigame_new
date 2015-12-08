@@ -32,10 +32,12 @@
 									{{ Form::select('position', [1 => 'Menu'], $inputCategory->position, array('class' =>'form-control')) }}
 								@endif
 							</div>
+							@if(!Admin::isSeo())
 							<div class="form-group">
 								<label for="name">Mức ưu tiên</label>
 								{{ Form::select('weight_number', selectWeight_number() ,$inputCategory->weight_number ,  array('class' =>'form-control')) }}
 							</div>
+							@endif
 							@if(Request::segment(3) == CONTENT_SEGMENT)
 							<div class="form-group">
 								<label for="name">Chọn category</label>
