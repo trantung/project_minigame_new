@@ -7,11 +7,8 @@
 @section('content')
 
 <div class="box">
-	<h3>Thông tin tài khoản</h3>
+	<h3>Thông tin tài khoản: {{ Auth::user()->get()->user_name }}</h3>
 	<div class="col-xs-12">
-	<div class=" ad">
-		<h4>{{ Auth::user()->get()->user_name }}</h4>
-	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-4">
 			@include('site.common.message')

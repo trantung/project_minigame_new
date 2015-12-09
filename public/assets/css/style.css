@@ -402,7 +402,7 @@ a.signout {
     line-height: 2 !important;
 }
 a.account-name {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 a.game-favorite i.fa,
 a.game-played i.fa,
@@ -414,6 +414,9 @@ a.game-favorite,
 a.game-played {
     background: #a9a8a6;
     border-bottom: 1px solid #fff !important;
+}
+a.signout {
+    background: #a9a8a6;
 }
 
 .menu-login {
