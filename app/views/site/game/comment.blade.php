@@ -53,17 +53,29 @@
 					</li>
 				@endforeach
 			</ul>
+
+			<a id="loadMore" class="btn btn-primary" href="javascript:void();">Load more</a>
+			{{-- <a id="showLess" href="javascript:void();">Show less</a> --}}
 		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<ul class="pagination">
-				<!-- phan trang -->
-				{{ $inputComment->appends(Request::except('page'))->links() }}
-				</ul>
-			</div>
-		</div>
+
 		{{ Form::close() }}
 		</div>
 
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+	    size_li = $(".comment-list li").size();
+	    x=5;
+	    $('.comment-list li:lt('+x+')').show();
+	    $('#loadMore').click(function () {
+	        x= (x+5 <= size_li) ? x+5 : size_li;
+	        $('.comment-list li:lt('+x+')').show();
+	    });
+	    // $('#showLess').click(function () {
+	    //     x=(x-5<0) ? 5 : x-5;
+	    //     $('.comment-list li').not(':lt('+x+')').hide();
+	    // });
+	});
+</script>
