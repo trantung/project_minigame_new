@@ -155,6 +155,7 @@ class AdminGameController extends AdminController {
         	if(!Admin::isSeo()) {
 
 				$inputGame = CommonGame::inputActionGame($id);
+				
 				//update slide_id
 
 	        	//update game
