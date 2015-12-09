@@ -1365,7 +1365,9 @@ h1.title {
 
 .login-facebook {
     display: block;
+    margin-bottom: 10px;
 }
 .login-google {
     display: block;
+    margin-bottom: 10px;
 }
