@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'vnmini2015@gmail.com', 'name' => 'Vnmini'),
+	'from' => array('address' => 'abcgroupcompany@gmail.com', 'name' => 'ABC-group'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'vnmini2015@gmail.com',
+	'username' => 'abcgroupcompany@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'tunglaso1',
+	'password' => 'Tunglaso1@abc123',
 
 	/*
 	|--------------------------------------------------------------------------

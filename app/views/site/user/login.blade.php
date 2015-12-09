@@ -45,6 +45,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<a href="{{ action('PasswordController@index') }}">Quên mật khẩu?</a>
+				</div>
+			</div>
 		{{ Form::close() }}
 	</div>
 	<div class="clearfix"></div>
