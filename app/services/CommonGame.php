@@ -77,6 +77,8 @@ class CommonGame
     	$inputGame['gname'] = Input::get('gname');
     	$inputGame['slide_id'] = Input::get('slide_id');
     	$inputGame['type_main'] = Input::get('type_main');
+        $inputGame['width'] = Input::get('width');
+        $inputGame['height'] = Input::get('height');
     	return $inputGame;
 	}
 
@@ -357,21 +359,23 @@ class CommonGame
     }
 
     // Other games by parent_id with limit
-    public static function getRelateGame($parentId, $limit)
+    public static function getRelateGame($parentId, $limit, $typeId)
     {
     	$now = Carbon\Carbon::now();
-    	if($parentId && $limit) {
+    	if($parentId && $limit && $typeId) {
     		if(getDevice() == MOBILE) {
     			$listGame = Game::where('parent_id', $parentId)
                     ->where('status', ENABLED)
     				->where('start_date', '<=', $now)
     				->where('parent_id', '!=', GAMEFLASH)
+                    ->where('type_main', $typeId)
                     ->orderBy(DB::raw('RAND()'))
     				->limit($limit)->get();
     		} else {
     			$listGame = Game::where('parent_id', $parentId)
                     ->where('status', ENABLED)
     				->where('start_date', '<=', $now)
+                    ->where('type_main', $typeId)
                     ->orderBy(DB::raw('RAND()'))
     				->limit($limit)->get();
     		}

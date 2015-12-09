@@ -68,6 +68,6 @@
 
 </div>
 
-@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_WEB))
+@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_WEB, 'typeId' => $game->type_main))
 
 @stop

@@ -58,7 +58,7 @@
 
 </div>
 
-@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_MOBILE))
+@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_MOBILE, 'typeId' => $game->type_main))
 
 @stop
 

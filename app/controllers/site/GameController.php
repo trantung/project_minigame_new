@@ -318,4 +318,11 @@ class GameController extends SiteController {
     	return false;
     }
 
+	public function getPage404($type, $slug, $word)
+    {
+		// $game = Game::findBySlug($slug);
+		if ($word) {
+			return View::make('404');
+		}
+    }
 }
