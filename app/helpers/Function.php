@@ -402,6 +402,7 @@ function selectArrange()
 			GAME_VOTE => 'Bình chọn nhiều',
 			GAME_VIEW => 'Xem nhiều',
 			GAME_DOWNLOAD => 'Tải nhiều',
+			GAME_NEWEST => 'Mới nhất',
 		);
 }
 
@@ -413,6 +414,7 @@ function getArrange($arrange)
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
 			GAME_DOWNLOAD => 'count_download',
+			GAME_NEWEST => 'start_date',
 			'' => 'id',
 		);
 	return $arrangeArray[$arrange];
