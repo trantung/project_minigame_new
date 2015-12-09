@@ -6,7 +6,7 @@ a {
 }
 .top {
     /*background: #2b74a1 none repeat scroll 0 0;*/
-    background: rgba(0, 0, 0, 0) url("../images/topbg.jpg") no-repeat scroll 0 100%;
+    background: rgba(0, 0, 0, 0) url("../images/topbg.jpg") no-repeat scroll 100% 100%;
     padding-bottom: 5px;
     padding-top: 5px;
 }
