@@ -180,17 +180,17 @@ class GameController extends SiteController {
     */
     public function getListGameAndroid()
     {
-    	return self::getListGame('android');
+    	return $this->getListGame('android');
     }
 
     public function getListGameVote()
     {
-    	return self::getListGame('vote');
+    	return $this->getListGame('vote');
     }
 
     public function getListGameplay()
     {
-    	return self::getListGame('play');
+    	return $this->getListGame('play');
     }
 
 	/**
@@ -215,17 +215,31 @@ class GameController extends SiteController {
 		if($view == 'android') {
 			$games = $games->where('parent_id', GAMEOFFLINE);
 		}
+		//to do: vote, play for gamehtml5 only
+		if($view == 'vote' || $view == 'play') {
+			$games = $games->where('parent_id', GAMEHTML5);
+		}
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
 		if($view == 'vote') {
+			$count = $this->getCount($count);
 			return View::make('site.game.gamevotemany')->with(compact('games', 'count'));
 		}
 		if($view == 'play') {
+			$count = $this->getCount($count);
 			return View::make('site.game.gameplaymany')->with(compact('games', 'count'));
 		}
 		if($view == 'android') {
 			return View::make('site.game.showlistandroid')->with(compact('games', 'count'));
 		}
 		return null;
+    }
+
+    public function getCount($count)
+    {
+    	if($count < 5) {
+    		return $count;
+    	}
+    	return 5;
     }
 
     public function countPlay()
