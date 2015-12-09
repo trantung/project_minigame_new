@@ -48,6 +48,7 @@
 				<th>Lượt chơi</th>
 				<th>Trạng thái</th>
 				<th>Ngày đăng</th>
+				<th>Trạng thái Seo</th>
 				<th style="width:200px;">&nbsp;</th>
 			</tr>
 			@foreach($data as $key => $value)
@@ -80,6 +81,7 @@
 						{{$value->start_date}}
 					@endif
 					</td>
+					<td>{{ getStatusSeoParent($value, 'Game') }}</td>
 					<td>
 						@if(Admin::isAdmin())
 							<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>

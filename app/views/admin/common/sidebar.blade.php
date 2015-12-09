@@ -114,7 +114,7 @@
         </a>
       </li>
       @endif
-       @if(Admin::isAdmin() || Admin::isSeo())
+       @if(Admin::isAdmin() )
       <li class="treeview">
         <a href="#">
           <i class="fa fa-cogs"></i> <span>Cấu hình chung</span>
