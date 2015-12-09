@@ -29,7 +29,11 @@
 		</div>
 
 		@if($game->parent_id == GAMEHTML5)
-			<div class="btn-click">
+			{{-- <div class="btn-click">
+				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
+			</div> --}}
+
+			<div class="btn-block-center">
 				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
 			</div>
 
