@@ -6,7 +6,7 @@ a {
 }
 .top {
     /*background: #2b74a1 none repeat scroll 0 0;*/
-    background: rgba(0, 0, 0, 0) url("../images/topbg.jpg") no-repeat scroll 0 100%;
+    background: rgba(0, 0, 0, 0) url("../images/topbg.jpg") no-repeat scroll 100% 100%;
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -328,8 +328,8 @@ i.play {
 }
 .menu-static ul li {
     display: inline-block;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 35px;
+    padding-right: 35px;
 }
 
 .menu-static ul li a {
@@ -1408,7 +1408,8 @@ h1.title {
         padding: 5px 10px;
     }
     .menu-login a.signin, .menu-login a.signup {
-        width: 98px;
+        width: 96px;
+        padding: 5px 1px !important;
     }
 }
 
