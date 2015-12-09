@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
@@ -137,7 +136,7 @@ Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 
 Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
 Route::get('/gop-y', array('uses' => 'SiteFeedbackController@create', 'as' =>'feedback'));
-Route::post('/egop-y', array('uss' => 'SiteFeedbackController@store'));
+Route::post('/gop-y', array('uses' => 'SiteFeedbackController@store'));
 Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGame', 'as' =>'error_game'));
 Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
 Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));
