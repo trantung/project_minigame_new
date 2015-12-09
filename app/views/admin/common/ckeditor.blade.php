@@ -2,6 +2,8 @@
 <script>
     CKEDITOR.replace( 'editor1',
     {
+        entities_latin: false,
+        entities_greek: false,
         filebrowserBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Flash',

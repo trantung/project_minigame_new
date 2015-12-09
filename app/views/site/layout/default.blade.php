@@ -5,7 +5,6 @@
 
 		@include('site.common.menu')
 		@include('site.common.topbar')
-
 		@include('site.common.navbar')
 
 		<div class="container">

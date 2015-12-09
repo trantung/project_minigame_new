@@ -1,4 +1,4 @@
-@if($games = CommonGame::getRelateGame($parentId, $limit))
+@if($games = CommonGame::getRelateGame($parentId, $limit, $typeId))
 <div class="box mobile">
 	<h3>Game khác</h3>
 	<div class="row">

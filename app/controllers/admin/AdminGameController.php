@@ -62,8 +62,7 @@ class AdminGameController extends AdminController {
         	// $result = File::makeDirectory($pathUpload.'/'.$folderName, 0755);
 
 			$inputGame = CommonGame::inputActionGame();
-			$inputGame['width'] = $input['width'];
-			$inputGame['height'] = $input['height'];
+
 			//insert slide_id
 
         	//insert game
@@ -156,9 +155,7 @@ class AdminGameController extends AdminController {
         	if(!Admin::isSeo()) {
 
 				$inputGame = CommonGame::inputActionGame($id);
-				$inputGame['width'] = $input['width'];
-				$inputGame['height'] = $input['height'];
-				dd($input);				
+				
 				//update slide_id
 
 	        	//update game
