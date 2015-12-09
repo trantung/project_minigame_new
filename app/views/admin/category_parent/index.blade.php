@@ -35,8 +35,9 @@
 			  @if(!Request::segment(3) == CONTENT_SEGMENT)
 			  	<th>Tổng số thể loại</th>
 			  @endif
-			  
-			  @if(!Request::segment(3) != CONTENT_SEGMENT)		
+			 
+			  @if(!Request::segment(3) != CONTENT_SEGMENT)	
+			   <th>Trạng thái</th>	
 			  <th>Tổng số game</th>	  
 			  <th>Tổng số xem</th>			  
 			  <th>Tổng số chơi</th>			  
@@ -54,6 +55,7 @@
 					
 					<!-- todo -->
 					 @if(!Request::segment(3) != CONTENT_SEGMENT)	
+					 <td>{{ checkActiveUser($categoryParent->status) }}</td>
 					 <td>{{ countBoxGame($categoryParent->id) }}</td>
 					<td>{{ countBoxView($categoryParent->id) }}</td>
 					<td>{{ countBoxPlay($categoryParent->id) }}</td>
