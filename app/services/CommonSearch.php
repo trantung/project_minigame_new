@@ -175,35 +175,12 @@ class CommonSearch
 	}
 	//backend search type game
 	public static function searchTypeGame($input){
-		//dd($input);
-		// $data = Type::where(function ($query) use ($input)
-		// {
-		// 	if($input['type_id'])
-		// 	{
-		// 		$query = $query->where('id', $input['type_id'] );
-		// 	}
-		// 	if($input['parent_id'])
-		// 	{
-		// 		$listgametype  = GameType::where('type_id', $input['type_id'])->lists('game_id');
-		// 		$games =  Game::whereIn('id', $listgametype)->where('parent_id', $input['parent_id'])->lists('id');
-		// 		$listtypegame = GameType::whereIn('game_id', $games)->lists('type_id');
-		// 		$query = $query->whereIn('id', $listtypegame );
-				
-		// 	}
-
-		// })->orderBy('id', 'desc')->paginate(PAGINATE);
-		// $type = Type::find($input['type_id']);
-		// $games = $type->games;
-		// // dd($games->toArray());
-		// $result = $games->where('parent_id', $input['parent_id'])->all();
-
 		$data  = DB::table('types')
 					->join('game_types', 'types.id', '=', 'game_types.type_id') 
 					->join('games', 'game_types.game_id', '=', 'games.id')
-					->select(DB::raw('types.id, types.name, count(*) count_game, sum(games.count_view) as count_view, SUM(games.count_play) as count_play, SUM(games.count_download) as count_download'))
 					->whereNull('types.deleted_at')
 					->whereNull('game_types.deleted_at')
-					->where('games.deleted_at');
+					->whereNull('games.deleted_at');
 				if($input['type_id'])
 				{
 					$data = $data->where('types.id', $input['type_id']);
@@ -212,7 +189,11 @@ class CommonSearch
 				{
 					$data = $data->where('games.parent_id', $input['parent_id']);
 				}
-				$data = $data->groupBy('types.name')->get();
+				$data = $data->select(DB::raw('types.id, types.name, count(*) count_game, 
+											SUM(games.count_view) as count_view, SUM(games.count_play) as count_play,
+					 						SUM(games.count_download) as count_download'))
+					->groupBy('types.name')
+					->get();
 		return $data;
 	}
 }

@@ -11,7 +11,9 @@ class GameTypeController extends AdminController {
 	{
 		// $input['type_id'] =null;
 		// $input['parent_id'] =null;
-		$data = Type::orderBy('id', 'asc')->paginate(PAGINATE);
+		$input['type_id'] = '';
+		$input['parent_id'] = '';
+		$data = CommonSearch::searchTypeGame($input);
 		return View::make('admin.gametype.index')->with(compact('data'));
 	}
 

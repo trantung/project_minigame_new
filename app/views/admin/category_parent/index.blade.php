@@ -1,7 +1,11 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý cây thư mục' }}
+@if(!Request::segment(3) == CONTENT_SEGMENT)
+	{{ $title='Quản lý Menu' }}
+@else
+	{{ $title='Quản lý box hiển thị' }}
+@endif
 @stop
 
 @section('content')
@@ -37,7 +41,7 @@
 			  @endif
 			 
 			  @if(!Request::segment(3) != CONTENT_SEGMENT)	
-			   <th>Trạng thái</th>	
+			  <th>Trạng thái</th>	
 			  <th>Tổng số game</th>	  
 			  <th>Tổng số xem</th>			  
 			  <th>Tổng số chơi</th>			  
