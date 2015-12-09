@@ -35,16 +35,24 @@
 		@endif
 		<!-- hiển thị comment cho game -->
 		<div class="box-body ">
-			<table class="table table-hover">
-
-			 @foreach($inputComment = SiteComment::getCommentGame($game) as $value)
-			<tr>
-			  <td><b>{{ User::find($value->user_id)->user_name.User::find($value->user_id)->uname.User::find($value->user_id)->google_name }}</b></td>
-			  <td>{{ $value->description }}</td>
-			</tr>
-			@endforeach
-			</table>
-
+			<ul class="comment-list">
+				@foreach($inputComment = SiteComment::getCommentGame($game) as $value)
+					<?php
+						if($image_url = User::find($value->user_id)->image_url) {
+							$avatar = url(UPLOADIMG . UPLOAD_USER_AVATAR . '/' . $image_url);
+						} else {
+							$avatar = url('/assets/images/avatar.jpg');
+						}
+					?>
+					<li>
+						<div class="comment-avatar"><img src="{{ $avatar }}" /></div>
+						<div class="comment-content">
+							<div class="comment-user"><span>{{ User::find($value->user_id)->user_name.User::find($value->user_id)->uname.User::find($value->user_id)->google_name }}</span> đã viết vào {{ showDateTime($value->created_at) }} </div>
+							<div class="comment-desc">{{ $value->description }}</div>
+						</div>
+					</li>
+				@endforeach
+			</ul>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
@@ -56,6 +64,6 @@
 		</div>
 		{{ Form::close() }}
 		</div>
-		
+
 	</div>
 </div>
