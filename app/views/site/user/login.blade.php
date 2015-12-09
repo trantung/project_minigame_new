@@ -30,15 +30,19 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<input type="submit" class="btn btn-primary" value="Đăng nhập" />
-					<!-- <input type="reset" class="btn btn-primary" value="Nhập lại" /> -->
+					<input type="submit" class="btn btn-primary form-control" value="Đăng nhập" />
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-6">
-				Đăng nhập bằng<br>
-					<a type="submit" href="{{  action('LoginFacebookController@loginfb') }}" class="fa fa-facebook" id="register"></a>
-					<a class="btn" href="{{ action('GoogleController@logingoogle') }}"><i class="fa fa-google"></i>Login Google</a>
+				<div class="col-sm-offset-4 col-sm-4">
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="{{  action('LoginFacebookController@loginfb') }}" id="register" class="btn btn-primary login-facebook"><i class="fa fa-facebook"></i> Login Facebook</a>
+						</div>
+						<div class="col-sm-6">
+							<a href="{{ action('GoogleController@logingoogle') }}" class="btn btn-danger login-google"><i class="fa fa-google"></i> Login Google</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		{{ Form::close() }}
