@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'gamemini',
 			'username'  => 'root',
-			'password'  => 'abc123',
+			'password'  => '@bcc0m@555',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
