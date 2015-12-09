@@ -13,7 +13,7 @@ class AddMoreFieldUser extends Migration {
 	public function up()
 	{
 		Schema::table('users', function(Blueprint $table) {
-            $table->string('image_url')->after('fullname')->nullable();
+            $table->string('image_url')->after('full_name')->nullable();
         });
 	}
 
