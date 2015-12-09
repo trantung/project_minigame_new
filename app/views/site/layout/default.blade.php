@@ -32,6 +32,7 @@
 			{{ $script->footer_script }}
 		@endif
 
+		<div id="fb-root"></div>
 		<script>
 		  window.fbAsyncInit = function() {
 		    FB.init({

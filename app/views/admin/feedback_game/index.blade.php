@@ -40,7 +40,7 @@
 			  <th>Trạng thái</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
-			 @foreach($inputFeedbackGame as $value)
+			@foreach($inputFeedbackGame as $value)
 			<tr>
 				@if(Admin::isAdmin())
 					<td><input type="checkbox" class="feedback_game_id"  name="feedback_game_id[]" value="{{ $value->id }}" /></td>

@@ -321,3 +321,21 @@ a.game-played {
     font-size: 14px;
     line-height: 1.42857;
 }
+
+@media (max-width: 768px) {
+    .search1 form {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+    #cssmenu {
+        width: 200px;
+    }
+    #cssmenu a {
+        padding: 5px 10px;
+    }
+    .menu-login a.signin, .menu-login a.signup {
+        width: 77px;
+    }
+}
+

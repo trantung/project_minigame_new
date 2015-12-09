@@ -121,10 +121,14 @@ define('PAGE_COMMENT', 5);
 define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
 define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
 define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');
-define('TEXTLENGH', 30);
+define('TEXTLENGH', 25);
 //define total game if count = 0
 define('NO_GAME', 0);
 //define message comment
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
+define('COMMENT_NO_MESSAGE', 'Bạn chưa nhập nội dung');
 define('TEXTLENGH_DESCRIPTION', 154);
 define('PAGINATE_RELATED', 6);
+define('PAGINATE_MOBILE', 12);
+//image avatar
+define('UPLOAD_USER_AVATAR', '/user_avatar');

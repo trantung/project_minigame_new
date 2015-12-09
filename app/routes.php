@@ -13,8 +13,6 @@
 
 Route::group(['prefix' => 'admin'], function () {
 
-	Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
-	Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
@@ -117,6 +115,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 // FRONTEND
 
+Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
+Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
+
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
 Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
 Route::post('/count-download', array('uses' => 'GameController@countDownload', 'as' => 'count-download'));
@@ -139,7 +140,7 @@ Route::get('/thong-tin-tai-khoan', array('uses' => 'AccountController@account', 
 Route::put('/thong-tin-tai-khoan', array('uses' => 'AccountController@doAccount'));
 
 Route::get('/gop-y', array('uses' => 'SiteFeedbackController@create', 'as' =>'feedback'));
-Route::post('/egop-y', array('uss' => 'SiteFeedbackController@store'));
+Route::post('/gop-y', array('uses' => 'SiteFeedbackController@store'));
 Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGame', 'as' =>'error_game'));
 Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
 Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));

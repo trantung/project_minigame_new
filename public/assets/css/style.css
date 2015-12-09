@@ -27,7 +27,7 @@ a {
 }
 .search form {
     position: relative;
-    width: 200px;
+    width: 300px;
     display: inline-block;
 }
 .search input[type=text] {
@@ -131,7 +131,8 @@ a.icongoogleplus {
     color: #2b74a1;
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     padding-bottom: 5px;
     position: relative;
 }
@@ -168,8 +169,8 @@ a.icongoogleplus {
 
 .item {
     border: 1px solid #c8c8c8;
-    margin-bottom: 30px;
-    height: 160px;
+    margin-bottom: 10px;
+    height: 140px;
 }
 
 .item-image {
@@ -229,11 +230,12 @@ a.icongoogleplus {
 .item-title {
     color: #888;
     display: block;
-    padding: 5px;
+    padding: 5px 3px;
 }
 .item-title a {
     color: #888;
     font-size: 13px;
+    text-align: center;
 }
 .item-play {
 
@@ -400,7 +402,7 @@ a.signout {
     line-height: 2 !important;
 }
 a.account-name {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 a.game-favorite i.fa,
 a.game-played i.fa,
@@ -412,6 +414,9 @@ a.game-favorite,
 a.game-played {
     background: #a9a8a6;
     border-bottom: 1px solid #fff !important;
+}
+a.signout {
+    background: #a9a8a6;
 }
 
 .menu-login {
@@ -492,7 +497,7 @@ a.game-played {
     content: "";
     position: absolute;
     right: 10px;
-    top: 18px;
+    top: 10px;
 }
 #cssmenu > ul > li.has-sub.active > a::after {
     -moz-border-bottom-colors: none;
@@ -504,7 +509,7 @@ a.game-played {
     border-style: solid;
     border-width: 5px;
     right: 14px;
-    top: 18px;
+    top: 10px;
 }
 #cssmenu ul ul {
     display: none;
@@ -663,6 +668,9 @@ a.download i.fa {
     padding: 0 15px 0 0;
     vertical-align: top;
     display: inline-block;
+}
+.mobile_title p {
+    margin-bottom: 3px;
 }
 
 .game_avatar {
@@ -860,7 +868,7 @@ a.download i.fa {
         left: 0;
     }
     h1.mobile-title {
-        font-size: 18px !important;
+        font-size: 16px !important;
         font-weight: bold;
     }
 
@@ -914,8 +922,8 @@ a.download i.fa {
 /* rate result */
 .rate-result-cnt {
     height: 18px;
-    margin-bottom: 8px;
-    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-top: 3px;
     position: relative;
     vertical-align: middle;
     width: 82px;
@@ -1008,6 +1016,7 @@ h1.title {
     color: #000;
     display: inline-block;
     font-size: 24px;
+    margin-bottom: 3px;
     margin-top: 0;
     text-transform: none;
 }
@@ -1050,7 +1059,6 @@ h1.title {
 }
 .imgGamedowload img,
 .slideGame img {
-    width: 100%;
     max-width: 100%;
     height: auto;
 }
@@ -1159,7 +1167,7 @@ h1.title {
         padding-right: 5px;
     }
     .item {
-        height: 120px;
+        height: 115px;
         margin-bottom: 10px;
     }
 }
@@ -1336,4 +1344,73 @@ h1.title {
 }
 .related ul li a i.fa {
 
+}
+
+@media (max-width: 768px) {
+    .search form {
+        width: 200px;
+    }
+    .search1 form {
+        position: relative;
+        width: 200px;
+        display: inline-block;
+    }
+    #cssmenu {
+        width: 200px;
+    }
+    #cssmenu a {
+        padding: 5px 10px;
+    }
+    .menu-login a.signin, .menu-login a.signup {
+        width: 98px;
+    }
+}
+
+.login-facebook {
+    display: block;
+    margin-bottom: 10px;
+}
+.login-google {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.comment-list {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+}
+.comment-list li {
+    border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: none;
+}
+.comment-avatar {
+    display: inline-block;
+    vertical-align: top;
+}
+.comment-content {
+    display: inline-block;
+}
+.comment-avatar img {
+    width: 50px;
+    height: 50px;
+}
+.comment-user {
+    display: block;
+    font-size: 12px;
+}
+.comment-user span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2B74A1;
+}
+.comment-desc {
+    display: block;
+}
+#loadMore {
+    text-align: center;
+    display: block;
 }

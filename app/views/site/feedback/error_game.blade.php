@@ -18,6 +18,7 @@
 		</div>
 	</div>
 	<div class="clearfix"></div>
+	<div class="col-xs-12">
 	{{ Form::open(array('action' =>  array('SiteFeedbackController@createErrorGame', $input_errorGame->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}
 
 		<div class="form-group">
@@ -43,8 +44,9 @@
 		@include('site.feedback.common')
 
 		</div>
-		
+
 	{{ Form::close() }}
+	</div>
 	<div class="clearfix"></div>
 </div>
 

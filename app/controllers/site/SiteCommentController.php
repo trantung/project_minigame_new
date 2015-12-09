@@ -78,8 +78,9 @@ class SiteCommentController extends SiteController {
 			$input['model_id'] = $id;
 			$input['status'] = INACTIVE;
 			CommonNormal::create($input,'comment');
+			return  Redirect::to(CommonGame::getUrlGame($game->slug))->with('comment', COMMENT_MESSAGE);
 		}
-		return  Redirect::to(CommonGame::getUrlGame($game->slug))->with('comment', COMMENT_MESSAGE);
+		return  Redirect::to(CommonGame::getUrlGame($game->slug))->with('comment', COMMENT_NO_MESSAGE);
 	}
 
 
