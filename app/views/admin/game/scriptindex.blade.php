@@ -41,7 +41,7 @@
 		$.ajax(
 		{
 			type:'post',
-			url: '/admin/games/updateIndexData',
+			url: '{{ url("/admin/games/updateIndexData") }}',
 			data:{
 				'game_id': values1,
 				'weight_number': values2,
@@ -79,7 +79,7 @@
 			$.ajax(
 			{
 				type:'post',
-				url: '/admin/games/deleteSelected',
+				url: '{{ url("/admin/games/deleteSelected") }}',
 				data:{
 					'game_id': values1
 				},

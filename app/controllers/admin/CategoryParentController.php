@@ -54,7 +54,7 @@ class CategoryParentController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
-			$inputCategory = Input::only('name', 'position', 'weight_number', 'arrange');
+			$inputCategory = Input::only('name', 'position', 'weight_number', 'arrange','status');
 			$id = CommonNormal::create($inputCategory);
 			CommonSeo::createSeo('CategoryParent', $id, FOLDER_SEO_PARENT);
 			if ($input['position'] != CONTENT) {
@@ -132,9 +132,11 @@ class CategoryParentController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('name'));
         }
-		$inputCategory = Input::only('name', 'position', 'weight_number', 'arrange');
-		CommonNormal::update($id,$inputCategory);
-		
+        if(!Admin::isSeo())
+        {
+			$inputCategory = Input::only('name', 'position', 'weight_number', 'arrange','status');
+			CommonNormal::update($id,$inputCategory);
+		}
 		CommonSeo::updateSeo('CategoryParent', $id, FOLDER_SEO_PARENT);
 		if ($input['position'] != CONTENT) {
 			AdminManager::updateParentType(Input::get('type_id'),Input::get('weight_number_gametype'), $id, 'ParentType');

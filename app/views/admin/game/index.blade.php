@@ -73,7 +73,13 @@
 					@else
 					<td>{{ getStatusGame($value->status) }}</td>
 					@endif
-					<td>{{ $value->start_date }}</td>
+					<td>
+					@if($value->start_date >= Carbon\Carbon::now())
+						<span style="color: red;">{{ $value->start_date }}</span>
+					@else
+						{{$value->start_date}}
+					@endif
+					</td>
 					<td>
 						@if(Admin::isAdmin())
 							<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>

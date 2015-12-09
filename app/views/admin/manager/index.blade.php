@@ -26,7 +26,6 @@
 			  <table class="table table-hover">
 				<tr>
 				  <th>ID</th>
-				  <th>Email</th>
 				  <th>Username</th>
 				  <th>Quyền hạn</th>
 				  <th>Đăng nhập cuối</th>
@@ -37,7 +36,6 @@
 				@foreach($data as $key => $value)
 				<tr>
 				  <td>{{ $value->id }}</td>
-				  <td>{{ $value->email }}</td>
 				  <td>{{ $value->username }}</td>
 				  <td>{{ getRole($value->role_id) }}</td>
 				  <td>{{ $value->updated_at }}</td>
@@ -45,11 +43,15 @@
 				  <td>{{ checkActiveUser($value->status) }}</td>
 				  <td>
 					{{-- <a href="#" class="btn btn-success">Xem</a> --}}
+					@if(Auth::admin()->get()->username == $value->username)
+						<a href="{{action('ManagerController@changePassword', $value->id) }}" class="btn btn-primary">Change Pass</a>
+					@endif
 					<a href="{{ action('ManagerController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
 					<a href="{{ action('ManagerController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 					{{ Form::open(array('method'=>'DELETE', 'action' => array('ManagerController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
+					
 				  </td>
 				</tr>
 				@endforeach

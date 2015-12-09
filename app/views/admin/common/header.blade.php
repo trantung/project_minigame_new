@@ -5,7 +5,7 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.5 -->
-	{{ HTML::style('adminlte/plugins/jQueryUI/jquery-ui.css') }}
+	
 	{{HTML::style('adminlte/bootstrap/css/bootstrap.min.css') }}
 	<!-- Font Awesome -->
 	{{HTML::style('adminlte/dist/css/font-awesome.min.css') }}
@@ -25,7 +25,8 @@
 	{{-- {{HTML::style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} --}}
 	<!-- Date Time Picker -->
 	{{HTML::style('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}
-
+	
+	{{ HTML::style('adminlte/plugins/jQueryUI/jquery-ui.css') }}
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
