@@ -20,7 +20,6 @@
 								<label for="name">Tên chuyên mục</label>
 								{{ Form::text('name', $inputCategory->name , textParentCategory('Tên chuyên mục')) }}
 							</div>
-							@if(!Admin::isSeo())
 								<div class="form-group">
 									<label for="name">Chọn vị trí hiển thị</label>
 									@if(Request::segment(3) == CONTENT_SEGMENT)
@@ -33,7 +32,6 @@
 										{{ Form::select('position', [1 => 'Menu'], $inputCategory->position, array('class' =>'form-control')) }}
 									@endif
 								</div>
-							@endif
 							@if(!Admin::isSeo())
 								<div class="form-group">
 									<label for="name">Mức ưu tiên</label>

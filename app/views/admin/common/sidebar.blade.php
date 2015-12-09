@@ -16,7 +16,7 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý chuyên mục Menu</a></li>
+            <li><a href="{{ action('CategoryParentController@index') }}"><i class="fa fa-circle-o"></i> Quản lý Menu</a></li>
             <li><a href="{{ action('CategoryParentController@contentIndex') }}"><i class="fa fa-circle-o"></i> Quản lý box hiển thị</a></li>
             @if(Admin::isAdmin())
               <li><a href="{{ action('CategoryController@index') }}"><i class="fa fa-circle-o"></i> Quản lý kiểu game</a></li>

@@ -4,6 +4,10 @@
 	<label for="metaname"><u>Thẻ meta</u></label>
 	<div class="box-body">
 		<div class="form-group">
+			<label for="status">Trạng thái</label>
+			{{ Form::select('status', selectActive(), $inputSeo->status, array('class' => 'form-control')) }}
+		</div>
+		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
 			{{ Form::text('title_site', $inputSeo->title_site, textParentCategory('Thẻ title', true)) }}
 		</div>
@@ -38,6 +42,10 @@
 <div class="form-group">
 	<label for="metaname"><u>Thẻ meta</u></label>
 	<div class="box-body">
+		<div class="form-group">
+			<label for="status">Trạng thái</label>
+			{{ Form::select('status', selectActive(), $inputSeo->status, array('class' => 'form-control')) }}
+		</div>
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
 			{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
