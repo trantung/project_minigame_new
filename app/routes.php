@@ -12,8 +12,6 @@
 */
 Route::group(['prefix' => 'admin'], function () {
 
-	Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
-	Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
@@ -113,6 +111,9 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(12);
 
 // FRONTEND
+
+Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
+Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
 
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
 Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));

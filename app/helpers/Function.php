@@ -531,3 +531,15 @@ function selectActive()
 		INACTIVE => INACTIVEUSER,
 	);
 }
+/* Y-m-d H:i:s to d-m-Y H:i:s */
+function showDateTime($dateString = null)
+{
+	if($dateString == null) {
+		return false;
+	}
+	$array = explode(' ', $dateString);
+	$dmY = explode('-', $array[0]);
+	$His = explode(':', $array[1]);
+	$datetime = $dmY[2].'-'.$dmY[1].'-'.$dmY[0].' '.$His[0].':'.$His[1];
+	return $datetime;
+}
