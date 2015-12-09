@@ -129,3 +129,5 @@ define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duy
 define('TEXTLENGH_DESCRIPTION', 154);
 define('PAGINATE_RELATED', 6);
 define('PAGINATE_MOBILE', 12);
+//image avatar
+define('UPLOAD_USER_AVATAR', '/user_avatar');
