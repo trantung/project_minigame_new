@@ -5,13 +5,14 @@ a {
     text-decoration: none;
 }
 .top {
-    background: #2b74a1 none repeat scroll 0 0;
+    /*background: #2b74a1 none repeat scroll 0 0;*/
+    background: rgba(0, 0, 0, 0) url("../images/topbg.jpg") no-repeat scroll 0 100%;
     padding-bottom: 5px;
     padding-top: 5px;
 }
 .logo {
     display: inline-block;
-    width: 50%;
+    max-width: 100px;
 }
 .logo img {
     height: auto;
@@ -27,7 +28,7 @@ a {
 }
 .search form {
     position: relative;
-    width: 300px;
+    width: 200px;
     display: inline-block;
 }
 .search input[type=text] {
@@ -110,6 +111,7 @@ a.icongoogleplus {
     text-align: center;
 }
 .title_left {
+    border-bottom: 1px solid #cbcbcb;
     padding-bottom: 15px;
     padding-top: 15px;
 }
@@ -312,10 +314,11 @@ i.play {
 
 /*menu*/
 .menu-top {
-    background: #ebebeb;
+    background: #2b74a1 none repeat scroll 0 0;
 }
 .menu-static {
-    padding-top: 15px;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 .menu-static ul {
     list-style: outside none none;
@@ -325,30 +328,32 @@ i.play {
 }
 .menu-static ul li {
     display: inline-block;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .menu-static ul li a {
-    color: #888;
+    color: #fff;
     display: block;
+    padding-bottom: 5px;
+    padding-top: 5px;
     text-align: center;
     text-transform: uppercase;
-    border-bottom: 4px solid transparent;
 }
 .menu-static ul li a:hover,
 .menu-static ul li a:focus,
 .menu-static ul li a.active {
-    color: #2b74a1;
+    color: #fff;
     text-decoration: none;
-    border-bottom-color: #2b74a1;
 }
 .menu-static ul li a i.fa {
-    font-size: 30px;
+    font-size: 24px;
 }
 .menu-static ul li a span {
-    display: block;
+    display: inline-block;
     padding-bottom: 2px;
+    padding-left: 10px;
+    vertical-align: middle;
 }
 
 .menu-hide {
@@ -735,12 +740,12 @@ a.download i.fa {
     }
 
     .top {
-        background: #2b74a1;
+        /*background: #2b74a1;*/
         padding-top: 10px;
         padding-bottom: 8px;
     }
     .menu-top {
-        background: #ebebeb;
+        /*background: #ebebeb;*/
     }
     .item-play span {
 
@@ -1140,6 +1145,9 @@ h1.title {
     max-width: 100%;
     height: auto;
 }
+.detail iframe {
+    max-width: 100%;
+}
 .center {
     text-align: center;
 }
@@ -1159,17 +1167,6 @@ h1.title {
     font-size: 14px;
     font-weight: bold;
     margin-top: 10px;
-}
-
-@media (max-width: 400px) {
-    .col-xs-6 {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-    .item {
-        height: 115px;
-        margin-bottom: 10px;
-    }
 }
 
 .social {
@@ -1258,15 +1255,42 @@ h1.title {
     .list-text {
         width: 680px;
     }
+    .item {
+        height: 160px;
+    }
+    .menu-static ul li {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 @media (max-width: 768px) {
     .list-text {
         width: 480px;
     }
+    .item {
+        height: 200px;
+    }
+    .menu-static ul li {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 @media (max-width: 600px) {
     .list-text {
         width: 320px;
+    }
+    .item {
+        height: 160px;
+    }
+    .menu-static ul li {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .menu-static ul li a span {
+        padding-left: 10px;
+    }
+    .menu-static ul li a i.fa {
+        vertical-align: middle;
     }
 }
 @media (max-width: 480px) {
@@ -1283,10 +1307,32 @@ h1.title {
     .list-text p {
         margin-bottom: 0;
     }
+    .item {
+        height: 140px;
+    }
+    .menu-static ul li a span {
+        display: block;
+        padding-left: 0;
+    }
+    .menu-static ul li {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 @media (max-width: 400px) {
     .list-text {
         width: 220px;
+    }
+    .col-xs-6 {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .item {
+        height: 115px;
+        margin-bottom: 10px;
+    }
+    .menu-static ul li a span {
+        padding-left: 0;
     }
 }
 @media (max-width: 320px) {
@@ -1413,4 +1459,20 @@ h1.title {
 #loadMore {
     text-align: center;
     display: block;
+}
+
+/*toptext*/
+.toptext {
+    display: inline-block;
+    padding-left: 160px;
+}
+@media (min-width: 670px) and (max-width: 1024px) {
+    .toptext {
+        padding-left: 70px;
+    }
+}
+@media (max-width: 669px) {
+    .toptext {
+        display: none;
+    }
 }

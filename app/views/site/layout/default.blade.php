@@ -6,12 +6,10 @@
 		@include('site.common.menu')
 		@include('site.common.topbar')
 
+		@include('site.common.navbar')
+
 		<div class="container">
 			<div class="row">
-
-		  	@include('site.common.navbar')
-
-			<div class="clearfix"></div>
 
 			<div class="main">
 
