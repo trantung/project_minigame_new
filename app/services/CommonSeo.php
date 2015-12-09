@@ -75,7 +75,8 @@ class CommonSeo
 				'title_fb',
 				'description_fb',
 				'image_url_fb',
-				'header_script'
+				'header_script',
+				'status'
 			);
 		return $input;
 	}

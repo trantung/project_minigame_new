@@ -543,3 +543,12 @@ function showDateTime($dateString = null)
 	$datetime = $dmY[2].'-'.$dmY[1].'-'.$dmY[0].' '.$His[0].':'.$His[1];
 	return $datetime;
 }
+
+function getStatusSeoParent($input, $model_name){
+	$seo = AdminSeo::where('model_name', $model_name)
+		->where('model_id', $input->id)
+		->first();
+	if($seo) {
+		return checkActiveUser($seo->status);
+	}
+}
