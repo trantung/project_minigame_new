@@ -46,7 +46,9 @@
 			  <th>Tổng số xem</th>			  
 			  <th>Tổng số chơi</th>			  
 			  <th>Tổng số tải</th>	
+			  
 			  @endif		  
+			  <th>Trạng thái Seo </th>	
 			  <th style="width:200px;">Action</th>
 			</tr>
 			@foreach($categoryParents as $categoryParent)
@@ -65,6 +67,7 @@
 					<td>{{ countBoxPlay($categoryParent->id) }}</td>
 					<td>{{ countBoxDowload($categoryParent->id) }}</td>
 					@endif
+					<td>{{ getStatusSeoParent($categoryParent, 'CategoryParent') }}</td>
 					<td>
 					 	@if(Request::segment(3) == CONTENT_SEGMENT)
 					 	<!-- content -->

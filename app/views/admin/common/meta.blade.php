@@ -5,7 +5,7 @@
 	<div class="box-body">
 		<div class="form-group">
 			<label for="status">Trạng thái</label>
-			{{ Form::select('status', selectActive(), $inputSeo->status, array('class' => 'form-control')) }}
+			{{ Form::select('status', [INACTIVE => 'Chưa kích hoạt', ACTIVE => 'Kích hoạt'], $inputSeo->status, array('class' => 'form-control')) }}
 		</div>
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
@@ -44,7 +44,7 @@
 	<div class="box-body">
 		<div class="form-group">
 			<label for="status">Trạng thái</label>
-			{{ Form::select('status', selectActive(), $inputSeo->status, array('class' => 'form-control')) }}
+			{{ Form::select('status', [0 => 'Chưa kích hoạt', 1 => 'Kích hoạt'], $inputSeo->status, array('class' => 'form-control')) }}
 		</div>
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
