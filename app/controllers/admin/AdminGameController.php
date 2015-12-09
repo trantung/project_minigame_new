@@ -158,6 +158,7 @@ class AdminGameController extends AdminController {
 				$inputGame = CommonGame::inputActionGame($id);
 				$inputGame['width'] = $input['width'];
 				$inputGame['height'] = $input['height'];
+				dd($input);				
 				//update slide_id
 
 	        	//update game
