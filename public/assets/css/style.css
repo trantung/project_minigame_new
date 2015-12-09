@@ -1363,3 +1363,9 @@ h1.title {
     }
 }
 
+.login-facebook {
+    display: block;
+}
+.login-google {
+    display: block;
+}
