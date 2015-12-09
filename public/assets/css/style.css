@@ -328,8 +328,8 @@ i.play {
 }
 .menu-static ul li {
     display: inline-block;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 35px;
+    padding-right: 35px;
 }
 
 .menu-static ul li a {
