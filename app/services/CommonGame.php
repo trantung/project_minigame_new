@@ -485,4 +485,18 @@ class CommonGame
     	}
     }
 
+    public static function getGameMost()
+    {
+        $now = Carbon\Carbon::now();
+        $games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+                ->where('parent_id', GAMEHTML5)
+                ->where('start_date', '<=', $now)
+                ->orderBy('count_play', 'desc')
+                ->orderBy('start_date', 'desc')
+                ->limit(PAGINATE_BOXGAME)
+                ->get();
+        return $games;
+    }
+
 }
