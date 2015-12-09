@@ -17,6 +17,7 @@
 		</div>
 	</div>
 	<div class="clearfix"></div>
+	<div class="col-xs-12">
 	{{ Form::open(array('action' => 'SiteFeedbackController@store', 'class' => 'form-horizontal')) }}
 		<div class="form-group">
 			<label for="username" class="col-sm-4 control-label label-text">Tên của bạn:</label>
@@ -52,8 +53,9 @@
 			@include('site.feedback.common')
 
 		</div>
-		
+
 	{{ Form::close() }}
+	</div>
 	<div class="clearfix"></div>
 </div>
 

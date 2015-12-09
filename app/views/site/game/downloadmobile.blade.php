@@ -28,6 +28,10 @@
 
 		<div class="col-xs-12">
 
+			<div class="btn-block-center">
+				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
+			</div>
+
 			<div class="slideGame">
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
@@ -36,9 +40,9 @@
 				{{ $game->description }}
 			</div>
 
-			<p>
+			<div class="btn-block-center">
 				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
-			</p>
+			</div>
 
 			@include('site.game.scriptcountdownload', array('id' => $game->id, 'url' => CommonGame::getUrlDownload($game)))
 

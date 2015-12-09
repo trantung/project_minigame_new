@@ -8,6 +8,7 @@
 
 <div class="box">
 	<h3>Thông tin tài khoản</h3>
+	<div class="col-xs-12">
 	<div class=" ad">
 		<h4>{{ Auth::user()->get()->user_name }}</h4>
 	</div>
@@ -71,6 +72,7 @@
 			</div>
 		</div>
 	{{ Form::close() }}
+	</div>
 	<div class="clearfix"></div>
 </div>
 
