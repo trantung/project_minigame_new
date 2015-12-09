@@ -166,3 +166,5 @@ Route::resource('/', 'SiteIndexController');
 Route::get('/{slug}', 'GameController@listgame');
 
 Route::get('/{type}/{slug}', 'GameController@detailGame');
+
+Route::get('/{type}/{slug}/{word}', 'GameController@getPage404');
