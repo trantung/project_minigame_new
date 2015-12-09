@@ -119,29 +119,31 @@ class AccountController extends SiteController {
 			return Redirect::action('AccountController@create');
 		}
 		$id = Auth::user()->get()->id;
-		$rules = array(
-			'password'   	=> 'required|min:6',
-			'password_new'  => 'required|min:6',
-			'password_new2' => 'required|min:6|same:password_new',
-            // 'email'      	=> 'required|email|unique:users'
-        );
-        if(Auth::user()->get()->email != Input::get('email')) {
-        	$rules['email'] = 'required|email|unique:users';
-        }
-        $input = Input::except('_token');
+		$input = Input::except('_method', '_token');
+		if(Input::get('password')) {
+			$rules = array(
+				'password'   	=> 'required|min:6',
+				'password_new'  => 'required|min:6',
+				'password_new2' => 'required|min:6|same:password_new'
+	        );
+		} else {
+			$rules = array();
+		}
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('AccountController@account')
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password', 'password_new', 'password_new2'));
         } else {
-        	$input['password'] = Hash::make($input['password_new']);
+        	if(Input::get('password')) {
+        		$input['password'] = Hash::make($input['password_new']);
+        	} else {
+        		$input = Input::except('_method', '_token','password', 'password_new', 'password_new2');
+        	}
+        	$input['image_url'] = Commonsite::uploadImg(UPLOADIMG, UPLOAD_USER_AVATAR, 'image_url', User::find($id)->image_url);
         	CommonNormal::update($id, $input, 'User');
     		return Redirect::action('AccountController@account')->with('message', 'Cập nhật thành công');
         }
 	}
-
-	
-
 
 }

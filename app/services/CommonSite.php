@@ -112,4 +112,19 @@ class CommonSite
         return $seoMeta;
     }
 
+    public static function uploadImg($path, $folder, $imageUrl, $imageCurrent = NULL)
+    {
+        $destinationPath = public_path().'/'.$path.'/'.$folder.'/';
+        if(Input::hasFile($imageUrl)){
+            $file = Input::file($imageUrl);
+            $filename = $file->getClientOriginalName();
+            $filename = changeFileNameImage($filename);
+            $uploadSuccess = $file->move($destinationPath, $filename);
+            return $filename;
+        }
+        if ($imageCurrent) {
+            return $imageCurrent;
+        }
+    }
+
 }
