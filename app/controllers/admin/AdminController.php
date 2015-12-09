@@ -79,7 +79,11 @@ class AdminController extends BaseController {
     {
     	$checkLogin = Auth::admin()->check();
         if($checkLogin) {
-    		return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+	    	if (Auth::admin()->get()->status == ACTIVE) {
+	    		return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+	    	}else{
+	    		return View::make('admin.layout.login')->with(compact('message','chưa kich hoat'));
+	    	}
         } else {
             return View::make('admin.layout.login');
         }
@@ -110,7 +114,7 @@ class AdminController extends BaseController {
 	        		return Redirect::action('ManagerController@index');
             	}
             	else{
-            		return View::make('admin.layout.login')->with(compact('message','chua kich hoat'));
+            		return View::make('admin.layout.login');
             	}
             	
             } else {

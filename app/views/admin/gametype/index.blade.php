@@ -38,10 +38,10 @@
 				<tr>
 				  <td>{{ $value->id }}</td>
 				  <td>{{ $value->name }}</td>
-				  <td>{{ count($value->games) }}</td>
-				  <td>{{ countTypeView($value->id) }}</td>
-				  <td>{{ countTypePlay($value->id) }}</td>
-				  <td>{{ countTypeDownload($value->id) }}</td>
+				  <td>{{ $value->count_game }}</td>
+				  <td>{{ $value->count_view }}</td>
+				  <td>{{ $value->count_play }}</td>
+				  <td>{{ $value->count_download }}</td>
 				  <td>
 				  	{{-- <a href="#" class="btn btn-success">Xem</a> --}}
 					<a href="{{ action('GameTypeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
@@ -61,13 +61,6 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-xs-12">
-		<ul class="pagination">
-		{{ $data->appends(Request::except('page'))->links() }}
-		</ul>
-	</div>
-</div>
 
 @stop
 

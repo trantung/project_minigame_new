@@ -110,6 +110,7 @@ a.icongoogleplus {
     text-align: center;
 }
 .title_left {
+    border-bottom: 1px solid #cbcbcb;
     padding-bottom: 15px;
     padding-top: 15px;
 }

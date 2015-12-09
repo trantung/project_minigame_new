@@ -111,6 +111,7 @@ class ManagerController extends AdminController {
 	 */
 	public function update($id)
 	{
+		$rules = array();
 		$rules = array(
             'username'   => 'required',
             // 'password'   => 'required',
@@ -187,6 +188,37 @@ class ManagerController extends AdminController {
 		$input = Input::all();
 		$logEdit = CommonSearch::searchlogHistory($input);
 		return View::make('admin.manager.history')->with(compact('history', 'logEdit'));
+	}
+
+	public function changePassword($id){
+		$currentUserId = Auth::admin()->get()->id;
+		$currentRoleId = Auth::admin()->get()->role_id;
+		if($currentRoleId <> ADMIN) {
+			if($id <> $currentUserId) {
+				dd('error permission');
+			}
+		}
+
+		$data = Admin::find($id);
+        return View::make('admin.manager.changepassword')->with(compact('data'));
+	}
+
+	public function updatePassword($id){
+		$rules = array(
+			'password'   => 'required',
+			'repassword' => 'required|same:password'
+		);
+		$input = Input::except('_token');
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			return Redirect::action('ManagerController@changePassword',$id)
+	            ->withErrors($validator)
+	            ->withInput(Input::except('password'));
+        } else {
+        		$inputPass['password'] = Hash::make($input['password']);
+        		CommonNormal::update($id, $inputPass);
+        }
+        return Redirect::action('ManagerController@changePassword', $id)->with('message', 'Đổi mật khẩu thành công!');
 	}
 
 }
