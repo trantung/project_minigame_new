@@ -11,7 +11,7 @@
 <div class="list">
 
 	<div class="title_center">
-		<h1>Kết quả tìm kiếm game</h1>
+		<h1>Kết quả tìm kiếm theo từ khóa "{{ $input['search'] }}"</h1>
 	</div>
 
 	@foreach($inputsearchGame as $value)
