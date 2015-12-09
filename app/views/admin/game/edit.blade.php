@@ -122,6 +122,25 @@
 			                <label>Slide</label>
 			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id) }}
 		              	</div>
+		              	<div class="box-body table-responsive">
+							<h4>Khung game</h4>
+							<div class="overflow-box">
+								<table class="table table-bordered">
+									<tr>
+										<th>Width</th>
+										<th>Height</th>
+									</tr>
+									<tr>
+										<td>
+											 {{ Form::text('width', $inputGame->width , textParentCategory('Width fix to px')) }}
+										</td>
+										<td>
+											{{ Form::text('height', $inputGame->height , textParentCategory('Height fix to px')) }}
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
 						<hr />
 						<h1>SEO META</h1>
 
