@@ -42,10 +42,11 @@ class AdminGameController extends AdminController {
 		$rules = array(
 			'name' => 'required|unique:games',
 			'parent_id' => 'required',
-			'type_id' => 'required',
-			'type_main' => 'required',
 			'link_url' => 'required'
 		);
+		if(in_array(Input::get('parent_id'), [GAMEHTML5, GAMEFLASH])) {
+			$rules = array_merge($rules, array('type_id' => 'required', 'type_main' => 'required'));
+		}
 		if(Input::get('score_status') == SAVESCORE) {
 			$rules['gname'] = 'required';
 		}
@@ -131,10 +132,11 @@ class AdminGameController extends AdminController {
 			$rules = array(
 				'name' => 'required',
 				'parent_id' => 'required',
-				'type_id' => 'required',
-				'type_main' => 'required',
 				'link_url' => 'required'
 			);
+			if(in_array(Input::get('parent_id'), [GAMEHTML5, GAMEFLASH])) {
+				$rules = array_merge($rules, array('type_id' => 'required', 'type_main' => 'required'));
+			}
 			if(Input::get('score_status') == SAVESCORE) {
 				$rules['gname'] = 'required';
 			}
