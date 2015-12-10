@@ -1,3 +1,8 @@
+<?php
+    if(Session::has('voterate'.$id)) {
+        //
+    } else {
+ ?>
 <div id="rating" class="rating">
     <div class="rate-ex2-cnt stars">
         <div id="1" class="rate-btn-1 rate-btn"></div>
@@ -58,3 +63,4 @@
     });
 
 </script>
+<?php } ?>

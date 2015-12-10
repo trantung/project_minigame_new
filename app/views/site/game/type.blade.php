@@ -14,7 +14,7 @@
 				<div class="swiper-slide boxgame">
 					<div class="row">
 					<?php
-						$listGame = $games->orderBy('count_play', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+						$listGame = $games->orderBy('count_play', 'desc')->orderBy('start_date', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
 					?>
 						@foreach($listGame as $game)
 							@include('site.game.gameitem', array('game' => $game))
@@ -43,7 +43,7 @@
 				<div class="swiper-slide boxgame">
 					<div class="row">
 					<?php
-						$listGame = $games->orderBy('id', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+						$listGame = $games->orderBy('start_date', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
 					?>
 						@foreach($listGame as $game)
 							@include('site.game.gameitem', array('game' => $game))
