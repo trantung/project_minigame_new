@@ -148,13 +148,14 @@ class CommonSearch
 		{
 			if(getDevice() == MOBILE)
 			{
-				$listGame = $query->where('parent_id', '!=', GAMEFLASH);
+				$query = $query->where('parent_id', '!=', GAMEFLASH);
 			}
 			if($input['search'] != '') {
-				// $listGame = $query->where('name', 'like', 'N%'.$input['search'].'%');
 				$condition = array( '%'.$input['search'].'%' );
-				$listGame = $query->whereRaw( 'games.name like ?', $condition);
+				$query = $query->whereRaw( 'games.name like ?', $condition);
 			}
+			$query = $query->where('status', ENABLED)
+				->where('start_date', '<= ', Carbon\Carbon::now());
 
 		})->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
 		return $data;
