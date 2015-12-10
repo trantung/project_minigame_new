@@ -313,14 +313,14 @@ class CommonGame
                         ->where('status', ENABLED)
                         ->where('parent_id', '!=', GAMEFLASH)
                         ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc')
-                        ->limit(PAGINATE_MOBILE)->get();
+                        ->orderBy($arrange, 'desc');
+                        // ->limit(PAGINATE_MOBILE)->get();
                 } else {
                     $listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
                         ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc')
-                        ->limit(PAGINATE_BOXGAME)->get();
+                        ->orderBy($arrange, 'desc');
+                        // ->limit(PAGINATE_BOXGAME)->get();
                 }
             }
             return $listGame;
