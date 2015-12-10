@@ -449,7 +449,7 @@ a.signout {
     visibility: hidden;
     right: 0;
     position: absolute !important;
-    top: 70px;
+    top: 67px;
     width: 300px;
     z-index: 9999;
 }
@@ -841,10 +841,9 @@ a.download i.fa {
         margin-right: 5px;
     }
     #cssmenu {
-        top: 59px;
+        top: 58px;
     }
     .search1 {
-
         margin-top: 0;
     }
     .search1 form {
