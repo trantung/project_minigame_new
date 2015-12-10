@@ -27,8 +27,9 @@
 				<div class="col-sm-6">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="name">Tên game</label>
-							{{ Form::text('name', $inputGame->name , textParentCategory('Tên game')) }}
+							<label for="name">Tên game</label><br>
+							<span style="font-size:10px;">Tổng số chữ: <label id="divID"  style="color:red;"></label></span>
+							{{ Form::text('name', $inputGame->name , textParentCategory('Tên game','','name_game')) }}
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>

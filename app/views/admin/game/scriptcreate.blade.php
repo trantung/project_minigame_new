@@ -239,14 +239,18 @@
  
   $(function() {
     $( "#combobox" ).combobox();
-  
+       
   });
-  
-  function countLengh() {
-      var x = document.getElementById("fname");
+
+  $(document).ready(function(){
+    $("#name_game").keyup(function(){
+      var x = document.getElementById("name_game");
       var count = x.value.length;
-    var div = document.getElementById('divID');
-    div.innerHTML = count;
-  }
+      var div = document.getElementById('divID');
+      div.innerHTML = count;
+    });
+});
+  
+ 
 
 </script>

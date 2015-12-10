@@ -9,7 +9,7 @@ class CommentController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputComment =  Comment::where('status', INACTIVE)->orderBy('status', 'asc')->paginate(PAGINATE);
+		$inputComment =  Comment::where('status', INACTIVE)->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.comment.index')->with(compact('inputComment'));
 
 	}
