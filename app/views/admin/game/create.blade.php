@@ -25,7 +25,7 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label for="name">Tên game</label>
-							{{ Form::text('name', null , textParentCategory('Tên game')) }}
+							{{ Form::text('name', null , textParentCategory('Tên game'), ['id' => "game1"]) }}
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>
