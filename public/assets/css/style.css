@@ -181,6 +181,7 @@ a.icongoogleplus {
 }
 .item-image img {
     height: auto;
+    width: 100%;
     max-width: 100%;
 }
 .item-image strong {
@@ -1268,11 +1269,21 @@ h1.title {
         width: 480px;
     }
     .item {
-        height: 200px;
+        height: 160px;
     }
     .menu-static ul li {
         padding-left: 10px;
         padding-right: 10px;
+    }
+}
+@media (max-width: 736px) {
+    .item {
+        height: 200px;
+    }
+}
+@media (max-width: 668px) {
+    .item {
+        height: 180px;
     }
 }
 @media (max-width: 600px) {
