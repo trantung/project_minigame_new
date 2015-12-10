@@ -10,7 +10,8 @@ class SiteNewsController extends SiteController {
 	public function index()
 	{
 		$now = date('Y-m-d');
-		$inputListNews = AdminNew::whereDate('start_date', '<= ', $now)->orderBy('id', 'desc')->paginate(FRONENDPAGINATE);
+		$inputListNews = AdminNew::where('start_date', '<=', Carbon\Carbon::now())->orderBy('id', 'desc')
+		->paginate(FRONENDPAGINATE);
 		return View::make('site.News.listNews')->with(compact('inputListNews'));
 	}
 
@@ -45,8 +46,9 @@ class SiteNewsController extends SiteController {
 	 */
 	public function show($slug)
 	{
+		$now = date('Y-m-d');
 		$inputNew = AdminNew::findBySlug($slug);
-		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
+		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->where('start_date', '<=', $now)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
 		return View::make('site.News.showNews')->with(compact('inputNew', 'inputRelated'));
 	}
 
