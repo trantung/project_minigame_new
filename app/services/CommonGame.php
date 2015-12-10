@@ -333,6 +333,10 @@ class CommonGame
     {
     	$game = Game::findBySlug($slug);
     	if($game) {
+            if (!in_array($game->parent_id, [GAMEFLASH, GAMEHTML5])) {
+                $category = Game::find($game->parent_id);
+                return $url = url('/' . $category->slug . '/' . $slug);
+            }
     		$type = Type::find($game->type_main);
     		if($type) {
     			$url = url('/' . $type->slug . '/' . $slug);
