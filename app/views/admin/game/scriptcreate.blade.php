@@ -241,5 +241,12 @@
     $( "#combobox" ).combobox();
   
   });
+  
+  function countLengh() {
+      var x = document.getElementById("fname");
+      var count = x.value.length;
+    var div = document.getElementById('divID');
+    div.innerHTML = count;
+  }
 
 </script>
