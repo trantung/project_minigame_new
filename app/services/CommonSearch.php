@@ -155,7 +155,7 @@ class CommonSearch
 				$query = $query->whereRaw( 'games.name like ?', $condition);
 			}
 			$query = $query->where('status', ENABLED)
-				->where('start_date', '<= ', Carbon\Carbon::now());
+				->where('start_date', '<=', Carbon\Carbon::now());
 
 		})->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
 		return $data;
