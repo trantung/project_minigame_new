@@ -171,7 +171,7 @@ class GameController extends SiteController {
     	$inputGame['vote_average'] = round($voteAverage, 1);
     	Game::find($input['game_id'])->update($inputGame);
     	echo '<p><strong>Kết quả đánh giá: ' . $inputGame['vote_average'] . '/5</strong></p>';
-    	exit();
+    	Session::put('voterate'.$input['game_id'], '1');
     }
 
     /*

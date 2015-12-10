@@ -71,7 +71,7 @@ class CommonSite
     {
         $now = Carbon\Carbon::now();
         $news =  AdminNew::where('start_date', '<=', $now)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('start_date', 'desc')
             ->first();
         if($news) {
             return $news;
