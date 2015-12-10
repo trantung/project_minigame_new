@@ -554,3 +554,11 @@ function getStatusSeoParent($input, $model_name){
 		return checkActiveUser($seo->status);
 	}
 }
+
+function getCount($count)
+{
+	if($count < 5) {
+		return $count;
+	}
+	return 5;
+}
