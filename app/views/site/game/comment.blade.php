@@ -54,7 +54,7 @@
 				@endforeach
 			</ul>
 
-			<a id="loadMore" class="btn btn-primary" href="javascript:void();">Load more</a>
+			<a id="loadMore" class="btn btn-primary" href="javascript:void();">Xem thêm</a>
 			{{-- <a id="showLess" href="javascript:void();">Show less</a> --}}
 		</div>
 

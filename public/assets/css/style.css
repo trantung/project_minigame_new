@@ -181,6 +181,7 @@ a.icongoogleplus {
 }
 .item-image img {
     height: auto;
+    width: 100%;
     max-width: 100%;
 }
 .item-image strong {
@@ -448,7 +449,7 @@ a.signout {
     visibility: hidden;
     right: 0;
     position: absolute !important;
-    top: 70px;
+    top: 67px;
     width: 300px;
     z-index: 9999;
 }
@@ -840,10 +841,9 @@ a.download i.fa {
         margin-right: 5px;
     }
     #cssmenu {
-        top: 59px;
+        top: 58px;
     }
     .search1 {
-
         margin-top: 0;
     }
     .search1 form {
@@ -1268,11 +1268,21 @@ h1.title {
         width: 480px;
     }
     .item {
-        height: 200px;
+        height: 160px;
     }
     .menu-static ul li {
         padding-left: 10px;
         padding-right: 10px;
+    }
+}
+@media (max-width: 736px) {
+    .item {
+        height: 200px;
+    }
+}
+@media (max-width: 668px) {
+    .item {
+        height: 180px;
     }
 }
 @media (max-width: 600px) {
