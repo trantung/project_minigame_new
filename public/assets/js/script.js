@@ -28,3 +28,14 @@ function menushow(){
 function menuhide(){
 	$('#cssmenu').removeClass('menushow');
 }
+
+$(document).mouseup(function (e)
+{
+    var container = $("#cssmenu");
+
+    if (!container.is(e.target)
+        && container.has(e.target).length === 0)
+    {
+        menuhide();
+    }
+});
