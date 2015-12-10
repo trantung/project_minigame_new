@@ -120,5 +120,20 @@
 		}
 		return;
 	}
+// cuongnt todo
+  $(function() {
+  	 var x = document.getElementById("name_game");
+     var count = x.value.length;
+     var div = document.getElementById('divID');
+      div.innerHTML = count;
+  });
+$(document).ready(function(){
+    $("#name_game").keyup(function(){
+      var x = document.getElementById("name_game");
+      var count = x.value.length;
+      var div = document.getElementById('divID');
+      div.innerHTML = count;
+    });
+});
 
 </script>

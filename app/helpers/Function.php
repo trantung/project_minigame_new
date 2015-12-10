@@ -87,12 +87,12 @@ function getModelNameRelation($modelName)
 }
 
 
-function textParentCategory($input, $isSeoMeta = NULL)
+function textParentCategory($input, $isSeoMeta = NULL, $id = NULL)
 {
 	if(!Admin::isSeo() || $isSeoMeta) {
-		return array('placeholder' => $input, 'class' => 'form-control');
+		return array('placeholder' => $input, 'class' => 'form-control','id' => $id);
 	} else {
-		return array('placeholder' => $input, 'class' => 'form-control', 'readonly' => true);
+		return array('placeholder' => $input, 'class' => 'form-control', 'readonly' => true,'id' => $id);
 	}
 }
 

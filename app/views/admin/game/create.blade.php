@@ -24,8 +24,9 @@
 				<div class="col-sm-6">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="name">Tên game</label>
-							{{ Form::text('name', null , textParentCategory('Tên game'), ['id' => "game1"]) }}
+							<label for="name">Tên game</label><br>
+							<span style="font-size:10px;">Tổng số chữ: <label id="divID"  style="color:red;"></label></span>
+							{{ Form::text('name', null , textParentCategory('Tên game','','name_game')) }}
 						</div>
 						<div class="form-group">
 			                <label>Chọn category</label>
@@ -44,17 +45,17 @@
 							<table class="table table-bordered">
 								<tr>
 									<th>Tên thể loại game</th>
-									<th>Chọn</th>
 									<th>Thể loại chính</th>
+									<th>Chọn</th>
 								</tr>
 								@foreach(Type::all() as $key => $value)
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" id="type_id_{{ $value->id }}" onclick="checkType({{ $value->id }});" />
+										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="checkTypeMain({{ $value->id }});" />
 										</td>
 										<td>
-										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="checkTypeMain({{ $value->id }});" />
+											<input type="checkbox" name="type_id[]" value="{{ $value->id }}" id="type_id_{{ $value->id }}" onclick="checkType({{ $value->id }});" />
 										</td>
 									</tr>
 								@endforeach
