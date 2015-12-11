@@ -409,6 +409,7 @@ a.signout {
 }
 a.account-name {
     /*text-transform: uppercase;*/
+    font-weight: bold !important;
 }
 a.game-favorite i.fa,
 a.game-played i.fa,
@@ -1486,4 +1487,8 @@ h1.title {
     .toptext {
         display: none;
     }
+}
+
+.comment-button {
+    float: right;
 }
