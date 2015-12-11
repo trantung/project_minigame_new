@@ -52,4 +52,49 @@ class CommonLog
 		return null;
 	}
 
+	public static function logErrors($type)
+	{
+		$link = Request::url();
+		$error = AdminError::where('link', $link)->first();
+		if($error) {
+			$count = $error->count + 1;
+			AdminError::find($error->id)->update(array('count' => $count));
+			AdminErrorLog::create(array('error_id' => $error->id, 'agent' => $_SERVER['HTTP_USER_AGENT']));
+		} else {
+			$input = array(
+				'link' => $link,
+				'type' => $type,
+				'count' => 1,
+			);
+			$errorId = CommonNormal::create($input, 'AdminError');
+			AdminErrorLog::create(array('error_id' => $errorId, 'agent' => $_SERVER['HTTP_USER_AGENT']));
+		}
+		return Redirect::action('SiteController@returnPage404');
+	}
+
+	public static function getTypeError($typeId)
+	{
+		if($typeId == ERROR_TYPE_404) {
+			return 'Lỗi 404';
+		}
+		return 'Lỗi game';
+	}
+
+	public static function searchError($input)
+	{
+		$data = AdminError::where(function ($query) use ($input)
+		{
+			if ($input['type'] != '') {
+				$query = $query->where('type', $input['type']);
+			}
+			if($input['start_date'] != ''){
+				$query = $query->where('created_at', '>=', $input['start_date']);
+			}
+			if($input['end_date'] != ''){
+				$query = $query->where('created_at', '<=', $input['end_date']);
+			}
+		})->orderBy('id', 'desc')->paginate(PAGINATE);
+		return $data;
+	}
+
 }

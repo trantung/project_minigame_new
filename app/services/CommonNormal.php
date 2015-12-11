@@ -83,5 +83,9 @@ class CommonNormal
 			return 'GameVote';
 		if($name == 'score')
 			return 'Score';
+		if($name == 'AdminError')
+			return 'AdminError';
+		if($name == 'AdminErrorLog')
+			return 'AdminErrorLog';
 	}
 }
