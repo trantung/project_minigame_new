@@ -125,7 +125,7 @@ class CommonGame
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-            if($input['status_seo'] != '')
+            if(isset($input['status_seo']) && $input['status_seo'] != '')
             {
                 $listSeo = AdminSeo::where('model_name', 'Game')->where('status_seo', $input['status_seo'])->lists('model_id');
                 $query = $query->whereIn('id', $listSeo);
