@@ -5,7 +5,7 @@
 	<div class="box-body">
 		<div class="form-group">
 			<label for="status_seo">Trạng thái</label>
-			{{ Form::select('status_seo', [INACTIVE => 'Chưa kích hoạt', ACTIVE => 'Kích hoạt'], $inputSeo->status, array('class' => 'form-control')) }}
+			{{ Form::select('status_seo', [INACTIVE => 'Chưa kích hoạt', ACTIVE => 'Kích hoạt'], $inputSeo->status_seo, array('class' => 'form-control')) }}
 		</div>
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>

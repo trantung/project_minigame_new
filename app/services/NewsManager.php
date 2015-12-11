@@ -18,6 +18,12 @@ class NewsManager
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
+			if($input['status_seo'] != '')
+			{
+				$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
+                $query = $query->whereIn('id', $listSeo);
+			}
+
 
 		})->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		return $data;
