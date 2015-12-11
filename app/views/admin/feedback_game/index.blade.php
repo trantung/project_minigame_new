@@ -54,9 +54,9 @@
 			  <td>{{ checkApproveOrReject($value->status) }}</td>
 			  <td>
 			  	@if($value->status == ACTIVE )
-				<a href="{{  action('FeedbackGameController@edit', $value->id) }}" class="btn btn-primary">Hủy</a>
+				<a href="{{  action('FeedbackGameController@edit', $value->id) }}" class="btn btn-primary">Đã xử lý</a>
 				@else
-				<a href="{{  action('FeedbackGameController@edit', $value->id) }}" class="btn btn-primary">Duyệt</a>
+				<a href="{{  action('FeedbackGameController@edit', $value->id) }}" class="btn btn-danger">Chưa xử lý</a>
 				@endif
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('FeedbackGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>

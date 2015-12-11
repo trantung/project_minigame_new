@@ -118,10 +118,10 @@
 			                <label>Trạng thái</label>
 			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
 		              	</div>
-		              	<div class="form-group">
+		              	<div class="ui-widget">
 			                <label>Slide</label>
-			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id) }}
-		              	</div>
+			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id, array('id' => 'combobox')) }}
+		              	</div>	
 		              	<div class="box-body table-responsive">
 							<h4>Khung game</h4>
 							<div class="overflow-box">
