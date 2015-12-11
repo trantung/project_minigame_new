@@ -13,6 +13,10 @@
 		  	{{ Form::select('sortByCountView', selectSortBy('count_view'), null, array('class' =>'form-control')) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Trạng thái Seo</label>
+			 {{  Form::select('status_seo', ['' => '-- Lựa chọn'] + selectStatusGame()  ,null,array('class' => 'form-control' )) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ ngày</label>
 		  	<input type="text" name="start_date" class="form-control" id="start_date" placeholder="Từ ngày" />
 		</div>
