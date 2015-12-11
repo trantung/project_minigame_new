@@ -12,6 +12,10 @@ class SiteController extends HomeController {
 		View::share('menu', $menu);
 	}
 
+	public function returnPage404()
+	{
+		return View::make('404');
+	}
 	/**
 	 * Display a listing of the resource.
 	 *

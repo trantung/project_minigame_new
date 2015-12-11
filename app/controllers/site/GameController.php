@@ -110,7 +110,7 @@ class GameController extends SiteController {
 			return View::make('site.game.type')->with(compact('games', 'type', 'count'));
 		}
 		//TODO 404
-		return View::make('404');
+		return CommonLog::logErrors(ERROR_TYPE_404);
 	}
 
 	public function detailGame($type, $slug)
@@ -127,7 +127,7 @@ class GameController extends SiteController {
 			}
  			return $this->getViewGame($game->parent_id, $game, $play);
 		}
-		return View::make('404');
+		return CommonLog::logErrors(ERROR_TYPE_404);
 	}
 
 	public function getViewGame($parentId = null, $game = null, $play = null)
@@ -314,7 +314,7 @@ class GameController extends SiteController {
     {
 		// $game = Game::findBySlug($slug);
 		if ($word) {
-			return View::make('404');
+			return CommonLog::logErrors(ERROR_TYPE_404);
 		}
     }
 }

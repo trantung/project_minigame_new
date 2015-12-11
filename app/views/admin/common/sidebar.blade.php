@@ -135,6 +135,13 @@
         </a>
       </li>
       @endif
+      @if(Admin::isAdmin())
+      <li>
+        <a href="{{ action('ErrorsController@index') }}">
+          <i class="fa fa-lock"></i> <span>Quản lý Logs</span>
+        </a>
+      </li>
+      @endif
      <!--  @if(Admin::isAdmin())
        <li>
         <a href="{{ action('RelationController@index') }}">

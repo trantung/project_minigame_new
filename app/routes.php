@@ -13,9 +13,11 @@
 
 App::missing(function($exception)
 {
-    Log::error( Request::url() );
-    return Redirect::to('/404-trang-khong-tim-thay');
+    // Log::error( Request::url() );
+    return CommonLog::logErrors(ERROR_TYPE_MISSING);
 });
+
+Route::get('/trang-khong-ton-tai', 'SiteController@returnPage404');
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -91,7 +93,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/feedback_game/search', array('uses' =>  'FeedbackGameController@search', 'as' => 'admin.feedback_game.search'));
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
-	 
+	Route::post('/errors/deleteErrors', 'ErrorsController@deleteErrors');
+	Route::get('/errors/search', array('uses' =>  'ErrorsController@search', 'as' => 'admin.errors.search'));
+	Route::resource('/errors', 'ErrorsController');
+	Route::get('/errors/logs/{id}', array('uses' => 'ErrorLogsController@log'));
 
 	Route::get('/addseometa', 'SeoController@seoMeta');
 	Route::post('/seo/addseometa', array('uses' => 'SeoController@addSeoMeta'));
