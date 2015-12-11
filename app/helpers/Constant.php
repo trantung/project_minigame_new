@@ -133,3 +133,6 @@ define('PAGINATE_RELATED', 6);
 define('PAGINATE_MOBILE', 12);
 //image avatar
 define('UPLOAD_USER_AVATAR', '/user_avatar');
+//error type
+define('ERROR_TYPE_404', 1);
+define('ERROR_TYPE_MISSING', 2);
