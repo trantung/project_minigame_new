@@ -1,5 +1,7 @@
 @extends('admin.layout.default')
 
+@if(Admin::isAdmin())
+
 @section('title')
 {{ $title='Quản lý Error Logs' }}
 @stop
@@ -51,5 +53,7 @@
 		</ul>
 	</div>
 </div>
+
+@endif
 
 @stop
