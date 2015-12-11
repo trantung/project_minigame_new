@@ -28,7 +28,8 @@
 				</div>
 			</div>
 			<div class="box-footer">
-				{{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
+				{{ Form::submit('Gửi bình luận', array('class' => 'btn btn-primary comment-button')) }}
+				<div class="clearfix"></div>
 			</div>
 		@else
 		<b>Bạn phải đăng nhập để comment!</b>

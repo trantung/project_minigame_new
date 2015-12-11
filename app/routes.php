@@ -11,6 +11,12 @@
 |
 */
 
+App::missing(function($exception)
+{
+    Log::error( Request::url() );
+    return Redirect::to('/404-trang-khong-tim-thay');
+});
+
 Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
