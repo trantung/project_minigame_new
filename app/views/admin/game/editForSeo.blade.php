@@ -28,6 +28,10 @@
 							{{ Form::text('name', $inputGame->name , textParentCategory('Tên game')) }}
 						</div>
 						<div class="form-group">
+			                <label>Ngày đăng</label>
+			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}" readonly />
+		              	</div>
+						<div class="form-group">
 			                <label>Chọn category</label>
 			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control', 'readonly' => true)) }}
 		              	</div>
@@ -72,11 +76,6 @@
 							<label>Gname</label>
 							{{ Form::text('gname', $inputGame->gname , textParentCategory('Gname')) }}
 						</div>
-
-						<div class="form-group">
-			                <label>Ngày đăng</label>
-			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}" readonly />
-		              	</div>
 
 		              	<div class="form-group">
 			                <label>Trạng thái</label>

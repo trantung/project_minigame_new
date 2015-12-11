@@ -1,6 +1,6 @@
 <?php
 
-class SiteNewsController extends SiteController {
+class ErrorsController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,10 +9,8 @@ class SiteNewsController extends SiteController {
 	 */
 	public function index()
 	{
-		$now = date('Y-m-d');
-		$inputListNews = AdminNew::where('start_date', '<=', Carbon\Carbon::now())->orderBy('id', 'desc')
-		->paginate(FRONENDPAGINATE);
-		return View::make('site.News.listNews')->with(compact('inputListNews'));
+		$data = AdminError::orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.errorlog.index', array('data' => $data));
 	}
 
 
@@ -44,13 +42,11 @@ class SiteNewsController extends SiteController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($slug)
+	public function show($id)
 	{
-		$now = date('Y-m-d');
-		$inputNew = AdminNew::findBySlug($slug);
-		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->where('start_date', '<=', $now)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
-		return View::make('site.News.showNews')->with(compact('inputNew', 'inputRelated'));
+		//
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -84,8 +80,28 @@ class SiteNewsController extends SiteController {
 	 */
 	public function destroy($id)
 	{
-		//
+		AdminErrorLog::where('error_id', $id)->delete();
+		AdminError::destroy($id);
+		return Redirect::action('ErrorsController@index');
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		$data = CommonLog::searchError($input);
+		return View::make('admin.errorlog.index')->with(compact('data'));
+	}
+
+	public function deleteErrors()
+	{
+		$errorId = Input::get('error_id');
+		foreach($errorId as $key => $value) {
+			$data = AdminError::find($value);
+			if($data) {
+				$this->destroy($value);
+			}
+		}
+		dd(1);
+	}
 
 }

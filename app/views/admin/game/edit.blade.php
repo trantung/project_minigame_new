@@ -32,6 +32,10 @@
 							{{ Form::text('name', $inputGame->name , textParentCategory('Tên game','','name_game')) }}
 						</div>
 						<div class="form-group">
+			                <label>Lịch xuất bản</label>
+			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
+		              	</div>
+						<div class="form-group">
 			                <label>Chọn category</label>
 			                {{ Form::select('parent_id', Game::where('parent_id', NULL)->lists('name', 'id'), $inputGame->parent_id, array('class' => 'form-control', 'onchange' => 'getFormGameOffline()')) }}
 		              	</div>
@@ -110,19 +114,14 @@
 							{{ Form::text('gname', $inputGame->gname , textParentCategory('Gname')) }}
 						</div>
 
-						<div class="form-group">
-			                <label>Lịch xuất bản</label>
-			                <input type="text" class="form-control" maxlength="10" name="start_date" id="start_date" value="{{ $inputGame->start_date }}">
-		              	</div>
-
 		              	<div class="form-group">
 			                <label>Trạng thái</label>
 			                {{ Form::select('status', selectStatusGame(), $inputGame->status, array('class' => 'form-control')) }}
 		              	</div>
-		              	<div class="form-group">
+		              	<div class="ui-widget">
 			                <label>Slide</label>
-			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id) }}
-		              	</div>
+			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id, array('id' => 'combobox')) }}
+		              	</div>	
 		              	<div class="box-body table-responsive">
 							<h4>Khung game</h4>
 							<div class="overflow-box">
