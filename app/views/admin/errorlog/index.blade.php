@@ -1,5 +1,7 @@
 @extends('admin.layout.default')
 
+@if(Admin::isAdmin())
+
 @section('title')
 {{ $title='Quản lý Error Logs' }}
 @stop
@@ -83,6 +85,8 @@
 </div>
 
 @include('admin.errorlog.script')
+
+@endif
 
 @stop
 
