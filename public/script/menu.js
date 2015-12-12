@@ -5,6 +5,7 @@ void 0===c?d&&"get"in d&&null!==(e=d.get(a,b))?e:(e=n.find.attr(a,b),null==e?voi
 
 $(function (){
 	getMenu();
+	getBxh();
 });
 function getMenu()
 {
@@ -20,4 +21,24 @@ function getMenu()
 			$('body').append(data);
 		},
 	});
+}
+function getBxh()
+{
+    var url = window.location.protocol + '//' + window.location.hostname;
+    var link = window.location.href;
+    var segments = link.split( '/' );
+    //get game name to check id game
+    var link_url = segments[4];
+    $.ajax(
+    {
+        type:'post',
+        url: url + '/import-bxh',
+        data: {
+            'currentUrl': window.location.href,
+            'link_url': link_url
+        },
+        success: function(data) {
+            $('body').append(data);
+        },
+    });
 }

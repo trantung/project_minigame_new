@@ -131,7 +131,7 @@ class CommonGame
                 $query = $query->whereIn('id', $listSeo);
             }
 		})
-            
+
 		->orderBy($orderBy[0], $orderBy[1])
 		->paginate(PAGINATE);
 		//dd(DB::getQueryLog());
@@ -404,51 +404,48 @@ class CommonGame
 		    	} else {
 		    		$link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
 		    	}
-		    	$box = self::getBoxGame($link, $game->parent_id);
+		    	$box = self::getBoxGame($link, $game);
     			return $box;
     		}
-    	// 	if($game->parent_id == GAMEHTML5) {
-    	// 		if($game->link_url != '') {
-					// $link = url(UPLOAD_GAME . '/' . $game->link_url);
-		   //  	} else {
-		   //  		$link = url(UPLOAD_GAME . '/' . $filename);
-		   //  	}
-		   //  	$box = self::getBoxGame($link, $game->parent_id);
-    	// 		return $box;
-    	// 	}
+    		if($game->parent_id == GAMEHTML5) {
+    			if($game->link_url != '') {
+					$link = url(UPLOAD_GAME . '/' . $game->link_url);
+		    	} else {
+		    		$link = url(UPLOAD_GAME . '/' . $filename);
+		    	}
+		    	$box = self::getBoxGame($link, $game);
+    			return $box;
+    		}
     	}
     	return null;
     }
 
-    public static function getBoxGame($link, $parentId)
+    public static function getBoxGame($link, $game)
     {
-    	if($parentId == GAMEFLASH) {
-    		$box = '<object >
-					    <param name="movie" value="' . $link .'">
-                        <param name="wmode" value="direct">
-                        <param name="allowScriptAccess" value="always">
-                        <param name="scale" value="exactfit">
-                        <param name="allowFullScreenInteractive" value="true">
-                        <param name="allowFullScreen" value="true">
-                        <param name="quality" value="high" />
-					    <embed src="' . $link .'"></embed>
-					</object>';
+        $width = (isset($game->width) && $game->width != '')?($game->width):'640';
+        $height = (isset($game->height) && $game->height != '')?($game->height):'480';
+
+    	if($game->parent_id == GAMEFLASH) {
+            $box = '<embed type="application/x-shockwave-flash" src="' . $link .'" width="'.$width.'" height="'.$height.'" style="undefined" id="game" name="game" quality="high" wmode="direct">';
     		return $box;
     	}
 
-        //user iframe
-        // if(getDevice() == COMPUTER) {
-        //     if($parentId == GAMEHTML5) {
-        //         $box = '<iframe src="' . $link . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-        //         return $box;
-        //     }
-        // } else {
-        //     if($parentId == GAMEHTML5) {
-        //         $style = self::getStyle();
-        //         $box = '<iframe src="' . $link . '" style="border:none; margin:0; padding:0; overflow:hidden; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-        //         return $box;
-        //     }
-        // }
+        if($game->parent_id == GAMEHTML5) {
+            $box = '<div style="margin: 10px auto; width: '.$width.'px; height: '.$height.'px;">
+                    <iframe name="my-iframe" id="my-iframe" width="100%" src="http://minigame.de/games/2048-threes/" height="100%" scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-transform: scale(1, 1);
+                    -o-transform: scale(1, 1);
+                    -ms-transform: scale(1, 1);
+                    transform: scale(1, 1);
+                    -moz-transform-origin: top left;
+                    -webkit-transform-origin: top left;
+                    -o-transform-origin: top left;
+                    -ms-transform-origin: top left;
+                    transform-origin: top left;
+                    frameborder: 0px;">
+                    </iframe>
+                </div>';
+            return $box;
+        }
     }
 
     //get link play game for games HTML5

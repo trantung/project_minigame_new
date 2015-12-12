@@ -121,7 +121,7 @@ class GameController extends SiteController {
 		if($game) {
 			$count_view = $game->count_view+1;
 			$game->update(array('count_view' => $count_view));
-			if(getDevice() == COMPUTER && $game->parent_id == GAMEFLASH) {
+			if(getDevice() == COMPUTER) {
 				$count_play = $game->count_play+1;
 				$game->update(array('count_play' => $count_play));
 			}
@@ -133,8 +133,6 @@ class GameController extends SiteController {
 	public function getViewGame($parentId = null, $game = null, $play = null)
     {
     	if($parentId && $game) {
-    		// $inputComment = Comment::where('model_id', $game->id)->where('status', ACTIVE)->orderBy('id', 'desc')->paginate(PAGE_COMMENT);
-
     		if(getDevice() == MOBILE) {
     			if($parentId == GAMEOFFLINE) {
 	    			return View::make('site.game.downloadmobile')->with(compact('game'));
@@ -294,7 +292,11 @@ class GameController extends SiteController {
     {
     	$menu = CategoryParent::where('position', MENU)
 			->orderBy('weight_number', 'asc')->get();
-    	return View::make('site.common.menu_import', array('menu' => $menu));
+		if(getDevice() == MOBILE) {
+			return View::make('site.common.menu_import', array('menu' => $menu));
+		} else {
+			return null;
+		}
     }
 
     public function importBxh()
@@ -307,7 +309,7 @@ class GameController extends SiteController {
 				return View::make('site.common.score_import', array('id' => $game->id));
 			}
 		}
-    	return false;
+    	return null;
     }
 
 	public function getPage404($type, $slug, $word)
