@@ -423,16 +423,17 @@ class CommonGame
     public static function getBoxGame($link, $parentId)
     {
     	if($parentId == GAMEFLASH) {
-    		$box = '<object >
-					    <param name="movie" value="' . $link .'">
-                        <param name="wmode" value="direct">
-                        <param name="allowScriptAccess" value="always">
-                        <param name="scale" value="exactfit">
-                        <param name="allowFullScreenInteractive" value="true">
-                        <param name="allowFullScreen" value="true">
-                        <param name="quality" value="high" />
-					    <embed src="' . $link .'"></embed>
-					</object>';
+            $box = '<embed type="application/x-shockwave-flash" src="' . $link .'" width="640" height="480" style="undefined" id="game" name="game" quality="high" wmode="direct">';
+    	// 	$box = '<object >
+					//     <param name="movie" value="' . $link .'">
+     //                    <param name="wmode" value="direct">
+     //                    <param name="allowScriptAccess" value="always">
+     //                    <param name="scale" value="exactfit">
+     //                    <param name="allowFullScreenInteractive" value="true">
+     //                    <param name="allowFullScreen" value="true">
+     //                    <param name="quality" value="high" />
+					//     <embed src="' . $link .'"></embed>
+					// </object>';
     		return $box;
     	}
 
