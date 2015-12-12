@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration {
             $table->integer('status')->nullable();
             $table->string('ip', 256)->nullable();
             $table->string('device', 256)->nullable();
+            $table->string('google_name', 256)->nullable();
+            $table->string('google_id', 256)->nullable();
+            $table->string('image_url', 256)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

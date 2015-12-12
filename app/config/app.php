@@ -123,7 +123,6 @@ return array(
 		"Ollieread\Multiauth\MultiauthServiceProvider",
 		"Chumper\Zipper\ZipperServiceProvider",
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		'Iorme\SimpleCaptcha\SimpleCaptchaServiceProvider',
 	    'Edisonthk\GoogleOAuth\GoogleOAuthServiceProvider',
 
 	),
@@ -193,7 +192,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Zipper' 		  => 'Chumper\Zipper\Zipper',
-		'SimpleCaptcha'   => 'Iorme\SimpleCaptcha\Facades\SimpleCaptcha',
 		'GoogleOAuth'     => 'Edisonthk\GoogleOAuth\Facade\GoogleOAuth',
 
 	),
