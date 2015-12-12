@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMoreFieldUser extends Migration {
+class AddImageUrlFieldUser extends Migration {
 
 	/**
 	 * Run the migrations.

@@ -294,7 +294,11 @@ class GameController extends SiteController {
     {
     	$menu = CategoryParent::where('position', MENU)
 			->orderBy('weight_number', 'asc')->get();
-    	return View::make('site.common.menu_import', array('menu' => $menu));
+		if(getDevice() == MOBILE) {
+			return View::make('site.common.menu_import', array('menu' => $menu));
+		} else {
+			return null;
+		}
     }
 
     public function importBxh()
@@ -307,7 +311,7 @@ class GameController extends SiteController {
 				return View::make('site.common.score_import', array('id' => $game->id));
 			}
 		}
-    	return false;
+    	return null;
     }
 
 	public function getPage404($type, $slug, $word)
