@@ -319,4 +319,9 @@ class GameController extends SiteController {
 			return CommonLog::logErrors(ERROR_TYPE_404);
 		}
     }
+
+    public function listReportGame()
+    {
+    	return View::make('site.game.total_report_game_month')->with(compact(''));
+    }
 }
