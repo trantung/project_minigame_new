@@ -290,66 +290,55 @@ class CommonGame
     	return null;
     }
 
-    public static function boxGameByCategoryParentIndex($data, $paginate = null)
+    public static function boxGameByCategoryParentIndex($data)
     {
         $now = Carbon\Carbon::now();
         $arrange = getArrange($data->arrange);
         $game = $data->games->first();
         if($game) {
-            if($paginate) {
-                if(getDevice() == MOBILE) {
-                    $listGame = Game::where('parent_id', $game->id)
-                        ->where('status', ENABLED)
-                        ->where('parent_id', '!=', GAMEFLASH)
-                        ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc')
-                        ->paginate(PAGINATE_MOBILE);
+            if(getDevice() == MOBILE) {
+                if (Cache::has('listGame'))
+                {
+                    $listGame = Cache::get('listGame'.$game->id.$arrange);
                 } else {
-                    $listGame = Game::where('parent_id', $game->id)
-                        ->where('status', ENABLED)
-                        ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc')
-                        ->paginate(PAGINATE_LISTGAME);
-                }
-            } else {
-                if(getDevice() == MOBILE) {
-                    // $listGame = Game::where('parent_id', $game->id)
-                    //     ->where('status', ENABLED)
-                    //     ->where('parent_id', '!=', GAMEFLASH)
-                    //     ->where('start_date', '<=', $now)
-                    //     ->orderBy($arrange, 'desc');
-                        // ->limit(PAGINATE_MOBILE)->get();
-
                     $listGame = DB::table('games')
                         ->join('types', 'types.id', '=', 'games.type_main')
+                        ->join('games as category', 'category.id', '=', 'games.parent_id')
                         ->select('games.id', 'games.name', 'games.slug'
                                 , 'games.parent_id', 'games.type_main', 'games.image_url'
-                                , 'types.name as type_name', 'types.slug as type_slug')
+                                , 'types.name as type_name', 'types.slug as type_slug'
+                                , 'category.slug as category_slug')
                         ->distinct()
+                        ->where('games.parent_id', $game->id)
                         ->whereNull('games.deleted_at')
                         ->where('games.status', ENABLED)
                         ->where('games.parent_id', '!=', GAMEFLASH)
                         ->where('games.start_date', '<=', $now)
+                        ->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
                         ->orderBy('games.'.$arrange, 'desc')
                         ->get();
+                    Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
+                }
+            } else {
+                if (Cache::has('listGame'))
+                {
+                    $listGame = Cache::get('listGame'.$game->id.$arrange);
                 } else {
-                    // $listGame = Game::where('parent_id', $game->id)
-                    //     ->where('status', ENABLED)
-                    //     ->where('start_date', '<=', $now)
-                    //     ->orderBy($arrange, 'desc');
-                        // ->limit(PAGINATE_BOXGAME)->get();
-
                     $listGame = DB::table('games')
                         ->join('types', 'types.id', '=', 'games.type_main')
+                        ->join('games as category', 'category.id', '=', 'games.parent_id')
                         ->select('games.id', 'games.name', 'games.slug'
                                 , 'games.parent_id', 'games.type_main', 'games.image_url'
-                                , 'types.name as type_name', 'types.slug as type_slug', 'games.count_play')
+                                , 'types.name as type_name', 'types.slug as type_slug', 'games.count_play', 'category.slug as category_slug')
                         ->distinct()
+                        ->where('games.parent_id', $game->id)
                         ->whereNull('games.deleted_at')
                         ->where('games.status', ENABLED)
                         ->where('games.start_date', '<=', $now)
+                        ->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
                         ->orderBy('games.'.$arrange, 'desc')
                         ->get();
+                    Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
                 }
             }
             return $listGame;
@@ -361,8 +350,7 @@ class CommonGame
     {
         if($game) {
             if (!in_array($game->parent_id, [GAMEFLASH, GAMEHTML5])) {
-                $category = Game::find($game->parent_id);
-                return $url = url('/' . $category->slug . '/' . $game->slug);
+                return $url = url('/' . $game->category_slug . '/' . $game->slug);
             }
             if($game->type_name && $game->type_slug) {
                 $url = url('/' . $game->type_slug . '/' . $game->slug);

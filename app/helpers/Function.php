@@ -409,7 +409,7 @@ function selectArrange()
 function getArrange($arrange)
 {
 	$arrangeArray = array(
-			HOT => 'weight_number',
+			HOT => 'count_play',
 			GAME_PLAY => 'count_play',
 			GAME_VOTE => 'count_vote',
 			GAME_VIEW => 'count_view',
