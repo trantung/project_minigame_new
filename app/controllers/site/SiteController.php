@@ -3,8 +3,10 @@
 class SiteController extends HomeController {
 
 	public function __construct() {
-		$menu = CategoryParent::where('position', MENU)
-			->orderBy('weight_number', 'asc')->get();
+		// $menu = CategoryParent::where('position', MENU)
+		// 	->orderBy('weight_number', 'asc')->get();
+		$menu = CategoryParent::where('status', ACTIVE)
+		 	->orderBy('weight_number', 'asc')->get();
 		$script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
 		if($script) {
 			View::share('script', $script);
