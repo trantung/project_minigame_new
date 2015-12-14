@@ -297,7 +297,7 @@ class CommonGame
         $game = $data->games->first();
         if($game) {
             if(getDevice() == MOBILE) {
-                if (Cache::has('listGame'))
+                if (Cache::has('listGame'.$game->id.$arrange))
                 {
                     $listGame = Cache::get('listGame'.$game->id.$arrange);
                 } else {
@@ -320,7 +320,7 @@ class CommonGame
                     Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
                 }
             } else {
-                if (Cache::has('listGame'))
+                if (Cache::has('listGame'.$game->id.$arrange))
                 {
                     $listGame = Cache::get('listGame'.$game->id.$arrange);
                 } else {

@@ -36,7 +36,7 @@
 			</div>
 		@endforeach
 	@else
-		@include('site.common.boxgame', array('inputSearch' => $input['search'], 'text' => 'kết quả từ khóa'))
+		@include('site.common.boxgame', array('inputSearch' => $input['search'], 'text' => 'kết quả nào với từ khóa'))
 	@endif
 </div>
 

@@ -124,11 +124,12 @@ class AccountController extends SiteController {
 			$rules = array(
 				'password'   	=> 'required|min:6',
 				'password_new'  => 'required|min:6',
-				'password_new2' => 'required|min:6|same:password_new'
+				'password_new2' => 'required|min:6|same:password_new',
 	        );
 		} else {
 			$rules = array();
 		}
+		$rules['image_url'] = 'image|mimes:jpg,png,jpeg|max:150';
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('AccountController@account')

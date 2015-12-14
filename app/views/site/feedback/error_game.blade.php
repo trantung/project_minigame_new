@@ -9,9 +9,6 @@
 
 <div class="box">
 	<h3>Báo lỗi game</h3>
-	<div class=" ad">
-		<h4><b>Bạn đang thắc mắc?</b></h4>
-	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-4">
 			@include('site.common.message')
@@ -31,7 +28,7 @@
 		<div class="form-group">
 			<label for="username" class="col-sm-4 control-label label-text">Nội dung báo lỗi:</label>
 			<div class="col-sm-6">
-				<textarea class="form-control" name="description" rows="5" placeholder="Nội dung góp ý" id="description" require></textarea>
+				<textarea class="form-control" name="description" rows="5" placeholder="Nội dung báo lỗi" id="description" require></textarea>
 			</div>
 		</div>
 

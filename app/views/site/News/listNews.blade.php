@@ -22,7 +22,7 @@
 			<div class="list-text">
 				<h3>
 					<a href="{{ action('SiteNewsController@show', $value->slug) }}">
-						[{{ $value->typeNew->name }}] {{ limit_text($value->title, TEXTLENGH) }}
+						[{{ $value->typeNew->name }}] {{ $value->title }}
 					</a>
 				</h3>
 				<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
