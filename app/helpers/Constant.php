@@ -136,3 +136,5 @@ define('UPLOAD_USER_AVATAR', '/user_avatar');
 //error type
 define('ERROR_TYPE_404', 1);
 define('ERROR_TYPE_MISSING', 2);
+//define cache time
+define('CACHETIME', 2);
