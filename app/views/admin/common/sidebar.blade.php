@@ -127,7 +127,7 @@
         </a>
         <ul class="treeview-menu">
           @if(Admin::isAdmin())
-            <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Quản chính sách liên hệ</a></li>
+            <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Chính sách</a></li>
           @endif
           <li><a href="{{ action('SeoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
         </ul>
