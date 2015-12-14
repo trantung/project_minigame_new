@@ -1,4 +1,4 @@
-<?php $url = CommonGame::getUrlGame($game); ?>
+<?php $url = CommonGame::getUrlGameIndex($game); ?>
 <div class="col-xs-4 col-sm-3 col-md-2">
 	<div class="item">
 	    <div class="item-image">

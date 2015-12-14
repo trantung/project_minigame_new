@@ -59,7 +59,12 @@
         <a href="{{ action('AdminGameController@statisticGame') }}">
           <i class="fa fa-gamepad"></i> <span>Thống kê Game</span>
         </a>
-      </li>      
+      </li>    
+       <li>
+        <a href="{{ action('AdminGameController@listReportGame') }}">
+          <i class="fa fa-gamepad"></i> <span>Thống kê Game theo tháng</span>
+        </a>
+      </li>   
       @endif       
       @if(!Admin::isSeo())
       <li>
