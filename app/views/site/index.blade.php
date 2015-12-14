@@ -13,25 +13,26 @@
 @endif
 
 <div class="box">
+
 	@foreach($menu as $value)
 	@if($value->position == CONTENT)
-		<h3>{{ $value->name }}</h3>
-		@if($games = CommonGame::boxGameByCategoryParentIndex($value))
-			<?php $count = ceil(count($games->get())/PAGINATE_BOXGAME);
-				$count = getCount($count);
-			 ?>
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					@for($i = 0; $i < $count ; $i ++)
-						<div class="swiper-slide boxgame">
-							<div class="row">
-							<?php
-								$listGame = $games->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
-							?>
-								@foreach($listGame as $game)
-									@include('site.game.gameitem', array('game' => $game))
-								@endforeach
-							</div>
+	<h3>{{ $value->name }}</h3>
+	@if($games = CommonGame::boxGameByCategoryParentIndex($value))
+		<?php $count = ceil(count($games)/PAGINATE_BOXGAME);
+			$count = getCount($count);
+		 ?>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				@for($i = 0; $i < $count ; $i ++)
+					<div class="swiper-slide boxgame">
+						<div class="row">
+						<?php
+							//$listGame = $games->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+							$listGame = array_slice($games, $i * PAGINATE_BOXGAME, PAGINATE_BOXGAME);
+						?>
+							@foreach($listGame as $game)
+								@include('site.game.gameitemindex', array('game' => $game))
+							@endforeach
 						</div>
 					@endfor
 				</div>
