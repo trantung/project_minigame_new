@@ -28,21 +28,7 @@
 
 		</div>
 
-		@if($game->parent_id == GAMEHTML5)
-			{{-- <div class="btn-click">
-				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-			</div> --}}
-
-			<div class="btn-block-center">
-				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-			</div>
-
-			@include('site.game.scriptcountplay', array('id' => $game->id, 'url' => CommonGame::getLinkPlayGameHtml5($game)))
-		@endif
-
-		@if($game->parent_id == GAMEFLASH)
-			<div class="playbox">{{ CommonGame::getLinkGame($game) }}</div>
-		@endif
+	 	<div class="playbox">{{ CommonGame::getLinkGame($game) }}</div>
 
 		{{-- @include('site.game.score', array('id' => $game->id)) --}}
 
@@ -51,12 +37,6 @@
 		</div>
 
 		<div class="detail">{{ $game->description }}</div>
-
-		@if($game->parent_id == GAMEHTML5)
-			<div class="btn-block-center">
-				<a onclick="countplay()" class="download"><i class="fa fa-play-circle-o"></i> Chơi ngay</a>
-			</div>
-		@endif
 
 		@include('site.game.vote', array('id' => $game->id))
 

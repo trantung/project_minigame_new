@@ -26,27 +26,29 @@
 
 	<div class="search1">
 		<form action="{{ action('SearchGameController@index') }}" >
-			<input type="text" name="search" value="" title="search" placeholder="Tìm kiếm game" />
+			<input type="text" name="search" value="" title="search" id="searchmenu" placeholder="Tìm kiếm game" />
 			<input type="submit" value="search" title="submit" />
 		</form>
 	</div>
 	<ul>
 		<li class='active'><a href='{{ url('/') }}' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
 		@foreach($menu as $key => $value)
-			@if(count($value->parenttypes) == 0)
-				@if($value->id == 1)
-					<li><a href="{{ action('GameController@getListGameAndroid') }}" class="color2"><span>{{ $value->name }}</span></a></li>
+			@if($value->position == MENU)
+				@if(count($value->parenttypes) == 0)
+					@if($value->id == 1)
+						<li><a href="{{ action('GameController@getListGameAndroid') }}" class="color2"><span>{{ $value->name }}</span></a></li>
+					@else
+						<li><a href="{{ url('/' . $value->slug) }}" class="color2"><span>{{ $value->name }}</span></a></li>
+					@endif
 				@else
-					<li><a href="{{ url('/' . $value->slug) }}" class="color2"><span>{{ $value->name }}</span></a></li>
+				<li class='has-sub'><a href= '#' class="color2"><span>{{ $value->name }}</span></a>
+					<ul>
+					@foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v)
+						<li><a href="{{ url('/' . Type::find($v)->slug) }}"><span>{{ Type::find($v)->name }}</span></a></li>
+					@endforeach
+					</ul>
+				</li>
 				@endif
-			@else
-			<li class='has-sub'><a href= '#' class="color2"><span>{{ $value->name }}</span></a>
-				<ul>
-				@foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v)
-					<li><a href="{{ url('/' . Type::find($v)->slug) }}"><span>{{ Type::find($v)->name }}</span></a></li>
-				@endforeach
-				</ul>
-			</li>
 			@endif
 		@endforeach
 	</ul>

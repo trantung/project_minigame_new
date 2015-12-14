@@ -131,7 +131,7 @@ class CommonGame
                 $query = $query->whereIn('id', $listSeo);
             }
 		})
-            
+
 		->orderBy($orderBy[0], $orderBy[1])
 		->paginate(PAGINATE);
 		//dd(DB::getQueryLog());
@@ -290,46 +290,77 @@ class CommonGame
     	return null;
     }
 
-    public static function boxGameByCategoryParentIndex($data, $paginate = null)
+    public static function boxGameByCategoryParentIndex($data)
     {
         $now = Carbon\Carbon::now();
         $arrange = getArrange($data->arrange);
         $game = $data->games->first();
         if($game) {
-            if($paginate) {
-                if(getDevice() == MOBILE) {
-                    $listGame = Game::where('parent_id', $game->id)
-                        ->where('status', ENABLED)
-                        ->where('parent_id', '!=', GAMEFLASH)
-                        ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc')
-                        ->paginate(PAGINATE_MOBILE);
+            if(getDevice() == MOBILE) {
+                if (Cache::has('listGame'.$game->id.$arrange))
+                {
+                    $listGame = Cache::get('listGame'.$game->id.$arrange);
                 } else {
-                    $listGame = Game::where('parent_id', $game->id)
-                        ->where('status', ENABLED)
-                        ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc')
-                        ->paginate(PAGINATE_LISTGAME);
+                    $listGame = DB::table('games')
+                        ->join('types', 'types.id', '=', 'games.type_main')
+                        ->join('games as category', 'category.id', '=', 'games.parent_id')
+                        ->select('games.id', 'games.name', 'games.slug'
+                                , 'games.parent_id', 'games.type_main', 'games.image_url'
+                                , 'types.name as type_name', 'types.slug as type_slug'
+                                , 'category.slug as category_slug')
+                        ->distinct()
+                        ->where('games.parent_id', $game->id)
+                        ->whereNull('games.deleted_at')
+                        ->where('games.status', ENABLED)
+                        ->where('games.parent_id', '!=', GAMEFLASH)
+                        ->where('games.start_date', '<=', $now)
+                        ->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
+                        ->orderBy('games.'.$arrange, 'desc')
+                        ->get();
+                    Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
                 }
             } else {
-                if(getDevice() == MOBILE) {
-                    $listGame = Game::where('parent_id', $game->id)
-                        ->where('status', ENABLED)
-                        ->where('parent_id', '!=', GAMEFLASH)
-                        ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc');
-                        // ->limit(PAGINATE_MOBILE)->get();
+                if (Cache::has('listGame'.$game->id.$arrange))
+                {
+                    $listGame = Cache::get('listGame'.$game->id.$arrange);
                 } else {
-                    $listGame = Game::where('parent_id', $game->id)
-                        ->where('status', ENABLED)
-                        ->where('start_date', '<=', $now)
-                        ->orderBy($arrange, 'desc');
-                        // ->limit(PAGINATE_BOXGAME)->get();
+                    $listGame = DB::table('games')
+                        ->join('types', 'types.id', '=', 'games.type_main')
+                        ->join('games as category', 'category.id', '=', 'games.parent_id')
+                        ->select('games.id', 'games.name', 'games.slug'
+                                , 'games.parent_id', 'games.type_main', 'games.image_url'
+                                , 'types.name as type_name', 'types.slug as type_slug', 'games.count_play', 'category.slug as category_slug')
+                        ->distinct()
+                        ->where('games.parent_id', $game->id)
+                        ->whereNull('games.deleted_at')
+                        ->where('games.status', ENABLED)
+                        ->where('games.start_date', '<=', $now)
+                        ->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
+                        ->orderBy('games.'.$arrange, 'desc')
+                        ->get();
+                    Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
                 }
             }
             return $listGame;
         }
         return null;
+    }
+
+    public static function getUrlGameIndex($game = null)
+    {
+        if($game) {
+            if (!in_array($game->parent_id, [GAMEFLASH, GAMEHTML5])) {
+                return $url = url('/' . $game->category_slug . '/' . $game->slug);
+            }
+            if($game->type_name && $game->type_slug) {
+                $url = url('/' . $game->type_slug . '/' . $game->slug);
+                return $url;
+            } else {
+                dd('Đường dẫn sai');
+            }
+        } else {
+            return url('/');
+        }
     }
 
     // url game
@@ -404,51 +435,48 @@ class CommonGame
 		    	} else {
 		    		$link = url(UPLOAD_FLASH . '/' . $game->link_upload_game);
 		    	}
-		    	$box = self::getBoxGame($link, $game->parent_id);
+		    	$box = self::getBoxGame($link, $game);
     			return $box;
     		}
-    	// 	if($game->parent_id == GAMEHTML5) {
-    	// 		if($game->link_url != '') {
-					// $link = url(UPLOAD_GAME . '/' . $game->link_url);
-		   //  	} else {
-		   //  		$link = url(UPLOAD_GAME . '/' . $filename);
-		   //  	}
-		   //  	$box = self::getBoxGame($link, $game->parent_id);
-    	// 		return $box;
-    	// 	}
+    		if($game->parent_id == GAMEHTML5) {
+    			if($game->link_url != '') {
+					$link = url(UPLOAD_GAME . '/' . $game->link_url);
+		    	} else {
+		    		$link = url(UPLOAD_GAME . '/' . $filename);
+		    	}
+		    	$box = self::getBoxGame($link, $game);
+    			return $box;
+    		}
     	}
     	return null;
     }
 
-    public static function getBoxGame($link, $parentId)
+    public static function getBoxGame($link, $game)
     {
-    	if($parentId == GAMEFLASH) {
-    		$box = '<object >
-					    <param name="movie" value="' . $link .'">
-                        <param name="wmode" value="direct">
-                        <param name="allowScriptAccess" value="always">
-                        <param name="scale" value="exactfit">
-                        <param name="allowFullScreenInteractive" value="true">
-                        <param name="allowFullScreen" value="true">
-                        <param name="quality" value="high" />
-					    <embed src="' . $link .'"></embed>
-					</object>';
+        $width = (isset($game->width) && $game->width != '')?($game->width):'640';
+        $height = (isset($game->height) && $game->height != '')?($game->height):'480';
+
+    	if($game->parent_id == GAMEFLASH) {
+            $box = '<embed type="application/x-shockwave-flash" src="' . $link .'" width="'.$width.'" height="'.$height.'" style="undefined" id="game" name="game" quality="high" wmode="direct">';
     		return $box;
     	}
 
-        //user iframe
-        // if(getDevice() == COMPUTER) {
-        //     if($parentId == GAMEHTML5) {
-        //         $box = '<iframe src="' . $link . '" style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" width="100%" height="100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-        //         return $box;
-        //     }
-        // } else {
-        //     if($parentId == GAMEHTML5) {
-        //         $style = self::getStyle();
-        //         $box = '<iframe src="' . $link . '" style="border:none; margin:0; padding:0; overflow:hidden; ' . $style . '" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>';
-        //         return $box;
-        //     }
-        // }
+        if($game->parent_id == GAMEHTML5) {
+            $box = '<div style="margin: 10px auto; width: '.$width.'px; height: '.$height.'px;">
+                    <iframe name="my-iframe" id="my-iframe" width="100%" src="'.$link.'" height="100%" scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-transform: scale(1, 1);
+                    -o-transform: scale(1, 1);
+                    -ms-transform: scale(1, 1);
+                    transform: scale(1, 1);
+                    -moz-transform-origin: top left;
+                    -webkit-transform-origin: top left;
+                    -o-transform-origin: top left;
+                    -ms-transform-origin: top left;
+                    transform-origin: top left;
+                    frameborder: 0px;">
+                    </iframe>
+                </div>';
+            return $box;
+        }
     }
 
     //get link play game for games HTML5

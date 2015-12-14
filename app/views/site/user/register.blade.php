@@ -40,15 +40,20 @@
 					<input type="email" name="email" class="form-control" id="email" placeholder="email" maxlength="255" required >
 				</div>
 			</div>
-			<div class="form-group">
+			{{-- <div class="form-group">
 				<label for="email" class="col-sm-4 control-label label-text">Điều khoản:</label>
 				<div class="col-sm-4">
-					<textarea readonly="" class="form-control" name="">{{ Config::get('policy.policy') }}</textarea>
+					<textarea readonly="" class="form-control" name=""> --}}
+					{{-- Config::get('policy.policy') --}}
+					{{-- </textarea>
 				</div>
-			</div>
+			</div> --}}
+
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="checkbox" name="vehicle" id="vehicle" value="check" required> Tôi đồng ý với các quy định trên<br>
+					<input type="checkbox" name="vehicle" id="vehicle" value="check" required> <a href="{{ action('SiteFeedbackController@policy') }}">Tôi đồng ý với các quy định trong bản thỏa thuận sử dụng</a>
+					<br>
+
 				</div>
 			</div>
 			<div class="form-group">

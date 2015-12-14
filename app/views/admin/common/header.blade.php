@@ -93,6 +93,13 @@
 			startView: 2,
 			forceParse: 0,
 	    });
+	
+	    $('#datepickerStartdate').datepicker({
+	    	dateFormat: 'yy-mm-dd',
+			});
+	    $('#datepickerEnddate').datepicker({
+	    	dateFormat: 'yy-mm-dd',
+			});
 	  });
 	</script>
 

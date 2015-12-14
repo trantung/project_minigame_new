@@ -1,5 +1,5 @@
 <div class="title_left">
-	<h1>Không tìm thấy {{ $text }} {{ $inputSearch }}</h1>
+	<h1>Không tìm thấy {{ $text }} "<span style="color: red;">{{ $inputSearch }}</span>"</h1>
 </div>
 <div class="title_left"><strong>Danh sách game bạn nên chơi</strong></div>
 @foreach(CommonGame::getGameMost() as $value)

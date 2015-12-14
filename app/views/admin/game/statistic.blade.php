@@ -26,13 +26,13 @@
 			
 				<th>ID</th>
 				<th>Tên game</th>
-				<th>Mức ưu tiên</th>
+				<th>TS</th>
 				<th>Category</th>
 				<th>Lượt xem</th>
-				<th>Lượt chơi</th>
-				<th>Bình chọn</th>
+				<th>Play/Dowload</th>
+				<th>Vote</th>
 				<th>Lượt tải</th>
-				<th>Trạng thái</th>
+				<!-- <th>Trạng thái</th> -->
 				<th>Ngày đăng</th>
 			</tr>
 			@foreach($data as $key => $value)
@@ -43,10 +43,10 @@
 					<td>{{ getZero($value->weight_number) }}</td>
 					<td>{{ Game::find($value->parent_id)->name }}</td>
 					<td>{{ getZero($value->count_view) }}</td>
-					<td>{{ getZero($value->count_play) }}</td>
+					<td>{{ $value->count_play.$value->count_download }}</td>
 					<td>{{ getZero($value->count_vote) }}</td>
 					<td>{{ getZero($value->count_download) }}</td>
-					<td>{{ getStatusGame($value->status)  }}</td>
+					<!-- <td>{{ getStatusGame($value->status)  }}</td> -->
 					<td> 
 					@if($value->start_date >= Carbon\Carbon::now())
 						<span style="color: red;">{{ $value->start_date }}</span>

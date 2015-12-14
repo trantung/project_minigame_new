@@ -25,6 +25,8 @@
 			</div>
 	  	</div>
 
+	  	<div class="glass"></div>
+
 		@if($script)
 			{{ $script->footer_script }}
 		@endif
@@ -33,7 +35,7 @@
 		<script>
 		  window.fbAsyncInit = function() {
 		    FB.init({
-		      appId      : {{ APP_ID }},
+		      appId      : '421890461341536',
 		      xfbml      : true,
 		      version    : 'v2.5'
 		    });
