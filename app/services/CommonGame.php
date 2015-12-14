@@ -303,9 +303,11 @@ class CommonGame
                 } else {
                     $listGame = DB::table('games')
                         ->join('types', 'types.id', '=', 'games.type_main')
+                        ->join('games as category', 'category.id', '=', 'games.parent_id')
                         ->select('games.id', 'games.name', 'games.slug'
                                 , 'games.parent_id', 'games.type_main', 'games.image_url'
-                                , 'types.name as type_name', 'types.slug as type_slug')
+                                , 'types.name as type_name', 'types.slug as type_slug'
+                                , 'category.slug as category_slug')
                         ->distinct()
                         ->where('games.parent_id', $game->id)
                         ->whereNull('games.deleted_at')
