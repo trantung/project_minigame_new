@@ -157,6 +157,7 @@ Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGa
 Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
 Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));
 
+Route::post('/send-error-game', array('uses' => 'SiteFeedbackController@sendErrorGame'));
 
 Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
 
