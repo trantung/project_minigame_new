@@ -2,7 +2,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta property="fb:app_id" content="{{ APP_ID }}"/>
+	<meta property="fb:admins" content="{{ APP_ADMIN }}"/>
 	<title>@yield('title')</title>
 
 	@if(isset($seoMeta))
