@@ -23,7 +23,6 @@ $(document).ready(function(){
 });
 
 function menushow(){
-	$('#searchmenu').focus();
 	$('#cssmenu').addClass('menushow');
 	$(".glass").css({ display: "block" });
 }
