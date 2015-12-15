@@ -126,6 +126,8 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(12);
 
 // FRONTEND
+// return json for mobile app
+Route::get('/api/list', array('uses' => 'ApiController@index', 'as' => 'api'));
 
 Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
 Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
