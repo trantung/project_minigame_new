@@ -194,7 +194,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Zipper' 		  => 'Chumper\Zipper\Zipper',
 		'GoogleOAuth'     => 'Edisonthk\GoogleOAuth\Facade\GoogleOAuth',
-	    'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
+
 	),
 
 );

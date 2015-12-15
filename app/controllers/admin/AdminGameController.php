@@ -274,4 +274,9 @@ class AdminGameController extends AdminController {
 		$data = CommonGame::searchAdminGame($input);
 		return View::make('admin.game.statistic')->with(compact('data'));
 	}
+
+	public function listReportGame()
+    {
+    	return View::make('admin.game.total_report_game_month')->with(compact(''));
+    }
 }

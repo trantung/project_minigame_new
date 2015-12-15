@@ -22,7 +22,7 @@ class CommonSearch
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date'].' 23:59:59');
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -48,7 +48,7 @@ class CommonSearch
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date'].' 23:59:59');
 			}
 		})->orderBy($orderBy[0], $orderBy[1])
 		->paginate(PAGINATE);
@@ -92,7 +92,7 @@ class CommonSearch
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date'].' 23:59:59');
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -113,7 +113,7 @@ class CommonSearch
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date'].' 23:59:59');
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
 		return $data;
@@ -131,7 +131,7 @@ class CommonSearch
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('created_at', '<=', $input['end_date']);
+				$query = $query->where('created_at', '<=', $input['end_date'].' 23:59:59');
 			}
 			if($input['from_update_at'] != ''){
 				$query = $query->where('updated_at', '>=', $input['from_update_at']);

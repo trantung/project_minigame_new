@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/category', 'CategoryController');
 
+	Route::get('/games/total_report_game_month', 'AdminGameController@listReportGame');
 	Route::get('/games/Searchstatistic', array('uses' => 'AdminGameController@searchStatisticGame', 'as' => 'admin.games.statistic'));
 	Route::get('/games/statistic', 'AdminGameController@statisticGame');
 	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');

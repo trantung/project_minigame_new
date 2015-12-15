@@ -32,7 +32,6 @@
 				<th>Play/Dowload</th>
 				<th>Vote</th>
 				<th>Lượt tải</th>
-				<!-- <th>Trạng thái</th> -->
 				<th>Ngày đăng</th>
 			</tr>
 			@foreach($data as $key => $value)
@@ -46,7 +45,6 @@
 					<td>{{ $value->count_play.$value->count_download }}</td>
 					<td>{{ getZero($value->count_vote) }}</td>
 					<td>{{ getZero($value->count_download) }}</td>
-					<!-- <td>{{ getStatusGame($value->status)  }}</td> -->
 					<td> 
 					@if($value->start_date >= Carbon\Carbon::now())
 						<span style="color: red;">{{ $value->start_date }}</span>

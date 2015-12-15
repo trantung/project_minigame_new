@@ -24,9 +24,11 @@ $(document).ready(function(){
 
 function menushow(){
 	$('#cssmenu').addClass('menushow');
+	$(".glass").css({ display: "block" });
 }
 function menuhide(){
 	$('#cssmenu').removeClass('menushow');
+	$(".glass").css({ display: "none" });
 }
 
 $(document).mouseup(function (e)

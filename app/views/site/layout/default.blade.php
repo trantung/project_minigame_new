@@ -25,6 +25,8 @@
 			</div>
 	  	</div>
 
+	  	<div class="glass"></div>
+
 		@if($script)
 			{{ $script->footer_script }}
 		@endif
