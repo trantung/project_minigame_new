@@ -1548,8 +1548,10 @@ h1.title {
     font-weight: bold;
     padding: 5px;
 }
-a.fullscreen {
+a.fullscreen,
+input.fullscreen {
     background: #2b74a1 none repeat scroll 0 0;
+    border: medium none;
     border-radius: 5px;
     color: #fff;
     display: inline-block;
