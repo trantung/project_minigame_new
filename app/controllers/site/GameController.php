@@ -146,11 +146,12 @@ class GameController extends SiteController {
     			if($parentId == GAMEOFFLINE) {
 	    			return View::make('site.game.downloadweb')->with(compact('game'));
 	    		} else {
+	    			$gametop = $this->listGameTop();
 	    			if($play == 'true') {
 	    				//return View::make('site.game.onlinemobileplay')->with(compact('game'));
 	    				return View::make('site.game.onlinewebplay')->with(compact('game'));
 	    			}
-	    			return View::make('site.game.onlineweb')->with(compact('game'));
+	    			return View::make('site.game.onlineweb')->with(compact('game', 'gametop'));
 	    		}
     		}
     	}
@@ -323,5 +324,21 @@ class GameController extends SiteController {
     public function listReportGame()
     {
     	return View::make('site.game.total_report_game_month')->with(compact(''));
+    }
+
+    public function listGameTop()
+    {
+    	$now = Carbon\Carbon::now();
+        $games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+                ->where('parent_id', GAMEHTML5)
+                ->orWhere('parent_id', GAMEFLASH)
+                ->where('start_date', '<=', $now)
+                ->orderBy('count_play', 'desc')
+                ->limit(GAMETOP)
+                ->orderBy(DB::raw('RAND()'))
+                ->limit(GAMETOP_LIMITED)
+                ->get();
+        return View::make('site.game.topgame')->with(compact('games'));
     }
 }

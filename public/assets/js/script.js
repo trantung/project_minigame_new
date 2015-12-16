@@ -25,6 +25,7 @@ $(document).ready(function(){
 function menushow(){
 	$('#cssmenu').addClass('menushow');
 	$(".glass").css({ display: "block" });
+	$("#searchmenu").focus().val("");
 }
 function menuhide(){
 	$('#cssmenu').removeClass('menushow');

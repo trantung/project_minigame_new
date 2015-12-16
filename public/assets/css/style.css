@@ -562,33 +562,41 @@ a.signout {
 }
 
 .charts {
-    border: 2px solid #ed933b;
+    background: #7ea8c1 none repeat scroll 0 0;
+    border-radius: 10px;
     margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 5px;
 }
 .charts > h3 {
-    background: #ed933b;
-    padding: 10px;
+    background: #7ea8c1 none repeat scroll 0 0;
+    border-radius: 10px 10px 0 0;
     color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0;
     margin-top: 0;
-    text-transform: uppercase;
+    padding: 10px;
     text-align: center;
-    font-size: 18px;
 }
 .charts ul {
     list-style: outside none none;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .charts ul li {
-    border-bottom: 1px dashed #2b74a1;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #2b74a1;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
 }
 .charts ul li:last-child {
     border-bottom: none;
 }
 .charts-image {
-    width: 30px;
+    width: 40px;
     display: inline-block;
 }
 .charts-image img {
@@ -608,6 +616,9 @@ a.signout {
 .charts-text span {
     color: #ed933b;
     font-size: 16px;
+}
+.charts-medal {
+    float: right;
 }
 
 /*thong tin tai khoan*/
@@ -957,8 +968,7 @@ a.download i.fa {
     top: -3px;
 }
 div.stars {
-    /*text-align: center;*/
-    margin-bottom: 15px;
+    margin-bottom: 2px;
 }
 div.stars strong {
     position: relative;
@@ -1204,8 +1214,10 @@ h1.title {
 }
 
 .playbox {
-    margin-bottom: 20px;
-    margin-top: 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 10px;
     text-align: center;
 }
 .social-top .social {
@@ -1506,4 +1518,162 @@ h1.title {
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.playgame {
+    background: #7EA8C1;
+    border-radius: 10px;
+    padding: 15px 10px 10px 10px;
+}
+.playgame h3 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+.playgame .social-box {
+    background: #fff none repeat scroll 0 0;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.playgame .social-vote {
+    display: inline-block;
+}
+.playgame .social-vote-label {
+    background: #cedfe9 none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #3b6037;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+}
+a.fullscreen,
+input.fullscreen {
+    background: #2b74a1 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 3px 8px;
+    text-decoration: none;
+}
+.social-box .social {
+    border: 5px solid #f7b137;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 15px 30px;
+}
+.gamenav {
+    border-bottom: 0 none;
+    margin-top: 15px;
+    padding-left: 40px;
+}
+.gamenav li {
+
+}
+.gamenav li a {
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.gamenav li.active > a {
+    background: #2b74a1 none repeat scroll 0 0;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+}
+.gamenav li.active > a:hover,
+.gamenav li.active > a:focus {
+    background: #2B74A1;
+    color: #fff;
+}
+.gamecontent .web,
+.gamecontent .gameerror {
+    border: 2px solid #2B74A1;
+    padding: 10px;
+    border-radius: 10px;
+}
+/*.gamecontent .game_avatar {
+    width: 30%;
+}
+.gamecontent .game_title {
+    width: 68%;
+}
+*/
+.gamecontent h4 {
+    color: #2b74a1;
+    text-transform: uppercase;
+}
+.gamecontent-right {
+    margin-left: 35px;
+}
+
+.topgame {
+    background: #F7AA28 none repeat scroll 0 0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 7px 7px 4px;
+}
+.topgame > h3 {
+    background: #F7AA28 none repeat scroll 0 0;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 10px;
+    text-align: center;
+}
+.topgame ul {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    list-style: outside none none;
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+.topgame ul li {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 5px;
+}
+.topgame ul li:last-child {
+    border-bottom: none;
+}
+.topgame-image {
+    width: 30%;
+    display: inline-block;
+}
+.topgame-image img {
+    max-width: 100%;
+    height: auto;
+}
+.topgame-text {
+    display: inline-block;
+    width: 60%;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+.topgame-text strong {
+    color: #2b74a1;
+    display: block;
+    font-size: 16px;
+}
+.topgame-text span {
+    color: #ed933b;
+    display: block;
+    font-size: 13px;
+}
+.topgame-text a {
+    color: #808080;
+    font-weight: bold;
+    text-decoration: none;
 }
