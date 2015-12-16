@@ -334,9 +334,9 @@ class GameController extends SiteController {
                 ->where('parent_id', GAMEHTML5)
                 ->orWhere('parent_id', GAMEFLASH)
                 ->where('start_date', '<=', $now)
-                ->orderBy('count_play', 'desc')
                 ->limit(GAMETOP)
                 ->orderBy(DB::raw('RAND()'))
+                ->orderBy('count_play', 'desc')
                 ->limit(GAMETOP_LIMITED)
                 ->get();
         return View::make('site.game.topgame')->with(compact('games'));
