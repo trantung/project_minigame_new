@@ -18,10 +18,11 @@ class ApiController extends SiteController {
 		$data = array();
 		foreach ($types as $key => $type) {
 			foreach ($type->games as $k => $value) {
-				if ($value->status == ENABLED && $value->start_date < $now) {
+				if ($value->status == ENABLED && $value->start_date < $now && $value->parent_id == GAMEHTML5) {
 					$type_slug = Type::find(Game::find($value->id)->type_main)->slug;
 					$slug = $value->slug;
-					$url = url('/' . $type_slug . '/' . $slug);
+					// $url = url('/' . $type_slug . '/' . $slug);
+					$url = url(UPLOAD_GAME. '/' . $value->link_url);
 					$avatar = url(UPLOAD_GAME_AVATAR. $value->image_url);
 					$data[$key][$type->name][$k]['game_url'] = $url;
 					$data[$key][$type->name][$k]['game_name'] = $value->name;
