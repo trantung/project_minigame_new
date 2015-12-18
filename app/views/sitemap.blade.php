@@ -9,13 +9,23 @@
 		<changefreq>weekly</changefreq>
 		<priority>0.8</priority>
     </url>
-	    @foreach(SiteMap::getGameUrlSiteMap($type->slug) as $game)
+    @endforeach
+
+    @foreach(SiteMap::getGameUrlSiteMap() as $game)
 	    <url>
-	    	<loc>{{ url().'/'.$type->slug.'/'.$game->slug }}</loc>
+	    	<loc>{{ url().'/'.Type::find($game->type_main)->slug.'/'.$game->slug }}</loc>
 			<lastmod>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $game->start_date)->format('Y-m-d') }}</lastmod>
 			<changefreq>weekly</changefreq>
 			<priority>0.5</priority>
 	    </url>
-	    @endforeach
-    @endforeach
+	@endforeach
+
+	@foreach(SiteMap::getNewUrlSiteMap() as $new)
+	    <url>
+	    	<loc>{{ url().'/'.'tin-tuc'.'/'.$new->slug }}</loc>
+			<lastmod>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $new->start_date)->format('Y-m-d') }}</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>0.5</priority>
+	    </url>
+	@endforeach
 </urlset>
