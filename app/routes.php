@@ -126,6 +126,8 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(12);
 
 // FRONTEND
+// return json for mobile app
+Route::get('/api/list', array('uses' => 'ApiController@index', 'as' => 'api'));
 
 Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
 Route::resource('/resetpassword', 'PasswordController', array('only'=>array('store', 'index')));
@@ -157,6 +159,7 @@ Route::get('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@errorGa
 Route::put('/bao-loi-game/{id}', array('uses' => 'SiteFeedbackController@createErrorGame'));
 Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' =>'policy'));
 
+Route::post('/send-error-game', array('uses' => 'SiteFeedbackController@sendErrorGame'));
 
 Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
 

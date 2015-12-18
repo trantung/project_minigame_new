@@ -114,6 +114,7 @@ define('SIZETEXT', '200');
 //facebook
 define('APP_ID', '1008308405878197');
 define('APP_SECRET', 'a758055e09aef79f81eb7dd4f4588be7');
+define('APP_ADMIN', '1088553914497350');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
 //defune page comment fron-end
@@ -138,3 +139,6 @@ define('ERROR_TYPE_404', 1);
 define('ERROR_TYPE_MISSING', 2);
 //define cache time
 define('CACHETIME', 2);
+//define game top
+define('GAMETOP', 30);
+define('GAMETOP_LIMITED', 6);
