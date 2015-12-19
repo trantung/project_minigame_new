@@ -10,7 +10,12 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+// $collection = Pages::all();
 
+// Sitemap::addCollection($collection, 'url-prefix');
+
+// return Response::make(Sitemap::getSitemapXml())
+//     ->header('Content-Type', 'text/xml');
 App::missing(function($exception)
 {
     // Log::error( Request::url() );
@@ -127,6 +132,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 // FRONTEND
 // return json for mobile app
+Route::resource('/sitemap', 'SiteMapController');
 Route::get('/api/list', array('uses' => 'ApiController@index', 'as' => 'api'));
 
 Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
