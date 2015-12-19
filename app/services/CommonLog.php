@@ -55,11 +55,13 @@ class CommonLog
 	public static function logErrors($type)
 	{
 		$link = Request::url();
+		$agent = $_SERVER['HTTP_USER_AGENT'];
+		$referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 		$error = AdminError::where('link', $link)->first();
 		if($error) {
 			$count = $error->count + 1;
 			AdminError::find($error->id)->update(array('count' => $count));
-			AdminErrorLog::create(array('error_id' => $error->id, 'agent' => $_SERVER['HTTP_USER_AGENT']));
+			AdminErrorLog::create(array('error_id' => $error->id, 'agent' => $agent, 'referer' => $referer));
 		} else {
 			$input = array(
 				'link' => $link,
@@ -67,7 +69,7 @@ class CommonLog
 				'count' => 1,
 			);
 			$errorId = CommonNormal::create($input, 'AdminError');
-			AdminErrorLog::create(array('error_id' => $errorId, 'agent' => $_SERVER['HTTP_USER_AGENT']));
+			AdminErrorLog::create(array('error_id' => $errorId, 'agent' => $agent, 'referer' => $referer));
 		}
 		return Redirect::action('SiteController@returnPage404');
 	}

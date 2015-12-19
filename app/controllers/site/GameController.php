@@ -281,9 +281,12 @@ class GameController extends SiteController {
 
 	public function getPage404($type, $slug, $word)
     {
-		// $game = Game::findBySlug($slug);
 		if ($word) {
-			return CommonLog::logErrors(ERROR_TYPE_404);
+			if(strpos(Request::url(), '/games/')) {
+				return CommonLog::logErrors(ERROR_TYPE_MISSING);
+			} else {
+				return CommonLog::logErrors(ERROR_TYPE_404);
+			}
 		}
     }
 
