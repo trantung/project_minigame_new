@@ -5,9 +5,9 @@
 			<a href="{{ $url }}">
 				<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url) }}" alt="{{ $game->name }}" />
 				@if($game->parent_id == GAMEOFFLINE)
-					<div class="overlay"><i class="fa fa-download"></i></div>
+					<a href="{{ $url }}" class="overlay"><i class="fa fa-download"></i></a>
 				@else
-					<div class="overlay"><i class="fa fa-play-circle"></i></div>
+					<a href="{{ $url }}" class="overlay"><i class="fa fa-play-circle"></i></a>
 				@endif
 			</a>
 	    </div>
