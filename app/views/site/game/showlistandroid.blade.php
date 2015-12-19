@@ -8,6 +8,10 @@
 
 <div class="box">
 	<h1>Game Android tải nhiều</h1>
+	<?php
+		$games = CommonGame::getListGame('android');
+		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+	?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			@for($i = 0; $i < $count ; $i ++)
@@ -37,6 +41,10 @@
 
 <div class="box">
 	<h1>Game Android mới nhất</h1>
+	<?php
+		$games = CommonGame::getListGame('android');
+		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+	?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			@for($i = 0; $i < $count ; $i ++)

@@ -2,7 +2,7 @@
 	<h3>GAME Hay nhất</h3>
 	<ul>
 		@foreach($games as $key => $value)
-			<?php $url = CommonGame::getUrlGame($value->slug); ?>
+			<?php $url = CommonGame::getUrlGame($value); ?>
 			<li>
 				<div class="topgame-image">
 					<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
