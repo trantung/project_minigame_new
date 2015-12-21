@@ -42,9 +42,9 @@ class ManagerController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'username'   => 'required|unique:admins',
+			'username'   => 'required|unique:admins,deleted_at,NULL',
             'password'   => 'required',
-            'email'      => 'required|email|unique:admins',
+            'email'      => 'required|email|unique:admins,deleted_at,NULL',
             'role_id'    => 'required',
 		);
 		$input = Input::except('_token');
@@ -57,7 +57,8 @@ class ManagerController extends AdminController {
         	$input['password'] = Hash::make($input['password']);
         	$input['status'] = ACTIVE;
         	$input += CommonSite::ipDeviceUser() ;
-        	$id = CommonNormal::create($input);
+        	// $id = CommonNormal::create($input, 'Admin');
+        	$id = Admin::create($input)->id;
         	//create history
 			$history_id = CommonLog::insertHistory('Admin', $id);
 

@@ -11,7 +11,7 @@
 <div class="list">
 	@if(count($inputsearchGame) > 0)
 		<div class="title_left">
-			<h1>Kết quả tìm kiếm theo từ khóa "{{ $input['search'] }}"</h1>
+			<h1>Kết quả tìm kiếm theo từ khóa "<span style='color:red;'>{{ $input['search'] }}</span>"</h1>
 		</div>
 		@foreach($inputsearchGame as $value)
 			<div class="list-item">
