@@ -1,1 +1,0 @@
-{{ CommonGame::getLinkGame($game) }}
