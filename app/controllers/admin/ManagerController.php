@@ -129,7 +129,11 @@ class ManagerController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('password'));
         } else {
-        	// $input['password'] = Hash::make($input['password']);
+        	if($input['password'] != '') {
+        		$input['password'] = Hash::make($input['password']);
+        	} else {
+        		$input['password'] = Auth::admin()->get()->password;
+        	}
         	$input += CommonSite::ipDeviceUser() ;
         	CommonNormal::update($id, $input);
         	$currentUserId = Auth::admin()->get()->id;

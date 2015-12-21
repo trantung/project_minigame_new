@@ -29,15 +29,14 @@
 							</div>
 						</div>
 					</div>
-				<!-- 	<div class="form-group">
+					<div class="form-group">
 						<label for="password">Password</label>
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="password" class="form-control" id="password" placeholder="Password
-						" name="password">
+								<input type="text" class="form-control" id="password" placeholder="Password" name="password">
 							</div>
 						</div>
-					</div> -->
+					</div>
 					<div class="form-group">
 						<label for="email">Email</label>
 							<div class="row">
