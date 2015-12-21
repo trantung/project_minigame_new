@@ -1,0 +1,79 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title = $game->name; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="box">
+
+	<?php echo $__env->make('site.game.breadcrumbgame', array('game' => $game), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<div class="playgame">
+		<h3>Game <?php echo $game->name; ?></h3>
+		<div class="playbox">
+			<?php echo CommonGame::getLinkGame($game); ?>
+
+			<div class="social-box">
+				<?php echo $__env->make('site.game.socialbox', array('id' => $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-8">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs gamenav" role="tablist">
+				<li role="presentation" class="active"><a href="#gametab" aria-controls="gametab" role="tab" data-toggle="tab">Thông tin trò chơi</a></li>
+				<li role="presentation"><a href="#gameerror" aria-controls="gameerror" role="tab" data-toggle="tab">Báo lỗi</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content gamecontent">
+				<div role="tabpanel" class="tab-pane active" id="gametab">
+					<div class="web">
+
+						<div class="game_avatar">
+							<img alt="<?php echo $game->name; ?>" src="<?php echo url(UPLOAD_GAME_AVATAR . '/' . $game->image_url); ?>" />
+						</div>
+						<div class="game_title">
+
+							<h1 class="title"><?php echo $game->name; ?></h1>
+
+							<?php echo $__env->make('site.common.rate', array('vote_average' => $game->vote_average), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+							<p><?php echo getZero($game->count_play); ?> lượt chơi</p>
+
+						</div>
+
+						<div class="slideGame">
+							<?php echo $__env->make('site.game.slide', array('slideId' => $game->slide_id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						</div>
+
+						<div class="detail"><?php echo $game->description; ?></div>
+
+					</div>
+
+					<?php echo $__env->make('site.game.comment', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="gameerror">
+					<div class="gameerror">
+						<?php echo $__env->make('site.game.errorgame', array('id' => $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="gamecontent-right">
+				<?php echo $__env->make('site.game.score', array('id' => $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+				<?php echo $gametop; ?>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php echo $__env->make('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_WEB, 'typeId' => $game->type_main), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Game', $game->id), 'seoImage' => FOLDER_SEO_GAME . '/' . $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

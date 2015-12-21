@@ -1,0 +1,19 @@
+<?php if($breadcrumb): ?>
+<div class="breadcrumb">
+	<ul>
+		<li><a href="<?php echo url('/'); ?>">Trang chủ</a><i class="fa fa-caret-right"></i></li>
+		<?php foreach($breadcrumb as $value): ?>
+			<?php if($value['link']): ?>
+				<li>
+					<a href="<?php echo url($value['link']); ?>"><?php echo $value['name']; ?></a><i class="fa fa-caret-right"></i>
+				</li>
+			<?php else: ?>
+				<li>
+					<?php echo $value['name']; ?>
+
+				</li>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>

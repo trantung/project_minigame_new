@@ -1,0 +1,27 @@
+<div class="title_left">
+	<h1>Không tìm thấy <?php echo $text; ?> "<span style="color: red;"><?php echo $inputSearch; ?></span>"</h1>
+</div>
+<div class="title_left"><strong>Danh sách game bạn nên chơi</strong></div>
+<?php foreach(CommonGame::getGameMost() as $value): ?>
+	<div class="list-item">
+		<div class="list-image">
+			<a href="<?php echo CommonGame::getUrlGame($value->slug); ?>">
+				<img class="image_avata_game" src="<?php echo url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url); ?>" />
+			</a>
+		</div>
+		<div class="list-text">
+			<h3>
+				<a href="<?php echo CommonGame::getUrlGame($value->slug); ?>">
+					<?php echo limit_text($value->name, TEXTLENGH); ?>
+
+				</a>
+			</h3>
+			<?php if($value->parent_id == GAMEOFFLINE): ?>
+				<span><?php echo getZero($value->count_download); ?> lượt tải</span>
+			<?php else: ?>
+				<span><?php echo getZero($value->count_play); ?> lượt chơi</span>
+			<?php endif; ?>
+			<p><?php echo limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION); ?></p>
+		</div>
+	</div>
+<?php endforeach; ?>

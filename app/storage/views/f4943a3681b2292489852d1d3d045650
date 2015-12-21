@@ -1,0 +1,86 @@
+<?php $__env->startSection('title'); ?>
+
+<?php echo $title='Trang chủ'; ?>
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('content'); ?>
+
+
+
+<?php if($news = CommonSite::getLatestNews()): ?>
+
+<div class="box">
+
+	<a class="homenews" href="<?php echo action('SiteNewsController@show', $news->slug); ?>"><i class="fa fa-caret-right"></i> [<?php echo $news->typeNew->name; ?>] <?php echo $news->title; ?></a>
+
+</div>
+
+<?php endif; ?>
+
+
+<div class="box">
+	<?php foreach($menu as $value): ?>
+		<?php if($value->position == CONTENT): ?>
+		<h3><?php echo $value->name; ?></h3>
+		<?php if($games = CommonGame::boxGameByCategoryParentIndex($value)): ?>
+			<?php $count = ceil(count($games)/PAGINATE_BOXGAME);
+				$count = getCount($count);
+			 ?>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<?php for($i = 0; $i < $count; $i ++): ?>
+						<div class="swiper-slide boxgame">
+							<div class="row">
+							<?php
+								//$listGame = $games->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+								$listGame = array_slice($games, $i * PAGINATE_BOXGAME, PAGINATE_BOXGAME);
+							?>
+								<?php foreach($listGame as $game): ?>
+									<?php echo $__env->make('site.game.gameitemindex', array('game' => $game), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+								<?php endforeach; ?>
+							</div>
+						</div>
+
+					<?php endfor; ?>
+
+				</div>
+
+				<div class="swiper-pagination"></div>
+
+				<div class="boxgame-pagination">
+
+					<a class="prev"><i class="fa fa-caret-left"></i> Trang trước</a>
+
+					<div class="boxgame-pagenumber"><span class="numberPage">1</span>/<?php echo $count; ?></div>
+
+					<a class="next">Trang sau <i class="fa fa-caret-right"></i></a>
+
+				</div>
+
+			</div>
+
+
+
+		<?php endif; ?>
+
+		<?php echo $__env->make('site.common.ad', array('adPosition' => CHILD_PAGE, 'modelName' => 'CategoryParent', 'modelId' => $value->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+		<?php endif; ?>
+	<?php endforeach; ?>
+
+
+
+</div>
+
+<?php echo $__env->make('site.game.scriptbox', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META)), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

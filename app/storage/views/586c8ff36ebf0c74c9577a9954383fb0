@@ -1,0 +1,40 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Thêm mới thể loại tin'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('admin.typenew.common', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<!-- form start -->
+			<?php echo Form::open(array('action' => array('NewsTypeController@store', 'files'=> true))); ?>
+
+			<div class="box-body">
+				<div class="form-group">
+					<label for="name">Tên thể loại</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   <?php echo Form::text('name', null , textParentCategory('Tên thể loại tin')); ?>
+
+						</div>
+					</div>
+				</div>
+			  <!-- /.box-body -->
+
+			  <div class="box-footer">
+				<?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
+			  </div>
+			<?php echo Form::close(); ?>
+
+		  </div>
+		  <!-- /.box -->
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

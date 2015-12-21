@@ -1,0 +1,36 @@
+<?php if($adPosition == HEADER || $adPosition == Footer || $adPosition == CHILD_PAGE_RELATION): ?>
+	<?php if($ad = CommonSite::getAdvertise($adPosition)): ?>
+	<div class="adsense center">
+		<?php if($ad->adsense): ?>
+			<?php echo $ad->adsense; ?>
+
+		<?php else: ?>
+			<?php if($ad->image_link): ?>
+				<a href="<?php echo $ad->image_link; ?>">
+			<?php endif; ?>
+				<img src="<?php echo url(UPLOAD_ADVERTISE . '/header_footer/' . $ad->id . '/' . $ad->image_url); ?>" alt="" />
+			<?php if($ad->image_link): ?>
+				</a>
+			<?php endif; ?>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+<?php endif; ?>
+<?php if($adPosition == CHILD_PAGE): ?>
+	<?php if($ad = CommonSite::getAdvertise($adPosition, $modelName, $modelId)): ?>
+	<div class="adsense center">
+		<?php if($ad->adsense): ?>
+			<?php echo $ad->adsense; ?>
+
+		<?php else: ?>
+			<?php if($ad->image_link): ?>
+				<a href="<?php echo $ad->image_link; ?>">
+			<?php endif; ?>
+				<img src="<?php echo url(UPLOAD_ADVERTISE . '/content/' . $modelId . '/' . $ad->image_url); ?>" alt="" />
+			<?php if($ad->image_link): ?>
+				</a>
+			<?php endif; ?>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+<?php endif; ?>

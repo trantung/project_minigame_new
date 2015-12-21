@@ -1,0 +1,68 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Quản lý loại tin'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<!-- inclue Search form 
+
+-->
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="<?php echo action('NewsTypeController@create'); ?>" class="btn btn-primary">Thêm loại tin</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<div class="box-header">
+		  <h3 class="box-title">Danh sách loại tin</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+		  <table class="table table-hover">
+			<tr>
+			  <th>ID</th>
+			  <th>Tên thể loai</th>
+			  <th>Lượt xem</th>
+			  <th style="width:200px;">&nbsp;</th>
+			</tr>
+			 <?php foreach($inputNewType as $newstype): ?>
+			<tr>
+			  <td><?php echo $newstype->id; ?></td>
+			  <td><?php echo $newstype->name; ?></td>
+			  <td><?php echo AdminNew::where('type_new_id', $newstype->id)->sum('count_view'); ?></td>
+			  <td>
+				<a href="<?php echo action('NewsTypeController@edit', $newstype->id); ?>" class="btn btn-primary">Sửa</a>
+				<?php echo Form::open(array('method'=>'DELETE', 'action' => array('NewsTypeController@destroy', $newstype->id), 'style' => 'display: inline-block;')); ?>
+
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				<?php echo Form::close(); ?>
+
+			  </td>
+
+			</tr>
+			 <?php endforeach; ?>
+		  </table>
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="pagination">
+		<?php echo $inputNewType->appends(Request::except('page'))->links(); ?>
+
+		</ul>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

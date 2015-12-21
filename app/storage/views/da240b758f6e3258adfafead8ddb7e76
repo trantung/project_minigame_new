@@ -1,0 +1,78 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Thống kê game'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php /* //script for index game */ ?>
+<?php echo $__env->make('admin.game.scriptindex', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- inclue Search form-->
+<?php echo $__env->make('admin.game.search_statistic', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">Danh sách game<strong id="abc"></strong></h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+			<table class="table table-hover">
+			<tr>
+			
+				<th>ID</th>
+				<th>Tên game</th>
+				<th>TS</th>
+				<th>Category</th>
+				<th>Lượt xem</th>
+				<th>Play/Dowload</th>
+				<th>Vote</th>
+				<th>Lượt tải</th>
+				<th>Ngày đăng</th>
+			</tr>
+			<?php foreach($data as $key => $value): ?>
+				<tr>
+				
+					<td><?php echo $value->id; ?></td>
+					<td><?php echo $value->name; ?></td>
+					<td><?php echo getZero($value->weight_number); ?></td>
+					<td><?php echo Game::find($value->parent_id)->name; ?></td>
+					<td><?php echo getZero($value->count_view); ?></td>
+					<td><?php echo $value->count_play.$value->count_download; ?></td>
+					<td><?php echo getZero($value->count_vote); ?></td>
+					<td><?php echo getZero($value->count_download); ?></td>
+					<td> 
+					<?php if($value->start_date >= Carbon\Carbon::now()): ?>
+						<span style="color: red;"><?php echo $value->start_date; ?></span>
+					<?php else: ?>
+						<?php echo $value->start_date; ?>
+
+					<?php endif; ?>
+					 </td>
+					
+				</tr>
+			<?php endforeach; ?>
+			</table>
+		</div>
+		<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="pagination">
+		<?php echo $data->appends(Request::except('page'))->links(); ?>
+
+		</ul>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

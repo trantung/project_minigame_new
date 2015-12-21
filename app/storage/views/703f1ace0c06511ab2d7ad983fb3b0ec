@@ -1,0 +1,62 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Đổi mật khẩu'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="<?php echo action('UserController@index'); ?> " class="btn btn-success">Danh sách user</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<!-- form start -->
+			<?php echo Form::open(array('action' => array('UserController@update', $inputUser->id), 'method' => 'PUT')); ?>
+
+			<div class="box-body">
+				<div class="form-group">
+					<label for="name">Tên User</label>
+					<div class="row">
+						<div class="col-sm-6">	       
+							<input name="user_name" type="text" class="form-control" value="<?php echo $inputUser->user_name; ?>" readonly="true">          	           	        	
+						</div>
+					</div>
+				</div>
+			<div class="box-body">
+				<div class="form-group">
+					<label for="password">Mật khẩu mới</label>
+					<div class="row">
+						<div class="col-sm-6">	       
+							<input name="password" type="password" class="form-control" placehoder="Nhập mật khẩu mới!">          	
+						   <!-- <?php echo Form::password('password', null , textParentCategory('Tên thể loại tin')); ?> -->
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="repassword">Nhập lại mật khẩu mới</label>
+					<div class="row">
+						<div class="col-sm-6">	       
+						<input name="repassword" type="password" class="form-control" placehoder="Nhập mật khẩu mới!">          	           	
+						   <!-- <?php echo Form::password('repassword', null , textParentCategory('Tên thể loại tin')); ?> -->
+						</div>
+					</div>
+				</div>
+			  <!-- /.box-body -->
+
+			  <div class="box-footer">
+				<?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
+			  </div>
+			<?php echo Form::close(); ?>
+
+		  </div>
+		  <!-- /.box -->
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

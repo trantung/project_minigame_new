@@ -1,0 +1,66 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title = $game->name; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="box">
+
+	<?php echo $__env->make('site.game.breadcrumbgame', array('game' => $game), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	<!-- MOBILE <= 500px -->
+	<div class="row mobile">
+
+		<div class="mobile_avatar">
+			<img alt="<?php echo $game->name; ?>" src="<?php echo url(UPLOAD_GAME_AVATAR . '/' . $game->image_url); ?>" />
+		</div>
+		<div class="mobile_title">
+
+			<h1 class="title mobile-title"><?php echo limit_text($game->name, TEXTLENGH); ?></h1>
+
+			<?php echo $__env->make('site.common.rate', array('vote_average' => $game->vote_average), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			<p><?php echo getZero($game->count_download); ?> lượt tải</p>
+
+		</div>
+
+		<div class="col-xs-12">
+
+			<div class="btn-block-center">
+				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
+			</div>
+
+			<div class="slideGame">
+				<?php echo $__env->make('site.game.slide', array('slideId' => $game->slide_id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			</div>
+
+			<div class="detail">
+				<?php echo $game->description; ?>
+
+			</div>
+
+			<div class="btn-block-center">
+				<a onclick="countdownload()" class="download"><i class="fa fa-download"></i> Tải về</a>
+			</div>
+
+			<?php echo $__env->make('site.game.scriptcountdownload', array('id' => $game->id, 'url' => CommonGame::getUrlDownload($game)), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			<?php echo $__env->make('site.game.vote', array('id' => $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			<?php echo $__env->make('site.game.social', array('id' => $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		</div>
+
+	</div>
+
+	<?php echo $__env->make('site.game.comment', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+</div>
+
+<?php echo $__env->make('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_MOBILE, 'typeId' => $game->type_main), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Game', $game->id), 'seoImage' => FOLDER_SEO_GAME . '/' . $game->id), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
