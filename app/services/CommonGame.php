@@ -347,7 +347,7 @@ class CommonGame
     public static function getUrlGameIndex($game = null)
     {
         if($game) {
-            if (!in_array($game->parent_id, [GAMEFLASH, GAMEHTML5])) {
+            if (!(in_array($game->parent_id, [GAMEFLASH, GAMEHTML5]))) {
                 return $url = url('/' . $game->category_slug . '/' . $game->slug);
             }
             if($game->type_name && $game->type_slug) {

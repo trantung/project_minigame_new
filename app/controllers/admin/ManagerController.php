@@ -22,7 +22,7 @@ class ManagerController extends AdminController {
 		$data = AdminManager::searchUserOperation($input);
 		return View::make('admin.manager.index')->with(compact('data'));
 	}
-	
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -43,9 +43,8 @@ class ManagerController extends AdminController {
 	{
 		$rules = array(
 			'username'   => 'required|unique:admins,deleted_at,NULL|unique_delete',
-			// 'username'   => 'unique_delete',
             'password'   => 'required',
-            'email'      => 'required|email|unique:admins,deleted_at,NULL',
+            'email'      => 'required|email|unique:admins,deleted_at,NULL|unique_delete',
             'role_id'    => 'required',
 		);
 		$input = Input::except('_token');
@@ -58,7 +57,8 @@ class ManagerController extends AdminController {
         	$input['password'] = Hash::make($input['password']);
         	$input['status'] = ACTIVE;
         	$input += CommonSite::ipDeviceUser() ;
-        	$id = CommonNormal::create($input);
+        	// $id = CommonNormal::create($input, 'Admin');
+        	$id = Admin::create($input)->id;
         	//create history
 			$history_id = CommonLog::insertHistory('Admin', $id);
 
@@ -174,7 +174,7 @@ class ManagerController extends AdminController {
 			return View::make('admin.manager.history')->with(compact('logEdit'));
 		}
 		return Redirect::action('ManagerController@index')->with('message', 'Lịch sử admin này đã bị xoá');
-		
+
 	}
 
 	public function deleteHistory($id)
