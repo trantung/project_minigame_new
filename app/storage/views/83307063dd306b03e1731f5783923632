@@ -5,9 +5,9 @@
 			<a href="<?php echo $url; ?>">
 				<img src="<?php echo url(UPLOAD_GAME_AVATAR . '/' .  $game->image_url); ?>" alt="<?php echo $game->name; ?>" />
 				<?php if($game->parent_id == GAMEOFFLINE): ?>
-					<div class="overlay"><i class="fa fa-download"></i></div>
+					<a href="<?php echo $url; ?>" class="overlay"><i class="fa fa-download"></i></a>
 				<?php else: ?>
-					<div class="overlay"><i class="fa fa-play-circle"></i></div>
+					<a href="<?php echo $url; ?>" class="overlay"><i class="fa fa-play-circle"></i></a>
 				<?php endif; ?>
 			</a>
 	    </div>

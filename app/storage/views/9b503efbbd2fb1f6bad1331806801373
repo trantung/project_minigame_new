@@ -5,13 +5,13 @@
 <?php foreach(CommonGame::getGameMost() as $value): ?>
 	<div class="list-item">
 		<div class="list-image">
-			<a href="<?php echo CommonGame::getUrlGame($value->slug); ?>">
+			<a href="<?php echo CommonGame::getUrlGame($value); ?>">
 				<img class="image_avata_game" src="<?php echo url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url); ?>" />
 			</a>
 		</div>
 		<div class="list-text">
 			<h3>
-				<a href="<?php echo CommonGame::getUrlGame($value->slug); ?>">
+				<a href="<?php echo CommonGame::getUrlGame($value); ?>">
 					<?php echo limit_text($value->name, TEXTLENGH); ?>
 
 				</a>

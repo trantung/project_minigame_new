@@ -44,7 +44,7 @@
 				<li class='has-sub'><a href= '#' class="color2"><span><?php echo $value->name; ?></span></a>
 					<ul>
 					<?php foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v): ?>
-						<li><a href="<?php echo url('/' . Type::find($v)->slug); ?>"><span><?php echo Type::find($v)->name; ?></span></a></li>
+						<li><a href="<?php echo url('/' . SiteIndex::getFieldByType($v, 'slug')); ?>"><span><?php echo SiteIndex::getFieldByType($v, 'name'); ?></span></a></li>
 					<?php endforeach; ?>
 					</ul>
 				</li>

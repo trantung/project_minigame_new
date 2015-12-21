@@ -12,4 +12,16 @@ class SiteIndex
         }
 		return $listTypeId;
 	}
+
+    public static function getFieldByType($typeId, $field)
+    {
+        if (Cache::has('type_'.$typeId.$field))
+        {
+            $result = Cache::get('type_'.$typeId.$field);
+        } else {
+            $result = Type::find($typeId)->$field;
+            Cache::put('type_'.$typeId.$field, $result, CACHETIME);
+        }
+        return $result;
+    }
 }

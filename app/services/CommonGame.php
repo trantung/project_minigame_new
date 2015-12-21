@@ -226,13 +226,11 @@ class CommonGame
     					->where('parent_id', '!=', GAMEFLASH)
     					->where('start_date', '<=', $now)
     					->orderBy($arrange, 'desc');
-    					// ->limit(PAGINATE_BOXGAME)->get();
     			} else {
     				$listGame = Game::where('parent_id', $game->id)
                         ->where('status', ENABLED)
     					->where('start_date', '<=', $now)
     					->orderBy($arrange, 'desc');
-    					// ->limit(PAGINATE_BOXGAME)->get();
     			}
     		}
     		return $listGame;
@@ -270,19 +268,11 @@ class CommonGame
     					->where('parent_id', '!=', GAMEFLASH)
                         ->where('parent_id', '!=', GAMEOFFLINE)
     					->where('start_date', '<=', $now);
-    					// ->orderBy('id', 'desc')
-    					// ->limit(PAGINATE_BOXGAME)->get();
     			} else {
     				$listGame = Game::whereIn('id', $games)
                         ->where('status', ENABLED)
     					->where('start_date', '<=', $now)
                         ->where('parent_id', '!=', GAMEOFFLINE);
-         //                ->orderBy('count_play', 'desc')
-    					// ->orderBy('id', 'desc');
-                        // ->get();
-                    // $test = $listGame->toArray();
-                    // dd($listGame->getPerPage());
-    					// ->get();
     			}
     		}
     		return $listGame;
@@ -372,17 +362,28 @@ class CommonGame
     }
 
     // url game
-    public static function getUrlGame($slug = null)
+    public static function getUrlGame($game = null)
     {
-    	$game = Game::findBySlug($slug);
     	if($game) {
             if (!in_array($game->parent_id, [GAMEFLASH, GAMEHTML5])) {
-                $category = Game::find($game->parent_id);
-                return $url = url('/' . $category->slug . '/' . $slug);
+                if (Cache::has('category'.$game->parent_id))
+                {
+                    $category = Cache::get('category'.$game->parent_id);
+                } else {
+                    $category = Game::find($game->parent_id);
+                    Cache::put('category'.$game->parent_id, $category, CACHETIME);
+                }
+                return $url = url('/' . $category->slug . '/' . $game->slug);
             }
-    		$type = Type::find($game->type_main);
+            if (Cache::has('type'.$game->type_main))
+            {
+                $type = Cache::get('type'.$game->type_main);
+            } else {
+                $type = Type::find($game->type_main);
+                Cache::put('type'.$game->type_main, $type, CACHETIME);
+            }
     		if($type) {
-    			$url = url('/' . $type->slug . '/' . $slug);
+    			$url = url('/' . $type->slug . '/' . $game->slug);
 				return $url;
     		} else {
     			dd('Đường dẫn sai');
@@ -411,20 +412,32 @@ class CommonGame
     	$now = Carbon\Carbon::now();
     	if($parentId && $limit && $typeId) {
     		if(getDevice() == MOBILE) {
-    			$listGame = Game::where('parent_id', $parentId)
-                    ->where('status', ENABLED)
-    				->where('start_date', '<=', $now)
-    				->where('parent_id', '!=', GAMEFLASH)
-                    ->where('type_main', $typeId)
-                    ->orderBy(DB::raw('RAND()'))
-    				->limit($limit)->get();
+                if (Cache::has('listGameRelateMobile'.$parentId))
+                {
+                    $listGame = Cache::get('listGameRelateMobile'.$parentId);
+                } else {
+                    $listGame = Game::where('parent_id', $parentId)
+                        ->where('status', ENABLED)
+                        ->where('start_date', '<=', $now)
+                        ->where('parent_id', '!=', GAMEFLASH)
+                        ->where('type_main', $typeId)
+                        ->orderBy(DB::raw('RAND()'))
+                        ->limit($limit)->get();
+                    Cache::put('listGameRelateMobile'.$parentId, $listGame, CACHETIME);
+                }
     		} else {
-    			$listGame = Game::where('parent_id', $parentId)
-                    ->where('status', ENABLED)
-    				->where('start_date', '<=', $now)
-                    ->where('type_main', $typeId)
-                    ->orderBy(DB::raw('RAND()'))
-    				->limit($limit)->get();
+                if (Cache::has('listGameRelate'.$parentId))
+                {
+                    $listGame = Cache::get('listGameRelate'.$parentId);
+                } else {
+                    $listGame = Game::where('parent_id', $parentId)
+                        ->where('status', ENABLED)
+                        ->where('start_date', '<=', $now)
+                        ->where('type_main', $typeId)
+                        ->orderBy(DB::raw('RAND()'))
+                        ->limit($limit)->get();
+                    Cache::put('listGameRelate'.$parentId, $listGame, CACHETIME);
+                }
     		}
     		return $listGame;
     	}
@@ -544,6 +557,35 @@ class CommonGame
                 ->orderBy('start_date', 'desc')
                 ->limit(PAGINATE_BOXGAME)
                 ->get();
+        return $games;
+    }
+
+    /**
+    * Get list game for binh chon nhieu + hay nhat + download
+    * @return list game
+    *
+    */
+    public static function getListGame($view = null)
+    {
+        $now = Carbon\Carbon::now();
+        if(getDevice() == MOBILE) {
+            $games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+                ->where('parent_id', '!=', GAMEFLASH)
+                ->where('start_date', '<=', $now);
+        } else {
+            $games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+                ->where('start_date', '<=', $now);
+        }
+        //check game category
+        if($view == 'android') {
+            $games = $games->where('parent_id', GAMEOFFLINE);
+        }
+        //to do: vote, play for gamehtml5 only
+        if($view == 'vote' || $view == 'play') {
+            $games = $games->where('parent_id', GAMEHTML5);
+        }
         return $games;
     }
 
