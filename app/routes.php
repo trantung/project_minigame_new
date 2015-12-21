@@ -100,6 +100,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/feedback_game', 'FeedbackGameController');
 
 	Route::post('/errors/deleteErrors', 'ErrorsController@deleteErrors');
+	Route::post('/errors/deleteAll', 'ErrorsController@deleteAllErrors');
 	Route::get('/errors/search', array('uses' =>  'ErrorsController@search', 'as' => 'admin.errors.search'));
 	Route::resource('/errors', 'ErrorsController');
 	Route::get('/errors/logs/{id}', array('uses' => 'ErrorLogsController@log'));
