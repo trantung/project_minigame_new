@@ -28,12 +28,14 @@
 			<tr>
 			  <th>ID</th>
 			  <th>Agent</th>
+			  <th>Origin Url</th>
 			  <th>Thời gian</th>
 			</tr>
 			 @foreach($data as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
 			  <td>{{ $value->agent }}</td>
+			  <td>{{ $value->referer }}</td>
 			  <td>{{ $value->created_at }}</td>
 			</tr>
 			@endforeach

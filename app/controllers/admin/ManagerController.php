@@ -42,9 +42,10 @@ class ManagerController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'username'   => 'required|unique:admins',
+			'username'   => 'required|unique:admins,deleted_at,NULL|unique_delete',
+			// 'username'   => 'unique_delete',
             'password'   => 'required',
-            'email'      => 'required|email|unique:admins',
+            'email'      => 'required|email|unique:admins,deleted_at,NULL',
             'role_id'    => 'required',
 		);
 		$input = Input::except('_token');
