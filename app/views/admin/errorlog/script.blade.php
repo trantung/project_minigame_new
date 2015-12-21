@@ -17,6 +17,22 @@
 		}
 	}
 
+	function deleteSelectedAllErrors()
+	{
+		confirm = confirm('Bạn có chắc chắn muốn xóa?')
+		if(confirm) {
+			$.ajax({
+				type: 'post',
+				url: "{{ url('/admin/errors/deleteAll') }}",
+				success: function ()
+	            {
+	                console.log("it Work");
+					window.location.reload();
+	            }
+			});
+		}
+	}
+
 	function callDeleteSelected()
 	{
 		confirm = confirm('Bạn có chắc chắn muốn xóa?')
