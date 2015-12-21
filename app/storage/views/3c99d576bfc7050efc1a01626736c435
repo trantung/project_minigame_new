@@ -1,0 +1,17 @@
+<script type="text/javascript">
+	function countplay()
+	{
+		$.ajax(
+		{
+			type:'post',
+			url: '<?php echo url("/count-play"); ?>',
+			data: {
+				'id': <?php echo $id; ?>
+
+			},
+			success: function(data){
+				window.location = '<?php echo $url; ?>';
+			},
+		});
+	}
+</script>

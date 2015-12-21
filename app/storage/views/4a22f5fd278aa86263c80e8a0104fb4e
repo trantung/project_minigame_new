@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<?php echo $__env->make('site.common.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<body>
+
+		<?php echo $__env->make('site.common.menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('site.common.topbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo $__env->make('site.common.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<div class="container">
+			<div class="row">
+
+			<div class="main">
+
+				<?php echo $__env->make('site.common.ad', array('adPosition' => HEADER), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+				<?php echo $__env->yieldContent('content'); ?>
+
+				<?php echo $__env->make('site.common.ad', array('adPosition' => Footer), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			</div>
+
+			<?php echo $__env->make('site.common.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+			</div>
+	  	</div>
+
+	  	<div class="glass"></div>
+
+		<?php if($script): ?>
+			<?php echo $script->footer_script; ?>
+
+		<?php endif; ?>
+
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=<?php echo APP_ID; ?>";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+
+	</body>
+</html>

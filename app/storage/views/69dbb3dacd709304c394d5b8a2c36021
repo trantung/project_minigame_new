@@ -1,0 +1,60 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Sửa bài viết chính sách'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('admin.policy.common', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<!-- form start -->
+			<?php echo Form::open(array('action' => array('PolicyController@update', $inputpolicy->id), 'method' => 'PUT')); ?>
+
+			<div class="box-body">
+				<div class="form-group">
+				  	<label for="name">Tiêu đề</label>
+				  	<div class="row">
+						<div class="col-sm-12">
+						   <?php echo Form::text('title', $inputpolicy->title , textParentCategory('Nhập tiêu đề')); ?>
+
+						</div>
+				  </div>
+				</div>
+				<div class="form-group">
+				  	<label for="name">Thể loại</label>
+				  	<div class="row">
+						<div class="col-sm-12">
+						   <?php echo Form::select('type_policy',selectType_Policy(), $inputpolicy->type_policy, array('class' =>'form-control')); ?>
+
+						</div>
+				  </div>
+				</div>
+				<div class="form-group">
+				  	<label for="name">Mô tả</label>
+				  	<div class="row">
+						<div class="col-sm-12">
+						    <?php echo Form::textarea('description', $inputpolicy->description , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')); ?>
+
+						</div>
+				  </div>
+				</div>
+			</div>
+
+			  <!-- /.box-body -->
+
+			  <div class="box-footer">
+				<?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
+			  </div>
+			<?php echo Form::close(); ?>
+
+		  </div>
+		  <!-- /.box -->
+	</div>
+</div>
+<?php echo $__env->make('admin.common.ckeditor', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

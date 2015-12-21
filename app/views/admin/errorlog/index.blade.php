@@ -32,6 +32,7 @@
 	<div class="col-xs-12">
 		<a href="{{ action('ErrorsController@index') }}" class="btn btn-success">Danh sách lỗi</a>
 		<a onclick="deleteSelected();" class="btn btn-primary">Xóa</a>
+		<a onclick="deleteSelectedAllErrors();" class="btn btn-primary">Xóa toàn bộ</a>
 	</div>
 </div>
 

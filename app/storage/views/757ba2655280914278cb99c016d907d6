@@ -1,0 +1,56 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Báo lỗi game'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+<div class="box">
+	<h3>Báo lỗi game</h3>
+	<?php if(Session::has('message')): ?>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-4">
+			<?php echo $__env->make('site.common.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</div>
+	</div>
+	<script>setTimeout(function(){history.back();}, 3000);</script>
+	<?php endif; ?>
+	<div class="clearfix"></div>
+	<div class="col-xs-12">
+	<?php echo Form::open(array('action' => array('SiteFeedbackController@createErrorGame', $input_errorGame->id), 'method' => 'PUT', 'class' => 'form-horizontal')); ?>
+
+
+		<div class="form-group">
+			<label for="username" class="col-sm-4 control-label label-text">Tên game:</label>
+			<div class="col-sm-4">
+				<?php echo $input_errorGame->name; ?>
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="username" class="col-sm-4 control-label label-text">Nội dung báo lỗi:</label>
+			<div class="col-sm-6">
+				<textarea class="form-control" name="description" rows="5" placeholder="Nội dung báo lỗi" id="description" require></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-4">
+				<input type="submit" class="btn btn-primary " value="Gửi" /> &nbsp
+				<input type="button"  class="btn btn-primary " value="Nhập lại" onclick="myFunctionResertText()" />
+
+			</div>
+		<?php echo $__env->make('site.feedback.common', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		</div>
+
+	<?php echo Form::close(); ?>
+
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
