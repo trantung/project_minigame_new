@@ -35,18 +35,43 @@ class CommonSite
     {
         // Header & Footer
         if($modelName == null && $modelId == null) {
-            $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->first();
+            if (Cache::has('ad'.$position))
+            {
+                $ad = Cache::get('ad'.$position);
+            } else {
+                $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->first();
+                Cache::put('ad'.$position, $ad, CACHETIME);
+            }
             return $ad;
         }
         // Content
         else {
             //check Common models
-            $common_model = CommonModel::where(array('model_name' => $modelName, 'model_id' => $modelId))->first();
+            if (Cache::has('common_model'.$modelName.$modelId))
+            {
+                $common_model = Cache::get('common_model'.$modelName.$modelId);
+            } else {
+                $common_model = CommonModel::where(array('model_name' => $modelName, 'model_id' => $modelId))->first();
+                Cache::put('common_model'.$modelName.$modelId, $common_model, CACHETIME);
+            }
             if ($common_model) {
                 $common_model_id = $common_model->id;
-                if($advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first()) {
-                    $advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first()->advertisement_id;
-                    $ad = Advertise::find($advertisement_id);
+                if (Cache::has('advertisement_id'.$common_model_id))
+                {
+                    $advertisement_id = Cache::get('advertisement_id'.$common_model_id);
+                } else {
+                    $advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first();
+                    Cache::put('advertisement_id'.$common_model_id, $advertisement_id, CACHETIME);
+                }
+                if($advertisement_id) {
+                    if (Cache::has('ad'.$advertisement_id))
+                    {
+                        $ad = Cache::get('ad'.$advertisement_id);
+                    } else {
+                        $advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first()->advertisement_id;
+                        $ad = Advertise::find($advertisement_id);
+                        Cache::put('ad'.$advertisement_id, $advertisement_id, CACHETIME);
+                    }
                     return $ad;
                 }
                 return null;
@@ -69,10 +94,16 @@ class CommonSite
 
     public static function getLatestNews()
     {
-        $now = Carbon\Carbon::now();
-        $news =  AdminNew::where('start_date', '<=', $now)
-            ->orderBy('start_date', 'desc')
-            ->first();
+        if (Cache::has('newsLatest'))
+        {
+            $news = Cache::get('newsLatest');
+        } else {
+            $now = Carbon\Carbon::now();
+            $news =  AdminNew::where('start_date', '<=', $now)
+                ->orderBy('start_date', 'desc')
+                ->first();
+            Cache::put('newsLatest', $news, CACHETIME);
+        }
         if($news) {
             return $news;
         } else {

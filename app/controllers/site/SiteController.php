@@ -11,7 +11,13 @@ class SiteController extends HomeController {
         	$menu = CategoryParent::where('status', ACTIVE)->orderBy('weight_number', 'asc')->get();
             Cache::put('menu', $menu, CACHETIME);
         }
-		$script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
+		if (Cache::has('script'.SEO_SCRIPT))
+        {
+            $script = Cache::get('script'.SEO_SCRIPT);
+        } else {
+        	$script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
+            Cache::put('script'.SEO_SCRIPT, $script, CACHETIME);
+        }
 		if($script) {
 			View::share('script', $script);
 		}

@@ -16,13 +16,13 @@
 		@foreach($inputsearchGame as $value)
 			<div class="list-item">
 				<div class="list-image">
-					<a href="{{ CommonGame::getUrlGame($value->slug) }}">
+					<a href="{{ CommonGame::getUrlGame($value) }}">
 						<img class="image_avata_game" src="{{ url(UPLOADIMG . '/game_avatar'. '/' . $value->image_url) }}" />
 					</a>
 				</div>
 				<div class="list-text">
 					<h3>
-						<a href="{{ CommonGame::getUrlGame($value->slug) }}">
+						<a href="{{ CommonGame::getUrlGame($value) }}">
 							{{ limit_text($value->name, TEXTLENGH) }}
 						</a>
 					</h3>
@@ -36,7 +36,7 @@
 			</div>
 		@endforeach
 	@else
-		@include('site.common.boxgame', array('inputSearch' => $input['search'], 'text' => 'kết quả từ khóa'))
+		@include('site.common.boxgame', array('inputSearch' => $input['search'], 'text' => 'kết quả nào với từ khóa'))
 	@endif
 </div>
 

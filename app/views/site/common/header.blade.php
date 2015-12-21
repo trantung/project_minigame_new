@@ -2,7 +2,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta property="fb:app_id" content="{{ APP_ID }}"/>
+	<meta property="fb:admins" content="{{ APP_ADMIN }}"/>
 	<title>@yield('title')</title>
 
 	@if(isset($seoMeta))
@@ -26,7 +27,7 @@
 
 	{{HTML::style('assets/css/font-awesome.min.css') }}
 	{{HTML::style('assets/css/bootstrap.min.css') }}
-	{{HTML::style('assets/css/style.min.css') }}
+	{{HTML::style('assets/css/style.css') }}
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +38,7 @@
 
 	{{ HTML::script('assets/js/jquery-2.1.4.min.js') }}
 	{{ HTML::script('assets/js/bootstrap.min.js') }}
-	{{ HTML::script('assets/js/script.min.js') }}
+	{{ HTML::script('assets/js/script.js') }}
 
 	@if($script)
 		{{ $script->header_script }}

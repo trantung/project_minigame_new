@@ -84,30 +84,31 @@ class GameController extends SiteController {
 
 	public function listGame($slug)
 	{
-		$categoryParent = CategoryParent::findBySlug($slug);
-		$type = Type::findBySlug($slug);
+		if (Cache::has('categoryParent_'.$slug))
+        {
+            $categoryParent = Cache::get('categoryParent_'.$slug);
+        } else {
+            $categoryParent = CategoryParent::findBySlug($slug);
+            Cache::put('categoryParent_'.$slug, $categoryParent, CACHETIME);
+        }
+		if (Cache::has('type_'.$slug))
+        {
+            $type = Cache::get('type_'.$slug);
+        } else {
+            $type = Type::findBySlug($slug);
+            Cache::put('type_'.$slug, $type, CACHETIME);
+        }
 		if($categoryParent) {
-			// $games = CommonGame::boxGameByCategoryParent($categoryParent, true);
-			// return View::make('site.game.category')->with(compact('games', 'categoryParent'));
-
-			//haynhat
-			$games = CommonGame::boxGameByCategoryParent($categoryParent);
-			// dd($games->get()->toArray());
-			// $count = $games->paginate(5);
-			// dd($games);
-			$count = ceil(count($games->get())/PAGINATE_BOXGAME);
-			// dd($count);
-			return View::make('site.game.category')->with(compact('games', 'categoryParent', 'count'));
+			// $games = CommonGame::boxGameByCategoryParent($categoryParent);
+			// $count = ceil(count($games->get())/PAGINATE_BOXGAME);
+			// return View::make('site.game.category')->with(compact('games', 'categoryParent', 'count'));
+			return View::make('site.game.category')->with(compact('categoryParent'));
 		}
 		if($type) {
-			//haynhat
-			$games = CommonGame::boxGameByType($type);
-			// dd($games->get()->toArray());
-			// $count = $games->paginate(5);
-			// dd($games);
-			$count = ceil(count($games->get())/PAGINATE_BOXGAME);
-			// dd($count);
-			return View::make('site.game.type')->with(compact('games', 'type', 'count'));
+			// $games = CommonGame::boxGameByType($type);
+			// $count = ceil(count($games->get())/PAGINATE_BOXGAME);
+			// return View::make('site.game.type')->with(compact('games', 'type', 'count'));
+			return View::make('site.game.type')->with(compact('type'));
 		}
 		//TODO 404
 		return CommonLog::logErrors(ERROR_TYPE_404);
@@ -116,7 +117,13 @@ class GameController extends SiteController {
 	public function detailGame($type, $slug)
 	{
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
-		$game = Game::findBySlug($slug);
+		if (Cache::has('game_'.$slug))
+        {
+            $game = Cache::get('game_'.$slug);
+        } else {
+            $game = Game::findBySlug($slug);
+            Cache::put('game_'.$slug, $game, CACHETIME);
+        }
 		$play = Input::get('play');
 		if($game) {
 			$count_view = $game->count_view+1;
@@ -180,11 +187,12 @@ class GameController extends SiteController {
     			if($parentId == GAMEOFFLINE) {
 	    			return View::make('site.game.downloadweb')->with(compact('game'));
 	    		} else {
+	    			$gametop = $this->listGameTop();
 	    			if($play == 'true') {
 	    				//return View::make('site.game.onlinemobileplay')->with(compact('game'));
 	    				return View::make('site.game.onlinewebplay')->with(compact('game'));
 	    			}
-	    			return View::make('site.game.onlineweb')->with(compact('game'));
+	    			return View::make('site.game.onlineweb')->with(compact('game', 'gametop'));
 	    		}
     		}
     	}
@@ -212,58 +220,17 @@ class GameController extends SiteController {
     */
     public function getListGameAndroid()
     {
-    	return $this->getListGame('android');
+    	return View::make('site.game.showlistandroid');
     }
 
     public function getListGameVote()
     {
-    	return $this->getListGame('vote');
+    	return View::make('site.game.gamevotemany');
     }
 
     public function getListGameplay()
     {
-    	return $this->getListGame('play');
-    }
-
-	/**
-    * Get list game for binh chon nhieu + hay nhat + download
-    * @return list game
-    *
-    */
-    public function getListGame($view = null)
-    {
-    	$now = Carbon\Carbon::now();
-    	if(getDevice() == MOBILE) {
-			$games = Game::whereNotNull('parent_id')
-                ->where('status', ENABLED)
-				->where('parent_id', '!=', GAMEFLASH)
-				->where('start_date', '<=', $now);
-		} else {
-			$games = Game::whereNotNull('parent_id')
-                ->where('status', ENABLED)
-				->where('start_date', '<=', $now);
-		}
-		//check game category
-		if($view == 'android') {
-			$games = $games->where('parent_id', GAMEOFFLINE);
-		}
-		//to do: vote, play for gamehtml5 only
-		if($view == 'vote' || $view == 'play') {
-			$games = $games->where('parent_id', GAMEHTML5);
-		}
-		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
-		if($view == 'vote') {
-			$count = getCount($count);
-			return View::make('site.game.gamevotemany')->with(compact('games', 'count'));
-		}
-		if($view == 'play') {
-			$count = getCount($count);
-			return View::make('site.game.gameplaymany')->with(compact('games', 'count'));
-		}
-		if($view == 'android') {
-			return View::make('site.game.showlistandroid')->with(compact('games', 'count'));
-		}
-		return null;
+    	return View::make('site.game.gameplaymany');
     }
 
     public function countPlay()
@@ -448,10 +415,33 @@ class GameController extends SiteController {
 
 	public function getPage404($type, $slug, $word)
     {
-		// $game = Game::findBySlug($slug);
 		if ($word) {
-			return CommonLog::logErrors(ERROR_TYPE_404);
+			if(strpos(Request::url(), '/games/')) {
+				return CommonLog::logErrors(ERROR_TYPE_MISSING);
+			} else {
+				return CommonLog::logErrors(ERROR_TYPE_404);
+			}
 		}
     }
 
+    public function listReportGame()
+    {
+    	return View::make('site.game.total_report_game_month')->with(compact(''));
+    }
+
+    public function listGameTop()
+    {
+    	$now = Carbon\Carbon::now();
+        $games = Game::whereNotNull('parent_id')
+                ->where('status', ENABLED)
+                ->where('parent_id', GAMEHTML5)
+                ->orWhere('parent_id', GAMEFLASH)
+                ->where('start_date', '<=', $now)
+                ->limit(GAMETOP)
+                ->orderBy(DB::raw('RAND()'))
+                ->orderBy('count_play', 'desc')
+                ->limit(GAMETOP_LIMITED)
+                ->get();
+        return View::make('site.game.topgame')->with(compact('games'));
+    }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class SiteFeedbackController extends SiteController {
 
@@ -31,7 +31,7 @@ class SiteFeedbackController extends SiteController {
 	 */
 	public function store()
 	{
-		
+
 		$input = Input::except('_token');
 		// dd($input);
 		$rules = array(
@@ -114,7 +114,7 @@ class SiteFeedbackController extends SiteController {
 	*/
 	public function errorGame($id)
 	{
-		
+
 		$input_errorGame = Game::find($id);
 		return View::make('site.feedback.error_game')->with(compact('input_errorGame'));
 	}
@@ -163,4 +163,31 @@ class SiteFeedbackController extends SiteController {
 		$input_policy = Policy::where('type_policy', POLICY)->get()->first();
 		return View::make('site.feedback.policy')->with(compact('input_policy'));
 	}
+
+	public function sendErrorGame()
+	{
+		$input = array();
+		$input['description'] = Input::get('description');
+		$rules = array(
+            'description' => 'required'
+		);
+		$validator = Validator::make($input,$rules);
+		if($validator->fails()) {
+			echo 0;
+        } else {
+        	$input['game_id'] = Input::get('id');
+      		$input['status'] = INACTIVE;
+      		$input['ip'] = getIpAddress();
+      		$input['device'] = getDevice();
+        	$id_errorgame = CommonNormal::create($input, 'feedback_game');
+        	if($id_errorgame) {
+        		echo 1;
+        	} else {
+        		echo 0;
+        	}
+
+        }
+
+	}
+
 }

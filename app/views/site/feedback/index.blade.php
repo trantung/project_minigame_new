@@ -8,9 +8,6 @@
 
 <div class="box">
 	<h3>Góp ý</h3>
-	<div class=" ad">
-		<h4><b>Bạn đang thắc mắc?</b></h4>
-	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-4">
 			@include('site.common.message')
