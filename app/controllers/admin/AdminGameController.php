@@ -9,7 +9,7 @@ class AdminGameController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Game::where('parent_id', '!=', '')->orderBy('id', 'desc')->paginate(PAGINATE);
+		$data = Game::where('parent_id', '!=', '')->orderBy('start_date', 'desc')->paginate(PAGINATE);
 		return View::make('admin.game.index')->with(compact('data'));
 	}
 
@@ -275,8 +275,5 @@ class AdminGameController extends AdminController {
 		return View::make('admin.game.statistic')->with(compact('data'));
 	}
 
-	public function listReportGame()
-    {
-    	return View::make('admin.game.total_report_game_month')->with(compact(''));
-    }
+
 }

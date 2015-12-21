@@ -140,7 +140,7 @@ class CommonGame
 
 	public static function searchAdminGameSortBy($input)
 	{
-		$sortBy = 'id';
+		$sortBy = 'start_date';
 		$sort = 'desc';
 		if(isset($input['sortByCountView']) && $input['sortByCountView'] != '') {
 			if($input['sortByCountView'] == 'count_view_asc') {
