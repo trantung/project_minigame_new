@@ -108,4 +108,9 @@ class ErrorsController extends AdminController {
 		AdminError::truncate();
 	}
 
+	public function deleteAllErrors()
+	{
+		AdminError::truncate();
+	}
+
 }

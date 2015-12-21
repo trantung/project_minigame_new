@@ -18,6 +18,7 @@
 //     ->header('Content-Type', 'text/xml');
 App::missing(function($exception)
 {
+	dd($link = Request::url());
     // Log::error( Request::url() );
     return CommonLog::logErrors(ERROR_TYPE_MISSING);
 });
