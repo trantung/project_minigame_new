@@ -151,8 +151,10 @@ class CommonSearch
 				$query = $query->where('parent_id', '!=', GAMEFLASH);
 			}
 			if($input['search'] != '') {
-				$condition = array( '%'.$input['search'].'%' );
-				$query = $query->whereRaw( 'games.name like ?', $condition);
+				// $condition = array( '%'.$input['search'].'%' );
+				// $query = $query->whereRaw( 'games.name like ?', $condition);
+				$query = $query->where('slug', 'like', '%'.$input['search'].'%')
+                            ->orWhere('name', 'like', '%'.$input['search'].'%');
 			}
 			$query = $query->where('status', ENABLED)
 				->where('start_date', '<=', Carbon\Carbon::now());
