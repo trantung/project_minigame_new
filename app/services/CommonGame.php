@@ -365,7 +365,7 @@ class CommonGame
     public static function getUrlGame($game = null)
     {
     	if($game) {
-            if (!in_array($game->parent_id, [GAMEFLASH, GAMEHTML5])) {
+            if (!(in_array($game->parent_id, [GAMEFLASH, GAMEHTML5]))) {
                 if (Cache::has('category'.$game->parent_id))
                 {
                     $category = Cache::get('category'.$game->parent_id);
