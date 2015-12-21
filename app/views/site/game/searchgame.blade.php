@@ -7,7 +7,6 @@
 @section('content')
 
 @include('site.common.ad', array('adPosition' => CHILD_PAGE, 'modelName' => 'CategoryParent', 'modelId' => 1))
-
 <div class="list">
 	@if(count($inputsearchGame) > 0)
 		<div class="title_left">
