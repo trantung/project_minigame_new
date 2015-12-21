@@ -30,6 +30,10 @@
 				<th>Category</th>
 				<th>Lượt xem</th>
 				<th>Play/Dowload</th>
+				<th>Week before</th>
+				<th>Week current</th>
+				<th>Month bofore</th>
+				<th>Month current</th>
 				<th>Vote</th>
 				<th>Lượt tải</th>
 				<!-- <th>Trạng thái</th> -->
@@ -44,6 +48,10 @@
 					<td>{{ Game::find($value->parent_id)->name }}</td>
 					<td>{{ getZero($value->count_view) }}</td>
 					<td>{{ $value->count_play.$value->count_download }}</td>
+					<td>{{ $value->total_play_download_before_weekly }}</td>
+					<td>{{ $value->total_play_download_current_weekly }}</td>
+					<td>{{ $value->total_play_dowload_before_month }}</td>
+					<td>{{ $value->total_play_dowload_current_month }}</td>
 					<td>{{ getZero($value->count_vote) }}</td>
 					<td>{{ getZero($value->count_download) }}</td>
 					<!-- <td>{{ getStatusGame($value->status)  }}</td> -->

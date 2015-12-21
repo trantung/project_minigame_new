@@ -1,0 +1,108 @@
+<?php $__env->startSection('title'); ?>
+<?php if(!Request::segment(3) == CONTENT_SEGMENT): ?>
+	<?php echo $title='Quản lý Menu'; ?>
+
+<?php else: ?>
+	<?php echo $title='Quản lý box hiển thị'; ?>
+
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<!-- inclue Search form 
+
+-->
+<?php if(!Admin::isSeo()): ?>
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<?php if(!Request::segment(3) == CONTENT_SEGMENT): ?>
+		<a href="<?php echo action('CategoryParentController@create'); ?>" class="btn btn-primary">Thêm Menu</a>
+		<?php else: ?>
+		<a href="<?php echo action('CategoryParentController@contentCreate'); ?>" class="btn btn-primary">Thêm chuyên mục Content</a>
+		<?php endif; ?>
+	</div>
+</div>
+<?php endif; ?>
+<div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<div class="box-header">
+		  <h3 class="box-title">Danh sách chuyên mục</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+		  <table class="table table-hover">
+			<tr>
+			  <th>ID</th>
+			  <th>Tên chuyên mục</th>
+			  <?php if(!Request::segment(3) == CONTENT_SEGMENT): ?>
+			  	<th>Tổng số thể loại</th>
+			  <?php endif; ?>
+			 
+			  <?php if(!Request::segment(3) != CONTENT_SEGMENT): ?>	
+			  <th>Trạng thái</th>	
+			  <th>Tổng số game</th>	  
+			  <th>Tổng số xem</th>			  
+			  <th>Tổng số chơi</th>			  
+			  <th>Tổng số tải</th>	
+			  
+			  <?php endif; ?>		  
+			  <th>Trạng thái Seo </th>	
+			  <th style="width:200px;">Action</th>
+			</tr>
+			<?php foreach($categoryParents as $categoryParent): ?>
+				<tr>
+				  	<td><?php echo $categoryParent->id; ?></td>
+					<td><?php echo $categoryParent->name; ?></td>
+					<?php if(!Request::segment(3) == CONTENT_SEGMENT): ?>
+						<td><?php echo countType($categoryParent->id); ?></td>
+					<?php endif; ?>
+					
+					<!-- todo -->
+					 <?php if(!Request::segment(3) != CONTENT_SEGMENT): ?>	
+					 <td><?php echo checkActiveUser($categoryParent->status); ?></td>
+					 <td><?php echo countBoxGame($categoryParent->id); ?></td>
+					<td><?php echo countBoxView($categoryParent->id); ?></td>
+					<td><?php echo countBoxPlay($categoryParent->id); ?></td>
+					<td><?php echo countBoxDowload($categoryParent->id); ?></td>
+					<?php endif; ?>
+					<td><?php echo getStatusSeoParent($categoryParent, 'CategoryParent'); ?></td>
+					<td>
+					 	<?php if(Request::segment(3) == CONTENT_SEGMENT): ?>
+					 	<!-- content -->
+					 	<a href="<?php echo route('content.edit', $categoryParent->id); ?>" class="btn btn-primary">Sửa</a>
+					 	<?php else: ?>
+					 	<a href="<?php echo action('CategoryParentController@edit', $categoryParent->id); ?>" class="btn btn-primary">Sửa</a>
+					 	<?php endif; ?>
+						<?php if(!Admin::isSeo()): ?>
+						<?php echo Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')); ?>
+
+							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+						<?php echo Form::close(); ?>
+
+						<?php endif; ?>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		  </table>
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="pagination">
+		<?php echo $categoryParents->appends(Request::except('page'))->links(); ?>
+
+		</ul>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

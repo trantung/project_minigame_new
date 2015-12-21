@@ -1,0 +1,56 @@
+<!-- menu -->
+<div id='cssmenu'>
+
+	<?php if(CommonSite::isLogin() ): ?>
+
+	<?php
+		if($image_url = Auth::user()->get()->image_url) {
+			$avatar = url(UPLOADIMG . UPLOAD_USER_AVATAR . '/' . $image_url);
+		} else {
+			$avatar = url('/assets/images/avatar.jpg');
+		}
+	?>
+
+	<div class="menu-account">
+          <a href="<?php echo action('AccountController@account'); ?>" class="account-name"><img src="<?php echo $avatar; ?>" height="32" width="31" /> <?php echo Auth::user()->get()->user_name.Auth::user()->get()->uname.Auth::user()->get()->google_name; ?></a>
+          <?php /* <a href="#" class="game-favorite"><i class="fa fa-thumbs-o-up"></i> Game bạn yêu thích</a> */ ?>
+          <?php /* <a href="#" class="game-played"><i class="fa fa-gamepad"></i> Game bạn đã chơi</a> */ ?>
+          <a href="<?php echo action('SiteController@logout'); ?>" class="signout"><i class="fa fa-power-off"></i> Đăng xuất</a>
+    </div>
+    <?php else: ?>
+	<div class="menu-login">
+		<a href="<?php echo action('SiteController@login'); ?>" class="signin"><i class="fa fa-user"></i> Đăng nhập</a>
+		<a href="<?php echo action('AccountController@create'); ?>" class="signup"><i class="fa fa-user-plus"></i> Đăng ký</a>
+	</div>
+	<?php endif; ?>
+
+	<div class="search1">
+		<form action="<?php echo action('SearchGameController@index'); ?>" >
+			<input type="text" name="search" value="" title="search" id="searchmenu" placeholder="Tìm kiếm game" />
+			<input type="submit" value="search" title="submit" />
+		</form>
+	</div>
+	<ul>
+		<li class='active'><a href='<?php echo url('/'); ?>' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
+		<?php foreach($menu as $key => $value): ?>
+			<?php if($value->position == MENU): ?>
+				<?php if(count($value->parenttypes) == 0): ?>
+					<?php if($value->id == 1): ?>
+						<li><a href="<?php echo action('GameController@getListGameAndroid'); ?>" class="color2"><span><?php echo $value->name; ?></span></a></li>
+					<?php else: ?>
+						<li><a href="<?php echo url('/' . $value->slug); ?>" class="color2"><span><?php echo $value->name; ?></span></a></li>
+					<?php endif; ?>
+				<?php else: ?>
+				<li class='has-sub'><a href= '#' class="color2"><span><?php echo $value->name; ?></span></a>
+					<ul>
+					<?php foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v): ?>
+						<li><a href="<?php echo url('/' . SiteIndex::getFieldByType($v, 'slug')); ?>"><span><?php echo SiteIndex::getFieldByType($v, 'name'); ?></span></a></li>
+					<?php endforeach; ?>
+					</ul>
+				</li>
+				<?php endif; ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</ul>
+	<div class="menu-hide"><a onclick="menuhide()"><i class="fa fa-times-circle-o"></i> Đóng lại</a></div>
+</div>

@@ -1,0 +1,107 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Sửa chuyên mục'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('admin.category_parent.common', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<!-- form start -->
+			<?php echo Form::open(array('action' => array('CategoryParentController@update', $inputCategory->id), 'method' => 'PUT', 'files' => true)); ?>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="name">Tên chuyên mục</label>
+								<?php echo Form::text('name', $inputCategory->name , textParentCategory('Tên chuyên mục')); ?>
+
+							</div>
+								<div class="form-group">
+									<label for="name">Chọn vị trí hiển thị</label>
+									<?php if(Request::segment(3) == CONTENT_SEGMENT): ?>
+										<?php echo Form::select('position', [2 => 'Content'], null, array('class' =>'form-control')); ?>
+
+										<div class="form-group">
+											<label for="name">Sắp xếp theo kiểu</label>
+												<?php echo Form::select('arrange', selectArrange(), $inputCategory->arrange,  array('class' =>'form-control')); ?>
+
+										</div>
+									<?php else: ?>
+										<?php echo Form::select('position', [1 => 'Menu'], $inputCategory->position, array('class' =>'form-control')); ?>
+
+									<?php endif; ?>
+								</div>
+							<?php if(!Admin::isSeo()): ?>
+								<div class="form-group">
+									<label for="name">Mức ưu tiên</label>
+									<?php echo Form::select('weight_number', selectWeight_number() ,$inputCategory->weight_number ,  array('class' =>'form-control')); ?>
+
+								</div>
+							<?php endif; ?>
+							<?php if(!Admin::isSeo()): ?>
+								<?php if(Request::segment(3) == CONTENT_SEGMENT): ?>
+								<div class="form-group">
+									<label for="name">Trạng thái</label>
+										<?php echo Form::select('status', selectActive() , $inputCategory->status ,  array('class' =>'form-control')); ?>
+
+								</div>
+								<div class="form-group">
+									<label for="name">Chọn category</label>
+										<?php echo Form::select('game_id', getListCategory() , $inputgame_category_parent->game_id ,  array('class' =>'form-control')); ?>
+
+								</div>
+								<?php endif; ?>
+							<?php endif; ?>
+							<hr />
+							<h1>SEO META</h1>
+							<?php /* include common/meta.blade.php */ ?>
+							<?php echo $__env->make('admin.common.meta', array('inputSeo' => $inputSeo, 'pathToImageSeo' => UPLOADIMG . '/'.FOLDER_SEO_PARENT.'/'. $inputCategory->id . '/'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<?php if(!Admin::isSeo()): ?>
+						<?php if(Request::segment(3) != CONTENT_SEGMENT): ?>
+						<div class="col-sm-6">
+							<div class="box-body table-responsive no-padding">
+								<table class="table table-bordered">
+									<tr>
+										<th>Tên thể loại game</th>
+										<th style="width: 10px;">Mức ưu tiên</th>
+										<th>Chọn</th>
+									</tr>
+									<?php foreach(Type::all() as $key => $value): ?>
+										<tr>
+											<td><?php echo $value->name; ?></td>
+											<td><input type="text" value="<?php echo getWeightNumberType($value->id, $inputCategory->id); ?>" name="weight_number_gametype[<?php echo $value->id; ?>]" /></td>
+											<td>
+												<input type="checkbox" name="type_id[]" value="<?php echo $value->id; ?>" <?php echo checkBoxChecked($value->id, $inputCategory->id); ?> />
+											</td>
+										</tr>
+									<?php endforeach; ?>
+								</table>
+							</div>
+						</div>
+						<?php endif; ?>
+					<?php endif; ?>
+				</div>
+
+				<div class="box-footer">
+					<?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
+				</div>
+			<?php echo Form::close(); ?>
+
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

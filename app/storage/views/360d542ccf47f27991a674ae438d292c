@@ -1,0 +1,83 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Quản lý User'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('admin.user.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<!-- inclue Search form 
+
+-->
+<div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<div class="box-header">
+		  <h3 class="box-title">Danh sách User</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+		  <table class="table table-hover">
+			<tr>
+			  <th>ID</th>
+			  <th>Tài khoản</th>
+			  <th>Loại tài khoản</th>
+			  <th>email</th>
+			  <th>Tên</th>
+			  <th>Ip</th>
+			  <th>Device</th>
+			  <th>Đăng nhập cuối</th>
+			  <th>Trạng thái</th>
+			  <th>Action</th>
+			</tr>
+			<?php foreach($inputUser as $value): ?>
+			<tr>
+			  <td><?php echo $value->id; ?></td>
+			  <td><?php echo UserManager::getUsername($value->id)['user_name']; ?></td>
+			  <td><?php echo UserManager::getUsername($value->id)['type_user']; ?></td>
+			  <td><?php echo $value->email; ?></td>
+			  <td><?php echo $value->fullname; ?></td>
+			  <td><?php echo $value->ip; ?></td>
+			  <td><?php echo getNameDevice($value->device); ?></td>
+			  <td><?php echo $value->updated_at; ?></td>
+			  <td><?php echo UserManager::getStatus($value->status); ?></td>
+			  <td>
+			    <?php if(Admin::isAdmin() || Admin::isEditor()): ?>
+				  	<?php if($value->status == ACTIVE ): ?>
+					<a href="<?php echo action('UserController@edit', $value->id); ?>" class="btn btn-danger">Hủy</a>
+					<?php else: ?>
+					<a href="<?php echo action('UserController@edit', $value->id); ?>" class="btn btn-primary">Kích hoạt</a>
+					<?php endif; ?>
+					<?php if(UserManager::getUsername($value->id)['type_user'] == TYPESYSTEM): ?>
+						<a href="<?php echo action('UserController@changePassword', $value->id); ?>" class="btn btn-primary">Đổi mật khẩu</a>
+					<?php endif; ?>
+		<!-- 		<?php echo Form::open(array('method'=>'DELETE', 'action' => array('UserController@destroy', $value->id), 'style' => 'display: inline-block;')); ?>
+
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				<?php echo Form::close(); ?> -->
+				<?php endif; ?>
+			  </td>
+			  </td>
+			</tr>
+			<?php endforeach; ?>
+		  </table>
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="pagination">
+		<!-- phan trang -->
+		<?php echo $inputUser->appends(Request::except('page'))->links(); ?>
+
+		</ul>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

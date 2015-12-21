@@ -1,0 +1,118 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Thêm mới quảng cáo header và footer'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="<?php echo action('AdminSlideController@index'); ?> " class="btn btn-success">Danh sách slide</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+			<!-- form start -->
+			<?php echo Form::open(array('action' => array('AdminSlideController@update', $slide->id), 'method' => 'PUT', 'files' => true)); ?>
+
+			<div class="box-body">
+				<div class="form-group">
+					<label for="name">Name</label>
+					<div class="row">
+						<div class="col-sm-6">	
+							<?php echo Form::text('name', $slide->name , textParentCategory('tên slide')); ?>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name">Auto Play</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   <?php echo Form::select('autoplay', [DISABLED => 'Không tự động chạy', ENABLED => 'Tự động chạy'], $slide->autoplay); ?>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name">Hiển thị nút prev và next</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   <?php echo Form::select('navigation', [DISABLED => 'Không', ENABLED => 'Có'], $slide->navigation); ?>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name">Hiển thị nút phân trang cho slide</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   <?php echo Form::select('pagination', [DISABLED => 'Không', ENABLED => 'Có'], $slide->pagination); ?>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name">Thời gian slide chạy</label>
+					<div class="row">
+						<div class="col-sm-6">	
+							<?php echo Form::text('config_time', $slide->config_time , textParentCategory('Time')); ?>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name">Chọn list ảnh mới, xoá hết ảnh cũ</label>
+					<div class="row">
+						<div class="col-sm-6">
+							<?php echo Form::file('image_url[]', array('id' => 'image_url', 'multiple' => true)); ?>
+
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<?php foreach($slide->images as $key => $image): ?>
+						<label for="name">Image thứ <?php echo $key + 1; ?></label>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="name">Đổi ảnh</label>
+								<?php echo Form::file('image[' .$image->id. ']', array('id' => 'image_url')); ?>
+
+								<img src="<?php echo url(UPLOAD_IMAGE_SLIDE . '/image'. '/' . $slide->id . '/' . $image->image_url); ?>" ,width="100px", height="100px"  />
+		                    	<a href="javascript:;" onclick="deleteImageRelate()" data-id="<?php echo $image->id; ?>" class="image_relate btn btn-danger">Xoá</a>
+							</div>
+						</div>
+						<div>
+	                <?php endforeach; ?>
+				</div>
+
+				<div class="form-group">
+					<label for="name">Kiểu slide</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   <?php echo Form::select('type', [DISABLED => 'Chạy ngang']); ?>
+
+						</div>
+					</div>
+				</div>
+			  <div class="box-footer">
+				<?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
+			  </div>
+			<?php echo Form::close(); ?>
+
+		  </div>
+		  <!-- /.box -->
+	</div>
+</div>
+<?php echo $__env->make('admin.slider.script', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

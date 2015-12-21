@@ -1,0 +1,55 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Sửa thể loại game'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+		<a href="<?php echo action('GameTypeController@index'); ?>" class="btn btn-success">Danh sách thể loại game</a>
+		<?php if(!Admin::isSeo()): ?>
+		<a href="<?php echo action('GameTypeController@create'); ?>" class="btn btn-primary">Thêm thể loại game</a>
+		<?php endif; ?>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box box-primary">
+				<!-- form start -->
+				<?php echo Form::open(array('action' => array('GameTypeController@update', $inputType->id), 'method' => 'PUT', 'files' => true)); ?>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="name">Tên thể loại game</label>
+								<?php echo Form::text('name', $inputType->name , textParentCategory('Tên thể loại game')); ?>
+
+							</div>
+
+							<hr />
+							<h1>SEO META</h1>
+							<?php /* include common/meta.blade.php */ ?>
+							<?php echo $__env->make('admin.common.meta', array('inputSeo' => $inputSeo, 'pathToImageSeo' => UPLOADIMG . '/'.FOLDER_SEO_GAMETYPE.'/'. $inputType->id . '/'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
+				<div class="box-footer">
+					<?php echo Form::submit('Lưu lại', array('class' => 'btn btn-primary')); ?>
+
+				</div>
+				<?php echo Form::close(); ?>
+
+			</div>
+			<!-- /.box -->
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

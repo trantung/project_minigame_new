@@ -1,0 +1,60 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Đăng nhập tài khoản'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="box">
+	<h3>Đăng nhập tài khoản</h3>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-4">
+			<?php echo $__env->make('site.common.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-xs-12">
+		<?php echo Form::open(array('action' => 'SiteController@doLogin', 'class' => 'form-horizontal')); ?>
+
+			<div class="form-group">
+				<label for="username" class="col-sm-4 control-label label-text">Tên tài khoản:</label>
+				<div class="col-sm-4">
+					<input type="text" name="user_name" class="form-control" id="username" placeholder="Username" maxlength="255" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-4 control-label label-text">Mật khẩu:</label>
+				<div class="col-sm-4">
+					<input type="password" name="password" class="form-control" id="password" placeholder="password" maxlength="255" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<input type="submit" class="btn btn-primary form-control" value="Đăng nhập" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<div class="row">
+						<div class="col-sm-6">
+							<a href="<?php echo action('LoginFacebookController@loginfb'); ?>" id="register" class="btn btn-primary login-facebook"><i class="fa fa-facebook"></i> Login Facebook</a>
+						</div>
+						<div class="col-sm-6">
+							<a href="<?php echo action('GoogleController@logingoogle'); ?>" class="btn btn-danger login-google"><i class="fa fa-google"></i> Login Google</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<a href="<?php echo action('PasswordController@index'); ?>">Quên mật khẩu?</a>
+				</div>
+			</div>
+		<?php echo Form::close(); ?>
+
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

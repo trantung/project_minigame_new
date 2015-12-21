@@ -1,0 +1,64 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Quản lý lịch sử đăng nhập'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('admin.manager.seachhistory', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<div class="box-header">
+			<h3 class="box-title">Lịch sử đăng nhập</h3>
+			<?php if($logEdit->first()): ?>
+				<?php echo Form::open(array('method'=>'POST', 'action' => array('ManagerController@deleteHistory', $logEdit->first()->history_id), 'style' => 'display: inline-block;')); ?>
+
+					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+				<?php echo Form::close(); ?>
+
+			<?php else: ?>
+				Thành viên này chưa đăng nhập lần nào
+			<?php endif; ?>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+		  <table class="table table-hover">
+			<tr>
+			  <th>ID</th>
+			  <th>Người chỉnh sửa</th>
+			  <th>Time</th>
+			  <th>Ip</th>
+			  <th>Device</th>
+			  <th style="width:200px;">Action</th>
+			</tr>
+			 <?php foreach($logEdit as $logedit): ?>
+			<tr>
+			  <td><?php echo $logedit->id; ?></td>
+			  <td><?php echo $logedit->editor_name; ?></td>
+			  <td><?php echo $logedit->editor_time; ?></td>
+			  <td><?php echo $logedit->editor_ip; ?></td>
+			  <td><?php echo getNameDevice($logedit->history->device ); ?></td>
+			  <td><?php echo $logedit->action; ?></td>
+			</tr>
+			<?php endforeach; ?>
+		  </table>
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="pagination">
+		<!-- phan trang -->
+		</ul>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

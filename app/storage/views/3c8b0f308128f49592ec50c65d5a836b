@@ -1,0 +1,72 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Đăng ký tài khoản'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div class="box">
+	<h3>Đăng ký tài khoản</h3>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-4">
+			<?php echo $__env->make('site.common.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-xs-12">
+		<?php echo Form::open(array('action' => 'AccountController@store', 'class' => 'form-horizontal')); ?>
+
+			<div class="form-group">
+				<label for="username" class="col-sm-4 control-label label-text">Tên tài khoản (*):</label>
+				<div class="col-sm-4">
+					<input type="text" name="user_name" class="form-control" id="username" placeholder="Username" maxlength="255" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-4 control-label label-text">Mật khẩu (*):</label>
+				<div class="col-sm-4">
+					<input type="password" name="password" class="form-control" id="password" placeholder="password" maxlength="255" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phone" class="col-sm-4 control-label label-text">Số điện thoại (*):</label>
+				<div class="col-sm-4">
+					<input type="text" name="phone" class="form-control" id="phone" placeholder="phone" maxlength="255" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-4 control-label label-text">Email (*):</label>
+				<div class="col-sm-4">
+					<input type="email" name="email" class="form-control" id="email" placeholder="email" maxlength="255" required >
+				</div>
+			</div>
+			<?php /* <div class="form-group">
+				<label for="email" class="col-sm-4 control-label label-text">Điều khoản:</label>
+				<div class="col-sm-4">
+					<textarea readonly="" class="form-control" name=""> */ ?>
+					<?php /* Config::get('policy.policy') */ ?>
+					<?php /* </textarea>
+				</div>
+			</div> */ ?>
+
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-6">
+					<input type="checkbox" name="vehicle" id="vehicle" value="check" required> <a href="<?php echo action('SiteFeedbackController@policy'); ?>">Tôi đồng ý với các quy định trong bản thỏa thuận sử dụng</a>
+					<br>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-4">
+					<input type="submit" class="btn btn-primary form-control" value="Đăng ký" onclick="checkAgree();" />
+				</div>
+			</div>
+
+		<?php echo Form::close(); ?>
+
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

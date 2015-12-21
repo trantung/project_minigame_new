@@ -140,7 +140,7 @@ class CommonGame
 
 	public static function searchAdminGameSortBy($input)
 	{
-		$sortBy = 'id';
+		$sortBy = 'start_date';
 		$sort = 'desc';
 		if(isset($input['sortByCountView']) && $input['sortByCountView'] != '') {
 			if($input['sortByCountView'] == 'count_view_asc') {
@@ -303,10 +303,14 @@ class CommonGame
                         ->whereNull('games.deleted_at')
                         ->where('games.status', ENABLED)
                         ->where('games.parent_id', '!=', GAMEFLASH)
-                        ->where('games.start_date', '<=', $now)
-                        ->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
-                        ->orderBy('games.'.$arrange, 'desc')
-                        ->get();
+                        ->where('games.start_date', '<=', $now);
+			if($data->arrange == GAME_NEWEST){
+				$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
+                       					 ->get();
+			}
+			else{
+				$listGame = $listGame->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))->orderBy('games.'.$arrange, 'desc')->get();
+				}
                     Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
                 }
             } else {
@@ -324,10 +328,14 @@ class CommonGame
                         ->where('games.parent_id', $game->id)
                         ->whereNull('games.deleted_at')
                         ->where('games.status', ENABLED)
-                        ->where('games.start_date', '<=', $now)
-                        ->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
-                        ->orderBy('games.'.$arrange, 'desc')
-                        ->get();
+                        ->where('games.start_date', '<=', $now);
+			if($data->arrange == GAME_NEWEST){
+                                $listGame = $listGame->orderBy('games.'.$arrange, 'desc')
+                                                         ->get();
+                        }
+                        else{
+                                $listGame = $listGame->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))->orderBy('games.'.$arrange, 'desc')->get();
+                         }
                     Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
                 }
             }

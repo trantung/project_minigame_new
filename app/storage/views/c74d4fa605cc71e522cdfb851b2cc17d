@@ -1,0 +1,69 @@
+<?php $__env->startSection('title'); ?>
+<?php echo $title='Quản lý SEO'; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<!-- inclue Search form 
+
+-->
+
+
+<div class="row margin-bottom">
+	<div class="col-xs-12">
+	<?php if(!$seoScript): ?>
+		<a href="<?php echo action('SeoController@create'); ?>" class="btn btn-primary">Thêm Seo Script</a>
+	<?php elseif(!$seoMeta): ?>
+		<a href="<?php echo action('SeoController@seoMeta'); ?>" class="btn btn-primary">Thêm Seo Meta</a>
+	<?php endif; ?>
+	</div>
+</div>
+
+
+
+
+<div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<div class="box-header">
+		  <h3 class="box-title">Danh sách Seo</h3>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body table-responsive no-padding">
+		  <table class="table table-hover">
+			<tr>
+			 
+			  <th>ID</th>
+			  <th>Header</th>
+			  <th>Footer</th>
+			  <th>Thời gian tạo</th>
+			  <th style="width:200px;">Action</th>
+			</tr>
+			 <?php foreach($inputSeo as $value): ?>
+			<tr>
+			  <td><?php echo $value->id; ?></td>
+			  <td><?php echo e($value->header_script); ?></td>
+			  <td><?php echo e($value->footer_script); ?></td>
+			  <td><?php echo $value->created_at; ?></td>
+			  <td>
+			  	<?php if($value->model_name == SEO_SCRIPT): ?>
+				<a href="<?php echo action('SeoController@edit', $value->id); ?>" class="btn btn-primary">Sửa</a>
+				<?php elseif($value->model_name == SEO_META): ?>
+				<a href="<?php echo action('SeoController@editSeoMeta', $value->id); ?>" class="btn btn-primary">Sửa Meta</a>
+				<?php endif; ?>
+				
+			  </td>
+			</tr>
+			<?php endforeach; ?>
+		  </table>
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layout.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
