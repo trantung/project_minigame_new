@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Celeb Style Dress Up</title>
+<script type="text/javascript" src="cdn.js"></script>   
+<script type="text/javascript" src="js/CelebStyle.js"></script>
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<style>
+
+</style>
+</head>
+
+ <body onload="APIGet()" background="images/beijing.jpg">  
+<!--  <body onload="initialize()" background="images/beijing.jpg">  -->
+
+<div id="background" style="overflow:hidden;" >
+	<img src="images/biankuang.png" style="width:100%;top:0%;left:0%;z-index:3"/>
+	<audio src="audio/click.wav" id="clickSound"></audio>
+	<audio src="audio/photo.wav" id="photoSound"></audio>
+	<audio src="audio/rotate.wav" id="rotateSound"></audio>
+    <img src="images/yinyuekai.png" class="little_scale" width="5%"  style="z-index:500; top:2%; left:2%; cursor:pointer;display:none" id="music"  onclick="controlMusic()"/>
+    <div id="begin_page" style="display:none;background:white;" >
+	<!--	<img src="images/zhanshi2.jpg" width="100%"  style="z-index:0"/> -->
+		<div style="border-radius:5%/2%;width:40%;height:5%;left:30%;top:50%;z-index:4;position:absolute;overflow:hidden"/>
+	<!-- 	<img src="images/loading.png" width="95%" height="95%" style="left:12%;top:40%;z-index:4;"/> -->
+		<img src="images/loading1.png" id="progBar"  width="95%" height="35%" style="left:-100%;top:40.4%;z-index:5;"/>
+		<!-- <div id="progBar" style="width:100%;height:100%;left:10%;top:40.4%;z-index:6;opacity:1;background:#460036;position:absolute;"/></div> --></div>
+        <img id="start" src="images/start.png" style="z-index:5;width:10%;left:46%;top:62%;display:none;cursor:pointer;" onclick="startGame();" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" />
+
+
+	</div>
+     
+	<div id="first_page" style="display:none">
+		<img src="images/zhanshibeijing.jpg" id="beijing1" width="100%"  style="z-index:0"/>
+		<img src="images/kaichang.png" width="100%"  style="z-index:1"/>
+		<img src="images/kaichangyanjing1.png" id="first_page_yanjing" width="100%"  style="z-index:1"/>
+		<img src="images/kaichangzuiba1.png" id="first_page_zuiba" width="100%"  style="z-index:1"/>
+		<img id="title"  src="images/title.png"   style="width:56%;z-index:12;left:42%;top:15%;"/>
+
+		<img id="qipao1" src="images/qipao.png" class="qipao"  style="width:8%;top:13%;left:82%;z-index:3"/>
+		<img id="qipao2" src="images/qipao.png" class="qipao"  style="width:7%;top:33%;left:52%;z-index:4"/>
+		<img id="qipao3" src="images/qipao.png" class="qipao"  style="width:6%;top:43%;left:62%;z-index:5"/>
+		<img id="qipao4" src="images/qipao.png" class="qipao"  style="width:7%;top:63%;left:72%;z-index:6"/>
+		<img id="qipao5" src="images/qipao.png" class="qipao"  style="width:6%;top:53%;left:82%;z-index:7"/>
+		<img id="play" src="images/play.png"  style="width:16%;z-index:18;top:55%; left:55%; cursor:pointer" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" onclick="playGame()"/>
+			<!-- <img id="addYourSite" src="images/add.png" width="20%" style="z-index:19;left:75%;top:92%;cursor:pointer;"> -->
+	</div>
+	<div id="qiehuan_page"style="display:none;width:100%;height:100%;position:absolute;z-index:100;">
+		<img src="images/biankuang.png" style="width:100%;top:0%;left:0%;z-index:101"/>
+		<img src="images/qiehuanhuamian.png" id="qiehuan_beijing" width="100%"  style="z-index:100;"/>
+		<img src="images/qiehuantitle.png" id="qiehuan_title"width="50%"  style="z-index:101;left:25%;top:65%;"/>  
+		<img src="images/qiehuanyanjing1.png" id="qiehuan_yanjing" width="100%"  style="z-index:101;"/>
+		<img src="images/qiehuanzuiba1.png"  id="qiehuan_zuiba" width="100%"  style="z-index:101;"/>
+	</div>
+	<div id="tips_page" style="display:none">
+		<img src="images/huanzhuangbeijing.jpg" width="100%" style="z-index:0"/>
+		<img src="images/TIPSjiemian.png" width="100%" style="z-index:41;top:0%; left:0%; " id="tipsPic"  onclick="closeTips();"/>
+		<img src="images/TIPSclose.png" width="6%" style="z-index:42;top:5%; left:90%;cursor:pointer; " id="tipsPic"  onclick="closeTips();"/>
+	</div>
+    <div id="second_page" style="display:none" >
+		 
+    	<img src="images/huanzhuangbeijing.jpg" width="100%" style="z-index:0"/>
+    	<img src="images/wuping.png" width="47%" style="z-index:1;left:53%"/>
+    	<img src="images/anniutiao.png" width="100%" style="z-index:3;left:0%;bottom:0%;"/>
+    	<img src="images/toufa_xia.png" id="toufa"			class="xuankuang" width="8%"   style="top:20%; left:53%;z-index:30; cursor:pointer" onclick="selectBtn(this.id)"/>
+        <img src="images/shangyi_xia.png" id="shangyi"  			class="xuankuang" width="8%" style="top:49%; left:67%;z-index:30; cursor:pointer" onclick="selectBtn(this.id)"/>
+        <img src="images/qunzi_xia.png" id="qunzi"	class="xuankuang" width="8%"   style="top:58%; left:75%;z-index:30; cursor:pointer" onclick="selectBtn(this.id)"/>
+        <img src="images/xiezi_xia.png" id="xiezi" 	class="xuankuang" width="8%"   style="top:65%; left:85%;z-index:30; cursor:pointer" onclick="selectBtn(this.id)"/>
+      	<img src="images/shipin.png" id="shipin"  	class="xuankuang"  width="8%"   style="top:8%; left:50%;z-index:30; cursor:pointer" onclick="selectBtn(this.id)"/>
+     	<img src="images/lianyi_xia.png" id="lianyi" 		class="xuankuang" width="8%"   style="top:35%; left:58%;z-index:30; cursor:pointer" onclick="selectBtn(this.id)"/>
+     	<img src="images/renwu.png" width="30%"  id="girl_on" style="z-index:2;top:3%; left:15%;" />
+     		<img src="images/gebo.png" width="30%"  id="girl_on_gebo" style="z-index:18;top:3%; left:15%;" />
+     		
+     <!-- 	<img src="images/neiyi1.png" width="30%" id="neiyi1_on" style="z-index:4;top:3%; left:15%;" />
+     	<img src="images/neiyi2.png" width="30%"  id="neiyi2_on" style="z-index:14;top:3%; left:15%;" /> -->
+     	<img src="images/renwuyanjing1.png" id="second_page_yanjing" width="30%"  style="z-index:4;top:3%; left:15%;"/>
+		<img src="images/renwuzuiba1.png" id="second_page_zuiba" width="30%"  style="z-index:4;top:3%; left:15%;"/>
+     	<img src="images/show.png" width="12%" style="z-index:69;top:88%; left:59%; cursor:pointer" id="show" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)"  onclick="clickShow()"/>
+    	 <img src="images/tips.png" width="12%" style="z-index:41;top:88%; left:45%; cursor:pointer" id="tips"  onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" onclick="clickTips()"/>
+ 		<img src="images/reset.png" width="12%" style="z-index:69;top:88%; left:73%; cursor:pointer" id="reset" onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)"  onclick="clickReset()"/>
+  		
+  		<img id="qipao6" src="images/qipao.png" class="qipao"  style="width:5%;top:13%;left:12%;z-index:3"/>
+		<img id="qipao7" src="images/qipao.png" class="qipao"  style="width:4%;top:33%;left:22%;z-index:4"/>
+		<img id="qipao8" src="images/qipao.png" class="qipao"  style="width:5%;top:43%;left:52%;z-index:5"/>
+		<img id="qipao9" src="images/qipao.png" class="qipao"  style="width:3%;top:63%;left:27%;z-index:6"/>
+		<img id="qipao10" src="images/qipao.png" class="qipao"  style="width:4%;top:53%;left:32%;z-index:7"/>
+	 	<div id="wuping"  >   
+
+
+		   	<div id="toufakuang"  style="display:none;" >
+		  		<img class=" toufakuang " id="toufa1" src="images/toufa1.png" width="10%" style="top:7%; left:60%; z-index:32; cursor:pointer;" onclick="selectShiwu(this.id)">
+	      		<img class=" toufakuang " id="toufa2" src="images/toufa2.png" width="10%" style="top:7%; left:73%; z-index:32; cursor:pointer;" onclick="selectShiwu(this.id)">
+	   		 	<img class=" toufakuang " id="toufa3" src="images/toufa3.png" width="10%" style="top:7%; left:86%; z-index:32;  cursor:pointer;" onclick="selectShiwu(this.id)">
+	   		 	<img class=" toufakuang " id="toufa4" src="images/toufa4.png" width="10%" style="top:26%; left:73%; z-index:32; cursor:pointer;" onclick="selectShiwu(this.id)">
+	   		 	<img class=" toufakuang " id="toufa5" src="images/toufa5.png" width="10%" style="top:26%; left:86%; z-index:32; cursor:pointer;" onclick="selectShiwu(this.id)">
+	 	 	 	<img class=" toufakuang " id="toufa6" src="images/toufa6.png" width="10%" style="top:45%; left:86%; z-index:32;  cursor:pointer;" onclick="selectShiwu(this.id)">
+	 	 	
+	       </div>
+	       <div id="shipinkuang" style="display:block;" >
+		   		<img class="shipinkuang shipin1page" id="toushi1" src="images/toushi1.png" width="7%"  style="top:7%; left:60%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="toushi2" src="images/toushi2.png" width="7%"  style="top:7%; left:70%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="toushi3" src="images/toushi3.png" width="7%"  style="top:7%; left:80%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="toushi4" src="images/toushi4.png" width="7%"  style="top:7%; left:90%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="toushi5" src="images/toushi5.png" width="7%"  style="top:20%; left:65%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="toushi6" src="images/toushi6.png" width="7%"  style="top:20%; left:75%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	         <!--    <img class="shipinkuang shipin1page" id="shipin7" src="images/shipin7.png" width="7%"  style="top:20%; left:85%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="shipin8" src="images/shipin8.png" width="7%"  style="top:33%; left:70%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/> -->
+	             <img class="shipinkuang shipin1page" id="erzhui1" src="images/erzhui1.png" width="7%"  style="top:20%; left:85%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="erzhui2" src="images/erzhui2.png" width="7%"  style="top:33%; left:70%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="erzhui3" src="images/erzhui3.png" width="7%"  style="top:33%; left:80%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="erzhui4" src="images/erzhui4.png" width="7%"  style="top:33%; left:90%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="erzhui5" src="images/erzhui5.png" width="7%"  style="top:46%; left:80%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin1page" id="erzhui6" src="images/erzhui6.png" width="7%"  style="top:46%; left:90%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	        	<img class="shipinkuang shipin1page" id="shipinyou" src="images/you.png" width="5%"  style="top:59%; left:93%; z-index:32;  cursor:pointer" onclick="selectNextPage(this.id)"/>
+	            <img class="shipinkuang  shipin2page" id="xianglian1" src="images/xianglian1.png" width="7%"  style="top:7%; left:60%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang  shipin2page" id="xianglian2" src="images/xianglian2.png" width="7%"  style="top:7%; left:70%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang  shipin2page" id="xianglian3" src="images/xianglian3.png" width="7%"  style="top:7%; left:80%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang  shipin2page" id="xianglian4" src="images/xianglian4.png" width="7%"  style="top:7%; left:90%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang  shipin2page" id="xianglian5" src="images/xianglian5.png" width="7%"  style="top:20%; left:65%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang  shipin2page" id="xianglian6" src="images/xianglian6.png" width="7%"  style="top:20%; left:75%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+	            <img class="shipinkuang shipin2page" src="images/zhuangshi1.png" id="zhuangshi1" width="7%"  style="top:20%; left:85%; z-index:32;display:none; cursor:pointer" onclick="selectShiwu(this.id)" />
+	            <img class="shipinkuang shipin2page" src="images/zhuangshi2.png" id="zhuangshi2" width="7%"  style="top:33%; left:70%; z-index:32;display:none; cursor:pointer" onclick="selectShiwu(this.id)" />
+	          	<img class="shipinkuang shipin2page"  src="images/zhuangshi3.png" id="zhuangshi3" width="7%"  style="top:33%; left:80%; z-index:32;display:none;  cursor:pointer" onclick="selectShiwu(this.id)" />
+	            <img class="shipinkuang shipin2page"  src="images/kongbai.png"  width="7%"  style="top:33%; left:90%; z-index:32;display:none; " />
+	             <img class="shipinkuang shipin2page"  src="images/kongbai.png"  width="7%"  style="top:46%; left:80%; z-index:32;display:none; " />
+	              <img class="shipinkuang shipin2page"  src="images/kongbai.png"  width="7%"  style="top:46%; left:90%; z-index:32;display:none; " />
+	        	<img class="shipinkuang shipin2page" id="shipinzuo" src="images/zuo.png" width="5%"  style="top:59%; left:93%; z-index:32;  cursor:pointer;display:none" onclick="selectNextPage(this.id)"/>
+			
+	       </div>
+			<div id="lianyikuang"  style="display:none">
+				<img class="lianyikuang" id="lianyi1" src="images/lianyi1.png" width="10%" style="top:7%; left:60%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class="lianyikuang" id="lianyi2" src="images/lianyi2.png" width="10%" style="top:7%; left:73%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class="lianyikuang" id="lianyi3" src="images/lianyi3.png" width="10%" style="top:7%; left:86%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class="lianyikuang" id="lianyi4" src="images/lianyi4.png" width="10%" style="top:26%; left:73%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class="lianyikuang" id="lianyi5" src="images/lianyi5.png" width="10%" style="top:26%; left:86%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class="lianyikuang" id="lianyi6" src="images/lianyi6.png" width="10%" style="top:45%; left:86%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+			
+				
+	       </div>
+	       
+		    <div id="shangyikuang" style="display:none">
+				<img class=" shangyikuang shangyi1page" id="shangyi1" src="images/shangyi1.png" width="10%" style="top:7%; left:60%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi1page"  id="shangyi2" src="images/shangyi2.png" width="10%" style="top:7%; left:73%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi1page"  id="shangyi3" src="images/shangyi3.png" width="10%" style="top:7%; left:86%; z-index:32;   cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi1page"  id="shangyi4" src="images/shangyi4.png" width="10%" style="top:26%; left:70%; z-index:32;   cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi1page"  id="shangyi5" src="images/shangyi5.png" width="10%" style="top:26%; left:83%; z-index:32;   cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi1page"  id="shangyi6" src="images/shangyi6.png" width="10%" style="top:45%; left:80%; z-index:32;   cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img  class=" shangyikuang shangyi1page"  id="shangyiyou" src="images/you.png" width="5%"  style="top:59%; left:93%; z-index:32;  cursor:pointer" onclick="selectNextPage(this.id)"/>
+				<img class=" shangyikuang shangyi2page"  id="waitao1" src="images/waitao1.png" width="10%" style="top:7%; left:60%; z-index:32;  cursor:pointer;display:none" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi2page"  id="waitao2" src="images/waitao2.png" width="10%" style="top:7%; left:73%; z-index:32;   cursor:pointer;display:none" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi2page"  id="waitao3" src="images/waitao3.png" width="10%" style="top:7%; left:86%; z-index:32;  cursor:pointer;display:none" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi2page" id="waitao4" src="images/waitao4.png" width="10%" style="top:26%; left:70%; z-index:32;   cursor:pointer;display:none" onclick="selectShiwu(this.id)"/>
+				<img class=" shangyikuang shangyi2page"  id="shangyi11" src="images/kongbai.png" width="10%" style="top:26%; left:83%; z-index:32;  cursor:pointer;display:none" />
+				<img class=" shangyikuang shangyi2page"  id="shangyi12" src="images/kongbai.png" width="10%" style="top:45%; left:80%; z-index:32;   cursor:pointer;display:none" />
+				<img  class=" shangyikuang shangyi2page"  id="shangyizuo" src="images/zuo.png" width="5%"  style="top:59%; left:93%; z-index:32;  cursor:pointer;display:none" onclick="selectNextPage(this.id)"/>
+	       </div>
+	       
+		    <div id="qunzikuang"  style="display:none">
+				<img class=" qunzikuang" id="qunzi1" src="images/qunzi1.png" width="10%" style="top:7%; left:60%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" qunzikuang" id="qunzi2" src="images/qunzi2.png" width="10%" style="top:7%; left:73%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" qunzikuang" id="qunzi3" src="images/qunzi3.png" width="10%" style="top:7%; left:86%; z-index:32;  dcursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" qunzikuang" id="qunzi4" src="images/qunzi4.png" width="10%" style="top:26%; left:73%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" qunzikuang" id="qunzi5" src="images/qunzi5.png" width="10%" style="top:26%; left:86%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" qunzikuang" id="qunzi6" src="images/qunzi6.png" width="10%" style="top:45%; left:86%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+			
+
+				
+	       </div>
+		    <div id="xiezikuang" style="display:none">		   		
+				<img class=" xiezikuang " id="xiezi1" src="images/xiezi1.png" width="10%" style="top:7%; left:60%; z-index:32; cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" xiezikuang " id="xiezi2" src="images/xiezi2.png" width="10%" style="top:7%; left:73%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" xiezikuang " id="xiezi3" src="images/xiezi3.png" width="10%" style="top:7%; left:86%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" xiezikuang " id="xiezi4" src="images/xiezi4.png" width="10%" style="top:26%; left:73%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" xiezikuang " id="xiezi5" src="images/xiezi5.png" width="10%" style="top:26%; left:86%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+				<img class=" xiezikuang " id="xiezi6" src="images/xiezi6.png" width="10%" style="top:45%; left:86%; z-index:32;  cursor:pointer" onclick="selectShiwu(this.id)"/>
+
+	       </div>
+		     
+			   
+		 </div>
+		<img class="on" id="toufa_on"   src="images/toufa1_on.png" style="width:30%;top:3%;left:15%;z-index:18;" />
+		<img class="on" id="waitao_on"   style="width:30%;top:3%;left:15%;z-index:17;display:none;" />
+		<img class="on" id="toushi_on"   style="width:30%;top:3%;left:15%;z-index:20;display:none;" />
+		<img class="on" id="erzhui_on"   style="width:30%;top:3%;left:15%;z-index:19;display:none;" />
+		<img class="on" id="xianglian_on"   style="width:30%;top:3%;left:15%;z-index:16;display:none;"  />
+		<img class="on" id="lianyi_on"    style="width:30%;top:3%;left:15%;z-index:13;display:none;" />
+		<img class="on" id="shangyi_on"   style="width:30%;top:3%;left:15%;z-index:15;display:none;" />
+		<img class="on" id="qunzi_on"  style="width:30%;top:3%;left:15%;z-index:14;display:none;" />
+		<img class="on" id="xiezi_on"    style="width:30%;top:3%;left:15%;z-index:12;display:none;" />
+		<img class="on" id="zhuangshi_on"    style="width:30%;top:3%;left:15%;z-index:19;display:none;" />
+		 <div id="closeDisplayLayerBut" style="z-index:51;position:absolute;width:4%;height:15%; left:10%;top:46%;cursor:pointer;background:red;opacity:0;" onclick="closeDisplayLayer()"></div>
+		<img  id="openAsideLayer" src="images/tuceng.png" width="11%"height="85%" style="z-index:40;left:-8%;top:12%;display:none;" /> 
+			    <div id="layer" >
+				   <img  id="asideLayer" src="images/tuceng.png" width="10%"height="85%" style="z-index:1;left:1%;top:12%;" /> 
+				   <img id="layerimg0" class="dragme"  style="width:5%;z-index:42;left:2%;top:17%;position:absolute;" />
+				   <img id="layerimg1" class="dragme" style="width:5%;z-index:42;left:2%;top:25.5%;display:none;position:absolute;" />
+				   <img id="layerimg2" class="dragme" style="width:5%;z-index:42;left:2%;top:34%;display:none;position:absolute;" />
+				   <img id="layerimg3" class="dragme" style="width:5%;z-index:42;left:2%;top:42.5%;display:none;" />
+				   <img id="layerimg4" class="dragme" style="width:5%;z-index:42;left:2%;top:51%;display:none;" />
+				   <img id="layerimg5" class="dragme" style="width:5%;z-index:42;left:2%;top:59.5%;display:none;" />
+				   <img id="layerimg6" class="dragme" style="width:5%;z-index:42;left:2%;top:68%;display:none;" />
+				   <img id="layerimg7" class="dragme" style="width:5%;z-index:42;left:2%;top:76.5%;display:none;" />
+				   <img id="layerimg8" class="dragme" style="width:5%;z-index:42;left:2%;top:85%;display:none;" />
+				   <img id="layerimg9" class="dragme" style="width:5%;z-index:42;left:2%;top:93.5%;display:none;" />
+				   <img id="layerimg0close" src="images/chahao.png" style="width:2.5%; z-index:43;left:5.5%;top:16.5%;display:none;cursor:pointer" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg1close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:25%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg2close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:33.5%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg3close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:42%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg4close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:50.5%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg5close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:59%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg6close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:67.5%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				   <img id="layerimg7close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:76%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				 	<img id="layerimg8close" src="images/chahao.png" style="width:2.5%;z-index:43;left:5.5%;top:82.5%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+				 	<img id="layerimg9close" src="images/chahao.png" style="width:2.5%;z-index:43;left:6%;top:93%;display:none;;cursor:pointer;" onclick="closeLayerEle(this.id)"/>
+			   </div>
+
+	</div>
+	
+	<div id="third_page" style="display:none">
+	   	<img src="images/zhanshibeijing.jpg" id="third_bg" class="show"  width="100%" style="z-index:0"/>
+	   	<img src="images/anniutiao.png" width="100%" style="z-index:51;left:0%;bottom:0%;"/>
+   		<img src="images/xingxing.png" id="xingxing" class="show"width="100%" style="z-index:1;left:0%;bottom:0%;"/>
+	   	<img src="images/renwu.png" class="show"  width="30%" id="girl_show" style="z-index:2;top:3%; left:16%;" />
+	   	<img src="images/renwuyanjing1.png" id="third_page_yanjing" class="show"  width="30%"  style="left:16%;top:3%;z-index:3"/>
+		<img src="images/renwuzuiba1.png" id="third_page_zuiba" class="show" width="30%"  style="left:16%;top:3%;z-index:3"/>
+	   	<img src="images/gebo.png" width="30%" class="show" id="girl_show_gebo" style="z-index:18;top:3%; left:16%;" />
+	 
+	   <!-- 	<img src="images/neiyi1.png" class="show"  width="30%" id="neiyi1_show" style="z-index:4;top:3%; left:16%;" />
+	   	<img src="images/neiyi2.png"  class="show" width="30%" id="neiyi2_show" style="z-index:11;top:3%; left:16%;" /> -->
+	    <img id="replay" src="images/replay.png" width="11%"  style="z-index:52;top:88%; left:70%; cursor:pointer" onclick="clickReplay()"onmouseover="mouseOver(this.id)" onmouseout="mouseOut(this.id)" />
+		
+		<img class="show" id="toufa_show"  src="images/toufa1_on.png"  style="width:30%;top:3%; left:16%;z-index:18;" />
+		<img class="show" id="waitao_show"   	style="width:30%;top:3%; left:16%;z-index:17;display:none;" />
+		<img class="show" id="toushi_show"   	style="width:30%;top:3%; left:16%;z-index:20;display:none;" />
+		<img class="show" id="erzhui_show"   	style="width:30%;top:3%; left:16%;z-index:19;display:none;" />
+		<img class="show" id="xianglian_show"   style="width:30%;top:3%; left:16%;z-index:16;display:none;" />
+		<img class="show" id="lianyi_show"    	style="width:30%;top:3%; left:16%;z-index:13;display:none;" />
+		<img class="show" id="shangyi_show"   	style="width:30%;top:3%; left:16%;z-index:14;display:none;" />
+		<img class="show" id="qunzi_show"  		style="width:30%;top:3%; left:16%;z-index:15;display:none;" />
+		<img class="show" id="xiezi_show"    	style="width:30%;top:3%; left:16%;z-index:12;display:none;" />
+		<img class="show" id="zhuangshi_show"   style="width:30%;top:3%; left:16%;z-index:19;display:none;" />
+	<div id="white_flash" style="width:100%;height:100%;background:white;position:absolute;z-index:20;opacity:0.1"></div>
+		<img id="qipao11" src="images/qipao.png" class="qipao"  style="width:8%;top:13%;left:12%;z-index:3"/>
+		<img id="qipao12" src="images/qipao.png" class="qipao"  style="width:7%;top:33%;left:52%;z-index:4"/>
+		<img id="qipao13" src="images/qipao.png" class="qipao"  style="width:6%;top:43%;left:42%;z-index:5"/>
+		<img id="qipao14" src="images/qipao.png" class="qipao"  style="width:7%;top:63%;left:72%;z-index:6"/>
+		<img id="qipao15" src="images/qipao.png" class="qipao"  style="width:6%;top:53%;left:82%;z-index:7"/>
+		<div id="large_show" style="display:none; -webkit-filter:drop-shadow(0px 0px 10px #fff);">
+			<img src="images/renwu.png" class="large_show" id="large_girl_show" width="60%"  style="z-index:2;top:5%; left:43%;" />
+		   	<img src="images/renwuyanjing1.png"class="large_show" id="large_third_page_yanjing"   width="60%"  style="left:43%;top:5%;z-index:3"/>
+			<img src="images/renwuzuiba1.png"class="large_show" id="large_third_page_zuiba"  width="60%"  style="left:43%;top:5%;z-index:3"/>
+		   	<img src="images/gebo.png" width="60%" class="large_show" id="large_girl_show_gebo" style="z-index:18;top:5%; left:43%;" />
+		
+		<!--    	<img src="images/neiyi2.png"  class="large_show" width="60%" id="large_neiyi2_show" style="z-index:11;top:5%; left:43%;" /> -->
+			<img class="large_show" id="large_toufa_show"  src="images/toufa1_on.png"  style="width:60%;top:5%; left:43%;z-index:18;" />
+			<img class="large_show" id="large_waitao_show"   	style="width:60%;top:5%; left:43%;z-index:17;display:none;" />
+			<img class="large_show" id="large_toushi_show"   	style="width:60%;top:5%; left:43%;z-index:20;display:none;" />
+			<img class="large_show" id="large_erzhui_show"   	style="width:60%;top:5%; left:43%;z-index:19;display:none;" />
+			<img class="large_show" id="large_xianglian_show"   style="width:60%;top:5%; left:43%;z-index:16;display:none;" />
+			<img class="large_show" id="large_lianyi_show"    	style="width:60%;top:5%; left:43%;z-index:13;display:none;" />
+			<img class="large_show" id="large_shangyi_show"   	style="width:60%;top:5%; left:43%;z-index:14;display:none;" />
+			<img class="large_show" id="large_qunzi_show"  		style="width:60%;top:5%; left:43%;z-index:15;display:none;" />
+			<img class="large_show" id="large_xiezi_show"    	style="width:60%;top:5%; left:43%;z-index:12;display:none;" />
+			<img class="large_show" id="large_zhuangshi_show"   style="width:60%;top:5%; left:43%;z-index:19;display:none;" />
+			<img class="large_show" id="large_xiangkuang_show"  src="images/xiangkuang.png" style="width:42%;top:2%; left:48%;z-index:19;display:none;" />
+		</div>
+	 </div>
+</div>
+</body>
+</html>

@@ -46,12 +46,12 @@
 		  	{{ Form::select('status_seo', ['' => '-- chọn'] + selectStatusGame(), null, array('class' =>'form-control')) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Ngày bắt đầu</label>
-		  	<input type="text" name="start_date" class="form-control" maxlength="10" placeholder="Ngày bắt đầu" id="start_date" />
+			<label>Từ ngày</label>
+		  	<input type="text" name="start_date" class="form-control" id="datepickerStartdate" placeholder="Từ ngày" />
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Ngày kết thúc</label>
-		  	<input type="text" name="end_date" class="form-control" maxlength="10" placeholder="Ngày kết thúc" id="end_date" />
+			<label>Đến ngày</label>
+		  	<input type="text" name="end_date" class="form-control" id="datepickerEnddate" placeholder="Đến ngày" />
 		</div>
 		<div class="input-group" style="display: block; vertical-align: bottom; margin-top: 15px;">
 			<input type="submit" value="Search" class="btn btn-primary" />
