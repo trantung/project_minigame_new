@@ -23,6 +23,9 @@
 		<div class="box box-primary">
 			<!-- form start -->
 			{{ Form::open(array('action' => array('AdminGameController@update', $inputGame->id), 'method' => 'PUT', 'files' => true)) }}
+			<div class="box-footer">
+				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+			</div>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="box-body">

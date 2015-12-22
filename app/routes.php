@@ -18,9 +18,13 @@
 //     ->header('Content-Type', 'text/xml');
 App::missing(function($exception)
 {
-	dd($link = Request::url());
+	if(Request::segment(3) && strpos(Request::url(), '/games/')){
+		$errorType = ERROR_TYPE_MISSING;
+	} else {
+		$errorType = ERROR_TYPE_404;
+	}
     // Log::error( Request::url() );
-    return CommonLog::logErrors(ERROR_TYPE_MISSING);
+    return CommonLog::logErrors($errorType);
 });
 
 Route::get('/trang-khong-ton-tai', 'SiteController@returnPage404');

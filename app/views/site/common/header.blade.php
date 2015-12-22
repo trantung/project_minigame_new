@@ -40,7 +40,7 @@
 	{{ HTML::script('assets/js/bootstrap.min.js') }}
 	{{ HTML::script('assets/js/script.js') }}
 
-	@if($script)
+	@if(isset($script))
 		{{ $script->header_script }}
 	@endif
 

@@ -485,7 +485,7 @@ class CommonGame
 
         if($game->parent_id == GAMEHTML5) {
             $box = '<div style="margin: 10px auto; width: '.$width.'px; height: '.$height.'px;">
-                    <iframe name="my-iframe" id="my-iframe" width="100%" src="'.$link.'" height="100%" scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="-webkit-transform: scale(1, 1);
+                    <iframe name="my-iframe" id="my-iframe" width="100%" src="'.$link.'" height="100%" scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" webkit-playsinline="true" seamless="seamless" style="-webkit-transform: scale(1, 1);
                     -o-transform: scale(1, 1);
                     -ms-transform: scale(1, 1);
                     transform: scale(1, 1);
@@ -497,6 +497,7 @@ class CommonGame
                     frameborder: 0px;">
                     </iframe>
                 </div>';
+            // $box = '<iframe seamless id="my-iframe" name="my-iframe"  scrolling="no" frameborder="0" height="'.$height.'" width="'.$width.'" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true" webkit-playsinline="true" src="'.$link.'"></iframe>';
             return $box;
         }
     }

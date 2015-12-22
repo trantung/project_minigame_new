@@ -396,3 +396,11 @@ Stack trace:
 #24 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #25 D:\web\minigame\public\index.php(50): Illuminate\Foundation\Application->run()
 #26 {main} [] []
+[2015-12-22 08:51:52] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot redeclare ErrorsController::deleteAllErrors()' in D:\web\minigame\app\controllers\admin\ErrorsController.php:111
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-12-22 08:52:03] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot redeclare ErrorsController::deleteAllErrors()' in D:\web\minigame\app\controllers\admin\ErrorsController.php:111
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

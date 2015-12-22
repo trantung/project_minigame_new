@@ -6,7 +6,7 @@ class AdminErrorLog extends Eloquent
 {
 
 	    protected $table = 'error_logs';
-	    protected $fillable = ['error_id', 'agent'];
+	    protected $fillable = ['error_id', 'agent', 'referer'];
 
 	    public function error()
 	    {
