@@ -134,6 +134,8 @@ Route::group(['prefix' => 'admin'], function () {
 // FRONTEND
 // return json for mobile app
 Route::resource('/sitemap', 'SiteMapController');
+Route::resource('/testgame', 'TestGameController');
+
 Route::get('/api/list', array('uses' => 'ApiController@index', 'as' => 'api'));
 
 Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
