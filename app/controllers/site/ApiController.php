@@ -7,33 +7,41 @@ class ApiController extends SiteController {
 	 *
 	 * @return Response
 	 */
-	public function __construct(Game $game)
-	{
-		$this->game = $game;
-	}
 	public function index()
 	{
-		$now = Carbon\Carbon::now();
 		$types = Type::all();
 		$data = array();
 		foreach ($types as $key => $type) {
-			foreach ($type->games as $k => $value) {
-				if ($value->status == ENABLED && $value->start_date < $now && $value->parent_id == GAMEHTML5) {
-					$type_slug = Type::find(Game::find($value->id)->type_main)->slug;
-					$slug = $value->slug;
-					// $url = url('/' . $type_slug . '/' . $slug);
-					$url = url(UPLOAD_GAME. '/' . $value->link_url);
-					$avatar = url(UPLOAD_GAME_AVATAR. $value->image_url);
-					$data[$key]['type_name'] = $type->name;
-					$data[$key]['data_type'][$k]['game_url'] = $url;
-					$data[$key]['data_type'][$k]['game_name'] = $value->name;
-					$data[$key]['data_type'][$k]['game_avatar'] = $avatar;
-				}
-			}
+			$data[$key]['type_name'] = $type->name;
+			$data[$key]['data_type'] = $this->getGame($type);
 		}
 		return Response::json(array('code' => 'ok', 'data' => $data));
 	}
 
+	public function getGame($type)
+	{
+		$now = Carbon\Carbon::now();
+		$list = array();
+		$listGame = DB::table('games')
+                        ->join('game_types', 'game_types.game_id', '=', 'games.id')
+                        ->join('types', 'types.id', '=', 'game_types.type_id')
+                        ->select('games.name', 'games.link_url', 'games.image_url')
+                        ->distinct()
+                        ->where('types.id', $type->id)
+                        ->whereNull('games.deleted_at')
+                        ->where('games.status', ENABLED)
+                        ->where('games.parent_id', '!=', GAMEHTML5)
+                        ->where('games.start_date', '<=', $now)
+                        ->get();
+        foreach ($listGame as $key => $value) {
+        	$avatar = url(UPLOAD_GAME_AVATAR. $value->image_url);
+        	$list[$key]['game_url'] = url(UPLOAD_GAME. '/' . $value->link_url);
+        	$list[$key]['game_name'] = $value->name;
+        	$list[$key]['game_avatar'] = $avatar;
+
+        }
+		return $list;
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
