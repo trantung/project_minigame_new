@@ -1,6 +1,6 @@
 <?php
 
-class TestGameController extends \BaseController {
+class TestGameController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,8 @@ class TestGameController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$game = TestGame::find(1);
+		return View::make('testgame')->with(compact('game'));
 	}
 
 
@@ -31,7 +32,6 @@ class TestGameController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
 	}
 
 
@@ -55,7 +55,8 @@ class TestGameController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		dd(11);
+		
 	}
 
 
@@ -65,9 +66,23 @@ class TestGameController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	// public function update($id)
+	// {
+	// 	dd(11);
+	// 	$input = Input::except('_token');
+	// 	dd($input);
+	// 	TestGame::find($id)->update($input);
+	// 	dd(11);
+	// 	return Redirect::action('TestGameController@index');
+	// }
+	public function updateTest($id)
 	{
-		//
+		dd(11);
+		$input = Input::except('_token');
+		dd($input);
+		TestGame::find($id)->update($input);
+		dd(11);
+		return Redirect::action('TestGameController@index');
 	}
 
 
