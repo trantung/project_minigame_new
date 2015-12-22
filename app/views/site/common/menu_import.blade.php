@@ -57,3 +57,16 @@
 		<div class="menu-hide"><a onclick="menuhide()"><i class="fa fa-times-circle-o"></i> Đóng lại</a></div>
 	</div>
 </div>
+{{-- GA --}}
+<?php
+	if (Cache::has('script'.SEO_SCRIPT))
+	{
+	    $script = Cache::get('script'.SEO_SCRIPT);
+	} else {
+		$script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
+	    Cache::put('script'.SEO_SCRIPT, $script, CACHETIME);
+	}
+	if(isset($script)) {
+		echo $script->header_script;
+	}
+?>

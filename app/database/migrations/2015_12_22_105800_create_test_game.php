@@ -14,7 +14,7 @@ class CreateTestGame extends Migration {
 	{
 		Schema::create('tests', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('weight', 256)->nullable();
+            $table->string('width', 256)->nullable();
             $table->string('height', 256)->nullable();
             $table->timestamps();
         });

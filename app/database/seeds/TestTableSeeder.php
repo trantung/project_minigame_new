@@ -5,8 +5,8 @@ class TestTableSeeder extends Seeder {
 	public function run()
 	{
 		TestGame::create([
-					'weight' => '100',
-					'height'=>'100'
+					'width' => '640',
+					'height'=>'480'
 			]);
 	}
 
