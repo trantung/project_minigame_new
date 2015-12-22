@@ -430,7 +430,7 @@ a.signout {
 }
 
 .menu-login {
-    background: #888 none repeat scroll 0 0;
+    background: #a9a8a6 none repeat scroll 0 0;
 }
 .menu-login a.signin,
 .menu-login a.signup {
@@ -443,8 +443,11 @@ a.signout {
 .menu-login a i.fa {
 
 }
+.menu-login a.signin {
+    background: #888 none repeat scroll 0 0;
+}
 .menu-login a.signup {
-    background: #a9a8a6;
+    background: #a9a8a6 none repeat scroll 0 0;
 }
 #cssmenu {
     background: #fff none repeat scroll 0 0;

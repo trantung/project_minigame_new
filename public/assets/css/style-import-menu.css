@@ -15,7 +15,7 @@
     color: #000;
     font-size: 14px;
     font-style: italic;
-    height: 50px;
+    height: 30px;
     letter-spacing: 1px;
     max-width: 100%;
     padding: 7px 13px;
@@ -160,7 +160,7 @@ a.game-played {
 }
 
 .menu-login {
-    background: #888 none repeat scroll 0 0;
+    background: #a9a8a6 none repeat scroll 0 0;
     text-align: left !important;
 }
 .menu-login a.signin,
@@ -174,8 +174,11 @@ a.game-played {
 .menu-login a i.fa {
 
 }
+.menu-login a.signin {
+    background: #888 none repeat scroll 0 0;
+}
 .menu-login a.signup {
-    background: #a9a8a6;
+    background: #a9a8a6 none repeat scroll 0 0;
 }
 #cssmenu {
     background: #fff none repeat scroll 0 0;
@@ -183,14 +186,14 @@ a.game-played {
     visibility: hidden;
     right: 0;
     position: absolute !important;
-    top: 50px;
+    top: 45px;
     width: 300px;
     z-index: 9999;
     text-align: left !important;
 }
 #cssmenu, #cssmenu ul, #cssmenu li, #cssmenu a {
     border: 0 none;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: normal;
     line-height: 0;
     list-style: outside none none;
@@ -244,7 +247,7 @@ a.game-played {
     content: "";
     position: absolute;
     right: 10px;
-    top: 18px;
+    top: 10px;
 }
 #cssmenu > ul > li.has-sub.active > a::after {
     -moz-border-bottom-colors: none;
