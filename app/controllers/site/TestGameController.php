@@ -1,6 +1,6 @@
 <?php
 
-class TestGameController extends AdminController {
+class TestGameController extends SiteController {
 
 	/**
 	 * Display a listing of the resource.
@@ -77,11 +77,8 @@ class TestGameController extends AdminController {
 	// }
 	public function updateTest($id)
 	{
-		dd(11);
 		$input = Input::except('_token');
-		dd($input);
 		TestGame::find($id)->update($input);
-		dd(11);
 		return Redirect::action('TestGameController@index');
 	}
 
