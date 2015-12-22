@@ -24,9 +24,10 @@ class ApiController extends SiteController {
 					// $url = url('/' . $type_slug . '/' . $slug);
 					$url = url(UPLOAD_GAME. '/' . $value->link_url);
 					$avatar = url(UPLOAD_GAME_AVATAR. $value->image_url);
-					$data[$key][$type->name][$k]['game_url'] = $url;
-					$data[$key][$type->name][$k]['game_name'] = $value->name;
-					$data[$key][$type->name][$k]['game_avatar'] = $avatar;
+					$data[$key]['type_name'] = $type->name;
+					$data[$key]['data_type'][$k]['game_url'] = $url;
+					$data[$key]['data_type'][$k]['game_name'] = $value->name;
+					$data[$key]['data_type'][$k]['game_avatar'] = $avatar;
 				}
 			}
 		}
