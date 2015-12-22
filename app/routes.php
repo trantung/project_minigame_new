@@ -124,6 +124,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
+	// Route::resource('/testgame', 'TestGameController');
+	Route::get('/testgame', array('uses' =>  'TestGameController@index', 'as' => 'admin.testgame.index'));
+	Route::post('/testgame/{testId}', array('uses' =>  'TestGameController@updateTest', 'as' => 'admin.testgame.update'));
+
 });
 
 // $games = Game::all();
@@ -138,6 +142,7 @@ Route::group(['prefix' => 'admin'], function () {
 // FRONTEND
 // return json for mobile app
 Route::resource('/sitemap', 'SiteMapController');
+
 Route::get('/api/list', array('uses' => 'ApiController@index', 'as' => 'api'));
 
 Route::get('/changepassword', array('uses' => 'PasswordController@changePass', 'as' => 'password.changepass'));
