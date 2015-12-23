@@ -86,6 +86,9 @@ class CommonLog
 	{
 		$data = AdminError::where(function ($query) use ($input)
 		{
+			if ($input['link']) {
+				$query = $query->where('link', $input['link']);
+			}
 			if ($input['type'] != '') {
 				$query = $query->where('type', $input['type']);
 			}

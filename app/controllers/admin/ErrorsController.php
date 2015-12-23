@@ -9,7 +9,7 @@ class ErrorsController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = AdminError::orderBy('id', 'desc')->paginate(PAGINATE);
+		$data = AdminError::orderBy('count', 'desc')->paginate(PAGINATE);
 		return View::make('admin.errorlog.index', array('data' => $data));
 	}
 
