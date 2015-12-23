@@ -38,7 +38,6 @@ class ApiController extends SiteController {
         	$list[$key]['game_url'] = url(UPLOAD_GAME. '/' . $value->link_url);
         	$list[$key]['game_name'] = $value->name;
         	$list[$key]['game_avatar'] = $avatar;
-
         }
 		return $list;
 	}
