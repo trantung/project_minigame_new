@@ -140,6 +140,12 @@
 								</table>
 							</div>
 						</div>
+
+						<div class="form-group">
+			                <label>Kiểu xoay màn hình</label>
+			                {{ Form::select('screen', selectScreenGame(), '', array('class' => 'form-control')) }}
+		              	</div>
+
 						<hr />
 						<h1>SEO META</h1>
 

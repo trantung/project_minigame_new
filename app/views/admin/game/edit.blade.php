@@ -124,7 +124,7 @@
 		              	<div class="ui-widget">
 			                <label>Slide</label>
 			                {{ Form::select('slide_id', ['' => 'No slide'] +CommonGame::getSlide(), $inputGame->slide_id, array('id' => 'combobox')) }}
-		              	</div>	
+		              	</div>
 		              	<div class="box-body table-responsive">
 							<h4>Khung game</h4>
 							<div class="overflow-box">
@@ -144,6 +144,12 @@
 								</table>
 							</div>
 						</div>
+
+						<div class="form-group">
+			                <label>Kiểu xoay màn hình</label>
+			                {{ Form::select('screen', selectScreenGame(), $inputGame->screen, array('class' => 'form-control')) }}
+		              	</div>
+
 						<hr />
 						<h1>SEO META</h1>
 
@@ -153,7 +159,7 @@
 					</div>
 					<!-- /.box-body -->
 				</div>
-				
+
 					{{-- <div class="box-body table-responsive">
 						<h4>Chọn chuyên mục</h4>
 						<div class="overflow-box">
