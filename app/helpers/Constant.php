@@ -142,3 +142,6 @@ define('CACHETIME', 2);
 //define game top
 define('GAMETOP', 30);
 define('GAMETOP_LIMITED', 6);
+//define game scale
+define('GAME_VERTICAL', 1);
+define('GAME_HORIZONTAL', 2);

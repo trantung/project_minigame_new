@@ -79,6 +79,7 @@ class CommonGame
     	$inputGame['type_main'] = Input::get('type_main');
         $inputGame['width'] = Input::get('width');
         $inputGame['height'] = Input::get('height');
+        $inputGame['screen'] = Input::get('screen');
     	return $inputGame;
 	}
 

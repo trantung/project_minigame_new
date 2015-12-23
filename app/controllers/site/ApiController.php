@@ -30,7 +30,7 @@ class ApiController extends SiteController {
                         ->where('types.id', $type->id)
                         ->whereNull('games.deleted_at')
                         ->where('games.status', ENABLED)
-                        ->where('games.parent_id', '!=', GAMEHTML5)
+                        ->where('games.parent_id', '=', GAMEHTML5)
                         ->where('games.start_date', '<=', $now)
                         ->get();
         foreach ($listGame as $key => $value) {

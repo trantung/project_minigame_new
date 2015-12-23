@@ -561,3 +561,11 @@ function getCount($count)
 	}
 	return 5;
 }
+
+function selectScreenGame()
+{
+	return array(
+		GAME_HORIZONTAL => 'Ngang',
+		GAME_VERTICAL => 'Dọc',
+	);
+}
