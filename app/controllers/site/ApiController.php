@@ -25,7 +25,7 @@ class ApiController extends SiteController {
 		$listGame = DB::table('games')
                         ->join('game_types', 'game_types.game_id', '=', 'games.id')
                         ->join('types', 'types.id', '=', 'game_types.type_id')
-                        ->select('games.name', 'games.link_url', 'games.image_url')
+                        ->select('games.name', 'games.link_url', 'games.image_url', 'games.screen')
                         ->distinct()
                         ->where('types.id', $type->id)
                         ->whereNull('games.deleted_at')
@@ -38,6 +38,7 @@ class ApiController extends SiteController {
         	$list[$key]['game_url'] = url(UPLOAD_GAME. '/' . $value->link_url);
         	$list[$key]['game_name'] = $value->name;
         	$list[$key]['game_avatar'] = $avatar;
+        	$list[$key]['game_screen'] = $value->screen;
         }
 		return $list;
 	}
