@@ -34,7 +34,7 @@ class ApiController extends SiteController {
                         ->where('games.start_date', '<=', $now)
                         ->get();
         foreach ($listGame as $key => $value) {
-        	$avatar = url(UPLOAD_GAME_AVATAR . '/' . $value->image_url);
+        	$avatar = url(UPLOAD_GAME_AVATAR. '/' .$value->image_url);
         	$list[$key]['game_url'] = url(UPLOAD_GAME. '/' . $value->link_url);
         	$list[$key]['game_name'] = $value->name;
         	$list[$key]['game_avatar'] = $avatar;
