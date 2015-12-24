@@ -86,6 +86,9 @@ class CommonLog
 	{
 		$data = AdminError::where(function ($query) use ($input)
 		{
+			if ($input['link'] != '') {
+				$query = $query->where('link', 'like', '%'.$input['link'].'%');
+ 		    }
 			if ($input['type'] != '') {
 				$query = $query->where('type', $input['type']);
 			}
@@ -95,7 +98,7 @@ class CommonLog
 			if($input['end_date'] != ''){
 				$query = $query->where('created_at', '<=', $input['end_date']);
 			}
-		})->orderBy('id', 'desc')->paginate(PAGINATE);
+		})->orderBy('count', 'desc')->paginate(PAGINATE);
 		return $data;
 	}
 

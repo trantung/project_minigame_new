@@ -9,7 +9,7 @@ class ErrorsController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = AdminError::orderBy('id', 'desc')->paginate(PAGINATE);
+		$data = AdminError::orderBy('count', 'desc')->paginate(PAGINATE);
 		return View::make('admin.errorlog.index', array('data' => $data));
 	}
 
@@ -98,6 +98,7 @@ class ErrorsController extends AdminController {
 		foreach($errorId as $key => $value) {
 			$data = AdminError::find($value);
 			if($data) {
+				AdminErrorLog::where('error_id', $value)->destroy();
 				$this->destroy($value);
 			}
 		}
@@ -105,6 +106,7 @@ class ErrorsController extends AdminController {
 	}
 	public function deleteAllErrors()
 	{
+		AdminErrorLog::truncate();
 		AdminError::truncate();
 	}
 
