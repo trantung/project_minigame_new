@@ -150,3 +150,38 @@ Stack trace:
 Stack trace:
 #0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
 #1 {main} [] []
+[2015-12-23 15:45:20] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '$this' (T_VARIABLE)' in /Applications/MAMP/htdocs/abc_project/project_minigame_new/app/controllers/admin/ErrorsController.php:102
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-12-23 15:45:26] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '$this' (T_VARIABLE)' in /Applications/MAMP/htdocs/abc_project/project_minigame_new/app/controllers/admin/ErrorsController.php:102
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-12-23 15:45:55] production.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::destroy()' in /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:2184
+Stack trace:
+#0 [internal function]: Illuminate\Database\Query\Builder->__call('destroy', Array)
+#1 [internal function]: Illuminate\Database\Query\Builder->destroy()
+#2 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(972): call_user_func_array(Array, Array)
+#3 /Applications/MAMP/htdocs/abc_project/project_minigame_new/app/controllers/admin/ErrorsController.php(101): Illuminate\Database\Eloquent\Builder->__call('destroy', Array)
+#4 /Applications/MAMP/htdocs/abc_project/project_minigame_new/app/controllers/admin/ErrorsController.php(101): Illuminate\Database\Eloquent\Builder->destroy()
+#5 [internal function]: ErrorsController->deleteErrors()
+#6 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(231): call_user_func_array(Array, Array)
+#7 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(93): Illuminate\Routing\Controller->callAction('deleteErrors', Array)
+#8 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(62): Illuminate\Routing\ControllerDispatcher->call(Object(ErrorsController), Object(Illuminate\Routing\Route), 'deleteErrors')
+#9 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/Router.php(967): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'ErrorsControlle...', 'deleteErrors')
+#10 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#11 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/Route.php(109): call_user_func_array(Object(Closure), Array)
+#12 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1033): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1001): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#14 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(775): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#15 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#16 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/barryvdh/laravel-debugbar/src/Middleware/Stack.php(34): Illuminate\Foundation\Application->handle(Object(Illuminate\Http\Request), 1, true)
+#17 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Session/Middleware.php(72): Barryvdh\Debugbar\Middleware\Stack->handle(Object(Illuminate\Http\Request), 1, true)
+#18 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Cookie/Queue.php(47): Illuminate\Session\Middleware->handle(Object(Illuminate\Http\Request), 1, true)
+#19 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Cookie/Guard.php(51): Illuminate\Cookie\Queue->handle(Object(Illuminate\Http\Request), 1, true)
+#20 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Illuminate\Cookie\Guard->handle(Object(Illuminate\Http\Request), 1, true)
+#21 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
+#22 /Applications/MAMP/htdocs/abc_project/project_minigame_new/public/index.php(50): Illuminate\Foundation\Application->run()
+#23 /Applications/MAMP/htdocs/abc_project/project_minigame_new/server.php(19): require_once('/Applications/M...')
+#24 {main} [] []

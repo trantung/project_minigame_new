@@ -11,11 +11,11 @@
 <div class="margin-bottom">
 	{{ Form::open(array('action' => 'ErrorsController@search', 'method' => 'GET')) }}
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Thể loại</label>
+			<label>URL</label>
 			 {{  Form::text('link', null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>URL</label>
+			<label>Thể loại</label>
 			 {{  Form::select('type', ['' => '-- Lựa chọn', ERROR_TYPE_404 => 'Lỗi 404', ERROR_TYPE_MISSING => 'Lỗi game'], null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
