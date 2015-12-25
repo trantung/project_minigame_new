@@ -131,8 +131,8 @@ class GameController extends SiteController {
 			if(getDevice() == COMPUTER) {
 				$count_play = $game->count_play+1;
 				$game->update(array('count_play' => $count_play));
-				// cuongnt todo add count week and count month		
-				// week		
+				// cuongnt todo add count week and count month
+				// week
 				$date_week = $game->update_week ;
 				$date_current = date('Y/m/d');
 				$datecountweek = date('w');
@@ -142,7 +142,7 @@ class GameController extends SiteController {
 				$arrayupdate = array();
 				if(!$date_week)
 				{
-					$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));					
+					$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));
 					$game->update(array('update_week' => $date_week_update));
 				}
 				$date_week = date('Y/m/d', strtotime($date_week. ' + 7 days'));
@@ -175,7 +175,7 @@ class GameController extends SiteController {
 
     	if($parentId && $game) {
     		if(getDevice() == MOBILE) {
-    			if($parentId == GAMEOFFLINE) {
+    			if(!(in_array($game->parent_id, [GAMEFLASH, GAMEHTML5]))) {
 	    			return View::make('site.game.downloadmobile')->with(compact('game'));
 	    		} else {
 	    			if($play == 'true') {
@@ -184,7 +184,7 @@ class GameController extends SiteController {
 	    			return View::make('site.game.onlinemobile')->with(compact('game'));
 	    		}
     		} else {
-    			if($parentId == GAMEOFFLINE) {
+    			if(!(in_array($game->parent_id, [GAMEFLASH, GAMEHTML5]))) {
 	    			return View::make('site.game.downloadweb')->with(compact('game'));
 	    		} else {
 	    			$gametop = $this->listGameTop();
@@ -238,12 +238,12 @@ class GameController extends SiteController {
     	$id = Input::get('id');
     	$game = Game::find($id);
     	if($game) {
-    		if($game->parent_id == GAMEHTML5) {
+    		if(!(in_array($game->parent_id, [GAMEFLASH, GAMEHTML5]))) {
     			$count_play = $game->count_play+1;
 				$game->update(array('count_play' => $count_play));
 
-					// cuongnt todo add count week and count month		
-					// week		
+					// cuongnt todo add count week and count month
+					// week
 					$date_week = $game->update_week ;
 					$date_current = date('Y/m/d');
 					$datecountweek = date('w');
@@ -253,7 +253,7 @@ class GameController extends SiteController {
 					$arrayupdate = array();
 					if(!$date_week)
 					{
-						$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));					
+						$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));
 						$game->update(array('update_week' => $date_week_update));
 					}
 					$date_week = date('Y/m/d', strtotime($date_week. ' + 7 days'));
@@ -290,8 +290,8 @@ class GameController extends SiteController {
     			$count_download = $game->count_download+1;
 				$game->update(array('count_download' => $count_download));
 
-					// cuongnt todo add count week and count month		
-					// week		
+					// cuongnt todo add count week and count month
+					// week
 					$date_week = $game->update_week ;
 					$date_current = date('Y/m/d');
 					$datecountweek = date('w');
@@ -301,7 +301,7 @@ class GameController extends SiteController {
 					$arrayupdate = array();
 					if(!$date_week)
 					{
-						$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));					
+						$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));
 						$game->update(array('update_week' => $date_week_update));
 					}
 					$date_week = date('Y/m/d', strtotime($date_week. ' + 7 days'));
@@ -331,8 +331,8 @@ class GameController extends SiteController {
 	    			$count_download = $game->count_download+1;
 					$game->update(array('count_download' => $count_download));
 
-					// cuongnt todo add count week and count month		
-					// week		
+					// cuongnt todo add count week and count month
+					// week
 					$date_week = $game->update_week ;
 					$date_current = date('Y/m/d');
 					$datecountweek = date('w');
@@ -342,7 +342,7 @@ class GameController extends SiteController {
 					$arrayupdate = array();
 					if(!$date_week)
 					{
-						$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));					
+						$date_week_update = date('Y-m-d', strtotime($date_week. ' -'. $datecountweek + 1 .'days'));
 						$game->update(array('update_week' => $date_week_update));
 					}
 					$date_week = date('Y/m/d', strtotime($date_week. ' + 7 days'));
