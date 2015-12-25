@@ -58,13 +58,13 @@
 					@endif
 					<td>{{ $value->id }}</td>
 					<td>{{ $value->name }}</td>
-					@if(Admin::isAdmin())
+					@if(!Admin::isSeo())
 					<td><input type="text" name="weight_number[]" value="{{ getZero($value->weight_number) }}" class="only_number" style="width: 50px; text-align: center;" /></td>
 					@else
 					<td>{{ getZero($value->weight_number) }}</td>
 					@endif
 					<td>{{ Game::find($value->parent_id)->name.'-'.Type::find($value->type_main)->name }}</td>
-					@if(Admin::isAdmin())
+					@if(!Admin::isSeo())
 					<td><input type="text" name="count_play[]" value="{{ getZero($value->count_play) }}" class="onlyNumber" style="width: 50px; text-align: center;" /></td>
 					@else
 					<td>{{ getZero($value->count_play) }}</td>
