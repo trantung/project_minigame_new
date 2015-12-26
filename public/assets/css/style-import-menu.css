@@ -120,8 +120,8 @@ a.icongoogleplus {
     font-size: 20px;
 }
 .menushow {
-    /*display: block !important;*/
-    visibility: visible !important;
+    display: block !important;
+    /*visibility: visible !important;*/
 }
 a.menu_show_list {
     color: #fff;
@@ -183,10 +183,10 @@ a.game-played {
 #cssmenu {
     background: #fff none repeat scroll 0 0;
     box-shadow: 0 1px 3px #888;
-    visibility: hidden;
+    display: none;
     right: 0;
     position: absolute !important;
-    top: 45px;
+    top: 40px;
     width: 300px;
     z-index: 99999999 !important;
     text-align: left !important;
@@ -262,7 +262,6 @@ a.game-played {
     top: 18px;
 }
 #cssmenu ul ul {
-    display: none;
     padding: 0;
     overflow-y: auto;
     text-align: left !important;
@@ -333,6 +332,9 @@ a.game-played {
     }
     #cssmenu {
         width: 200px;
+        z-index: 99999999 !important;
+        max-height: 80% !important;
+        overflow-y: auto;
     }
     #cssmenu a {
         padding: 5px 10px;

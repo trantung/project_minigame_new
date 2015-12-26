@@ -63,10 +63,10 @@
 	{
 	    $script = Cache::get('script'.SEO_SCRIPT);
 	} else {
-		$script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
+        $script = AdminSeo::where('model_name', SEO_SCRIPT)->first();
 	    Cache::put('script'.SEO_SCRIPT, $script, CACHETIME);
 	}
 	if(isset($script)) {
-		echo $script->header_script;
+        echo $script->header_script;
 	}
 ?>
