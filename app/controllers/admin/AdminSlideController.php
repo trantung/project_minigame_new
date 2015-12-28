@@ -9,7 +9,7 @@ class AdminSlideController extends AdminController {
 	 */
 	public function index()
 	{
-		$slides = AdminSlide::orderBy('id', 'asc')->paginate(PAGINATE_SLIDE);
+		$slides = AdminSlide::orderBy('id', 'desc')->paginate(PAGINATE_SLIDE);
 		return View::make('admin.slider.index')->with(compact('slides'));
 	}
 
@@ -35,6 +35,9 @@ class AdminSlideController extends AdminController {
 		$input = Input::all();
 		$input = Input::except('_token', 'image_url');
 		$input['type_name'] = SLIDE_TYPE_NAME;
+		if($input['config_time'] == '') {
+			$input['config_time'] = 1;
+		}
 		$slideId = AdminSlide::create($input)->id;
 		$inputAll = Input::all();
 		$listImage = $inputAll['image_url'];

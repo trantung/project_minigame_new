@@ -344,3 +344,6 @@ a.game-played {
     }
 }
 
+div {
+    -webkit-transform: none !important;
+}

@@ -31,7 +31,7 @@
 					<label for="name">Auto Play</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('autoplay', [DISABLED => 'Không tự động chạy', ENABLED => 'Tự động chạy']) }}
+						   {{ Form::select('autoplay', [ENABLED => 'Tự động chạy', DISABLED => 'Không tự động chạy']) }}
 						</div>
 					</div>
 				</div>
