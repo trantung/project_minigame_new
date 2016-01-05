@@ -125,7 +125,7 @@ class CommonGame
 				$query = $query->where('start_date', '>=', $input['start_date']);
 			}
 			if($input['end_date'] != ''){
-				$query = $query->where('start_date', '<=', $input['end_date']);
+				$query = $query->where('start_date', '<=', $input['end_date'] . ' 23:59:59');
 			}
 			if(isset($input['status_seo']) && $input['status_seo'] != '')
 			{
@@ -133,7 +133,9 @@ class CommonGame
 				$query = $query->whereIn('id', $listSeo);
 			}
 		})
-
+		// ->lists('id');
+		// return $data;
+		// dd($data);
 		->orderBy($orderBy[0], $orderBy[1])
 		->paginate(PAGINATE);
 		//dd(DB::getQueryLog());

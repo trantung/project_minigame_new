@@ -32,6 +32,9 @@
 	<div class="col-xs-12">
 		<div class="box">
 		<div class="box-header">
+			@if($data)
+			<strong>Tổng số game: {{ $data->getTotal() }}</strong><br>
+			@endif
 			<h3 class="box-title">Danh sách game<strong id="abc"></strong></h3>
 		</div>
 		<!-- /.box-header -->
