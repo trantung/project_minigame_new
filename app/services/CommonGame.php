@@ -251,8 +251,7 @@ class CommonGame
 				if(getDevice() == MOBILE) {
 					$listGame = Game::whereIn('id', $games)
 						->where('status', ENABLED)
-						->where('parent_id', '!=', GAMEFLASH)
-						->where('parent_id', '!=', GAMEOFFLINE)
+						->where('parent_id', '=', GAMEHTML5)
 						->where('start_date', '<=', $now)
 						->orderBy('id', 'desc')
 						->paginate(PAGINATE_LISTGAME);
@@ -261,7 +260,8 @@ class CommonGame
 					$listGame = Game::whereIn('id', $games)
 						->where('status', ENABLED)
 						->where('start_date', '<=', $now)
-						->where('parent_id', '!=', GAMEOFFLINE)
+						->where('parent_id', '=', GAMEHTML5)
+						->orWhere('parent_id', '=', GAMEFLASH)
 						->orderBy('id', 'desc')
 						->paginate(PAGINATE_LISTGAME);
 				}
@@ -269,14 +269,14 @@ class CommonGame
 				if(getDevice() == MOBILE) {
 					$listGame = Game::whereIn('id', $games)
 						->where('status', ENABLED)
-						->where('parent_id', '!=', GAMEFLASH)
-						->where('parent_id', '!=', GAMEOFFLINE)
+						->where('parent_id', '=', GAMEHTML5)
 						->where('start_date', '<=', $now);
 				} else {
 					$listGame = Game::whereIn('id', $games)
 						->where('status', ENABLED)
 						->where('start_date', '<=', $now)
-						->where('parent_id', '!=', GAMEOFFLINE);
+						->where('parent_id', '=', GAMEHTML5)
+						->orWhere('parent_id', '=', GAMEFLASH);
 				}
 			}
 			return $listGame;
