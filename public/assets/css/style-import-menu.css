@@ -2,7 +2,7 @@
 
 .search1 form {
     position: relative;
-    width: 200px;
+    width: 100%;
     display: inline-block;
     margin-bottom: 0;
     overflow: hidden;
@@ -240,10 +240,65 @@ a.menu_show_list {
     line-height: 1.42857;
 }
 
+@media (min-width: 960px) {
+    .search1 input[type=text] {
+        font-size: 35px;
+        height: 75px;
+    }
+    .search1 input[type=submit] {
+        height: 90px;
+        width: 90px;
+    }
+    .menu-hide a i.fa {
+        font-size: 30px;
+    }
+    .menu-show a i.fa {
+        font-size: 30px;
+    }
+    a.menu_show_list {
+        font-size: 90px;
+    }
+    #cssmenu {
+        width: 500px;
+    }
+    #cssmenu, #cssmenu ul, #cssmenu li, #cssmenu a {
+        font-size: 35px;
+    }
+    #cssmenu > ul > li > a > i.fa {
+        font-size: 30px;
+    }
+    .menu-button a {
+        padding: 10px;
+    }
+    .menu-button-home {
+        width: 200px;
+    }
+    .menu-button-back {
+        width: 200px;
+    }
+
+    .menu-button-close {
+        right: 500px;
+        width: 90px;
+        height: 90px;
+    }
+    .menu-button-close i.fa {
+        width: 90px;
+        font-size: 50px;
+        height: 90px;
+        top: 20px;
+        left: 25px;
+    }
+
+    .menu-import {
+        font-size: 30px;
+    }
+
+}
+
 @media (max-width: 768px) {
     .search1 form {
         position: relative;
-        width: 200px;
         display: inline-block;
     }
     #cssmenu {
