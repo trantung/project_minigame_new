@@ -92,6 +92,9 @@ class CommonLog
 			if ($input['type'] != '') {
 				$query = $query->where('type', $input['type']);
 			}
+			if ($input['url'] != '') {
+				$query = $query->where('link', 'like', '%'.$input['url'].'%');
+ 		    }
 			if($input['start_date'] != ''){
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}
