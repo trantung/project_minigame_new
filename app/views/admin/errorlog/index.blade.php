@@ -1,6 +1,6 @@
 @extends('admin.layout.default')
 
-@if(Admin::isAdmin())
+@if(Admin::isAdmin() || Admin::isEditor())
 
 @section('title')
 {{ $title='Quản lý Error Logs' }}

@@ -101,7 +101,8 @@ class CommonGame
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = Game::where(function ($query) use ($input) {
 			if ($input['keyword'] != '') {
-				$query = $query->where('slug', 'like', '%'.$input['keyword'].'%')
+				$inputSlug = strtolower( preg_replace('/[^a-z]+/i', '-', $input['keyword']) );
+				$query = $query->where('slug', 'like', '%'.$inputSlug.'%')
 							->orWhere('name', 'like', '%'.$input['keyword'].'%');
 			}
 			if($input['parent_id'] != '') {
