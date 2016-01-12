@@ -15,6 +15,21 @@ class ApiController extends SiteController {
 			$data[$key]['type_name'] = $type->name;
 			$data[$key]['data_type'] = $this->getGame($type);
 		}
+		// $now = Carbon\Carbon::now();
+		// $count = Game::whereNull('deleted_at')
+		//                         ->where('status', ENABLED)
+		//                         ->where('parent_id', '=', GAMEHTML5)
+		//                         ->where('start_date', '<=', $now)->orderBy('id')->lists('id');
+		// $input['end_date'] = '2016-01-05';
+		// $input['start_date'] = '';
+		// $input['status'] = ENABLED;
+		// $input['parent_id'] = GAMEHTML5;
+		// $input['keyword'] = '';
+		// $input['type_id'] = '';
+		// $input['parent_id'] = GAMEHTML5;
+		// $test = CommonGame::searchAdminGame($input);
+		// // dd($count);
+		// dd(array_diff($count, $test));
 		return Response::json(array('code' => 'ok', 'data' => $data));
 	}
 

@@ -32,6 +32,9 @@
 	<div class="col-xs-12">
 		<div class="box">
 		<div class="box-header">
+			@if($data)
+			<strong>Tổng số game: {{ $data->getTotal() }}</strong><br>
+			@endif
 			<h3 class="box-title">Danh sách game<strong id="abc"></strong></h3>
 		</div>
 		<!-- /.box-header -->
@@ -58,12 +61,16 @@
 					@endif
 					<td>{{ $value->id }}</td>
 					<td>{{ $value->name }}</td>
-					@if(Admin::isAdmin())
+					@if(!Admin::isSeo())
 					<td><input type="text" name="weight_number[]" value="{{ getZero($value->weight_number) }}" class="only_number" style="width: 50px; text-align: center;" /></td>
 					@else
 					<td>{{ getZero($value->weight_number) }}</td>
 					@endif
-					<td>{{ Game::find($value->parent_id)->name.'-'.Type::find($value->type_main)->name }}</td>
+					@if($value->type_main)
+						<td>{{ Game::find($value->parent_id)->name.'-'.Type::find($value->type_main)->name }}</td>
+					@else
+						<td>{{ Game::find($value->parent_id)->name }}</td>
+					@endif
 					@if(Admin::isAdmin())
 					<td><input type="text" name="count_play[]" value="{{ getZero($value->count_play) }}" class="onlyNumber" style="width: 50px; text-align: center;" /></td>
 					@else

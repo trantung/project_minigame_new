@@ -8,9 +8,10 @@ class SiteController extends HomeController {
         {
             $menu = Cache::get('menu');
         } else {
-        	$menu = CategoryParent::where('status', ACTIVE)->orderBy('weight_number', 'asc')->get();
+        	$menu = CategoryParent::where('status', ACTIVE)->where('position', CONTENT)->orderBy('weight_number', 'asc')->get();
             Cache::put('menu', $menu, CACHETIME);
         }
+        $menuHeader = CategoryParent::where('status', ACTIVE)->where('position', MENU)->orderBy('weight_number', 'asc')->get();
 		if (Cache::has('script'.SEO_SCRIPT))
         {
             $script = Cache::get('script'.SEO_SCRIPT);
@@ -22,6 +23,7 @@ class SiteController extends HomeController {
 			View::share('script', $script);
 		}
 		View::share('menu', $menu);
+		View::share('menuHeader', $menuHeader);
 	}
 
 	public function returnPage404()

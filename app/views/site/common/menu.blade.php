@@ -32,7 +32,7 @@
 	</div>
 	<ul>
 		<li class='active'><a href='{{ url('/') }}' class="color1"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
-		@foreach($menu as $key => $value)
+		@foreach($menuHeader as $key => $value)
 			@if($value->position == MENU)
 				@if(count($value->parenttypes) == 0)
 					@if($value->id == 1)

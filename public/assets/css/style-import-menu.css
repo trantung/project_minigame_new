@@ -2,7 +2,7 @@
 
 .search1 form {
     position: relative;
-    width: 300px;
+    width: 200px;
     display: inline-block;
     margin-bottom: 0;
     overflow: hidden;
@@ -26,69 +26,12 @@
     background: rgba(0, 0, 0, 0) url("../images/search-icon.png") no-repeat scroll center center;
     border: medium none;
     font-size: 0;
-    height: 50px;
+    height: 30px;
     position: absolute;
     right: 0;
     top: 0;
-    width: 39px;
+    width: 30px;
     text-align: left !important;
-}
-#iconseach{
-    display: none;
-}
-
-a.iconfacebook,
-a.icongoogleplus {
-    color: #fff;
-    cursor: pointer;
-    font-size: 24px;
-    padding: 5px 8px;
-    vertical-align: middle;
-}
-
-/*menu*/
-.menu-top {
-    background: #ebebeb;
-    text-align: left !important;
-}
-.menu-static {
-    padding-top: 15px;
-    text-align: left !important;
-}
-.menu-static ul {
-    list-style: outside none none;
-    margin-bottom: 0;
-    padding: 0;
-    text-align: center;
-}
-.menu-static ul li {
-    display: inline-block;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: left !important;
-}
-
-.menu-static ul li a {
-    color: #888;
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 4px solid transparent;
-    text-align: left !important;
-}
-.menu-static ul li a:hover,
-.menu-static ul li a:focus,
-.menu-static ul li a.active {
-    color: #2b74a1;
-    text-decoration: none;
-    border-bottom-color: #2b74a1;
-}
-.menu-static ul li a i.fa {
-    font-size: 30px;
-}
-.menu-static ul li a span {
-    display: block;
-    padding-bottom: 2px;
 }
 
 .menu-hide {
@@ -120,8 +63,8 @@ a.icongoogleplus {
     font-size: 20px;
 }
 .menushow {
-    /*display: block !important;*/
-    visibility: visible !important;
+    display: block !important;
+    /*visibility: visible !important;*/
 }
 a.menu_show_list {
     color: #fff;
@@ -132,62 +75,15 @@ a.menu_show_list {
     text-align: left !important;
     opacity: 0.5;
 }
-/*menu box*/
-.menu-account {
-    background: #888 none repeat scroll 0 0;
-}
-a.account-name,
-a.game-favorite,
-a.game-played,
-a.signout {
-    color: #fff;
-    display: block;
-    line-height: 2 !important;
-}
-a.account-name {
-    text-transform: uppercase;
-}
-a.game-favorite i.fa,
-a.game-played i.fa,
-a.signout i.fa {
-    font-size: 20px;
-    margin-right: 7px;
-}
-a.game-favorite,
-a.game-played {
-    background: #a9a8a6;
-    border-bottom: 1px solid #fff !important;
-}
 
-.menu-login {
-    background: #a9a8a6 none repeat scroll 0 0;
-    text-align: left !important;
-}
-.menu-login a.signin,
-.menu-login a.signup {
-    color: #fff;
-    display: inline-block;
-    line-height: 2 !important;
-    text-align: center;
-    width: 127px;
-}
-.menu-login a i.fa {
-
-}
-.menu-login a.signin {
-    background: #888 none repeat scroll 0 0;
-}
-.menu-login a.signup {
-    background: #a9a8a6 none repeat scroll 0 0;
-}
 #cssmenu {
     background: #fff none repeat scroll 0 0;
     box-shadow: 0 1px 3px #888;
-    visibility: hidden;
+    display: none;
     right: 0;
     position: absolute !important;
-    top: 45px;
-    width: 300px;
+    top: 0;
+    width: 200px;
     z-index: 99999999 !important;
     text-align: left !important;
 }
@@ -211,7 +107,7 @@ a.game-played {
     overflow-y: auto;
 }
 #cssmenu > ul > li {
-    background: #000 none repeat scroll 0 0;
+    background: #fff none repeat scroll 0 0;
     border-bottom: 1px solid #2b74a1;
     cursor: pointer;
     text-align: left !important;
@@ -262,7 +158,6 @@ a.game-played {
     top: 18px;
 }
 #cssmenu ul ul {
-    display: none;
     padding: 0;
     overflow-y: auto;
     text-align: left !important;
@@ -285,28 +180,47 @@ a.game-played {
 }
 
 #cssmenu > ul > li > a > i.fa {
-    font-size: 25px;
+    font-size: 15px;
 }
 #cssmenu > ul > li > a > span {
 
 }
-.color1 {
-    color: #2b74a1 !important;
-}
-.color2 {
-    color: #a3ca39 !important;
-}
-.color3 {
-    color: #f8a24f !important;
+
+.menu-button-home {
+    display: inline-block !important;
+    width: 75px;
 }
 
-.top .menu-show {
-    display: none;
+.menu-button-back {
+    display: inline-block !important;
+    background: #fff !important;
+    border-left-width: 1px !important;
+    width: 65px;
+}
+
+.menu-button-close {
+    background: #2b74a1;
+    display: inline-block;
+    position: absolute;
+    right: 200px;
+    top: 0;
+    text-align: left !important;
+    z-index: 99999999 !important;
+    width: 30px;
+    height: 30px;
+}
+.menu-button-close i.fa {
+    color: #fff;
+    width: 30px;
+    position: absolute;
+    font-size: 20px;
+    height: 30px;
+    top: 5px;
+    left: 10px;
 }
 
 .menu-button {
     background: rgba(0, 0, 0, 0.25) none repeat scroll 0 0;
-    border-radius: 5px;
     display: inline-block;
     position: fixed;
     right: 0;
@@ -333,12 +247,15 @@ a.game-played {
     }
     #cssmenu {
         width: 200px;
+        z-index: 99999999 !important;
+        max-height: 100% !important;
     }
     #cssmenu a {
         padding: 5px 10px;
     }
-    .menu-login a.signin, .menu-login a.signup {
-        width: 77px;
-    }
+
 }
 
+div {
+    -webkit-transform: none !important;
+}

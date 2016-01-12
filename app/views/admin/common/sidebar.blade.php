@@ -54,7 +54,7 @@
             @endif
         </ul>
       </li>      
-      @if(Admin::isAdmin())
+      @if(Admin::isAdmin() || Admin::isEditor())
       <li>
         <a href="{{ action('AdminGameController@statisticGame') }}">
           <i class="fa fa-gamepad"></i> <span>Thống kê Game</span>
@@ -69,7 +69,7 @@
         </a>
       </li>
       @endif
-      @if(Admin::isAdmin())
+      @if(Admin::isAdmin() || Admin::isEditor())
       <li>
         <a href="{{ action('ScoreManagerController@index') }}">
           <i class="fa fa-comments"></i> <span>Quản lý điểm</span>
@@ -136,7 +136,7 @@
         </a>
       </li>
       @endif
-      @if(Admin::isAdmin())
+      @if(Admin::isAdmin()|| Admin::isEditor())
       <li>
         <a href="{{ action('ErrorsController@index') }}">
           <i class="fa fa-lock"></i> <span>Quản lý Logs</span>

@@ -106,17 +106,17 @@
 							<table class="table table-bordered">
 								<tr>
 									<th>Tên thể loại game</th>
-									<th>Chọn</th>
 									<th>Thể loại chính</th>
+									<th>Chọn</th>
 								</tr>
 								@foreach(Type::all() as $key => $value)
 									<tr>
 										<td>{{ $value->name }}</td>
 										<td>
-											<input type="checkbox" onclick="return false" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
+										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="return false" {{ checkedGameTypeMain($value->id, $inputGame->type_main) }} />
 										</td>
 										<td>
-										 	<input type="radio" name="type_main" value="{{ $value->id }}" id="type_main_{{ $value->id }}" onclick="return false" {{ checkedGameTypeMain($value->id, $inputGame->type_main) }} />
+											<input type="checkbox" onclick="return false" name="type_id[]" value="{{ $value->id }}" {{ checkedGameType($value->id, $inputGame->id) }} />
 										</td>
 									</tr>
 								@endforeach

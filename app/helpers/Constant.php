@@ -120,9 +120,9 @@ define('GAMESCORE_LIMITED', 5);
 //defune page comment fron-end
 define('PAGE_COMMENT', 5);
 //define google app
-define('GOOGLE_REDIRECT_URL', 'http://minigame.vn/login_google');
-define('GOOGLE_CLIENT_SECRET', 'q39iSxGTA3rGKpfukURCKHh2');
-define('GOOGLE_CLIENT_ID', '404740951019-9jg2v7bejhlmkfh6pk9r6g6qh8g6irhc.apps.googleusercontent.com');
+define('GOOGLE_REDIRECT_URL', 'http://choinhanh.vn/login_google');
+define('GOOGLE_CLIENT_SECRET', 'o4tqEc2h98D0-5YtowSf8rTX');
+define('GOOGLE_CLIENT_ID', '800160880332-i03v26072o1ul4ej7q0p6f6tonvu098a.apps.googleusercontent.com');
 define('TEXTLENGH', 25);
 //define total game if count = 0
 define('NO_GAME', 0);
