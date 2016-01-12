@@ -18,7 +18,7 @@
 	}
 	function deleteSelectedAllErrors()
 	{
-		confirm = confirm('Bạn có chắc chắn muốn xóa?')
+		confirm = confirm('Bạn có chắc chắn muốn xóa?');
 		if(confirm) {
 			$.ajax({
 				type: 'post',
@@ -34,7 +34,7 @@
 
 	function deleteSelectedAllErrors()
 	{
-		confirm = confirm('Bạn có chắc chắn muốn xóa?')
+		confirm = confirm('Bạn có chắc chắn muốn xóa?');
 		if(confirm) {
 			$.ajax({
 				type: 'post',
@@ -50,7 +50,7 @@
 
 	function callDeleteSelected()
 	{
-		confirm = confirm('Bạn có chắc chắn muốn xóa?')
+		confirm = confirm('Bạn có chắc chắn muốn xóa?');
 		if(confirm) {
 			var values1 = $('input:checkbox:checked.error_id').map(function () {
 			  	return this.value;

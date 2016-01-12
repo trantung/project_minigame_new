@@ -98,12 +98,13 @@ class ErrorsController extends AdminController {
 		foreach($errorId as $key => $value) {
 			$data = AdminError::find($value);
 			if($data) {
-				AdminErrorLog::where('error_id', $value)->destroy();
-				$this->destroy($value);
+				AdminErrorLog::where('error_id', $value)->delete();
+				AdminError::destroy($value);
 			}
 		}
 		dd(1);
 	}
+
 	public function deleteAllErrors()
 	{
 		AdminErrorLog::truncate();

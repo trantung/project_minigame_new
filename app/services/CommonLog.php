@@ -92,6 +92,12 @@ class CommonLog
 			if ($input['type'] != '') {
 				$query = $query->where('type', $input['type']);
 			}
+			if ($input['url'] != '') {
+				$query = $query->where('link', 'like', '%'.$input['url'].'%');
+ 		    } else {
+ 		    	$query = $query->where('link', 'like', '%'.$input['url'].'%');
+				$query = $query->where('link', 'not like', '%'.CHOINHANH.'%');
+ 		    }
 			if($input['start_date'] != ''){
 				$query = $query->where('created_at', '>=', $input['start_date']);
 			}

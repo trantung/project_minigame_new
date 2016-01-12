@@ -1,6 +1,6 @@
 @extends('admin.layout.default')
 
-@if(Admin::isAdmin())
+@if(Admin::isAdmin() || Admin::isEditor())
 
 @section('title')
 {{ $title='Quản lý Error Logs' }}
@@ -11,12 +11,16 @@
 <div class="margin-bottom">
 	{{ Form::open(array('action' => 'ErrorsController@search', 'method' => 'GET')) }}
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>URL</label>
-			 {{  Form::text('link', null, array('class' => 'form-control' )) }}
+			<label>Text</label>
+			{{  Form::text('link', null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Thể loại</label>
-			 {{  Form::select('type', ['' => '-- Lựa chọn', ERROR_TYPE_404 => 'Lỗi 404', ERROR_TYPE_MISSING => 'Lỗi game'], null, array('class' => 'form-control' )) }}
+		<label>Thể loại</label>
+			{{  Form::select('type', ['' => '-- Lựa chọn', ERROR_TYPE_404 => 'Lỗi 404', ERROR_TYPE_MISSING => 'Lỗi game'], null, array('class' => 'form-control' )) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
+		<label>URL</label>
+			{{  Form::select('url', [CHOINHANH => CHOINHANH, '' => 'Url khác'], null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ ngày</label>

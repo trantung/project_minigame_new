@@ -145,3 +145,5 @@ define('GAMETOP_LIMITED', 6);
 //define game scale
 define('GAME_VERTICAL', 1);
 define('GAME_HORIZONTAL', 2);
+
+define('CHOINHANH', 'choinhanh.vn');

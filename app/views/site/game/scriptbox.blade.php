@@ -38,6 +38,7 @@
     $('.swiper-container').each(function(index){
         var $el = $(this);
         swiper[index] = $el.swiper({
+        	threshold: 10,
             pagination: $(this).find('.swiper-pagination'),
 	        paginationClickable: $(this).find('.swiper-pagination'),
 	        paginationBulletRender: function (index, className) {
