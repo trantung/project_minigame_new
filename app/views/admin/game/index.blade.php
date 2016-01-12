@@ -41,7 +41,7 @@
 		<div class="box-body table-responsive no-padding">
 			<table class="table table-hover">
 			<tr>
-				@if(Admin::isAdmin())
+				@if(!Admin::isSeo())
 				<th><input type="checkbox" id="checkall" onClick="toggle(this)" /></th>
 				@endif
 				<th>ID</th>
@@ -56,7 +56,7 @@
 			</tr>
 			@foreach($data as $key => $value)
 				<tr>
-					@if(Admin::isAdmin())
+					@if(!Admin::isSeo())
 					<td><input type="checkbox" class="game_id" name="game_id[]" value="{{ $value->id }}" /></td>
 					@endif
 					<td>{{ $value->id }}</td>
@@ -71,12 +71,12 @@
 					@else
 						<td>{{ Game::find($value->parent_id)->name }}</td>
 					@endif
-					@if(Admin::isAdmin())
+					@if(!Admin::isSeo())
 					<td><input type="text" name="count_play[]" value="{{ getZero($value->count_play) }}" class="onlyNumber" style="width: 50px; text-align: center;" /></td>
 					@else
 					<td>{{ getZero($value->count_play) }}</td>
 					@endif
-					@if(Admin::isAdmin())
+					@if(!Admin::isSeo())
 					<td>{{ Form::select('statusGame[]', selectStatusGame(), $value->status, array('class' =>'form-control')) }}</td>
 					@else
 					<td>{{ getStatusGame($value->status) }}</td>

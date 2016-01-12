@@ -153,8 +153,9 @@ class CommonSearch
 			if($input['search'] != '') {
 				// $condition = array( '%'.$input['search'].'%' );
 				// $query = $query->whereRaw( 'games.name like ?', $condition);
-				$query = $query->where('slug', 'like', '%'.$input['search'].'%')
-                            ->orWhere('name', 'like', '%'.$input['search'].'%');
+				$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9 -]+/i', '-', $input['search']) );
+				$query = $query->where('slug', 'like', '%'.$inputSlug.'%')
+							->orWhere('name', 'like', '%'.$input['search'].'%');
 			}
 			$query = $query->where('status', ENABLED)
 				->where('start_date', '<=', Carbon\Carbon::now());
