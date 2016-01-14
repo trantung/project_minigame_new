@@ -144,6 +144,7 @@ class CommonSearch
 	}
 	//fronend search game
 	public static function searchGame($input){
+
 		$data = Game::where(function ($query) use ($input)
 		{
 			if(getDevice() == MOBILE)
@@ -153,13 +154,15 @@ class CommonSearch
 			if($input['search'] != '') {
 				// $condition = array( '%'.$input['search'].'%' );
 				// $query = $query->whereRaw( 'games.name like ?', $condition);
-				$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9 -]+/i', '-', $input['search']) );
-				$query = $query->where('slug', 'like', '%'.$inputSlug.'%')
-							->orWhere('name', 'like', '%'.$input['search'].'%');
+				$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9]+/i', '-', $input['search']) );
+				$query = $query->where('slug', 'like', '%'.$inputSlug.'%');
+							// ->orWhere('name', 'like', '%'.$input['search'].'%');
 			}
-			$query = $query->where('status', ENABLED)
-				->where('start_date', '<=', Carbon\Carbon::now());
-
+			$query = $query->where('status', ENABLED);
+			$query = $query->whereNull('deleted_at');
+			$query = $query->where('start_date', '<=', Carbon\Carbon::now());
+			// dd($query->get()->toArray());
+			// dd(DB::getQueryLog());
 		})
 		->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
 		return $data;

@@ -1,7 +1,11 @@
 @extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META)))
 
 @section('title')
-{{ $title='Trang chủ' }}
+	@if($title = CommonSite::getMetaSeo(SEO_META)->title_site)
+		{{ $title= $title }}
+	@else
+		{{ $title='Trang chủ' }}
+	@endif
 @stop
 
 @section('content')

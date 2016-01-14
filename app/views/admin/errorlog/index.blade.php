@@ -12,23 +12,23 @@
 	{{ Form::open(array('action' => 'ErrorsController@search', 'method' => 'GET')) }}
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Text</label>
-			{{  Form::text('link', null, array('class' => 'form-control' )) }}
+			{{  Form::text('link', Input::get('link'), array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 		<label>Thể loại</label>
-			{{  Form::select('type', ['' => '-- Lựa chọn', ERROR_TYPE_404 => 'Lỗi 404', ERROR_TYPE_MISSING => 'Lỗi game'], null, array('class' => 'form-control' )) }}
+			{{  Form::select('type', ['' => '-- Lựa chọn', ERROR_TYPE_404 => 'Lỗi 404', ERROR_TYPE_MISSING => 'Lỗi game'], Input::get('type'), array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 		<label>URL</label>
-			{{  Form::select('url', [CHOINHANH => CHOINHANH, '' => 'Url khác'], null, array('class' => 'form-control' )) }}
+			{{  Form::select('url', [CHOINHANH => CHOINHANH, '' => 'Url khác'], Input::get('url'), array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ ngày</label>
-		  	<input type="text" name="start_date" class="form-control" id="start_date" placeholder="Từ ngày" />
+		  	{{ Form::text('start_date', Input::get('start_date'), array('class' => 'form-control', 'id' => 'start_date', 'placeholder' => 'Từ ngày')) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Đến ngày</label>
-		  	<input type="text" name="end_date" class="form-control" id="end_date" placeholder="Đến ngày" />
+		  	{{ Form::text('end_date', Input::get('end_date'), array('class' => 'form-control', 'id' => 'end_date', 'placeholder' => 'Đến ngày')) }}
 		</div>
 		<div class="input-group" style="display: inline-block; vertical-align: bottom;">
 			<input type="submit" value="Search" class="btn btn-primary" />

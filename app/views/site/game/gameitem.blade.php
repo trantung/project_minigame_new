@@ -1,5 +1,5 @@
 <?php $url = CommonGame::getUrlGame($game); ?>
-v class="col-xs-4 col-sm-3 col-md-2">
+<div class="col-xs-4 col-sm-3 col-md-2">
 	<div class="item">
 	    <div class="item-image">
 			<a href="{{ $url }}">
