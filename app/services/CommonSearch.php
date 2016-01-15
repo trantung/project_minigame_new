@@ -154,7 +154,8 @@ class CommonSearch
 			if($input['search'] != '') {
 				// $condition = array( '%'.$input['search'].'%' );
 				// $query = $query->whereRaw( 'games.name like ?', $condition);
-				$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9]+/i', '-', $input['search']) );
+				$inputSlug = convert_string_vi_to_en($input['search']);
+				$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9]+/i', '-', $inputSlug) );
 				$query = $query->where('slug', 'like', '%'.$inputSlug.'%');
 							// ->orWhere('name', 'like', '%'.$input['search'].'%');
 			}
