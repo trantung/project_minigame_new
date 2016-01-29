@@ -433,10 +433,10 @@ class GameController extends SiteController {
     {
     	$now = Carbon\Carbon::now();
         $games = Game::whereNotNull('parent_id')
+        		->where('start_date','<', $now)
                 ->where('status', ENABLED)
                 ->where('parent_id', GAMEHTML5)
                 ->orWhere('parent_id', GAMEFLASH)
-                ->where('start_date', '<=', $now)
                 ->limit(GAMETOP)
                 ->orderBy(DB::raw('RAND()'))
                 ->orderBy('count_play', 'desc')
