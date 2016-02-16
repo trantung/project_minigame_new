@@ -9,52 +9,42 @@ class ApiController extends SiteController {
 	 */
 	public function index()
 	{
-		$types = Type::all();
-		$data = array();
+		// $types = Type::all();
+		$typeIdBlack = array(3);
+		$types = Type::whereNotIn('id', $typeIdBlack)->get();
 		foreach ($types as $key => $type) {
-			$data[$key]['type_name'] = $type->name;
-			$data[$key]['data_type'] = $this->getGame($type);
+		$data[$key]['type_name'] = $type->name;
+		$data[$key]['data_type'] = $this->getGame($type);
 		}
-		// $now = Carbon\Carbon::now();
-		// $count = Game::whereNull('deleted_at')
-		//                         ->where('status', ENABLED)
-		//                         ->where('parent_id', '=', GAMEHTML5)
-		//                         ->where('start_date', '<=', $now)->orderBy('id')->lists('id');
-		// $input['end_date'] = '2016-01-05';
-		// $input['start_date'] = '';
-		// $input['status'] = ENABLED;
-		// $input['parent_id'] = GAMEHTML5;
-		// $input['keyword'] = '';
-		// $input['type_id'] = '';
-		// $input['parent_id'] = GAMEHTML5;
-		// $test = CommonGame::searchAdminGame($input);
-		// // dd($count);
-		// dd(array_diff($count, $test));
 		return Response::json(array('code' => 'ok', 'data' => $data));
 	}
 
 	public function getGame($type)
 	{
 		$now = Carbon\Carbon::now();
+		$typeIdBlack = array(3);
+		$listGameBlack = array(84, 79, 76, 81, 24, 80, 68, 21, 74, 71, 69, 70, 28, 220, 209, 37, 26, 83, 86, 85, 46);
 		$list = array();
 		$listGame = DB::table('games')
-                        ->join('game_types', 'game_types.game_id', '=', 'games.id')
-                        ->join('types', 'types.id', '=', 'game_types.type_id')
-                        ->select('games.name', 'games.link_url', 'games.image_url', 'games.screen')
-                        ->distinct()
-                        ->where('types.id', $type->id)
-                        ->whereNull('games.deleted_at')
-                        ->where('games.status', ENABLED)
-                        ->where('games.parent_id', '=', GAMEHTML5)
-                        ->where('games.start_date', '<=', $now)
-                        ->get();
-        foreach ($listGame as $key => $value) {
-        	$avatar = url(UPLOAD_GAME_AVATAR. '/' .$value->image_url);
-        	$list[$key]['game_url'] = url(UPLOAD_GAME. '/' . $value->link_url);
-        	$list[$key]['game_name'] = $value->name;
-        	$list[$key]['game_avatar'] = $avatar;
-        	$list[$key]['game_screen'] = $value->screen;
-        }
+		                    ->join('game_types', 'game_types.game_id', '=', 'games.id')
+		                    ->join('types', 'types.id', '=', 'game_types.type_id')
+		                    ->select('games.name', 'games.link_url', 'games.image_url', 'games.screen')
+		                    ->distinct()
+		                    ->where('types.id', $type->id)
+		                    ->whereNull('games.deleted_at')
+		                    ->where('games.status', ENABLED)
+		                    ->where('games.parent_id', '=', GAMEHTML5)
+		                    ->where('games.start_date', '<=', $now)
+		                    ->whereNotIn('types.id', $typeIdBlack)
+		                    ->whereNotIn('games.id', $listGameBlack)
+		                    ->get();
+		    foreach ($listGame as $key => $value) {
+		     $avatar = url(UPLOAD_GAME_AVATAR. '/' .$value->image_url);
+		     $list[$key]['game_url'] = url(UPLOAD_GAME. '/' . $value->link_url);
+		     $list[$key]['game_name'] = $value->name;
+		     $list[$key]['game_avatar'] = $avatar;
+		     $list[$key]['game_screen'] = $value->screen;
+		    }
 		return $list;
 	}
 	/**

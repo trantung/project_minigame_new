@@ -433,10 +433,10 @@ class GameController extends SiteController {
     {
     	$now = Carbon\Carbon::now();
         $games = Game::whereNotNull('parent_id')
+        		->where('start_date','<', $now)
                 ->where('status', ENABLED)
                 ->where('parent_id', GAMEHTML5)
                 ->orWhere('parent_id', GAMEFLASH)
-                ->where('start_date', '<=', $now)
                 ->limit(GAMETOP)
                 ->orderBy(DB::raw('RAND()'))
                 ->orderBy('count_play', 'desc')
@@ -444,4 +444,24 @@ class GameController extends SiteController {
                 ->get();
         return View::make('site.game.topgame')->with(compact('games'));
     }
+
+    public function listGameHtml5()
+    {
+    	$games = Game::whereNotNull('parent_id')
+                ->where('parent_id', GAMEHTML5)
+                ->orderBy('id', 'desc')
+                ->get();
+        foreach($games as $key => $game) {
+        	$url = CommonGame::getUrlGame($game);
+        	echo $key+1 . '.<a href="'. $url .'">' . $game->name . '</a><br>';
+        	if($key == 32) {
+        		echo '- end 1->33 -<br>';
+        	}
+        	if($key == 65) {
+        		echo '- end 33->66 -<br>';
+        	}
+        }
+        return 'end';
+    }
+
 }
