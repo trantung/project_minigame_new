@@ -23,6 +23,9 @@ class NewsManager
 				$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
                 $query = $query->whereIn('id', $listSeo);
 			}
+			if ($input['position'] != '') {
+				$query = $query->where('position', $input['position']);
+			}
 
 
 		})->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);

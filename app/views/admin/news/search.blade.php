@@ -6,15 +6,19 @@
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Thể loại</label>
-			 {{  Form::select('type_new_id', ['0' => '-- Lựa chọn'] + returnList('TypeNew')  ,null,array('class' => 'form-control' )) }}
+			 {{  Form::select('type_new_id', ['0' => '-- Lựa chọn'] + returnList('TypeNew'), null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Sắp xếp theo lượt xem</label>
 		  	{{ Form::select('sortByCountView', selectSortBy('count_view'), null, array('class' =>'form-control')) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Vị trí</label>
+			 {{  Form::select('position', ['' => '-- Mặc định', '1' => 'Bên phải'], null, array('class' => 'form-control' )) }}
+		</div>
+		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Trạng thái Seo</label>
-			 {{  Form::select('status_seo', ['' => '-- Lựa chọn'] + selectStatusGame()  ,null,array('class' => 'form-control' )) }}
+			 {{  Form::select('status_seo', ['' => '-- Lựa chọn'] + selectStatusGame(), null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ ngày</label>

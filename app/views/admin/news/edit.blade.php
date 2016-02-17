@@ -35,6 +35,22 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Mức ưu tiên</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('weight_number',  $inputNew->weight_number, textParentCategory('Mức ưu tiên')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Vị trí</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{  Form::select('position', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="image_url">Upload ảnh tin</label>
 					<div class="row">
 						<div class="col-sm-6">

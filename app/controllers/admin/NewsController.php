@@ -40,8 +40,8 @@ class NewsController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'title'   => 'required'
-
+			'title' => 'required',
+			'weight_number' => 'numeric|min:1'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -51,7 +51,7 @@ class NewsController extends AdminController {
 	            ->withInput(Input::except('name'));
         } else {
         	//create news
-        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date');
+        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position');
         	if($inputNews['start_date'] == '') {
         		$inputNews['start_date'] = Carbon\Carbon::now();
         	}
@@ -111,7 +111,8 @@ class NewsController extends AdminController {
 	{
 		if(!Admin::isSeo()){
 			$rules = array(
-				'title'   => 'required'
+				'title'   => 'required',
+				'weight_number' => 'numeric|min:1'
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
@@ -121,7 +122,7 @@ class NewsController extends AdminController {
 		            ->withInput(Input::except('name'));
 	        } else {
 	        	//update News
-	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date');
+	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position');
 	        	if($inputNews['start_date'] == '') {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}
