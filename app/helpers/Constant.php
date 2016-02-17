@@ -75,6 +75,7 @@ define('HEADER', 1);
 define('Footer', 2);
 define('CHILD_PAGE', 3);
 define('CHILD_PAGE_RELATION', 4);
+define('AD_NEW', 5);
 //advertise url image
 define('UPLOAD_ADVERTISE', '/images/advertise');
 define('BOTTOM', 'bottom');
