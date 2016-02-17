@@ -22,8 +22,18 @@ class SiteController extends HomeController {
 		if($script) {
 			View::share('script', $script);
 		}
+		//type new
+		if (Cache::has('menu_top'))
+        {
+            $menu_top = Cache::get('menu_top');
+        } else {
+        	$menu_top = TypeNew::orderBy('weight_number', 'asc')->get();
+            Cache::put('menu_top', $menu_top, CACHETIME);
+        }
 		View::share('menu', $menu);
 		View::share('menuHeader', $menuHeader);
+		//View share type new
+		View::share('menu_top', $menu_top);
 	}
 
 	public function returnPage404()
