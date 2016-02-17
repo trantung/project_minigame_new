@@ -383,6 +383,9 @@ function getPositionAdvertise($position)
 	if ($position == CHILD_PAGE_RELATION) {
 		return 'Content';
 	}
+	if ($position == AD_NEW) {
+		return 'Ad New';
+	}
 }
 function getStatusAdvertise($status)
 {

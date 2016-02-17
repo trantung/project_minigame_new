@@ -22,7 +22,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::select('position', [1 => 'Header', 2 => 'Footer', 4 => 'Content']) }}
+						   {{ Form::select('position', [1 => 'Header', 2 => 'Footer', 4 => 'Content', 5 => 'Ad new']) }}
 						</div>
 					</div>
 				</div>
