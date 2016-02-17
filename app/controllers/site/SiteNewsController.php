@@ -54,21 +54,22 @@ class SiteNewsController extends SiteController {
 	// 	return View::make('site.News.showNews')->with(compact('inputNew', 'inputRelated'));
 	// }
 
-	public function show($slug)
+	public function listNews($slug)
 	{
-		$now = date('Y-m-d');
 		// $newTypeId = TypeNew::findBySlug($slug)->id;
 		$newType = TypeNew::findBySlug($slug);
-		$news = AdminNew::where('type_new_id', $newType->id)->get();
+		$news = AdminNew::where('type_new_id', $newType->id)->paginate(FRONENDPAGINATE);
 		return View::make('site.News.showType')->with(compact('newType', 'news'));
 	}
-	public function showNew($slugType, $slugNew)
+	public function showDetail($slugType, $slugNew)
 	{
 		$now = date('Y-m-d');
-		// $newTypeId = TypeNew::findBySlug($slug)->id;
-		$newType = TypeNew::findBySlug($slug);
-		$news = AdminNew::where('type_new_id', $newType->id)->get();
-		return View::make('site.News.showType')->with(compact('newType', 'news'));
+		$newType = TypeNew::findBySlug($slugType);
+		$inputNew = AdminNew::findBySlug($slugNew);
+		$input['count_view'] = getZero($inputNew->count_view) + 1;
+		CommonNormal::update($inputNew->id, $input, 'AdminNew');
+		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->where('start_date', '<=', $now)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
+		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated'));
 	}
 	/**
 	 * Show the form for editing the specified resource.

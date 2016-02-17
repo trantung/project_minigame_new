@@ -11,9 +11,25 @@ class SearchGameController extends SiteController {
 	{
 		$input = Input::all();
 		$inputsearchGame = CommonSearch::searchGame($input);
-		return View::make('site.game.searchgame')->with(compact('inputsearchGame', 'input'));
+		$inputsearchNews = CommonSearch::searchNews($input);
+		return View::make('site.game.searchgame')->with(compact('inputsearchGame', 'inputsearchNews', 'input'));
 	}
 
+	public function indexGame($keyword)
+	{
+		$input['search'] = $keyword;
+		$inputsearchGame = CommonSearch::searchGame($input, 1);
+		$inputsearchNews = array();
+		return View::make('site.game.searchgame')->with(compact('inputsearchGame', 'inputsearchNews', 'input'));
+	}
+
+	public function indexNew($keyword)
+	{
+		$input['search'] = $keyword;
+		$inputsearchGame = array();
+		$inputsearchNews = CommonSearch::searchNews($input, 1);
+		return View::make('site.game.searchgame')->with(compact('inputsearchGame', 'inputsearchNews', 'input'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.

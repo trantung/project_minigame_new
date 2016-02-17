@@ -143,8 +143,8 @@ class CommonSearch
 		return $data;
 	}
 	//fronend search game
-	public static function searchGame($input){
-
+	public static function searchGame($input, $paginate = null)
+	{
 		$data = Game::where(function ($query) use ($input)
 		{
 			if(getDevice() == MOBILE)
@@ -165,9 +165,16 @@ class CommonSearch
 			// dd($query->get()->toArray());
 			// dd(DB::getQueryLog());
 		})
-		->whereNotNull('parent_id')->paginate(FRONENDPAGINATE);
+		->whereNotNull('parent_id');
+		if(!$paginate) {
+			$data = $data->limit(SEARCHLIMIT)
+				->get();
+		} else {
+			$data = $data->paginate(SEARCH_PAGINATE);
+		}
 		return $data;
 	}
+
 	//backend search history
 	public static function searchlogHistory($input){
 		$data = LogEdit::where(function ($query) use ($input)
@@ -204,5 +211,36 @@ class CommonSearch
 					->groupBy('types.name')
 					->get();
 		return $data;
+	}
+
+	public static function searchNews($input, $paginate = null)
+	{
+		$data = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+				->select('news.id as newId', 'news.slug as slug', 'type_news.slug as slugType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+				->where(function ($query) use ($input)
+				{
+					if($input['search'] != '') {
+						$inputSlug = convert_string_vi_to_en($input['search']);
+						$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9]+/i', '-', $inputSlug) );
+						$query = $query->where('news.slug', 'like', '%'.$inputSlug.'%');
+					}
+			});
+		if(!$paginate) {
+			$data = $data->limit(SEARCHLIMIT)
+				->get();
+		} else {
+			$data = $data->paginate(SEARCH_PAGINATE);
+		}
+		return $data;
+	}
+
+	public static function countNew($input)
+	{
+		foreach ($input as $key => $value) {
+			if (isset($value->id)) {
+				unset($input[$key]);
+			}
+		}
+		return count($input);
 	}
 }

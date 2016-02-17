@@ -32,7 +32,7 @@
 		<h3>Tin liên quan</h3>
 		<ul>
 			@foreach($inputRelated as $value)
-			<li><a href="{{ url($value->slug) }}" title=""><i class="fa fa-caret-right"></i> [{{ $value->typeNew->name }}] {{ $value->title }}</a></li>
+			<li><a href="{{ action('SiteNewsController@showDetail', [$newType->slug, $value->slug]) }}" title=""><i class="fa fa-caret-right"></i> [{{ $value->typeNew->name }}] {{ $value->title }}</a></li>
 			@endforeach
 		</ul>
 	</div>

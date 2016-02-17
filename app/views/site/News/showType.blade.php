@@ -15,13 +15,13 @@
 	@foreach($news as $value)
 		<div class="list-item">
 			<div class="list-image">
-				<a href="{{ action('SiteNewsController@showNew', [$newType->slug, $value->slug]) }}">
+				<a href="{{ action('SiteNewsController@showDetail', [$newType->slug, $value->slug]) }}">
 					<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
 				</a>
 			</div>
 			<div class="list-text">
 				<h3>
-					<a href="{{ action('SiteNewsController@show', $value->slug) }}">
+					<a href="{{ action('SiteNewsController@showDetail', [$newType->slug, $value->slug]) }}">
 						[{{ $value->typeNew->name }}] {{ $value->title }}
 					</a>
 				</h3>
@@ -31,6 +31,6 @@
 	@endforeach
 </div>
 
-@include('site.common.paginate', array('input' => $inputListNews))
+@include('site.common.paginate', array('input' => $news))
 
 @stop

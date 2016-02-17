@@ -179,10 +179,12 @@ Route::get('/chinh-sach', array('uses' => 'SiteFeedbackController@policy', 'as' 
 
 Route::post('/send-error-game', array('uses' => 'SiteFeedbackController@sendErrorGame'));
 
-Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
+Route::get('/tim-kiem', array('uses' => 'SearchGameController@index', 'as' => 'search'));
+Route::get('/tim-kiem-game/{keyword}', array('uses' => 'SearchGameController@indexGame', 'as' => 'searchGame'));
+Route::get('/tim-kiem-tin-tuc/{keyword}', array('uses' => 'SearchGameController@indexNew', 'as' => 'searchNew'));
 
-Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showType'));
-Route::get('/tin-tuc/{slugType}/{slugNew}', array('uses' => 'SiteNewsController@showNew', 'as' =>'showNew'));
+Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@listNews', 'as' =>'showType'));
+Route::get('/tin-tuc/{slugType}/{slugNew}', array('uses' => 'SiteNewsController@showDetail', 'as' =>'showNew'));
 Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
 Route::put('/comment/{id}', array('uses' => 'SiteCommentController@update'));

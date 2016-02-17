@@ -6,7 +6,7 @@
 					<li><a href="{{ url('/') }}" {{ checkActive() }}><i class="fa fa-home"></i><span>Home</span></a></li>
 					@foreach($menu_top as $value)
 						<li>
-							<a href="{{ action('SiteNewsController@show', $value->slug) }}" {{ checkActive($value->slug) }}>
+							<a href="{{ action('SiteNewsController@listNews', $value->slug) }}" {{ checkActive($value->slug) }}>
 								<span>{{ $value->name }}</span>
 							</a>
 						</li>

@@ -148,3 +148,6 @@ define('GAME_VERTICAL', 1);
 define('GAME_HORIZONTAL', 2);
 
 define('CHOINHANH', 'choinhanh.vn');
+
+define('SEARCHLIMIT', 5);
+define('SEARCH_PAGINATE', 1);
