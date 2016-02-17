@@ -109,6 +109,7 @@ class ErrorsController extends AdminController {
 	{
 		AdminErrorLog::truncate();
 		AdminError::truncate();
+		AdminErrorLog::truncate();
 	}
 
 }
