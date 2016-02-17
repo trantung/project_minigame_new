@@ -22,6 +22,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<label>Mức ưu tiên</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
+						</div>
+					</div>
+				</div>
 			  <!-- /.box-body -->
 
 			  <div class="box-footer">

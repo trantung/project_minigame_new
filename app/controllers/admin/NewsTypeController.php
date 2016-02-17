@@ -34,7 +34,8 @@ class NewsTypeController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'name'   => 'required'            
+			'name'   => 'required',
+			'weight_number' => 'numeric|min:1'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -43,7 +44,7 @@ class NewsTypeController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('name'));
         } else {
-        	$inputNameTypeNew = Input::only('name');
+        	$inputNameTypeNew = Input::only('name', 'weight_number');
 			CommonNormal::create($inputNameTypeNew);
 			return Redirect::action('NewsTypeController@index');
         }
@@ -84,7 +85,8 @@ class NewsTypeController extends AdminController {
 	public function update($id)
 	{
 		$rules = array(
-            'name'   => 'required'
+            'name'   => 'required',
+            'weight_number' => 'numeric|min:1'
         );
         $input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -92,7 +94,7 @@ class NewsTypeController extends AdminController {
 			return Redirect::action('NewsTypeController@edit', $id)
 	            ->withErrors($validator);
         } else {
-        	$inputNameTypeNew = Input::only('name');
+        	$inputNameTypeNew = Input::only('name', 'weight_number');
         	CommonNormal::update($id,$inputNameTypeNew);
 			return Redirect::action('NewsTypeController@index');
         }
