@@ -181,7 +181,8 @@ Route::post('/send-error-game', array('uses' => 'SiteFeedbackController@sendErro
 
 Route::get('/tim-kiem-game', array('uses' => 'SearchGameController@index', 'as' => 'searchGame'));
 
-Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
+Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showType'));
+Route::get('/tin-tuc/{slugType}/{slugNew}', array('uses' => 'SiteNewsController@showNew', 'as' =>'showNew'));
 Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
 Route::put('/comment/{id}', array('uses' => 'SiteCommentController@update'));
