@@ -58,7 +58,10 @@ class SiteNewsController extends SiteController {
 	{
 		// $newTypeId = TypeNew::findBySlug($slug)->id;
 		$newType = TypeNew::findBySlug($slug);
-		$news = AdminNew::where('type_new_id', $newType->id)->paginate(FRONENDPAGINATE);
+		$news = AdminNew::where('type_new_id', $newType->id)
+			->where('start_date', '<=', Carbon\Carbon::now())
+			->orderBy('weight_number', 'asc')
+			->paginate(FRONENDPAGINATE);
 		return View::make('site.News.showType')->with(compact('newType', 'news'));
 	}
 	public function showDetail($slugType, $slugNew)
@@ -68,7 +71,11 @@ class SiteNewsController extends SiteController {
 		$inputNew = AdminNew::findBySlug($slugNew);
 		$input['count_view'] = getZero($inputNew->count_view) + 1;
 		CommonNormal::update($inputNew->id, $input, 'AdminNew');
-		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)->where('start_date', '<=', $now)->orderBy(DB::raw('RAND()'))->limit(PAGINATE_RELATED)->get();
+		$inputRelated = AdminNew::where('type_new_id', $inputNew->type_new_id)
+			->where('start_date', '<=', $now)
+			->orderBy(DB::raw('RAND()'))
+			->limit(PAGINATE_RELATED)
+			->get();
 		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated'));
 	}
 	/**

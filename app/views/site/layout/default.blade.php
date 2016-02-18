@@ -3,30 +3,26 @@
 	@include('site.common.header')
 	<body>
 
-		@include('site.common.menu')
-		@include('site.common.topbar')
-		@include('site.common.navbar')
-
 		<div class="container">
 			<div class="row">
 
-			<div class="main">
+				<div class="main">
 
-				@include('site.common.ad', array('adPosition' => HEADER))
+					@include('site.common.top')
 
-				@yield('content')
+					@yield('content')
 
-				@include('site.common.ad', array('adPosition' => Footer))
-
-			</div>
-
-			@include('site.common.footer')
+				</div>
 
 			</div>
 	  	</div>
 
-	  	<div class="glass"></div>
-
+	  	<div class="container">
+			<div class="row">
+	  			@include('site.common.footer')
+	  		</div>
+	  	</div>
+	  	
 		@if($script)
 			{{ $script->footer_script }}
 		@endif

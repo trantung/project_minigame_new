@@ -130,7 +130,7 @@ define('NO_GAME', 0);
 //define message comment
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
 define('COMMENT_NO_MESSAGE', 'Bạn chưa nhập nội dung');
-define('TEXTLENGH_DESCRIPTION', 154);
+define('TEXTLENGH_DESCRIPTION', 300);
 define('PAGINATE_RELATED', 6);
 define('PAGINATE_MOBILE', 12);
 //image avatar
@@ -151,3 +151,4 @@ define('CHOINHANH', 'choinhanh.vn');
 
 define('SEARCHLIMIT', 5);
 define('SEARCH_PAGINATE', 1);
+define('HOME_PAGINATE', 8);

@@ -225,6 +225,7 @@ class CommonSearch
 						$query = $query->where('news.slug', 'like', '%'.$inputSlug.'%');
 					}
 			});
+		$data = $data->where('start_date', '<=', Carbon\Carbon::now());
 		if(!$paginate) {
 			$data = $data->limit(SEARCHLIMIT)
 				->get();

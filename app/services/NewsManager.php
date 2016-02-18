@@ -47,4 +47,17 @@ class NewsManager
 		}
 		return [$sortBy, $sort];
 	}
+
+	public static function getHomeNews()
+	{
+		$data = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+				->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+				->where('news.start_date', '<=', Carbon\Carbon::now())
+				->orderBy('news.start_date', 'desc')
+				->orderBy('news.weight_number', 'asc')
+				->limit(HOME_PAGINATE)
+				->get();
+		return $data;
+	}
+
 }

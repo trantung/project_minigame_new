@@ -39,7 +39,11 @@ class CommonSite
             {
                 $ad = Cache::get('ad'.$position);
             } else {
-                $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->first();
+                if($position == AD_NEW) {
+                    $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->get();    
+                } else {
+                    $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->first();
+                }
                 Cache::put('ad'.$position, $ad, CACHETIME);
             }
             return $ad;
