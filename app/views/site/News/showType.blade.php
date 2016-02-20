@@ -6,6 +6,14 @@
 
 @section('content')
 
+<?php
+	$breadcrumb = array(
+		['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
+		['name' => $newType->name, 'link' => '']
+	);
+?>
+@include('site.common.bar', $breadcrumb)
+
 <div class="list">
 
 	<div class="title_center">

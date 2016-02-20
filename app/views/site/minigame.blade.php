@@ -9,6 +9,14 @@
 @stop
 
 @section('content')
+
+<?php
+	$breadcrumb = array(
+		['name' => 'Mini Game', 'link' => '']
+	);
+?>
+@include('site.common.bar', $breadcrumb)
+
 <div class="minigame">
 	@foreach($menu as $value)
 		<div class="box">

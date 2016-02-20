@@ -44,18 +44,3 @@
 		</ul>
 	</div>
 </nav>
-<div class="top-bar">
-	<div class="row">
-		<div class="col-sm-8">
-			
-		</div>
-		<div class="col-sm-4">
-			<div class="search">
-				<form action="{{ action('SearchGameController@index') }}">
-					<input type="text" name="search" value="" title="search" placeholder="Tìm kiếm" />
-					<input type="submit" value="search" title="submit" />
-				</form>
-			</div>
-		</div>
-	</div>
-</div>

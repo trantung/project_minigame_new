@@ -10,6 +10,8 @@
 
 @section('content')
 
+@include('site.common.bar')
+
 <div class="row">
 	<div class="col-sm-8">
 		<div class="box-main">

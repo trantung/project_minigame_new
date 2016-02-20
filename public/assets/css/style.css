@@ -239,11 +239,12 @@ a.highlight-item p span {
 /*breadcrumb*/
 .breadcrumb {
     background: transparent none repeat scroll 0 0;
-    border-bottom: 1px solid #ccc;
     border-radius: 0;
-    margin: 0 0 15px;
+    bottom: -10px;
+    margin: 0;
     padding-left: 0;
     padding-right: 0;
+    position: relative;
 }
 .breadcrumb ul {
     margin: 0;
