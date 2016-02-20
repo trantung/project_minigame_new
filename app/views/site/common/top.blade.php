@@ -42,5 +42,6 @@
 				</li>
 			@endforeach
 		</ul>
+		@include('site.common.type')
 	</div>
 </nav>

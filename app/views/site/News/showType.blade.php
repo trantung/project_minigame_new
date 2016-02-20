@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-{{ $title='Danh sách tin tức' }}
+{{ $title= $newType->name }}
 @stop
 
 @section('content')
@@ -39,7 +39,6 @@
 					</div>
 					@endforeach
 				</div>
-				@include('site.common.paginate', array('input' => $news))
 			@endif
 
 		</div>

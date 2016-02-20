@@ -4,7 +4,7 @@
 	@if($title = CommonSite::getMetaSeo(SEO_META)->title_site)
 		{{ $title= $title }}
 	@else
-		{{ $title='Mini Games' }}
+		{{ $title= MINI_GAME_TITLE }}
 	@endif
 @stop
 
@@ -12,7 +12,7 @@
 
 <?php
 	$breadcrumb = array(
-		['name' => 'Mini Game', 'link' => '']
+		['name' => MINI_GAME_TITLE, 'link' => '']
 	);
 ?>
 @include('site.common.bar', $breadcrumb)
