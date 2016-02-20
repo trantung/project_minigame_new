@@ -82,7 +82,12 @@ class SiteNewsController extends SiteController {
 			->orderBy(DB::raw('RAND()'))
 			->limit(PAGINATE_RELATED)
 			->get();
-		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated'));
+		$inputHot = AdminNew::where('type_new_id', $inputNew->type_new_id)
+			->where('start_date', '<=', $now)
+			->orderBy('count_view', 'desc')
+			->limit(PAGINATE_RELATED)
+			->get();
+		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot'));
 	}
 	/**
 	 * Show the form for editing the specified resource.

@@ -10,34 +10,43 @@
 
 @section('content')
 
-<div class="box">
-	<?php
-		$breadcrumb = array(
-			['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
-			['name' => $newType->name, 'link' => action('SiteNewsController@listNews', $newType->slug)],
-			['name' => $inputNew->title, 'link' => '']
-		);
-	?>
-	@include('site.common.breadcrumb', $breadcrumb)
+<?php
+	$breadcrumb = array(
+		['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
+		['name' => $newType->name, 'link' => action('SiteNewsController@listNews', $newType->slug)],
+		['name' => $inputNew->title, 'link' => '']
+	);
+?>
+@include('site.common.bar', $breadcrumb)
 
-	<div class="title_left">
-		<h1>{{ $inputNew->title }}</h1>
+<div class="row">
+	<div class="col-sm-9">
+		<div class="box-main">			
+			<div class="title_left">
+				<h1>{{ $inputNew->title }}</h1>
+				<p>{{ date('d/m/Y H:i', strtotime($inputNew->updated_at)) }}</p>
+			</div>
+			<div class="row">
+				<div class="col-sm-9 col-sm-push-3">
+					<div class="detail">
+						{{ $inputNew->description }}
+					</div>
+				</div>
+				<div class="col-sm-3 col-sm-pull-9">
+					@include('site.News.relatedNews')
+					@include('site.News.hotNews')
+				</div>
+			</div>
+
+		</div>
 	</div>
-	<div class="clearfix"></div>
-	<div class="detail">
-		{{ $inputNew->description }}
+	<div class="col-sm-3">
+		<div class="side">
+			@include('site.common.ad', array('adPosition' => AD_NEW))
+		</div>
 	</div>
-	<div class="clearfix"></div>
-	@if($inputRelated)
-	<div class="related">
-		<h3>Tin liên quan</h3>
-		<ul>
-			@foreach($inputRelated as $value)
-			<li><a href="{{ action('SiteNewsController@showDetail', [$newType->slug, $value->slug]) }}" title=""><i class="fa fa-caret-right"></i> [{{ $value->typeNew->name }}] {{ $value->title }}</a></li>
-			@endforeach
-		</ul>
-	</div>
-	@endif
 </div>
+
+@include('site.common.gamebox')
 
 @stop
