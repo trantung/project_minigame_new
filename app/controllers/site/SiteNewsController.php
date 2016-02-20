@@ -59,17 +59,17 @@ class SiteNewsController extends SiteController {
 
 	public function listNews($slug)
 	{
-		// $newTypeId = TypeNew::findBySlug($slug)->id;
 		$newType = TypeNew::findBySlug($slug);
 		$news = AdminNew::where('type_new_id', $newType->id)
 			->where('start_date', '<=', Carbon\Carbon::now())
 			->orderBy('news.start_date', 'desc')
 			->orderBy('news.weight_number', 'asc')
 			->orderBy('id', 'desc')
+			->offset(4)
 			->paginate(FRONENDPAGINATE);
 		return View::make('site.News.showType')->with(compact('newType', 'news'));
 	}
-	
+
 	public function showDetail($slugType, $slugNew)
 	{
 		$now = date('Y-m-d');
