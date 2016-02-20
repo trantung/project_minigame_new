@@ -1,4 +1,4 @@
-@if($news = NewsManager::getHomeNews())
+@if($news = NewsManager::getNews())
 <div class="list">
 	@foreach($news as $value)
 		<div class="row list-item">

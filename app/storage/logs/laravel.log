@@ -4208,3 +4208,11 @@ Stack trace:
 #20 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #21 D:\web\minigame\public\index.php(50): Illuminate\Foundation\Application->run()
 #22 {main} [] []
+[2016-02-20 09:03:01] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method NewsManager::getHomeNews()' in D:\web\minigame\app\storage\views\b5f22d7dbbbe60ee477c96432feb7284:1
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-02-20 09:03:06] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method NewsManager::getHomeNews()' in D:\web\minigame\app\storage\views\b5f22d7dbbbe60ee477c96432feb7284:1
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
