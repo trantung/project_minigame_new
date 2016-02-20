@@ -86,6 +86,26 @@ a.signup {
 	margin-right: 0;
 }
 
+ul.nav-type {
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0;
+}
+ul.nav-type li {
+    display: inline-block;
+    list-style: none;
+}
+ul.nav-type li a {
+    color: #777;
+    margin-right: 10px;
+    text-transform: none;
+}
+ul.nav-type li a:hover,
+ul.nav-type li a:focus {
+    color: #bf282d;
+}
+
 .main {
 	background: #fff none repeat scroll 0 0;
     padding-left: 10px;
