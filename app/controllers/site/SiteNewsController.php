@@ -10,8 +10,11 @@ class SiteNewsController extends SiteController {
 	public function index()
 	{
 		$now = date('Y-m-d');
-		$inputListNews = AdminNew::where('start_date', '<=', Carbon\Carbon::now())->orderBy('id', 'desc')
-		->paginate(FRONENDPAGINATE);
+		$inputListNews = AdminNew::where('start_date', '<=', Carbon\Carbon::now())
+			->orderBy('news.start_date', 'desc')
+			->orderBy('news.weight_number', 'asc')
+			->orderBy('id', 'desc')
+			->paginate(FRONENDPAGINATE);
 		return View::make('site.News.listNews')->with(compact('inputListNews'));
 	}
 
@@ -60,10 +63,13 @@ class SiteNewsController extends SiteController {
 		$newType = TypeNew::findBySlug($slug);
 		$news = AdminNew::where('type_new_id', $newType->id)
 			->where('start_date', '<=', Carbon\Carbon::now())
-			->orderBy('weight_number', 'asc')
+			->orderBy('news.start_date', 'desc')
+			->orderBy('news.weight_number', 'asc')
+			->orderBy('id', 'desc')
 			->paginate(FRONENDPAGINATE);
 		return View::make('site.News.showType')->with(compact('newType', 'news'));
 	}
+	
 	public function showDetail($slugType, $slugNew)
 	{
 		$now = date('Y-m-d');
