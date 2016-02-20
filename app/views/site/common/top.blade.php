@@ -33,12 +33,12 @@
 		</div>
 		@endif
 		<ul class="nav navbar-nav navbar-right">
-			<li class="active">
-				<a href="#">Mini Game</a>
+			<li>
+				<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>Mini Game</a>
 			</li>
 			@foreach($menu_top as $value)
 				<li>
-					<a href="{{ action('SiteNewsController@listNews', $value->slug) }}" {{ checkActive($value->slug) }}>{{ $value->name }}</a>
+					<a href="{{ action('SiteNewsController@listNews', $value->slug) }}" {{ checkActive($value->slug, 2) }}>{{ $value->name }}</a>
 				</li>
 			@endforeach
 		</ul>
@@ -52,7 +52,7 @@
 		<div class="col-sm-4">
 			<div class="search">
 				<form action="{{ action('SearchGameController@index') }}">
-					<input type="text" name="search" value="" title="search" placeholder="Tìm kiếm game" />
+					<input type="text" name="search" value="" title="search" placeholder="Tìm kiếm" />
 					<input type="submit" value="search" title="submit" />
 				</form>
 			</div>

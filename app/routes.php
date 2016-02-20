@@ -195,6 +195,8 @@ Route::get('/game-binh-chon-nhieu', 'GameController@getListGameVote');
 
 Route::get('/game-choi-nhieu', 'GameController@getListGameplay');
 
+Route::get('/mini-game', 'GameController@index');
+
 Route::post('/import-menu', 'GameController@importMenu');
 Route::post('/import-bxh', 'GameController@importBxh');
 

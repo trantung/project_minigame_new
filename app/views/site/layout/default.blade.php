@@ -22,7 +22,7 @@
 	  			@include('site.common.footer')
 	  		</div>
 	  	</div>
-	  	
+
 		@if($script)
 			{{ $script->footer_script }}
 		@endif

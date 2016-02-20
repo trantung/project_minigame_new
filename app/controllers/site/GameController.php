@@ -9,7 +9,7 @@ class GameController extends SiteController {
 	 */
 	public function index()
 	{
-
+		return View::make('site.minigame');
 	}
 
 

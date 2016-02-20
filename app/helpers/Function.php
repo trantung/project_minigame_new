@@ -60,15 +60,15 @@ function selectEditRelationType($input, $modelName, $modelId)
 }
 function selectType_Policy(){
 	return array(
-		POLICY => 'Chính sách', 
+		POLICY => 'Chính sách',
 		//cuongnt tạm thời ẩn phần này
-		//ABOUT_POLICY => 'Giới thiệu', 
+		//ABOUT_POLICY => 'Giới thiệu',
 		);
 }
 function getType_Policy($id){
 	$policyarr = array(
-		POLICY => 'Chính sách', 
-		ABOUT_POLICY => 'Giới thiệu', 
+		POLICY => 'Chính sách',
+		ABOUT_POLICY => 'Giới thiệu',
 		);
 	return $policyarr[$id];
 }
@@ -397,7 +397,7 @@ function getStatusAdvertise($status)
 	}
 }
 function getNameParentFromCommonModel($id)
-{	
+{
 	$parentId = CommonModel::find($id)->model_id;
 	$name = CategoryParent::find($parentId)->name;
 	return $name;
@@ -514,9 +514,9 @@ function remoteFileExists($url) {
     return $ret;
 }
 
-function checkActive($uri = '')
+function checkActive($uri = '', $segment = 1)
 {
-	$segment = Request::segment(1);
+	$segment = Request::segment($segment);
 	if ($segment == $uri) {
 		return 'class = "active"';
 	}
@@ -527,16 +527,16 @@ function checkActiveUser($status)
 {
 	if($status == ACTIVE)
 		return ACTIVEUSER;
-	else 
-		return INACTIVEUSER;	
+	else
+		return INACTIVEUSER;
 }
 // đã duyệt or chưa duyệt
 function checkApproveOrReject($status)
 {
 	if($status == ACTIVE)
 		return 'Đã duyệt';
-	else 
-		return 'Chưa duyệt';	
+	else
+		return 'Chưa duyệt';
 }
 function selectActive()
 {
