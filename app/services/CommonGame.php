@@ -310,17 +310,18 @@ class CommonGame
 						->where('games.status', ENABLED)
 						->where('games.parent_id', '!=', GAMEFLASH)
 						->where('games.start_date', '<=', $now);
-				if($data->arrange == GAME_NEWEST){
-					$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
-						->get();
-				}
-				else{
-					$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
-						->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
-						->get();
 					}
+					if($data->arrange == GAME_NEWEST){
+						$listGame = $listGame->orderBy('games.'.$arrange, 'desc');
+					} elseif($data->arrange == GAME_PLAY) {
+						$listGame = $listGame->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
+								->orderBy('games.'.$arrange, 'desc');
+					} else{
+						$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
+								->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"));
+					}
+					$listGame = $listGame->get();
 					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
-				}
 			} else {
 				if (Cache::has('listGame'.$game->id.$arrange))
 				{
@@ -352,13 +353,15 @@ class CommonGame
 						->where('games.start_date', '<=', $now);
 					}
 					if($data->arrange == GAME_NEWEST){
-						$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
-							->get();
+						$listGame = $listGame->orderBy('games.'.$arrange, 'desc');
+					} elseif($data->arrange == GAME_PLAY) {
+						$listGame = $listGame->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
+								->orderBy('games.'.$arrange, 'desc');
 					} else{
 						$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
-							->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
-							->get();
+								->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"));
 					}
+					$listGame = $listGame->get();
 					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
 				}
 			}

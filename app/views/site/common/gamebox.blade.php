@@ -10,7 +10,11 @@
 				<div class="swiper-slide boxgame">
 					<div class="row">
 					<?php
-						$listGame = $games->orderBy('count_play', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+						$listGame = $games->orderByRaw(DB::raw("weight_number = '0', weight_number"))
+							->orderBy('count_play', 'desc')
+							->take(PAGINATE_BOXGAME)
+							->skip($i * PAGINATE_BOXGAME)
+							->get();
 					?>
 						@foreach($listGame as $game)
 							@include('site.game.gameitem', array('game' => $game))
@@ -40,7 +44,10 @@
 				<div class="swiper-slide boxgame">
 					<div class="row">
 					<?php
-						$listGame = $games->orderBy('start_date', 'desc')->take(PAGINATE_BOXGAME)->skip($i * PAGINATE_BOXGAME)->get();
+						$listGame = $games->orderBy('start_date', 'desc')
+							->take(PAGINATE_BOXGAME)
+							->skip($i * PAGINATE_BOXGAME)
+							->get();
 					?>
 						@foreach($listGame as $game)
 							@include('site.game.gameitem', array('game' => $game))
