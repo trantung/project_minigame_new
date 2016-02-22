@@ -39,8 +39,9 @@
 					</div>
 					@endforeach
 				</div>
-				
-				@include('site.common.paginate', array('input' => $news))
+				@if($news->getTotal() >= FRONENDPAGINATE)
+					@include('site.common.paginate', array('input' => $news))
+				@endif
 			@endif
 
 		</div>

@@ -78,16 +78,14 @@
 				@endif
 			</div>
 			@if(Request::segment(1) == 'tim-kiem-game')
-				<?php
-					$news = $inputsearchGame;
-				?>
-				@include('site.common.paginate', array('input' => $inputsearchGame))
+				@if($inputsearchGame->getTotal() >= SEARCH_PAGINATE)
+					@include('site.common.paginate', array('input' => $inputsearchGame))
+				@endif
 			@endif
 			@if(Request::segment(1) == 'tim-kiem-tin-tuc')
-				<?php
-					$news = $inputsearchNews;
-				?>
-				@include('site.common.paginate', array('input' => $inputsearchNews))
+				@if($inputsearchNews->getTotal() >= SEARCH_PAGINATE)
+					@include('site.common.paginate', array('input' => $inputsearchNews))
+				@endif
 			@endif
 		</div>
 	</div>
