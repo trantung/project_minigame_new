@@ -77,9 +77,15 @@
 				@endif
 			</div>
 			@if(Request::segment(1) == 'tim-kiem-game')
+				<?php
+					$news = $inputsearchGame;
+				?>
 				@include('site.common.paginate', array('input' => $inputsearchGame))
 			@endif
 			@if(Request::segment(1) == 'tim-kiem-tin-tuc')
+				<?php
+					$news = $inputsearchNews;
+				?>
 				@include('site.common.paginate', array('input' => $inputsearchNews))
 			@endif
 		</div>

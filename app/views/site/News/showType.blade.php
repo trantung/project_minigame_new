@@ -39,7 +39,7 @@
 					</div>
 					@endforeach
 				</div>
-
+				
 				@include('site.common.paginate', array('input' => $news))
 			@endif
 

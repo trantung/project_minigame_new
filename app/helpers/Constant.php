@@ -23,7 +23,7 @@ define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
 //pagination frontend
-define('FRONENDPAGINATE', 15);
+define('FRONENDPAGINATE', 1);
 //url upload img
 define('UPLOADIMG', '/images');
 //url upload avatar game
