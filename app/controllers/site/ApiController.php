@@ -16,6 +16,74 @@ class ApiController extends SiteController {
 		$data[$key]['type_name'] = $type->name;
 		$data[$key]['data_type'] = $this->getGame($type);
 		}
+		$data = array(
+		   [
+			'type_name' => 'Bạn gái', 'data_type' => [
+			 ['game_url' => 'http://choinhanh.vn/game_native/boi-tinh-yeu/', 
+			  'game_name' => 'Bói tình yêu',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/boi-tinh-yeu-1449204379.jpg',
+			  'game_screen' => 2
+			 ],
+			 ['game_url' => 'http://choinhanh.vn/game_native/vuon-dau-cua-mia', 
+			  'game_name' => 'Vườn dâu của Mia',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/vuon-dau-cua-mia-1451444834.jpg',
+			  'game_screen' => 2
+			 ]
+			]
+		   ],
+		   [
+			'type_name' => 'Đua xe', 'data_type' => [
+			 ['game_url' => 'http://choinhanh.vn/game_native/anh-hung-duong-pho', 
+			  'game_name' => 'Anh hùng đường phố',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/anh-hung-duong-pho-1451445594.jpg',
+			  'game_screen' => 1
+			 ]
+			]
+		   ],
+		   [
+			'type_name' => 'Trí tuệ', 'data_type' => [
+			 ['game_url' => 'http://choinhanh.vn/game_native/giai-ma-o-gach', 
+			  'game_name' => 'Giải mã ô gạch',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/giai-ma-o-gach-1451449428.jpg',
+			  'game_screen' => 1
+			 ],
+			 ['game_url' => 'http://choinhanh.vn/game_native/sudoku-cuoi-cung', 
+			  'game_name' => 'Sudoku 2016',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/sudoku-cuoi-cung-1451449060.jpg',
+			  'game_screen' => 1
+			 ],
+			 ['game_url' => 'http://choinhanh.vn/game_native/ten-trom-the-ky', 
+			  'game_name' => 'Tên trộm thế kỷ',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/ten-trom-the-ky-1449202229.jpg',
+			  'game_screen' => 2
+			 ],
+			 ['game_url' => 'http://choinhanh.vn/game_native/tim-duong-giai-cuu', 
+			  'game_name' => 'Giải cứu công chúa',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/tim-duong-giai-cuu-1449204090.jpg',
+			  'game_screen' => 1
+			 ]
+			]
+		   ],
+
+		   [
+			'type_name' => 'Vui nhộn', 'data_type' => [
+			 ['game_url' => 'http://choinhanh.vn/games/ban-ca-an-xu/game.html', 
+			  'game_name' => 'Bói tình yêu',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/ban-ca-an-xu-1449201291.jpg',
+			  'game_screen' => 2
+			 ]
+			]
+		   ],
+		   [
+			'type_name' => 'Thể thao', 'data_type' => [
+			 ['game_url' => 'http://choinhanh.vn/games/tran-bong-ky-la/game.html', 
+			  'game_name' => 'Bóng đã đầu to',
+			  'game_avatar' => 'http://choinhanh.vn/images/game_avatar/tran-bong-ky-la-1449203097.jpg',
+			  'game_screen' => 2
+			 ]
+			]
+		   ],
+		  );
 		return Response::json(array('code' => 'ok', 'data' => $data));
 	}
 

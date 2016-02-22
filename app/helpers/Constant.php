@@ -121,9 +121,9 @@ define('GAMESCORE_LIMITED', 5);
 //defune page comment fron-end
 define('PAGE_COMMENT', 5);
 //define google app
-define('GOOGLE_REDIRECT_URL', 'http://choinhanh.vn/login_google');
-define('GOOGLE_CLIENT_SECRET', 'o4tqEc2h98D0-5YtowSf8rTX');
-define('GOOGLE_CLIENT_ID', '800160880332-i03v26072o1ul4ej7q0p6f6tonvu098a.apps.googleusercontent.com');
+define('GOOGLE_REDIRECT_URL', 'http://game.kienthuc.net.vn/login_google');
+define('GOOGLE_CLIENT_SECRET', '_qQN3_WpbX-RlWx_qt0zZUaB');
+define('GOOGLE_CLIENT_ID', '1060926121483-98np51otttt7frrl8nda3mjtq5cfuk78.apps.googleusercontent.com');
 define('TEXTLENGH', 25);
 //define total game if count = 0
 define('NO_GAME', 0);
@@ -151,7 +151,7 @@ define('CHOINHANH', 'choinhanh.vn');
 
 define('SEARCHLIMIT', 5);
 define('SEARCH_PAGINATE', 5);
-define('HOME_PAGINATE', 8);
+define('HOME_PAGINATE', 4);
 
 define('MINI_GAME_TITLE', 'Mini Game');
 define('MINI_GAME_SLUG', 'mini-game');
