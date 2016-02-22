@@ -1234,6 +1234,30 @@ input.fullscreen {
     text-decoration: none;
 }
 
+a.btn_more {
+    background: #bf282d none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+a.btn_more:hover,
+a.btn_more:focus {
+    color: #fff;
+}
+
+.pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover, .pager .disabled > span {
+    background-color: #bf282d;
+    color: #fff;
+    border: 1px solid #bf282d;
+}
+.pager li > a, .pager li > span {
+    color: #333;
+}
 
 /*trang tai ve*/
 .imgGamedowload,
