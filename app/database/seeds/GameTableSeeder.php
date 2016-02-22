@@ -13,14 +13,6 @@ class GameTableSeeder extends Seeder {
 		Game::create([
 					'name' => 'Game offline',
 			]);
-		// Game::create([
-		// 			'name' => 'Game nấm lùn',
-		// 			'parent_id' => '2',
-		// 	]);
-		// Game::create([
-		// 			'name' => 'Game mèo',
-		// 			'parent_id' => '2',
-		// 	]);
 	}
 
 }
