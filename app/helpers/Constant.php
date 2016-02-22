@@ -150,7 +150,7 @@ define('GAME_HORIZONTAL', 2);
 define('CHOINHANH', 'choinhanh.vn');
 
 define('SEARCHLIMIT', 5);
-define('SEARCH_PAGINATE', 1);
+define('SEARCH_PAGINATE', 5);
 define('HOME_PAGINATE', 8);
 
 define('MINI_GAME_TITLE', 'Mini Game');
