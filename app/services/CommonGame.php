@@ -315,7 +315,9 @@ class CommonGame
 						->get();
 				}
 				else{
-					$listGame = $listGame->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))->orderBy('games.'.$arrange, 'desc')->get();
+					$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
+						->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
+						->get();
 					}
 					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
 				}
@@ -353,7 +355,9 @@ class CommonGame
 						$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
 							->get();
 					} else{
-						$listGame = $listGame->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))->orderBy('games.'.$arrange, 'desc')->get();
+						$listGame = $listGame->orderBy('games.'.$arrange, 'desc')
+							->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"))
+							->get();
 					}
 					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
 				}
