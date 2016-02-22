@@ -1181,14 +1181,14 @@ input.fullscreen {
 }
 
 .topgame {
-    background: #9B9026 none repeat scroll 0 0;
+    background: #BF282D none repeat scroll 0 0;
     border-radius: 10px;
     margin-bottom: 10px;
     margin-top: 45px;
     padding: 7px 7px 4px;
 }
 .topgame > h3 {
-    background: #9B9026 none repeat scroll 0 0;
+    background: #BF282D none repeat scroll 0 0;
     border-radius: 10px 10px 0 0;
     color: #fff;
     font-size: 16px;

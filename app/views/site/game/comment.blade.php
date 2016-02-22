@@ -3,7 +3,7 @@
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active"><a href="#comment2" aria-controls="comment2" role="tab" data-toggle="tab">Facebook</a></li>
-		<li role="presentation"><a href="#comment1" aria-controls="comment1" role="tab" data-toggle="tab">choinhanh.vn</a></li>
+		<li role="presentation"><a href="#comment1" aria-controls="comment1" role="tab" data-toggle="tab">game.kienthuc.net.vn</a></li>
 	</ul>
 	@include('site.common.message_comment')
 	<!-- Tab panes -->
