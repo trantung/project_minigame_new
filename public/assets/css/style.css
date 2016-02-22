@@ -55,13 +55,24 @@ a.signin {
 a.signup {
 	
 }
+.navbar-toggle {
+    margin-right: 0;
+}
 .navbar-default {
 	background: transparent;
 	border: none;
 	margin-bottom: 0;
 }
+.margintop {
+    margin-top: 15px;
+}
+.divider {
+    border-bottom: 1px solid #ccc;
+    clear: both;
+    display: block;
+}
 .navbar-nav {
-	border-bottom: 1px solid #ccc;
+	
 }
 .navbar-nav > li > a {
 	color: #484848;
@@ -1360,6 +1371,12 @@ a.btn_more:focus {
     }*/
     .item {
         height: 160px;
+    }
+    .logo {
+        width: auto;
+    }
+    .logo img {
+        width: 100%;
     }
 }
 @media (max-width: 768px) {
