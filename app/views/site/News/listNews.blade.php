@@ -6,31 +6,52 @@
 
 @section('content')
 
-<div class="list">
 
-	<div class="title_center">
-		<h1>Danh sách tin tức</h1>
-	</div>
+<?php
+	$breadcrumb = array(
+		['name' => 'Tin tức', 'link' => ''],
+	);
+?>
+@include('site.common.bar', $breadcrumb)
 
-	@foreach($inputListNews as $value)
-		<div class="list-item">
-			<div class="list-image">
-				<a href="{{ action('SiteNewsController@show', $value->slug) }}">
-					<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
-				</a>
-			</div>
-			<div class="list-text">
-				<h3>
-					<a href="{{ action('SiteNewsController@show', $value->slug) }}">
-						[{{ $value->typeNew->name }}] {{ $value->title }}
-					</a>
-				</h3>
-				<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
-			</div>
+<div class="row">
+	<div class="col-sm-8">
+		<div class="box-main">
+			@include('site.common.highlight')
+			
+			@if(count($inputListNews) > 0)
+				<div class="list">
+					@foreach($inputListNews as $value)
+					<div class="row list-item">
+						<div class="col-sm-4 list-image">
+							<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}">
+								<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
+							</a>
+						</div>
+						<div class="col-sm-8 list-text">
+							<h3>
+								<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}">
+									{{ $value->title }}
+								</a>
+							</h3>
+							<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
+						</div>
+					</div>
+					@endforeach
+				</div>
+				@if($inputListNews->getTotal() >= FRONENDPAGINATE)
+					@include('site.common.paginate', array('input' => $inputListNews))
+				@endif
+			@endif
 		</div>
-	@endforeach
+	</div>
+	<div class="col-sm-4">
+		<div class="side">
+			@include('site.common.ad', array('adPosition' => AD_NEW))
+		</div>
+	</div>
 </div>
 
-@include('site.common.paginate', array('input' => $inputListNews))
+@include('site.common.gamebox')
 
 @stop

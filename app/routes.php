@@ -183,9 +183,9 @@ Route::get('/tim-kiem', array('uses' => 'SearchGameController@index', 'as' => 's
 Route::get('/tim-kiem-game/{keyword}', array('uses' => 'SearchGameController@indexGame', 'as' => 'searchGame'));
 Route::get('/tim-kiem-tin-tuc/{keyword}', array('uses' => 'SearchGameController@indexNew', 'as' => 'searchNew'));
 
+Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@listNews', 'as' =>'showType'));
 Route::get('/tin-tuc/{slugType}/{slugNew}', array('uses' => 'SiteNewsController@showDetail', 'as' =>'showNew'));
-Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
 Route::put('/comment/{id}', array('uses' => 'SiteCommentController@update'));
 
