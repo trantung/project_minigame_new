@@ -131,7 +131,7 @@ define('NO_GAME', 0);
 define('COMMENT_MESSAGE', 'Bạn đã comment thành công, xin chờ kiểm duyệt');
 define('COMMENT_NO_MESSAGE', 'Bạn chưa nhập nội dung');
 define('TEXTLENGH_DESCRIPTION', 300);
-define('PAGINATE_RELATED', 6);
+define('PAGINATE_RELATED', 10);
 define('PAGINATE_MOBILE', 12);
 //image avatar
 define('UPLOAD_USER_AVATAR', '/user_avatar');

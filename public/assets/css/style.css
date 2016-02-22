@@ -22,6 +22,7 @@ a:focus {
 }
 .logo p {
 	text-align: center;
+    font-size: 12px;
 }
 .menu {
 	display: inline-block;
@@ -177,6 +178,62 @@ a.highlight-item p {
 a.highlight-item p span {
 
 }
+
+
+.related {
+    background: #474749;
+}
+.related:first-child {
+    margin-top: 20px;
+}
+.related > h3 {
+    border-top: 3px solid #bf282d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+    padding: 10px 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0;
+} 
+.related > ul {
+    padding: 0;
+    margin: 0;
+}
+.related > ul li {
+    list-style: none;
+    border-top: 1px solid #888;
+}
+.related > ul li a {
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    margin-bottom: 0;
+    padding: 5px;
+    text-decoration: none;
+}
+.related > ul li:first-child a {
+    margin-bottom: 10px;
+    padding: 0;
+}
+.related > ul li a img {
+    height: auto;
+}
+.related > ul li a.highlight-item p {
+    font-size: 12px;
+    height: auto;
+    padding: 5px;
+    width: 100%;
+}
+.related > ul li a.highlight-item p.color-rgba-1 {
+    background: rgba(48, 148, 94, 0.75);
+}
+.related > ul li a.highlight-item p.color-rgba-2 {
+    background: rgba(159, 147, 39, 0.75);
+}
+
+
 /*trang chi tiet game tai ve*/
 .web_avatar {
     width: 15%;
@@ -761,20 +818,27 @@ a.download i.fa {
 
 .title_center {
     border-bottom: 1px solid #cbcbcb;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
     text-align: center;
 }
 .title_left {
-    border-bottom: 1px solid #cbcbcb;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 .title_center h1,
 .title_left h1 {
-    font-size: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.title_left p {
+    color: #474747;
+    font-size: 12px;
+    margin-bottom: 0;
 }
 
 /* box games */

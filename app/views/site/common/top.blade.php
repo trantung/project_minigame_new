@@ -3,7 +3,7 @@
 		@if(getDevice() == COMPUTER)
 		<div class="logo">
 			<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
-			<p>Thứ 2, 1/2/2016 GMT+7</p>
+			<p>{{ show_date_vn() }}</p>
 		</div>
 		@endif
 	</div>
