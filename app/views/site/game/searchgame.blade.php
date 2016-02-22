@@ -41,6 +41,7 @@
 					@if(count($inputsearchNews) >= SEARCHLIMIT && Request::segment(1) != 'tim-kiem-tin-tuc')
 						<a class="clearfix btn_more" href="{{ action('SearchGameController@indexNew', $input['search']) }}">Xem thêm</a>
 					@endif
+					<div class="divider margintop"></div>
 				@endif
 				@if(count($inputsearchGame) > 0)
 					<div class="title_left">
