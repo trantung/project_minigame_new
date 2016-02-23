@@ -23,7 +23,7 @@
 		<div class="col-sm-4">
 			<div class="search">
 				<form action="{{ action('SearchGameController@index') }}">
-					<input type="text" name="search" value="" title="search" placeholder="Tìm kiếm" />
+					<input type="text" name="search" value="" title="search" placeholder="" />
 					<input type="submit" value="search" title="submit" />
 				</form>
 			</div>

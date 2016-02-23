@@ -135,14 +135,25 @@ ul.nav-type li a:focus {
     display: inline-block;
 }
 .search input[type=text] {
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-color: -moz-use-text-color -moz-use-text-color #888;
+    border-radius: 0;
+    border-style: none none solid;
+    border-width: 0 0 1px;
     height: 39px;
     letter-spacing: 1px;
     margin-bottom: 5px;
     max-width: 100%;
     padding: 5px;
     width: 100%;
+    
+    /*border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 39px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    max-width: 100%;
+    padding: 5px;
+    width: 100%;*/
 }
 .search input[type=submit] {
     background: rgba(0, 0, 0, 0) url("../images/search-icon.png") no-repeat scroll center center;
