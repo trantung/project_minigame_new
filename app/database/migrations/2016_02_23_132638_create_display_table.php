@@ -28,7 +28,7 @@ class CreateDisplayTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('displays');
 	}
 
 }
