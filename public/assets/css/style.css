@@ -1272,6 +1272,20 @@ a.btn_more:focus {
     color: #fff;
 }
 
+input.btn-login,
+input.btn-login:hover,
+input.btn-login.focus,
+input.btn-register,
+input.btn-register:hover,
+input.btn-register.focus,
+#loadMore,
+#loadMore:hover,
+#loadMore:focus {
+    background-color: #bf282d;
+    border-color: #bf282d;
+    color: #fff;
+}
+
 .pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover, .pager .disabled > span {
     background-color: #bf282d;
     color: #fff;
