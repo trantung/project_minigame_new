@@ -426,7 +426,8 @@ class CommonGame
 			if($game->link_url != '') {
 				return url(UPLOAD_GAMEOFFLINE . '/' . $game->link_url);
 			} elseif($game->link_download != '') {
-				return url(UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game);
+				// return url(UPLOAD_GAMEOFFLINE . '/' . $game->link_upload_game);
+				return url($game->link_download);
 			}
 		}
 		return '#';
