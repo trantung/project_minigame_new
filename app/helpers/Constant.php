@@ -155,3 +155,7 @@ define('HOME_PAGINATE', 4);
 
 define('MINI_GAME_TITLE', 'Mini Game');
 define('MINI_GAME_SLUG', 'mini-game');
+
+define('LIMIT_HIGHTLIGHT_PC', 4);
+define('LIMIT_HIGHTLIGHT_MOBILE', 3);
+

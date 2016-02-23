@@ -59,7 +59,7 @@ class NewsManager
 		$data = $data->orderBy('news.start_date', 'desc')
 				->orderBy('news.weight_number', 'asc')
 				->limit(HOME_PAGINATE)
-				->offset(4)
+				->offset(LIMIT_HIGHTLIGHT_PC)
 				->get();
 		return $data;
 	}
@@ -74,7 +74,7 @@ class NewsManager
 		}
 		$data = $data->orderBy('news.start_date', 'desc')
 				->orderBy('news.weight_number', 'asc')
-				->limit(4)
+				->limit(LIMIT_HIGHTLIGHT_PC)
 				->get();
 		return $data;
 	}
