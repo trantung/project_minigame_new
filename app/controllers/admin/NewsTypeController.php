@@ -44,7 +44,7 @@ class NewsTypeController extends AdminController {
 	            ->withErrors($validator)
 	            ->withInput(Input::except('name'));
         } else {
-        	$inputNameTypeNew = Input::only('name', 'weight_number');
+        	$inputNameTypeNew = Input::only('name', 'weight_number', 'status');
 			CommonNormal::create($inputNameTypeNew);
 			return Redirect::action('NewsTypeController@index');
         }
@@ -94,7 +94,7 @@ class NewsTypeController extends AdminController {
 			return Redirect::action('NewsTypeController@edit', $id)
 	            ->withErrors($validator);
         } else {
-        	$inputNameTypeNew = Input::only('name', 'weight_number');
+        	$inputNameTypeNew = Input::only('name', 'weight_number', 'status');
         	CommonNormal::update($id,$inputNameTypeNew);
 			return Redirect::action('NewsTypeController@index');
         }

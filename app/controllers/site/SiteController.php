@@ -27,7 +27,9 @@ class SiteController extends HomeController {
         {
             $menu_top = Cache::get('menu_top');
         } else {
-        	$menu_top = TypeNew::orderBy('weight_number', 'asc')->get();
+        	$menu_top = TypeNew::where('status', ENABLED)
+        		->orderBy('weight_number', 'asc')
+        		->get();
             Cache::put('menu_top', $menu_top, CACHETIME);
         }
 		View::share('menu', $menu);

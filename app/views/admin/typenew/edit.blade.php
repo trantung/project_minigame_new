@@ -30,6 +30,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+	                <label>Trạng thái</label>
+	               	<div class="row">
+						<div class="col-sm-6">
+	                		{{ Form::select('status', selectStatusGame(), $inputTypeNew->status, array('class' => 'form-control')) }}
+	                	</div>
+					</div>
+              	</div>
 			  <!-- /.box-body -->
 
 			  <div class="box-footer">
