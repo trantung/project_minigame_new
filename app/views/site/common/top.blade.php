@@ -1,13 +1,13 @@
+@if(getDevice() == COMPUTER)
+
 <nav class="navbar navbar-default navbar-static-top">
 	<div class="row">
 		<div class="col-sm-3">
 			<div class="navbar-header">
-				@if(getDevice() == COMPUTER)
 				<div class="logo">
 					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
 					<p>{{ show_date_vn() }}</p>
 				</div>
-				@endif
 			</div>
 		</div>
 		<div class="col-sm-9">
@@ -52,3 +52,27 @@
 		</div>
 	</div>
 </nav>
+
+@else
+
+<div class="mobile-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-5">
+				<div class="mobile-top-left">
+					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
+				</div>
+			</div>
+			<div class="col-xs-7">
+				<div class="mobile-top-right">
+					<a id="iconseach" onclick="menushow()" class="mobile-menu_show_list"><i class="fa fa-search"></i></a>
+					<a onclick="menushow()" class="mobile-menu_show_list"><i class="fa fa-navicon"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@include('site.common.menu')
+
+@endif

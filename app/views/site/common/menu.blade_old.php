@@ -28,20 +28,27 @@
 			<input type="submit" value="search" title="submit" />
 		</form>
 	</div>
-
 	<ul>
-		<li class="has-sub"><a href=""><span>Mini Game</span></a>
-			<ul>
-				@foreach(Type::all() as $value)
-					<li><a href="{{ url('/' . $value->slug) }}"><span>{{ $value->name }}</span></a></li>
-				@endforeach
-			</ul>
-		</li>
-		@foreach($menu_top as $v)
-			<li>
-				<a href="{{ action('SiteNewsController@listNews', $v->slug) }}">{{ $v->name }}</a>
-			</li>
+		<li class='active'><a href='{{ url('/') }}'><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
+		@foreach($menuHeader as $key => $value)
+			@if($value->position == MENU)
+				@if(count($value->parenttypes) == 0)
+					@if($value->id == 1)
+						<li><a href="{{ action('GameController@getListGameAndroid') }}"><span>{{ $value->name }}</span></a></li>
+					@else
+						<li><a href="{{ url('/' . $value->slug) }}"><span>{{ $value->name }}</span></a></li>
+					@endif
+				@else
+				<li class="has-sub"><a href=""><span>{{ $value->name }}</span></a>
+					<ul>
+					@foreach(SiteIndex::getTypeOfParent($value->id) as $k => $v)
+						<li><a href="{{ url('/' . SiteIndex::getFieldByType($v, 'slug')) }}"><span>{{ SiteIndex::getFieldByType($v, 'name') }}</span></a></li>
+					@endforeach
+					</ul>
+				</li>
+				@endif
+			@endif
 		@endforeach
 	</ul>
-	<!-- <div class="mobile-menu-hide"><a onclick="menuhide()"><i class="fa fa-times-circle-o"></i> Đóng lại</a></div> -->
+	<div class="mobile-menu-hide"><a onclick="menuhide()"><i class="fa fa-times-circle-o"></i> Đóng lại</a></div>
 </div>

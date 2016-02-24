@@ -28,5 +28,7 @@
 
 @include('site.common.gamebox')
 
+@include('site.common.gameboxmini')
+
 @stop
 

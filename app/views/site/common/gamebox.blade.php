@@ -1,5 +1,5 @@
 <div class="box">
-	<h1>Game hay nhất</h1>
+	<h3>Game hay nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
@@ -33,7 +33,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="box">
-	<h1>Game mới nhất</h1>
+	<h3>Game mới nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

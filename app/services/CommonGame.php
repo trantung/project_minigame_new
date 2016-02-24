@@ -310,7 +310,6 @@ class CommonGame
 						->where('games.status', ENABLED)
 						->where('games.parent_id', '!=', GAMEFLASH)
 						->where('games.start_date', '<=', $now);
-					}
 					if($data->arrange == GAME_NEWEST){
 						$listGame = $listGame->orderBy('games.'.$arrange, 'desc');
 					} elseif($data->arrange == GAME_PLAY) {
@@ -322,6 +321,7 @@ class CommonGame
 					}
 					$listGame = $listGame->get();
 					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
+				}
 			} else {
 				if (Cache::has('listGame'.$game->id.$arrange))
 				{
@@ -618,6 +618,49 @@ class CommonGame
 			$games = $games->where('parent_id', GAMEHTML5);
 		}
 		return $games;
+	}
+
+	public static function getGameByType($typeId)
+	{
+		$now = Carbon\Carbon::now();
+		$gameIds = Type::find($typeId)->gametypes->lists('game_id');
+		if($gameIds) {
+			if(getDevice() == MOBILE) {
+				$listGame = Game::whereIn('id', $gameIds)
+					->where('status', ENABLED)
+					->where('parent_id', '=', GAMEHTML5)
+					->where('start_date', '<=', $now);
+			} else {
+				$listGame = Game::whereIn('id', $gameIds)
+					->where('status', ENABLED)
+					->where('start_date', '<=', $now)
+					->where('parent_id', '=', GAMEHTML5)
+					->orWhere('parent_id', '=', GAMEFLASH);
+			}
+			$listGame = $listGame->orderBy('start_date', 'desc')
+							->limit(6)
+							->get();
+			return $listGame;
+		}
+		return null;
+	}
+
+	public static function getBoxMiniGame()
+	{
+		$result = array();
+		$types = Type::all();
+		if($types) {
+			foreach($types as $key => $value) {
+				$games = self::getGameByType($value->id);
+				$result[$key] = array(
+					'type_id' => $value->id,
+					'type_name' => $value->name,
+					'type_slug' => $value->slug,
+					'games' => $games
+				);
+			}
+		}
+		return $result;
 	}
 
 }
