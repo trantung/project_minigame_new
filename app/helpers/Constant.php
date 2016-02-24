@@ -152,6 +152,7 @@ define('CHOINHANH', 'choinhanh.vn');
 define('SEARCHLIMIT', 5);
 define('SEARCH_PAGINATE', 5);
 define('HOME_PAGINATE', 4);
+define('HOME_MOBILE_PAGINATE', 2);
 
 define('MINI_GAME_TITLE', 'Mini Game');
 define('MINI_GAME_SLUG', 'mini-game');

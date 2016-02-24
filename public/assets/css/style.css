@@ -114,7 +114,8 @@ ul.nav-type li a {
     text-transform: none;
 }
 ul.nav-type li a:hover,
-ul.nav-type li a:focus {
+ul.nav-type li a:focus,
+ul.nav-type li a.active {
     color: #bf282d;
 }
 
@@ -1066,7 +1067,7 @@ i.play {
 }
 
 .comment-button {
-    background: #BF282D;
+    background: #333333;
     float: right;
 }
 
@@ -1246,7 +1247,7 @@ input.fullscreen {
     font-size: 16px;
 }
 .topgame-text span {
-    color: #ed933b;
+    color: #BF282D;
     display: block;
     font-size: 13px;
 }
@@ -1317,8 +1318,8 @@ input.btn-register.focus,
 #loadMore,
 #loadMore:hover,
 #loadMore:focus {
-    background-color: #bf282d;
-    border-color: #bf282d;
+    background-color: #474749;
+    border-color: #474749;
     color: #fff;
 }
 
@@ -1730,6 +1731,24 @@ a.mobile-signout {
     }
     .search form {
         width: 100%;
+    }
+
+    a.highlight-item p {
+        height: auto;
+    }
+    a.highlight-item img {
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    a.report-error {
+        margin-top: 10px;
+    }
+    a.btn_more {
+        width: 100%;
+    }
+    .title_center h1, .title_left h1 {
+        font-size: 20px;
     }
 }
 @media (max-width: 736px) {

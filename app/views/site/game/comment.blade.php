@@ -3,7 +3,7 @@
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active"><a href="#comment2" aria-controls="comment2" role="tab" data-toggle="tab">Facebook</a></li>
-		<li role="presentation"><a href="#comment1" aria-controls="comment1" role="tab" data-toggle="tab">game.kienthuc.net.vn</a></li>
+		<li role="presentation"><a href="#comment1" aria-controls="comment1" role="tab" data-toggle="tab">game.kienthuc</a></li>
 	</ul>
 	@include('site.common.message_comment')
 	<!-- Tab panes -->
@@ -19,7 +19,7 @@
 		@if(Auth::user()->check() && !(Auth::user()->get()->uid))
 			<div class="box-body">
 				<div class="form-group">
-					<label for="name">Comment choi nhanh</label>
+					<label for="name">Comment</label>
 					<div class="row">
 						<div class="col-sm-12">
 						    {{ Form::textarea('description', '' , array('class' => 'form-control', 'rows' => 3)) }}

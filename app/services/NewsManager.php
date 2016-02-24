@@ -50,6 +50,13 @@ class NewsManager
 
 	public static function getHomeNews($typeId = null)
 	{
+		if(getDevice() == MOBILE) {
+			$limit = HOME_MOBILE_PAGINATE;
+			$offset = LIMIT_HIGHTLIGHT_MOBILE;
+		} else {
+			$limit = HOME_PAGINATE;
+			$offset = LIMIT_HIGHTLIGHT_PC;
+		}
 		$data = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 				->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
 				->where('news.start_date', '<=', Carbon\Carbon::now());
@@ -58,14 +65,19 @@ class NewsManager
 		}
 		$data = $data->orderBy('news.start_date', 'desc')
 				->orderBy('news.weight_number', 'asc')
-				->limit(HOME_PAGINATE)
-				->offset(LIMIT_HIGHTLIGHT_PC)
+				->limit($limit)
+				->offset($offset)
 				->get();
 		return $data;
 	}
 
 	public static function getNewsHighlight($typeId = null)
 	{
+		if(getDevice() == MOBILE) {
+			$limit = LIMIT_HIGHTLIGHT_MOBILE;
+		} else {
+			$limit = LIMIT_HIGHTLIGHT_PC;
+		}
 		$data = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 				->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
 				->where('news.start_date', '<=', Carbon\Carbon::now());
@@ -74,7 +86,7 @@ class NewsManager
 		}
 		$data = $data->orderBy('news.start_date', 'desc')
 				->orderBy('news.weight_number', 'asc')
-				->limit(LIMIT_HIGHTLIGHT_PC)
+				->limit($limit)
 				->get();
 		return $data;
 	}
