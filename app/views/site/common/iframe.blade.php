@@ -21,7 +21,8 @@
 	}
 	.kt-menu li {
 		float: left;
-    	padding: 10px 15px;
+	    list-style: outside none none;
+	    padding: 10px 15px;
 	}
 	.kt-menu li:first-child {
 	    color: #fff;
