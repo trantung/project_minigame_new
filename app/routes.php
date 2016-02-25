@@ -204,6 +204,8 @@ Route::get('/mini-game', 'GameController@index');
 Route::post('/import-menu', 'GameController@importMenu');
 Route::post('/import-bxh', 'GameController@importBxh');
 
+Route::get('/game-code', 'GameController@gameCode');
+
 Route::resource('/', 'SiteIndexController');
 
 Route::get('/{slug}', 'GameController@listgame');

@@ -474,4 +474,9 @@ class GameController extends SiteController {
         return 'end';
     }
 
+    public function gameCode()
+    {
+    	return View::make('site.common.iframe');
+    }
+
 }
