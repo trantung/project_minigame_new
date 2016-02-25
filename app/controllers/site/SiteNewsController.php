@@ -2,22 +2,27 @@
 
 class SiteNewsController extends SiteController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+	public function getNumberGamesDevice()
+	{
+		if(getDevice() == MOBILE) {
+			$limit = LIMIT_HIGHTLIGHT_MOBILE;
+		} else {
+			$limit = LIMIT_HIGHTLIGHT_PC;
+		}
+		return $limit;
+	}
+
 	public function index()
 	{
+		$limit = $this->getNumberGamesDevice();
 		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->orderBy('news.start_date', 'desc')
 			->orderBy('news.weight_number', 'asc')
-			->limit(4)
+			->limit($limit)
 			->lists('id');
-		// dd($list);
 		$inputListNews = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
@@ -28,30 +33,7 @@ class SiteNewsController extends SiteController {
 			// ->offset(4)
 			// ->get();
 			->paginate(FRONENDPAGINATE);
-				// dd($inputListNews);
 		return View::make('site.News.listNews')->with(compact('inputListNews'));
-	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
 	}
 
 	public function listNews($slug)
@@ -65,7 +47,7 @@ class SiteNewsController extends SiteController {
 			->where('type_new_id', $newType->id)
 			->orderBy('news.start_date', 'desc')
 			->orderBy('news.weight_number', 'asc')
-			->limit(4)
+			->limit($limit)
 			->lists('id');
 		$news = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 					->select('news.*')
@@ -105,40 +87,4 @@ class SiteNewsController extends SiteController {
 						->get();
 		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot'));
 	}
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-
 }
