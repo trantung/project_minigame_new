@@ -30,12 +30,21 @@
 	</div>
 
 	<ul>
+		<li>
+			<a href="{ url('/') }}" {{ checkActive() }}>Home</a>
+		</li>
 		<li class="has-sub"><a href=""><span>Mini Game</span></a>
 			<ul>
 				@foreach(Type::all() as $value)
 					<li><a href="{{ url('/' . $value->slug) }}"><span>{{ $value->name }}</span></a></li>
 				@endforeach
 			</ul>
+		</li>
+		<li>
+			<a href="{{ action('GameController@index') }}#minigame-9">Game Hot</a>
+		</li>
+		<li>
+			<a href="{{ action('GameController@index') }}#minigame-7">Game mới nhất</a>
 		</li>
 		@foreach($menu_top as $v)
 			<li>

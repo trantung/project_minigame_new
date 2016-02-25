@@ -38,13 +38,23 @@
 				@endif
 				<ul class="nav navbar-nav navbar-left">
 					<li>
-						<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>Mini Game</a>
+						<a href="{ url('/') }}" {{ checkActive() }}>Home</a>
+					</li>
+					<li>
+						<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>{{ MINI_GAME_TITLE }}</a>
+					</li>
+					<li>
+						<a href="{{ action('GameController@index') }}#minigame-9">Game Hot</a>
+					</li>
+					<li>
+						<a href="{{ action('GameController@index') }}#minigame-7">Game mới nhất</a>
 					</li>
 					@foreach($menu_top as $value)
 						<li>
 							<a href="{{ action('SiteNewsController@listNews', $value->slug) }}" {{ checkActive($value->slug, 2) }}>{{ $value->name }}</a>
 						</li>
 					@endforeach
+					
 				</ul>
 				<div class="divider"></div>
 				@include('site.common.type')
@@ -60,7 +70,7 @@
 		<div class="row">
 			<div class="col-xs-5">
 				<div class="mobile-top-left">
-					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
+					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo_mobile.png') }}" alt="" /></a>
 				</div>
 			</div>
 			<div class="col-xs-7">

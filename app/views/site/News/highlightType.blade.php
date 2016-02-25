@@ -28,13 +28,6 @@
 							<p>{{ $value->title }}</p>
 						</a>
 					</div>
-				@else
-					<div class="col-xs-6">
-						<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}" class="highlight-item">
-							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
-							<p>{{ $value->title }}</p>
-						</a>
-					</div>
 				@endif
 			@endforeach
 		@endif
