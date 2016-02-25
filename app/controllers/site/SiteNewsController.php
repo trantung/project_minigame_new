@@ -9,14 +9,26 @@ class SiteNewsController extends SiteController {
 	 */
 	public function index()
 	{
-		$inputListNews = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->orderBy('news.start_date', 'desc')
-				->orderBy('news.weight_number', 'asc')
-				->offset(4)
-				->paginate(FRONENDPAGINATE);
+			->orderBy('news.weight_number', 'asc')
+			->limit(4)
+			->lists('id');
+		// dd($list);
+		$inputListNews = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+			->where('news.start_date', '<=', Carbon\Carbon::now())
+			->where('type_news.status', ENABLED)
+			->whereNotIn('news.id', $list)
+			->orderBy('news.start_date', 'desc')
+			->orderBy('news.weight_number', 'asc')
+			// ->offset(4)
+			// ->get();
+			->paginate(FRONENDPAGINATE);
+				// dd($inputListNews);
 		return View::make('site.News.listNews')->with(compact('inputListNews'));
 	}
 
@@ -44,16 +56,26 @@ class SiteNewsController extends SiteController {
 
 	public function listNews($slug)
 	{
+
 		$newType = TypeNew::findBySlug($slug);
+		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+			->where('news.start_date', '<=', Carbon\Carbon::now())
+			->where('type_news.status', ENABLED)
+			->where('type_new_id', $newType->id)
+			->orderBy('news.start_date', 'desc')
+			->orderBy('news.weight_number', 'asc')
+			->limit(4)
+			->lists('id');
 		$news = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 					->select('news.*')
 					->where('type_new_id', $newType->id)
 					->where('start_date', '<=', Carbon\Carbon::now())
 					->where('type_news.status', ENABLED)
+					->whereNotIn('news.id', $list)
 					->orderBy('news.start_date', 'desc')
 					->orderBy('news.weight_number', 'asc')
 					->orderBy('id', 'desc')
-					->offset(4)
 					->paginate(FRONENDPAGINATE);
 		return View::make('site.News.showType')->with(compact('newType', 'news'));
 	}
