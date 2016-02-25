@@ -254,11 +254,13 @@ class AdminGameController extends AdminController {
 	{
 		$gamesId = Input::get('game_id');
 		$weightNumber = Input::get('weight_number');
+		$index = Input::get('index');
 		$statusGame = Input::get('statusGame');
 		$count_play = Input::get('count_play');
 		foreach($gamesId as $key => $value) {
 			$input = array(
 				'weight_number' => $weightNumber[$key],
+				'index' => $index[$key],
 				'status' => $statusGame[$key],
 				'count_play' => $count_play[$key]
 				);
@@ -278,6 +280,5 @@ class AdminGameController extends AdminController {
 		$data = CommonGame::searchAdminGame($input);
 		return View::make('admin.game.statistic')->with(compact('data'));
 	}
-
 
 }
