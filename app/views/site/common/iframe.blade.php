@@ -52,12 +52,21 @@
 	.kt-menu li:last-child a {
 		border-right: none;
 	}
+	@if(getDevice() == COMPUTER)
 	.kt-boxgame {
 	    background: #2B74A1;
 	    margin: 0 auto;
 	    width: 670px;
 	    height: 430px;
 	}
+	@else
+	.kt-boxgame {
+		background: #2B74A1;
+	    margin: 0 auto;
+	    width: 100%;
+	    height: auto;
+	}
+	@endif
 	.kt-boxgame-left a,
 	.kt-boxgame-right a {
 		color: #fff;
