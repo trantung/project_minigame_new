@@ -68,6 +68,9 @@
 	    height: auto;
 	}
 	@endif
+	.kt-boxgame-right > row {
+		margin-bottom: 5px;
+	}
 	.kt-boxgame-left a,
 	.kt-boxgame-right a {
 		color: #fff;
