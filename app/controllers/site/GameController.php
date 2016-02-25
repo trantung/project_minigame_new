@@ -477,20 +477,17 @@ class GameController extends SiteController {
     public function gameCode()
     {
     	$now = Carbon\Carbon::now();
-		$dataFirst = Game::where('index', '!=', 0)
-			->whereNotNull('index')
-			->where('status', ENABLED)
+		$dataFirst = Game::where('status', ENABLED)
 			->where('parent_id', '=', GAMEHTML5)
 			->where('start_date', '<=', $now)
-			->orderBy('index', 'asc')
+			->orderByRaw("games.index = '0', games.index")
     		->orderBy('start_date', 'desc')
     		->first();
-    	$dataList = Game::whereNotNull('index')
-			->where('status', ENABLED)
+    	$dataList = Game::where('status', ENABLED)
 			->where('parent_id', '=', GAMEHTML5)
-    		->whereNotIn('index', [0, $dataFirst->index])
+    		->whereNotIn('id', [$dataFirst->id])
 			->where('start_date', '<=', $now)
-			->orderBy('index', 'asc')
+			->orderByRaw("games.index = '0', games.index")
     		->orderBy('start_date', 'desc')
     		->take(4)
     		->get();
