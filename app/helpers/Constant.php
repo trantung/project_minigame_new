@@ -91,6 +91,7 @@ define('POLICY', 1);
 define('ABOUT_POLICY', 2);
 //define paging frontend
 define('PAGINATE_BOXGAME', 12);
+define('PAGINATE_MOBILE_BOXGAME', 9);
 define('PAGINATE_LISTGAME', 12);
 //status user
 define('ACTIVEUSER', 'Kích hoạt');

@@ -38,7 +38,7 @@
 				@endif
 				<ul class="nav navbar-nav navbar-left">
 					<li>
-						<a href="{ url('/') }}" {{ checkActive() }}>Home</a>
+						<a href="{{ url('/') }}" {{ checkActive() }}>Home</a>
 					</li>
 					<li>
 						<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>{{ MINI_GAME_TITLE }}</a>

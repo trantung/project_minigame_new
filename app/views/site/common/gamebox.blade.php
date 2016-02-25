@@ -2,7 +2,14 @@
 	<h3>Game hay nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('play');
-		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
+		if(getDevice() == MOBILE) {
+			$paginate_boxgame = PAGINATE_MOBILE_BOXGAME;
+			$limit = 45;
+			$games = $games->take($limit);
+		} else {
+			$paginate_boxgame = PAGINATE_BOXGAME;
+		}
+		$count = ceil(count($games->get())/$paginate_boxgame);
 	?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
@@ -12,8 +19,8 @@
 					<?php
 						$listGame = $games->orderByRaw(DB::raw("weight_number = '0', weight_number"))
 							->orderBy('count_play', 'desc')
-							->take(PAGINATE_BOXGAME)
-							->skip($i * PAGINATE_BOXGAME)
+							->take($paginate_boxgame)
+							->skip($i * $paginate_boxgame)
 							->get();
 					?>
 						@foreach($listGame as $game)
