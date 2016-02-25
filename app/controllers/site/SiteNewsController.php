@@ -38,7 +38,7 @@ class SiteNewsController extends SiteController {
 
 	public function listNews($slug)
 	{
-
+		$limit = $this->getNumberGamesDevice();
 		$newType = TypeNew::findBySlug($slug);
 		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
