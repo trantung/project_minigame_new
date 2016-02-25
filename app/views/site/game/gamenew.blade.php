@@ -6,6 +6,13 @@
 
 @section('content')
 
+<?php
+	$breadcrumb = array(
+		['name' => 'Game mới nhất', 'link' => '']
+	);
+?>
+@include('site.common.bar', $breadcrumb)
+
 <div class="box">
 	<h1>Game mới nhất</h1>
 	<?php
