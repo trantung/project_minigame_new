@@ -38,6 +38,10 @@
 		  	return this.value;
 		}).get();
 
+		var values5 = $('input[name^="index"]').map(function () {
+		  	return this.value;
+		}).get();
+		
 		$.ajax(
 		{
 			type:'post',
@@ -46,7 +50,8 @@
 				'game_id': values1,
 				'weight_number': values2,
 				'statusGame': values3,
-				'count_play': values4
+				'count_play': values4,
+				'index': values5,
 			},
 			success: function(data)
 			{

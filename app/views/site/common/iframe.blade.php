@@ -130,65 +130,49 @@
 		<li>
 			<a>Game Hot</a>
 		</li>
-		<li class="kt-type">
-			<a href="#" target="_top">Bạn gái</a>
-		</li>
-		<li class="kt-type">
-			<a href="#" target="_top">Thời trang</a>
-		</li>
-		<li class="kt-type">
-			<a href="#" target="_top">Thể thao</a>
-		</li>
+		@foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value)
+			<li class="kt-type">
+				<a href="{{ url('/' . $value->slug) }}" target="_top">
+					{{ ($value->name) }}
+				</a>
+			</li>
+		@endforeach
 	</ul>
 	<div class="clearfix"></div>
 	<div class="kt-content">
 		<div class="row">
 			<div class="col-xs-6">
 				<div class="kt-boxgame-left">
-					<a href="#" target="_top"><img src="/assets/images/game12.jpg" /></a>
-					<strong><a href="#" target="_top">Ngưu ma vương</a></strong>
-					<p>Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương </p>
+					@if($dataFirst)
+						<?php $url = CommonGame::getUrlGame($dataFirst); ?>
+						<a href="{{ $url }}" target="_top">
+							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $dataFirst->image_url) }}" alt="{{ $dataFirst->name }}" />
+						</a>
+						<strong><a href="{{ $url }}" target="_top">{{ limit_text($dataFirst->name, TEXTLENGH) }}</a></strong>
+						<p>
+							{{ limit_text(strip_tags($dataFirst->description), TEXTLENGH_DESCRIPTION) }}
+						</p>
+					@endif
 				</div>
 			</div>
 			<div class="col-xs-6">
 				<div class="kt-boxgame-right">
+				@foreach($dataList as $key => $value)
+					<?php $url = CommonGame::getUrlGame($value); ?>
 					<div class="row">
 						<div class="col-xs-4 kt-boxgame-right-images">
-							<a href="#" target="_top"><img src="/assets/images/game12.jpg" /></a>
+							<a href="{{ $url }}" target="_top">
+								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+							</a>
 						</div>
 						<div class="col-xs-8 kt-boxgame-right-text">
-							<strong><a href="#" target="_top">Ngưu ma vương</a></strong>
-							<p>Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương</p>
+							<strong><a href="{{ $url }}" target="_top">{{ limit_text($value->name, TEXTLENGH) }}</a></strong>
+							<p>
+								{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION_CODE) }}
+							</p>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-4 kt-boxgame-right-images">
-							<a href="#" target="_top"><img src="/assets/images/game12.jpg" /></a>
-						</div>
-						<div class="col-xs-8 kt-boxgame-right-text">
-							<strong><a href="#" target="_top">Ngưu ma vương</a></strong>
-							<p>Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-4 kt-boxgame-right-images">
-							<a href="#" target="_top"><img src="/assets/images/game12.jpg" /></a>
-						</div>
-						<div class="col-xs-8 kt-boxgame-right-text">
-							<strong><a href="#" target="_top">Ngưu ma vương</a></strong>
-							<p>Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-4 kt-boxgame-right-images">
-							<a href="#" target="_top"><img src="/assets/images/game12.jpg" /></a>
-						</div>
-						<div class="col-xs-8 kt-boxgame-right-text">
-							<strong><a href="#" target="_top">Ngưu ma vương</a></strong>
-							<p>Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương Ngưu ma vương</p>
-						</div>
-					</div>
-
+				@endforeach
 				</div>
 			</div>
 		</div>

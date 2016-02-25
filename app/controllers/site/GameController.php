@@ -476,7 +476,25 @@ class GameController extends SiteController {
 
     public function gameCode()
     {
-    	return View::make('site.common.iframe');
+    	$now = Carbon\Carbon::now();
+		$dataFirst = Game::where('index', '!=', 0)
+			->whereNotNull('index')
+			->where('status', ENABLED)
+			->where('parent_id', '=', GAMEHTML5)
+			->where('start_date', '<=', $now)
+			->orderBy('index', 'asc')
+    		->orderBy('start_date', 'desc')
+    		->first();
+    	$dataList = Game::whereNotNull('index')
+			->where('status', ENABLED)
+			->where('parent_id', '=', GAMEHTML5)
+    		->whereNotIn('index', [0, $dataFirst->index])
+			->where('start_date', '<=', $now)
+			->orderBy('index', 'asc')
+    		->orderBy('start_date', 'desc')
+    		->take(4)
+    		->get();
+    	return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList'));
     }
 
 }

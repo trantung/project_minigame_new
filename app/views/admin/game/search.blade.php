@@ -38,6 +38,11 @@
 		  	{{ Form::select('sortByweightNumber', selectSortBy('weight_number'), Input::get('sortByweightNumber'), array('class' =>'form-control')) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
+			<label>Index</label>
+		  	{{ Form::select('index', ['' => 'Tất cả', 1 => 'Có index'], Input::get('index'), array('class' =>'form-control')) }}
+		</div>
+
+		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Trạng thái</label>
 		  	{{ Form::select('status', ['' => '-- chọn'] + selectStatusGame(), Input::get('status'), array('class' =>'form-control')) }}
 		</div>

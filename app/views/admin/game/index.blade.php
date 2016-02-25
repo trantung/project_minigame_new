@@ -47,6 +47,7 @@
 				<th>ID</th>
 				<th>Tên game</th>
 				<th>Mức ưu tiên</th>
+				<th>Index</th>
 				<th>Category</th>
 				<th>Lượt chơi</th>
 				<th>Trạng thái</th>
@@ -65,6 +66,11 @@
 					<td><input type="text" name="weight_number[]" value="{{ getZero($value->weight_number) }}" class="only_number" style="width: 50px; text-align: center;" /></td>
 					@else
 					<td>{{ getZero($value->weight_number) }}</td>
+					@endif
+					@if(!Admin::isSeo())
+					<td><input type="text" name="index[]" value="{{ getZero($value->index) }}" class="only_number" style="width: 50px; text-align: center;" /></td>
+					@else
+					<td>{{ getZero($value->index) }}</td>
 					@endif
 					@if($value->type_main)
 						<td>{{ Game::find($value->parent_id)->name.'-'.Type::find($value->type_main)->name }}</td>
