@@ -2765,3 +2765,7 @@ Stack trace:
 #16 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #17 D:\web\minigame\public\index.php(50): Illuminate\Foundation\Application->run()
 #18 {main} [] []
+[2016-02-25 13:13:40] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in D:\web\minigame\app\controllers\site\GameController.php:479
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
