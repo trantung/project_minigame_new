@@ -13,7 +13,7 @@ class AddMoreIndexGame extends Migration {
 	public function up()
 	{
 		Schema::table('games', function(Blueprint $table) {
-			$table->integer('index')->after('id')->nullable();
+			$table->integer('index')->after('id')->nullable()->default(0);
 		});
 	}
 

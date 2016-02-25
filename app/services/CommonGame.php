@@ -134,7 +134,12 @@ class CommonGame
 				$listSeo = AdminSeo::where('model_name', 'Game')->where('status_seo', $input['status_seo'])->lists('model_id');
 				$query = $query->whereIn('id', $listSeo);
 			}
+			if ($input['index'] != '') {
+				$query = $query->where('index', '!=', 0);
+			}
 		})
+		// ->get();
+		// dd($data);
 		// ->lists('id');
 		// return $data;
 		// dd($data);
