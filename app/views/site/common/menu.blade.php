@@ -31,7 +31,7 @@
 
 	<ul>
 		<li>
-			<a href="{ url('/') }}" {{ checkActive() }}>Home</a>
+			<a href="{ url('/') }}" {{ checkActive() }}>Trang chủ</a>
 		</li>
 		<li class="has-sub"><a href=""><span>Mini Game</span></a>
 			<ul>
