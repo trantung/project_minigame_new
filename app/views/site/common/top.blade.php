@@ -38,7 +38,7 @@
 				@endif
 				<ul class="nav navbar-nav navbar-left">
 					<li>
-						<a href="{ url('/') }}" {{ checkActive() }}>Trang chủ</a>
+						<a href="{{ url('/') }}" {{ checkActive() }}>Trang chủ</a>
 					</li>
 					<li>
 						<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>{{ MINI_GAME_TITLE }}</a>
