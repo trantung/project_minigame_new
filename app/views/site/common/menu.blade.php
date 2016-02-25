@@ -41,10 +41,10 @@
 			</ul>
 		</li>
 		<li>
-			<a href="{{ action('GameController@index') }}#minigame-9">Game Hot</a>
+			<a href="{{ action('GameController@getListGamehot') }}" {{ checkActive('game-hay-nhat') }}>Game Hot</a>
 		</li>
 		<li>
-			<a href="{{ action('GameController@index') }}#minigame-7">Game mới nhất</a>
+			<a href="{{ action('GameController@getListGameNew') }}" {{ checkActive('game-moi-nhat') }}>Game mới nhất</a>
 		</li>
 		@foreach($menu_top as $v)
 			<li>

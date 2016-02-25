@@ -233,6 +233,16 @@ class GameController extends SiteController {
     	return View::make('site.game.gameplaymany');
     }
 
+    public function getListGameNew()
+    {
+    	return View::make('site.game.gamenew');
+    }
+    
+	public function getListGamehot()
+    {
+    	return View::make('site.game.gamehot');
+    }
+
     public function countPlay()
     {
     	$id = Input::get('id');
