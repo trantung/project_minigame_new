@@ -10,9 +10,9 @@
 
 @section('content')
 
-<div class="box">
+@include('site.game.breadcrumbgame', array('game' => $game))
 
-	@include('site.game.breadcrumbgame', array('game' => $game))
+<div class="box">
 
 	<div class="playgame">
 		<h3>Game {{ $game->name }}</h3>

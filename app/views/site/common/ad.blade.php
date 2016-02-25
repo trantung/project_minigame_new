@@ -21,7 +21,7 @@
 	@if($ad = CommonSite::getAdvertise($adPosition))
 	
 	<div class="adsense center">
-		@if($ad->adsense)
+		@if(!empty($ad->adsense))
 			{{ $ad->adsense }}
 		@else
 			@if($ad->image_link)
@@ -38,7 +38,7 @@
 @if($adPosition == CHILD_PAGE)
 	@if($ad = CommonSite::getAdvertise($adPosition, $modelName, $modelId))
 	<div class="adsense center">
-		@if($ad->adsense)
+		@if(!empty($ad->adsense))
 			{{ $ad->adsense }}
 		@else
 			@if($ad->image_link)

@@ -13,4 +13,5 @@
 		);
 	?>
 @endif
-@include('site.common.breadcrumb', $breadcrumb)
+
+@include('site.common.bar', $breadcrumb)
