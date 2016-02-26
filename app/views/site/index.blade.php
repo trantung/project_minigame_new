@@ -13,9 +13,12 @@
 @include('site.common.bar')
 
 <div class="row">
+	<div class="col-sm-12">
+		@include('site.common.highlight')
+	</div>
 	<div class="col-sm-8">
 		<div class="box-main">
-			@include('site.common.highlight')
+			
 			@include('site.common.home_news')
 		</div>
 	</div>

@@ -181,8 +181,9 @@ a.highlight-item {
 	position: relative;
 }
 a.highlight-item img {
-	width: 100%;
-	height: 220px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 a.highlight-item p {
 	background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;

@@ -15,9 +15,11 @@
 @include('site.common.bar', $breadcrumb)
 
 <div class="row">
+	<div class="col-sm-12">
+		@include('site.News.highlightType', ['newTypeId' => $newType->id])
+	</div>
 	<div class="col-sm-8">
 		<div class="box-main">
-			@include('site.News.highlightType', ['newTypeId' => $newType->id])
 			
 			@if(count($news) > 0)
 				<div class="list">
