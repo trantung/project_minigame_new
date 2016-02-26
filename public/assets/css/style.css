@@ -871,8 +871,8 @@ a.download i.fa {
 
 /* box games */
 .box {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+    margin-top: 10px;
 }
 .box > h3,
 .box > h1 {
