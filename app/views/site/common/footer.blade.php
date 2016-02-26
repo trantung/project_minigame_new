@@ -6,7 +6,7 @@
 	</ul>
 	<div class="copyright">
 	  	Chuyên trang của Báo điện tử Kiến Thức
-		Giấy phép: Số 07/ GP-CBC Cục Báo chí - Bộ TTTT. Cấp ngày: 31 tháng 08 năm 2015.
+		Giấy phép: Số 05/ GP-CBC Cục Báo chí - Bộ TTTT. Cấp ngày: 21 tháng 04 năm 2015.
 		<br/>
 		Tổng biên tập: Nguyễn Minh Quang.
 		Tòa soạn: Số 465B Hoàng Hoa Thám, Quận Ba Đình, Hà Nội.
