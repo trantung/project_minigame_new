@@ -2,14 +2,14 @@
 	@if($ads = CommonSite::getAdvertise($adPosition))
 		@foreach($ads as $ad)
 		<div class="adsense center">
-			@if($ad->adsense)
+			@if(count($ad->adsense) > 0)
 				{{ $ad->adsense }}
 			@else
-				@if($ad->image_link)
+				@if(count($ad->image_link) > 0)
 					<a href="{{ $ad->image_link }}">
 				@endif
 					<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer/' . $ad->id . '/' . $ad->image_url) }}" alt="" />
-				@if($ad->image_link)
+				@if(count($ad->image_link) > 0)
 					</a>
 				@endif
 			@endif
@@ -21,14 +21,14 @@
 	@if($ad = CommonSite::getAdvertise($adPosition))
 	
 	<div class="adsense center">
-		@if(!empty($ad->adsense))
+		@if(count($ad->adsense) > 0)
 			{{ $ad->adsense }}
 		@else
-			@if($ad->image_link)
+			@if(count($ad->image_link) > 0)
 				<a href="{{ $ad->image_link }}">
 			@endif
 				<img src="{{ url(UPLOAD_ADVERTISE . '/header_footer/' . $ad->id . '/' . $ad->image_url) }}" alt="" />
-			@if($ad->image_link)
+			@if(count($ad->image_link) > 0)
 				</a>
 			@endif
 		@endif
@@ -38,14 +38,14 @@
 @if($adPosition == CHILD_PAGE)
 	@if($ad = CommonSite::getAdvertise($adPosition, $modelName, $modelId))
 	<div class="adsense center">
-		@if(!empty($ad->adsense))
+		@if(count($ad->adsense) > 0)
 			{{ $ad->adsense }}
 		@else
-			@if($ad->image_link)
+			@if(count($ad->image_link) > 0)
 				<a href="{{ $ad->image_link }}">
 			@endif
 				<img src="{{ url(UPLOAD_ADVERTISE . '/content/' . $modelId . '/' . $ad->image_url) }}" alt="" />
-			@if($ad->image_link)
+			@if(count($ad->image_link) > 0)
 				</a>
 			@endif
 		@endif

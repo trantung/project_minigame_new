@@ -33,6 +33,17 @@
 		<li>
 			<a href="{{ url('/') }}" {{ checkActive() }}>Trang chủ</a>
 		</li>
+		@foreach($menu_top as $v)
+			<li>
+				<a href="{{ action('SiteNewsController@listNews', $v->slug) }}">{{ $v->name }}</a>
+			</li>
+		@endforeach
+		<li>
+			<a href="{{ action('GameController@getListGameNew') }}" {{ checkActive('game-moi-nhat') }}>Game mới nhất</a>
+		</li>
+		<li>
+			<a href="{{ action('GameController@getListGamehot') }}" {{ checkActive('game-hay-nhat') }}>Game hay nhất</a>
+		</li>
 		<li class="has-sub"><a href=""><span>Mini Game</span></a>
 			<ul>
 				@foreach(Type::all() as $value)
@@ -40,17 +51,6 @@
 				@endforeach
 			</ul>
 		</li>
-		<li>
-			<a href="{{ action('GameController@getListGamehot') }}" {{ checkActive('game-hay-nhat') }}>Game Hot</a>
-		</li>
-		<li>
-			<a href="{{ action('GameController@getListGameNew') }}" {{ checkActive('game-moi-nhat') }}>Game mới nhất</a>
-		</li>
-		@foreach($menu_top as $v)
-			<li>
-				<a href="{{ action('SiteNewsController@listNews', $v->slug) }}">{{ $v->name }}</a>
-			</li>
-		@endforeach
 	</ul>
 	<!-- <div class="mobile-menu-hide"><a onclick="menuhide()"><i class="fa fa-times-circle-o"></i> Đóng lại</a></div> -->
 </div>

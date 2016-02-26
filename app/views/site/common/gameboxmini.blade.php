@@ -1,7 +1,7 @@
 <?php $data = CommonGame::getBoxMiniGame(); ?>
 @if(count($data) > 0)
 <div class="box">
-	<h3>Mini Game</h3>
+	<h3><a href="{{ action('GameController@index') }}">Mini Game</a></h3>
 	<div class="row">
 		@foreach($data as $value)
 			@if(count($value['games']) > 0)

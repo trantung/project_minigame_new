@@ -1,5 +1,5 @@
 <div class="box">
-	<h3>Game hay nhất</h3>
+	<h3><a href="{{ action('GameController@getListGamehot') }}">Game hay nhất</a></h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		if(getDevice() == MOBILE) {
@@ -40,7 +40,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="box">
-	<h3>Game mới nhất</h3>
+	<h3><a href="{{ action('GameController@getListGameNew') }}">Game mới nhất</a></h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

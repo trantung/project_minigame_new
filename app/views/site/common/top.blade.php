@@ -40,21 +40,20 @@
 					<li>
 						<a href="{{ url('/') }}" {{ checkActive() }}>Trang chủ</a>
 					</li>
-					<li>
-						<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>{{ MINI_GAME_TITLE }}</a>
-					</li>
-					<li>
-						<a href="{{ action('GameController@getListGamehot') }}" {{ checkActive('game-hay-nhat') }}>Game Hot</a>
-					</li>
-					<li>
-						<a href="{{ action('GameController@getListGameNew') }}" {{ checkActive('game-moi-nhat') }}>Game mới nhất</a>
-					</li>
 					@foreach($menu_top as $value)
 						<li>
 							<a href="{{ action('SiteNewsController@listNews', $value->slug) }}" {{ checkActive($value->slug, 2) }}>{{ $value->name }}</a>
 						</li>
 					@endforeach
-					
+					<li>
+						<a href="{{ action('GameController@getListGameNew') }}" {{ checkActive('game-moi-nhat') }}>Game mới nhất</a>
+					</li>
+					<li>
+						<a href="{{ action('GameController@getListGamehot') }}" {{ checkActive('game-hay-nhat') }}>Game hay nhất</a>
+					</li>
+					<li>
+						<a href="{{ action('GameController@index') }}" {{ checkActive('mini-game') }}>{{ MINI_GAME_TITLE }}</a>
+					</li>
 				</ul>
 				<div class="divider"></div>
 				@include('site.common.type')
