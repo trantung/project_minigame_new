@@ -126,6 +126,7 @@
             <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Chính sách</a></li>
           @endif
           <li><a href="{{ action('SeoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
+          <li><a href="{{ action('AdminLogoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý textlink logo</a></li>
         </ul>
       </li>
       @endif
