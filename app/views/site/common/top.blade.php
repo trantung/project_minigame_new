@@ -6,7 +6,7 @@
 			<div class="navbar-header">
 				<div class="logo">
 					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
-					<p>{{ show_date_vn() }}</p>
+					<p>{{ $logo->text_link }}</p>
 				</div>
 			</div>
 		</div>

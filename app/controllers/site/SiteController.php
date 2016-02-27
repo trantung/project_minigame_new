@@ -32,6 +32,8 @@ class SiteController extends HomeController {
         		->get();
             Cache::put('menu_top', $menu_top, CACHETIME);
         }
+        $logo = AdminLogo::find(1);
+        View::share('logo', $logo);
 		View::share('menu', $menu);
 		View::share('menuHeader', $menuHeader);
 		//View share type new
