@@ -7,7 +7,7 @@
 					@if($key == 0)
 						<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}" class="highlight-item">
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
-							<p>{{ $value->title }}</p>
+							<h2>{{ $value->title }}</h2>
 						</a>
 					@endif
 				@endforeach
@@ -17,7 +17,7 @@
 					@if($key > 0)
 						<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}" class="highlight-item">
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
-							<p>{{ $value->title }}</p>
+							<h2>{{ $value->title }}</h2>
 						</a>
 					@endif
 				@endforeach
@@ -30,7 +30,7 @@
 				<div class="col-xs-12">
 					<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}" class="highlight-item">
 						<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
-						<p>{{ $value->title }}</p>
+						<h2>{{ $value->title }}</h2>
 					</a>
 				</div>
 			</div>

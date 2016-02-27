@@ -9,10 +9,10 @@
 <?php
 	$breadcrumb = array(
 		['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
-		['name' => $newType->name, 'link' => '']
+		['name' => $newType->name, 'link' => url($newType->slug)]
 	);
 ?>
-@include('site.common.bar', $breadcrumb)
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isNewType' => 1])
 
 <div class="row">
 	<div class="col-sm-12">
@@ -31,11 +31,11 @@
 							</a>
 						</div>
 						<div class="col-xs-8 list-text">
-							<h3>
+							<h2>
 								<a href="{{ action('SiteNewsController@showDetail', [$newType->slug, $value->slug]) }}">
 									{{ $value->title }}
 								</a>
-							</h3>
+							</h2>
 							@if(getDevice() == COMPUTER)
 								<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
 							@endif

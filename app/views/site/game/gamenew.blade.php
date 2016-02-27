@@ -14,7 +14,7 @@
 @include('site.common.bar', $breadcrumb)
 
 <div class="box">
-	<h1>Game mới nhất</h1>
+	<h1><a href="{{ action('GameController@getListGameNew') }}">Game mới nhất</a></h1>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
@@ -47,7 +47,7 @@
 @include('site.common.ad', array('adPosition' => CHILD_PAGE_RELATION))
 
 <div class="box">
-	<h1>Game hay nhất</h1>
+	<h3>Game hay nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

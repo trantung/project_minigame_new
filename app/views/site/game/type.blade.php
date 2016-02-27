@@ -14,7 +14,7 @@
 @include('site.common.bar', $breadcrumb)
 
 <div class="box">
-	<h1>Game {{ $type->name }} hay nhất</h1>
+	<h1><a href="{{ url('$type->slug') }}">Game {{ $type->name }} hay nhất</a></h1>
 	<?php
 		$games = CommonGame::boxGameByType($type);
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
@@ -47,7 +47,7 @@
 @include('site.common.ad', array('adPosition' => CHILD_PAGE_RELATION))
 
 <div class="box">
-	<h1>Game {{ $type->name }} mới nhất</h1>
+	<h3>Game {{ $type->name }} mới nhất</h3>
 	<?php
 		$games = CommonGame::boxGameByType($type);
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

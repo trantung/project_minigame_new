@@ -5,6 +5,7 @@
 		border: 1px solid #888;
 	    border-radius: 5px;
 	    text-align: center;
+	    margin-bottom: 10px;
 	}
 	.boxgame-pagination a {
 		color: #888;

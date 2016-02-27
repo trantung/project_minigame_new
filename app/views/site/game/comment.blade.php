@@ -1,4 +1,4 @@
-<h4>Bình luận</h4>
+<strong style="margin-top: 10px; margin-bottom: 10px; display: block; font-size: 18px;">Bình luận</strong>
 <div class="comment">
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">

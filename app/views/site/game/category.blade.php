@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="box">
-	<h1>{{ $categoryParent->name }} hay nhất</h1>
+	<h1><a href="{{ url('$categoryParent->slug') }}">{{ $categoryParent->name }} hay nhất</a></h1>
 	<?php
 		$games = CommonGame::boxGameByCategoryParent($categoryParent);
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
@@ -40,7 +40,7 @@
 @include('site.common.ad', array('adPosition' => CHILD_PAGE_RELATION))
 
 <div class="box">
-	<h1>{{ $categoryParent->name }} mới nhất</h1>
+	<h3>{{ $categoryParent->name }} mới nhất</h3>
 	<?php
 		$games = CommonGame::boxGameByCategoryParent($categoryParent);
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

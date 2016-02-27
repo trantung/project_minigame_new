@@ -190,14 +190,15 @@ a.highlight-item img {
     height: auto;
     max-width: 100%;
 }
-a.highlight-item p {
+a.highlight-item p,
+a.highlight-item h2 {
 	background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
     bottom: 0;
     color: #fff;
     font-size: 13px;
     font-weight: bold;
     height: 50px;
-    margin-bottom: 0;
+    margin: 0;
     padding: 10px;
     position: absolute;
     vertical-align: middle;
@@ -325,17 +326,21 @@ a.highlight-item p span {
     display: inline-block;
     vertical-align: top;
 }
-.list-text h3 {
+.list-text h3,
+.list-text h2 {
     margin-top: 0;
 }
-.list-text h3 a {
+.list-text h3 a,
+.list-text h2 a {
     color: #333;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
 }
 .list-text h3 a:hover,
-.list-text h3 a:focus {
+.list-text h3 a:focus,
+.list-text h2 a:hover,
+.list-text h2 a:focus {
 	color: #BF282D;
 }
 .list-text p {
@@ -359,9 +364,18 @@ a.highlight-item p span {
     list-style: none;
     display: inline-block;
 }
+.breadcrumb ul li b {
+    color: #333;
+}
 .breadcrumb ul li a {
     color: #BF282D;
     font-size: 13px;
+}
+.breadcrumb ul li h1 {
+    color: #BF282D;
+    font-size: 13px;
+    margin: 0;
+    display: inline-block;
 }
 .breadcrumb i.fa {
     color: #BF282D;
@@ -427,11 +441,14 @@ a.highlight-item p span {
     font-size: 12px;
     margin-bottom: 0;
 }
+.textlink h1, .textlink h2, .textlink h3,
 .textlink a,
 .textlink a:hover,
 .textlink a:focus {
     color: #fff;
+    display: inline-block;
     font-size: 13px;
+    margin: 0;
 }
 
 /*star*/
@@ -657,7 +674,8 @@ label.star:before {
     height: auto;
 }
 
-h1.title {
+h1.title,
+h2.title {
     border: medium none;
     color: #000;
     display: inline-block;
@@ -1002,6 +1020,10 @@ a.download i.fa {
     display: block;
     padding: 5px 3px;
 }
+.item-title h2 {
+    font-size: 13px;
+    margin: 0;
+}
 .item-title a {
     color: #333;
     font-size: 13px;
@@ -1118,7 +1140,8 @@ i.play {
     border-radius: 10px;
     padding: 15px 10px 10px 10px;
 }
-.playgame h3 {
+.playgame h3,
+.playgame h1 {
     color: #fff;
     font-size: 16px;
     font-weight: bold;
@@ -1225,13 +1248,16 @@ input.fullscreen {
 .topgame > h3 {
     background: #BF282D none repeat scroll 0 0;
     border-radius: 10px 10px 0 0;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
     margin-bottom: 0;
     margin-top: 0;
     padding: 10px;
     text-align: center;
+}
+.topgame > h3 > a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
 }
 .topgame ul {
     background: #fff none repeat scroll 0 0;

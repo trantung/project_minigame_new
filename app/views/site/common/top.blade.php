@@ -5,7 +5,7 @@
 		<div class="col-sm-3">
 			<div class="navbar-header">
 				<div class="logo">
-					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" /></a>
+					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" title="" /></a>
 					<p>{{ show_date_vn() }}</p>
 				</div>
 			</div>
@@ -27,13 +27,13 @@
 					}
 				?>
 				<div class="menu-account">
-					  <a href="{{ action('AccountController@account') }}" class="account-name"><img src="{{ $avatar }}" height="32" width="31" /> {{ Auth::user()->get()->user_name.Auth::user()->get()->uname.Auth::user()->get()->google_name }}</a><span>|</span>
-					  <a href="{{ action('SiteController@logout') }}" class="signout">Đăng xuất</a>
+					  <a href="{{ action('AccountController@account') }}" class="account-name" rel="noindex, nofollow"><img src="{{ $avatar }}" height="32" width="31" /> {{ Auth::user()->get()->user_name.Auth::user()->get()->uname.Auth::user()->get()->google_name }}</a><span>|</span>
+					  <a href="{{ action('SiteController@logout') }}" class="signout" rel="noindex, nofollow">Đăng xuất</a>
 				</div>
 				@else
 				<div class="menu-login">
-					<a href="{{ action('SiteController@login') }}" class="signin">Đăng nhập</a><span>|</span>
-					<a href="{{ action('AccountController@create') }}" class="signup">Đăng ký</a>
+					<a href="{{ action('SiteController@login') }}" class="signin" rel="noindex, nofollow">Đăng nhập</a><span>|</span>
+					<a href="{{ action('AccountController@create') }}" class="signup" rel="noindex, nofollow">Đăng ký</a>
 				</div>
 				@endif
 				<ul class="nav navbar-nav navbar-left">

@@ -6,13 +6,12 @@
 
 @section('content')
 
-
 <?php
 	$breadcrumb = array(
-		['name' => 'Tin tức', 'link' => ''],
+		['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
 	);
 ?>
-@include('site.common.bar', $breadcrumb)
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isNewType' => 2])
 
 <div class="row">
 	<div class="col-sm-8">
@@ -29,11 +28,11 @@
 							</a>
 						</div>
 						<div class="col-xs-8 list-text">
-							<h3>
+							<h2>
 								<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}">
 									{{ $value->title }}
 								</a>
-							</h3>
+							</h2>
 							@if(getDevice() == COMPUTER)
 								<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
 							@endif

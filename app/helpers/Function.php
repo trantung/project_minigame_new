@@ -640,3 +640,13 @@ function show_date_vn()
     // echo $day . ', ' . date('d/m/Y - h:i') . ' ' . $apm . ' (GMT +7)';
     echo $day . ', ' . date('d/m/Y | h:i') . ' GMT+7';
 }
+
+function canonical()
+{
+	if(Request::segment(1) == 'tin-tuc') {
+		$input = Input::all();
+		if(isset($input['page'])) {
+			return '<link rel="canonical" href="' . Request::url() . '" />';
+		}
+	}
+}
