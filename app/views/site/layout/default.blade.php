@@ -25,10 +25,6 @@
 
 	  	<div class="glass"></div>
 
-		@if($script)
-			{{ $script->footer_script }}
-		@endif
-
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];

@@ -16,4 +16,9 @@
 		<br/>
 		Liên hệ quảng cáo: Ms Hằng - Điện thoại: 0948 849 848.
 	</div>
+	<div class="textlink">
+	@if($script)
+		{{ $script->footer_script }}
+	@endif
+	</div>
 </div>
