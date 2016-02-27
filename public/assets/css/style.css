@@ -516,9 +516,9 @@ div.stars form {
 }
 
 a.report-error {
-    border: 2px solid #ed933b;
+    border: 2px solid #BF282D;
     border-radius: 5px;
-    color: #ed933b;
+    color: #BF282D;
     display: inline-block;
     font-size: 12px;
     font-weight: bold;
@@ -623,9 +623,9 @@ div.stars form {
 }
 
 a.report-error {
-    border: 2px solid #ed933b;
+    border: 2px solid #BF282D;
     border-radius: 5px;
-    color: #ed933b;
+    color: #BF282D;
     display: inline-block;
     font-size: 12px;
     font-weight: bold;
@@ -770,7 +770,7 @@ h2.title {
     font-size: 16px;
 }
 .charts-text span {
-    color: #ed933b;
+    color: #BF282D;
     font-size: 16px;
 }
 .charts-medal {
@@ -797,7 +797,7 @@ a.edit-password i.fa {
 
 /*download button*/
 a.download {
-    background: #ed933b none repeat scroll 0 0;
+    background: #BF282D none repeat scroll 0 0;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
