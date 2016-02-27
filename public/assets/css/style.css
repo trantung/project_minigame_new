@@ -416,6 +416,23 @@ a.highlight-item p span {
     margin-bottom: 3px;
 }
 
+.textlink {
+    background: #333333 none repeat scroll 0 0;
+    color: #fff;
+    padding-bottom: 12px;
+    padding-top: 18px;
+    text-align: center;
+}
+.textlink p {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+.textlink a,
+.textlink a:hover,
+.textlink a:focus {
+    color: #fff;
+}
+
 /*star*/
 
 .rating {
