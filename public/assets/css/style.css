@@ -419,18 +419,19 @@ a.highlight-item p span {
 .textlink {
     background: #333333 none repeat scroll 0 0;
     color: #fff;
-    padding-bottom: 12px;
-    padding-top: 18px;
+    padding-bottom: 5px;
+    padding-top: 0;
     text-align: center;
 }
 .textlink p {
     font-size: 12px;
-    margin-bottom: 3px;
+    margin-bottom: 0;
 }
 .textlink a,
 .textlink a:hover,
 .textlink a:focus {
     color: #fff;
+    font-size: 13px;
 }
 
 /*star*/
