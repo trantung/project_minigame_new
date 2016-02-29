@@ -11,7 +11,7 @@
 		['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
 	);
 ?>
-@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isNewType' => 2])
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 2])
 
 <div class="row">
 	<div class="col-sm-8">

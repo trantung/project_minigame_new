@@ -12,21 +12,17 @@
 
 <?php
 	$breadcrumb = array(
-		['name' => MINI_GAME_TITLE, 'link' => '']
+		['name' => MINI_GAME_TITLE, 'link' => action('GameController@index')]
 	);
 ?>
-@include('site.common.bar', $breadcrumb)
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
 
 <div class="minigame">
 	@foreach($menu as $key => $value)
 		<div class="box">
 			@if($value->position == CONTENT)
 
-			@if($key==0)
-				<h1><a href="{{ action('GameController@getListGamehot') }}">{{ $value->name }}</a></h1>
-			@else
-				<h3>{{ $value->name }}</h3>
-			@endif
+			<h3>{{ $value->name }}</h3>
 
 			@if($games = CommonGame::boxGameByCategoryParentIndex($value))
 				<?php $count = ceil(count($games)/PAGINATE_BOXGAME);

@@ -8,13 +8,13 @@
 
 <?php
 	$breadcrumb = array(
-		['name' => 'Game hay nhất', 'link' => '']
+		['name' => 'Game hay nhất', 'link' => action('GameController@getListGamehot')]
 	);
 ?>
-@include('site.common.bar', $breadcrumb)
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
 
 <div class="box">
-	<h1><a href="{{ action('GameController@getListGamehot') }}">Game hay nhất</a></h1>
+	<h3>Game hay nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

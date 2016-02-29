@@ -6,8 +6,15 @@
 
 @section('content')
 
+<?php
+	$breadcrumb = array(
+		['name' => 'Game Android', 'link' => action('GameController@getListGameAndroid')]
+	);
+?>
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
+
 <div class="box">
-	<h1>Game Android tải nhiều</h1>
+	<h3>Game Android tải nhiều</h3>
 	<?php
 		$games = CommonGame::getListGame('android');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
@@ -40,7 +47,7 @@
 @include('site.common.ad', array('adPosition' => CHILD_PAGE_RELATION))
 
 <div class="box">
-	<h1>Game Android mới nhất</h1>
+	<h3>Game Android mới nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('android');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

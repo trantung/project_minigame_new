@@ -6,8 +6,15 @@
 
 @section('content')
 
+<?php
+	$breadcrumb = array(
+		['name' => 'Game ' . $categoryParent->name . ' hay nhất', 'link' => url($categoryParent->slug)]
+	);
+?>
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
+
 <div class="box">
-	<h1><a href="{{ url('$categoryParent->slug') }}">{{ $categoryParent->name }} hay nhất</a></h1>
+	<h3>{{ $categoryParent->name }} hay nhất</h3>
 	<?php
 		$games = CommonGame::boxGameByCategoryParent($categoryParent);
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

@@ -6,8 +6,15 @@
 
 @section('content')
 
+<?php
+	$breadcrumb = array(
+		['name' => 'Game mới nhất', 'link' => action('GameController@getListGameplay')]
+	);
+?>
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
+
 <div class="box">
-	<h1>Game chơi nhiều nhất</h1>
+	<h3>Game chơi nhiều nhất</h3>
 	<?php
 		$games = CommonGame::getListGame('play');
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);

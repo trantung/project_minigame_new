@@ -35,16 +35,16 @@ class CommonSite
     {
         // Header & Footer
         if($modelName == null && $modelId == null) {
-            if (Cache::has('ad'.$position))
+            if (Cache::has('ad_'.$position))
             {
-                $ad = Cache::get('ad'.$position);
+                $ad = Cache::get('ad_'.$position);
             } else {
                 if($position == AD_NEW) {
                     $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->get();    
                 } else {
                     $ad = Advertise::where(array('position' => $position, 'status' => ENABLED))->first();
                 }
-                Cache::put('ad'.$position, $ad, CACHETIME);
+                Cache::put('ad_'.$position, $ad, CACHETIME);
             }
             return $ad;
         }
@@ -68,13 +68,13 @@ class CommonSite
                     Cache::put('advertisement_id'.$common_model_id, $advertisement_id, CACHETIME);
                 }
                 if($advertisement_id) {
-                    if (Cache::has('ad'.$advertisement_id))
+                    if (Cache::has('ad_'.$advertisement_id))
                     {
-                        $ad = Cache::get('ad'.$advertisement_id);
+                        $ad = Cache::get('ad_'.$advertisement_id);
                     } else {
                         $advertisement_id = AdvertisePosition::where(array('common_model_id' => $common_model_id, 'status' => ENABLED))->first()->advertisement_id;
                         $ad = Advertise::find($advertisement_id);
-                        Cache::put('ad'.$advertisement_id, $advertisement_id, CACHETIME);
+                        Cache::put('ad_'.$advertisement_id, $advertisement_id, CACHETIME);
                     }
                     return $ad;
                 }

@@ -12,7 +12,7 @@
 		['name' => $newType->name, 'link' => url($newType->slug)]
 	);
 ?>
-@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isNewType' => 1])
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
 
 <div class="row">
 	<div class="col-sm-12">
