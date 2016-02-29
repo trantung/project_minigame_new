@@ -23,11 +23,12 @@ a:focus {
 .logo p,
 .logo h1 {
 	text-align: center;
-    font-size: 10px;
+    font-size: 9px;
     margin-bottom: 0;
     margin-top: 0;
 }
 .logo a {
+    font-size: 9px;
     color: #333;
     text-decoration: none;
     display: inline-block;
