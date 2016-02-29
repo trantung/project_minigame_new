@@ -115,7 +115,6 @@
         </a>
       </li>
       @endif
-       @if(Admin::isAdmin() )
       <li class="treeview">
         <a href="#">
           <i class="fa fa-cogs"></i> <span>Cấu hình chung</span>
@@ -125,11 +124,12 @@
           @if(Admin::isAdmin())
             <li><a href="{{ action('PolicyController@index') }}"><i class="fa fa-circle-o"></i> Chính sách</a></li>
           @endif
+          @if(Admin::isAdmin() || Admin::isSeo())
           <li><a href="{{ action('SeoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý cấu hình SEO</a></li>
           <li><a href="{{ action('AdminLogoController@index') }}"><i class="fa fa-circle-o"></i> Quản lý textlink logo</a></li>
+          @endif
         </ul>
       </li>
-      @endif
       @if(Admin::isAdmin())
       <li>
         <a href="{{ action('ManagerController@index') }}">

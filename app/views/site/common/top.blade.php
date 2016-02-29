@@ -6,7 +6,11 @@
 			<div class="navbar-header">
 				<div class="logo">
 					<a href="{{ url('/') }}"><img src="{{ url('/assets/images/logo.png') }}" alt="" title="" /></a>
-					<h1>{{ $logo->text_link }}</h1>
+					@if(Request::segment(1))
+						<p>{{ $logo->text_link }}</p>
+					@else
+						<h1>{{ $logo->text_link }}</h1>
+					@endif
 				</div>
 			</div>
 		</div>
