@@ -45,13 +45,10 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-						<li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
+					<li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
 					<li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
-					<li>
-						<a href="{{ action('AdminSlideController@index') }}">
-							<i class="fa fa-picture-o"></i> <span>Quản lý Slider</span>
-						</a>
-					</li>
+		  			<li><a href="{{ action('AdminPaginateController@index') }}"><i class="fa fa-circle-o"></i> Quản lý phân trang tin</a></li>
+					<li><a href="{{ action('AdminSlideController@index') }}"><i class="fa fa-picture-o"></i> Quản lý Slider</a></li>
 				</ul>
 		    </li>
 	    @else

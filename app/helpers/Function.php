@@ -658,3 +658,13 @@ function limit_words($string, $word_limit)
     $words = explode(" ",$string);
     return implode(" ",array_splice($words,0,$word_limit));
 }
+
+function getNamePaginate($input)
+{
+	if ($input == NEW_HOT) {
+		return 'Tin đáng đọc';
+	}
+	if ($input == NEW_RELATE) {
+		return 'Tin liên quan';
+	}
+}

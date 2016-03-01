@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/gametype', 'GameTypeController');
 
 	Route::resource('/newstype', 'NewsTypeController');
+	Route::resource('/new/paginate', 'AdminPaginateController');
 
 	Route::post('/news/history/{id}', array('uses' => 'NewsController@deleteHistory', 'as' => 'admin.news.history.delete'));
 	Route::get('/news/history/{id}', array('uses' => 'NewsController@history', 'as' => 'admin.news.history'));

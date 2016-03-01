@@ -43,3 +43,28 @@ Stack trace:
 #16 F:\xampp\htdocs\gamekienthuc\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #17 F:\xampp\htdocs\gamekienthuc\public\index.php(50): Illuminate\Foundation\Application->run()
 #18 {main} [] []
+[2016-03-01 14:07:22] production.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'kienthuc'' in /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#2 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(135): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(371): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#9 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(98): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#10 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(61): Illuminate\Database\Console\Migrations\MigrateCommand->prepareDatabase()
+#11 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#12 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /Applications/MAMP/htdocs/abc_project/project_minigame_new/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /Applications/MAMP/htdocs/abc_project/project_minigame_new/artisan(59): Symfony\Component\Console\Application->run()
+#18 {main} [] []
+[2016-03-01 14:32:29] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'AdminPaginate' not found' in /Applications/MAMP/htdocs/abc_project/project_minigame_new/app/database/seeds/AdminPaginateTableSeeder.php:7
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
