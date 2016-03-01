@@ -42,14 +42,14 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<label>Vị trí</label>
+				<div class="form-group">
+					<label>Trạng thái bài đăng</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{  Form::select('position', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
+						   {{  Form::select('status', NewsManager::getNameStatusNewEdit($inputNew->user_id), $inputNew->status,array('class' => 'form-control' )) }}
 						</div>
 					</div>
-				</div> -->
+				</div>
 				<div class="form-group">
 					<label for="image_url">Ảnh đại diện</label>
 					<div class="row">

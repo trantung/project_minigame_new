@@ -2,10 +2,15 @@
 use Carbon\Carbon;
 class CommonSeo
 {
-	public static function createSeo($modelName, $modelId, $uploadFolder)
+	public static function createSeo($modelName, $modelId, $uploadFolder, $imageUrl = NULL)
 	{
 		$input = self::getInputSeo();
-		$input['image_url_fb'] = CommonSeo::uploadImage($modelId, UPLOADIMG, 'image_url_fb', $uploadFolder);
+		if ($imageUrl) {
+			$input['image_url_fb'] = $imageUrl;
+		}
+		else {
+			$input['image_url_fb'] = CommonSeo::uploadImage($modelId, UPLOADIMG, 'image_url_fb', $uploadFolder);
+		}
 		$input['model_name'] = $modelName;
 		$input['model_id'] = $modelId;
 		$id = AdminSeo::create($input)->id;
@@ -78,6 +83,8 @@ class CommonSeo
 				'header_script',
 				'status_seo'
 			);
+		$input['description_fb'] = $input['description_site'];
+		$input['title_fb'] = $input['title_site'];
 		return $input;
 	}
 
