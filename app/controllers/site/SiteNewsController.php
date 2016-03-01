@@ -91,4 +91,10 @@ class SiteNewsController extends SiteController {
 						->get();
 		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot'));
 	}
+
+	public function slideDetail($slugType, $slugNew)
+	{
+		return View::make('site.News.slideNews');
+	}
+
 }
