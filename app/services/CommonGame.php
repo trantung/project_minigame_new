@@ -80,6 +80,7 @@ class CommonGame
 		$inputGame['width'] = Input::get('width');
 		$inputGame['height'] = Input::get('height');
 		$inputGame['screen'] = Input::get('screen');
+		$inputGame['sapo'] = Input::get('sapo');
 		return $inputGame;
 	}
 

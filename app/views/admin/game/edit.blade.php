@@ -47,6 +47,11 @@
 							{{ Form::file('image_url') }}
 							<img class="image_fb" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $inputGame->image_url) }}" />
 						</div>
+						<div class="form-group">
+							<label for="">Mô tả ngắn</label>
+							 {{ Form::textarea('sapo', $inputGame->sapo , textParentCategory('Mô tả ngắn')) }}
+							
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">

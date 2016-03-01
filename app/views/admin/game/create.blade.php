@@ -40,6 +40,10 @@
 							<label>Upload avatar</label>
 							{{ Form::file('image_url') }}
 						</div>
+						<div class="form-group">
+						<label>Mô tả ngắn</label>
+						 {{ Form::textarea('sapo', null , textParentCategory('Mô tả ngắn')) }}
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
