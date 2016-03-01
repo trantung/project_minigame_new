@@ -15,6 +15,7 @@ function getRole($roleId) {
 		ADMIN => 'ADMIN',
 		EDITOR => 'EDITOR',
 		SEO => 'SEO',
+		REPORTER => 'REPORTER',
 	);
 	return $role[$roleId];
 }
@@ -26,6 +27,7 @@ function selectRoleId()
 		ADMIN => 'ADMIN',
 		EDITOR => 'EDITOR',
 		SEO => 'SEO',
+		REPORTER => 'REPORTER',
 	);
 }
 

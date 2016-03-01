@@ -477,20 +477,28 @@ class GameController extends SiteController {
     public function gameCode()
     {
     	$now = Carbon\Carbon::now();
-		$dataFirst = Game::where('status', ENABLED)
-			->where('parent_id', '=', GAMEHTML5)
-			->where('start_date', '<=', $now)
-			->orderByRaw("games.index = '0', games.index")
-    		->orderBy('start_date', 'desc')
-    		->first();
+		// $dataFirst = Game::where('status', ENABLED)
+		// 	->where('parent_id', '=', GAMEHTML5)
+		// 	->where('start_date', '<=', $now)
+		// 	->orderByRaw("games.index = '0', games.index")
+  //   		->orderBy('start_date', 'desc')
+  //   		->first();
+
+    	$dataFirst = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+							->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+							->where('type_news.status', ENABLED)
+							->where('news.start_date', '<=', $now)
+							->orderBy('news.start_date', 'desc')
+							->orderBy('news.id', 'desc')
+							->first();
     	$dataList = Game::where('status', ENABLED)
-			->where('parent_id', '=', GAMEHTML5)
-    		->whereNotIn('id', [$dataFirst->id])
-			->where('start_date', '<=', $now)
-			->orderByRaw("games.index = '0', games.index")
-    		->orderBy('start_date', 'desc')
-    		->take(4)
-    		->get();
+						->where('parent_id', '=', GAMEHTML5)
+			    		// ->whereNotIn('id', [$dataFirst->id])
+						->where('start_date', '<=', $now)
+						->orderByRaw("games.index = '0', games.index")
+			    		->orderBy('start_date', 'desc')
+			    		->take(4)
+			    		->get();
     	return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList'));
     }
 

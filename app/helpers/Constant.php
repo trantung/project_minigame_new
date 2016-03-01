@@ -18,6 +18,8 @@ define('CONTENT_SEGMENT', 'content');
 define('ADMIN', 1);
 define('EDITOR', 2);
 define('SEO', 3);
+define('REPORTER', 4);
+
 //game of parent category only
 define('GAME_OF_PARENT', 0);
 //pagination manager admin
@@ -125,7 +127,7 @@ define('PAGE_COMMENT', 5);
 define('GOOGLE_REDIRECT_URL', 'http://game.kienthuc.net.vn/login_google');
 define('GOOGLE_CLIENT_SECRET', '_qQN3_WpbX-RlWx_qt0zZUaB');
 define('GOOGLE_CLIENT_ID', '1060926121483-98np51otttt7frrl8nda3mjtq5cfuk78.apps.googleusercontent.com');
-define('TEXTLENGH', 25);
+define('TEXTLENGH', 30);
 //define total game if count = 0
 define('NO_GAME', 0);
 //define message comment
