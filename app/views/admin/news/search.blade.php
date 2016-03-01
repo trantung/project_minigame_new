@@ -13,12 +13,8 @@
 		  	{{ Form::select('sortByCountView', selectSortBy('count_view'), null, array('class' =>'form-control')) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Vị trí</label>
-			 {{  Form::select('position', ['' => '-- Mặc định', '1' => 'Bên phải'], null, array('class' => 'form-control' )) }}
-		</div>
-		<div class="input-group" style="width: 150px; display:inline-block;">
-			<label>Trạng thái Seo</label>
-			 {{  Form::select('status_seo', ['' => '-- Lựa chọn'] + selectStatusGame(), null, array('class' => 'form-control' )) }}
+			<label>Người đăng</label>
+			 {{  Form::select('user_id', ['' => '-- Lựa chọn'] + [1 => 'Admin', 2=> 'Phóng viên'], null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ ngày</label>

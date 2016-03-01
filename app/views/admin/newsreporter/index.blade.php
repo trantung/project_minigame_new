@@ -29,6 +29,7 @@
 			  <th>ID</th>
 			  <th>Tiêu đề</th>
 			  <th>Thể loại</th>
+			  <th>Trạng thái</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			 @foreach($inputNew as $value)
@@ -36,6 +37,7 @@
 			  <td>{{ $value->id }}</td>
 			  <td>{{ $value->title }}</td>
 			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
+			  <td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
 			  <td>
 			  
 				<a href="{{  action('NewsReporterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>

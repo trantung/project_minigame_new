@@ -26,13 +26,22 @@ class NewsManager
 			if ($input['position'] != '') {
 				$query = $query->where('position', $input['position']);
 			}
+			if ($input['user_id'] != '') {
+				if ($input['user_id'] == 1) {
+					// $userRole = Admin::find($userId)->role_id
+					$query = $query->where('user', $input['position']);
+				}
+				if ($input['user_id'] == 2) {
+					# code...
+				}
+			}
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
 			$data = $data->where('status', '!=', SCRATCH_PAPER)
 				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		}
 		if (Admin::isReporter()) {
-			$data = $data->where('status', '=', SCRATCH_PAPER)
+			$data = $data->whereIn('status', [SCRATCH_PAPER, BACK])
 				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		}
 		return $data;
@@ -155,5 +164,26 @@ class NewsManager
 		if ($status == BACK) {
 			return 'Trả lại bài viết';
 		}
+		if ($status == SCRATCH_PAPER) {
+			return 'Nháp';
+		}
+	}
+
+	public static function checkUserRole($userId)
+	{
+		$userRole = Admin::find($userId)->role_id;
+		if ($userRole == REPORTER) {
+			return false;
+		}
+		return true;
+	}
+
+	public static function getUserName($userId)
+	{
+		$userRole = Admin::find($userId)->role_id;
+		if ($userRole == REPORTER) {
+			return 'Phóng viên';
+		}
+		return 'Editor/Admin';
 	}
 }

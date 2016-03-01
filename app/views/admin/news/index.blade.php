@@ -32,6 +32,7 @@
 			  <th>Số lượt view</th>
 			  <th>Ngày xuất bản</th>
 			  <th>Trạng thái</th>
+			  <th>Người đăng</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			 @foreach($inputNew as $value)
@@ -42,6 +43,7 @@
 			  <td>{{ $value->count_view }}</td>
 			  <td>{{ $value->start_date }}</td>
 			  <td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
+			  <td>{{ NewsManager::getUserName($value->user_id) }}</td>
 			  <td>
 			  	@if(!Admin::isSeo())
 					<a href="{{ action('NewsController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
