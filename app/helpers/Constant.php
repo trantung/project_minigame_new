@@ -164,3 +164,10 @@ define('MINI_GAME_SLUG', 'mini-game');
 define('LIMIT_HIGHTLIGHT_PC', 3);
 define('LIMIT_HIGHTLIGHT_MOBILE', 1);
 
+// cuongnt add statust news 01/03/2016
+define('APPROVE', 1);
+define('REJECT', 2);
+define('BACK', 3);
+define('SEND', 4);
+define('SCRATCH_PAPER', 5);
+//END

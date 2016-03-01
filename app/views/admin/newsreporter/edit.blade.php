@@ -12,7 +12,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsController@update', $inputNew->id), 'method' => 'PUT', 'files' => true)) }}
+			{{ Form::open(array('action' => array('NewsReporterController@update', $inputNew->id), 'method' => 'PUT', 'files' => true)) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="title">Tiêu đề</label>
