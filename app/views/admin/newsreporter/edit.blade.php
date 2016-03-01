@@ -34,14 +34,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+			<!-- 	<div class="form-group">
 					<label>Mức ưu tiên</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('weight_number',  $inputNew->weight_number, textParentCategory('Mức ưu tiên')) }}
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- <div class="form-group">
 					<label>Vị trí</label>
 					<div class="row">
@@ -68,7 +68,7 @@
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-6">
-							 {{ Form::textarea('sapo', $inputNew->sapo , textParentCategory('Mô tả ngắn')) }}
+							 {{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'class' => 'form-control')) }}
 						</div>
 					</div>
 					</div>
@@ -92,7 +92,7 @@
 						</div>						
 					</div>
 				</div>
-				@if(!Admin::isSeo())
+				<!-- @if(!Admin::isSeo())
 				<div class="form-group">
 					<label for="start_date">Ngày xuất bản</label>
 					<div class="row">
@@ -101,7 +101,7 @@
 						</div>
 					</div>
 				</div>
-				@endif
+				@endif -->
 				<div class="row">
 					<div class="col-sm-6">
 						<hr />
