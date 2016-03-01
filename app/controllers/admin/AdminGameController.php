@@ -254,13 +254,13 @@ class AdminGameController extends AdminController {
 	{
 		$gamesId = Input::get('game_id');
 		$weightNumber = Input::get('weight_number');
-		$index = Input::get('index');
+		// $index = Input::get('index');
 		$statusGame = Input::get('statusGame');
 		$count_play = Input::get('count_play');
 		foreach($gamesId as $key => $value) {
 			$input = array(
 				'weight_number' => $weightNumber[$key],
-				'index' => $index[$key],
+				// 'index' => $index[$key],
 				'status' => $statusGame[$key],
 				'count_play' => $count_play[$key]
 				);
@@ -279,6 +279,30 @@ class AdminGameController extends AdminController {
 		$input = Input::all();
 		$data = CommonGame::searchAdminGame($input);
 		return View::make('admin.game.statistic')->with(compact('data'));
+	}
+
+	public function updateGameBoxData()
+	{
+		$gamesId = Input::get('game_id');
+		foreach($gamesId as $key => $value) {
+			$input = array(
+				'index' => ACTIVE
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+
+	public function updateIndexSelected()
+	{
+		$gamesId = Input::get('game_id');
+		foreach($gamesId as $key => $value) {
+			$input = array(
+				'index' => INACTIVE
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
 	}
 
 }

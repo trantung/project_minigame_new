@@ -57,15 +57,21 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/games/statistic', 'AdminGameController@statisticGame');
 	Route::post('/games/deleteSelected', 'AdminGameController@deleteSelected');
 	Route::post('/games/updateIndexData', 'AdminGameController@updateIndexData');
+	Route::post('/games/updateGameBoxData', 'AdminGameController@updateGameBoxData');
+	Route::post('/games/updateIndexSelected', 'AdminGameController@updateIndexSelected');
 	Route::get('/games/search', array('uses' => 'AdminGameController@search', 'as' => 'admin.games.search'));
 	Route::get('/games/history/{id}', array('uses' => 'AdminGameController@history', 'as' => 'admin.games.history'));
 	Route::post('/games/history/{id}', array('uses' => 'AdminGameController@deleteHistory', 'as' => 'admin.games.history.delete'));
 	Route::resource('/games', 'AdminGameController');
 
+	Route::get('/gamebox/remove/{id}', 'AdminGameBoxController@remove');
+	Route::resource('/gamebox', 'AdminGameBoxController');
+
 	Route::get('/gametype/search', array('uses' => 'GameTypeController@search', 'as' => 'admin.gametype.search'));
 	Route::resource('/gametype', 'GameTypeController');
 
 	Route::resource('/newstype', 'NewsTypeController');
+	Route::resource('/new/paginate', 'AdminPaginateController');
 
 	Route::post('/news/history/{id}', array('uses' => 'NewsController@deleteHistory', 'as' => 'admin.news.history.delete'));
 	Route::get('/news/history/{id}', array('uses' => 'NewsController@history', 'as' => 'admin.news.history'));

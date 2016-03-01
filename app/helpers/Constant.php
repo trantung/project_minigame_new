@@ -171,3 +171,8 @@ define('BACK', 3);
 define('SEND', 4);
 define('SCRATCH_PAPER', 5);
 //END
+//tin đáng đọc: status = 1
+define('NEW_HOT', 1);
+//tin liên quan: status = 2
+define('NEW_RELATE', 2);
+

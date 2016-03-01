@@ -64,6 +64,10 @@ class SiteNewsController extends SiteController {
 
 	public function showDetail($slugType, $slugNew)
 	{
+		$limitHot = AdminPagination::where('status', NEW_HOT)
+			->first();
+		$limitRelate = AdminPagination::where('status', NEW_RELATE)
+			->first();
 		$now = date('Y-m-d');
 		$newType = TypeNew::findBySlug($slugType);
 		$inputNew = AdminNew::findBySlug($slugNew);
@@ -75,7 +79,7 @@ class SiteNewsController extends SiteController {
 							->where('type_new_id', $inputNew->type_new_id)
 							->where('start_date', '<=', $now)
 							->orderBy(DB::raw('RAND()'))
-							->limit(PAGINATE_RELATED)
+							->limit($limitRelate->paginate_number)
 							->get();
 		$inputHot = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 						->select('news.*')
@@ -83,7 +87,7 @@ class SiteNewsController extends SiteController {
 						->where('type_new_id', $inputNew->type_new_id)
 						->where('start_date', '<=', $now)
 						->orderBy('count_view', 'desc')
-						->limit(PAGINATE_RELATED)
+						->limit($limitHot->paginate_number)
 						->get();
 		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot'));
 	}
