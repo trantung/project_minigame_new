@@ -65,6 +65,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="sapo">Mô tả ngắn</label>
+					<div class="row">
+						<div class="col-sm-6">
+							 {{ Form::textarea('sapo', $inputNew->sapo , textParentCategory('Mô tả ngắn')) }}
+						</div>
+					</div>
+					</div>
+				<div class="form-group">
 					<label for="description">Nội dung tin</label>
 					<div class="row">
 						<div class="col-sm-12">	 
