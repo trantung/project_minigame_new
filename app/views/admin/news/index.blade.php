@@ -31,7 +31,7 @@
 			  <th>Thể loại</th>
 			  <th>Số lượt view</th>
 			  <th>Ngày xuất bản</th>
-			  <th>Trạng thái Seo</th>
+			  <th>Trạng thái</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			 @foreach($inputNew as $value)
@@ -41,7 +41,7 @@
 			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>{{ $value->count_view }}</td>
 			  <td>{{ $value->start_date }}</td>
-			  <td>{{ getStatusSeoParent($value, 'AdminNew') }}</td>
+			  <td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
 			  <td>
 			  	@if(!Admin::isSeo())
 					<a href="{{ action('NewsController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>

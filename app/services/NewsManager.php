@@ -18,17 +18,23 @@ class NewsManager
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-			if($input['status_seo'] != '')
-			{
-				$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
-                $query = $query->whereIn('id', $listSeo);
-			}
+			// if($input['status_seo'] != '')
+			// {
+			// 	$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
+   //              $query = $query->whereIn('id', $listSeo);
+			// }
 			if ($input['position'] != '') {
 				$query = $query->where('position', $input['position']);
 			}
-
-
-		})->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+		});
+		if (Admin::isAdmin() || Admin::isEditor()) {
+			$data = $data->where('status', '!=', SCRATCH_PAPER)
+				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+		}
+		if (Admin::isReporter()) {
+			$data = $data->where('status', '=', SCRATCH_PAPER)
+				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+		}
 		return $data;
 	}
 	public static function searchAdminGameSortBy($input)
@@ -111,14 +117,43 @@ class NewsManager
 			return $array;
 		}
 	}
-	public static function getNameStatusReport()
+	public static function getNameStatusNewCreate()
 	{
-		$array = array(
-			SEND => 'Chưa phê duyệt',
-			APPROVE => 'Phê duyệt',
-			REJECT => 'Hủy',
-			BACK => 'Gửi lại PV',
-		);
-		return $array;
+		if (Admin::isAdmin() || Admin::isEditor()) {
+			$array = array(
+				APPROVE => 'Đăng bài',
+				NO_APPROVE => 'Chưa đăng bài'
+			);
+			return $array;
+		} else {
+			$array = array(
+				SEND => 'Gửi đi',
+				SCRATCH_PAPER => 'Lưu tin',
+			);
+			return $array;
+		}
+	}
+	public static function getNameStatusIndex($status, $userId)
+	{
+		$userRole = Admin::find($userId)->role_id;
+		if ($status == APPROVE) {
+			if (in_array($userRole, [ADMIN, EDITOR])) {
+				return 'Đăng bài';
+			} else {
+				return 'Đã phê duyệt';
+			}
+		}
+		if ($status == NO_APPROVE) {
+			return 'Chưa đăng bài';
+		}
+		if ($status == SEND) {
+			return 'Chờ phê duyệt';
+		}
+		if ($status == REJECT) {
+			return 'Huỷ';
+		}
+		if ($status == BACK) {
+			return 'Trả lại bài viết';
+		}
 	}
 }
