@@ -9,8 +9,8 @@ class NewsController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputNew = AdminNew::orderBy('id', 'desc')->paginate(PAGINATE);
-
+		$inputNew = AdminNew::where('status', '!=', SCRATCH_PAPER)
+			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
 	public function search()
