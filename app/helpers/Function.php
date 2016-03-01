@@ -684,3 +684,12 @@ function getNamePaginate($input)
 		return 'Tin liên quan';
 	}
 }
+
+function getSapo($description, $sapo, $textlengh = TEXTLENGH_DESCRIPTION)
+{
+	if($sapo == '') {
+		return limit_text(strip_tags($description), $textlengh);
+	} else {
+		return limit_text(strip_tags($sapo), $textlengh);
+	}
+}

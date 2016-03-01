@@ -153,7 +153,7 @@
 						</a>
 						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">{{ limit_text($dataFirst->title, TEXTLENGH) }}</a></strong>
 						<p>
-							{{ limit_text(strip_tags($dataFirst->description), TEXTLENGH_DESCRIPTION) }}
+							{{ getSapo($dataFirst->description, $dataFirst->sapo) }}
 						</p>
 					@endif
 				</div>
@@ -171,7 +171,7 @@
 						<div class="col-xs-8 kt-boxgame-right-text">
 							<strong><a href="{{ $url }}" target="_top">{{ limit_text($value->name, TEXTLENGH) }}</a></strong>
 							<p>
-								{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION_CODE) }}
+								{{ getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) }}
 							</p>
 						</div>
 					</div>

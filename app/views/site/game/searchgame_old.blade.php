@@ -30,7 +30,7 @@
 					@else
 						<span>{{ getZero($value->count_play) }} lượt chơi</span>
 					@endif
-					<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
+					<p>{{ getSapo($value->description, $value->sapo) }}</p>
 				</div>
 			</div>
 		@endforeach
