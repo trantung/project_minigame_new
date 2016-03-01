@@ -674,6 +674,7 @@ function selectStatusNews()
 			SEND => 'Gửi tin',
 			SCRATCH_PAPER => 'Lưu nháp',
 		);
+}
 function getNamePaginate($input)
 {
 	if ($input == NEW_HOT) {
