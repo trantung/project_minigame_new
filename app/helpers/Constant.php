@@ -18,6 +18,7 @@ define('CONTENT_SEGMENT', 'content');
 define('ADMIN', 1);
 define('EDITOR', 2);
 define('SEO', 3);
+define('REPORTER', 4);
 //game of parent category only
 define('GAME_OF_PARENT', 0);
 //pagination manager admin
