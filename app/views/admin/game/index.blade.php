@@ -18,6 +18,7 @@
 		<a href="{{ action('AdminGameController@create') }}" class="btn btn-primary">Thêm game</a>
 		<a onclick="deleteSelected();" class="btn btn-primary">Xóa</a>
 		<a onclick="updateIndexData();" class="btn btn-success">Cập nhật</a>
+		<a onclick="updateGameBoxData();" class="btn btn-success">Thêm vào box game nhúng</a>
 	</div>
 </div>
 @endif
@@ -47,12 +48,12 @@
 				<th>ID</th>
 				<th>Tên game</th>
 				<th>Mức ưu tiên</th>
-				<th>Index</th>
+				<!-- <th>Index</th> -->
 				<th>Category</th>
 				<th>Lượt chơi</th>
 				<th>Trạng thái</th>
 				<th>Ngày đăng</th>
-				<th>Trạng thái Seo</th>
+				<!-- <th>Trạng thái Seo</th> -->
 				<th style="width:200px;">&nbsp;</th>
 			</tr>
 			@foreach($data as $key => $value)
@@ -67,11 +68,11 @@
 					@else
 					<td>{{ getZero($value->weight_number) }}</td>
 					@endif
-					@if(!Admin::isSeo())
-					<td><input type="text" name="index[]" value="{{ getZero($value->index) }}" class="only_number" style="width: 50px; text-align: center;" /></td>
-					@else
-					<td>{{ getZero($value->index) }}</td>
-					@endif
+					<!-- @if(!Admin::isSeo()) -->
+					<!-- <td><input type="text" name="index[]" value="{{-- getZero($value->index) --}}" class="only_number" style="width: 50px; text-align: center;" /></td> -->
+					<!-- @else -->
+					<!-- <td>{{-- getZero($value->index) --}}</td> -->
+					<!-- @endif -->
 					@if($value->type_main)
 						<td>{{ Game::find($value->parent_id)->name.'-'.Type::find($value->type_main)->name }}</td>
 					@else
@@ -94,7 +95,7 @@
 						{{$value->start_date}}
 					@endif
 					</td>
-					<td>{{ getStatusSeoParent($value, 'Game') }}</td>
+					<!-- <td>{{-- getStatusSeoParent($value, 'Game') --}}</td> -->
 					<td>
 						@if(Admin::isAdmin())
 							<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>

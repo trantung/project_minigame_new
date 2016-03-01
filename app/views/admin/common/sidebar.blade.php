@@ -36,6 +36,11 @@
 					<i class="fa fa-gamepad"></i> <span>Quản lý Game</span>
 				</a>
 			</li>
+			<li>
+				<a href="{{ action('AdminGameBoxController@index') }}">
+					<i class="fa fa-gamepad"></i> <span>Quản lý Game Box nhúng</span>
+				</a>
+			</li>
 	  	@endif
 
 		@if(Admin::isAdmin() || Admin::isEditor())
