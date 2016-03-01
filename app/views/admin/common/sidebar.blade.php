@@ -56,9 +56,10 @@
 					<li><a href="{{ action('AdminSlideController@index') }}"><i class="fa fa-picture-o"></i> Quản lý Slider</a></li>
 				</ul>
 		    </li>
-	    @else
+	    @elseif(Admin::isSeo())
 	    	<li><a href="{{ action('NewsController@index') }}"><i class="fa fa-list"></i> Quản lý tin</a></li>
-	    	<li><a href="{{ action('NewsReporterController@index') }}"><i class="fa fa-list"></i> Quản lý tin1</a></li>
+	    @else
+	    	<li><a href="{{ action('NewsReporterController@index') }}"><i class="fa fa-list"></i> Quản lý tin</a></li>
 	    @endif
 
 	  @if(Admin::isAdmin() || Admin::isEditor())

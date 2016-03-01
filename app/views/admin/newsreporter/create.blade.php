@@ -22,14 +22,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="start_date">Ngày xuất bản</label>
 						<div class="row">
 							<div class="col-sm-6">
 							   <input type="text" class="form-control" name="start_date" id="start_date">
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="name">Chuyên mục tin</label>
 						<div class="row">
@@ -38,14 +38,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>Mức ưu tiên</label>
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- <div class="form-group">
 						<label>Vị trí</label>
 						<div class="row">

@@ -237,18 +237,29 @@ class CommonSearch
 
 	public static function searchNewsReporter($input, $paginate = null)
 	{
-		$data = AdminNew::where('status', SCRATCH_PAPER);
-		if($input['title'] != '') 
-				$data = $data->where('title', 'like', '%'.$input['title'].'%');
-		if($input['type_new_id'])
-			$data = $data->where('type_new_id', $input['type_new_id']);
-		
-		if(!$paginate) {
-			$data = $data->limit(SEARCHLIMIT)
-				->get();
-		} else {
-			$data = $data->paginate(SEARCH_PAGINATE);
-		}
+
+		// $data = AdminNew::where('status', SCRATCH_PAPER);
+		// if($input['title'] != ''){
+		// 		$data = $data->where('title', 'like', '%'.$input['title'].'%');
+		// }
+		// if($input['type_new_id'] != '0'){
+
+		// 	dd();
+		// 	$data = $data->where('type_new_id', $input['type_new_id'])->paginate(PAGINATE);
+		// }
+
+		$data = AdminNew::where(function ($query) use ($input)
+		{
+			$query = $query->where('status', SCRATCH_PAPER);
+			if($input['title'] != '') {
+				$query = $query->where('title', 'like', '%'.$input['title'].'%');
+			}
+			if ($input['type_new_id'] != '0') {
+				$query = $query->where('type_new_id', $input['type_new_id']);
+			}
+			
+		})->orderBy('id', 'desc')->paginate(PAGINATE);
+
 		return $data;
 	}
 

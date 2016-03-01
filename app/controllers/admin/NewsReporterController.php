@@ -39,8 +39,7 @@ class NewsReporterController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'title' => 'required',
-			'weight_number' => 'numeric|min:1'
+			'title' => 'required'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -50,7 +49,7 @@ class NewsReporterController extends AdminController {
 				->withInput(Input::except('name'));
 		} else {
 			//create news
-			$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo','status');
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',  'position','sapo','status');
 			if($inputNews['start_date'] == '') {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
@@ -109,8 +108,7 @@ class NewsReporterController extends AdminController {
 	{
 		if(!Admin::isSeo()){
 			$rules = array(
-				'title'   => 'required',
-				'weight_number' => 'numeric|min:1'
+				'title'   => 'required'
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
@@ -120,7 +118,7 @@ class NewsReporterController extends AdminController {
 					->withInput(Input::except('name'));
 			} else {
 				//update News
-				$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo','status');
+				$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo','status');
 
 				if($inputNews['start_date'] == '') {
 					$inputNews['start_date'] = Carbon\Carbon::now();
