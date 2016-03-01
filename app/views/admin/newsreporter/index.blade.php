@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<!-- @include('admin.news.search') -->
+@include('admin.newsreporter.search')
 <!-- inclue Search form 
 
 -->
@@ -28,16 +28,16 @@
 			<tr>
 			  <th>ID</th>
 			  <th>Tiêu đề</th>
+			  <th>Thể loại</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			 @foreach($inputNew as $value)
 			<tr>
 			  <td>{{ $value->id }}</td>
 			  <td>{{ $value->title }}</td>
+			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>
-			  	@if(!Admin::isSeo())
-					<a href="{{ action('NewsReporterController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
-				@endif
+			  
 				<a href="{{  action('NewsReporterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 				@if(!Admin::isSeo())
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsReporterController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

@@ -235,6 +235,23 @@ class CommonSearch
 		return $data;
 	}
 
+	public static function searchNewsReporter($input, $paginate = null)
+	{
+		$data = AdminNew::where('status', SCRATCH_PAPER);
+		if($input['title'] != '') 
+				$data = $data->where('title', 'like', '%'.$input['title'].'%');
+		if($input['type_new_id'])
+			$data = $data->where('type_new_id', $input['type_new_id']);
+		
+		if(!$paginate) {
+			$data = $data->limit(SEARCHLIMIT)
+				->get();
+		} else {
+			$data = $data->paginate(SEARCH_PAGINATE);
+		}
+		return $data;
+	}
+
 	public static function countNew($input)
 	{
 		foreach ($input as $key => $value) {

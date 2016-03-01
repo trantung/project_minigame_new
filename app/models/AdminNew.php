@@ -12,7 +12,7 @@ class AdminNew extends Eloquent implements SluggableInterface
 	use SluggableTrait;
     protected $table = 'news';
     protected $fillable = ['type_new_id', 'title', 'description',
-    	'image_url', 'start_date', 'slug', 'count_view', 'position', 'weight_number', 'sapo'];
+    	'image_url', 'start_date', 'slug', 'count_view', 'position', 'weight_number', 'sapo', 'status'];
     protected $dates = ['deleted_at'];
 
     protected $sluggable = array(

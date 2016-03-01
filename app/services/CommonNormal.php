@@ -87,7 +87,7 @@ class CommonNormal
 			return 'AdminError';
 		if($name == 'AdminErrorLog')
 			return 'AdminErrorLog';
-		if($name == 'newsreport')
+		if($name == 'newsreporter')
 			return 'AdminNew';
 	}
 }

@@ -10,6 +10,8 @@ class NewsController extends AdminController {
 	public function index()
 	{
 		$inputNew = AdminNew::where('status', '!=', SCRATCH_PAPER)
+			->where('status', '!=', REJECT)
+			->where('status', '!=', BACK)
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
@@ -128,7 +130,8 @@ class NewsController extends AdminController {
 		            ->withInput(Input::except('name'));
 	        } else {
 	        	//update News
-	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo');
+	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
+	        		'weight_number', 'position', 'sapo', 'status');
 	        	if($inputNews['start_date'] == '') {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}

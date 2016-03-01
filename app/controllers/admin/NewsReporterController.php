@@ -13,7 +13,12 @@ class NewsReporterController extends AdminController {
 
 		return View::make('admin.newsreporter.index')->with(compact('inputNew'));
 	}
-
+	public function search()
+	{
+		$input = Input::all();
+		$inputNew = CommonSearch::searchNewsReporter($input);
+		return View::make('admin.newsreporter.index')->with(compact('inputNew'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.

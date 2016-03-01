@@ -83,7 +83,7 @@
 						<label for="name">Chọn trạng thái tin </label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('status', selectStatusNews(),null,array('class' => 'form-control' )) }}
+							   {{  Form::select('status', NewsManager::getNameStatusNewCreate(),null,array('class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>
