@@ -166,7 +166,8 @@ define('LIMIT_HIGHTLIGHT_MOBILE', 1);
 
 // cuongnt add statust news 01/03/2016
 define('APPROVE', 1);
-define('REJECT', 2);
+define('NO_APPROVE', 2);
+define('REJECT', 6);
 define('BACK', 3);
 define('SEND', 4);
 define('SCRATCH_PAPER', 5);

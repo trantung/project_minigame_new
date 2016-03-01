@@ -54,7 +54,7 @@
 					<label>Trạng thái bài đăng</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{  Form::select('status', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
+						   {{  Form::select('status', NewsManager::getNameStatusNewEdit($inputNew->user_id), $inputNew->status,array('class' => 'form-control' )) }}
 						</div>
 					</div>
 				</div>
@@ -90,14 +90,6 @@
 						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1', 'disabled' =>'true'  )) }}
 						   	@endif
 						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="status">Chọn trạng thái tin</label>
-					<div class="row">
-						<div class="col-sm-6">
-							 {{  Form::select('status', selectStatusNews(),$inputNew->status ,array('class' => 'form-control' )) }}
-						</div>						
 					</div>
 				</div>
 				@if(!Admin::isSeo())

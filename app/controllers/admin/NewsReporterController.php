@@ -13,7 +13,12 @@ class NewsReporterController extends AdminController {
 
 		return View::make('admin.newsreporter.index')->with(compact('inputNew'));
 	}
-
+	public function search()
+	{
+		$input = Input::all();
+		$inputNew = CommonSearch::searchNewsReporter($input);
+		return View::make('admin.newsreporter.index')->with(compact('inputNew'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -34,8 +39,7 @@ class NewsReporterController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'title' => 'required',
-			'weight_number' => 'numeric|min:1'
+			'title' => 'required'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -45,10 +49,11 @@ class NewsReporterController extends AdminController {
 				->withInput(Input::except('name'));
 		} else {
 			//create news
-			$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo','status');
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',  'position','sapo','status');
 			if($inputNews['start_date'] == '') {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
+			$inputNews['user_id'] = Auth::admin()->get()->id;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
@@ -104,8 +109,7 @@ class NewsReporterController extends AdminController {
 	{
 		if(!Admin::isSeo()){
 			$rules = array(
-				'title'   => 'required',
-				'weight_number' => 'numeric|min:1'
+				'title'   => 'required'
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
@@ -115,11 +119,12 @@ class NewsReporterController extends AdminController {
 					->withInput(Input::except('name'));
 			} else {
 				//update News
-				$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo','status');
+				$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo','status');
 
 				if($inputNews['start_date'] == '') {
 					$inputNews['start_date'] = Carbon\Carbon::now();
 				}
+				$inputNews['user_id'] = Auth::admin()->get()->id;
 				CommonNormal::update($id, $inputNews);
 
 				//update upload image
