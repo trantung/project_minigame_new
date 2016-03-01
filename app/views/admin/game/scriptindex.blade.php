@@ -38,9 +38,9 @@
 		  	return this.value;
 		}).get();
 
-		var values5 = $('input[name^="index"]').map(function () {
-		  	return this.value;
-		}).get();
+		// var values5 = $('input[name^="index"]').map(function () {
+		//   	return this.value;
+		// }).get();
 		
 		$.ajax(
 		{
@@ -51,7 +51,30 @@
 				'weight_number': values2,
 				'statusGame': values3,
 				'count_play': values4,
-				'index': values5,
+				// 'index': values5,
+			},
+			success: function(data)
+			{
+				if(data) {
+					window.location.reload();
+				}
+			}
+		});
+		// window.location.reload();
+	}
+
+	function updateGameBoxData()
+	{
+		var values1 = $('input:checkbox:checked.game_id').map(function () {
+		  	return this.value;
+		}).get();
+		
+		$.ajax(
+		{
+			type:'post',
+			url: '{{ url("/admin/games/updateGameBoxData") }}',
+			data:{
+				'game_id': values1
 			},
 			success: function(data)
 			{
