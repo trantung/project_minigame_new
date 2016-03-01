@@ -15,7 +15,11 @@ function getRole($roleId) {
 		ADMIN => 'ADMIN',
 		EDITOR => 'EDITOR',
 		SEO => 'SEO',
+<<<<<<< HEAD
 		REPORTER => 'REPORTER'
+=======
+		REPORTER => 'REPORTER',
+>>>>>>> b803a8f9a9e3c061333dde62cdb63a25b11095b4
 	);
 	return $role[$roleId];
 }
@@ -27,7 +31,11 @@ function selectRoleId()
 		ADMIN => 'ADMIN',
 		EDITOR => 'EDITOR',
 		SEO => 'SEO',
+<<<<<<< HEAD
 		REPORTER => 'REPORTER'
+=======
+		REPORTER => 'REPORTER',
+>>>>>>> b803a8f9a9e3c061333dde62cdb63a25b11095b4
 	);
 }
 

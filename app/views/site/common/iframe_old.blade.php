@@ -148,10 +148,11 @@
 			<div class="col-xs-6">
 				<div class="kt-boxgame-left">
 					@if(!empty($dataFirst))
-						<a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">
-							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
+						<?php $url = CommonGame::getUrlGame($dataFirst); ?>
+						<a href="{{ $url }}" target="_top">
+							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $dataFirst->image_url) }}" alt="{{ $dataFirst->name }}" />
 						</a>
-						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">{{ limit_text($dataFirst->title, TEXTLENGH) }}</a></strong>
+						<strong><a href="{{ $url }}" target="_top">{{ limit_text($dataFirst->name, TEXTLENGH) }}</a></strong>
 						<p>
 							{{ limit_text(strip_tags($dataFirst->description), TEXTLENGH_DESCRIPTION) }}
 						</p>
