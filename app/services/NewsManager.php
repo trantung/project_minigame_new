@@ -92,5 +92,33 @@ class NewsManager
 				->get();
 		return $data;
 	}
-
+	public static function getNameStatusNewEdit($userId)
+	{
+		$userRole = Admin::find($userId)->role_id;
+		if (in_array($userRole, [ADMIN, EDITOR])) {
+			$array = array(
+				APPROVE => 'Đăng bài',
+				NO_APPROVE => 'Chưa đăng bài'
+			);
+			return $array;
+		} else {
+			$array = array(
+				SEND => 'Chưa phê duyệt',
+				APPROVE => 'Phê duyệt',
+				REJECT => 'Hủy',
+				BACK => 'Gửi lại PV',
+			);
+			return $array;
+		}
+	}
+	public static function getNameStatusReport()
+	{
+		$array = array(
+			SEND => 'Chưa phê duyệt',
+			APPROVE => 'Phê duyệt',
+			REJECT => 'Hủy',
+			BACK => 'Gửi lại PV',
+		);
+		return $array;
+	}
 }
