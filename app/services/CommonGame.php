@@ -307,7 +307,7 @@ class CommonGame
 						->join('types', 'types.id', '=', 'games.type_main')
 						->join('games as category', 'category.id', '=', 'games.parent_id')
 						->select('games.id', 'games.name', 'games.slug'
-								, 'games.parent_id', 'games.type_main', 'games.image_url'
+								, 'games.parent_id', 'games.type_main', 'games.image_url', 'games.sapo'
 								, 'types.name as type_name', 'types.slug as type_slug'
 								, 'category.slug as category_slug')
 						->distinct()
@@ -338,7 +338,7 @@ class CommonGame
 						->join('types', 'types.id', '=', 'games.type_main')
 						->join('games as category', 'category.id', '=', 'games.parent_id')
 						->select('games.id', 'games.name', 'games.slug'
-								, 'games.parent_id', 'games.type_main', 'games.image_url'
+								, 'games.parent_id', 'games.type_main', 'games.image_url', 'games.sapo'
 								, 'types.name as type_name', 'types.slug as type_slug', 'games.count_play', 'category.slug as category_slug')
 						->distinct()
 						->where('games.parent_id', $game->id)
@@ -350,7 +350,7 @@ class CommonGame
 						$listGame = DB::table('games')
 						->join('games as category', 'category.id', '=', 'games.parent_id')
 						->select('games.id', 'games.name', 'games.slug'
-								, 'games.parent_id', 'games.image_url'
+								, 'games.parent_id', 'games.image_url', 'games.sapo'
 								, 'games.count_play', 'category.slug as category_slug')
 						->distinct()
 						->where('games.parent_id', $game->id)

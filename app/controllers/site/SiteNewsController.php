@@ -16,7 +16,7 @@ class SiteNewsController extends SiteController {
 	{
 		$limit = $this->getNumberGamesDevice();
 		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
-			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->orderBy('news.start_date', 'desc')
@@ -24,7 +24,7 @@ class SiteNewsController extends SiteController {
 			->limit($limit)
 			->lists('id');
 		$inputListNews = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
-			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->whereNotIn('news.id', $list)
@@ -41,7 +41,7 @@ class SiteNewsController extends SiteController {
 		$limit = $this->getNumberGamesDevice();
 		$newType = TypeNew::findBySlug($slug);
 		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
-			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url')
+			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->where('type_new_id', $newType->id)

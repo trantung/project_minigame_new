@@ -37,3 +37,35 @@ Stack trace:
 #34 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #35 D:\web\minigame\public\index.php(50): Illuminate\Foundation\Application->run()
 #36 {main} [] []
+[2016-03-01 14:57:32] production.ERROR: exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:47
+Stack trace:
+#0 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php(47): PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Connectors\MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=loca...', Array, Array)
+#2 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Connectors\ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Connectors\ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Migrations\DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Migrations\DatabaseMigrationRepository.php(135): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php(371): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#9 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php(98): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#10 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php(61): Illuminate\Database\Console\Migrations\MigrateCommand->prepareDatabase()
+#11 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Console\Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#12 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Command\Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Console\Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 D:\web\minigame\artisan(59): Symfony\Component\Console\Application->run()
+#18 {main} [] []
+[2016-03-01 14:58:01] production.ERROR: exception 'RuntimeException' with message 'Too many arguments.' in D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Input\ArgvInput.php:181
+Stack trace:
+#0 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Input\ArgvInput.php(90): Symfony\Component\Console\Input\ArgvInput->parseArgument('\x97class=AdminPag...')
+#1 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Input\Input.php(61): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Command\Command.php(225): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Console\Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 D:\web\minigame\vendor\symfony\console\Symfony\Component\Console\Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 D:\web\minigame\artisan(59): Symfony\Component\Console\Application->run()
+#8 {main} [] []

@@ -35,7 +35,7 @@
 									</a>
 								</h3>
 								@if(getDevice() == COMPUTER)
-									<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
+									<p>{{ getSapo($value->description, $value->sapo) }}</p>
 								@endif
 							</div>
 						</div>
@@ -68,7 +68,7 @@
 									<span>{{ getZero($value->count_play) }} lượt chơi</span>
 								@endif
 								@if(getDevice() == COMPUTER)
-									<p>{{ limit_text(strip_tags($value->description), TEXTLENGH_DESCRIPTION) }}</p>
+									<p>{{ getSapo($value->description, $value->sapo) }}</p>
 								@endif
 							</div>
 						</div>
