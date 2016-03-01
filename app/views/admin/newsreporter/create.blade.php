@@ -6,13 +6,13 @@
 
 @section('content')
 
-@include('admin.news.common')
+@include('admin.newsreporter.common')
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsController@store'), 'files'=> true)) }}
+			{{ Form::open(array('action' => array('NewsReporterController@store'), 'files'=> true)) }}
 				<div class="box-body">
 					<div class="form-group">
 						<label for="title">Tiêu đề</label>

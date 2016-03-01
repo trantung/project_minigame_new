@@ -12,7 +12,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsController@update', $inputNew->id), 'method' => 'PUT', 'files' => true)) }}
+			{{ Form::open(array('action' => array('NewsReporterController@update', $inputNew->id), 'method' => 'PUT', 'files' => true)) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="title">Tiêu đề</label>
@@ -50,14 +50,6 @@
 						</div>
 					</div>
 				</div> -->
-				<div class="form-group">
-					<label>Trạng thái bài đăng</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{  Form::select('status', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
-						</div>
-					</div>
-				</div>
 				<div class="form-group">
 					<label for="image_url">Ảnh đại diện</label>
 					<div class="row">

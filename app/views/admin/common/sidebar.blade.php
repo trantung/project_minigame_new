@@ -58,6 +58,7 @@
 		    </li>
 	    @else
 	    	<li><a href="{{ action('NewsController@index') }}"><i class="fa fa-list"></i> Quản lý tin</a></li>
+	    	<li><a href="{{ action('NewsReporterController@index') }}"><i class="fa fa-list"></i> Quản lý tin1</a></li>
 	    @endif
 
 	  @if(Admin::isAdmin() || Admin::isEditor())
