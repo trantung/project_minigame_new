@@ -495,6 +495,7 @@ class GameController extends SiteController {
 						->where('parent_id', '=', GAMEHTML5)
 			    		// ->whereNotIn('id', [$dataFirst->id])
 						->where('start_date', '<=', $now)
+						->where('index', ACTIVE)
 						->orderByRaw("games.index = '0', games.index")
 			    		->orderBy('start_date', 'desc')
 			    		->take(4)
