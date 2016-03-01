@@ -164,3 +164,8 @@ define('MINI_GAME_SLUG', 'mini-game');
 define('LIMIT_HIGHTLIGHT_PC', 3);
 define('LIMIT_HIGHTLIGHT_MOBILE', 1);
 
+//tin đáng đọc: status = 1
+define('NEW_HOT', 1);
+//tin liên quan: status = 2
+define('NEW_RELATE', 2);
+
