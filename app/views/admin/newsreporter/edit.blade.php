@@ -51,7 +51,7 @@
 					</div>
 				</div> -->
 				<div class="form-group">
-					<label for="image_url">Ảnh đại diện</label>
+					<label for="image_url">Ảnh đại diện(640x410)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							@if(Admin::isSeo())         
@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="sapo">Mô tả ngắn</label>
+					<label for="sapo">Thêm Sapo</label>
 					<div class="row">
 						<div class="col-sm-6">
 							 {{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'class' => 'form-control')) }}

@@ -53,6 +53,7 @@ class NewsReporterController extends AdminController {
 			if($inputNews['start_date'] == '') {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
+			$inputNews['user_id'] = Auth::admin()->get()->id;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
@@ -123,6 +124,7 @@ class NewsReporterController extends AdminController {
 				if($inputNews['start_date'] == '') {
 					$inputNews['start_date'] = Carbon\Carbon::now();
 				}
+				$inputNews['user_id'] = Auth::admin()->get()->id;
 				CommonNormal::update($id, $inputNews);
 
 				//update upload image
