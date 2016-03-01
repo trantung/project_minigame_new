@@ -4,10 +4,6 @@
 	<label for="metaname"><u>Thẻ meta</u></label>
 	<div class="box-body">
 		<div class="form-group">
-			<label for="status_seo">Trạng thái</label>
-			{{ Form::select('status_seo', [INACTIVE => 'Chưa kích hoạt', ACTIVE => 'Kích hoạt'], $inputSeo->status_seo, array('class' => 'form-control')) }}
-		</div>
-		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
 			{{ Form::text('title_site', $inputSeo->title_site, textParentCategory('Thẻ title', true)) }}
 		</div>
@@ -19,7 +15,7 @@
 			<label for="keyword_site">Thẻ Keyword</label>
 			{{ Form::text('keyword_site', $inputSeo->keyword_site, textParentCategory('Thẻ Keyword', true)) }}
 		</div>
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label for="title_fb">Thẻ title facebook</label>
 			{{ Form::text('title_fb', $inputSeo->title_fb, textParentCategory('Thẻ facebook', true)) }}
 		</div>
@@ -36,7 +32,7 @@
 		</div>
 		<div class="form-group">
 			<label for="image_url_fb">{{ $inputSeo->image_url_fb }}</label>
-		</div>
+		</div> -->
 	</div>
 </div>
 @else
@@ -44,10 +40,6 @@
 <div class="form-group">
 	<label for="metaname"><u>Thẻ meta</u></label>
 	<div class="box-body">
-		<div class="form-group">
-			<label for="status_seo">Trạng thái</label>
-			{{ Form::select('status_seo', [0 => 'Chưa kích hoạt', 1 => 'Kích hoạt'], null, array('class' => 'form-control')) }}
-		</div>
 		<div class="form-group">
 			<label for="title_site">Thẻ title</label>
 			{{ Form::text('title_site','',textParentCategory('Thẻ title')) }}
@@ -60,7 +52,7 @@
 			<label for="keyword_site">Thẻ Keyword</label>
 			{{ Form::text('keyword_site', null , textParentCategory('Thẻ Keyword')) }}
 		</div>
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label for="title_fb">Thẻ title facebook</label>
 			{{ Form::text('title_fb', null , textParentCategory('Thẻ facebook')) }}
 		</div>
@@ -71,7 +63,7 @@
 		<div class="form-group">
 			<label for="image_url_fb">Upload ảnh</label>
 			{{ Form::file('image_url_fb') }}
-		</div>
+		</div> -->
 	</div>
 </div>
 @endif

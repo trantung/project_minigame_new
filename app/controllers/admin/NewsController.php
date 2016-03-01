@@ -41,14 +41,17 @@ class NewsController extends AdminController {
 	{
 		$rules = array(
 			'title' => 'required',
-			'weight_number' => 'numeric|min:1'
+			'weight_number' => 'required',
+			'title_site' => 'required',
+			'description_site' => 'required',
+			'keyword_site' => 'required',
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('NewsController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('name'));
+	            ->withInput(Input::except('_token'));
         } else {
         	//create news
         	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo');
@@ -61,14 +64,14 @@ class NewsController extends AdminController {
 			$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS);
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 
-			//chưa lam create history
+			//create history
 			$history_id = CommonLog::insertHistory('AdminNew', $id);
 
 			//insert log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, CREATE);
 
 			// insert ceo
-			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
+			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS, $input['image_url']);
 
 			return Redirect::action('NewsController@index');
         }
@@ -111,8 +114,11 @@ class NewsController extends AdminController {
 	{
 		if(!Admin::isSeo()){
 			$rules = array(
-				'title'   => 'required',
-				'weight_number' => 'numeric|min:1'
+				'title' => 'required',
+				'weight_number' => 'required',
+				'title_site' => 'required',
+				'description_site' => 'required',
+				'keyword_site' => 'required',
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
@@ -123,7 +129,6 @@ class NewsController extends AdminController {
 	        } else {
 	        	//update News
 	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo');
-
 	        	if($inputNews['start_date'] == '') {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}
@@ -137,12 +142,10 @@ class NewsController extends AdminController {
         	}
         	//create history
 			$history_id = CommonLog::updateHistory('AdminNew', $id);
-
 			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
-        	//upadte ceo
-
-			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);
+        	//update seo
+			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS, $input['image_url']);
 			return Redirect::action('NewsController@index') ;
 
 	}

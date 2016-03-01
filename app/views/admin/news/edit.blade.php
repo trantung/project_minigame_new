@@ -42,11 +42,19 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label>Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">
 						   {{  Form::select('position', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
+						</div>
+					</div>
+				</div> -->
+				<div class="form-group">
+					<label>Trạng thái bài đăng</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{  Form::select('status', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
 						</div>
 					</div>
 				</div>
