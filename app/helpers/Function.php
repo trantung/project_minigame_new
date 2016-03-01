@@ -659,6 +659,22 @@ function limit_words($string, $word_limit)
     return implode(" ",array_splice($words,0,$word_limit));
 }
 
+// cuongnt add status news
+function selectStatusNews()
+{
+	if(Admin::isAdmin())
+		return array(
+			SEND => 'Chưa phê duyệt',
+			APPROVE => 'Phê duyệt',
+			REJECT => 'Hủy',
+			BACK => 'Gửi lại PV',
+		);
+	else
+		return array(
+			SEND => 'Gửi tin',
+			SCRATCH_PAPER => 'Lưu nháp',
+		);
+}
 function getNamePaginate($input)
 {
 	if ($input == NEW_HOT) {
