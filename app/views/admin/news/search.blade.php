@@ -14,7 +14,7 @@
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Người đăng</label>
-			 {{  Form::select('role_id', ['' => '-- Lựa chọn'] + [ADMIN => 'Admin', REPORTER => 'Phóng viên'], null, array('class' => 'form-control' )) }}
+			 {{  Form::select('role_id', ['' => '-- Lựa chọn'] + [ADMIN => 'Admin', EDITOR => 'Editor', REPORTER => 'Phóng viên'], null, array('class' => 'form-control' )) }}
 		</div>
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ ngày</label>

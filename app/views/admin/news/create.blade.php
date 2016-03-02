@@ -34,7 +34,7 @@
 						<label>Hình tin ảnh</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{ Form::file('image_url[]', array('id' => 'image_url', 'multiple' => true)) }}
+							   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
 							</div>
 						</div>
 

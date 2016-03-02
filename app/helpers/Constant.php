@@ -38,6 +38,8 @@ define('UPLOAD_FLASH', '/games-flash');
 define('UPLOAD_GAMEOFFLINE', '/games-offline');
 //url upload news
 define('UPLOAD_NEWS', '/news');
+//url for new slides
+define('UPLOAD_NEWS_SLIDE', '/slides/news');
 //folder upload image facebook
 define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
