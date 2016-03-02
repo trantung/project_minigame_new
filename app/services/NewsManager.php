@@ -26,14 +26,8 @@ class NewsManager
 			if ($input['position'] != '') {
 				$query = $query->where('position', $input['position']);
 			}
-			if ($input['user_id'] != '') {
-				if ($input['user_id'] == 1) {
-					// $userRole = Admin::find($userId)->role_id
-					$query = $query->where('user', $input['position']);
-				}
-				if ($input['user_id'] == 2) {
-					# code...
-				}
+			if ($input['role_id'] != '') {
+				$query = $query->where('role_id', $input['role_id']);
 			}
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
