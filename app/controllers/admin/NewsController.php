@@ -192,4 +192,28 @@ class NewsController extends AdminController {
 		return Redirect::action('NewsController@index');
 	}
 
+	public function updateNewsIndexData()
+	{
+		$newsId = Input::get('news_id');
+		foreach($newsId as $key => $value) {
+			$input = array(
+				'index' => ACTIVE
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+
+	public function updateNewsIndexSelected()
+	{
+		$newsId = Input::get('news_id');
+		foreach($newsId as $key => $value) {
+			$input = array(
+				'index' => INACTIVE
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+
 }
