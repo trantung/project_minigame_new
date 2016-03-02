@@ -8,7 +8,7 @@ class NewSlide extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'new_slides';
-    protected $fillable = ['weight_number', 'status', 'sapo', 'image_url', 'new_id'];
+    protected $fillable = ['weight_number', 'status', 'sapo', 'image_url', 'new_id', 'type'];
     protected $dates = ['deleted_at'];
     
 }
