@@ -43,7 +43,7 @@ class NewsController extends AdminController {
 	{
 		$rules = array(
 			'title' => 'required',
-			'weight_number' => 'required',
+			'weight_number' => 'integer|min:0',
 			'title_site' => 'required',
 			'description_site' => 'required',
 			'keyword_site' => 'required',
@@ -56,10 +56,13 @@ class NewsController extends AdminController {
 	            ->withInput(Input::except('_token'));
         } else {
         	//create news
-        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo');
+        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo', 'status');
         	if($inputNews['start_date'] == '') {
         		$inputNews['start_date'] = Carbon\Carbon::now();
         	}
+        	//insert role_id into news
+			$inputNews['user_id'] = Auth::admin()->get()->id;
+        	$inputNews['role_id'] = Auth::admin()->get()->role_id;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
@@ -117,7 +120,7 @@ class NewsController extends AdminController {
 		if(!Admin::isSeo()){
 			$rules = array(
 				'title' => 'required',
-				'weight_number' => 'required',
+				'weight_number' => 'integer|min:0',
 				'title_site' => 'required',
 				'description_site' => 'required',
 				'keyword_site' => 'required',
