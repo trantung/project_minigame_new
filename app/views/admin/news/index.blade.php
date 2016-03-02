@@ -57,9 +57,9 @@
 						<td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
 						<td>{{ NewsManager::getUserName($value->user_id) }}</td>
 						<td>
-						@if(!Admin::isSeo())
-							<a href="{{ action('NewsController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
-						@endif
+						<!-- @if(!Admin::isSeo()) -->
+							<!-- <a href="{{-- action('NewsController@history', $value->id) --}}" class="btn btn-success">Lịch sử</a> -->
+						<!-- @endif -->
 							<a href="{{  action('NewsController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(!Admin::isSeo())
 						{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
