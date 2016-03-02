@@ -393,3 +393,15 @@ Stack trace:
 #17 D:\web\minigame\public\index.php(50): Illuminate\Foundation\Application->run()
 #18 D:\web\minigame\server.php(19): require_once('D:\\web\\minigame...')
 #19 {main} [] []
+[2016-03-02 16:37:43] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'public' (T_PUBLIC)' in F:\xampp\htdocs\gamekienthuc\app\controllers\admin\NewsReporterController.php:205
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-03-02 16:37:48] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'public' (T_PUBLIC)' in F:\xampp\htdocs\gamekienthuc\app\controllers\admin\NewsReporterController.php:205
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-03-02 16:37:54] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'public' (T_PUBLIC)' in F:\xampp\htdocs\gamekienthuc\app\controllers\admin\NewsReporterController.php:205
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []

@@ -22,6 +22,23 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group">
+						<label>Loại tin</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{  Form::select('type', [INACTIVE => 'Tin thường', ACTIVE => 'Tin ảnh'], null, array('class' => 'form-control')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Hình tin ảnh</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+							</div>
+						</div>
+
+					</div>
 					<!-- <div class="form-group">
 						<label for="start_date">Ngày xuất bản</label>
 						<div class="row">
