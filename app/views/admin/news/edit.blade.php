@@ -116,7 +116,7 @@
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-6">
-							 {{ Form::textarea('sapo', $inputNew->sapo , textParentCategory('Mô tả ngắn')) }}
+						{{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250, 'rows' => 4,'class' => 'form-control' )) }}
 						</div>
 					</div>
 					</div>
