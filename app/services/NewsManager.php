@@ -18,14 +18,6 @@ class NewsManager
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-			// if($input['status_seo'] != '')
-			// {
-			// 	$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
-   //              $query = $query->whereIn('id', $listSeo);
-			// }
-			if ($input['position'] != '') {
-				$query = $query->where('position', $input['position']);
-			}
 			if ($input['role_id'] != '') {
 				$query = $query->where('role_id', $input['role_id']);
 			}
