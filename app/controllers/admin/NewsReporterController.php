@@ -72,7 +72,7 @@ class NewsReporterController extends AdminController {
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, CREATE);
 
 			// insert ceo
-			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
+			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS,$input['image_url']);
 
 			return Redirect::action('NewsReporterController@index');
 		}
