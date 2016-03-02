@@ -74,7 +74,7 @@ class SiteNewsController extends SiteController {
 			->first();
 		$limitRelate = AdminPagination::where('status', NEW_RELATE)
 			->first();
-		$now = date('Y-m-d');
+		$now = Carbon\Carbon::now();
 		$newType = TypeNew::findBySlug($slugType);
 
 		$inputNew = AdminNew::findBySlug($slugNew);
@@ -83,23 +83,22 @@ class SiteNewsController extends SiteController {
 		CommonNormal::update($inputNew->id, $input, 'AdminNew');
 		$inputRelated = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 							->select('news.*')
+							->where('news.start_date', '<=', $now)
 							->where('type_news.status', ENABLED)
 							->where('news.status', APPROVE)
-							->where('type_new_id', $inputNew->type_new_id)
-							->where('start_date', '<=', $now)
+							->where('news.type_new_id', $inputNew->type_new_id)
 							->orderBy(DB::raw('RAND()'))
 							->limit($limitRelate->paginate_number)
 							->get();
 		$inputHot = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 						->select('news.*')
+						->where('news.start_date', '<=', $now)
 						->where('type_news.status', ENABLED)
 						->where('news.status', APPROVE)
-						->where('type_new_id', $inputNew->type_new_id)
-						->where('start_date', '<=', $now)
-						->orderBy('count_view', 'desc')
+						->where('news.type_new_id', $inputNew->type_new_id)
+						->orderBy('news.count_view', 'desc')
 						->limit($limitHot->paginate_number)
 						->get();
-
 		if($inputNew->type == ACTIVE) {
 			$inputNewSlide = NewSlide::where('new_id', $inputNew->id)->get();
 			return View::make('site.News.slideNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot', 'inputNewSlide'));
