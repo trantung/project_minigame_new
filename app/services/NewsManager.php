@@ -6,6 +6,12 @@ class NewsManager
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = AdminNew::where(function ($query) use ($input)
 		{
+			if (isset($input['isIndex'])) {
+				$query = $query->where('index', '!=', INACTIVE);
+			}
+			if (isset($input['is_hot'])) {
+				$query = $query->where('is_hot', ACTIVE);
+			}
 			if ($input['type_new_id'] != 0) {
 				$query = $query->where('type_new_id', $input['type_new_id']);
 			}
@@ -18,22 +24,8 @@ class NewsManager
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-			// if($input['status_seo'] != '')
-			// {
-			// 	$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
-   //              $query = $query->whereIn('id', $listSeo);
-			// }
-			if ($input['position'] != '') {
-				$query = $query->where('position', $input['position']);
-			}
-			if ($input['user_id'] != '') {
-				if ($input['user_id'] == 1) {
-					// $userRole = Admin::find($userId)->role_id
-					$query = $query->where('user', $input['position']);
-				}
-				if ($input['user_id'] == 2) {
-					# code...
-				}
+			if (isset($input['role_id']) && $input['role_id'] != '') {
+				$query = $query->where('role_id', $input['role_id']);
 			}
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
@@ -50,7 +42,7 @@ class NewsManager
 	{
 		$sortBy = 'id';
 		$sort = 'desc';
-		if($input['sortByCountView'] != '') {
+		if(isset($input['sortByCountView']) && $input['sortByCountView'] != '') {
 			if($input['sortByCountView'] == 'count_view_asc') {
 				$sortBy = 'count_view';
 				$sort = 'asc';
@@ -75,7 +67,8 @@ class NewsManager
 		$data = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 				->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
 				->where('news.start_date', '<=', Carbon\Carbon::now())
-				->where('type_news.status', ENABLED);
+				->where('type_news.status', ENABLED)
+				->where('news.status', APPROVE);
 		if($typeId) {
 			$data = $data->where('news.type_new_id', $typeId);
 			$hot = self::getNewsHighlightIdArray($typeId);
@@ -101,7 +94,8 @@ class NewsManager
 		$data = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 				->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
 				->where('news.start_date', '<=', Carbon\Carbon::now())
-				->where('type_news.status', ENABLED);
+				->where('type_news.status', ENABLED)
+				->where('news.status', APPROVE);
 		if($typeId) {
 			$data = $data->where('news.type_new_id', $typeId);
 			$data = $data->where('news.is_hot', ACTIVE);
