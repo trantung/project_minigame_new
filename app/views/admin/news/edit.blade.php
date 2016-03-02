@@ -23,6 +23,36 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Loại tin</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{  Form::select('type', [INACTIVE => 'Tin thường', ACTIVE => 'Tin ảnh'], $inputNew->type, array('class' => 'form-control')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Hình tin ảnh</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+						</div>
+					</div>
+					<br />
+					@if($inputNew->type == ACTIVE)
+						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
+							<div class="row">
+								<div class="col-sm-3">
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="100px" />
+								</div>
+								<div class="col-sm-8">
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+								</div>
+								<div class="col-sm-1"></div>
+							</div>
+						@endforeach
+					@endif
+				</div>
+				<div class="form-group">
 					<label for="name">Chuyên mục tin</label>
 					<div class="row">
 						<div class="col-sm-6">

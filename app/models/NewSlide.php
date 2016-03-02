@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class NewSlide extends Eloquent
 {
-	use SoftDeletingTrait;
     protected $table = 'new_slides';
-    protected $fillable = ['weight_number', 'status', 'sapo', 'image_url', 'new_id'];
-    protected $dates = ['deleted_at'];
+    protected $fillable = ['weight_number', 'status', 'sapo', 'image_url', 'new_id', 'type'];
     
 }

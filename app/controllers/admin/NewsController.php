@@ -41,13 +41,7 @@ class NewsController extends AdminController {
 	 */
 	public function store()
 	{
-		$rules = array(
-			'title' => 'required',
-			'weight_number' => 'integer|min:0',
-			'title_site' => 'required',
-			'description_site' => 'required',
-			'keyword_site' => 'required',
-		);
+		$rules = NewsManager::getRuleByType();
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
@@ -60,6 +54,8 @@ class NewsController extends AdminController {
         	if($inputNews['start_date'] == '') {
         		$inputNews['start_date'] = Carbon\Carbon::now();
         	}
+        	// dd(Input::all());
+        	$input = Input::all();
         	//insert role_id into news
 			$inputNews['user_id'] = Auth::admin()->get()->id;
         	$inputNews['role_id'] = Auth::admin()->get()->role_id;
@@ -68,7 +64,21 @@ class NewsController extends AdminController {
 			//upload image new
 			$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS);
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
-
+			//upload image for new slide
+			if (Input::get('type') == ACTIVE) {
+				$listImage = $input['image_urls'];
+				foreach ($listImage as $key => $value) {
+					if ($value) {
+						$path = UPLOAD_NEWS_SLIDE;
+						$destinationPath = public_path().$path . '/' . $id;
+						$filename = $value->getClientOriginalName();
+						$uploadSuccess   =  $value->move($destinationPath, $filename);
+						$slides['new_id'] = $id;
+						$slides['image_url'] = $filename;
+						$imageRelateId[] = NewSlide::create($slides)->id;
+					}
+				}
+			}
 			//create history
 			$history_id = CommonLog::insertHistory('AdminNew', $id);
 
@@ -77,7 +87,9 @@ class NewsController extends AdminController {
 
 			// insert ceo
 			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS, $input['image_url']);
-
+			if (Input::get('type') == ACTIVE) {
+				return Redirect::action('NewsController@edit', $id);
+			}
 			return Redirect::action('NewsController@index');
         }
 	}
@@ -118,13 +130,7 @@ class NewsController extends AdminController {
 	public function update($id)
 	{
 		if(!Admin::isSeo()){
-			$rules = array(
-				'title' => 'required',
-				'weight_number' => 'integer|min:0',
-				'title_site' => 'required',
-				'description_site' => 'required',
-				'keyword_site' => 'required',
-			);
+			$rules = NewsManager::getRuleByType();
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
@@ -144,16 +150,45 @@ class NewsController extends AdminController {
 				$imageNews = AdminNew::find($id);
 				$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
 				CommonNormal::update($id, ['image_url' => $input['image_url']] );
-				}
-        	}
-        	//create history
-			$history_id = CommonLog::updateHistory('AdminNew', $id);
-			//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
-			CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
-        	//update seo
-			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS, $input['image_url']);
-			return Redirect::action('NewsController@index') ;
+				//update sapo slide for new
+				$images = NewSlide::where('new_id', $id)->get();
+				if ($images) {
+					foreach ($images as $keySapo => $sapoSlide) {
+						NewSlide::find($sapoSlide->id)->update([
+								'sapo' => $input['image_sapo'][$keySapo],
+						]);
 
+					}
+				}
+				//upload image for slide new
+				if (Input::get('type') == ACTIVE) {
+					$listImage = $input['image_urls'];
+					foreach ($listImage as $key => $value) {
+						if ($value) {
+							$path = UPLOAD_NEWS_SLIDE;
+							$destinationPath = public_path().$path . '/' . $id;
+							$filename = $value->getClientOriginalName();
+							$uploadSuccess   =  $value->move($destinationPath, $filename);
+							$slides['new_id'] = $id;
+							$slides['image_url'] = $filename;
+							$imageRelateId[] = NewSlide::create($slides)->id;
+						}
+					}
+				}
+			}
+        }
+        	//create history
+		$history_id = CommonLog::updateHistory('AdminNew', $id);
+		//update log_edits: history_id, Auth::admin()->get()->id; editor_name, editor_time, editor_ip
+		CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
+    	//update seo
+		CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS, $input['image_url']);
+		if (Input::get('type') == ACTIVE) {
+			if ($input['image_urls'][0]) {
+				return Redirect::action('NewsController@edit', $id);
+			}
+		}
+		return Redirect::action('NewsController@index') ;
 	}
 
 

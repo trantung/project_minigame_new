@@ -202,4 +202,28 @@ class NewsManager
 		}
 		return 'Editor/Admin';
 	}
+	public static function getRuleByType()
+	{
+		if (Input::get('type') == INACTIVE) {
+			$rules = array(
+				'title' => 'required',
+				'weight_number' => 'integer|min:0',
+				'title_site' => 'required',
+				'description_site' => 'required',
+				'keyword_site' => 'required',
+				'sapo' => 'required',
+				'description' => 'required',
+			);
+		}
+		if (Input::get('type') == ACTIVE) {
+			$rules = array(
+				'title' => 'required',
+				'weight_number' => 'integer|min:0',
+				'title_site' => 'required',
+				'description_site' => 'required',
+				'keyword_site' => 'required',
+			);
+		}
+		return $rules;
+	}
 }

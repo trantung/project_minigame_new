@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMoreFiedNewsTable extends Migration {
+class InsertTypeNews extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,8 @@ class AddMoreFiedNewsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('news', function(Blueprint $table) {
-			$table->integer('role_id')->after('user_id')->nullable();
-			$table->integer('is_hot')->after('position')->nullable();
+		Schema::table('new_slides', function(Blueprint $table) {
+			$table->integer('type')->after('id')->nullable();
 		});
 	}
 
