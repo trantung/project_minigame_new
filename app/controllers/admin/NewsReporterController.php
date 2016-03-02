@@ -40,7 +40,10 @@ class NewsReporterController extends AdminController {
 	public function store()
 	{
 		$rules = array(
-			'title' => 'required'
+			'title' => 'required',
+			'title_site' => 'required',
+			'description_site' => 'required',
+			'keyword_site' => 'required'
 		);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -69,7 +72,7 @@ class NewsReporterController extends AdminController {
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, CREATE);
 
 			// insert ceo
-			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS);
+			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS,$input['image_url']);
 
 			return Redirect::action('NewsReporterController@index');
 		}
@@ -111,7 +114,10 @@ class NewsReporterController extends AdminController {
 	{
 		if(!Admin::isSeo()){
 			$rules = array(
-				'title'   => 'required'
+				'title'   => 'required',
+				'title_site' => 'required',
+				'description_site' => 'required',
+				'keyword_site' => 'required'
 			);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);

@@ -18,8 +18,22 @@ class NewsManager
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-			if ($input['role_id'] != '') {
-				$query = $query->where('role_id', $input['role_id']);
+			// if($input['status_seo'] != '')
+			// {
+			// 	$listSeo = AdminSeo::where('model_name', 'AdminNew')->where('status_seo', $input['status_seo'])->lists('model_id');
+   //              $query = $query->whereIn('id', $listSeo);
+			// }
+			if ($input['position'] != '') {
+				$query = $query->where('position', $input['position']);
+			}
+			if ($input['user_id'] != '') {
+				if ($input['user_id'] == 1) {
+					// $userRole = Admin::find($userId)->role_id
+					$query = $query->where('user', $input['position']);
+				}
+				if ($input['user_id'] == 2) {
+					# code...
+				}
 			}
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
@@ -64,9 +78,13 @@ class NewsManager
 				->where('type_news.status', ENABLED);
 		if($typeId) {
 			$data = $data->where('news.type_new_id', $typeId);
+			$hot = self::getNewsHighlightIdArray($typeId);
+			$data = $data->whereIn($hot);
+		} else {
+			$data = $data->where('news.index', '!=', INACTIVE);
 		}
-		$data = $data->orderBy('news.start_date', 'desc')
-				->orderBy('news.weight_number', 'asc')
+		$data = $data->orderBy('news.weight_number', 'asc')
+				->orderBy('news.start_date', 'desc')
 				->limit($limit)
 				->offset($offset)
 				->get();
@@ -86,13 +104,31 @@ class NewsManager
 				->where('type_news.status', ENABLED);
 		if($typeId) {
 			$data = $data->where('news.type_new_id', $typeId);
+			$data = $data->where('news.is_hot', ACTIVE);
+		} else {
+			$data = $data->where('news.index', '!=', INACTIVE);
 		}
-		$data = $data->orderBy('news.start_date', 'desc')
-				->orderBy('news.weight_number', 'asc')
+		$data = $data->orderBy('news.weight_number', 'asc')
+				->orderBy('news.start_date', 'desc')
 				->limit($limit)
 				->get();
 		return $data;
 	}
+
+	public static function getNewsHighlightIdArray($typeId = null)
+	{
+		$array = array();
+		if(isset($typeId)) {
+			$data = self::getNewsHighlight($typeId);
+			if(count($data) > 0) {
+				foreach($data as $key => $value) {
+					$array[$key] = $value->id;
+				}
+			}
+		}
+		return $array;
+	}
+
 	public static function getNameStatusNewEdit($userId)
 	{
 		$userRole = Admin::find($userId)->role_id;

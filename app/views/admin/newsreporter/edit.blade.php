@@ -6,7 +6,7 @@
 
 @section('content')
 
-@include('admin.news.common')
+@include('admin.newsreporter.common')
 
 <div class="row">
 	<div class="col-xs-12">
