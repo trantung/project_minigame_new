@@ -23,6 +23,34 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Loại tin</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{  Form::select('type', [INACTIVE => 'Tin thường', ACTIVE => 'Tin ảnh'], null, array('class' => 'form-control')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Hình tin ảnh</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{ Form::file('image_url[]', array('id' => 'image_url', 'multiple' => true)) }}
+						</div>
+					</div>
+					<br />
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="" />
+						</div>
+						<div class="col-sm-8">
+							{{ Form::textarea('image_sapo', null , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
+
+				</div>
+				<div class="form-group">
 					<label for="name">Chuyên mục tin</label>
 					<div class="row">
 						<div class="col-sm-6">
