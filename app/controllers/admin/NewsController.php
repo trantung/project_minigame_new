@@ -259,4 +259,10 @@ class NewsController extends AdminController {
 		dd(1);
 	}
 
+	public function deleteImageSlide($newId, $id)
+	{
+		NewSlide::find($id)->delete();
+		return Redirect::action('NewsController@edit', $newId);
+	}
+
 }
