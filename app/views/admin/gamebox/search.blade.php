@@ -1,5 +1,5 @@
 <div class="margin-bottom">
-	{{ Form::open(array('action' => 'AdminGameController@search', 'method' => 'GET')) }}
+	{{ Form::open(array('action' => 'AdminGameBoxController@search', 'method' => 'GET')) }}
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ khóa</label>
 		  	{{ Form::text('keyword', Input::get('keyword'), array('class' => 'form-control', 'placeholder' => 'Search')) }}

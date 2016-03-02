@@ -20,8 +20,8 @@ class NewsIndexController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
+		$input['isIndex'] = 1;
 		$inputNew = NewsManager::searchNews($input);
-
 		return View::make('admin.newsindex.index')->with(compact('inputNew'));
 	}
 

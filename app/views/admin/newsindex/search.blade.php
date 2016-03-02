@@ -1,5 +1,5 @@
 <div class="margin-bottom">
-	{{ Form::open(array('action' => 'NewsController@search', 'method' => 'GET')) }}
+	{{ Form::open(array('action' => 'NewsIndexController@search', 'method' => 'GET')) }}
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Tiêu đề</label>
 		  	<input type="text" name="title" class="form-control" placeholder="Tiêu đề" />
