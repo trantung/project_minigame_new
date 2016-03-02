@@ -54,7 +54,7 @@
 				<th>Trạng thái</th>
 				<th>Ngày đăng</th>
 				<!-- <th>Trạng thái Seo</th> -->
-				<th style="width:200px;">&nbsp;</th>
+				<th style="width:200px;">Action</th>
 			</tr>
 			@foreach($data as $key => $value)
 				<tr>
@@ -97,9 +97,9 @@
 					</td>
 					<!-- <td>{{-- getStatusSeoParent($value, 'Game') --}}</td> -->
 					<td>
-						@if(Admin::isAdmin())
-							<a href="{{ action('AdminGameController@history', $value->id) }}" class="btn btn-success">Lịch sử</a>
-						@endif
+						<!-- @if(Admin::isAdmin()) -->
+							<!-- <a href="{{-- action('AdminGameController@history', $value->id) --}}" class="btn btn-success">Lịch sử</a> -->
+						<!-- @endif -->
 							<a href="{{ action('AdminGameController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(Admin::isAdmin())
 							{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminGameController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
