@@ -43,7 +43,7 @@ class NewsController extends AdminController {
 	{
 		$rules = array(
 			'title' => 'required',
-			'weight_number' => 'required',
+			'weight_number' => 'integer|min:0',
 			'title_site' => 'required',
 			'description_site' => 'required',
 			'keyword_site' => 'required',
@@ -120,7 +120,7 @@ class NewsController extends AdminController {
 		if(!Admin::isSeo()){
 			$rules = array(
 				'title' => 'required',
-				'weight_number' => 'required',
+				'weight_number' => 'integer|min:0',
 				'title_site' => 'required',
 				'description_site' => 'required',
 				'keyword_site' => 'required',
