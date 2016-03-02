@@ -19,6 +19,7 @@ class AdminGameBoxController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
+		$input['isGameBox'] = 1;
 		$data = CommonGame::searchAdminGame($input);
 		return View::make('admin.gamebox.index')->with(compact('data'));
 	}

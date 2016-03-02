@@ -101,6 +101,11 @@ class CommonGame
 	{
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = Game::where(function ($query) use ($input) {
+
+			if(isset($input['isGameBox'])) {
+				$query = $query->where('index', ACTIVE);
+			}
+
 			if ($input['keyword'] != '') {
 				$inputSlug = convert_string_vi_to_en($input['keyword']);
 				$inputSlug = strtolower( preg_replace('/[^a-zA-Z0-9]+/i', '-', $inputSlug) );
@@ -193,7 +198,7 @@ class CommonGame
 			}
 		}
 		// weight_number
-		if($input['sortByweightNumber'] != '') {
+		if(isset($input['sortByCountDownload']) && $input['sortByweightNumber'] != '') {
 			if($input['sortByweightNumber'] == 'weight_number_asc') {
 				$sortBy = 'weight_number';
 				$sort = 'asc';

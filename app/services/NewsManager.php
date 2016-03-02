@@ -6,6 +6,12 @@ class NewsManager
 		$orderBy = self::searchAdminGameSortBy($input);
 		$data = AdminNew::where(function ($query) use ($input)
 		{
+			if (isset($input['isIndex'])) {
+				$query = $query->where('index', '!=', INACTIVE);
+			}
+			if (isset($input['is_hot'])) {
+				$query = $query->where('is_hot', ACTIVE);
+			}
 			if ($input['type_new_id'] != 0) {
 				$query = $query->where('type_new_id', $input['type_new_id']);
 			}
@@ -18,7 +24,7 @@ class NewsManager
 			if($input['end_date'] != ''){
 				$query = $query->where('start_date', '<=', $input['end_date']);
 			}
-			if ($input['role_id'] != '') {
+			if (isset($input['role_id']) && $input['role_id'] != '') {
 				$query = $query->where('role_id', $input['role_id']);
 			}
 		});
@@ -36,7 +42,7 @@ class NewsManager
 	{
 		$sortBy = 'id';
 		$sort = 'desc';
-		if($input['sortByCountView'] != '') {
+		if(isset($input['sortByCountView']) && $input['sortByCountView'] != '') {
 			if($input['sortByCountView'] == 'count_view_asc') {
 				$sortBy = 'count_view';
 				$sort = 'asc';
