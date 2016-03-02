@@ -74,6 +74,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/newstype', 'NewsTypeController');
 	Route::resource('/new/paginate', 'AdminPaginateController');
 
+	Route::get('/news/deleteImageSlide/{newId}/{id}', 'NewsController@deleteImageSlide');
 	Route::post('/news/history/{id}', array('uses' => 'NewsController@deleteHistory', 'as' => 'admin.news.history.delete'));
 	Route::get('/news/history/{id}', array('uses' => 'NewsController@history', 'as' => 'admin.news.history'));
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
