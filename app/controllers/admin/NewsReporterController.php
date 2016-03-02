@@ -58,6 +58,7 @@ class NewsReporterController extends AdminController {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
 			$inputNews['user_id'] = Auth::admin()->get()->id;
+        	$inputNews['role_id'] = Auth::admin()->get()->role_id;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
