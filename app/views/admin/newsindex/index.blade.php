@@ -12,14 +12,11 @@
 <!-- inclue Search form 
 
 -->
-@if(!Admin::isSeo())
+@if(Admin::isAdmin() || Admin::isEditor())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('NewsController@create') }}" class="btn btn-primary">Thêm mới tin</a>
-		@if(Admin::isAdmin() || Admin::isEditor())
-			<a onclick="updateIndexData();" class="btn btn-success">Cập nhật</a>
-			<a onclick="updateNewsIndexSelected();" class="btn btn-success">Loại bỏ</a>
-		@endif
+		<a onclick="updateIndexData();" class="btn btn-success">Cập nhật</a>
+		<a onclick="updateNewsIndexSelected();" class="btn btn-success">Loại bỏ</a>
 	</div>
 </div>
 @endif
