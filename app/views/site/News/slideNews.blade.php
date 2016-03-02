@@ -29,37 +29,31 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
-
-                		<div id="slider" class="nivoSlider">
-                            <a title="">
-		                        <img src="{{ url('demo_slider/fullimage1.jpg') }}" alt="" title="asdf 1" />
-		                    </a>
-                            <a title="">
-		                        <img src="{{ url('demo_slider/fullimage2.jpg') }}" alt="" title="asdf 2" />
-		                    </a>
-                            <a title="">
-		                        <img src="{{ url('demo_slider/fullimage3.jpg') }}" alt="" title="asdf 3" />
-		                    </a>
-                            
-                        </div>
-						
-						{{ HTML::style('assets/js/nivoslider/nivo-slider.css') }}
-						{{ HTML::script('assets/js/nivoslider/jquery.nivo.slider.js') }}
-						<script type="text/javascript">
-		                    $(window).load(function() {
-		                        $("#slider").nivoSlider({
-		                            animSpeed: 200,
-		                            pauseTime: 3000,
-		                            effect: 'slideInLeft',
-		                            controlNav: false,
-		                            manualAdvance: true,
-		                            prevText: '<i class="fa fa-angle-left"></i>',
-    								nextText: '<i class="fa fa-angle-right"></i>',
-		                        });
-		                    });
-	                    </script>
-
-						<div class="margin-block clearfix"></div>
+						@if($inputNewSlide)
+	                		<div id="slider" class="nivoSlider">
+	                			@foreach($inputNewSlide as $value)
+		                            <a title="">
+				                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
+				                    </a>
+			                    @endforeach
+	                        </div>
+							{{ HTML::style('assets/js/nivoslider/nivo-slider.css') }}
+							{{ HTML::script('assets/js/nivoslider/jquery.nivo.slider.js') }}
+							<script type="text/javascript">
+			                    $(window).load(function() {
+			                        $("#slider").nivoSlider({
+			                            animSpeed: 200,
+			                            pauseTime: 3000,
+			                            effect: 'slideInLeft',
+			                            controlNav: false,
+			                            manualAdvance: true,
+			                            prevText: '<i class="fa fa-angle-left"></i>',
+	    								nextText: '<i class="fa fa-angle-right"></i>',
+			                        });
+			                    });
+		                    </script>
+							<div class="margin-block clearfix"></div>
+						@endif
 
 	                    {{ $inputNew->description }}
 

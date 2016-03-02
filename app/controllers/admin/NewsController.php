@@ -132,11 +132,13 @@ class NewsController extends AdminController {
 		if(!Admin::isSeo()){
 			$rules = NewsManager::getRuleByType();
 			$input = Input::except('_token');
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
+	        		'weight_number', 'position', 'sapo', 'status', 'is_hot', 'type');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('NewsController@edit',$id)
 		            ->withErrors($validator)
-		            ->withInput(Input::except('name'));
+		            ->withInput($inputNews);
 	        } else {
 	        	//update News
 	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
@@ -150,17 +152,7 @@ class NewsController extends AdminController {
 				$imageNews = AdminNew::find($id);
 				$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
 				CommonNormal::update($id, ['image_url' => $input['image_url']] );
-				//update sapo slide for new
-				$images = NewSlide::where('new_id', $id)->get();
-				if ($images) {
-					foreach ($images as $keySapo => $sapoSlide) {
-						NewSlide::find($sapoSlide->id)->update([
-								'sapo' => $input['image_sapo'][$keySapo],
-						]);
-
-					}
-				}
-				//upload image for slide new
+				//update sapo, image slide for new
 				if (Input::get('type') == ACTIVE) {
 					$listImage = $input['image_urls'];
 					foreach ($listImage as $key => $value) {
@@ -174,6 +166,22 @@ class NewsController extends AdminController {
 							$imageRelateId[] = NewSlide::create($slides)->id;
 						}
 					}
+					$images = NewSlide::where('new_id', $id)->get();
+					if ($images) {
+						foreach ($images as $keySapo => $sapoSlide) {
+							if (isset($input['image_sapo'])) {
+								if (isset($input['image_sapo'][$keySapo])) {
+									NewSlide::find($sapoSlide->id)->update([
+										'sapo' => $input['image_sapo'][$keySapo],
+									]);
+								}
+							}
+						}
+					}
+				}
+				if (Input::get('type') == INACTIVE) {
+					//delete all image slide
+					$images = NewSlide::where('new_id', $id)->delete();
 				}
 			}
         }
@@ -249,6 +257,12 @@ class NewsController extends AdminController {
 			CommonNormal::update($value, $input);
 		}
 		dd(1);
+	}
+
+	public function deleteImageSlide($newId, $id)
+	{
+		NewSlide::find($id)->delete();
+		return Redirect::action('NewsController@edit', $newId);
 	}
 
 }

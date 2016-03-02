@@ -76,7 +76,9 @@ class SiteNewsController extends SiteController {
 			->first();
 		$now = date('Y-m-d');
 		$newType = TypeNew::findBySlug($slugType);
+
 		$inputNew = AdminNew::findBySlug($slugNew);
+
 		$input['count_view'] = getZero($inputNew->count_view) + 1;
 		CommonNormal::update($inputNew->id, $input, 'AdminNew');
 		$inputRelated = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
@@ -97,12 +99,18 @@ class SiteNewsController extends SiteController {
 						->orderBy('count_view', 'desc')
 						->limit($limitHot->paginate_number)
 						->get();
+
+		if($inputNew->type == ACTIVE) {
+			$inputNewSlide = NewSlide::where('new_id', $inputNew->id)->get();
+			return View::make('site.News.slideNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot', 'inputNewSlide'));
+		}
+
 		return View::make('site.News.showNews')->with(compact('newType', 'inputNew', 'inputRelated', 'inputHot'));
 	}
 
-	public function slideDetail($slugType, $slugNew)
-	{
-		return View::make('site.News.slideNews');
-	}
+	// public function slideDetail($slugType, $slugNew)
+	// {
+	// 	return View::make('site.News.slideNews');
+	// }
 
 }
