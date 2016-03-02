@@ -39,6 +39,14 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="name">Tin nổi bật</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{  Form::select('is_hot', [INACTIVE => 'Không', ACTIVE => 'Có'], null, array('class' => 'form-control')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
 						<label>Mức ưu tiên</label>
 						<div class="row">
 							<div class="col-sm-6">
