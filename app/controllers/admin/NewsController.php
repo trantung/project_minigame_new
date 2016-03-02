@@ -50,7 +50,7 @@ class NewsController extends AdminController {
 	            ->withInput(Input::except('_token'));
         } else {
         	//create news
-        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo', 'status', 'is_hot');
+        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position','sapo', 'status', 'is_hot', 'type');
         	if($inputNews['start_date'] == '') {
         		$inputNews['start_date'] = Carbon\Carbon::now();
         	}
@@ -140,7 +140,7 @@ class NewsController extends AdminController {
 	        } else {
 	        	//update News
 	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'status', 'is_hot');
+	        		'weight_number', 'position', 'sapo', 'status', 'is_hot', 'type');
 	        	if($inputNews['start_date'] == '') {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}
