@@ -23,14 +23,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Loại tin</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{  Form::select('type', [INACTIVE => 'Tin thường', ACTIVE => 'Tin ảnh'], null, array('class' => 'form-control')) }}
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
 						<label>Hình tin ảnh</label>
 						<div class="row">
 							<div class="col-sm-6">
