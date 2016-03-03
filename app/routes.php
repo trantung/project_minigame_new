@@ -87,6 +87,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/newsindex/search', array('uses' => 'NewsIndexController@search', 'as' => 'admin.newsindex.search'));
 	Route::resource('/newsindex', 'NewsIndexController');
 
+	Route::get('/newsreporter/sendNews/{id}', 'NewsReporterController@sendNews');
 	Route::get('/newsreporter/search', array('uses' => 'NewsReporterController@search', 'as' => 'admin.newsreporter.search'));
 	Route::resource('/newsreporter', 'NewsReporterController');
 

@@ -48,12 +48,13 @@ class NewsReporterController extends AdminController {
 				->withInput(Input::except('_token'));
 		} else {
 			//create news
-			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',  'position','sapo','status', 'is_hot', 'type');
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',  'position','sapo','is_hot', 'type');
 			if($inputNews['start_date'] == '') {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
 			$inputNews['user_id'] = Auth::admin()->get()->id;
         	$inputNews['role_id'] = Auth::admin()->get()->role_id;
+        	$inputNews['status'] = SCRATCH_PAPER;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
@@ -128,7 +129,7 @@ class NewsReporterController extends AdminController {
 			$rules = NewsManager::getRuleByType();
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
-			$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo','status', 'is_hot', 'type');
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo', 'is_hot', 'type');
 			if($validator->fails()) {
 				return Redirect::action('NewsReporterController@edit',$id)
 					->withErrors($validator)
@@ -206,6 +207,18 @@ class NewsReporterController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
+		return Redirect::action('NewsReporterController@index') ;
+	}
+
+	/**
+	 * update status news.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function sendNews($id){
+		$input['status'] = SEND;
+		CommonNormal::update($id,$input);
 		return Redirect::action('NewsReporterController@index') ;
 	}
 
