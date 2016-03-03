@@ -99,8 +99,8 @@
 				<div class="form-group">
 					<label for="sapo">Thêm Sapo</label>
 					<div class="row">
-						<div class="col-sm-6">
-							 {{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'class' => 'form-control')) }}
+						<div class="col-sm-12">
+							 {{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'rows' => 4,'class' => 'form-control')) }}
 						</div>
 					</div>
 					</div>
@@ -135,7 +135,7 @@
 				</div>
 				@endif -->
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<hr />
 						<h1>SEO META</h1>
 						{{-- include common/meta.blade.php --}}

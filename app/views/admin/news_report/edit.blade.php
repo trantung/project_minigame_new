@@ -82,22 +82,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<label>Vị trí</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{  Form::select('position', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
-						</div>
-					</div>
-				</div> -->
-				<div class="form-group">
-					<label>Trạng thái bài đăng</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{  Form::select('status', NewsManager::getNameStatusNewEdit($inputNew->user_id), $inputNew->status,array('class' => 'form-control' )) }}
-						</div>
-					</div>
-				</div>
+				
 				<div class="form-group">
 					<label for="image_url">Ảnh đại diện</label>
 					<div class="row">
@@ -115,7 +100,7 @@
 				<div class="form-group">
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 						{{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250, 'rows' => 4,'class' => 'form-control' )) }}
 						</div>
 					</div>
@@ -143,7 +128,7 @@
 					</div>
 				@endif
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<hr />
 						<h1>SEO META</h1>
 						{{-- include common/meta.blade.php --}}
