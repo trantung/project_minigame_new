@@ -104,6 +104,7 @@ class NewsManager
 		}
 		$data = $data->orderBy('news.weight_number', 'asc')
 				->orderBy('news.start_date', 'desc')
+				->orderBy('news.id', 'desc')
 				->limit($limit)
 				->get();
 		return $data;

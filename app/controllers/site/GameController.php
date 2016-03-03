@@ -488,6 +488,7 @@ class GameController extends SiteController {
 							->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
 							->where('type_news.status', ENABLED)
 							->where('news.start_date', '<=', $now)
+							->orderBy('news.weight_number', 'asc')
 							->orderBy('news.start_date', 'desc')
 							->orderBy('news.id', 'desc')
 							->first();
