@@ -151,7 +151,7 @@
 						<a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">
 							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
 						</a>
-						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">{{ limit_text($dataFirst->title, TEXTLENGH) }}</a></strong>
+						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">{{ $dataFirst->title }}</a></strong>
 						<p>
 							{{ getSapo($dataFirst->description, $dataFirst->sapo) }}
 						</p>
@@ -160,22 +160,42 @@
 			</div>
 			<div class="col-xs-6">
 				<div class="kt-boxgame-right">
-				@foreach($dataList as $key => $value)
-					<?php $url = CommonGame::getUrlGame($value); ?>
-					<div class="row">
-						<div class="col-xs-4 kt-boxgame-right-images">
-							<a href="{{ $url }}" target="_top">
-								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
-							</a>
+				@if(!empty($dataList))
+					@foreach($dataList as $key => $value)
+						<?php $url = CommonGame::getUrlGame($value); ?>
+						<div class="row">
+							<div class="col-xs-4 kt-boxgame-right-images">
+								<a href="{{ $url }}" target="_top">
+									<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+								</a>
+							</div>
+							<div class="col-xs-8 kt-boxgame-right-text">
+								<strong><a href="{{ $url }}" target="_top">{{ $value->name }}</a></strong>
+								<p>
+									{{ getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) }}
+								</p>
+							</div>
 						</div>
-						<div class="col-xs-8 kt-boxgame-right-text">
-							<strong><a href="{{ $url }}" target="_top">{{ limit_text($value->name, TEXTLENGH) }}</a></strong>
-							<p>
-								{{ getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) }}
-							</p>
+					@endforeach
+				@endif
+				@if(!empty($dataListGame))
+					@foreach($dataListGame as $key => $value)
+						<?php $url = CommonGame::getUrlGame($value); ?>
+						<div class="row">
+							<div class="col-xs-4 kt-boxgame-right-images">
+								<a href="{{ $url }}" target="_top">
+									<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+								</a>
+							</div>
+							<div class="col-xs-8 kt-boxgame-right-text">
+								<strong><a href="{{ $url }}" target="_top">{{ $value->name }}</a></strong>
+								<p>
+									{{ getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) }}
+								</p>
+							</div>
 						</div>
-					</div>
-				@endforeach
+					@endforeach
+				@endif
 				</div>
 			</div>
 		</div>

@@ -486,8 +486,11 @@ class GameController extends SiteController {
 
     	$dataFirst = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 							->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo')
-							->where('type_news.status', ENABLED)
 							->where('news.start_date', '<=', $now)
+							->where('type_news.status', ENABLED)
+							->where('news.status', APPROVE)
+							->where('news.index', '!=', INACTIVE)
+							->orderByRaw("news.weight_number = '0', news.weight_number")
 							->orderBy('news.start_date', 'desc')
 							->orderBy('news.id', 'desc')
 							->first();
@@ -500,7 +503,19 @@ class GameController extends SiteController {
 			    		->orderBy('start_date', 'desc')
 			    		->take(4)
 			    		->get();
-    	return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList'));
+		$dataListCount = count($dataList);
+		if($dataListCount < 4) {
+			$dataListLimit = 4 - $dataListCount;
+			$dataListGame = Game::where('status', ENABLED)
+								->where('parent_id', '=', GAMEHTML5)
+								->where('start_date', '<=', $now)
+								->where('index', INACTIVE)
+								->orderByRaw("games.index = '0', games.index")
+					    		->orderBy('start_date', 'desc')
+					    		->take($dataListLimit)
+					    		->get();
+		}
+    	return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame'));
     }
 
 }

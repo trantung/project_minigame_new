@@ -21,8 +21,9 @@ class SiteNewsController extends SiteController {
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
 			->where('news.is_hot', ACTIVE)
+			->orderByRaw("news.weight_number = '0', news.weight_number")
 			->orderBy('news.start_date', 'desc')
-			->orderBy('news.weight_number', 'asc')
+			->orderBy('news.id', 'desc')
 			->limit($limit)
 			->lists('id');
 		$inputListNews = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
@@ -31,8 +32,9 @@ class SiteNewsController extends SiteController {
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
 			->whereNotIn('news.id', $list)
+			->orderByRaw("news.weight_number = '0', news.weight_number")
 			->orderBy('news.start_date', 'desc')
-			->orderBy('news.weight_number', 'asc')
+			->orderBy('news.id', 'desc')
 			// ->offset(4)
 			// ->get();
 			->paginate(FRONENDPAGINATE);
@@ -50,8 +52,9 @@ class SiteNewsController extends SiteController {
 			->where('news.status', APPROVE)
 			->where('type_new_id', $newType->id)
 			->where('news.is_hot', ACTIVE)
+			->orderByRaw("news.weight_number = '0', news.weight_number")
 			->orderBy('news.start_date', 'desc')
-			->orderBy('news.weight_number', 'asc')
+			->orderBy('news.id', 'desc')
 			->limit($limit)
 			->lists('id');
 		$news = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
@@ -61,9 +64,9 @@ class SiteNewsController extends SiteController {
 					->where('type_news.status', ENABLED)
 					->where('news.status', APPROVE)
 					->whereNotIn('news.id', $list)
+					->orderByRaw("news.weight_number = '0', news.weight_number")
 					->orderBy('news.start_date', 'desc')
-					->orderBy('news.weight_number', 'asc')
-					->orderBy('id', 'desc')
+					->orderBy('news.id', 'desc')
 					->paginate(FRONENDPAGINATE);
 		return View::make('site.News.showType')->with(compact('newType', 'news'));
 	}
