@@ -31,7 +31,10 @@ class NewsController extends AdminController {
 	{
 		return View::make('admin.news.create');
 	}
-
+	public function createNewSlide()
+	{
+		return View::make('admin.news.create_slode');
+	}
 
 	/**
 	 * Store a newly created resource in storage.
