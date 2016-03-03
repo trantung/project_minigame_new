@@ -23,14 +23,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Loại tin</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{  Form::select('type', [INACTIVE => 'Tin thường', ACTIVE => 'Tin ảnh'], null, array('class' => 'form-control')) }}
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
 						<label>Hình tin ảnh</label>
 						<div class="row">
 							<div class="col-sm-6">
@@ -90,8 +82,8 @@
 					<div class="form-group">
 						<label for="sapo">Mô tả ngắn</label>
 						<div class="row">
-							<div class="col-sm-6">
-								 {{ Form::textarea('sapo', null , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'class' => 'form-control' )) }}
+							<div class="col-sm-12">
+								 {{ Form::textarea('sapo', null , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'rows' => 4,'class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>
@@ -114,7 +106,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<hr />
 							<h1>SEO META</h1>
 							{{-- include common/meta.blade.php --}}
