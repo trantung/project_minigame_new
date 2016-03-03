@@ -10,9 +10,7 @@ class NewsReportController extends AdminController {
 	public function index()
 	{
 		$inputNew = AdminNew::where('role_id', REPORTER)
-			->where('status', '!=', SCRATCH_PAPER)
-			->where('status', '!=', REJECT)
-			->where('status', '!=', BACK)
+			->where('status', '=', SEND)
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news_report.index')->with(compact('inputNew'));
 	}
