@@ -18,6 +18,7 @@
 		<a href="{{ action('NewsController@create') }}" class="btn btn-primary">Thêm mới tin</a>
 		@if(Admin::isAdmin() || Admin::isEditor())
 			<a onclick="updateNewsIndexData();" class="btn btn-success">Đưa ra trang chủ</a>
+			<a onclick="updateNewsHotSelected();" class="btn btn-success">Tin nổi bật</a>
 		@endif
 	</div>
 </div>

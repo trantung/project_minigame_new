@@ -29,6 +29,29 @@
 		});
 		// window.location.reload();
 	}
+	
+	function updateNewsHotSelected()
+	{
+		var values1 = $('input:checkbox:checked.news_id').map(function () {
+		  	return this.value;
+		}).get();
+
+		$.ajax(
+		{
+			type:'post',
+			url: '{{ url("/admin/news/updateNewsHotSelected") }}',
+			data:{
+				'news_id': values1
+			},
+			success: function(data)
+			{
+				if(data) {
+					window.location.reload();
+				}
+			}
+		});
+		// window.location.reload();
+	}
 
 	function countLengh() {
 	    var x = document.getElementById("fname");

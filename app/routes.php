@@ -80,6 +80,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
 	Route::post('/news/updateNewsIndexData', 'NewsController@updateNewsIndexData');
 	Route::post('/news/updateNewsIndexSelected', 'NewsController@updateNewsIndexSelected');
+	Route::post('/news/updateNewsHotSelected', 'NewsController@updateNewsHotSelected');
 	Route::resource('/news', 'NewsController');
 
 	Route::get('/news_report/deleteImageSlide/{newId}/{id}', 'NewsReportController@deleteImageSlide');

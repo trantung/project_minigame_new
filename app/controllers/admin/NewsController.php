@@ -239,7 +239,8 @@ class NewsController extends AdminController {
 		$newsId = Input::get('news_id');
 		foreach($newsId as $key => $value) {
 			$input = array(
-				'index' => ACTIVE
+				'index' => ACTIVE,
+				'weight_number' => INACTIVE,
 				);
 			CommonNormal::update($value, $input);
 		}
@@ -251,7 +252,20 @@ class NewsController extends AdminController {
 		$newsId = Input::get('news_id');
 		foreach($newsId as $key => $value) {
 			$input = array(
-				'index' => INACTIVE
+				'index' => INACTIVE,
+				'weight_number' => INACTIVE,
+				);
+			CommonNormal::update($value, $input);
+		}
+		dd(1);
+	}
+
+	public function updateNewsHotSelected()
+	{
+		$newsId = Input::get('news_id');
+		foreach($newsId as $key => $value) {
+			$input = array(
+				'is_hot' => ACTIVE,
 				);
 			CommonNormal::update($value, $input);
 		}
