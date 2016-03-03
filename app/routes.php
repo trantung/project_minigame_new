@@ -86,6 +86,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/news_report/deleteImageSlide/{newId}/{id}', 'NewsReportController@deleteImageSlide');
 	Route::get('/news_report/search', array('uses' => 'NewsReportController@search', 'as' => 'admin.news_report.search'));
 	Route::resource('/news_report', 'NewsReportController');
+	Route::resource('/news_slide', 'AdminNewSlideController');
 
 	Route::post('/newsindex/updateIndexData', 'NewsIndexController@updateIndexData');
 	Route::get('/newsindex/remove/{id}', 'NewsIndexController@remove');
