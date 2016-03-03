@@ -1,14 +1,14 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Quản lý tin thường' }}
+{{ $title='Quản lý tin ảnh' }}
 @stop
 
 @section('content')
 
-@include('admin.news.scriptindex')
+@include('admin.news_slide.scriptindex')
 
-@include('admin.news.search')
+@include('admin.news_slide.search')
 <!-- inclue Search form 
 
 -->
@@ -28,7 +28,7 @@
 	<div class="col-xs-12">
 	  	<div class="box">
 			<div class="box-header">
-			  <h3 class="box-title">Danh sách tin</h3>
+			  <h3 class="box-title">Danh sách tin ảnh</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body table-responsive no-padding">
@@ -60,11 +60,11 @@
 						<td>{{ NewsManager::getUserName($value->user_id) }}</td>
 						<td>
 						<!-- @if(!Admin::isSeo()) -->
-							<!-- <a href="{{-- action('NewsController@history', $value->id) --}}" class="btn btn-success">Lịch sử</a> -->
+							<!-- <a href="{{-- action('AdminNewSlideController@history', $value->id) --}}" class="btn btn-success">Lịch sử</a> -->
 						<!-- @endif -->
-							<a href="{{  action('NewsController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+							<a href="{{  action('AdminNewSlideController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 						@if(!Admin::isSeo())
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminNewSlideController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
 						@endif
