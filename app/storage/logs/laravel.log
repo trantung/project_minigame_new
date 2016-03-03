@@ -37,3 +37,7 @@ Stack trace:
 #34 D:\web\minigame\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #35 D:\web\minigame\public\index.php(50): Illuminate\Foundation\Application->run()
 #36 {main} [] []
+[2016-03-03 09:49:08] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '->' (T_OBJECT_OPERATOR)' in D:\web\minigame\app\controllers\site\GameController.php:492
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
