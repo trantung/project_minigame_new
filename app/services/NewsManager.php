@@ -27,6 +27,10 @@ class NewsManager
 			if (isset($input['role_id']) && $input['role_id'] != '') {
 				$query = $query->where('role_id', $input['role_id']);
 			}
+			if (isset($input['is_hot']) && $input['is_hot'] != '') {
+				$query = $query->where('is_hot', $input['is_hot']);
+			}
+
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
 			$data = $data->where('status', '!=', SCRATCH_PAPER)
