@@ -39,7 +39,7 @@
 			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
 			  <td>
-			  
+			  	<a href="{{  action('NewsReporterController@sendNews', $value->id) }}" class="btn btn-primary">Gửi bài</a>
 				<a href="{{  action('NewsReporterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 				@if(!Admin::isSeo())
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsReporterController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

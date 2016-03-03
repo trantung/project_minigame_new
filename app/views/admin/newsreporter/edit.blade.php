@@ -116,14 +116,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="status">Chọn trạng thái tin</label>
 					<div class="row">
 						<div class="col-sm-6">
 							 {{  Form::select('status', selectStatusNews(),$inputNew->status ,array('class' => 'form-control' )) }}
 						</div>						
 					</div>
-				</div>
+				</div> -->
 				<!-- @if(!Admin::isSeo())
 				<div class="form-group">
 					<label for="start_date">Ngày xuất bản</label>
