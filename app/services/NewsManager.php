@@ -230,4 +230,15 @@ class NewsManager
 		}
 		return $rules;
 	}
+
+	public static function countNewsReport()
+	{
+		$count = AdminNew::where('role_id', REPORTER)
+			->where('status', '!=', SCRATCH_PAPER)
+			->where('status', '!=', REJECT)
+			->where('status', '!=', BACK)
+			->count();
+		return $count;
+	}
+
 }
