@@ -141,8 +141,7 @@ class NewsController extends AdminController {
 		            ->withInput($inputNews);
 	        } else {
 	        	//update News
-	        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'status', 'is_hot', 'type');
+	        
 	        	if($inputNews['start_date'] == '') {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}

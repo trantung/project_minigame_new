@@ -39,21 +39,16 @@ class NewsReporterController extends AdminController {
 	 */
 	public function store()
 	{
-		$rules = array(
-			'title' => 'required',
-			'title_site' => 'required',
-			'description_site' => 'required',
-			'keyword_site' => 'required'
-		);
+		$rules = NewsManager::getRuleByType();
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('NewsReporterController@create')
 				->withErrors($validator)
-				->withInput(Input::except('name'));
+				->withInput(Input::except('_token'));
 		} else {
 			//create news
-			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',  'position','sapo','status');
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',  'position','sapo','status', 'is_hot', 'type');
 			if($inputNews['start_date'] == '') {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
@@ -65,6 +60,21 @@ class NewsReporterController extends AdminController {
 			$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS);
 			CommonNormal::update($id, ['image_url' => $input['image_url']] );
 
+			if (Input::get('type') == ACTIVE) {
+				$listImage = $input['image_urls'];
+				foreach ($listImage as $key => $value) {
+					if ($value) {
+						$path = UPLOAD_NEWS_SLIDE;
+						$destinationPath = public_path().$path . '/' . $id;
+						$filename = $value->getClientOriginalName();
+						$uploadSuccess   =  $value->move($destinationPath, $filename);
+						$slides['new_id'] = $id;
+						$slides['image_url'] = $filename;
+						$imageRelateId[] = NewSlide::create($slides)->id;
+					}
+				}
+			}
+
 			//chưa lam create history
 			$history_id = CommonLog::insertHistory('AdminNew', $id);
 
@@ -73,7 +83,9 @@ class NewsReporterController extends AdminController {
 
 			// insert ceo
 			CommonSeo::createSeo('AdminNew', $id, FOLDER_SEO_NEWS,$input['image_url']);
-
+			if (Input::get('type') == ACTIVE) {
+				return Redirect::action('NewsReporterController@edit', $id);
+			}
 			return Redirect::action('NewsReporterController@index');
 		}
 
@@ -113,21 +125,16 @@ class NewsReporterController extends AdminController {
 	public function update($id)
 	{
 		if(!Admin::isSeo()){
-			$rules = array(
-				'title'   => 'required',
-				'title_site' => 'required',
-				'description_site' => 'required',
-				'keyword_site' => 'required'
-			);
+			$rules = NewsManager::getRuleByType();
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
+			$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo','status', 'is_hot', 'type');
 			if($validator->fails()) {
 				return Redirect::action('NewsReporterController@edit',$id)
 					->withErrors($validator)
-					->withInput(Input::except('name'));
+					->withInput($inputNews);
 			} else {
 				//update News
-				$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo','status');
 
 				if($inputNews['start_date'] == '') {
 					$inputNews['start_date'] = Carbon\Carbon::now();
@@ -139,8 +146,40 @@ class NewsReporterController extends AdminController {
 				$imageNews = AdminNew::find($id);
 				$input['image_url'] = CommonSeo::uploadImage($id, UPLOADIMG, 'image_url',UPLOAD_NEWS,$imageNews->image_url);
 				CommonNormal::update($id, ['image_url' => $input['image_url']] );
+				//update sapo, image slide for new
+				if (Input::get('type') == ACTIVE) {
+					$listImage = $input['image_urls'];
+					foreach ($listImage as $key => $value) {
+						if ($value) {
+							$path = UPLOAD_NEWS_SLIDE;
+							$destinationPath = public_path().$path . '/' . $id;
+							$filename = $value->getClientOriginalName();
+							$uploadSuccess   =  $value->move($destinationPath, $filename);
+							$slides['new_id'] = $id;
+							$slides['image_url'] = $filename;
+							$imageRelateId[] = NewSlide::create($slides)->id;
+						}
+					}
+					$images = NewSlide::where('new_id', $id)->get();
+					if ($images) {
+						foreach ($images as $keySapo => $sapoSlide) {
+							if (isset($input['image_sapo'])) {
+								if (isset($input['image_sapo'][$keySapo])) {
+									NewSlide::find($sapoSlide->id)->update([
+										'sapo' => $input['image_sapo'][$keySapo],
+									]);
+									}
+								}
+							}
+						}
+					}
+				if (Input::get('type') == INACTIVE) {
+					//delete all image slide
+					$images = NewSlide::where('new_id', $id)->delete();
+					
 				}
 			}
+		}
 			//create history
 			$history_id = CommonLog::updateHistory('AdminNew', $id);
 
@@ -148,7 +187,12 @@ class NewsReporterController extends AdminController {
 			CommonLog::insertLogEdit('AdminNew', $id, $history_id, EDIT);
 			//upadte ceo
 
-			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS);
+			CommonSeo::updateSeo('AdminNew', $id, FOLDER_SEO_NEWS,$input['image_url']);
+			if (Input::get('type') == ACTIVE) {
+			if ($input['image_urls'][0]) {
+				return Redirect::action('NewsReporterController@edit', $id);
+				}
+			}
 			return Redirect::action('NewsReporterController@index') ;
 	}
 
