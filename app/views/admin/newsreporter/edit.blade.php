@@ -59,9 +59,9 @@
 					<div class="row">
 						<div class="col-sm-6">
 							@if(!Admin::isSeo()) 
-						   {{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control' )) }}
+						   {{  Form::select('type_new_id', returnListReporter('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control' )) }}
 						   	@else
-						   	{{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control', 'disabled'=>'true' )) }}
+						   	{{  Form::select('type_new_id', returnListReporter('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control', 'disabled'=>'true' )) }}
 						   	@endif
 						</div>
 					</div>
