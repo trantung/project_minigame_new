@@ -9,15 +9,18 @@ class NewsController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputNew = AdminNew::where('status', '!=', SCRATCH_PAPER)
+		$inputNew = AdminNew::where('type', INACTIVE)
+			->where('status', '!=', SCRATCH_PAPER)
 			->where('status', '!=', REJECT)
 			->where('status', '!=', BACK)
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
+
 	public function search()
 	{
 		$input = Input::all();
+		$input['type'] = INACTIVE;
 		$inputNew = NewsManager::searchNews($input);
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}

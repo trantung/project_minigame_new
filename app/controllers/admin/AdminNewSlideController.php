@@ -9,9 +9,21 @@ class AdminNewSlideController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$inputNew = AdminNew::where('type', ACTIVE)
+			->where('status', '!=', SCRATCH_PAPER)
+			->where('status', '!=', REJECT)
+			->where('status', '!=', BACK)
+			->orderBy('id', 'desc')->paginate(PAGINATE);
+		return View::make('admin.news_slide.index')->with(compact('inputNew'));
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		$input['type'] = ACTIVE;
+		$inputNew = NewsManager::searchNews($input);
+		return View::make('admin.news.index')->with(compact('inputNew'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -20,7 +32,7 @@ class AdminNewSlideController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.news.create_slide');
+		return View::make('admin.news_slide.create');
 		
 	}
 
@@ -44,7 +56,7 @@ class AdminNewSlideController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
 
 
@@ -56,7 +68,9 @@ class AdminNewSlideController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$inputNew = AdminNew::find($id);
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'AdminNew')->first();
+		return View::make('admin.news_slide.edit')->with(compact('inputNew','inputSeo'));
 	}
 
 
@@ -83,5 +97,10 @@ class AdminNewSlideController extends AdminController {
 		//
 	}
 
+	public function uploadImageSlide()
+	{
+	 
+	    
+	}
 
 }

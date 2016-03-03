@@ -1,18 +1,20 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới tin' }}
+{{ $title='Thêm mới tin ảnh' }}
 @stop
 
 @section('content')
 
-@include('admin.news.common')
+@include('admin.news_slide.script')
+
+@include('admin.news_slide.common')
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsController@store'), 'files'=> true)) }}
+			{{ Form::open(array('action' => array('AdminNewSlideController@store'), 'files'=> true, 'id' => 'multiple_upload_form')) }}
 				<div class="box-body">
 					<div class="form-group">
 						<label for="title">Tiêu đề</label>
@@ -25,15 +27,17 @@
 					<div class="form-group">
 						<label>Hình tin ảnh</label>
 						<div class="row">
-							<div class="col-sm-6">
-							   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
-							</div>
 							<div class="col-sm-3">
-							 {{ 'Đồng ý '}}
+								
 							</div>
+							<!-- <div class="col-sm-3">
+							 	<a onclick="uploadImageSlide();" class="btn btn-primary">Đồng ý</a>
+							</div> -->
 						</div>
-
 					</div>
+					<br />
+					<div id="images_preview"></div>
+
 					<div class="form-group">
 						<label for="start_date">Ngày xuất bản</label>
 						<div class="row">
@@ -120,5 +124,5 @@
 	  	</div>
 	</div>
 </div>
-@include('admin.common.ckeditor')
+
 @stop

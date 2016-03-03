@@ -30,6 +30,9 @@ class NewsManager
 			if (isset($input['isHot']) && $input['isHot'] != '') {
 				$query = $query->where('is_hot', $input['isHot']);
 			}
+			if (isset($input['type']) && $input['type'] != '') {
+				$query = $query->where('type', $input['type']);
+			}
 
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
