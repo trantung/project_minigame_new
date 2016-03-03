@@ -106,6 +106,12 @@ function returnList($className)
 	$list = $className::lists('name', 'id');
 	return $list;
 }
+function returnListReporter($className)
+{
+	$list = $className::where('status', '!=', INACTIVE)
+		->lists('name', 'id');
+	return $list;
+}
 
 function getWeightNumberType($typeId, $parentId)
 {
