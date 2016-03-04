@@ -126,7 +126,7 @@ return array(
 	    'Edisonthk\GoogleOAuth\GoogleOAuthServiceProvider',
 	    // 'Barryvdh\Debugbar\ServiceProvider',
 	    'Jenssegers\Agent\AgentServiceProvider',
-
+	    'Sukohi\Surpass\SurpassServiceProvider',
 	),
 
 	/*
@@ -197,6 +197,7 @@ return array(
 		'GoogleOAuth'     => 'Edisonthk\GoogleOAuth\Facade\GoogleOAuth',
 		// 'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
 		'Agent' 		  => 'Jenssegers\Agent\Facades\Agent',
+		'Surpass' => 'Sukohi\Surpass\Facades\Surpass',
 
 	),
 

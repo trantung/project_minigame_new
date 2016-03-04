@@ -45,7 +45,7 @@ class AdminNewSlideController extends AdminController {
 	public function store()
 	{
 		// $rules = NewsManager::getRuleByType(ACTIVE);
-		$rules = ['title' => 'required', 'image_urls' => 'not_empty'];
+		$rules = ['image_urls' => 'not_empty'];
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
