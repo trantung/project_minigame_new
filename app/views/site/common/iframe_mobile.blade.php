@@ -34,13 +34,13 @@
 	}
 	.kt-menu li a {
 		color: #333;
-		font-size: 28px;
+		font-size: 14px;;
     	text-decoration: none;
 	}
 	.kt-menu li:first-child a {
 	    color: #fff;
 	    font-weight: bold;
-	    font-size: 28px;
+	    font-size: 14px;;
 	    text-transform: uppercase;
 	}
 	.kt-menu li.kt-type {
@@ -53,7 +53,7 @@
 	}
 	.kt-menu li:last-child a {
 		border-right: none;
-		font-size: 28px;
+		font-size: 14px;;
 	}
 	.kt-boxgame {
 		background: #2B74A1;
@@ -68,7 +68,7 @@
 	.kt-boxgame-right a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 28px;
+		font-size: 14px;;
 	}
 	.kt-boxgame-left {
 		/*padding: 15px;*/
@@ -84,7 +84,7 @@
 	.kt-boxgame-left strong {
 		display: block;
 		font-weight: bold;
-		font-size: 28px;
+		font-size: 14px;;
 		color: #fff;
 		margin-top: 5px;
 		margin-bottom: 5px;
@@ -92,7 +92,7 @@
 	.kt-boxgame-left p {
 	    text-align: justify;
 	    color: #fff;
-	    font-size: 28px;
+	    font-size: 14px;;
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
@@ -111,14 +111,14 @@
 	.kt-boxgame-right-text strong {
 		display: block;
 	    font-weight: bold;
-	    font-size: 28px;
+	    font-size: 14px;;
 	    color: #fff;
 	    margin-top: 3px;
 	    margin-bottom: 3px;
 	}
 	.kt-boxgame-right-text p {
 	    color: #fff;
-	    font-size: 28px;
+	    font-size: 14px;;
 	    line-height: 16px;
 	}
 	.kt-boxgame-right-text a {
