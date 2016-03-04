@@ -9,7 +9,8 @@ class NewsController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputNew = AdminNew::where('status', '!=', SCRATCH_PAPER)
+		$inputNew = AdminNew::where('type', INACTIVE)
+			->where('status', '!=', SCRATCH_PAPER)
 			->where('status', '!=', REJECT)
 			->where('status', '!=', BACK)
 			->orderBy('id', 'desc')->paginate(PAGINATE);

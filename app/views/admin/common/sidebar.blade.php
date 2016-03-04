@@ -51,7 +51,8 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="{{ action('NewsTypeController@index') }}"><i class="fa fa-circle-o"></i> Quản thể loại tin</a></li>
-					<li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin</a></li>
+					<li><a href="{{ action('NewsController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin thường</a></li>
+					<li><a href="{{ action('AdminNewSlideController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin ảnh</a></li>
 					<li><a href="{{ action('NewsIndexController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin trang chủ</a></li>
 					<li><a href="{{ action('NewsReportController@index') }}"><i class="fa fa-circle-o"></i> Quản lý tin phóng viên ({{ NewsManager::countNewsReport() }})</a></li>
 		  			<li><a href="{{ action('AdminPaginateController@index') }}"><i class="fa fa-circle-o"></i> Quản lý phân trang tin</a></li>

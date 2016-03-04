@@ -25,8 +25,11 @@
 				<div class="form-group">
 					<label>Hình tin ảnh</label>
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 						   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+						</div>
+						<div class="col-sm-3">
+						 	{{ Form::submit('Đồng ý', array('class' => 'btn btn-primary')) }}
 						</div>
 					</div>
 					<br />
