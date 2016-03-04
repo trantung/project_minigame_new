@@ -230,6 +230,7 @@ class NewsManager
 			$rules = array(
 				'title' => 'required',
 				'weight_number' => 'integer|min:0',
+				'sapo' => 'required',
 				'title_site' => 'required',
 				'description_site' => 'required',
 				'keyword_site' => 'required',
