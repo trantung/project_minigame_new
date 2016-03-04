@@ -515,7 +515,11 @@ class GameController extends SiteController {
 					    		->take($dataListLimit)
 					    		->get();
 		}
-    	return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame'));
+		if(getDevice() == COMPUTER) {
+			return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame'));
+		} else {
+			return View::make('site.common.iframe_mobile')->with(compact('dataFirst', 'dataList', 'dataListGame'));
+		}
     }
 
 }
