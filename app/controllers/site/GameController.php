@@ -501,11 +501,11 @@ class GameController extends SiteController {
 						->where('index', ACTIVE)
 						->orderByRaw("games.index = '0', games.index")
 			    		->orderBy('start_date', 'desc')
-			    		->take(4)
+			    		->take(2)
 			    		->get();
 		$dataListCount = count($dataList);
-		if($dataListCount < 4) {
-			$dataListLimit = 4 - $dataListCount;
+		if($dataListCount < 2) {
+			$dataListLimit = 2 - $dataListCount;
 			$dataListGame = Game::where('status', ENABLED)
 								->where('parent_id', '=', GAMEHTML5)
 								->where('start_date', '<=', $now)

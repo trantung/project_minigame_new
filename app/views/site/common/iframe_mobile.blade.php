@@ -13,7 +13,8 @@
 	    padding-right: 5px;
 	}
 	.kt-menu {
-		background: #E7E7E7;
+		/*background: #E7E7E7;*/
+		background: #2B74A1;
 	    display: block;
 	    padding-left: 0;
 	    overflow: hidden;
