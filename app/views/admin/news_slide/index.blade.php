@@ -15,7 +15,6 @@
 @if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('NewsController@create') }}" class="btn btn-primary">Thêm mới tin thường</a>
 		<a href="{{ action('AdminNewSlideController@create') }}" class="btn btn-primary">Thêm mới tin ảnh</a>
 		@if(Admin::isAdmin() || Admin::isEditor())
 			<a onclick="updateNewsIndexData();" class="btn btn-success">Đưa ra trang chủ</a>
