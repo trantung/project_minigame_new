@@ -135,13 +135,13 @@
 		<li>
 			<a href="{{ url('/') }}">Tin Game</a>
 		</li>
-		@foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value)
-			<li class="kt-type">
+		<!-- @foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value) -->
+			<!-- <li class="kt-type">
 				<a href="{{ url('/' . $value->slug) }}" target="_top">
-					{{ ($value->name) }}
+					{{-- ($value->name) --}}
 				</a>
-			</li>
-		@endforeach
+			</li> -->
+		<!-- @endforeach -->
 	</ul>
 	<div class="clearfix"></div>
 	<div class="kt-content">
@@ -153,9 +153,9 @@
 							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
 						</a>
 						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">{{ $dataFirst->title }}</a></strong>
-						<p>
-							{{ getSapo($dataFirst->description, $dataFirst->sapo) }}
-						</p>
+						<!-- <p>
+							{{-- getSapo($dataFirst->description, $dataFirst->sapo) --}}
+						</p> -->
 					@endif
 				</div>
 			</div>
@@ -165,7 +165,7 @@
 			@if(!empty($dataList))
 				@foreach($dataList as $key => $value)
 					<div class="col-xs-6">
-					
+
 						<?php $url = CommonGame::getUrlGame($value); ?>
 						<div class="kt-boxgame-right-images">
 							<a href="{{ $url }}" target="_top">
