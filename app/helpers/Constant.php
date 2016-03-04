@@ -148,7 +148,7 @@ define('ERROR_TYPE_MISSING', 2);
 define('CACHETIME', 2);
 //define game top
 define('GAMETOP', 30);
-define('GAMETOP_LIMITED', 6);
+define('GAMETOP_LIMITED', 5);
 //define game scale
 define('GAME_VERTICAL', 1);
 define('GAME_HORIZONTAL', 2);
@@ -178,4 +178,24 @@ define('SCRATCH_PAPER', 5);
 define('NEW_HOT', 1);
 //tin liên quan: status = 2
 define('NEW_RELATE', 2);
+
+define('IS_MOBILE', 1);
+define('IS_NOT_MOBILE', 0);
+
+define('IS_HOME', 1);
+define('IS_NOT_HOME', 0);
+
+define('POSITION_HEADER', 1);
+define('POSITION_RIGHT', 2);
+define('POSITION_NEWS_GAMES', 3);
+define('POSITION_GAMES_GAMES', 4);
+define('POSITION_GAMES_MINIGAME', 5);
+define('POSITION_STICKY_LEFT', 6);
+define('POSITION_STICKY_RIGHT', 7);
+define('POSITION_SAPO', 8);
+define('POSITION_NEWS_DETAIL_LEFT', 9);
+define('POSITION_PLAYGAME_SHARE', 10);
+define('POSITION_INFO', 11);
+define('POSITION_INFO_RIGHT', 12);
+define('POSITION_GAME_RELATED', 13);
 
