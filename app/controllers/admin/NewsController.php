@@ -9,8 +9,7 @@ class NewsController extends AdminController {
 	 */
 	public function index()
 	{
-		$inputNew = AdminNew::where('type', INACTIVE)
-			->where('status', '!=', SCRATCH_PAPER)
+		$inputNew = AdminNew::where('status', '!=', SCRATCH_PAPER)
 			->where('status', '!=', REJECT)
 			->where('status', '!=', BACK)
 			->orderBy('id', 'desc')->paginate(PAGINATE);
@@ -20,7 +19,7 @@ class NewsController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		$input['type'] = INACTIVE;
+		// $input['type'] = INACTIVE;
 		$inputNew = NewsManager::searchNews($input);
 		return View::make('admin.news.index')->with(compact('inputNew'));
 	}
@@ -41,7 +40,7 @@ class NewsController extends AdminController {
 	 */
 	public function store()
 	{
-		$rules = NewsManager::getRuleByType();
+		$rules = NewsManager::getRuleByType(INACTIVE);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
@@ -131,7 +130,7 @@ class NewsController extends AdminController {
 	public function update($id)
 	{
 		if(!Admin::isSeo()){
-			$rules = NewsManager::getRuleByType();
+			$rules = NewsManager::getRuleByType(INACTIVE);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
 	        		'weight_number', 'position', 'sapo', 'status', 'is_hot');
