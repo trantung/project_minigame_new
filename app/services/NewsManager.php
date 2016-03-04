@@ -147,7 +147,7 @@ class NewsManager
 			$array = array(
 				SEND => 'Chưa phê duyệt',
 				APPROVE => 'Phê duyệt',
-				REJECT => 'Hủy',
+				// REJECT => 'Hủy',
 				BACK => 'Gửi lại PV',
 			);
 			return $array;

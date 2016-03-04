@@ -23,6 +23,30 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Hình tin ảnh</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+						</div>
+					</div>
+					<br />
+					@if($inputNew->type == ACTIVE)
+						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
+							<div class="row">
+								<div class="col-sm-3">
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="100px" />
+								</div>
+								<div class="col-sm-7">
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+								</div>
+								<div class="col-sm-2">
+									<a href="{{ action('NewsReportController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
+								</div>
+							</div>
+						@endforeach
+					@endif
+				</div>
+				<div class="form-group">
 					<label for="name">Chuyên mục tin</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -77,18 +101,6 @@
 					<div class="row">
 						<div class="col-sm-12">
 						{{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250, 'rows' => 4,'class' => 'form-control' )) }}
-						</div>
-					</div>
-					</div>
-				<div class="form-group">
-					<label for="description">Nội dung tin</label>
-					<div class="row">
-						<div class="col-sm-12">	 
-							@if(!Admin::isSeo())                 	
-						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1'  )) }}
-						   	@else                 	
-						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1', 'disabled' =>'true'  )) }}
-						   	@endif
 						</div>
 					</div>
 				</div>
