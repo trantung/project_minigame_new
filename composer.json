@@ -11,8 +11,7 @@
 		"edisonthk/google-oauth-laravel4": "dev-master",
 		"facebook/php-sdk-v4": "4.*",
 		"barryvdh/laravel-debugbar": "~1.8",
-		"jenssegers/agent": "^2.3",
-		 "sukohi/surpass": "1.*"
+		"jenssegers/agent": "^2.3"
 	},
 	"autoload": {
 		"classmap": [
