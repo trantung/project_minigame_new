@@ -178,13 +178,13 @@ define('SCRATCH_PAPER', 5);
 define('NEW_HOT', 1);
 //tin liên quan: status = 2
 define('NEW_RELATE', 2);
-
+//define mobile
 define('IS_MOBILE', 1);
 define('IS_NOT_MOBILE', 0);
-
+//define home
 define('IS_HOME', 1);
 define('IS_NOT_HOME', 0);
-
+//define position ad - PC
 define('POSITION_HEADER', 1);
 define('POSITION_RIGHT', 2);
 define('POSITION_NEWS_GAMES', 3);
@@ -198,4 +198,16 @@ define('POSITION_PLAYGAME_SHARE', 10);
 define('POSITION_INFO', 11);
 define('POSITION_INFO_RIGHT', 12);
 define('POSITION_GAME_RELATED', 13);
-
+//define position ad - MOBILE
+define('POSITION_MOBILE_HEADER', 14);
+define('POSITION_MOBILE_NEWS_GAMES', 15);
+define('POSITION_MOBILE_GAMES_GAMES', 16);
+define('POSITION_MOBILE_GAMES_MINIGAME', 17);
+define('POSITION_MOBILE_GAMES_TYPE', 18);
+define('POSITION_MOBILE_FOOTER', 19);
+define('POSITION_MOBILE_SAPO', 20);
+define('POSITION_MOBILE_NEWS_RELATED', 21);
+define('POSITION_MOBILE_NEWS_GAMES', 22);
+define('POSITION_MOBILE_INFO_TEXT', 23);
+define('POSITION_MOBILE_INFO_COMMENT', 24);
+define('POSITION_MOBILE_GAME_RELATED', 25);
