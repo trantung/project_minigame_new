@@ -44,8 +44,12 @@
 							<!-- <a href="{{-- action('NewsReportController@history', $value->id) --}}" class="btn btn-success">Lịch sử</a> -->
 						<!-- @endif -->
 							<a href="{{  action('NewsReportController@edit', $value->id) }}" class="btn btn-primary">Lưu tin</a>
-							<a href="#" class="btn btn-primary">Duyệt tin</a>
-							<a href="#" class="btn btn-primary">Trả lại</a>
+							{{ Form::open(array('method'=>'POST', 'action' => array('NewsReportController@approve', $value->id), 'style' => 'display: inline-block;')) }}
+								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn duyệt?');">Duyệt tin</button>
+							{{ Form::close() }}
+							{{ Form::open(array('method'=>'POST', 'action' => array('NewsReportController@back', $value->id), 'style' => 'display: inline-block;')) }}
+								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn trả lại?');">Trả lại</button>
+							{{ Form::close() }}
 						</td>
 					</tr>
 					@endforeach
