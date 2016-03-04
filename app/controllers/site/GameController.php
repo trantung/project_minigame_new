@@ -476,6 +476,13 @@ class GameController extends SiteController {
 
     public function gameCode()
     {
+
+    	if(getDevice() == MOBILE) {
+    		$limitGame = 2;
+    	} else {
+    		$limitGame = 4;
+    	}
+
     	$now = Carbon\Carbon::now();
 		// $dataFirst = Game::where('status', ENABLED)
 		// 	->where('parent_id', '=', GAMEHTML5)
@@ -501,11 +508,11 @@ class GameController extends SiteController {
 						->where('index', ACTIVE)
 						->orderByRaw("games.index = '0', games.index")
 			    		->orderBy('start_date', 'desc')
-			    		->take(2)
+			    		->take($limitGame)
 			    		->get();
 		$dataListCount = count($dataList);
-		if($dataListCount < 2) {
-			$dataListLimit = 2 - $dataListCount;
+		if($dataListCount < $limitGame) {
+			$dataListLimit = $limitGame - $dataListCount;
 			$dataListGame = Game::where('status', ENABLED)
 								->where('parent_id', '=', GAMEHTML5)
 								->where('start_date', '<=', $now)
