@@ -213,9 +213,9 @@ class NewsManager
 		}
 		return 'Editor/Admin';
 	}
-	public static function getRuleByType()
+	public static function getRuleByType($type = INACTIVE)
 	{
-		if (Input::get('type') == INACTIVE) {
+		if ($type == INACTIVE) {
 			$rules = array(
 				'title' => 'required',
 				'weight_number' => 'integer|min:0',
@@ -226,7 +226,7 @@ class NewsManager
 				'description' => 'required',
 			);
 		}
-		if (Input::get('type') == ACTIVE) {
+		if ($type == ACTIVE) {
 			$rules = array(
 				'title' => 'required',
 				'weight_number' => 'integer|min:0',
@@ -244,6 +244,41 @@ class NewsManager
 			->where('status', '=', SEND)
 			->count();
 		return $count;
+	}
+
+	public static function uploadImageSlide($type, $input, $id)
+	{
+		//update sapo, image slide for new
+		if ($type == ACTIVE) {
+			$listImage = $input['image_urls'];
+			foreach ($listImage as $key => $value) {
+				if ($value) {
+					$path = UPLOAD_NEWS_SLIDE;
+					$destinationPath = public_path().$path . '/' . $id;
+					$filename = $value->getClientOriginalName();
+					$uploadSuccess   =  $value->move($destinationPath, $filename);
+					$slides['new_id'] = $id;
+					$slides['image_url'] = $filename;
+					$imageRelateId[] = NewSlide::create($slides)->id;
+				}
+			}
+			$images = NewSlide::where('new_id', $id)->get();
+			if ($images) {
+				foreach ($images as $keySapo => $sapoSlide) {
+					if (isset($input['image_sapo'])) {
+						if (isset($input['image_sapo'][$keySapo])) {
+							NewSlide::find($sapoSlide->id)->update([
+								'sapo' => $input['image_sapo'][$keySapo],
+							]);
+						}
+					}
+				}
+			}
+		}
+		// if ($type == INACTIVE) {
+		// 	//delete all image slide
+		// 	$images = NewSlide::where('new_id', $id)->delete();
+		// }
 	}
 
 }

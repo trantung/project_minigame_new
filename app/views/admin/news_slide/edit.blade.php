@@ -6,8 +6,6 @@
 
 @section('content')
 
-@include('admin.news_slide.script')
-
 @include('admin.news_slide.common')
 
 <div class="row">
@@ -27,11 +25,11 @@
 				<div class="form-group">
 					<label>Hình tin ảnh</label>
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 						   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
 						</div>
 						<div class="col-sm-3">
-						 	<a onclick="uploadImageSlide();" class="btn btn-primary">Đồng ý</a>
+						 	{{ Form::submit('Đồng ý', array('class' => 'btn btn-primary')) }}
 						</div>
 					</div>
 					<br />

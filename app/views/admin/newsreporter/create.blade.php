@@ -25,20 +25,14 @@
 					<div class="form-group">
 						<label>Hình tin ảnh</label>
 						<div class="row">
-							<div class="col-sm-6">
-							   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+							<div class="col-sm-3">								
+								{{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+							</div>
+							<div class="col-sm-3">
+							 	{{ Form::submit('Đồng ý', array('class' => 'btn btn-primary')) }}
 							</div>
 						</div>
-
 					</div>
-					<!-- <div class="form-group">
-						<label for="start_date">Ngày xuất bản</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   <input type="text" class="form-control" name="start_date" id="start_date">
-							</div>
-						</div>
-					</div> -->
 					<div class="form-group">
 						<label for="name">Chuyên mục tin</label>
 						<div class="row">

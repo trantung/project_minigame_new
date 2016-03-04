@@ -6,15 +6,13 @@
 
 @section('content')
 
-@include('admin.news_slide.script')
-
 @include('admin.news_slide.common')
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdminNewSlideController@store'), 'files'=> true, 'id' => 'multiple_upload_form')) }}
+			{{ Form::open(array('action' => array('AdminNewSlideController@store'), 'files'=> true)) }}
 				<div class="box-body">
 					<div class="form-group">
 						<label for="title">Tiêu đề</label>
@@ -27,17 +25,14 @@
 					<div class="form-group">
 						<label>Hình tin ảnh</label>
 						<div class="row">
-							<div class="col-sm-3">
-								
+							<div class="col-sm-3">								
+								{{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
 							</div>
-							<!-- <div class="col-sm-3">
-							 	<a onclick="uploadImageSlide();" class="btn btn-primary">Đồng ý</a>
-							</div> -->
+							<div class="col-sm-3">
+							 	{{ Form::submit('Đồng ý', array('class' => 'btn btn-primary')) }}
+							</div>
 						</div>
 					</div>
-					<br />
-					<div id="images_preview"></div>
-
 					<div class="form-group">
 						<label for="start_date">Ngày xuất bản</label>
 						<div class="row">
