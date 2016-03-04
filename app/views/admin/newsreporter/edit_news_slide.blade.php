@@ -12,7 +12,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsReporterController@update', $inputNew->id), 'method' => 'PUT', 'files' => true)) }}
+			{{ Form::open(array('action' => array('NewsReporterController@update_news_slide', $inputNew->id), 'method' => 'PUT', 'files' => true)) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="title">Tiêu đề</label>
@@ -22,7 +22,14 @@
 						</div>
 					</div>
 				</div>
-			
+				<div class="form-group">
+					<label>Hình tin ảnh</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+						</div>
+					</div>
+					<br />
 					@if($inputNew->type == ACTIVE)
 						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
 							<div class="row">
@@ -89,18 +96,7 @@
 						</div>
 					</div>
 					</div>
-				<div class="form-group">
-					<label for="description">Nội dung tin</label>
-					<div class="row">
-						<div class="col-sm-12">	 
-							@if(!Admin::isSeo())                 	
-						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1'  )) }}
-						   	@else                 	
-						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1', 'disabled' =>'true'  )) }}
-						   	@endif
-						</div>
-					</div>
-				</div>
+				
 				<!-- <div class="form-group">
 					<label for="status">Chọn trạng thái tin</label>
 					<div class="row">

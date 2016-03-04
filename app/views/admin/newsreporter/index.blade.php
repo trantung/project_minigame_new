@@ -12,7 +12,8 @@
 @if(!Admin::isSeo())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('NewsReporterController@create') }}" class="btn btn-primary">Thêm mới tin</a>
+		<a href="{{ action('NewsReporterController@create') }}" class="btn btn-primary">Thêm mới tin thường</a>
+		<a href="{{ action('NewsReporterController@create_news_slide') }}" class="btn btn-primary">Thêm mới tin ảnh</a>
 	</div>
 </div>
 @endif
@@ -30,6 +31,7 @@
 			  <th>Tiêu đề</th>
 			  <th>Thể loại</th>
 			  <th>Trạng thái</th>
+			  <th>Loại tin</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			 @foreach($inputNew as $value)
@@ -38,9 +40,14 @@
 			  <td>{{ $value->title }}</td>
 			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 			  <td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
+			  <td>{{ statusNewsReporter($value->type) }}</td>
 			  <td>
 			  	<a href="{{  action('NewsReporterController@sendNews', $value->id) }}" class="btn btn-primary">Gửi bài</a>
-				<a href="{{  action('NewsReporterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+			  	@if($value->type == ACTIVE)
+					<a href="{{  action('NewsReporterController@edit_news_slide', $value->id) }}" class="btn btn-primary">Sửa</a>
+				@else
+					<a href="{{  action('NewsReporterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+				@endif
 				@if(!Admin::isSeo())
 				{{ Form::open(array('method'=>'DELETE', 'action' => array('NewsReporterController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
