@@ -25,7 +25,7 @@ define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
 //pagination frontend
-define('FRONENDPAGINATE', 8);
+define('FRONENDPAGINATE', 2);
 //url upload img
 define('UPLOADIMG', '/images');
 //url upload avatar game
@@ -157,7 +157,7 @@ define('CHOINHANH', 'choinhanh.vn');
 
 define('SEARCHLIMIT', 5);
 define('SEARCH_PAGINATE', 5);
-define('HOME_PAGINATE', 4);
+define('HOME_PAGINATE', 2);
 define('HOME_MOBILE_PAGINATE', 2);
 
 define('MINI_GAME_TITLE', 'Mini Game');
