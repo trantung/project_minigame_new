@@ -247,9 +247,11 @@ class CommonSearch
 			if ($input['type_new_id'] != '0') {
 				$query = $query->where('type_new_id', $input['type_new_id']);
 			}
+			if ($input['type'] != '') {
+				$query = $query->where('type', $input['type']);
+			}
 			
 		})->orderBy('id', 'desc')->paginate(PAGINATE);
-
 		return $data;
 	}
 

@@ -691,6 +691,7 @@ function getNamePaginate($input)
 	}
 }
 
+
 function getSapo($description, $sapo, $textlengh = TEXTLENGH_DESCRIPTION)
 {
 	if($sapo == '') {
@@ -698,4 +699,23 @@ function getSapo($description, $sapo, $textlengh = TEXTLENGH_DESCRIPTION)
 	} else {
 		return limit_text(strip_tags($sapo), $textlengh);
 	}
+}
+
+function statusNewsReporter($input){
+	if($input == ACTIVE){
+		return 'Tin ảnh';
+	}
+	if($input == INACTIVE){
+		return 'Tin thường';
+	}else{
+		return 'Unknown';
+	}
+}
+function listTypeNewsporter()
+{
+	return array(
+			INACTIVE => 'Tin thường',
+			ACTIVE => 'Tin Ảnh',
+			
+		);
 }

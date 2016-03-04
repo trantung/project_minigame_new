@@ -12,7 +12,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsReporterController@store'), 'files'=> true)) }}
+			{{ Form::open(array('action' => array('NewsReporterController@store_slide'), 'files'=> true)) }}
 				<div class="box-body">
 					<div class="form-group">
 						<label for="title">Tiêu đề</label>
@@ -22,7 +22,17 @@
 							</div>
 						</div>
 					</div>
-					
+					<div class="form-group">
+						<label>Hình tin ảnh</label>
+						<div class="row">
+							<div class="col-sm-3">								
+								{{ Form::file('image_urls[]', array('id' => 'image_url', 'multiple' => true)) }}
+							</div>
+							<div class="col-sm-3">
+							 	{{ Form::submit('Đồng ý', array('class' => 'btn btn-primary')) }}
+							</div>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="name">Chuyên mục tin</label>
 						<div class="row">
@@ -31,22 +41,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="form-group">
-						<label>Mức ưu tiên</label>
-						<div class="row">
-							<div class="col-sm-6">
-								{{ Form::text('weight_number', null , textParentCategory('Mức ưu tiên')) }}
-							</div>
-						</div>
-					</div> -->
-					<!-- <div class="form-group">
-						<label>Vị trí</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{  Form::select('position', [''=>'Mặc định', '1'=>'Bên phải'],null,array('class' => 'form-control' )) }}
-							</div>
-						</div>
-					</div> -->
 					<div class="form-group">
 						<label for="image_url">Ảnh đại diện(640x410)</label>
 						<div class="row">
@@ -63,24 +57,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="description">Nội dung tin</label>
-						<div class="row">
-							<div class="col-sm-12">
-							   {{ Form::textarea('description', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
-							</div>
-						</div>
-					</div>
-
-					<!-- <div class="form-group">
-						<label for="name">Chọn trạng thái tin </label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{  Form::select('status', selectStatusNews(),null,array('class' => 'form-control' )) }}
-							</div>
-						</div>
-					</div> -->
-
 					<div class="row">
 						<div class="col-sm-12">
 							<hr />
