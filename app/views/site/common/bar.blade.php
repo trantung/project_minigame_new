@@ -36,3 +36,5 @@
 		</div>
 	</div>
 </div>
+@include('site.common.ads', array('adPosition' => POSITION_HEADER))
+@include('site.common.ads', array('adPosition' => POSITION_MOBILE_HEADER))

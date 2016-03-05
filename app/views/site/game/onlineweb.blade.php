@@ -18,11 +18,16 @@
 		<h1>Game {{ $game->name }}</h1>
 		<div class="playbox">
 			{{ CommonGame::getLinkGame($game) }}
+
+			@include('site.common.ads', array('adPosition' => POSITION_PLAYGAME_SHARE))
+
 			<div class="social-box">
 				@include('site.game.socialbox', array('id' => $game->id))
 			</div>
 		</div>
 	</div>
+
+	@include('site.common.ads', array('adPosition' => POSITION_INFO))
 
 	<div class="row">
 		<div class="col-sm-8">
@@ -72,6 +77,9 @@
 
 				{{ $gametop }}
 			</div>
+
+			@include('site.common.ads', array('adPosition' => POSITION_INFO_RIGHT))
+
 		</div>
 	</div>
 </div>

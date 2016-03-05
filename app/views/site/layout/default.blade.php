@@ -23,6 +23,9 @@
 	  		</div>
 	  	</div>
 
+	  	@include('site.common.ad', array('adPosition' => POSITION_STICKY_LEFT))
+		@include('site.common.ad', array('adPosition' => POSITION_STICKY_RIGHT))
+
 	  	<div class="glass"></div>
 
 		<div id="fb-root"></div>

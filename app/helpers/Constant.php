@@ -184,30 +184,57 @@ define('IS_NOT_MOBILE', 0);
 //define home
 define('IS_HOME', 1);
 define('IS_NOT_HOME', 0);
+
 //define position ad - PC
+//bar.blade.php
 define('POSITION_HEADER', 1);
+//index.blade.php + listNews.blade.php + showNews.blade.php + showType.blade.php + slideNews.blade.php
 define('POSITION_RIGHT', 2);
+//gamebox.blade.php
 define('POSITION_NEWS_GAMES', 3);
+//gamebox.blade.php
 define('POSITION_GAMES_GAMES', 4);
+//gameboxmini.blade.php
 define('POSITION_GAMES_MINIGAME', 5);
+//default.blade.php
 define('POSITION_STICKY_LEFT', 6);
+//default.blade.php
 define('POSITION_STICKY_RIGHT', 7);
+//showNews.blade.php
 define('POSITION_SAPO', 8);
+//showNews.blade.php
 define('POSITION_NEWS_DETAIL_LEFT', 9);
+//onlineweb.blade.php
 define('POSITION_PLAYGAME_SHARE', 10);
+//onlineweb.blade.php
 define('POSITION_INFO', 11);
+//onlineweb.blade.php
 define('POSITION_INFO_RIGHT', 12);
+//related.blade.php
 define('POSITION_GAME_RELATED', 13);
+
 //define position ad - MOBILE
+//bar.blade.php
 define('POSITION_MOBILE_HEADER', 14);
+//gamebox.blade.php
 define('POSITION_MOBILE_NEWS_GAMES', 15);
+//gamebox.blade.php
 define('POSITION_MOBILE_GAMES_GAMES', 16);
+//gameboxmini.blade.php
 define('POSITION_MOBILE_GAMES_MINIGAME', 17);
+//gameboxmini.blade.php
 define('POSITION_MOBILE_GAMES_TYPE', 18);
+//footer.blade.php
 define('POSITION_MOBILE_FOOTER', 19);
+//showNews.blade.php
 define('POSITION_MOBILE_SAPO', 20);
+//showNews.blade.php
 define('POSITION_MOBILE_NEWS_RELATED', 21);
-define('POSITION_MOBILE_NEWS_GAMES_RIGHT', 22);
+//showNews.blade.php
+define('POSITION_MOBILE_NEWS_DETAIL_LEFT', 22);
+//onlinemobile.blade.php
 define('POSITION_MOBILE_INFO_TEXT', 23);
+//onlinemobile.blade.php
 define('POSITION_MOBILE_INFO_COMMENT', 24);
+//related.blade.php
 define('POSITION_MOBILE_GAME_RELATED', 25);

@@ -20,6 +20,7 @@
 		<div class="mobile_avatar">
 			<img alt="{{ $game->name }}" src="{{ url(UPLOAD_GAME_AVATAR . '/' . $game->image_url) }}" />
 		</div>
+		
 		<div class="mobile_title">
 
 			<h1 class="title mobile-title">{{ $game->name }}</h1>
@@ -40,6 +41,8 @@
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
 
+			@include('site.common.ads', array('adPosition' => POSITION_MOBILE_INFO_TEXT))
+
 			<div class="detail">{{ $game->description }}</div>
 
 			<div class="btn-block-center">
@@ -57,6 +60,8 @@
 	  	</div>
 
 	</div>
+
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_INFO_COMMENT))
 
 	@include('site.game.comment')
 

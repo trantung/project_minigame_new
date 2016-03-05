@@ -29,12 +29,23 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
+						{{ $inputNew->sapo }}
+						<div class="clearfix"></div>
+						@include('site.common.ads', array('adPosition' => POSITION_SAPO))
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO))
+						<div class="clearfix"></div>
 						{{ $inputNew->description }}
 					</div>
 				</div>
 				<div class="col-sm-3 col-sm-pull-9">
+					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED))
+					
 					@include('site.News.relatedNews')
+					
 					@include('site.News.hotNews')
+					
+					@include('site.common.ads', array('adPosition' => POSITION_NEWS_DETAIL_LEFT))
+					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT))
 				</div>
 			</div>
 
@@ -42,7 +53,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="side">
-			@include('site.common.ad', array('adPosition' => AD_NEW))
+			@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
 		</div>
 	</div>
 </div>

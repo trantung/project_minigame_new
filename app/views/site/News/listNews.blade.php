@@ -48,7 +48,7 @@
 	</div>
 	<div class="col-sm-4">
 		<div class="side">
-			@include('site.common.ad', array('adPosition' => AD_NEW))
+			@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
 		</div>
 	</div>
 </div>

@@ -1,3 +1,8 @@
+@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME))
+@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME))
+
+<div class="clearfix"></div>
+
 <?php $data = CommonGame::getBoxMiniGame(); ?>
 @if(count($data) > 0)
 <div class="box">
@@ -30,6 +35,9 @@
 						</div>
 					</div>
 				</div>
+
+				@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE))
+				
 			@endif
 		@endforeach
 	</div>

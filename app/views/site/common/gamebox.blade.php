@@ -1,3 +1,6 @@
+@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES))
+@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES))
+
 <div class="box">
 	<h3><a href="{{ action('GameController@getListGamehot') }}">Game hay nhất</a></h3>
 	<?php
@@ -38,6 +41,11 @@
 		</div>
 	</div>
 </div>
+<div class="clearfix"></div>
+
+@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES))
+@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES))
+
 <div class="clearfix"></div>
 <div class="box">
 	<h3><a href="{{ action('GameController@getListGameNew') }}">Game mới nhất</a></h3>
