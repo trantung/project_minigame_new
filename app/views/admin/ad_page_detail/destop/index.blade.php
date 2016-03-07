@@ -7,7 +7,7 @@
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdNewMobileController@create') }}" class="btn btn-primary">Thêm mới quảng cáo trang con</a>
+		<a href="{{ action('AdPageDetailController@create') }}" class="btn btn-primary">Thêm mới quảng cáo chi tiết trang con</a>
 	</div>
 </div>
 <div class="row">
@@ -29,12 +29,12 @@
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-				  	<td>{{ TypeNew::find($value->model_id)->name }}</td>
-					<td>{{ AdCommon::getNamePositionClassAd($value->position, 'catelog_mobile') }}</td>
+				  	<td>{{ AdminNew::find($value->model_id)->title }}</td>
+					<td>{{ AdCommon::getNamePositionClassAd($value->position,'ad_pagedetail_desktop') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
-					<a href="{{  action('AdNewMobileController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdNewMobileController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+					<a href="{{  action('AdPageDetailController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdPageDetailController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
 				  	</td>

@@ -7,7 +7,7 @@
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdNewDestopController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
+		<a href="{{ action('AdPageDetailController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
 	</div>
 </div>
 
@@ -15,7 +15,8 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdNewDestopController@store'))) }}
+			{{ Form::open(array('action' => array('AdPageDetailController@store'))) }}
+			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>
@@ -29,7 +30,7 @@
 					<label for="name">Trang con</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', TypeNew::lists('name', 'id')) }}
+						   {{ Form::select('model_id', AdminNew::lists('title', 'id')) }}
 						</div>
 					</div>
 				</div>
@@ -45,7 +46,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd()) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('ad_pagedetail_desktop')) }}
 						</div>
 					</div>
 				</div>

@@ -9,20 +9,82 @@ class AdCommon
 		
 		return TypeNew::lists('name', 'id');
 	}
-	public static function getPositionClassAd()
+
+	public static function getNameClassAdPage_Detail()
 	{
-		return [
-			POSITION_HEADER => 'Header' , 
-			POSITION_RIGHT => 'Cột phải', 
-			POSITION_NEWS_GAMES => 'Footer tin trên game', 
-			POSITION_GAMES_GAMES => 'Giữa game', 
-			POSITION_STICKY_LEFT => 'Banner trôi trái', 
-			POSITION_STICKY_RIGHT => 'Banner trôi phải',
-		];
+		
+		return AdminNew::lists('title', 'id');
 	}
-	public static function getNamePositionClassAd($value)
+
+	public static function getPositionClassAd($page = '')
 	{
-		$array = self::getPositionClassAd();
+		switch ($page) {
+			case 'home':
+				return [
+					POSITION_HEADER => 'Header' , 
+					POSITION_RIGHT => 'Cột phải', 
+					POSITION_NEWS_GAMES => 'Footer tin trên game', 
+					POSITION_GAMES_GAMES => 'Giữa game', 
+					POSITION_GAMES_GAMES => 'Trên gamemini', 
+					POSITION_STICKY_LEFT => 'Banner trôi trái', 
+					POSITION_STICKY_RIGHT => 'Banner trôi phải',
+				];
+				break;
+			case 'home_mobile':
+				return [
+					POSITION_MOBILE_HEADER => 'Header mobile' , 
+					POSITION_MOBILE_NEWS_GAMES => 'Dưới cột tin', 
+					POSITION_MOBILE_GAMES_GAMES => 'Giữa game', 
+					POSITION_MOBILE_GAMES_MINIGAME => 'Trên gamemini', 
+					POSITION_MOBILE_GAMES_TYPE => 'Dưới nấu ăn, trên chiến thuật', 
+					POSITION_MOBILE_FOOTER => 'Footer mobile', 
+				];
+				break;
+
+			case 'catelog_mobile':
+				return [
+					POSITION_MOBILE_HEADER => 'Header mobile' , 
+					POSITION_MOBILE_FOOTER => 'Footer mobile', 
+				];
+				break;
+
+			case 'ad_pagedetail_desktop':
+				return [
+					POSITION_STICKY_LEFT => 'Banner trôi trái phải',
+					POSITION_STICKY_RIGHT => 'Dưới sapo bài viết',
+					POSITION_SAPO => 'Cột trái bài chi tiết',
+					POSITION_NEWS_DETAIL_LEFT => 'Cột phải bài chi tiết',
+					POSITION_NEWS_GAMES =>'Dưới bài viết',
+					POSITION_GAMES_GAMES => 'Dưới Game hay nhất',
+
+				];
+				break;
+
+			case 'ad_pagedetail_mobile':
+				return [
+					POSITION_MOBILE_HEADER =>'Dưới menu',
+					POSITION_MOBILE_SAPO =>'Dưới chapo bài viết',
+					POSITION_MOBILE_NEWS_RELATED =>'Trên Tin liên quan code',
+					POSITION_MOBILE_NEWS_DETAIL_LEFT =>'Dưới 5 Tin đáng đọc',
+					POSITION_MOBILE_FOOTER =>'Trên Home/Góp Ý/ Chính sách',
+				];
+				break;
+
+			default:
+				return [
+					POSITION_HEADER => 'Header' , 
+					POSITION_RIGHT => 'Cột phải', 
+					POSITION_NEWS_GAMES => 'Footer tin trên game', 
+					POSITION_GAMES_GAMES => 'Giữa game', 
+					POSITION_STICKY_LEFT => 'Banner trôi trái', 
+					POSITION_STICKY_RIGHT => 'Banner trôi phải',
+				];
+				break;
+		}
+	}
+	public static function getNamePositionClassAd($value, $page = '')
+	{
+		$array = self::getPositionClassAd($page);
 		return $array[$value];
 	}
 }
