@@ -224,6 +224,7 @@ class NewsManager
 				'keyword_site' => 'required',
 				'sapo' => 'required',
 				'description' => 'required',
+				'author_money' => 'integer|min:1',
 			);
 		}
 		if ($type == ACTIVE) {
