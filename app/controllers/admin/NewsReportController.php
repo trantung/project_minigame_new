@@ -87,7 +87,7 @@ class NewsReportController extends AdminController {
 			$rules = NewsManager::getRuleByType($type);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'status', 'is_hot', 'type');
+	        		'weight_number', 'position', 'sapo', 'status', 'is_hot', 'type', 'author', 'author_money');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('NewsReportController@edit',$id)
