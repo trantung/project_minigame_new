@@ -10,6 +10,7 @@ class AdNewDestopController extends AdminController {
 	public function index()
 	{
 		$advertise = Advertise::where('model_name', 'TypeNew')
+			->where('is_mobile', IS_NOT_MOBILE)
 			->whereNull('relate_id')->get();
 		return View::make('admin.ad_child.destop.index')->with(compact('advertise'));
 	}
@@ -88,7 +89,9 @@ class AdNewDestopController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Advertise::find($id)->destroy($id);
+		return Redirect::action('AdNewDestopController@index');
+
 	}
 
 

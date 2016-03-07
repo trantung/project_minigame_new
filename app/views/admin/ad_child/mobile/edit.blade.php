@@ -7,7 +7,7 @@
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdNewDestopController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
+		<a href="{{ action('AdNewMobileController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
 	</div>
 </div>
 
@@ -15,7 +15,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdNewDestopController@update', $ad->id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('AdNewMobileController@update', $ad->id), 'method' => 'PUT')) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>
@@ -45,7 +45,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd(), $ad->position) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd(IS_MOBILE), $ad->position) }}
 						</div>
 					</div>
 				</div>

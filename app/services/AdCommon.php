@@ -8,7 +8,7 @@ class AdCommon
 	{
 		return TypeNew::lists('name', 'id');
 	}
-	public static function getPositionClassAd()
+	public static function getPositionClassAd($mobile = null)
 	{
 		return [
 			POSITION_HEADER => 'Header' , 

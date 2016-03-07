@@ -7,7 +7,7 @@
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdNewDestopController@create') }}" class="btn btn-primary">Thêm mới quảng cáo trang con</a>
+		<a href="{{ action('AdNewMobileController@create') }}" class="btn btn-primary">Thêm mới quảng cáo trang con</a>
 	</div>
 </div>
 <div class="row">
@@ -33,8 +33,8 @@
 					<td>{{ AdCommon::getNamePositionClassAd($value->position) }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
-					<a href="{{  action('AdNewDestopController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdNewDestopController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+					<a href="{{  action('AdNewMobileController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdNewMobileController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 						{{ Form::close() }}
 				  	</td>
