@@ -1,13 +1,13 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa quảng cáo trang bài chi tiết' }}
+{{ $title='Thêm mới quảng cáo trang game play' }}
 @stop
 
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdPageDetailController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
+		<a href="{{ action('AdGamePlayDesktopController@index') }} " class="btn btn-success">Danh sách quảng cáo game play</a>
 	</div>
 </div>
 
@@ -15,14 +15,14 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdPageDetailController@update', $ad->id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('AdGamePlayDesktopController@store'))) }}
 			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>
 					<div class="row">
 						<div class="col-sm-6">
-							{{ Form::textarea('adsense', $ad->adsense, textParentCategory('code adsense')) }}
+							{{ Form::textarea('adsense', null, textParentCategory('code adsense')) }}
 						</div>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 					<label for="name">Trang con</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', AdCommon::getNameClassAdPage_Detail(), $ad->model_id) }}
+						   {{ Form::select('model_id', Game::lists('name', 'id')) }}
 						</div>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 					<label for="name">Loại quảng cáo</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('type', AdCommon::getTypeAdvertise(), $ad->type) }}
+						   {{ Form::select('type', AdCommon::getTypeAdvertise()) }}
 						</div>
 					</div>
 				</div>
@@ -46,7 +46,7 @@
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị'], $ad->status) }}
+						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị']) }}
 						</div>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd('ad_pagedetail_desktop'), $ad->position) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('ad_game_play_desktop')) }}
 						</div>
 					</div>
 				</div>

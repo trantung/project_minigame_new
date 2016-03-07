@@ -142,17 +142,28 @@
 			<li>
 				<a href="#">
 					<i class="fa fa-bars"></i>
-					<span>QUản lý trang bài chi tiết</span>
+					<span>Quản lý trang bài chi tiết</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 
 				<ul class="treeview-menu">
 					<li><a href="{{ action('AdPageDetailController@index') }}"><i class="fa fa-desktop"></i>Trang bài chi tiết desktop</a></li>
-					<li><a href="{{ action('AdPageDetailController@index') }}"><i class="fa fa-mobile"></i>Trang bài chi tiết mobile</a></li>
+					<li><a href="{{ action('AdPageDetailMobileController@index') }}"><i class="fa fa-mobile"></i>Trang bài chi tiết mobile</a></li>
 				</ul>
 			</li>
 
-			<li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Quản lý game play</a></li>
+			<li>
+				<a href="#">
+					<i class="fa fa-gamepad"></i>
+					<span>Quản lý game play</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AdGamePlayDesktopController@index') }}"><i class="fa fa-desktop"></i>Quản lý game play desktop</a></li>
+					<li><a href="{{ action('AdGamePlayMobileController@index') }}"><i class="fa fa-mobile"></i>Trang bài chi tiết mobile</a></li>
+				</ul>
+			</li>
 		  </ul>
 	  </li>
 	  @endif
