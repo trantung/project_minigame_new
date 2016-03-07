@@ -123,6 +123,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/ad_child', 'AdNewDestopController');
 
 	Route::resource('/ad_home', 'AdHomeController');
+	Route::resource('/ad_home_mobile', 'AdHomeMobileController');
 
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');

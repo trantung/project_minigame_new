@@ -15,7 +15,7 @@ class AdCommon
 				return [
 					POSITION_HEADER => 'Header' , 
 					POSITION_RIGHT => 'Cột phải', 
-					POSITION_NEWS_GAMES => 'Footer tin trên game', 
+					POSITION_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_GAMES_GAMES => 'Giữa game', 
 					POSITION_GAMES_GAMES => 'Trên gamemini', 
 					POSITION_STICKY_LEFT => 'Banner trôi trái', 
@@ -28,7 +28,7 @@ class AdCommon
 					POSITION_MOBILE_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_MOBILE_GAMES_GAMES => 'Giữa game', 
 					POSITION_MOBILE_GAMES_MINIGAME => 'Trên gamemini', 
-					POSITION_MOBILE_GAMES_TYPE => 'Dưới nấu ăn, trên chiến thuật', 
+					// POSITION_MOBILE_GAMES_TYPE => 'Dưới nấu ăn, trên chiến thuật', 
 					POSITION_MOBILE_FOOTER => 'Footer mobile', 
 				];
 				break;
@@ -37,7 +37,7 @@ class AdCommon
 				return [
 					POSITION_HEADER => 'Header' , 
 					POSITION_RIGHT => 'Cột phải', 
-					POSITION_NEWS_GAMES => 'Footer tin trên game', 
+					POSITION_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_GAMES_GAMES => 'Giữa game', 
 					POSITION_STICKY_LEFT => 'Banner trôi trái', 
 					POSITION_STICKY_RIGHT => 'Banner trôi phải',

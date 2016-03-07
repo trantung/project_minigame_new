@@ -1,6 +1,6 @@
 <?php
 
-class AdHomeController extends AdminController {
+class AdHomeMobileController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,11 +9,11 @@ class AdHomeController extends AdminController {
 	 */
 	public function index()
 	{
-		$advertise = Advertise::where('is_mobile', IS_NOT_MOBILE)
+		$advertise = Advertise::where('is_mobile', IS_MOBILE)
 								->whereNull('model_name')
 								->whereNull('model_id')
 								->get();
-		return View::make('admin.ad.desktop.index')->with(compact('advertise'));
+		return View::make('admin.ad.mobile.index')->with(compact('advertise'));
 	}
 
 
@@ -24,7 +24,7 @@ class AdHomeController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.ad.desktop.create');
+		return View::make('admin.ad.mobile.create');
 	}
 
 
@@ -37,7 +37,7 @@ class AdHomeController extends AdminController {
 	{
 		$input = Input::except('_token');
 		$id = Advertise::create($input)->id;
-		return Redirect::action('AdHomeController@index')->with('message', 'tạo mới thành công');
+		return Redirect::action('AdHomeMobileController@index')->with('message', 'tạo mới thành công');
 	}
 
 
@@ -62,7 +62,7 @@ class AdHomeController extends AdminController {
 	public function edit($id)
 	{
 		$advertise = Advertise::find($id);
-		return View::make('admin.ad.desktop.edit')->with(compact('advertise'));
+		return View::make('admin.ad.mobile.edit')->with(compact('advertise'));
 	}
 
 
@@ -77,7 +77,7 @@ class AdHomeController extends AdminController {
 		$input = Input::except('_token');
 		$advertise = Advertise::find($id);
 		$advertise->update($input);
-		return Redirect::action('AdHomeController@index')->with('message', 'Thay đổi thành công');
+		return Redirect::action('AdHomeMobileController@index')->with('message', 'Thay đổi thành công');
 	}
 
 
@@ -90,7 +90,7 @@ class AdHomeController extends AdminController {
 	public function destroy($id)
 	{
 		Advertise::find($id)->delete();
-		return Redirect::action('AdHomeController@index')->with('message', 'Xoá thành công');
+		return Redirect::action('AdHomeMobileController@index')->with('message', 'Xoá thành công');
 	}
 
 
