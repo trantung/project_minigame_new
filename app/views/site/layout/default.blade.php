@@ -24,8 +24,8 @@
 	  	</div>
 		
 		@if(getDevice() == COMPUTER)
-			@include('site.common.ads', array('adPosition' => POSITION_STICKY_LEFT, 'model_name' => NULL, 'model_id' => NULL))
-			@include('site.common.ads', array('adPosition' => POSITION_STICKY_RIGHT, 'model_name' => NULL, 'model_id' => NULL))
+			@include('site.common.ads', array('adPosition' => POSITION_STICKY_LEFT, 'model_name' => $model_name, 'model_id' => $model_id))
+			@include('site.common.ads', array('adPosition' => POSITION_STICKY_RIGHT, 'model_name' => $model_name, 'model_id' => $model_id))
 		@endif
 
 	  	<div class="glass"></div>
