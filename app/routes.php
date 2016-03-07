@@ -122,6 +122,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::resource('/ad_child', 'AdNewDestopController');
 
+	Route::resource('/ad_home', 'AdHomeController');
+
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
 	Route::post('/create/advertise_child', 'AdvertiseController@storeChild');
