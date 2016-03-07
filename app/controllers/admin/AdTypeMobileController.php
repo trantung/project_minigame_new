@@ -10,9 +10,9 @@ class AdTypeMobileController extends AdminController {
 	public function index()
 	{
 		$advertise = Advertise::where('is_mobile', IS_MOBILE)
-								->whereNull('model_name')
-								->whereNull('model_id')
-								->get();
+			->where('model_name', 'Type')
+			->whereNull('relate_id')
+			->get();
 		return View::make('admin.ad.type.index')->with(compact('advertise'));
 	}
 
@@ -24,7 +24,8 @@ class AdTypeMobileController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.ad.type.create');
+		$typeGame = AdCommon::getTypeNameGame();
+		return View::make('admin.ad.type.create')->with(compact('typeGame'));
 	}
 
 
@@ -62,7 +63,8 @@ class AdTypeMobileController extends AdminController {
 	public function edit($id)
 	{
 		$advertise = Advertise::find($id);
-		return View::make('admin.ad.type.edit')->with(compact('advertise'));
+		$typeGame = AdCommon::getTypeNameGame();
+		return View::make('admin.ad.type.edit')->with(compact('advertise', 'typeGame'));
 	}
 
 
