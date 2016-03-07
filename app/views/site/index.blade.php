@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META)))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META), 'model_name' => NULL, 'model_id' => NULL))
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo(SEO_META)->title_site)
@@ -10,7 +10,7 @@
 
 @section('content')
 
-@include('site.common.bar')
+@include('site.common.bar', array('model_name' => NULL, 'model_id' => NULL))
 
 <div class="row">
 	<div class="col-sm-12">
@@ -31,9 +31,9 @@
 	</div>
 </div>
 
-@include('site.common.gamebox')
+@include('site.common.gamebox', array('model_name' => NULL, 'model_id' => NULL))
 
-@include('site.common.gameboxmini')
+@include('site.common.gameboxmini', array('model_name' => NULL, 'model_id' => NULL))
 
 @stop
 
