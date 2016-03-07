@@ -41,6 +41,12 @@ class AdCommon
 				];
 				break;
 
+			case 'type_mobile':
+				return [
+					POSITION_MOBILE_GAMES_TYPE => 'Giữa các thể loại' , 
+				];
+				break;
+
 			default:
 				return [
 					POSITION_HEADER => 'Header' , 
@@ -59,6 +65,25 @@ class AdCommon
 		return $array[$value];
 	}
 
+	public static function getTypeNameGame()
+	{
+		$ad = Type::orderBy('id', 'desc')->first();
+		if ($ad) {
+			$typeGame = Type::where('id', '!=', $ad->id)->lists('name', 'id');
+			return $typeGame;
+		}
+		return NULL;
+	}
+
+	public static function getTypeAdvertise()
+	{
+		$array = [
+			ANTS => 'Quảng cáo ANTS',
+			GOOGLE_ADSENSE => 'Quảng cáo Google Adsense'
+		];
+		return $array;
+	}
+
 	public static function getAd($position, $modelName = null, $modelId = null, $unlimited = null)
 	{
 		if($unlimited) {
@@ -68,5 +93,5 @@ class AdCommon
 		}
 		return $ad;
 	}
-
+	
 }
