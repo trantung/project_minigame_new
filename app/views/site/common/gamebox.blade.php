@@ -1,7 +1,9 @@
-@if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
-@else
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
+@if(isset($model_name))
+	@if(getDevice() == COMPUTER)
+		@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
+	@else
+		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
+	@endif
 @endif
 
 <div class="box">
@@ -46,10 +48,12 @@
 </div>
 <div class="clearfix"></div>
 
-@if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
-@else
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
+@if(isset($model_name))
+	@if(getDevice() == COMPUTER)
+		@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
+	@else
+		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES, 'model_name' => $model_name, 'model_id' => $model_id))
+	@endif
 @endif
 
 <div class="clearfix"></div>
