@@ -6,13 +6,7 @@ class AdCommon
 {
 	public static function getNameClassAd()
 	{
-		$array = [];
-		$advertise = Advertise::where('model_name', 'TypeNew')
-			->whereNull('relate_id')->lists('model_id');
-		foreach ($advertise as $value) {
-			$array[$value] = TypeNew::find($value)->name;
-		}
-		return $array;
+		return TypeNew::lists('name', 'id');
 	}
 	public static function getPositionClassAd()
 	{
