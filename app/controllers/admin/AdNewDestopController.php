@@ -61,7 +61,8 @@ class AdNewDestopController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$ad = Advertise::find($id);
+		return View::make('admin.ad_child.destop.edit')->with(compact('ad'));
 	}
 
 
@@ -73,7 +74,9 @@ class AdNewDestopController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token');
+		Advertise::find($id)->update($input);
+		return Redirect::action('AdNewDestopController@index');
 	}
 
 
