@@ -28,7 +28,7 @@
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-					<td>{{ getPositionAdvertise($value->position) }}</td>
+					<td>{{ AdCommon::getNamePositionClassAd($value->position, 'home') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
 					<a href="{{  action('AdHomeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
