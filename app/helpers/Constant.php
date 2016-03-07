@@ -242,5 +242,5 @@ define('POSITION_MOBILE_INFO_COMMENT', 24);
 define('POSITION_MOBILE_GAME_RELATED', 25);
 
 define('ANTS', 1);
-define('GOOGLE_ADSENSE', 2);
+define('ANTS', 2);
 
