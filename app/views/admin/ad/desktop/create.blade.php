@@ -23,7 +23,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::select('position', []) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('home')) }}
 						</div>
 					</div>
 				</div>

@@ -30,7 +30,7 @@
 				<tr>
 				  	<td>{{ $value->id }}</td>
 				  	<td>{{ TypeNew::find($value->model_id)->name }}</td>
-					<td>{{ AdCommon::getNamePositionClassAd($value->position) }}</td>
+					<td>{{ AdCommon::getNamePositionClassAd($value->position, 'catelog_mobile') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
 					<a href="{{  action('AdNewMobileController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>

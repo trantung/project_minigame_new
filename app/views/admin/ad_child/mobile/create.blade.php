@@ -46,7 +46,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd(IS_MOBILE)) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('catelog_mobile')) }}
 						</div>
 					</div>
 				</div>

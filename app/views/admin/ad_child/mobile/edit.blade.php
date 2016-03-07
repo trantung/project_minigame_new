@@ -16,6 +16,7 @@
 		<div class="box box-primary">
 			<!-- form start -->
 			{{ Form::open(array('action' => array('AdNewMobileController@update', $ad->id), 'method' => 'PUT')) }}
+			{{ Form::hidden('is_mobile', IS_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>
@@ -45,7 +46,7 @@
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd(IS_MOBILE), $ad->position) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('catelog_mobile'), $ad->position) }}
 						</div>
 					</div>
 				</div>
