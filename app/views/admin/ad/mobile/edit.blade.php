@@ -1,14 +1,14 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa quảng cáo trang chủ' }}
+{{ $title='Sửa quảng cáo trang chủ mobile' }}
 @stop
 
 @section('content')
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdHomeController@index') }} " class="btn btn-success">Danh sách quảng cáo trang chủ</a>
+		<a href="{{ action('AdHomeMobileController@index') }} " class="btn btn-success">Danh sách quảng cáo trang chủ mobile</a>
 	</div>
 </div>
 
@@ -16,14 +16,14 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdHomeController@update', $advertise->id), 'method' => 'PUT')) }}
-			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
+			{{ Form::open(array('action' => array('AdHomeMobileController@update', $advertise->id), 'method' => 'PUT')) }}
+			{{ Form::hidden('is_mobile', IS_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::select('position', AdCommon::getPositionClassAd('home'), $advertise->position) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('home_mobile'), $advertise->position) }}
 						</div>
 					</div>
 				</div>

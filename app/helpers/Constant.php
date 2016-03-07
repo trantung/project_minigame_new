@@ -240,3 +240,7 @@ define('POSITION_MOBILE_INFO_TEXT', 23);
 define('POSITION_MOBILE_INFO_COMMENT', 24);
 //related.blade.php
 define('POSITION_MOBILE_GAME_RELATED', 25);
+
+define('ANTS', 1);
+define('GOOGLE_ADSENSE', 2);
+

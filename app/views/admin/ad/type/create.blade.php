@@ -1,14 +1,14 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa quảng cáo trang chủ' }}
+{{ $title='Thêm mới quảng cáo type mobile' }}
 @stop
 
 @section('content')
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdHomeController@index') }} " class="btn btn-success">Danh sách quảng cáo trang chủ</a>
+		<a href="{{ action('AdTypeMobileController@index') }} " class="btn btn-success">Danh sách quảng cáo type mobile</a>
 	</div>
 </div>
 
@@ -16,14 +16,16 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdHomeController@update', $advertise->id), 'method' => 'PUT')) }}
-			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
+			{{ Form::open(array('action' => array('AdTypeMobileController@store'))) }}
+			{{ Form::hidden('is_mobile', IS_MOBILE) }}
+			{{ Form::hidden('type', ANTS) }}
+			{{ Form::hidden('model_name', 'Type') }}
 			<div class="box-body">
 				<div class="form-group">
-					<label for="name">Vị trí</label>
+					<label for="name">Thể loại trên</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::select('position', AdCommon::getPositionClassAd('home'), $advertise->position) }}
+						   {{ Form::select('model_id', $typeGame) }}
 						</div>
 					</div>
 				</div>
@@ -31,7 +33,7 @@
 					<label for="name">Adsense</label>
 					<div class="row">
 						<div class="col-sm-6">
-							{{ Form::textarea('adsense', $advertise->adsense, textParentCategory('code adsense')) }}
+							{{ Form::textarea('adsense', null, textParentCategory('code adsense')) }}
 						</div>
 					</div>
 				</div>
@@ -39,11 +41,10 @@
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị'], $advertise->status) }}
+						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị']) }}
 						</div>
 					</div>
 				</div>
-
 			  <div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>

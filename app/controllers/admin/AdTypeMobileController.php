@@ -1,6 +1,6 @@
 <?php
 
-class AdHomeController extends AdminController {
+class AdTypeMobileController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,11 +9,11 @@ class AdHomeController extends AdminController {
 	 */
 	public function index()
 	{
-		$advertise = Advertise::where('is_mobile', IS_NOT_MOBILE)
-								->whereNull('model_name')
-								->whereNull('model_id')
-								->get();
-		return View::make('admin.ad.desktop.index')->with(compact('advertise'));
+		$advertise = Advertise::where('is_mobile', IS_MOBILE)
+			->where('model_name', 'Type')
+			->whereNull('relate_id')
+			->get();
+		return View::make('admin.ad.type.index')->with(compact('advertise'));
 	}
 
 
@@ -24,7 +24,8 @@ class AdHomeController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.ad.desktop.create');
+		$typeGame = AdCommon::getTypeNameGame();
+		return View::make('admin.ad.type.create')->with(compact('typeGame'));
 	}
 
 
@@ -37,7 +38,7 @@ class AdHomeController extends AdminController {
 	{
 		$input = Input::except('_token');
 		$id = Advertise::create($input)->id;
-		return Redirect::action('AdHomeController@index')->with('message', 'tạo mới thành công');
+		return Redirect::action('AdTypeMobileController@index')->with('message', 'tạo mới thành công');
 	}
 
 
@@ -62,7 +63,8 @@ class AdHomeController extends AdminController {
 	public function edit($id)
 	{
 		$advertise = Advertise::find($id);
-		return View::make('admin.ad.desktop.edit')->with(compact('advertise'));
+		$typeGame = AdCommon::getTypeNameGame();
+		return View::make('admin.ad.type.edit')->with(compact('advertise', 'typeGame'));
 	}
 
 
@@ -77,7 +79,7 @@ class AdHomeController extends AdminController {
 		$input = Input::except('_token');
 		$advertise = Advertise::find($id);
 		$advertise->update($input);
-		return Redirect::action('AdHomeController@index')->with('message', 'Thay đổi thành công');
+		return Redirect::action('AdTypeMobileController@index')->with('message', 'Thay đổi thành công');
 	}
 
 
@@ -90,7 +92,7 @@ class AdHomeController extends AdminController {
 	public function destroy($id)
 	{
 		Advertise::find($id)->delete();
-		return Redirect::action('AdHomeController@index')->with('message', 'Xoá thành công');
+		return Redirect::action('AdTypeMobileController@index')->with('message', 'Xoá thành công');
 	}
 
 

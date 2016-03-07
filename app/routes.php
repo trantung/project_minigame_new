@@ -124,6 +124,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/ad_child_mobile', 'AdNewMobileController');
 
 	Route::resource('/ad_home', 'AdHomeController');
+	Route::resource('/ad_home_mobile', 'AdHomeMobileController');
+	Route::resource('/ad_type_mobile', 'AdTypeMobileController');
 
 	Route::resource('/ad_page_detail', 'AdPageDetailController');
 

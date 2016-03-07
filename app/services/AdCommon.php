@@ -23,7 +23,7 @@ class AdCommon
 				return [
 					POSITION_HEADER => 'Header' , 
 					POSITION_RIGHT => 'Cột phải', 
-					POSITION_NEWS_GAMES => 'Footer tin trên game', 
+					POSITION_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_GAMES_GAMES => 'Giữa game', 
 					POSITION_GAMES_GAMES => 'Trên gamemini', 
 					POSITION_STICKY_LEFT => 'Banner trôi trái', 
@@ -36,7 +36,7 @@ class AdCommon
 					POSITION_MOBILE_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_MOBILE_GAMES_GAMES => 'Giữa game', 
 					POSITION_MOBILE_GAMES_MINIGAME => 'Trên gamemini', 
-					POSITION_MOBILE_GAMES_TYPE => 'Dưới nấu ăn, trên chiến thuật', 
+					// POSITION_MOBILE_GAMES_TYPE => 'Dưới nấu ăn, trên chiến thuật', 
 					POSITION_MOBILE_FOOTER => 'Footer mobile', 
 				];
 				break;
@@ -67,6 +67,11 @@ class AdCommon
 					POSITION_MOBILE_NEWS_RELATED =>'Trên Tin liên quan code',
 					POSITION_MOBILE_NEWS_DETAIL_LEFT =>'Dưới 5 Tin đáng đọc',
 					POSITION_MOBILE_FOOTER =>'Trên Home/Góp Ý/ Chính sách',
+					];
+					break;
+			case 'type_mobile':
+				return [
+					POSITION_MOBILE_GAMES_TYPE => 'Giữa các thể loại' , 
 				];
 				break;
 
@@ -74,7 +79,7 @@ class AdCommon
 				return [
 					POSITION_HEADER => 'Header' , 
 					POSITION_RIGHT => 'Cột phải', 
-					POSITION_NEWS_GAMES => 'Footer tin trên game', 
+					POSITION_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_GAMES_GAMES => 'Giữa game', 
 					POSITION_STICKY_LEFT => 'Banner trôi trái', 
 					POSITION_STICKY_RIGHT => 'Banner trôi phải',
@@ -86,5 +91,24 @@ class AdCommon
 	{
 		$array = self::getPositionClassAd($page);
 		return $array[$value];
+	}
+
+	public static function getTypeNameGame()
+	{
+		$ad = Type::orderBy('id', 'desc')->first();
+		if ($ad) {
+			$typeGame = Type::where('id', '!=', $ad->id)->lists('name', 'id');
+			return $typeGame;
+		}
+		return NULL;
+	}
+
+	public static function getTypeAdvertise()
+	{
+		$array = [
+			ANTS => 'Quảng cáo ANTS',
+			GOOGLE_ADSENSE => 'Quảng cáo Google Adsense'
+		];
+		return $array;
 	}
 }
