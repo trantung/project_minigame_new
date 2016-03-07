@@ -20,6 +20,7 @@
 			{{ Form::hidden('is_mobile', IS_MOBILE) }}
 			{{ Form::hidden('type', ANTS) }}
 			{{ Form::hidden('model_name', 'Type') }}
+			{{ Form::hidden('position', POSITION_MOBILE_GAMES_TYPE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Thể loại trên</label>
