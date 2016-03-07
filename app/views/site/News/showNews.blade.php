@@ -30,11 +30,7 @@
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
 						<strong>{{ $inputNew->sapo }}</strong>
-						@if(getDevice() == COMPUTER)
-							@include('site.common.ads', array('adPosition' => POSITION_SAPO))
-						@else
-							@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO))
-						@endif
+						
 						<div class="clearfix"></div>
 						{{ $inputNew->description }}
 						<div class="clearfix"></div>
@@ -43,19 +39,13 @@
 					</div>
 				</div>
 				<div class="col-sm-3 col-sm-pull-9">
-					@if(getDevice() == MOBILE)
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED))
-					@endif
+					
 					
 					@include('site.News.relatedNews')
 					
 					@include('site.News.hotNews')
 					
-					@if(getDevice() == COMPUTER)
-						@include('site.common.ads', array('adPosition' => POSITION_NEWS_DETAIL_LEFT))
-					@else
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT))
-					@endif
+					
 				</div>
 			</div>
 
@@ -63,9 +53,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="side">
-			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
-			@endif
+			
 		</div>
 	</div>
 </div>
