@@ -25,7 +25,7 @@
 	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => NULL, 'model_id' => NULL))
 			@endif
 		</div>
 	</div>

@@ -37,7 +37,7 @@
 	</div>
 </div>
 @if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_HEADER))
+	@include('site.common.ads', array('adPosition' => POSITION_HEADER, 'model_name' => NULL, 'model_id' => NULL))
 @else
 	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_HEADER))
 @endif

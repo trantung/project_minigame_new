@@ -121,5 +121,5 @@ class AdCommon
 		}
 		return $ad;
 	}
-	
+
 }
