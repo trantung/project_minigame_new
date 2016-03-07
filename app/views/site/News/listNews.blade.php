@@ -49,7 +49,7 @@
 	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == MOBILE)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
+				<!-- @include('site.common.ads', array('adPosition' => POSITION_RIGHT)) -->
 			@endif
 		</div>
 	</div>

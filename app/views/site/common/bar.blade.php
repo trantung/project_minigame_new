@@ -36,8 +36,10 @@
 		</div>
 	</div>
 </div>
-@if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_HEADER, 'model_name' => $model_name, 'model_id' => $model_id))
-@else
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_HEADER, 'model_name' => $model_name, 'model_id' => $model_id))
+@if(isset($model_name))
+	@if(getDevice() == COMPUTER)
+		@include('site.common.ads', array('adPosition' => POSITION_HEADER, 'model_name' => $model_name, 'model_id' => $model_id))
+	@else
+		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_HEADER, 'model_name' => $model_name, 'model_id' => $model_id))
+	@endif
 @endif

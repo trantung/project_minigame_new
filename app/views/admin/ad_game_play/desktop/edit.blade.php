@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Sửa quảng cáo trang bài chi tiết' }}
+{{ $title='Sửa quảng cáo trang game play' }}
 @stop
 
 @section('content')
