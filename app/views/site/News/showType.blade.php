@@ -1,4 +1,4 @@
-@extends('site.layout.default')
+@extends('site.layout.default', array('model_name' => 'AdminNew', 'model_id' => $newType->id))
 
 @section('title')
 {{ $title= $newType->name }}
@@ -53,7 +53,7 @@
 	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $newType->id, 'limit' => LIMIT))
 			@endif
 		</div>
 	</div>
