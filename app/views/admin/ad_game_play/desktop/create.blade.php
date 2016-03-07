@@ -30,7 +30,7 @@
 					<label for="name">Trang con</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', Game::lists('name', 'id')) }}
+						   {{ Form::select('model_id', Game::whereNotNull('parent_id')->lists('name', 'id')) }}
 						</div>
 					</div>
 				</div>

@@ -19,7 +19,7 @@ class AdCommon
 	public static function getNameClassAdGameplay()
 	{
 		
-		return Game::lists('name', 'id');
+		return Game::whereNotNull('parent_id')->lists('name', 'id');
 	}
 
 	public static function getPositionClassAd($page = '')
