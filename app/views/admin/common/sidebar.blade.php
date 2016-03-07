@@ -119,11 +119,22 @@
 
 			<li>
 
-			<a href="#"><i class="fa fa-circle-o"></i>Quản lý trang con</a>
-			<ul class="treeview-menu">
-				<li><a href="{{ action('AdNewDestopController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang destop</a></li>
-				<li><a href="{{ action('AdNewMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang mobile</a></li>
-			</ul>
+				<a href="#"><i class="fa fa-circle-o"></i>Quản lý trang chủ</a>
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AdHomeController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang destop</a></li>
+					<li><a href="{{ action('AdHomeMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang mobile</a></li>
+					<li><a href="{{ action('AdTypeMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý type mobile</a></li>
+				</ul>
+
+			</li>
+
+			<li>
+
+				<a href="#"><i class="fa fa-circle-o"></i>Quản lý trang con</a>
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AdNewDestopController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang destop</a></li>
+					<li><a href="{{ action('AdNewMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang mobile</a></li>
+				</ul>
 
 			</li>
 
