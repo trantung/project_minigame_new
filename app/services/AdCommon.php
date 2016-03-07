@@ -11,6 +11,7 @@ class AdCommon
 			->whereNull('relate_id')->lists('model_id');
 		foreach ($advertise as $value) {
 			$array[$value] = TypeNew::find($value)->name;
+
 		}
 		return $array;
 	}

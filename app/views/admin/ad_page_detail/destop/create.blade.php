@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới quảng cáo trang con' }}
+{{ $title='Thêm mới quảng cáo trang chi tiết' }}
 @stop
 
 @section('content')
