@@ -51,6 +51,24 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Tác giả</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
+						</div>
+					</div>
+				</div>
+				@if(Admin::isAdmin() || Admin::isEditor())
+				<div class="form-group">
+					<label>Nhuận bút</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('author_money',  $inputNew->author_money, textParentCategory('Nhuận bút')) }}
+						</div>
+					</div>
+				</div>
+				@endif
+				<div class="form-group">
 					<label>Trạng thái bài đăng</label>
 					<div class="row">
 						<div class="col-sm-6">

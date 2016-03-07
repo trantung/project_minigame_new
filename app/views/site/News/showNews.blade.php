@@ -34,6 +34,9 @@
 						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO))
 						<div class="clearfix"></div>
 						{{ $inputNew->description }}
+						<div class="clearfix"></div>
+						<strong class="pull-right">{{ $inputNew->author }}</strong>
+						<div class="clearfix"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 col-sm-pull-9">

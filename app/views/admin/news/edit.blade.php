@@ -50,6 +50,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<label>Tác giả</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
+						</div>
+					</div>
+				</div>
 				<!-- <div class="form-group">
 					<label>Vị trí</label>
 					<div class="row">
