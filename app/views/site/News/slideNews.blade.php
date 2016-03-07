@@ -55,6 +55,8 @@
 							<div class="margin-block clearfix"></div>
 						@endif
 
+						<strong>{{ $inputNew->sapo }}</strong>
+						<div class="clearfix"></div>
 	                    {{ $inputNew->description }}
 
 					</div>

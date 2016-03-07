@@ -29,8 +29,7 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
-						{{ $inputNew->sapo }}
-						<div class="clearfix"></div>
+						<strong>{{ $inputNew->sapo }}</strong>
 						@include('site.common.ads', array('adPosition' => POSITION_SAPO))
 						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO))
 						<div class="clearfix"></div>

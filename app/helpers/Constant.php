@@ -185,6 +185,8 @@ define('IS_NOT_MOBILE', 0);
 define('IS_HOME', 1);
 define('IS_NOT_HOME', 0);
 
+define('SAPO_TEXT', '(Game.kienthuc.net.vn) - ');
+
 //define position ad - PC
 //bar.blade.php
 define('POSITION_HEADER', 1);
