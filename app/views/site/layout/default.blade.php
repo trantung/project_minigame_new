@@ -24,8 +24,12 @@
 	  	</div>
 		
 		@if(getDevice() == COMPUTER)
-			@include('site.common.ads', array('adPosition' => POSITION_STICKY_LEFT, 'model_name' => $model_name, 'model_id' => $model_id))
-			@include('site.common.ads', array('adPosition' => POSITION_STICKY_RIGHT, 'model_name' => $model_name, 'model_id' => $model_id))
+			<div class="sticky_left">
+				@include('site.common.ads', array('adPosition' => POSITION_STICKY_LEFT, 'model_name' => $model_name, 'model_id' => $model_id))
+			</div>
+			<div class="sticky_right">
+				@include('site.common.ads', array('adPosition' => POSITION_STICKY_RIGHT, 'model_name' => $model_name, 'model_id' => $model_id))
+			</div>
 		@endif
 
 	  	<div class="glass"></div>
