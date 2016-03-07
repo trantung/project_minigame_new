@@ -116,6 +116,9 @@
 			@if(!Admin::isSeo())
 			<li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Box hiển thị</a></li>
 			@endif
+			<li><a href="{{ action('AdNewDestopController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang con</a></li>
+			<li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header + Footer / Bên phải</a></li>
+			<li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header + Footer / Bên phải</a></li>
 		  </ul>
 	  </li>
 	  @endif

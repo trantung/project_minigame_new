@@ -120,6 +120,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/score/search', array('uses' =>  'ScoreManagerController@search', 'as' => 'admin.score.search'));
 	Route::resource('/score', 'ScoreManagerController');
 
+	Route::resource('/ad_child', 'AdNewDestopController');
 
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
