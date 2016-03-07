@@ -1,13 +1,13 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới quảng cáo trang con' }}
+{{ $title='Thêm mới quảng cáo trang chi tiết Mobile' }}
 @stop
 
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdNewDestopController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
+		<a href="{{ action('AdPageDetailMobileController@index') }} " class="btn btn-success">Danh sách quảng cáo</a>
 	</div>
 </div>
 
@@ -15,8 +15,8 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdNewDestopController@store'))) }}
-			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
+			{{ Form::open(array('action' => array('AdPageDetailMobileController@store'))) }}
+			{{ Form::hidden('is_mobile', IS_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>
@@ -30,7 +30,7 @@
 					<label for="name">Trang con</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', TypeNew::lists('name', 'id')) }}
+						   {{ Form::select('model_id', AdminNew::lists('title', 'id')) }}
 						</div>
 					</div>
 				</div>
@@ -43,18 +43,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Loại quảng cáo</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('type', AdCommon::getTypeAdvertise()) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="name">Vị trí</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd()) }}
+						   {{ Form::select('position', AdCommon::getPositionClassAd('ad_pagedetail_desktop')) }}
 						</div>
 					</div>
 				</div>

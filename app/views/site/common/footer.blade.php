@@ -1,4 +1,6 @@
-@include('site.common.ads', array('adPosition' => POSITION_MOBILE_FOOTER))
+@if(getDevice() == MOBILE)
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_FOOTER))
+@endif
 <div class="footer">
 	<ul>
 	  <li><a href="{{ url('/') }}" {{ checkActive() }}>Home</a></li>

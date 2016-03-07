@@ -19,7 +19,9 @@
 		<div class="playbox">
 			{{ CommonGame::getLinkGame($game) }}
 
-			@include('site.common.ads', array('adPosition' => POSITION_PLAYGAME_SHARE))
+			@if(getDevice() == COMPUTER)
+				@include('site.common.ads', array('adPosition' => POSITION_PLAYGAME_SHARE))
+			@endif
 
 			<div class="social-box">
 				@include('site.game.socialbox', array('id' => $game->id))
@@ -27,7 +29,9 @@
 		</div>
 	</div>
 
-	@include('site.common.ads', array('adPosition' => POSITION_INFO))
+	@if(getDevice() == COMPUTER)
+		@include('site.common.ads', array('adPosition' => POSITION_INFO))
+	@endif
 
 	<div class="row">
 		<div class="col-sm-8">
@@ -78,7 +82,9 @@
 				{{ $gametop }}
 			</div>
 
-			@include('site.common.ads', array('adPosition' => POSITION_INFO_RIGHT))
+			@if(getDevice() == COMPUTER)
+				@include('site.common.ads', array('adPosition' => POSITION_INFO_RIGHT))
+			@endif
 
 		</div>
 	</div>

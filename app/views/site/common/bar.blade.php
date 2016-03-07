@@ -36,5 +36,8 @@
 		</div>
 	</div>
 </div>
-@include('site.common.ads', array('adPosition' => POSITION_HEADER))
-@include('site.common.ads', array('adPosition' => POSITION_MOBILE_HEADER))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_HEADER))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_HEADER))
+@endif

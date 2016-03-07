@@ -1,5 +1,8 @@
-@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME))
-@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME))
+@endif
 
 <div class="clearfix"></div>
 
@@ -35,8 +38,10 @@
 						</div>
 					</div>
 				</div>
-
-				@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE))
+				
+				@if(getDevice() == MOBILE)
+					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE))
+				@endif
 				
 			@endif
 		@endforeach
