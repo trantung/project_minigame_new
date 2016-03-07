@@ -16,6 +16,12 @@ class AdCommon
 		return AdminNew::lists('title', 'id');
 	}
 
+	public static function getNameClassAdGameplay()
+	{
+		
+		return Game::whereNotNull('parent_id')->lists('name', 'id');
+	}
+
 	public static function getPositionClassAd($page = '')
 	{
 		switch ($page) {
@@ -72,6 +78,27 @@ class AdCommon
 			case 'type_mobile':
 				return [
 					POSITION_MOBILE_GAMES_TYPE => 'Giữa các thể loại' , 
+				];
+				break;
+
+			case 'ad_game_play_desktop':
+				return[
+					POSITION_STICKY_LEFT => 'Banner trôi trái phải',
+					POSITION_STICKY_RIGHT => 'Dưới khung game để play',
+					POSITION_PLAYGAME_SHARE => 'Dưới toàn bộ khung đỏ Game',
+					POSITION_INFO => 'Trong khung game',
+					POSITION_INFO_RIGHT => 'Cột phải bài chi tiết, dưới Khung game hay nhất',
+					POSITION_GAME_RELATED => 'Trên game khác',
+				];
+				break;
+
+			case 'ad_game_play_mobile':
+				return[
+					POSITION_MOBILE_HEADER => 'Dưới menu',
+					POSITION_MOBILE_INFO_TEXT => 'Dưới 2 khung game',
+					POSITION_MOBILE_INFO_COMMENT => 'Trên Bình luận code',
+					POSITION_MOBILE_GAME_RELATED => 'Trên Game khác',
+					POSITION_MOBILE_FOOTER => 'Trên Home/Góp Ý/ Chính sách',
 				];
 				break;
 

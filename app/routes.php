@@ -128,6 +128,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/ad_type_mobile', 'AdTypeMobileController');
 
 	Route::resource('/ad_page_detail', 'AdPageDetailController');
+	Route::resource('/ad_page_detail_mobile', 'AdPageDetailMobileController');
+
+	Route::resource('/ad_game_play', 'AdGamePlayDesktopController');
+	Route::resource('/ad_game_play_mobile', 'AdGamePlayMobileController');
 
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');

@@ -35,6 +35,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="name">Loại quảng cáo</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   {{ Form::select('type', AdCommon::getTypeAdvertise()) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
