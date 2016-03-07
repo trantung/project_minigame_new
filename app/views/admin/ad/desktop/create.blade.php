@@ -8,7 +8,7 @@
 
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdvertiseController@index') }} " class="btn btn-success">Danh sách quảng cáo trang chủ</a>
+		<a href="{{ action('AdHomeController@index') }} " class="btn btn-success">Danh sách quảng cáo trang chủ</a>
 	</div>
 </div>
 
@@ -16,7 +16,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('AdvertiseController@store'))) }}
+			{{ Form::open(array('action' => array('AdHomeController@store'))) }}
 			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
