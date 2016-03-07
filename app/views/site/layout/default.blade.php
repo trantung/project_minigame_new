@@ -22,9 +22,11 @@
 	  			@include('site.common.footer')
 	  		</div>
 	  	</div>
-
-	  	@include('site.common.ad', array('adPosition' => POSITION_STICKY_LEFT))
-		@include('site.common.ad', array('adPosition' => POSITION_STICKY_RIGHT))
+		
+		@if(getDevice() == COMPUTER)
+		  	@include('site.common.ad', array('adPosition' => POSITION_STICKY_LEFT))
+			@include('site.common.ad', array('adPosition' => POSITION_STICKY_RIGHT))
+		@endif
 
 	  	<div class="glass"></div>
 

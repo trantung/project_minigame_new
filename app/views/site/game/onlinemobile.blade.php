@@ -41,7 +41,9 @@
 				@include('site.game.slide', array('slideId' => $game->slide_id))
 			</div>
 
-			@include('site.common.ads', array('adPosition' => POSITION_MOBILE_INFO_TEXT))
+			@if(getDevice() == MOBILE)
+				@include('site.common.ads', array('adPosition' => POSITION_MOBILE_INFO_TEXT))
+			@endif
 
 			<div class="detail">{{ $game->description }}</div>
 
@@ -61,7 +63,9 @@
 
 	</div>
 
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_INFO_COMMENT))
+	@if(getDevice() == MOBILE)
+		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_INFO_COMMENT))
+	@endif
 
 	@include('site.game.comment')
 

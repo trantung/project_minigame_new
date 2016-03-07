@@ -71,7 +71,9 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="side">
-			@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
+			@if(getDevice() == COMPUTER)
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
+			@endif
 		</div>
 	</div>
 </div>

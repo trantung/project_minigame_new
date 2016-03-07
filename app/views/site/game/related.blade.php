@@ -1,5 +1,8 @@
-@include('site.common.ad', array('adPosition' => POSITION_GAME_RELATED))
-@include('site.common.ad', array('adPosition' => POSITION_MOBILE_GAME_RELATED))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ad', array('adPosition' => POSITION_GAME_RELATED))
+@else
+	@include('site.common.ad', array('adPosition' => POSITION_MOBILE_GAME_RELATED))
+@endif
 
 @if($games = CommonGame::getRelateGame($parentId, $limit, $typeId))
 <div class="box mobile">
