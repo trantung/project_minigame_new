@@ -111,4 +111,15 @@ class AdCommon
 		];
 		return $array;
 	}
+
+	public static function getAd($position, $modelName = null, $modelId = null, $unlimited = null)
+	{
+		if($unlimited) {
+			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->get();
+		} else {
+			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->first();
+		}
+		return $ad;
+	}
+	
 }

@@ -1,5 +1,8 @@
-@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES))
-@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES))
+@endif
 
 <div class="box">
 	<h3><a href="{{ action('GameController@getListGamehot') }}">Game hay nhất</a></h3>
@@ -43,8 +46,11 @@
 </div>
 <div class="clearfix"></div>
 
-@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES))
-@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES))
+@endif
 
 <div class="clearfix"></div>
 <div class="box">
