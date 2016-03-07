@@ -40,7 +40,7 @@
 				</div>
 				
 				@if(getDevice() == MOBILE)
-					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE, 'model_name' => 'Type', 'model_id' => $value->id))
+					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE, 'model_name' => 'Type', 'model_id' => $value['type_id']))
 				@endif
 				
 			@endif
