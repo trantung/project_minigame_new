@@ -117,6 +117,7 @@
 			<li><a href="{{ action('AdvertiseController@indexChild') }}"><i class="fa fa-circle-o"></i>Box hiển thị</a></li>
 			@endif
 
+
 			<li>
 
 				<a href="#"><i class="fa fa-circle-o"></i>Quản lý trang chủ</a>
@@ -138,8 +139,20 @@
 
 			</li>
 
-			<li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header + Footer / Bên phải</a></li>
-			<li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Header + Footer / Bên phải</a></li>
+			<li>
+				<a href="#">
+					<i class="fa fa-bars"></i>
+					<span>QUản lý trang bài chi tiết</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AdPageDetailController@index') }}"><i class="fa fa-desktop"></i>Trang bài chi tiết desktop</a></li>
+					<li><a href="{{ action('AdPageDetailController@index') }}"><i class="fa fa-mobile"></i>Trang bài chi tiết mobile</a></li>
+				</ul>
+			</li>
+
+			<li><a href="{{ action('AdvertiseController@index') }}"><i class="fa fa-circle-o"></i>Quản lý game play</a></li>
 		  </ul>
 	  </li>
 	  @endif

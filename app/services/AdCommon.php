@@ -6,7 +6,14 @@ class AdCommon
 {
 	public static function getNameClassAd()
 	{
+		
 		return TypeNew::lists('name', 'id');
+	}
+
+	public static function getNameClassAdPage_Detail()
+	{
+		
+		return AdminNew::lists('title', 'id');
 	}
 
 	public static function getPositionClassAd($page = '')
@@ -41,6 +48,27 @@ class AdCommon
 				];
 				break;
 
+			case 'ad_pagedetail_desktop':
+				return [
+					POSITION_STICKY_LEFT => 'Banner trôi trái phải',
+					POSITION_STICKY_RIGHT => 'Dưới sapo bài viết',
+					POSITION_SAPO => 'Cột trái bài chi tiết',
+					POSITION_NEWS_DETAIL_LEFT => 'Cột phải bài chi tiết',
+					POSITION_NEWS_GAMES =>'Dưới bài viết',
+					POSITION_GAMES_GAMES => 'Dưới Game hay nhất',
+
+				];
+				break;
+
+			case 'ad_pagedetail_mobile':
+				return [
+					POSITION_MOBILE_HEADER =>'Dưới menu',
+					POSITION_MOBILE_SAPO =>'Dưới chapo bài viết',
+					POSITION_MOBILE_NEWS_RELATED =>'Trên Tin liên quan code',
+					POSITION_MOBILE_NEWS_DETAIL_LEFT =>'Dưới 5 Tin đáng đọc',
+					POSITION_MOBILE_FOOTER =>'Trên Home/Góp Ý/ Chính sách',
+					];
+					break;
 			case 'type_mobile':
 				return [
 					POSITION_MOBILE_GAMES_TYPE => 'Giữa các thể loại' , 
