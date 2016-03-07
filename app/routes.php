@@ -121,6 +121,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/score', 'ScoreManagerController');
 
 	Route::resource('/ad_child', 'AdNewDestopController');
+	Route::resource('/ad_child_mobile', 'AdNewMobileController');
 
 	Route::resource('/ad_home', 'AdHomeController');
 
