@@ -1,7 +1,7 @@
 @if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES))
+	@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES, 'model_name' => NULL, 'model_id' => NULL))
 @else
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES))
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES, 'model_name' => NULL, 'model_id' => NULL))
 @endif
 
 <div class="box">
@@ -47,9 +47,9 @@
 <div class="clearfix"></div>
 
 @if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES))
+	@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES, 'model_name' => NULL, 'model_id' => NULL))
 @else
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES))
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES, 'model_name' => NULL, 'model_id' => NULL))
 @endif
 
 <div class="clearfix"></div>

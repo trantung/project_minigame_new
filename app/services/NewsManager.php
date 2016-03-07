@@ -176,7 +176,7 @@ class NewsManager
 			if (in_array($userRole, [ADMIN, EDITOR])) {
 				return 'Đăng bài';
 			} else {
-				return 'Đã phê duyệt';
+				return 'Đăng bài';
 			}
 		}
 		if ($status == NO_APPROVE) {

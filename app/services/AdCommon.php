@@ -31,7 +31,7 @@ class AdCommon
 					POSITION_RIGHT => 'Cột phải', 
 					POSITION_NEWS_GAMES => 'Dưới cột tin', 
 					POSITION_GAMES_GAMES => 'Giữa game', 
-					POSITION_GAMES_GAMES => 'Trên gamemini', 
+					POSITION_GAMES_MINIGAME => 'Trên gamemini', 
 					POSITION_STICKY_LEFT => 'Banner trôi trái', 
 					POSITION_STICKY_RIGHT => 'Banner trôi phải',
 				];
@@ -139,14 +139,19 @@ class AdCommon
 		return $array;
 	}
 
-	public static function getAd($position, $modelName = null, $modelId = null, $unlimited = null)
+	public static function getAd($position, $modelName, $modelId, $unlimited = null)
 	{
 		if($unlimited) {
 			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->get();
 		} else {
 			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->first();
 		}
-		return $ad;
+		if($ad) {
+			return $ad;	
+		} else {
+			return NULL;
+		}
+		
 	}
-	
+
 }

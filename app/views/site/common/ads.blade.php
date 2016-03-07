@@ -1,10 +1,4 @@
-<?php $ads = AdCommon::getAd($adPosition); ?>
-@if(count($ads) > 0)
-	@foreach($ads as $ad)
-	<div class="adsense center">
-		@if(!empty($ad->adsense))
-			{{ $ad->adsense }}
-		@endif
-	</div>
-	@endforeach
+<?php $ads = AdCommon::getAd($adPosition, $model_name, $model_id); ?>
+@if($ads)
+	{{ $ads->adsense }}
 @endif

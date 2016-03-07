@@ -124,7 +124,7 @@
 				<ul class="treeview-menu">
 					<li><a href="{{ action('AdHomeController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang destop</a></li>
 					<li><a href="{{ action('AdHomeMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang mobile</a></li>
-					<li><a href="{{-- action('AdTypeMobileController@index') --}}"><i class="fa fa-circle-o"></i>Quản lý type mobile</a></li>
+					<li><a href="{{ action('AdTypeMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý type mobile</a></li>
 				</ul>
 
 			</li>

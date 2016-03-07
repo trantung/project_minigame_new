@@ -1,7 +1,7 @@
 @if(getDevice() == COMPUTER)
-	@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME))
+	@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME, 'model_name' => NULL, 'model_id' => NULL))
 @else
-	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME))
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME, 'model_name' => NULL, 'model_id' => NULL))
 @endif
 
 <div class="clearfix"></div>
@@ -40,7 +40,7 @@
 				</div>
 				
 				@if(getDevice() == MOBILE)
-					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE))
+					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_TYPE, 'model_name' => 'Type', 'model_id' => $value['type_id']))
 				@endif
 				
 			@endif
