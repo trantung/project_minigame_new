@@ -1,9 +1,7 @@
-@if(isset($model_name))
-	@if(getDevice() == COMPUTER)
-		@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME, 'model_name' => $model_name, 'model_id' => $model_id))
-	@else
-		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME, 'model_name' => $model_name, 'model_id' => $model_id))
-	@endif
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_GAMES_MINIGAME, 'model_name' => $model_name, 'model_id' => $model_id))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_MINIGAME, 'model_name' => $model_name, 'model_id' => $model_id))
 @endif
 
 <div class="clearfix"></div>
