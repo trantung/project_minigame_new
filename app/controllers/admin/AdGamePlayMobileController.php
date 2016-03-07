@@ -9,7 +9,10 @@ class AdGamePlayMobileController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$advertise = Advertise::where('model_name', 'Game')
+			->where('is_mobile', IS_MOBILE)
+			->whereNull('relate_id')->get();
+		return View::make('admin.ad_game_play.mobile.index')->with(compact('advertise'));
 	}
 
 
@@ -20,7 +23,8 @@ class AdGamePlayMobileController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		$catelogies = AdminNew::all();
+		return View::make('admin.ad_game_play.mobile.create')->with(compact('catelogies'));
 	}
 
 
@@ -31,7 +35,10 @@ class AdGamePlayMobileController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('_token');
+		$input['model_name'] = 'Game';
+		$id = Advertise::create($input)->id;
+		return Redirect::action('AdGamePlayMobileController@index');
 	}
 
 
@@ -55,7 +62,8 @@ class AdGamePlayMobileController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$ad = Advertise::find($id);
+		return View::make('admin.ad_game_play.mobile.edit')->with(compact('ad'));
 	}
 
 
@@ -67,7 +75,9 @@ class AdGamePlayMobileController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token');
+		Advertise::find($id)->update($input);
+		return Redirect::action('AdGamePlayMobileController@index');
 	}
 
 
@@ -79,7 +89,8 @@ class AdGamePlayMobileController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Advertise::find($id)->destroy($id);
+		return Redirect::action('AdGamePlayMobileController@index');
 	}
 
 
