@@ -1,6 +1,6 @@
 <?php
 
-class AdNewDestopController extends AdminController {
+class AdNewMobileController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,9 +10,9 @@ class AdNewDestopController extends AdminController {
 	public function index()
 	{
 		$advertise = Advertise::where('model_name', 'TypeNew')
-			->where('is_mobile', IS_NOT_MOBILE)
+			->where('is_mobile', IS_MOBILE)
 			->whereNull('relate_id')->get();
-		return View::make('admin.ad_child.destop.index')->with(compact('advertise'));
+		return View::make('admin.ad_child.mobile.index')->with(compact('advertise'));
 	}
 
 
@@ -24,7 +24,7 @@ class AdNewDestopController extends AdminController {
 	public function create()
 	{
 		$catelogies = TypeNew::all();
-		return View::make('admin.ad_child.destop.create')->with(compact('catelogies'));
+		return View::make('admin.ad_child.mobile.create')->with(compact('catelogies'));
 	}
 
 
@@ -38,7 +38,7 @@ class AdNewDestopController extends AdminController {
 		$input = Input::except('_token');
 		$input['model_name'] = 'TypeNew';
 		$id = Advertise::create($input)->id;
-		return Redirect::action('AdNewDestopController@index');
+		return Redirect::action('AdNewMobileController@index');
 	}
 
 
@@ -63,7 +63,7 @@ class AdNewDestopController extends AdminController {
 	public function edit($id)
 	{
 		$ad = Advertise::find($id);
-		return View::make('admin.ad_child.destop.edit')->with(compact('ad'));
+		return View::make('admin.ad_child.mobile.edit')->with(compact('ad'));
 	}
 
 
@@ -77,7 +77,7 @@ class AdNewDestopController extends AdminController {
 	{
 		$input = Input::except('_token');
 		Advertise::find($id)->update($input);
-		return Redirect::action('AdNewDestopController@index');
+		return Redirect::action('AdNewMobileController@index');
 	}
 
 
@@ -90,7 +90,7 @@ class AdNewDestopController extends AdminController {
 	public function destroy($id)
 	{
 		Advertise::find($id)->destroy($id);
-		return Redirect::action('AdNewDestopController@index');
+		return Redirect::action('AdNewMobileController@index');
 
 	}
 

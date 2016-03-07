@@ -16,6 +16,7 @@
 		<div class="box box-primary">
 			<!-- form start -->
 			{{ Form::open(array('action' => array('AdNewDestopController@update', $ad->id), 'method' => 'PUT')) }}
+			
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>

@@ -8,6 +8,7 @@ class AdCommon
 	{
 		return TypeNew::lists('name', 'id');
 	}
+
 	public static function getPositionClassAd($page = '')
 	{
 		switch ($page) {
@@ -32,7 +33,14 @@ class AdCommon
 					POSITION_MOBILE_FOOTER => 'Footer mobile', 
 				];
 				break;
-			
+
+			case 'catelog_mobile':
+				return [
+					POSITION_MOBILE_HEADER => 'Header mobile' , 
+					POSITION_MOBILE_FOOTER => 'Footer mobile', 
+				];
+				break;
+
 			default:
 				return [
 					POSITION_HEADER => 'Header' , 

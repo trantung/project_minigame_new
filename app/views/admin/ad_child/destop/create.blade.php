@@ -16,6 +16,7 @@
 		<div class="box box-primary">
 			<!-- form start -->
 			{{ Form::open(array('action' => array('AdNewDestopController@store'))) }}
+			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Adsense</label>
