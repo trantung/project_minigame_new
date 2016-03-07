@@ -139,9 +139,9 @@ class AdCommon
 		return $array;
 	}
 
-	public static function getAd($position, $modelName, $modelId, $unlimited = null)
+	public static function getAd($position, $modelName, $modelId, $limit = null)
 	{
-		if($unlimited) {
+		if($limit) {
 			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->get();
 		} else {
 			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->first();
