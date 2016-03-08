@@ -21,7 +21,7 @@
 
 <div class="row">
 	<div class="col-sm-9">
-		<div class="box-main">			
+		<div class="box-main">
 			<div class="title_left">
 				<h1>{{ $inputNew->title }}</h1>
 				<p>{{ date('d/m/Y H:i', strtotime($inputNew->updated_at)) }}</p>
@@ -70,6 +70,6 @@
 	</div>
 </div>
 
-@include('site.common.gamebox')
+@include('site.common.gamebox', array('model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 
 @stop

@@ -19,9 +19,14 @@
 
 	  	<div class="container">
 			<div class="row">
+
 				@if(isset($model_name))
-	  				@include('site.common.footer', array('adPosition' => POSITION_MOBILE_FOOTER, 'model_name' => $model_name, 'model_id' => $model_id))
-	  			@endif
+					@if(getDevice() == MOBILE)
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_FOOTER, 'model_name' => $model_name, 'model_id' => $model_id))
+					@endif
+				@endif
+
+  				@include('site.common.footer')
 	  		</div>
 	  	</div>
 		

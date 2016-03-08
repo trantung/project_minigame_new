@@ -43,34 +43,34 @@ class AdCommon
 					POSITION_MOBILE_GAMES_GAMES => 'Giữa game', 
 					POSITION_MOBILE_GAMES_MINIGAME => 'Trên gamemini', 
 					// POSITION_MOBILE_GAMES_TYPE => 'Dưới nấu ăn, trên chiến thuật', 
-					POSITION_MOBILE_FOOTER => 'Footer mobile', 
+					POSITION_MOBILE_FOOTER => 'Trên Home/Góp Ý/ Chính sách', 
 				];
 				break;
 
 			case 'catelog_mobile':
 				return [
 					POSITION_MOBILE_HEADER => 'Header mobile' , 
-					POSITION_MOBILE_FOOTER => 'Footer mobile', 
+					POSITION_MOBILE_FOOTER => 'Trên Home/Góp Ý/ Chính sách', 
 				];
 				break;
 
 			case 'ad_pagedetail_desktop':
 				return [
-					POSITION_STICKY_LEFT => 'Banner trôi trái phải',
-					POSITION_STICKY_RIGHT => 'Dưới sapo bài viết',
-					POSITION_SAPO => 'Cột trái bài chi tiết',
-					POSITION_NEWS_DETAIL_LEFT => 'Cột phải bài chi tiết',
-					POSITION_NEWS_GAMES =>'Dưới bài viết',
-					POSITION_GAMES_GAMES => 'Dưới Game hay nhất',
-
+					POSITION_SAPO => 'Dưới sapo bài viết',
+					POSITION_NEWS_DETAIL_LEFT => 'Cột trái bài chi tiết',
+					POSITION_RIGHT => 'Cột phải',
+					POSITION_NEWS_GAMES => 'Dưới cột tin', 
+					POSITION_GAMES_GAMES => 'Giữa game', 
+					POSITION_STICKY_LEFT => 'Banner trôi trái', 
+					POSITION_STICKY_RIGHT => 'Banner trôi phải',
 				];
 				break;
 
 			case 'ad_pagedetail_mobile':
 				return [
 					POSITION_MOBILE_HEADER =>'Dưới menu',
-					POSITION_MOBILE_SAPO =>'Dưới chapo bài viết',
-					POSITION_MOBILE_NEWS_RELATED =>'Trên Tin liên quan code',
+					POSITION_MOBILE_SAPO =>'Dưới sapo bài viết',
+					POSITION_MOBILE_NEWS_RELATED =>'Trên tin liên quan',
 					POSITION_MOBILE_NEWS_DETAIL_LEFT =>'Dưới 5 Tin đáng đọc',
 					POSITION_MOBILE_FOOTER =>'Trên Home/Góp Ý/ Chính sách',
 					];
@@ -83,12 +83,12 @@ class AdCommon
 
 			case 'ad_game_play_desktop':
 				return[
-					POSITION_STICKY_LEFT => 'Banner trôi trái phải',
-					POSITION_STICKY_RIGHT => 'Dưới khung game để play',
-					POSITION_PLAYGAME_SHARE => 'Dưới toàn bộ khung đỏ Game',
-					POSITION_INFO => 'Trong khung game',
+					POSITION_PLAYGAME_SHARE => 'Dưới khung game để play',
+					POSITION_INFO => 'Dưới toàn bộ khung đỏ Game',
 					POSITION_INFO_RIGHT => 'Cột phải bài chi tiết, dưới Khung game hay nhất',
 					POSITION_GAME_RELATED => 'Trên game khác',
+					POSITION_STICKY_LEFT => 'Banner trôi trái', 
+					POSITION_STICKY_RIGHT => 'Banner trôi phải',
 				];
 				break;
 

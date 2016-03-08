@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META), 'model_name' => NULL, 'model_id' => NULL))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META), 'model_name' => 1, 'model_id' => 1))
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo(SEO_META)->title_site)
@@ -10,7 +10,7 @@
 
 @section('content')
 
-@include('site.common.bar', array('model_name' => NULL, 'model_id' => NULL))
+@include('site.common.bar', array('model_name' => 1, 'model_id' => 1))
 
 <div class="row">
 	<div class="col-sm-12">
@@ -24,15 +24,15 @@
 	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => NULL, 'model_id' => NULL))
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 1, 'model_id' => 1))
 			@endif
 		</div>
 	</div>
 </div>
 
-@include('site.common.gamebox', array('model_name' => NULL, 'model_id' => NULL))
+@include('site.common.gamebox', array('model_name' => 1, 'model_id' => 1))
 
-@include('site.common.gameboxmini', array('model_name' => NULL, 'model_id' => NULL))
+@include('site.common.gameboxmini', array('model_name' => 1, 'model_id' => 1))
 
 @stop
 

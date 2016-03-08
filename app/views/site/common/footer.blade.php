@@ -1,8 +1,3 @@
-@if(isset($model_name))
-	@if(getDevice() == MOBILE)
-		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_FOOTER, 'model_name' => $model_name, 'model_id' => $model_id))
-	@endif
-@endif
 <div class="footer">
 	<ul>
 	  <li><a href="{{ url('/') }}" {{ checkActive() }}>Home</a></li>

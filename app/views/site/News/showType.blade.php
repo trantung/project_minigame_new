@@ -59,6 +59,6 @@
 	</div>
 </div>
 
-@include('site.common.gamebox')
+@include('site.common.gamebox', array('model_name' => 'TypeNew', 'model_id' => $newType->id))
 
 @stop

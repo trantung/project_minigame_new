@@ -10,8 +10,8 @@ class AdHomeMobileController extends AdminController {
 	public function index()
 	{
 		$advertise = Advertise::where('is_mobile', IS_MOBILE)
-								->whereNull('model_name')
-								->whereNull('model_id')
+								->where('model_name', 1)
+								->where('model_id', 1)
 								->get();
 		return View::make('admin.ad.mobile.index')->with(compact('advertise'));
 	}
@@ -36,6 +36,8 @@ class AdHomeMobileController extends AdminController {
 	public function store()
 	{
 		$input = Input::except('_token');
+		$input['model_name'] = 1;
+		$input['model_id'] = 1;
 		$id = Advertise::create($input)->id;
 		return Redirect::action('AdHomeMobileController@index')->with('message', 'tạo mới thành công');
 	}
