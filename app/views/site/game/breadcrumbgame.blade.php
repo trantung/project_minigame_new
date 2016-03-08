@@ -14,4 +14,4 @@
 	?>
 @endif
 
-@include('site.common.bar', $breadcrumb)
+@include('site.common.bar', array('breadcrumb' => $breadcrumb, 'model_name' => $model_name, 'model_id' => $model_id))

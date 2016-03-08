@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('AdminNew', $inputNew->id), 'seoImage' => FOLDER_SEO_NEWS . '/' . $inputNew->id))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('AdminNew', $inputNew->id), 'seoImage' => FOLDER_SEO_NEWS . '/' . $inputNew->id, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo('AdminNew', $inputNew->id)->title_site)
@@ -17,7 +17,7 @@
 		['name' => $inputNew->title, 'link' => '']
 	);
 ?>
-@include('site.common.bar', $breadcrumb)
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id])
 
 <div class="row">
 	<div class="col-sm-9">
@@ -31,9 +31,9 @@
 					<div class="detail">
 						<strong>{{ $inputNew->sapo }}</strong>
 						@if(getDevice() == COMPUTER)
-							@include('site.common.ads', array('adPosition' => POSITION_SAPO))
+							@include('site.common.ads', array('adPosition' => POSITION_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 						@else
-							@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO))
+							@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 						@endif
 						<div class="clearfix"></div>
 						{{ $inputNew->description }}
@@ -44,7 +44,7 @@
 				</div>
 				<div class="col-sm-3 col-sm-pull-9">
 					@if(getDevice() == MOBILE)
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED))
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 					@endif
 					
 					@include('site.News.relatedNews')
@@ -52,9 +52,9 @@
 					@include('site.News.hotNews')
 					
 					@if(getDevice() == COMPUTER)
-						@include('site.common.ads', array('adPosition' => POSITION_NEWS_DETAIL_LEFT))
+						@include('site.common.ads', array('adPosition' => POSITION_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 					@else
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT))
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 					@endif
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 	<div class="col-sm-3">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT))
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'limit' => LIMIT))
 			@endif
 		</div>
 	</div>

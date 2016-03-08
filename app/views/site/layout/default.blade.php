@@ -19,18 +19,20 @@
 
 	  	<div class="container">
 			<div class="row">
-	  			@include('site.common.footer')
+				@if(isset($model_name))
+	  				@include('site.common.footer', array('adPosition' => POSITION_MOBILE_FOOTER, 'model_name' => $model_name, 'model_id' => $model_id))
+	  			@endif
 	  		</div>
 	  	</div>
 		
-		@if(getDevice() == COMPUTER)
-			@if(isset($model_name))
-			<div class="sticky_left">
-				@include('site.common.ads', array('adPosition' => POSITION_STICKY_LEFT, 'model_name' => $model_name, 'model_id' => $model_id))
-			</div>
-			<div class="sticky_right">
-				@include('site.common.ads', array('adPosition' => POSITION_STICKY_RIGHT, 'model_name' => $model_name, 'model_id' => $model_id))
-			</div>
+		@if(isset($model_name))
+			@if(getDevice() == COMPUTER)
+				<div class="sticky_left">
+					@include('site.common.ads', array('adPosition' => POSITION_STICKY_LEFT, 'model_name' => $model_name, 'model_id' => $model_id))
+				</div>
+				<div class="sticky_right">
+					@include('site.common.ads', array('adPosition' => POSITION_STICKY_RIGHT, 'model_name' => $model_name, 'model_id' => $model_id))
+				</div>
 			@endif
 		@endif
 

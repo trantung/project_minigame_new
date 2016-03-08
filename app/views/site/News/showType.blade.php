@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('model_name' => 'AdminNew', 'model_id' => $newType->id))
+@extends('site.layout.default', array('model_name' => 'TypeNew', 'model_id' => $newType->id))
 
 @section('title')
 {{ $title= $newType->name }}
@@ -12,7 +12,7 @@
 		['name' => $newType->name, 'link' => url($newType->slug)]
 	);
 ?>
-@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1, 'model_name' => 'TypeNew', 'model_id' => $newType->id])
 
 <div class="row">
 	<div class="col-sm-12">
@@ -53,7 +53,7 @@
 	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $newType->id, 'limit' => LIMIT))
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'TypeNew', 'model_id' => $newType->id, 'limit' => LIMIT))
 			@endif
 		</div>
 	</div>
