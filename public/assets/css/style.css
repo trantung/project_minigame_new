@@ -1879,3 +1879,7 @@ a.mobile-signout {
         width: 180px;
     }*/
 }
+
+a.highlight-item h2.highlight_first {
+    font-size: 18px;
+}
