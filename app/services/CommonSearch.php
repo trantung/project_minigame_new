@@ -237,8 +237,8 @@ class CommonSearch
 
 	public static function searchNewsReporter($input, $paginate = null)
 	{
-
-		$data = AdminNew::where(function ($query) use ($input)
+		$userId = Auth::admin()->get()->id;
+		$data = AdminNew::where('user_id', $userId)->where(function ($query) use ($input)
 		{
 			$query = $query->whereIn('status', [SCRATCH_PAPER, BACK]);
 			if($input['title'] != '') {
