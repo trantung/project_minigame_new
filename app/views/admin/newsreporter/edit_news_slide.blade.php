@@ -88,7 +88,7 @@
 					<label for="image_url">Ảnh đại diện(640x410)</label>
 					<div class="row">
 						<div class="col-sm-6">
-							@if(Admin::isSeo())         
+							@if(Admin::isSeo())
 							{{ Form::file('image_url', array('disabled' => 'true' )) }}
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $inputNew->id . '/' . $inputNew->image_url) }}" />
 							@else

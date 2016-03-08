@@ -1,8 +1,8 @@
 @if(isset($model_name))
 	@if(getDevice() == COMPUTER)
-		@include('site.common.ad', array('adPosition' => POSITION_GAME_RELATED, 'model_name' => $model_name, 'model_id' => $model_id))
+		@include('site.common.ads', array('adPosition' => POSITION_GAME_RELATED, 'model_name' => $model_name, 'model_id' => $model_id))
 	@else
-		@include('site.common.ad', array('adPosition' => POSITION_MOBILE_GAME_RELATED, 'model_name' => $model_name, 'model_id' => $model_id))
+		@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAME_RELATED, 'model_name' => $model_name, 'model_id' => $model_id))
 	@endif
 @endif
 
