@@ -232,7 +232,7 @@ class NewsReporterController extends AdminController {
 				->withInput(Input::except('_token'));
 		} else {
 			//create news
-			$inputNews = Input::only('type_new_id', 'title', 'start_date',  'position','sapo','is_hot', 'type');
+			$inputNews = Input::only('type_new_id', 'title', 'start_date',  'position','sapo','is_hot', 'type', 'author');
 			if($inputNews['start_date'] == '') {
 				$inputNews['start_date'] = Carbon\Carbon::now();
 			}
@@ -291,7 +291,7 @@ class NewsReporterController extends AdminController {
 			$rules = NewsManager::getRuleByType(ACTIVE, 1);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'status', 'is_hot');
+	        		'weight_number', 'position', 'sapo', 'status', 'is_hot', 'type', 'author');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('NewsReporterController@edit_news_slide',$id)
