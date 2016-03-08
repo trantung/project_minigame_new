@@ -22,15 +22,6 @@
 							</div>
 						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="name">Chuyên mục tin</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{  Form::select('type_new_id', returnListReporter('TypeNew'),null,array('class' => 'form-control' )) }}
-							</div>
-						</div>
-					</div>
 					<div class="form-group">
 						<label>Tác giả</label>
 						<div class="row">
@@ -39,6 +30,15 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="name">Chuyên mục tin</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{  Form::select('type_new_id', returnListReporter('TypeNew'),null,array('class' => 'form-control' )) }}
+							</div>
+						</div>
+					</div>
+					
 					<!-- <div class="form-group">
 						<label>Mức ưu tiên</label>
 						<div class="row">
