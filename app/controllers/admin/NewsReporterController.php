@@ -38,7 +38,7 @@ class NewsReporterController extends AdminController {
 	 */
 	public function store()
 	{
-		$rules = NewsManager::getRuleByType();
+		$rules = NewsManager::getRuleByType(INACTIVE, 1);
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
@@ -109,7 +109,7 @@ class NewsReporterController extends AdminController {
 	public function update($id)
 	{
 		if(!Admin::isSeo()){
-			$rules = NewsManager::getRuleByType();
+			$rules = NewsManager::getRuleByType(INACTIVE, 1);
 			$input = Input::except('_token');
 			$validator = Validator::make($input,$rules);
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'position','sapo', 'is_hot', 'type', 'author');
@@ -222,7 +222,7 @@ class NewsReporterController extends AdminController {
 	 * @return Response
 	 */
 	public function store_slide(){
-			// $rules = NewsManager::getRuleByType();
+		$rules = NewsManager::getRuleByType(ACTIVE, 1);
 		$rules = ['image_urls' => 'not_empty'];
 		$input = Input::except('_token');
 		$validator = Validator::make($input,$rules);
@@ -288,7 +288,7 @@ class NewsReporterController extends AdminController {
 
 	public function update_news_slide($id){
 		if(!Admin::isSeo()){
-			$rules = NewsManager::getRuleByType(ACTIVE);
+			$rules = NewsManager::getRuleByType(ACTIVE, 1);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
 	        		'weight_number', 'position', 'sapo', 'status', 'is_hot');

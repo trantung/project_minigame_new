@@ -29,6 +29,8 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
+						<strong>{{ $inputNew->sapo }}</strong>
+						<div class="clearfix"></div>
 						@if($inputNewSlide)
 	                		<div id="slider" class="nivoSlider">
 	                			@foreach($inputNewSlide as $value)
@@ -54,8 +56,7 @@
 		                    </script>
 							<div class="margin-block clearfix"></div>
 						@endif
-
-						<strong>{{ $inputNew->sapo }}</strong>
+						<div class="clearfix"></div>
 						@if(getDevice() == COMPUTER)
 							@include('site.common.ads', array('adPosition' => POSITION_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 						@else

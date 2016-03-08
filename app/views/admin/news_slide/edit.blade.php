@@ -31,6 +31,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Nhuận bút</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('author_money', $inputNew->author_money, textParentCategory('Nhuận bút')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label>Hình tin ảnh</label>
 					<div class="row">
 						<div class="col-sm-3">
