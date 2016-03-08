@@ -22,22 +22,29 @@
 						</div>
 					</div>
 				</div>
-			
-					@if($inputNew->type == ACTIVE)
-						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
-							<div class="row">
-								<div class="col-sm-3">
-									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="100px" />
-								</div>
-								<div class="col-sm-7">
-									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
-								</div>
-								<div class="col-sm-2">
-									<a href="{{ action('NewsController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
-								</div>
+				<div class="form-group">
+					<label>Tác giả</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
+						</div>
+					</div>
+				</div>
+				@if($inputNew->type == ACTIVE)
+					@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
+						<div class="row">
+							<div class="col-sm-3">
+								<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="100px" />
 							</div>
-						@endforeach
-					@endif
+							<div class="col-sm-7">
+								{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+							</div>
+							<div class="col-sm-2">
+								<a href="{{ action('NewsController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
+							</div>
+						</div>
+					@endforeach
+				@endif
 				</div>
 				<div class="form-group">
 					<label for="name">Chuyên mục tin</label>
