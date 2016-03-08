@@ -33,16 +33,18 @@
 				@if($inputNew->type == ACTIVE)
 					@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
 						<div class="row">
-							<div class="col-sm-3">
-								<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="100px" />
+								<div class="col-xs-12">
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px;" />
+								</div>
 							</div>
-							<div class="col-sm-7">
-								{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+							<div class="row">
+								<div class="col-xs-10">
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+								</div>
+								<div class="col-xs-2">
+									<a href="{{ action('AdminNewSlideController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
+								</div>
 							</div>
-							<div class="col-sm-2">
-								<a href="{{ action('NewsController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
-							</div>
-						</div>
 					@endforeach
 				@endif
 				</div>

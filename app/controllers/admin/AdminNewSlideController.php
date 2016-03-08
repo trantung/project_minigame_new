@@ -14,6 +14,7 @@ class AdminNewSlideController extends AdminController {
 			->where('status', '!=', REJECT)
 			->where('status', '!=', SEND)
 			->where('status', '!=', BACK)
+			->where('status', '!=', NO_APPROVE)
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news_slide.index')->with(compact('inputNew'));
 	}
