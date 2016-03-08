@@ -37,8 +37,6 @@ class AdTypeMobileController extends AdminController {
 	public function store()
 	{
 		$input = Input::except('_token');
-		$input['model_name'] = 1;
-		$input['model_id'] = 1;
 		$id = Advertise::create($input)->id;
 		return Redirect::action('AdTypeMobileController@index')->with('message', 'tạo mới thành công');
 	}
