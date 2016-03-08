@@ -1,7 +1,9 @@
-@if(getDevice() == COMPUTER)
-	@include('site.common.ad', array('adPosition' => POSITION_GAME_RELATED))
-@else
-	@include('site.common.ad', array('adPosition' => POSITION_MOBILE_GAME_RELATED))
+@if(isset($model_name))
+	@if(getDevice() == COMPUTER)
+		@include('site.common.ad', array('adPosition' => POSITION_GAME_RELATED, 'model_name' => $model_name, 'model_id' => $model_id))
+	@else
+		@include('site.common.ad', array('adPosition' => POSITION_MOBILE_GAME_RELATED, 'model_name' => $model_name, 'model_id' => $model_id))
+	@endif
 @endif
 
 @if($games = CommonGame::getRelateGame($parentId, $limit, $typeId))

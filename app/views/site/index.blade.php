@@ -18,7 +18,6 @@
 	</div>
 	<div class="col-sm-8">
 		<div class="box-main">
-			
 			@include('site.common.home_news')
 		</div>
 	</div>

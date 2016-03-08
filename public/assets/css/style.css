@@ -1750,6 +1750,18 @@ a.mobile-signout {
 }
 
 
+.sticky_left,
+.sticky_right {
+    position: fixed;
+    top: 30%;
+}
+.sticky_left {
+    left: 0;
+}
+.sticky_right {
+    right: 0;
+}
+
 @media (min-width: 1200px) {
     .container {
         width: 1000px;
