@@ -39,7 +39,7 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-10">
-									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'textarea form-control', 'rows' => '4', 'style' => 'width: 550px;' )) }}
 								</div>
 								<div class="col-xs-2">
 									<a href="{{ action('AdminNewSlideController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
