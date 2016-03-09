@@ -337,6 +337,7 @@ a.highlight-item p span {
 .list-text h3,
 .list-text h2 {
     margin-top: 0;
+    line-height: 16px;
 }
 .list-text h3 a,
 .list-text h2 a {
