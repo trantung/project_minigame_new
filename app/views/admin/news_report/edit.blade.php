@@ -144,6 +144,14 @@
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>
 			{{ Form::close() }}
+
+			{{ Form::open(array('method'=>'POST', 'action' => array('NewsReportController@approve', $inputNew->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn duyệt?');">Duyệt tin</button>
+			{{ Form::close() }}
+			{{ Form::open(array('method'=>'POST', 'action' => array('NewsReportController@back', $inputNew->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn trả lại?');">Trả lại</button>
+			{{ Form::close() }}
+			
 		  </div>
 		  <!-- /.box -->
 	</div>
