@@ -53,7 +53,7 @@
 						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
 							<div class="row">
 								<div class="col-xs-12">
-									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px;" />
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px; margin-top: 10px;" />
 								</div>
 							</div>
 							<div class="row">
