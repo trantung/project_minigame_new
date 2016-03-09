@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Thêm mới quảng cáo trang chi tiết' }}
+{{ $title='Thêm mới quảng cáo bài chi tiết' }}
 @stop
 
 @section('content')
@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Trang con</label>
+					<label for="name">Bài viết</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
 						   {{ Form::select('model_id', AdminNew::lists('title', 'id')) }}

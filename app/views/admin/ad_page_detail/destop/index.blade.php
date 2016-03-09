@@ -7,7 +7,7 @@
 @section('content')
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('AdPageDetailController@create') }}" class="btn btn-primary">Thêm mới quảng cáo chi tiết trang con</a>
+		<a href="{{ action('AdPageDetailController@create') }}" class="btn btn-primary">Thêm mới quảng cáo bài chi tiết</a>
 	</div>
 </div>
 <div class="row">

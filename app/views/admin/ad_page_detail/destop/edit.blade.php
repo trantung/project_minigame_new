@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Trang con</label>
+					<label for="name">Bài viết</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
 						   {{ Form::select('model_id', AdCommon::getNameClassAdPage_Detail(), $ad->model_id) }}
