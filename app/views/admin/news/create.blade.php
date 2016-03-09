@@ -26,7 +26,9 @@
 						<label for="start_date">Ngày xuất bản</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   <input type="text" class="form-control" name="start_date" id="start_date">
+								<div class="controls input-append date form_datetime">
+				                    <input type="text" class="form-control" name="start_date" id="start_date">
+				                </div>
 							</div>
 						</div>
 					</div>
