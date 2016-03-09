@@ -1885,10 +1885,17 @@ a.highlight-item h2.highlight_first {
     font-size: 18px;
 }
 a.seemore {
-    color: #333;
-    display: block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #bf282d;
+    display: inline-block;
+    float: right;
     font-size: 15px;
     font-weight: bold;
+    padding: 3px 15px;
     text-align: right;
     text-decoration: none;
+}
+a.seemore i.fa {
+    color: #bf282d;
 }

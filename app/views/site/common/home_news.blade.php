@@ -21,7 +21,8 @@
 	@endforeach
 	<div class="row">
 		<div class="col-sm-12">
-			<a class="seemore" href="{{ action('SiteNewsController@index') }}">Xem thêm</a>
+			<a class="seemore" href="{{ action('SiteNewsController@index') }}">Xem thêm <i class="fa fa-plus-circle"></i></a>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 </div>
