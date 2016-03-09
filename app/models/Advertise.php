@@ -22,4 +22,4 @@ class Advertise extends Eloquent
     {
         return $this->belongsToMany('CommonModel', 'advertise_positions', 'advertisement_id', 'common_model_id');
     }
-}	
+}

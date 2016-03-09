@@ -23,7 +23,15 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Tác giả</label>
+					<label for="start_date">Ngày xuất bản</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
@@ -120,7 +128,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Nguồn</label>
+					<label>Nguồn (hiển thị trước sapo)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
@@ -132,15 +140,6 @@
 					<div class="row">
 						<div class="col-sm-12">
 						{{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250, 'rows' => 4,'class' => 'form-control' )) }}
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="start_date">Ngày xuất bản</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
 						</div>
 					</div>
 				</div>
@@ -160,6 +159,14 @@
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>
 			{{ Form::close() }}
+
+			{{ Form::open(array('method'=>'POST', 'action' => array('NewsReportController@approve', $inputNew->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn duyệt?');">Duyệt tin</button>
+			{{ Form::close() }}
+			{{ Form::open(array('method'=>'POST', 'action' => array('NewsReportController@back', $inputNew->id), 'style' => 'display: inline-block;')) }}
+				<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn trả lại?');">Trả lại</button>
+			{{ Form::close() }}
+			
 		  </div>
 		  <!-- /.box -->
 	</div>

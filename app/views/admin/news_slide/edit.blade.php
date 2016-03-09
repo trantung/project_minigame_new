@@ -23,6 +23,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="start_date">Ngày xuất bản</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -80,14 +88,6 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Tin nổi bật</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{  Form::select('is_hot', [INACTIVE => 'Không', ACTIVE => 'Có'], $inputNew->is_hot, array('class' => 'form-control')) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
 					<label>Mức ưu tiên</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -138,14 +138,6 @@
 					<div class="row">
 						<div class="col-sm-12">
 						{{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250, 'rows' => 4,'class' => 'form-control' )) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="start_date">Ngày xuất bản</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
 						</div>
 					</div>
 				</div>

@@ -81,6 +81,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('/news/updateNewsIndexData', 'NewsController@updateNewsIndexData');
 	Route::post('/news/updateNewsIndexSelected', 'NewsController@updateNewsIndexSelected');
 	Route::post('/news/updateNewsHotSelected', 'NewsController@updateNewsHotSelected');
+	Route::post('/news/highLight/{id}', 'NewsController@highLight');
 	Route::resource('/news', 'NewsController');
 
 	Route::post('/news_report/approve/{id}', 'NewsReportController@approve');
@@ -91,6 +92,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	Route::get('/news_slide/deleteImageSlide/{newId}/{id}', 'AdminNewSlideController@deleteImageSlide');
 	Route::get('/news_slide/search', array('uses' => 'AdminNewSlideController@search', 'as' => 'admin.news_slide.search'));
+	Route::post('/news_slide/highLight/{id}', 'AdminNewSlideController@highLight');
 	Route::resource('/news_slide', 'AdminNewSlideController');
 
 	Route::post('/newsindex/updateIndexData', 'NewsIndexController@updateIndexData');
