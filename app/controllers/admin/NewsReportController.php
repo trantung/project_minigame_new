@@ -144,7 +144,7 @@ class NewsReportController extends AdminController {
 
 	public function approve($id)
 	{
-		AdminNew::find($id)->update(['status' => APPROVE]);
+		AdminNew::find($id)->update(['status' => APPROVE, 'start_date' => Carbon\Carbon::now()]);
 		return Redirect::action('NewsReportController@index');	
 	}
 
