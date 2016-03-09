@@ -1887,9 +1887,8 @@ a.highlight-item h2.highlight_first {
 a.seemore {
     color: #333;
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    text-align: center;
+    text-align: right;
     text-decoration: none;
-    text-transform: uppercase;
 }
