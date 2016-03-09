@@ -19,5 +19,10 @@
 			</div>
 		</div>
 	@endforeach
+	<div class="row">
+		<div class="col-sm-12">
+			<a class="seemore" href="{{ action('SiteNewsController@index') }}">Xem thêm</a>
+		</div>
+	</div>
 </div>
 @endif

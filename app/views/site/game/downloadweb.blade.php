@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Game', $game->id), 'seoImage' => FOLDER_SEO_GAME . '/' . $game->id))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('Game', $game->id), 'seoImage' => FOLDER_SEO_GAME . '/' . $game->id, 'model_name' => 'Game', 'model_id' => $game->id))
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo('Game', $game->id)->title_site)
@@ -10,7 +10,7 @@
 
 @section('content')
 
-@include('site.game.breadcrumbgame', array('game' => $game))
+@include('site.game.breadcrumbgame', array('game' => $game, 'model_name' => 'Game', 'model_id' => $game->id))
 
 <div class="box">
 	
@@ -58,6 +58,6 @@
 
 </div>
 
-@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_WEB, 'typeId' => $game->type_main))
+@include('site.game.related', array('parentId' => $game->parent_id, 'limit' => GAME_RELATED_WEB, 'typeId' => $game->type_main, 'model_name' => 'Game', 'model_id' => $game->id))
 
 @stop

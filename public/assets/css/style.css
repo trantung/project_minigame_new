@@ -337,6 +337,7 @@ a.highlight-item p span {
 .list-text h3,
 .list-text h2 {
     margin-top: 0;
+    line-height: 16px;
 }
 .list-text h3 a,
 .list-text h2 a {
@@ -1878,4 +1879,17 @@ a.mobile-signout {
     /*.list-text {
         width: 180px;
     }*/
+}
+
+a.highlight-item h2.highlight_first {
+    font-size: 18px;
+}
+a.seemore {
+    color: #333;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
 }

@@ -19,6 +19,14 @@
 			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
+					<label for="name">Vị trí</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   {{ Form::select('position', AdCommon::getPositionClassAd()) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name">Adsense</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -27,34 +35,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Trang con</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', TypeNew::lists('name', 'id')) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
 						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị']) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Loại quảng cáo</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('type', AdCommon::getTypeAdvertise()) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Vị trí</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd()) }}
 						</div>
 					</div>
 				</div>

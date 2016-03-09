@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Tác giả</label>
+					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
@@ -42,12 +42,12 @@
 						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
 							<div class="row">
 								<div class="col-xs-12">
-									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px;" />
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px; margin-top: 10px;" />
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-10">
-									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'textarea form-control', 'rows' => '4', 'style' => 'width: 550px;' )) }}
 								</div>
 								<div class="col-xs-2">
 									<a href="{{ action('AdminNewSlideController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
@@ -88,7 +88,7 @@
 					<label for="image_url">Ảnh đại diện(640x410)</label>
 					<div class="row">
 						<div class="col-sm-6">
-							@if(Admin::isSeo())         
+							@if(Admin::isSeo())
 							{{ Form::file('image_url', array('disabled' => 'true' )) }}
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $inputNew->id . '/' . $inputNew->image_url) }}" />
 							@else
@@ -99,13 +99,21 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="sapo">Thêm Sapo</label>
+					<label>Nguồn (hiển thị trước sapo)</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-12">
 							 {{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'rows' => 4,'class' => 'form-control')) }}
 						</div>
 					</div>
-					</div>
+				</div>
 				
 				<!-- <div class="form-group">
 					<label for="status">Chọn trạng thái tin</label>

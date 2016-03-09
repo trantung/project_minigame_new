@@ -23,10 +23,18 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Tác giả</label>
+						<label>Tác giả (hiển thị cuối bài)</label>
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::text('author', null, textParentCategory('Tác giả')) }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Nhuận bút</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::text('author_money', null, textParentCategory('Nhuận bút')) }}
 							</div>
 						</div>
 					</div>
@@ -89,6 +97,14 @@
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::file('image_url') }}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Nguồn (hiển thị trước sapo)</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::text('sapo_text', SAPO_TEXT, textParentCategory('Nguồn')) }}
 							</div>
 						</div>
 					</div>

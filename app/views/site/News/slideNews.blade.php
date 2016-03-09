@@ -20,7 +20,7 @@
 @include('site.common.bar', ['breadcrumb' => $breadcrumb, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id])
 
 <div class="row">
-	<div class="col-sm-9">
+	<div class="col-sm-12">
 		<div class="box-main">			
 			<div class="title_left">
 				<h1>{{ $inputNew->title }}</h1>
@@ -29,6 +29,8 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
+						<strong>{{ $inputNew->sapo_text . $inputNew->sapo }}</strong>
+						<div class="clearfix"></div>
 						@if($inputNewSlide)
 	                		<div id="slider" class="nivoSlider">
 	                			@foreach($inputNewSlide as $value)
@@ -54,8 +56,7 @@
 		                    </script>
 							<div class="margin-block clearfix"></div>
 						@endif
-
-						<strong>{{ $inputNew->sapo }}</strong>
+						<div class="clearfix"></div>
 						@if(getDevice() == COMPUTER)
 							@include('site.common.ads', array('adPosition' => POSITION_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 						@else
@@ -85,13 +86,7 @@
 
 		</div>
 	</div>
-	<div class="col-sm-3">
-		<div class="side">
-			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'limit' => LIMIT))
-			@endif
-		</div>
-	</div>
+
 </div>
 
 @include('site.common.gamebox', array('model_name' => 'AdminNew', 'model_id' => $inputNew->id))

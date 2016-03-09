@@ -7,7 +7,7 @@
 					@if($key == 0)
 						<a href="{{ action('SiteNewsController@showDetail', [$value->slugType, $value->slug]) }}" class="highlight-item">
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $value->id . '/' . $value->image_url) }}" />
-							<h2>{{ $value->title }}</h2>
+							<h2 class="highlight_first">{{ $value->title }}</h2>
 						</a>
 					@endif
 				@endforeach

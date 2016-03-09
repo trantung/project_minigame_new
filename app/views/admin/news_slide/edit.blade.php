@@ -23,10 +23,18 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Tác giả</label>
+					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Nhuận bút</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('author_money', $inputNew->author_money, textParentCategory('Nhuận bút')) }}
 						</div>
 					</div>
 				</div>
@@ -45,12 +53,12 @@
 						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
 							<div class="row">
 								<div class="col-xs-12">
-									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px;" />
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px; margin-top: 10px;" />
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-10">
-									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'textarea form-control', 'rows' => '4', 'style' => 'width: 550px;' )) }}
 								</div>
 								<div class="col-xs-2">
 									<a href="{{ action('AdminNewSlideController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
@@ -118,6 +126,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label>Nguồn (hiển thị trước sapo)</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-12">
@@ -125,16 +141,14 @@
 						</div>
 					</div>
 				</div>
-				@if(NewsManager::checkUserRole($inputNew->user_id))
-					<div class="form-group">
-						<label for="start_date">Ngày xuất bản</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
-							</div>
+				<div class="form-group">
+					<label for="start_date">Ngày xuất bản</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
 						</div>
 					</div>
-				@endif
+				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<hr />

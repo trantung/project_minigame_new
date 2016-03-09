@@ -21,7 +21,6 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Trang con</th>
 			  <th>Vị trí</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
@@ -29,7 +28,6 @@
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-				  	<td>{{ TypeNew::find($value->model_id)->name }}</td>
 					<td>{{ AdCommon::getNamePositionClassAd($value->position, 'catelog_mobile') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>

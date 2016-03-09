@@ -45,12 +45,12 @@
 						@foreach(NewSlide::where('new_id', $inputNew->id)->get() as $keySlide => $valueSlide)
 							<div class="row">
 								<div class="col-xs-12">
-									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px;" />
+									<img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $valueSlide->image_url) }}"  width="550px" style="margin-bottom: 10px; margin-top: 10px;" />
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-10">
-									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'form-control', 'rows' => '2' )) }}
+									{{ Form::textarea('image_sapo[]', $valueSlide->sapo , array('placeholder' => 'Mô tả ngắn hình','maxlength' => 250,'class' => 'textarea form-control', 'rows' => '4', 'style' => 'width: 550px;' )) }}
 								</div>
 								<div class="col-xs-2">
 									<a href="{{ action('AdminNewSlideController@deleteImageSlide', [$inputNew->id, $valueSlide->id]) }}" class="btn btn-danger">Xóa</a>
@@ -116,6 +116,14 @@
 							{{ Form::file('image_url') }}
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $inputNew->id . '/' . $inputNew->image_url) }}" />
 							@endif
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Nguồn</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
 						</div>
 					</div>
 				</div>
