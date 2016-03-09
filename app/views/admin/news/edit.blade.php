@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Tác giả</label>
+					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('author', $inputNew->author, textParentCategory('Tác giả')) }}
@@ -66,14 +66,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label>Tác giả</label>
-					<div class="row">
-						<div class="col-sm-6">
-							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
-						</div>
-					</div>
-				</div>
 				<!-- <div class="form-group">
 					<label>Vị trí</label>
 					<div class="row">
@@ -105,13 +97,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-						<label>Nguồn</label>
-						<div class="row">
-							<div class="col-sm-6">
-								{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
-							</div>
+					<label>Nguồn (hiển thị trước sapo)</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
 						</div>
 					</div>
+				</div>
 				<div class="form-group">
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">

@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Tác giả</label>
+						<label>Tác giả (hiển thị cuối bài)</label>
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::text('author', null, textParentCategory('Tác giả')) }}
@@ -70,14 +70,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<label>Tác giả</label>
-						<div class="row">
-							<div class="col-sm-6">
-								{{ Form::text('author',  null, textParentCategory('Tác giả')) }}
-							</div>
-						</div>
-					</div>
 					<!-- <div class="form-group">
 						<label>Vị trí</label>
 						<div class="row">
@@ -95,7 +87,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Nguồn</label>
+						<label>Nguồn (hiển thị trước sapo)</label>
 						<div class="row">
 							<div class="col-sm-6">
 								{{ Form::text('sapo_text', SAPO_TEXT, textParentCategory('Nguồn')) }}

@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Tác giả</label>
+					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
@@ -126,7 +126,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Nguồn</label>
+					<label>Nguồn (hiển thị trước sapo)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
@@ -141,16 +141,14 @@
 						</div>
 					</div>
 				</div>
-				@if(NewsManager::checkUserRole($inputNew->user_id))
-					<div class="form-group">
-						<label for="start_date">Ngày xuất bản</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
-							</div>
+				<div class="form-group">
+					<label for="start_date">Ngày xuất bản</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
 						</div>
 					</div>
-				@endif
+				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<hr />

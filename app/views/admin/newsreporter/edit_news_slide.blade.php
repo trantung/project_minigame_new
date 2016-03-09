@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Tác giả</label>
+					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('author',  $inputNew->author, textParentCategory('Tác giả')) }}
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label>Nguồn</label>
+					<label>Nguồn (hiển thị trước sapo)</label>
 					<div class="row">
 						<div class="col-sm-6">
 							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
