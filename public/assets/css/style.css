@@ -1754,7 +1754,8 @@ a.mobile-signout {
 .sticky_left,
 .sticky_right {
     position: fixed;
-    top: 30%;
+    top: 0;
+    z-index: 9999;
 }
 .sticky_left {
     left: 0;
