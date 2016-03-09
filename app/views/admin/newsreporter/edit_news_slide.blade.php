@@ -99,13 +99,21 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="sapo">Thêm Sapo</label>
+					<label>Nguồn</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-12">
 							 {{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'rows' => 4,'class' => 'form-control')) }}
 						</div>
 					</div>
-					</div>
+				</div>
 				
 				<!-- <div class="form-group">
 					<label for="status">Chọn trạng thái tin</label>

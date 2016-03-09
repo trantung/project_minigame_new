@@ -105,6 +105,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+						<label>Nguồn</label>
+						<div class="row">
+							<div class="col-sm-6">
+								{{ Form::text('sapo_text', $inputNew->sapo_text, textParentCategory('Nguồn')) }}
+							</div>
+						</div>
+					</div>
+				<div class="form-group">
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-12">
