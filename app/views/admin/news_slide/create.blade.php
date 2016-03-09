@@ -23,6 +23,14 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="start_date">Ngày xuất bản</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   <input type="text" class="form-control" name="start_date" id="start_date">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
 						<label>Tác giả (hiển thị cuối bài)</label>
 						<div class="row">
 							<div class="col-sm-6">
@@ -50,26 +58,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="start_date">Ngày xuất bản</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   <input type="text" class="form-control" name="start_date" id="start_date">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="name">Chuyên mục tin</label>
 						<div class="row">
 							<div class="col-sm-6">
 							   {{  Form::select('type_new_id', returnList('TypeNew'),null,array('class' => 'form-control' )) }}
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="name">Tin nổi bật</label>
-						<div class="row">
-							<div class="col-sm-6">
-							   {{  Form::select('is_hot', [INACTIVE => 'Không', ACTIVE => 'Có'], null, array('class' => 'form-control')) }}
 							</div>
 						</div>
 					</div>

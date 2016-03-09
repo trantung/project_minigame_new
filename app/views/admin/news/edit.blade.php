@@ -23,6 +23,14 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="start_date">Ngày xuất bản</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label>Tác giả (hiển thị cuối bài)</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -47,14 +55,6 @@
 						   	@else
 						   	{{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control', 'disabled'=>'true' )) }}
 						   	@endif
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Tin nổi bật</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{  Form::select('is_hot', [INACTIVE => 'Không', ACTIVE => 'Có'], $inputNew->is_hot, array('class' => 'form-control')) }}
 						</div>
 					</div>
 				</div>
@@ -121,14 +121,6 @@
 						   	@else                 	
 						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1', 'disabled' =>'true'  )) }}
 						   	@endif
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="start_date">Ngày xuất bản</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
 						</div>
 					</div>
 				</div>

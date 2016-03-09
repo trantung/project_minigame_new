@@ -15,6 +15,7 @@ class AdminNewSlideController extends AdminController {
 			->where('status', '!=', SEND)
 			->where('status', '!=', BACK)
 			->where('status', '!=', NO_APPROVE)
+			->orderBy('highlight', 'desc')
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news_slide.index')->with(compact('inputNew'));
 	}
@@ -188,6 +189,15 @@ class AdminNewSlideController extends AdminController {
 	{
 		NewSlide::find($id)->delete();
 		return Redirect::action('AdminNewSlideController@edit', $newId);
+	}
+
+	public function highLight($id)
+	{
+		$new = AdminNew::find($id);
+		$typeId = $new->type_new_id;
+		AdminNew::where('type_new_id', $typeId)->update(['highlight' => INACTIVE]);
+		$new->update(['highlight' => ACTIVE]);
+		return Redirect::action('AdminNewSlideController@index');
 	}
 
 }

@@ -18,7 +18,7 @@
 		<a href="{{ action('AdminNewSlideController@create') }}" class="btn btn-primary">Thêm mới tin ảnh</a>
 		@if(Admin::isAdmin() || Admin::isEditor())
 			<a onclick="updateNewsIndexData();" class="btn btn-success">Đưa ra trang chủ</a>
-			<a onclick="updateNewsHotSelected();" class="btn btn-success">Tin nổi bật</a>
+			<!-- <a onclick="updateNewsHotSelected();" class="btn btn-success">Tin nổi bật</a> -->
 		@endif
 	</div>
 </div>
@@ -51,7 +51,11 @@
 						<td><input type="checkbox" class="news_id" name="news_id[]" value="{{ $value->id }}" /></td>
 						@endif
 						<td>{{ $value->id }}</td>
-						<td>{{ $value->title }}</td>
+						@if($value->highlight != ACTIVE)
+							<td>{{ $value->title }}</td>
+						@else
+							<td style="color: blue; font-weight: bold;">{{ $value->title }}</td>
+						@endif
 						<td>{{ TypeNew::find($value->type_new_id)->name }}</td>
 						<td>{{ $value->count_view }}</td>
 						<td>{{ $value->start_date }}</td>
@@ -62,11 +66,18 @@
 							<!-- <a href="{{-- action('AdminNewSlideController@history', $value->id) --}}" class="btn btn-success">Lịch sử</a> -->
 						<!-- @endif -->
 							<a href="{{  action('AdminNewSlideController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-						@if(!Admin::isSeo())
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminNewSlideController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
-							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-						{{ Form::close() }}
-						@endif
+							@if(!Admin::isSeo())
+							{{ Form::open(array('method'=>'DELETE', 'action' => array('AdminNewSlideController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+							{{ Form::close() }}
+							@endif
+							@if($value->highlight != ACTIVE)
+								{{ Form::open(array('method'=>'POST', 'action' => array('AdminNewSlideController@highLight', $value->id), 'style' => 'display: inline-block;')) }}
+								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn?');">Nổi bật</button>
+								{{ Form::close() }}
+							@else 
+									
+							@endif
 						</td>
 					</tr>
 					@endforeach
