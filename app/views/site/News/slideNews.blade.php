@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
-						<strong>{{ $inputNew->sapo }}</strong>
+						<strong>{{ $inputNew->sapo_text . $inputNew->sapo }}</strong>
 						<div class="clearfix"></div>
 						@if($inputNewSlide)
 	                		<div id="slider" class="nivoSlider">

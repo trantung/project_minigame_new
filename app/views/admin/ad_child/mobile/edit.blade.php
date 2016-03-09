@@ -19,6 +19,14 @@
 			{{ Form::hidden('is_mobile', IS_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
+					<label for="name">Vị trí</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   {{ Form::select('position', AdCommon::getPositionClassAd('catelog_mobile'), $ad->position) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name">Adsense</label>
 					<div class="row">
 						<div class="col-sm-6">
@@ -27,26 +35,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name">Trang con</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', AdCommon::getNameClassAd(), $ad->model_id) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">
 						<div class="col-sm-6">	                  	
 						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị'], $ad->status) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Vị trí</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('position', AdCommon::getPositionClassAd('catelog_mobile'), $ad->position) }}
 						</div>
 					</div>
 				</div>
