@@ -21,12 +21,14 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
+			  <th>Tiêu đề</th>
 			  <th>Vị trí</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			@foreach($advertise as $value)
 				<tr>
+				  	<td>{{ $value->title }}</td>
 				  	<td>{{ $value->id }}</td>
 					<td>{{ AdCommon::getNamePositionClassAd($value->position, 'catelog_mobile') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>

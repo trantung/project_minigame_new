@@ -23,6 +23,14 @@
 			{{ Form::hidden('position', POSITION_MOBILE_GAMES_TYPE) }}
 			<div class="box-body">
 				<div class="form-group">
+					<label for="title">Tiều đề</label>
+					<div class="row">
+						<div class="col-sm-6">
+						     {{ Form::text('title', null , textParentCategory('Tiêu đề')) }}
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name">Thể loại trên</label>
 					<div class="row">
 						<div class="col-sm-6">

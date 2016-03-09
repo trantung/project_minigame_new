@@ -22,12 +22,14 @@
 			<tr>
 			  <th>ID</th>
 			  <th>Thể loại</th>
+			  <th>Tiêu đề</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
+				  	<td>{{ $value->title }}</td>
 					<td>{{ Type::find($value->model_id)->name }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>

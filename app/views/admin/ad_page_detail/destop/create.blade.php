@@ -19,34 +19,10 @@
 			{{ Form::hidden('is_mobile', IS_NOT_MOBILE) }}
 			<div class="box-body">
 				<div class="form-group">
-					<label for="name">Adsense</label>
+					<label for="title">Tiều đề</label>
 					<div class="row">
 						<div class="col-sm-6">
-							{{ Form::textarea('adsense', null, textParentCategory('code adsense')) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Bài viết</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('model_id', AdminNew::lists('title', 'id')) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Loại quảng cáo</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('type', AdCommon::getTypeAdvertise()) }}
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name">Status</label>
-					<div class="row">
-						<div class="col-sm-6">	                  	
-						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị']) }}
+						     {{ Form::text('title', null , textParentCategory('Tiêu đề')) }}
 						</div>
 					</div>
 				</div>
@@ -58,6 +34,24 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="name">Adsense</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::textarea('adsense', null, textParentCategory('code adsense')) }}
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="name">Status</label>
+					<div class="row">
+						<div class="col-sm-6">	                  	
+						   {{ Form::select('status', [DISABLED => 'Ẩn', ENABLED => 'Hiển thị']) }}
+						</div>
+					</div>
+				</div>
+				
 			  <div class="box-footer">
 				{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 			  </div>

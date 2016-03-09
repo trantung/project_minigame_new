@@ -21,7 +21,7 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Trang con</th>
+			  <th>Tiêu đề</th>
 			  <th>Vị trí</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
@@ -29,7 +29,7 @@
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-				  	<td>{{ Game::find($value->model_id)->name }}</td>
+				  	<td>{{ $value->title }}</td>
 					<td>{{ AdCommon::getNamePositionClassAd($value->position,'ad_game_play_desktop') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>

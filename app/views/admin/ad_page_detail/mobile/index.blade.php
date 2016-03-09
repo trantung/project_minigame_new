@@ -21,7 +21,7 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Trang con</th>
+			  <th>Tiêu đề</th>
 			  <th>Vị trí</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
@@ -29,7 +29,7 @@
 			@foreach($advertise as $value)
 				<tr>
 				  	<td>{{ $value->id }}</td>
-				  	<td>{{ AdminNew::find($value->model_id)->title }}</td>
+				  	<td>{{ $value->title }}</td>
 					<td>{{ AdCommon::getNamePositionClassAd($value->position,'ad_pagedetail_mobile') }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
