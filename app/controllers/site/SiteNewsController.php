@@ -20,7 +20,7 @@ class SiteNewsController extends SiteController {
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
-			->where('news.is_hot', ACTIVE)
+			// ->where('news.is_hot', ACTIVE)
 			// ->orderByRaw("news.weight_number = '0', news.weight_number")
 			->orderBy('news.highlight', 'desc')
 			->orderBy('news.start_date', 'desc')

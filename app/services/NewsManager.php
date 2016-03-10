@@ -37,6 +37,10 @@ class NewsManager
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
 			$data = $data->where('status', '!=', SCRATCH_PAPER)
+				->where('status', '!=', REJECT)
+				->where('status', '!=', SEND)
+				->where('status', '!=', BACK)
+				->where('status', '!=', NO_APPROVE)
 				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		}
 		if (Admin::isReporter()) {
