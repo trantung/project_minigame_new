@@ -140,8 +140,11 @@ ul.nav-type li a.active {
 
 /*search*/
 .search {
-    text-align: right;
-    width: auto;
+    /*text-align: right;
+    width: auto;*/
+
+    display: inline-block;
+    margin-right: 10px;
 }
 .search form {
     position: relative;
@@ -380,11 +383,12 @@ a.highlight-item p span {
 }
 .breadcrumb ul li a {
     color: #BF282D;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: bold;
 }
 .breadcrumb ul li h1 {
     color: #BF282D;
-    font-size: 13px;
+    font-size: 14px;
     margin: 0;
     display: inline-block;
 }
