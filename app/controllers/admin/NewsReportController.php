@@ -89,7 +89,7 @@ class NewsReportController extends AdminController {
 			$rules = NewsManager::getRuleByType($type);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'type', 'author', 'author_money');
+	        		'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'type', 'author', 'author_money', 'highlight');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('NewsReportController@edit',$id)
@@ -102,6 +102,7 @@ class NewsReportController extends AdminController {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}
 	        	$inputNews['type'] = $type;
+	        	$inputNews['highlight'] = INACTIVE;
 				AdminNew::find($id)->update($inputNews);
 
 				//update upload image

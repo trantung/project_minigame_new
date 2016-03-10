@@ -54,7 +54,7 @@ class NewsController extends AdminController {
 	            ->withInput(Input::except('_token'));
         } else {
         	//create news
-        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'author', 'author_money');
+        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'author', 'author_money', 'highlight');
         	if($inputNews['start_date'] == '') {
         		$inputNews['start_date'] = Carbon\Carbon::now();
         	}
@@ -63,7 +63,8 @@ class NewsController extends AdminController {
         	//insert role_id into news
 			$inputNews['user_id'] = Auth::admin()->get()->id;
         	$inputNews['role_id'] = Auth::admin()->get()->role_id;
-        	$inputNes['type'] = INACTIVE;
+        	$inputNews['type'] = INACTIVE;
+        	$inputNews['highlight'] = INACTIVE;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
