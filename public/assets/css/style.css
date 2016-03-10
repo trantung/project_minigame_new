@@ -160,7 +160,7 @@ ul.nav-type li a.active {
     letter-spacing: 1px;
     margin-bottom: 5px;
     max-width: 100%;
-    padding: 5px;
+    padding: 5px 5px 5px 30px;
     width: 100%;
     
     /*border: 1px solid #ccc;
