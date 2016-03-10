@@ -307,10 +307,12 @@ a.highlight-item p span {
 }
 .adsense img,
 .adsense ins,
-.adsense iframe {
+.adsense iframe,
+.center img,
+.center ins,
+.center iframe {
     max-width: 100% !important;
 }
-
 
 /*list search + news*/
 .list {
