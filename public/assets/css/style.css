@@ -178,7 +178,7 @@ ul.nav-type li a.active {
     font-size: 0;
     height: 30px;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     width: 30px;
 }
@@ -382,18 +382,18 @@ a.highlight-item p span {
     color: #333;
 }
 .breadcrumb ul li a {
-    color: #BF282D;
+    color: #555;
     font-size: 14px;
     font-weight: bold;
 }
 .breadcrumb ul li h1 {
-    color: #BF282D;
+    color: #555;
     font-size: 14px;
     margin: 0;
     display: inline-block;
 }
 .breadcrumb i.fa {
-    color: #BF282D;
+    color: #555;
     padding-left: 10px;
     padding-right: 5px;
 }
