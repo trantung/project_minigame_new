@@ -12,6 +12,8 @@ class NewsReporterController extends AdminController {
 		$userId = Auth::admin()->get()->id;
 		$inputNew = AdminNew::whereIn('status', [SCRATCH_PAPER, BACK])
 			->where('user_id', $userId)
+			->orderBy('highlight', 'desc')
+			->orderBy('start_date', 'desc')
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.newsreporter.index')->with(compact('inputNew'));
 	}

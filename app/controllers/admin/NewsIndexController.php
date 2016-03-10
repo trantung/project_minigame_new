@@ -13,7 +13,9 @@ class NewsIndexController extends AdminController {
 			->where('status', '!=', SCRATCH_PAPER)
 			->where('status', '!=', REJECT)
 			->where('status', '!=', BACK)
-			->orderBy('weight_number', 'asc')
+			->orderBy('highlight', 'desc')
+			->orderBy('start_date', 'desc')
+			// ->orderBy('weight_number', 'asc')
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.newsindex.index')->with(compact('inputNew'));
 	}
