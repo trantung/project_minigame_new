@@ -47,6 +47,11 @@ class SiteNewsController extends SiteController {
 	{
 		$limit = $this->getNumberGamesDevice();
 		$newType = TypeNew::findBySlug($slug);
+		
+		if(empty($newType)) {
+			return Redirect::action('SiteController@returnPage404');
+		}
+
 		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
@@ -85,6 +90,10 @@ class SiteNewsController extends SiteController {
 		$newType = TypeNew::findBySlug($slugType);
 
 		$inputNew = AdminNew::findBySlug($slugNew);
+
+		if(empty($newType) || empty($inputNew)) {
+			return Redirect::action('SiteController@returnPage404');
+		}
 
 		$input['count_view'] = getZero($inputNew->count_view) + 1;
 		CommonNormal::update($inputNew->id, $input, 'AdminNew');
