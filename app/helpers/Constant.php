@@ -214,6 +214,8 @@ define('POSITION_INFO', 11);
 define('POSITION_INFO_RIGHT', 12);
 //related.blade.php
 define('POSITION_GAME_RELATED', 13);
+//minigame.blade.php
+define('POSITION_GAME_MINI', 26);
 
 //define position ad - MOBILE
 //bar.blade.php
@@ -240,6 +242,8 @@ define('POSITION_MOBILE_INFO_TEXT', 23);
 define('POSITION_MOBILE_INFO_COMMENT', 24);
 //related.blade.php
 define('POSITION_MOBILE_GAME_RELATED', 25);
+//minigame.blade.php
+define('POSITION_MOBILE_GAME_MINI', 27);
 
 define('ANTS', 1);
 define('GOOGLE_ADSENSE', 2);

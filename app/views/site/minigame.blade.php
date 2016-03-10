@@ -1,4 +1,4 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META)))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META), 'model_name' => 1, 'model_id' => 1))
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo(SEO_META)->title_site)
@@ -15,7 +15,7 @@
 		['name' => MINI_GAME_TITLE, 'link' => action('GameController@index')]
 	);
 ?>
-@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1, 'model_name' => 1, 'model_id' => 1])
 
 <div class="minigame">
 	@foreach($menu as $key => $value)
@@ -52,6 +52,13 @@
 						</div>
 					</div>
 				@endif
+
+				@if(getDevice() == COMPUTER)
+					@include('site.common.ads', array('adPosition' => POSITION_GAME_MINI, 'model_name' => 'CategoryParent', 'model_id' => $value->id))
+				@else
+					@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAME_MINI, 'model_name' => 'CategoryParent', 'model_id' => $value->id))
+				@endif
+
 			@endif
 		</div>
 	@endforeach

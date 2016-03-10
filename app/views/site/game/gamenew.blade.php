@@ -1,4 +1,4 @@
-@extends('site.layout.default')
+@extends('site.layout.default', array('model_name' => 1, 'model_id' => 1))
 
 @section('title')
 {{ $title = 'Game mới nhất'}}
@@ -11,7 +11,7 @@
 		['name' => 'Game mới nhất', 'link' => action('GameController@getListGameNew')]
 	);
 ?>
-@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1])
+@include('site.common.bar', ['breadcrumb' => $breadcrumb, 'isH1' => 1, 'model_name' => 1, 'model_id' => 1])
 
 <div class="box">
 	<h3>Game mới nhất</h3>
@@ -44,7 +44,11 @@
 </div>
 
 {{-- quang cao --}}
-@include('site.common.ad', array('adPosition' => CHILD_PAGE_RELATION))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_GAMES_GAMES, 'model_name' => 'Game_Most', 'model_id' => null))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_GAMES_GAMES, 'model_name' => 'Game_Most', 'model_id' => null))
+@endif
 
 <div class="box">
 	<h3>Game hay nhất</h3>

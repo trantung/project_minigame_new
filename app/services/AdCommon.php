@@ -102,6 +102,18 @@ class AdCommon
 				];
 				break;
 
+			case 'ad_game_hot_most':
+				return[
+					POSITION_GAMES_GAMES => 'Giữa game',
+				];
+				break;
+			
+			case 'ad_game_hot_most_mobile':
+				return[
+					POSITION_MOBILE_GAMES_GAMES => 'Giữa game',
+				];
+				break;
+
 			default:
 				return [
 					POSITION_HEADER => 'Header' , 
@@ -144,7 +156,11 @@ class AdCommon
 		if($limit) {
 			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName))->take($limit)->get();
 		} else {
-			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName))->take(1)->get();
+			if($modelName == 'CategoryParent') {
+				$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName, 'model_id' => $modelId))->take(1)->get();
+			} else {
+				$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName))->take(1)->get();
+			}
 		}
 		if($ad) {
 			return $ad;	
@@ -152,6 +168,17 @@ class AdCommon
 			return NULL;
 		}
 		
+	}
+
+	public static function getCategoryParentAdvertise()
+	{
+		$categoryLast = CategoryParent::where('status', ACTIVE)->where('position', CONTENT)->orderBy('weight_number', 'desc')->first();
+		$categoryParent = CategoryParent::where('status', ACTIVE)
+							->where('id', '!=', $categoryLast->id)
+							->where('position', CONTENT)
+							->orderBy('weight_number', 'asc')
+							->lists('name', 'id');
+		return $categoryParent;
 	}
 
 }
