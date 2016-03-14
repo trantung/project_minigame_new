@@ -48,26 +48,31 @@
 			  <th>Tổng số tải</th>	
 			  
 			  @endif		  
-			  <th>Trạng thái Seo </th>	
 			  <th style="width:200px;">Action</th>
 			</tr>
 			@foreach($categoryParents as $categoryParent)
 				<tr>
 				  	<td>{{ $categoryParent->id }}</td>
 					<td>{{ $categoryParent->name }}</td>
-					@if(!Request::segment(3) == CONTENT_SEGMENT)
-						<td>{{ countType($categoryParent->id) }}</td>
+					@if($categoryParent->id != 18)
+						@if(!Request::segment(3) == CONTENT_SEGMENT)
+							<td>{{ countType($categoryParent->id) }}</td>
+						@endif
+						<!-- todo -->
+						@if(!Request::segment(3) != CONTENT_SEGMENT)	
+							<td>{{ checkActiveUser($categoryParent->status) }}</td>
+							<td>{{ countBoxGame($categoryParent->id) }}</td>
+							<td>{{ countBoxView($categoryParent->id) }}</td>
+							<td>{{ countBoxPlay($categoryParent->id) }}</td>
+							<td>{{ countBoxDowload($categoryParent->id) }}</td>
+						@endif
+					@else
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
 					@endif
-					
-					<!-- todo -->
-					 @if(!Request::segment(3) != CONTENT_SEGMENT)	
-					 <td>{{ checkActiveUser($categoryParent->status) }}</td>
-					 <td>{{ countBoxGame($categoryParent->id) }}</td>
-					<td>{{ countBoxView($categoryParent->id) }}</td>
-					<td>{{ countBoxPlay($categoryParent->id) }}</td>
-					<td>{{ countBoxDowload($categoryParent->id) }}</td>
-					@endif
-					<td>{{ getStatusSeoParent($categoryParent, 'CategoryParent') }}</td>
 					<td>
 					 	@if(Request::segment(3) == CONTENT_SEGMENT)
 					 	<!-- content -->
@@ -75,10 +80,13 @@
 					 	@else
 					 	<a href="{{ action('CategoryParentController@edit', $categoryParent->id) }}" class="btn btn-primary">Sửa</a>
 					 	@endif
-						@if(!Admin::isSeo())
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
-							<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-						{{ Form::close() }}
+
+					 	@if($categoryParent->id != 18)
+							@if(!Admin::isSeo())
+								{{ Form::open(array('method'=>'DELETE', 'action' => array('CategoryParentController@destroy', $categoryParent->id), 'style' => 'display: inline-block;')) }}
+									<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+								{{ Form::close() }}
+							@endif
 						@endif
 					</td>
 				</tr>

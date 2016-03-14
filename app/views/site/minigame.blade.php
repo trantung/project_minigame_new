@@ -1,7 +1,7 @@
-@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo(SEO_META), 'model_name' => 1, 'model_id' => 1))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('CategoryParent', 18), 'model_name' => 1, 'model_id' => 1))
 
 @section('title')
-	@if($title = CommonSite::getMetaSeo(SEO_META)->title_site)
+	@if($title = CommonSite::getMetaSeo('CategoryParent', 18)->title_site)
 		{{ $title= $title }}
 	@else
 		{{ $title= MINI_GAME_TITLE }}

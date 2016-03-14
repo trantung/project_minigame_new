@@ -106,7 +106,6 @@ class CategoryParentController extends AdminController {
 	 */
 	public function contentedit($id)
 	{
-
 		$inputCategory = CategoryParent::find($id);
 		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'CategoryParent')->first();
 		$inputgame_category_parent = GameRelation::where('category_parent_id', $id)->first();

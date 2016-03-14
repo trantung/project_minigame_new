@@ -2,11 +2,11 @@
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo('TypeNew', $newType->id)->title_site)
-			{{ $title = $title }}
-		@else
-			{{ $title = $newType->name }}
-		@endif
-	@stop
+		{{ $title = $title }}
+	@else
+		{{ $title = $newType->name }}
+	@endif
+@stop
 @section('content')
 
 <?php
