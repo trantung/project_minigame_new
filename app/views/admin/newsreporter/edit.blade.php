@@ -60,22 +60,7 @@
 						</div>
 					</div>
 				</div>
-			<!-- 	<div class="form-group">
-					<label>Mức ưu tiên</label>
-					<div class="row">
-						<div class="col-sm-6">
-							{{ Form::text('weight_number',  $inputNew->weight_number, textParentCategory('Mức ưu tiên')) }}
-						</div>
-					</div>
-				</div> -->
-				<!-- <div class="form-group">
-					<label>Vị trí</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   {{  Form::select('position', [''=>'Mặc định', '1'=>'Bên phải'], $inputNew->position,array('class' => 'form-control' )) }}
-						</div>
-					</div>
-				</div> -->
+
 				<div class="form-group">
 					<label for="image_url">Ảnh đại diện(640x410)</label>
 					<div class="row">
@@ -118,24 +103,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<label for="status">Chọn trạng thái tin</label>
-					<div class="row">
-						<div class="col-sm-6">
-							 {{  Form::select('status', selectStatusNews(),$inputNew->status ,array('class' => 'form-control' )) }}
-						</div>						
-					</div>
-				</div> -->
-				<!-- @if(!Admin::isSeo())
-				<div class="form-group">
-					<label for="start_date">Ngày xuất bản</label>
-					<div class="row">
-						<div class="col-sm-6">
-						   <input type="text" class="form-control" name="start_date" value="{{ $inputNew->start_date }}" id="start_date">
-						</div>
-					</div>
-				</div>
-				@endif -->
+				
+				{{ Form::hidden('status', SCRATCH_PAPER) }}
+				
 				<div class="row">
 					<div class="col-sm-12">
 						<hr />
