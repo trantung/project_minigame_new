@@ -87,6 +87,7 @@ class NewsManager
 		} else {
 			$data = $data->where('news.index', '!=', INACTIVE);
 			// $data = $data->where('news.weight_number', '!=', 0);
+			$data = $data->orderByRaw("news.weight_number = '0', news.weight_number");
 		}
 		$data = $data
 				// ->orderByRaw("news.weight_number = '0', news.weight_number")
@@ -123,7 +124,7 @@ class NewsManager
 			$data = $data->where('news.index', '!=', INACTIVE);
 			// $data = $data->where('news.weight_number', '!=', 0);
 			$data = $data
-				// ->orderByRaw("news.weight_number = '0', news.weight_number")
+				->orderByRaw("news.weight_number = '0', news.weight_number")
 				->orderBy('news.start_date', 'desc')
 				->orderBy('news.id', 'desc')
 				->limit($limit)
