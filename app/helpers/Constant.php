@@ -118,8 +118,8 @@ define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
 //facebook
-define('APP_ID', '1008308405878197');
-define('APP_SECRET', 'a758055e09aef79f81eb7dd4f4588be7');
+define('APP_ID', '1763783277188424');
+define('APP_SECRET', 'b5d45f132b5032eb3b00bc2ddb8547ac');
 define('APP_ADMIN', '1088553914497350');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
