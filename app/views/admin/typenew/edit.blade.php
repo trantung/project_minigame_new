@@ -12,7 +12,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('NewsTypeController@update', $inputTypeNew->id) , 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('NewsTypeController@update', $inputTypeNew->id) , 'method' => 'PUT', 'files'=> true)) }}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="name">Tên thể loại</label>
@@ -38,6 +38,15 @@
 	                	</div>
 					</div>
               	</div>
+
+              	<div class="row">
+					<div class="col-sm-12">
+						<hr />
+						<h1>SEO META</h1>
+						{{-- include common/meta.blade.php --}}
+						@include('admin.common.meta', array('inputSeo' => $inputSeo, 'pathToImageSeo' => UPLOADIMG . '/'.FOLDER_SEO_NEWS_TYPE.'/'. $inputTypeNew->id . '/'))
+					</div>
+				</div>
 			  <!-- /.box-body -->
 
 			  <div class="box-footer">

@@ -45,7 +45,9 @@ class NewsTypeController extends AdminController {
 	            ->withInput(Input::except('name'));
         } else {
         	$inputNameTypeNew = Input::only('name', 'weight_number', 'status');
-			CommonNormal::create($inputNameTypeNew);
+			$id = CommonNormal::create($inputNameTypeNew);
+			// insert ceo
+			CommonSeo::createSeo('TypeNew', $id, FOLDER_SEO_NEWS_TYPE);
 			return Redirect::action('NewsTypeController@index');
         }
 	}
@@ -72,7 +74,8 @@ class NewsTypeController extends AdminController {
 	public function edit($id)
 	{
 		$inputTypeNew = TypeNew::find($id);
-		return View::make('admin.typenew.edit')->with(compact('inputTypeNew'));
+		$inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'TypeNew')->first();
+		return View::make('admin.typenew.edit')->with(compact('inputTypeNew', 'inputSeo'));
 	}
 
 
@@ -96,6 +99,8 @@ class NewsTypeController extends AdminController {
         } else {
         	$inputNameTypeNew = Input::only('name', 'weight_number', 'status');
         	CommonNormal::update($id,$inputNameTypeNew);
+        	//update seo
+			CommonSeo::updateSeo('TypeNew', $id, FOLDER_SEO_NEWS_TYPE);
 			return Redirect::action('NewsTypeController@index');
         }
 	}

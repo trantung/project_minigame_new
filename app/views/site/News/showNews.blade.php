@@ -2,7 +2,7 @@
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo('AdminNew', $inputNew->id)->title_site)
-		{{ $title= $title }}
+		{{ $title = $title }}
 	@else
 		{{ $title = $inputNew->title }}
 	@endif

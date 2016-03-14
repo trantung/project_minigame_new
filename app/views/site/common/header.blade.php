@@ -18,7 +18,7 @@
 		<meta property="og:title" content="{{ $seoMeta->title_fb }}" />
 		<meta property="og:description" content="{{ html_entity_decode($seoMeta->description_fb) }}" />
 		@if(isset($seoImage))
-			@if($seoMeta->image_url_fb)
+			@if(!empty($seoMeta->image_url_fb))
 				<meta property="og:image" content="{{ url(UPLOADIMG . '/' . $seoImage . '/' . $seoMeta->image_url_fb) }}" />
 			@else
 				<meta property="og:image" content="{{ url(UPLOADIMG . '/avatar-game.jpg') }}" />
