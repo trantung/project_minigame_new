@@ -1909,3 +1909,6 @@ a.seemore i.fa {
 .nivoSlider {
     margin-top: 20px;
 }
+.sliderMobile .nivo-caption {
+    position: relative;
+}

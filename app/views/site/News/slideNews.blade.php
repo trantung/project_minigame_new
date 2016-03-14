@@ -38,13 +38,24 @@
 						@endif
 						<div class="clearfix"></div>
 						@if($inputNewSlide)
-	                		<div id="slider" class="nivoSlider">
-	                			@foreach($inputNewSlide as $value)
-		                            <a title="">
-				                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
-				                    </a>
-			                    @endforeach
-	                        </div>
+
+							@if(getDevice() == MOBILE)
+								<div id="slider" class="nivoSlider sliderMobile">
+		                			@foreach($inputNewSlide as $value)
+			                            <a title="">
+					                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
+					                    </a>
+				                    @endforeach
+		                        </div>
+							@else
+		                		<div id="slider" class="nivoSlider">
+		                			@foreach($inputNewSlide as $value)
+			                            <a title="">
+					                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
+					                    </a>
+				                    @endforeach
+		                        </div>
+	                        @endif
 							{{ HTML::style('assets/js/nivoslider/nivo-slider.css') }}
 							{{ HTML::script('assets/js/nivoslider/jquery.nivo.slider.js') }}
 							<script type="text/javascript">
