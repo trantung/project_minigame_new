@@ -50,6 +50,8 @@ class AdCommon
 			case 'catelog_mobile':
 				return [
 					POSITION_MOBILE_HEADER => 'Header mobile' , 
+					POSITION_MOBILE_NEWS_GAMES => 'Dưới cột tin', 
+					POSITION_MOBILE_GAMES_GAMES => 'Giữa game', 
 					POSITION_MOBILE_FOOTER => 'Trên Home/Góp Ý/ Chính sách', 
 				];
 				break;
