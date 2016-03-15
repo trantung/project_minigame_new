@@ -195,6 +195,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 // FRONTEND
 // return json for mobile app
+Route::get('/sitemap.xml', 'SiteMapController@index');
 Route::resource('/sitemap', 'SiteMapController');
 
 // Route::resource('/testgame', 'TestGameController');
