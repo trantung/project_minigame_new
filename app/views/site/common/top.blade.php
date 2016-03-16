@@ -31,11 +31,27 @@
 					}
 				?>
 				<div class="menu-account">
-					  <a href="{{ action('AccountController@account') }}" class="account-name" rel="noindex, nofollow"><img src="{{ $avatar }}" height="32" width="31" /> {{ Auth::user()->get()->user_name.Auth::user()->get()->uname.Auth::user()->get()->google_name }}</a><span>|</span>
-					  <a href="{{ action('SiteController@logout') }}" class="signout" rel="noindex, nofollow">Đăng xuất</a>
+					@if(getDevice() == COMPUTER)
+						<div class="search">
+							<form action="{{ action('SearchGameController@index') }}">
+								<input type="text" name="search" value="" title="Tìm kiếm" placeholder="" />
+								<input type="submit" value="search" title="submit" />
+							</form>
+						</div>
+					@endif
+					<a href="{{ action('AccountController@account') }}" class="account-name" rel="noindex, nofollow"><img src="{{ $avatar }}" height="32" width="31" /> {{ Auth::user()->get()->user_name.Auth::user()->get()->uname.Auth::user()->get()->google_name }}</a><span>|</span>
+					<a href="{{ action('SiteController@logout') }}" class="signout" rel="noindex, nofollow">Đăng xuất</a>
 				</div>
 				@else
 				<div class="menu-login">
+					@if(getDevice() == COMPUTER)
+						<div class="search">
+							<form action="{{ action('SearchGameController@index') }}">
+								<input type="text" name="search" value="" title="Tìm kiếm" placeholder="" />
+								<input type="submit" value="search" title="submit" />
+							</form>
+						</div>
+					@endif
 					<a href="{{ action('SiteController@login') }}" class="signin" rel="noindex, nofollow">Đăng nhập</a><span>|</span>
 					<a href="{{ action('AccountController@create') }}" class="signup" rel="noindex, nofollow">Đăng ký</a>
 				</div>

@@ -21,8 +21,8 @@
 		  <table class="table table-hover">
 			<tr>
 			  <th>ID</th>
-			  <th>Thể loại</th>
 			  <th>Tiêu đề</th>
+			  <th>Thể loại</th>
 			  <th>Status</th>
 			  <th style="width:200px;">Action</th>
 			</tr>
@@ -30,7 +30,7 @@
 				<tr>
 				  	<td>{{ $value->id }}</td>
 				  	<td>{{ $value->title }}</td>
-					<td>{{ Type::find($value->model_id)->name }}</td>
+				  	<td>{{ Type::find($value->model_id)->name }}</td>
 					<td>{{ getStatusAdvertise($value->status) }} </td>
 					<td>
 					<a href="{{  action('AdTypeMobileController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>

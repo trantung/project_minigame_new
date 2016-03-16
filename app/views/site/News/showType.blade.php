@@ -1,9 +1,12 @@
-@extends('site.layout.default', array('model_name' => 'TypeNew', 'model_id' => $newType->id))
+@extends('site.layout.default', array('seoMeta' => CommonSite::getMetaSeo('TypeNew', $newType->id), 'model_name' => 'TypeNew', 'model_id' => $newType->id))
 
 @section('title')
-{{ $title= $newType->name }}
+	@if($title = CommonSite::getMetaSeo('TypeNew', $newType->id)->title_site)
+		{{ $title = $title }}
+	@else
+		{{ $title = $newType->name }}
+	@endif
 @stop
-
 @section('content')
 
 <?php

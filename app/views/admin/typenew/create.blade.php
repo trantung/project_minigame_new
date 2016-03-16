@@ -39,6 +39,16 @@
 		                </div>
 					</div>
               	</div>
+
+              	<div class="row">
+					<div class="col-sm-12">
+						<hr />
+						<h1>SEO META</h1>
+						{{-- include common/meta.blade.php --}}
+						@include('admin.common.meta')
+					</div>
+					<div class="col-sm-6"></div>
+				</div>
 			  <!-- /.box-body -->
 
 			  <div class="box-footer">

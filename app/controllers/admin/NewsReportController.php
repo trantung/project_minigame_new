@@ -11,6 +11,8 @@ class NewsReportController extends AdminController {
 	{
 		$inputNew = AdminNew::where('role_id', REPORTER)
 			->where('status', '=', SEND)
+			->orderBy('highlight', 'desc')
+			->orderBy('start_date', 'desc')
 			->orderBy('id', 'desc')->paginate(PAGINATE);
 		return View::make('admin.news_report.index')->with(compact('inputNew'));
 	}
@@ -87,7 +89,7 @@ class NewsReportController extends AdminController {
 			$rules = NewsManager::getRuleByType($type);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'type', 'author', 'author_money');
+	        		'weight_number', 'position', 'sapo', 'sapo_text', 'is_hot', 'type', 'author', 'author_money', 'highlight');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('NewsReportController@edit',$id)
@@ -100,6 +102,7 @@ class NewsReportController extends AdminController {
 	        		$inputNews['start_date'] = Carbon\Carbon::now();
 	        	}
 	        	$inputNews['type'] = $type;
+	        	$inputNews['highlight'] = INACTIVE;
 				AdminNew::find($id)->update($inputNews);
 
 				//update upload image
@@ -144,7 +147,14 @@ class NewsReportController extends AdminController {
 
 	public function approve($id)
 	{
-		AdminNew::find($id)->update(['status' => APPROVE, 'start_date' => Carbon\Carbon::now()]);
+		$news = AdminNew::find($id);
+		$input = ['status' => APPROVE];
+		if($news->start_date) {
+			$input['start_date'] = $news->start_date;
+		} else {
+			$input['start_date'] = Carbon\Carbon::now();
+		}
+		$news->update($input);
 		return Redirect::action('NewsReportController@index');	
 	}
 

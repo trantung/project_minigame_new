@@ -120,7 +120,7 @@
 
 			<li>
 
-				<a href="#"><i class="fa fa-circle-o"></i>Quản lý trang chủ</a>
+				<a href="#"><i class="fa fa-circle-o"></i>Quảng cáo trang chủ</a>
 				<ul class="treeview-menu">
 					<li><a href="{{ action('AdHomeController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang destop</a></li>
 					<li><a href="{{ action('AdHomeMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang mobile</a></li>
@@ -131,7 +131,7 @@
 
 			<li>
 
-				<a href="#"><i class="fa fa-circle-o"></i>Quản lý trang con</a>
+				<a href="#"><i class="fa fa-circle-o"></i>Quảng cáo trang con</a>
 				<ul class="treeview-menu">
 					<li><a href="{{ action('AdNewDestopController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang destop</a></li>
 					<li><a href="{{ action('AdNewMobileController@index') }}"><i class="fa fa-circle-o"></i>Quản lý trang mobile</a></li>
@@ -142,7 +142,7 @@
 			<li>
 				<a href="#">
 					<i class="fa fa-bars"></i>
-					<span>Quản lý trang bài chi tiết</span>
+					<span>Qc trang bài chi tiết</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 
@@ -155,15 +155,42 @@
 			<li>
 				<a href="#">
 					<i class="fa fa-gamepad"></i>
-					<span>Quản lý game play</span>
+					<span>Qc game play</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 
 				<ul class="treeview-menu">
-					<li><a href="{{ action('AdGamePlayDesktopController@index') }}"><i class="fa fa-desktop"></i>Quản lý game play desktop</a></li>
+					<li><a href="{{ action('AdGamePlayDesktopController@index') }}"><i class="fa fa-desktop"></i>Qc game play desktop</a></li>
 					<li><a href="{{ action('AdGamePlayMobileController@index') }}"><i class="fa fa-mobile"></i>Trang bài chi tiết mobile</a></li>
 				</ul>
 			</li>
+
+			<li>
+				<a href="#">
+					<i class="fa fa-gamepad"></i>
+					<span>Qc game mới nhất/hay nhất</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AdGameHotMostDesktopController@index') }}"><i class="fa fa-desktop"></i>mới nhất/hay nhất desktop</a></li>
+					<li><a href="{{ action('AdGameHotMostMobileController@index') }}"><i class="fa fa-mobile"></i>mới nhất/hay nhất mobile</a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="#">
+					<i class="fa fa-gamepad"></i>
+					<span>Quảng cáo game mini</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AdGameMiniDesktopController@index') }}"><i class="fa fa-desktop"></i>Quản lý game mini desktop</a></li>
+					<li><a href="{{ action('AdGameMiniMobileController@index') }}"><i class="fa fa-mobile"></i>Quản lý game mini mobile</a></li>
+				</ul>
+			</li>
+
 		  </ul>
 	  </li>
 	  @endif

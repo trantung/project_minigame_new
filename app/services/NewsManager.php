@@ -37,6 +37,10 @@ class NewsManager
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
 			$data = $data->where('status', '!=', SCRATCH_PAPER)
+				->where('status', '!=', REJECT)
+				->where('status', '!=', SEND)
+				->where('status', '!=', BACK)
+				->where('status', '!=', NO_APPROVE)
 				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
 		}
 		if (Admin::isReporter()) {
@@ -82,9 +86,11 @@ class NewsManager
 			$data = $data->whereIn($hot);
 		} else {
 			$data = $data->where('news.index', '!=', INACTIVE);
-			$data = $data->where('news.weight_number', '!=', 0);
+			// $data = $data->where('news.weight_number', '!=', 0);
+			$data = $data->orderByRaw("news.weight_number = '0', news.weight_number");
 		}
-		$data = $data->orderByRaw("news.weight_number = '0', news.weight_number")
+		$data = $data
+				// ->orderByRaw("news.weight_number = '0', news.weight_number")
 				->orderBy('news.start_date', 'desc')
 				->orderBy('news.id', 'desc')
 				->limit($limit)
@@ -116,8 +122,9 @@ class NewsManager
 				->get();
 		} else {
 			$data = $data->where('news.index', '!=', INACTIVE);
-			$data = $data->where('news.weight_number', '!=', 0);
-			$data = $data->orderByRaw("news.weight_number = '0', news.weight_number")
+			// $data = $data->where('news.weight_number', '!=', 0);
+			$data = $data
+				->orderByRaw("news.weight_number = '0', news.weight_number")
 				->orderBy('news.start_date', 'desc')
 				->orderBy('news.id', 'desc')
 				->limit($limit)

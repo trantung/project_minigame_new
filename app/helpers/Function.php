@@ -570,7 +570,10 @@ function getStatusSeoParent($input, $model_name){
 	$seo = AdminSeo::where('model_name', $model_name)
 		->where('model_id', $input->id)
 		->first();
+	if($seo) {
 		return checkActiveUser($seo->status_seo);
+	}
+	return null;
 
 }
 

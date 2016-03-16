@@ -30,15 +30,27 @@
 				<div class="col-sm-9 col-sm-push-3">
 					<div class="detail">
 						<strong>{{ $inputNew->sapo_text . $inputNew->sapo }}</strong>
+
 						<div class="clearfix"></div>
 						@if($inputNewSlide)
-	                		<div id="slider" class="nivoSlider">
-	                			@foreach($inputNewSlide as $value)
-		                            <a title="">
-				                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
-				                    </a>
-			                    @endforeach
-	                        </div>
+
+							@if(getDevice() == MOBILE)
+								<div id="slider" class="nivoSlider sliderMobile">
+		                			@foreach($inputNewSlide as $value)
+			                            <a title="">
+					                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
+					                    </a>
+				                    @endforeach
+		                        </div>
+							@else
+		                		<div id="slider" class="nivoSlider sliderPC">
+		                			@foreach($inputNewSlide as $value)
+			                            <a title="">
+					                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
+					                    </a>
+				                    @endforeach
+		                        </div>
+	                        @endif
 							{{ HTML::style('assets/js/nivoslider/nivo-slider.css') }}
 							{{ HTML::script('assets/js/nivoslider/jquery.nivo.slider.js') }}
 							<script type="text/javascript">
@@ -55,12 +67,6 @@
 			                    });
 		                    </script>
 							<div class="margin-block clearfix"></div>
-						@endif
-						<div class="clearfix"></div>
-						@if(getDevice() == COMPUTER)
-							@include('site.common.ads', array('adPosition' => POSITION_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
-						@else
-							@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 						@endif
 						<div class="clearfix"></div>
 	                    {{ $inputNew->description }}

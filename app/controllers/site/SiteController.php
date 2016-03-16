@@ -8,7 +8,11 @@ class SiteController extends HomeController {
         {
             $menu = Cache::get('menu');
         } else {
-        	$menu = CategoryParent::where('status', ACTIVE)->where('position', CONTENT)->orderBy('weight_number', 'asc')->get();
+        	$menu = CategoryParent::where('status', ACTIVE)
+        		->where('id', '!=', 18)
+        		->where('position', CONTENT)
+        		->orderBy('weight_number', 'asc')
+        		->get();
             Cache::put('menu', $menu, CACHETIME);
         }
         $menuHeader = CategoryParent::where('status', ACTIVE)->where('position', MENU)->orderBy('weight_number', 'asc')->get();

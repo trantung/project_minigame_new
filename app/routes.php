@@ -135,6 +135,12 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/ad_game_play', 'AdGamePlayDesktopController');
 	Route::resource('/ad_game_play_mobile', 'AdGamePlayMobileController');
 
+	Route::resource('/ad_game_hot_most_desktop', 'AdGameHotMostDesktopController');
+	Route::resource('/ad_game_hot_most_mobile', 'AdGameHotMostMobileController');
+
+	Route::resource('/ad_game_mini_desktop', 'AdGameMiniDesktopController');
+	Route::resource('/ad_game_mini_mobile', 'AdGameMiniMobileController');
+
 	Route::get('/advertise_child', 'AdvertiseController@indexChild');
 	Route::get('/create/advertise_child', 'AdvertiseController@createChild');
 	Route::post('/create/advertise_child', 'AdvertiseController@storeChild');
@@ -189,6 +195,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 // FRONTEND
 // return json for mobile app
+Route::get('/sitemap.xml', 'SiteMapController@index');
 Route::resource('/sitemap', 'SiteMapController');
 
 // Route::resource('/testgame', 'TestGameController');

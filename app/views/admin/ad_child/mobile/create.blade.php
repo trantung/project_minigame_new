@@ -18,7 +18,7 @@
 			{{ Form::open(array('action' => array('AdNewMobileController@store'))) }}
 			{{ Form::hidden('is_mobile', IS_MOBILE) }}
 			<div class="box-body">
-				div class="form-group">
+				<div class="form-group">
 					<label for="title">Tiều đề</label>
 					<div class="row">
 						<div class="col-sm-6">

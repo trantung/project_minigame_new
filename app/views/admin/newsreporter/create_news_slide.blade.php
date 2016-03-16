@@ -73,6 +73,9 @@
 							</div>
 						</div>
 					</div>
+
+					{{ Form::hidden('status', SCRATCH_PAPER) }}
+					
 					<div class="row">
 						<div class="col-sm-12">
 							<hr />

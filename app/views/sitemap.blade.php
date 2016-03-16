@@ -1,7 +1,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>{{url()}}</loc>
-        <priority>0.5</priority>
+        <lastmod>2016-03-15</lastmod>
+		<changefreq>always</changefreq>
+		<priority>1.0</priority>
     </url>
     @foreach(SiteMap::getTypeUrlSiteMap() as $type)
     <url>
@@ -15,8 +17,8 @@
 	    <url>
 	    	<loc>{{ url().'/'.Type::find($game->type_main)->slug.'/'.$game->slug }}</loc>
 			<lastmod>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $game->start_date)->format('Y-m-d') }}</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.5</priority>
+			<changefreq>daily</changefreq>
+			<priority>0.7</priority>
 	    </url>
 	@endforeach
 
@@ -24,8 +26,8 @@
 	    <url>
 	    	<loc>{{ url().'/'.'tin-tuc'.'/'.$new->slug }}</loc>
 			<lastmod>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $new->start_date)->format('Y-m-d') }}</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.5</priority>
+			<changefreq>daily</changefreq>
+			<priority>0.7</priority>
 	    </url>
 	@endforeach
 </urlset>

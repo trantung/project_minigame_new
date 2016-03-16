@@ -140,8 +140,11 @@ ul.nav-type li a.active {
 
 /*search*/
 .search {
-    text-align: right;
-    width: auto;
+    /*text-align: right;
+    width: auto;*/
+
+    display: inline-block;
+    margin-right: 10px;
 }
 .search form {
     position: relative;
@@ -157,7 +160,7 @@ ul.nav-type li a.active {
     letter-spacing: 1px;
     margin-bottom: 5px;
     max-width: 100%;
-    padding: 5px;
+    padding: 5px 5px 5px 30px;
     width: 100%;
     
     /*border: 1px solid #ccc;
@@ -175,7 +178,7 @@ ul.nav-type li a.active {
     font-size: 0;
     height: 30px;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     width: 30px;
 }
@@ -250,8 +253,10 @@ a.highlight-item p span {
     margin-bottom: 0;
     padding: 5px;
     text-decoration: none;
+    height: 40px;
 }
 .related > ul li:first-child a {
+    height: auto;
     margin-bottom: 10px;
     padding: 0;
 }
@@ -287,7 +292,7 @@ a.highlight-item p span {
 }
 .detail {
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 .detail img,
 .detail table {
@@ -307,10 +312,12 @@ a.highlight-item p span {
 }
 .adsense img,
 .adsense ins,
-.adsense iframe {
+.adsense iframe,
+.center img,
+.center ins,
+.center iframe {
     max-width: 100% !important;
 }
-
 
 /*list search + news*/
 .list {
@@ -377,17 +384,18 @@ a.highlight-item p span {
     color: #333;
 }
 .breadcrumb ul li a {
-    color: #BF282D;
-    font-size: 13px;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
 }
 .breadcrumb ul li h1 {
-    color: #BF282D;
-    font-size: 13px;
+    color: #555;
+    font-size: 14px;
     margin: 0;
     display: inline-block;
 }
 .breadcrumb i.fa {
-    color: #BF282D;
+    color: #555;
     padding-left: 10px;
     padding-right: 5px;
 }
@@ -1754,7 +1762,8 @@ a.mobile-signout {
 .sticky_left,
 .sticky_right {
     position: fixed;
-    top: 30%;
+    top: 0;
+    z-index: 9999;
 }
 .sticky_left {
     left: 0;
@@ -1885,10 +1894,26 @@ a.highlight-item h2.highlight_first {
     font-size: 18px;
 }
 a.seemore {
-    color: #333;
-    display: block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #bf282d;
+    display: inline-block;
+    float: right;
     font-size: 15px;
     font-weight: bold;
+    padding: 3px 15px;
     text-align: right;
     text-decoration: none;
+}
+a.seemore i.fa {
+    color: #bf282d;
+}
+.nivoSlider {
+    margin-top: 20px;
+}
+.sliderMobile .nivo-caption {
+    position: relative;
+}
+.sliderPC img {
+    height: 560px !important;
 }

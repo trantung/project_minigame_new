@@ -2,7 +2,7 @@
 
 @section('title')
 	@if($title = CommonSite::getMetaSeo('AdminNew', $inputNew->id)->title_site)
-		{{ $title= $title }}
+		{{ $title = $title }}
 	@else
 		{{ $title = $inputNew->title }}
 	@endif
@@ -20,14 +20,14 @@
 @include('site.common.bar', ['breadcrumb' => $breadcrumb, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id])
 
 <div class="row">
-	<div class="col-sm-9">
+	<div class="col-sm-8">
 		<div class="box-main">
 			<div class="title_left">
 				<h1>{{ $inputNew->title }}</h1>
 				<p>{{ date('d/m/Y H:i', strtotime($inputNew->updated_at)) }}</p>
 			</div>
 			<div class="row">
-				<div class="col-sm-9 col-sm-push-3">
+				<div class="col-sm-8 col-sm-push-4">
 					<div class="detail">
 						<strong>{{ $inputNew->sapo_text . $inputNew->sapo }}</strong>
 						@if(getDevice() == COMPUTER)
@@ -42,7 +42,7 @@
 						<div class="clearfix"></div>
 					</div>
 				</div>
-				<div class="col-sm-3 col-sm-pull-9">
+				<div class="col-sm-4 col-sm-pull-8">
 					@if(getDevice() == MOBILE)
 						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 					@endif
@@ -61,7 +61,7 @@
 
 		</div>
 	</div>
-	<div class="col-sm-3">
+	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
 				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'limit' => LIMIT))

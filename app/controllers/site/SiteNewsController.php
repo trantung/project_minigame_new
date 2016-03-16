@@ -20,8 +20,9 @@ class SiteNewsController extends SiteController {
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
-			->where('news.is_hot', ACTIVE)
-			->orderByRaw("news.weight_number = '0', news.weight_number")
+			// ->where('news.is_hot', ACTIVE)
+			// ->orderByRaw("news.weight_number = '0', news.weight_number")
+			->orderBy('news.highlight', 'desc')
 			->orderBy('news.start_date', 'desc')
 			->orderBy('news.id', 'desc')
 			->limit($limit)
@@ -32,7 +33,8 @@ class SiteNewsController extends SiteController {
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
 			->whereNotIn('news.id', $list)
-			->orderByRaw("news.weight_number = '0', news.weight_number")
+			// ->orderByRaw("news.weight_number = '0', news.weight_number")
+			->orderBy('news.highlight', 'desc')
 			->orderBy('news.start_date', 'desc')
 			->orderBy('news.id', 'desc')
 			// ->offset(4)
@@ -45,14 +47,20 @@ class SiteNewsController extends SiteController {
 	{
 		$limit = $this->getNumberGamesDevice();
 		$newType = TypeNew::findBySlug($slug);
+		
+		if(empty($newType)) {
+			return Redirect::action('SiteController@returnPage404');
+		}
+
 		$list = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
 			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
 			->where('news.start_date', '<=', Carbon\Carbon::now())
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
 			->where('type_new_id', $newType->id)
-			->where('news.is_hot', ACTIVE)
-			->orderByRaw("news.weight_number = '0', news.weight_number")
+			// ->where('news.is_hot', ACTIVE)
+			// ->orderByRaw("news.weight_number = '0', news.weight_number")
+			->orderBy('news.highlight', 'desc')
 			->orderBy('news.start_date', 'desc')
 			->orderBy('news.id', 'desc')
 			->limit($limit)
@@ -64,7 +72,8 @@ class SiteNewsController extends SiteController {
 					->where('type_news.status', ENABLED)
 					->where('news.status', APPROVE)
 					->whereNotIn('news.id', $list)
-					->orderByRaw("news.weight_number = '0', news.weight_number")
+					// ->orderByRaw("news.weight_number = '0', news.weight_number")
+					->orderBy('news.highlight', 'desc')
 					->orderBy('news.start_date', 'desc')
 					->orderBy('news.id', 'desc')
 					->paginate(FRONENDPAGINATE);
@@ -81,6 +90,9 @@ class SiteNewsController extends SiteController {
 		$newType = TypeNew::findBySlug($slugType);
 
 		$inputNew = AdminNew::findBySlug($slugNew);
+		if(empty($newType) || empty($inputNew)) {
+			return Redirect::action('SiteController@returnPage404');
+		}
 		$input['count_view'] = getZero($inputNew->count_view) + 1;
 		CommonNormal::update($inputNew->id, $input, 'AdminNew');
 		$inputRelated = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')

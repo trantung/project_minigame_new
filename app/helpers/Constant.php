@@ -25,7 +25,7 @@ define('GAME_OF_PARENT', 0);
 //pagination manager admin
 define('PAGINATE', 20);
 //pagination frontend
-define('FRONENDPAGINATE', 2);
+define('FRONENDPAGINATE', 6);
 //url upload img
 define('UPLOADIMG', '/images');
 //url upload avatar game
@@ -45,6 +45,7 @@ define('FOLDER_SEO_GAME', 'fb_game');
 define('FOLDER_SEO_GAMETYPE', 'fb_gametype');
 define('FOLDER_SEO_PARENT', 'fb_parent');
 define('FOLDER_SEO_NEWS', 'fb_news');
+define('FOLDER_SEO_NEWS_TYPE', 'fb_news_type');
 define('FOLDER_SEO', 'seo');
 
 //device
@@ -118,8 +119,8 @@ define('TIMELIMITED', 60);
 //define size cut off text descript
 define('SIZETEXT', '200');
 //facebook
-define('APP_ID', '1008308405878197');
-define('APP_SECRET', 'a758055e09aef79f81eb7dd4f4588be7');
+define('APP_ID', '1763783277188424');
+define('APP_SECRET', 'b5d45f132b5032eb3b00bc2ddb8547ac');
 define('APP_ADMIN', '1088553914497350');
 //define limit scores
 define('GAMESCORE_LIMITED', 5);
@@ -214,6 +215,8 @@ define('POSITION_INFO', 11);
 define('POSITION_INFO_RIGHT', 12);
 //related.blade.php
 define('POSITION_GAME_RELATED', 13);
+//minigame.blade.php
+define('POSITION_GAME_MINI', 26);
 
 //define position ad - MOBILE
 //bar.blade.php
@@ -240,6 +243,8 @@ define('POSITION_MOBILE_INFO_TEXT', 23);
 define('POSITION_MOBILE_INFO_COMMENT', 24);
 //related.blade.php
 define('POSITION_MOBILE_GAME_RELATED', 25);
+//minigame.blade.php
+define('POSITION_MOBILE_GAME_MINI', 27);
 
 define('ANTS', 1);
 define('GOOGLE_ADSENSE', 2);
