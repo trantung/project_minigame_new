@@ -58,7 +58,7 @@
 	    background: #a02421;
 	    margin: 0 auto;
 	    width: 670px;
-	    height: 430px;
+	    height: 410px;
 	}
 	@else
 	.kt-boxgame {
