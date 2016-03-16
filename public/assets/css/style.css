@@ -292,7 +292,7 @@ a.highlight-item p span {
 }
 .detail {
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 .detail img,
 .detail table {
