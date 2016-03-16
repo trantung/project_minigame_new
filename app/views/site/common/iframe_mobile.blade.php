@@ -134,7 +134,7 @@
 <div class="kt-boxgame">
 	<ul class="kt-menu">
 		<li>
-			<a href="{{ url('/') }}" target="_top">Game</a>
+			<a href="{{ url('/') }}" target="_blank">Game</a>
 		</li>
 		<!-- @foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value) -->
 			<!-- <li class="kt-type">

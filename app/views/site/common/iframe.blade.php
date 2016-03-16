@@ -136,7 +136,7 @@
 		</li>
 		@foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value)
 			<li class="kt-type">
-				<a href="{{ url('/' . $value->slug) }}" target="_top">
+				<a href="{{ url('/' . $value->slug) }}" target="_blank">
 					{{ ($value->name) }}
 				</a>
 			</li>
