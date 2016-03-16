@@ -76,7 +76,9 @@
 								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn?');">Nổi bật</button>
 								{{ Form::close() }}
 							@else 
-									
+								{{ Form::open(array('method'=>'POST', 'action' => array('NewsController@removeHighLight', $value->id), 'style' => 'display: inline-block;')) }}
+								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn?');">Bỏ nổi bật</button>
+								{{ Form::close() }}
 							@endif
 						</td>
 					</tr>
