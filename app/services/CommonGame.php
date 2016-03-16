@@ -198,7 +198,7 @@ class CommonGame
 			}
 		}
 		// weight_number
-		if(isset($input['sortByCountDownload']) && $input['sortByweightNumber'] != '') {
+		if(isset($input['sortByweightNumber']) && $input['sortByweightNumber'] != '') {
 			if($input['sortByweightNumber'] == 'weight_number_asc') {
 				$sortBy = 'weight_number';
 				$sort = 'asc';
