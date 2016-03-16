@@ -83,7 +83,7 @@
 					@include('site.News.hotNews')
 
 					@if(getDevice() == COMPUTER)
-						@include('site.common.ads', array('adPosition' => POSITION_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+						<!-- @include('site.common.ads', array('adPosition' => POSITION_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id)) -->
 					@else
 						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 					@endif
