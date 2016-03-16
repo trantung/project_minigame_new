@@ -1772,7 +1772,7 @@ a.mobile-signout {
     right: 0;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
     .container {
         width: 1000px;
     }
