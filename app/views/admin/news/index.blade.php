@@ -43,7 +43,7 @@
 						<th>Ngày xuất bản</th>
 						<th>Trạng thái</th>
 						<th>Người đăng</th>
-						<th style="width:200px;">Action</th>
+						<th style="width:250px;">Action</th>
 					</tr>
 					@foreach($inputNew as $value)
 					<tr>
@@ -76,7 +76,9 @@
 								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn?');">Nổi bật</button>
 								{{ Form::close() }}
 							@else 
-									
+								{{ Form::open(array('method'=>'POST', 'action' => array('NewsController@removeHighLight', $value->id), 'style' => 'display: inline-block;')) }}
+								<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn?');">Bỏ nổi bật</button>
+								{{ Form::close() }}
 							@endif
 						</td>
 					</tr>

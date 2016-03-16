@@ -90,11 +90,9 @@ class SiteNewsController extends SiteController {
 		$newType = TypeNew::findBySlug($slugType);
 
 		$inputNew = AdminNew::findBySlug($slugNew);
-
 		if(empty($newType) || empty($inputNew)) {
 			return Redirect::action('SiteController@returnPage404');
 		}
-
 		$input['count_view'] = getZero($inputNew->count_view) + 1;
 		CommonNormal::update($inputNew->id, $input, 'AdminNew');
 		$inputRelated = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')

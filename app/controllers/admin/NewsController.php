@@ -292,5 +292,12 @@ class NewsController extends AdminController {
 		$new->update(['highlight' => ACTIVE]);
 		return Redirect::action('NewsController@index');
 	}
-
+	public function removeHighLight($id)
+	{
+		$new = AdminNew::find($id);
+		// $typeId = $new->type_new_id;
+		// AdminNew::where('type_new_id', $typeId)->update(['highlight' => INACTIVE]);
+		$new->update(['highlight' => INACTIVE]);
+		return Redirect::action('NewsController@index');
+	}
 }
