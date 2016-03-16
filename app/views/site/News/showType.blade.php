@@ -11,7 +11,7 @@
 
 <?php
 	$breadcrumb = array(
-		['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
+		// ['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
 		['name' => $newType->name, 'link' => url($newType->slug)]
 	);
 ?>
