@@ -43,7 +43,7 @@
 				                    @endforeach
 		                        </div>
 							@else
-		                		<div id="slider" class="nivoSlider">
+		                		<div id="slider" class="nivoSlider sliderPC">
 		                			@foreach($inputNewSlide as $value)
 			                            <a title="">
 					                        <img src="{{ url(UPLOAD_NEWS_SLIDE . '/' . $inputNew->id . '/' . $value->image_url) }}" alt="" title="{{ $value->sapo }}" />
