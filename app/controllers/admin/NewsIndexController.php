@@ -100,13 +100,11 @@ class NewsIndexController extends AdminController {
 	// Edit weight number and status game index page
 	public function updateIndexData()
 	{
-		$boxId = Input::get('box_id');
-		$status = Input::get('status');
+		$newsId = Input::get('news_id');
 		$weightNumber = Input::get('weight_number');
-		foreach($boxId as $key => $value) {
+		foreach($newsId as $key => $value) {
 			$input = array(
 				'weight_number' => $weightNumber[$key],
-				'status' => $status[$key],
 				);
 			AdminNew::find($value)->update($input);
 		}
