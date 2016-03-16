@@ -14,7 +14,7 @@
 	}
 	.kt-menu {
 		/*background: #E7E7E7;*/
-		background: #bf282d;
+		background: #a02421;
 	    display: block;
 	    padding-left: 0;
 	    overflow: hidden;
@@ -28,7 +28,7 @@
 	.kt-menu li:first-child {
 	    color: #fff;
 	    cursor: default;
-	    background-color: #bf282d;
+	    background-color: #a02421;
 	    padding-bottom: 5px;
 	    padding-top: 10px;
 	    border: none;
@@ -57,7 +57,7 @@
 		font-size: 14px;;
 	}
 	.kt-boxgame {
-		background: #bf282d;
+		background: #a02421;
 	    margin: 0 auto;
 	    width: 100%;
 	    height: auto;
