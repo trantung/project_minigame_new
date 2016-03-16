@@ -253,8 +253,10 @@ a.highlight-item p span {
     margin-bottom: 0;
     padding: 5px;
     text-decoration: none;
+    height: 40px;
 }
 .related > ul li:first-child a {
+    height: auto;
     margin-bottom: 10px;
     padding: 0;
 }
@@ -1913,5 +1915,5 @@ a.seemore i.fa {
     position: relative;
 }
 .sliderPC img {
-    height: 554px !important;
+    height: 560px !important;
 }
