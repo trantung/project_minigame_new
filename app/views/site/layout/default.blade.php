@@ -50,7 +50,7 @@
 					function checkPos(windowWidth) {
 						var posLeft = (windowWidth - 1000) / 2 - scrollads_width - 3;
 						var posRight = (windowWidth - 1000) / 2 - scrollads_width + 1;
-						if (windowWidth < 1320) {
+						if (windowWidth < 1300) {
 							$('#ScrollRight').hide();
 							$('#ScrollLeft').hide();
 						} else {
@@ -59,7 +59,7 @@
 							$("#ScrollRight").css({ top: 110, right: posRight, position: "absolute",display:"block" });
 							$("#ScrollLeft").css({ top: 110, left: posLeft, position: "absolute",display:"block" });
 						}
-						if (windowWidth < 650)
+						if (windowWidth < 1300)
 						{
 							$('.sticky_column').hide();
 						}
