@@ -43,7 +43,7 @@
 						<th>Ngày xuất bản</th>
 						<th>Trạng thái</th>
 						<th>Người đăng</th>
-						<th style="width:200px;">Action</th>
+						<th style="width:250px;">Action</th>
 					</tr>
 					@foreach($inputNew as $value)
 					<tr>
