@@ -98,9 +98,10 @@ class NewsReportController extends AdminController {
 	        } else {
 	        	//update News
 	        
-	        	if($inputNews['start_date'] == '') {
-	        		$inputNews['start_date'] = Carbon\Carbon::now();
-	        	}
+	        	// if($inputNews['start_date'] == '') {
+	        	// 	$inputNews['start_date'] = Carbon\Carbon::now();
+	        	// }
+	        	$inputNews['start_date'] = Carbon\Carbon::now();
 	        	$inputNews['type'] = $type;
 	        	$inputNews['highlight'] = INACTIVE;
 				AdminNew::find($id)->update($inputNews);
