@@ -78,7 +78,7 @@
 	}
 	.kt-boxgame-left {
 		padding: 15px;
-		padding-bottom: 5px;
+		padding-bottom: 2px;
 	}
 	.kt-boxgame-left img {
 		width: 100%;
@@ -87,20 +87,25 @@
 		display: block;
 		border-radius: 5px;
 		border: 3px solid #fff;
+		height: 160px;
+	    width: 300px;
+	    margin: 0 auto;
 	}
 	.kt-boxgame-left strong {
 		display: block;
-		font-weight: bold;
-		font-size: 16px;
-		color: #fff;
-		margin-top: 5px;
-		margin-bottom: 5px;
+	    font-weight: bold;
+	    font-size: 16px;
+	    color: #fff;
+	    margin-top: 3px;
+	    margin-bottom: 3px;
+	    line-height: 18px;
 	}
 	.kt-boxgame-left p {
 	    text-align: justify;
 	    color: #fff;
+	    line-height: 16px;
 	    font-size: 13px;
-	    margin-bottom: 5px;
+	    margin-bottom: 3px;
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
@@ -132,24 +137,20 @@
 	}
 	ul.kt-boxnews-list {
 		padding-left: 30px;
-		padding-bottom: 0;
+	    padding-bottom: 0;
+	    margin-bottom: 0;
 	}
 	ul.kt-boxnews-list li {
-		list-style: square;
+	    list-style: square;
 	    color: #fff;
 	    line-height: 16px;
-	    margin-bottom: 5px;
+	    margin-bottom: 3px;
 	}
 	ul.kt-boxnews-list li a {
 		font-size: 13px;
 	    text-decoration: none;
 	    color: #fff;
 	    line-height: normal;
-	}
-	.kt-boxgame-left img {
-		height: 140px;
-		width: auto;
-		margin: 0 auto;
 	}
 	
 </style>
