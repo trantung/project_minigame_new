@@ -1917,3 +1917,17 @@ a.seemore i.fa {
 .sliderPC img {
     height: 560px !important;
 }
+
+.rss-list {
+
+}
+.rss-list ul li {
+    list-style: none;
+}
+.rss-list ul li a {
+    color: #333;
+}
+.rss-list ul li a:hover,
+.rss-list ul li a:focus {
+    color: #BF282D;
+}

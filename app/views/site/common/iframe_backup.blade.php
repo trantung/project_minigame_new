@@ -74,14 +74,10 @@
 	.kt-boxgame-left a,
 	.kt-boxgame-right a {
 		color: #fff;
-	    text-decoration: none;
-	    line-height: 20px;
+		text-decoration: none;
 	}
 	.kt-boxgame-left {
-	    padding-left: 15px;
-	    padding-bottom: 0;
-	    padding-right: 0px;
-	    padding-top: 10px;
+		padding: 15px;
 	}
 	.kt-boxgame-left img {
 		width: 100%;
@@ -92,29 +88,28 @@
 		border: 3px solid #fff;
 	}
 	.kt-boxgame-left strong {
-	    display: block;
-	    font-weight: bold;
-	    font-size: 15px;
-	    color: #fff;
-	    margin-top: 2px;
-	    margin-bottom: 2px;
+		display: block;
+		font-weight: bold;
+		font-size: 16px;
+		color: #fff;
+		margin-top: 5px;
+		margin-bottom: 5px;
 	}
 	.kt-boxgame-left p {
-        text-align: justify;
+	    text-align: justify;
 	    color: #fff;
-	    font-size: 12px;
-	    margin-bottom: 4px;
+	    font-size: 13px;
 	}
 	.kt-boxgame-right {
-	    padding: 10px 5px;
+		padding: 15px 5px;
 	}
 	.kt-boxgame-right-images img {
-		width: 95%;
-	    max-width: 100%;
-	    height: auto;
-	    display: block;
-	    border-radius: 5px;
-	    border: 3px solid #fff;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		display: block;
+		border-radius: 5px;
+		border: 3px solid #fff;
 	}
 	.kt-boxgame-right-text {
 		
@@ -131,24 +126,8 @@
 	    color: #fff;
 	    font-size: 12px;
 	    line-height: 16px;
-	    margin-bottom: 5px;
 	}
 	
-	ul.kt-boxnews-list {
-	    padding-left: 30px;
-	    padding-bottom: 0;
-	    margin-bottom: 0;
-	}
-	ul.kt-boxnews-list li {
-		color: #fff;
-	    line-height: 16px;
-	    list-style: square;
-	}
-	ul.kt-boxnews-list li a {
-		color: #fff;
-	    font-size: 12px;
-	    text-decoration: none;
-	}
 </style>
 <div class="kt-boxgame">
 	<ul class="kt-menu">
@@ -166,7 +145,7 @@
 	<div class="clearfix"></div>
 	<div class="kt-content">
 		<div class="row">
-			<div class="col-xs-5">
+			<div class="col-xs-6">
 				<div class="kt-boxgame-left">
 					@if(!empty($dataFirst))
 						<a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">
@@ -178,15 +157,8 @@
 						</p>
 					@endif
 				</div>
-				<ul class="kt-boxnews-list">
-					@if(!empty($dataSecond))
-						@foreach($dataSecond as $value)
-							<li><a href="{{ action('SlugController@detailData', [$value->slugType, $value->slug]) }}" target="_blank">{{ $value->title }}</a></li>
-						@endforeach
-					@endif
-				</ul>
 			</div>
-			<div class="col-xs-7">
+			<div class="col-xs-6">
 				<div class="kt-boxgame-right">
 				@if(!empty($dataList))
 					@foreach($dataList as $key => $value)
