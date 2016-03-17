@@ -20,9 +20,11 @@ class SlugController extends SiteController {
 	{
 		$game = Game::findBySlug($slug);
 		$inputNew = AdminNew::findBySlug($slug);
+		//chua check type game
 		if($game) {
 			return self::detailGame($type, $slug);
 		}
+		//chua check type new
 		if($inputNew) {
 			return self::showDetail($type, $slug);
 		}
