@@ -126,8 +126,8 @@
 	    font-weight: bold;
 	    font-size: 14px;
 	    color: #fff;
-	    margin-top: 3px;
-	    margin-bottom: 3px;
+	    margin-top: 5px;
+	    margin-bottom: 5px;
 	}
 	.kt-boxgame-right-text p {
 	    color: #fff;
