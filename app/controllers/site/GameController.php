@@ -501,6 +501,18 @@ class GameController extends SiteController {
 							->orderBy('news.start_date', 'desc')
 							->orderBy('news.id', 'desc')
 							->first();
+		$dataSecond = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
+							->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
+							->where('news.start_date', '<=', $now)
+							->where('type_news.status', ENABLED)
+							->where('news.status', APPROVE)
+							->where('news.index', '!=', INACTIVE)
+							->orderByRaw("news.weight_number = '0', news.weight_number")
+							->orderBy('news.start_date', 'desc')
+							->orderBy('news.id', 'desc')
+							->skip(1)
+							->take(2)
+							->get();
     	$dataList = Game::where('status', ENABLED)
 						->where('parent_id', '=', GAMEHTML5)
 			    		// ->whereNotIn('id', [$dataFirst->id])
@@ -523,9 +535,9 @@ class GameController extends SiteController {
 					    		->get();
 		}
 		if(getDevice() == COMPUTER) {
-			return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame'));
+			return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
 		} else {
-			return View::make('site.common.iframe_mobile')->with(compact('dataFirst', 'dataList', 'dataListGame'));
+			return View::make('site.common.iframe_mobile')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
 		}
     }
 
