@@ -194,6 +194,10 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(12);
 
 // FRONTEND
+
+Route::get('/rss', 'SiteRssController@index');
+Route::get('/rss/{slug}', 'SiteRssController@rss');
+
 // return json for mobile app
 Route::get('/sitemap.xml', 'SiteMapController@index');
 Route::resource('/sitemap', 'SiteMapController');
@@ -241,8 +245,8 @@ Route::get('/tim-kiem-game/{keyword}', array('uses' => 'SearchGameController@ind
 Route::get('/tim-kiem-tin-tuc/{keyword}', array('uses' => 'SearchGameController@indexNew', 'as' => 'searchNew'));
 
 Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
-Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@listNews', 'as' =>'showType'));
-Route::get('/tin-tuc/{slugType}/{slugNew}', array('uses' => 'SiteNewsController@showDetail', 'as' =>'showNew'));
+// Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@listNews', 'as' =>'showType'));
+// Route::get('/tin-tuc/{slugType}/{slugNew}', array('uses' => 'SiteNewsController@showDetail', 'as' =>'showNew'));
 
 Route::put('/comment/{id}', array('uses' => 'SiteCommentController@update'));
 
@@ -265,8 +269,12 @@ Route::get('/game-code', 'GameController@gameCode');
 
 Route::resource('/', 'SiteIndexController');
 
-Route::get('/{slug}', 'GameController@listgame');
+// Route::get('/{slug}', 'GameController@listgame');
 
-Route::get('/{type}/{slug}', 'GameController@detailGame');
+// Route::get('/{type}/{slug}', 'GameController@detailGame');
+
+Route::get('/{slug}', 'SlugController@listData');
+
+Route::get('/{type}/{slug}', 'SlugController@detailData');
 
 Route::get('/{type}/{slug}/{word}', 'GameController@getPage404');

@@ -150,10 +150,10 @@
 			<div class="col-xs-12">
 				<div class="kt-boxgame-left">
 					@if(!empty($dataFirst))
-						<a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">
+						<a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">
 							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
 						</a>
-						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">{{ $dataFirst->title }}</a></strong>
+						<strong><a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">{{ $dataFirst->title }}</a></strong>
 						<!-- <p>
 							{{-- getSapo($dataFirst->description, $dataFirst->sapo) --}}
 						</p> -->

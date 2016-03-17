@@ -23,8 +23,9 @@
 	@endforeach
 
 	@foreach(SiteMap::getNewUrlSiteMap() as $new)
+	<?php $typeSlug = TypeNew::find($new->type_new_id)->slug; ?>
 	    <url>
-	    	<loc>{{ url().'/'.'tin-tuc'.'/'.$new->slug }}</loc>
+	    	<loc>{{ url().'/'.$typeSlug.'/'.$new->slug }}</loc>
 			<lastmod>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $new->start_date)->format('Y-m-d') }}</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.7</priority>

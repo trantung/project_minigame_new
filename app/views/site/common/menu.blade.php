@@ -35,7 +35,7 @@
 		</li>
 		@foreach($menu_top as $v)
 			<li>
-				<a href="{{ action('SiteNewsController@listNews', $v->slug) }}">{{ $v->name }}</a>
+				<a href="{{ action('SlugController@listData', $v->slug) }}">{{ $v->name }}</a>
 			</li>
 		@endforeach
 		<li>

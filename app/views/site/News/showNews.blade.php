@@ -13,7 +13,7 @@
 <?php
 	$breadcrumb = array(
 		// ['name' => 'Tin tức', 'link' => action('SiteNewsController@index')],
-		['name' => $newType->name, 'link' => action('SiteNewsController@listNews', $newType->slug)],
+		['name' => $newType->name, 'link' => action('SlugController@listData', $newType->slug)],
 		['name' => $inputNew->title, 'link' => '']
 	);
 ?>

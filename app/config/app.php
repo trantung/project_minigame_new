@@ -126,6 +126,7 @@ return array(
 	    'Edisonthk\GoogleOAuth\GoogleOAuthServiceProvider',
 	    // 'Barryvdh\Debugbar\ServiceProvider',
 	    'Jenssegers\Agent\AgentServiceProvider',
+    	
 	),
 
 	/*

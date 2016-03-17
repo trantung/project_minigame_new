@@ -62,7 +62,7 @@
 					</li>
 					@foreach($menu_top as $value)
 						<li>
-							<a href="{{ action('SiteNewsController@listNews', $value->slug) }}" {{ checkActive($value->slug, 2) }}>{{ $value->name }}</a>
+							<a href="{{ action('SlugController@listData', $value->slug) }}" {{ checkActive($value->slug, 2) }}>{{ $value->name }}</a>
 						</li>
 					@endforeach
 					<li>
