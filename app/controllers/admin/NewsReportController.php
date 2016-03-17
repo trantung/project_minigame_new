@@ -101,7 +101,7 @@ class NewsReportController extends AdminController {
 	        	// if($inputNews['start_date'] == '') {
 	        	// 	$inputNews['start_date'] = Carbon\Carbon::now();
 	        	// }
-	        	$inputNews['start_date'] = Carbon\Carbon::now();
+	        	// $inputNews['start_date'] = Carbon\Carbon::now();
 	        	$inputNews['type'] = $type;
 	        	$inputNews['highlight'] = INACTIVE;
 				AdminNew::find($id)->update($inputNews);
@@ -150,10 +150,10 @@ class NewsReportController extends AdminController {
 	{
 		$news = AdminNew::find($id);
 		$input = ['status' => APPROVE];
-		if($news->start_date) {
-			$input['start_date'] = $news->start_date;
-		} else {
+		if($news->start_date < Carbon\Carbon::now()) {
 			$input['start_date'] = Carbon\Carbon::now();
+		} else {
+			$input['start_date'] = $news->start_date;
 		}
 		$news->update($input);
 		return Redirect::action('NewsReportController@index');	

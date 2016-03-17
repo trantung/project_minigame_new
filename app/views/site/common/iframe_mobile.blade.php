@@ -138,7 +138,7 @@
 		</li>
 		<!-- @foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value) -->
 			<!-- <li class="kt-type">
-				<a href="{{ url('/' . $value->slug) }}" target="_top">
+				<a href="{{ url('/' . $value->slug) }}" target="_blank">
 					{{-- ($value->name) --}}
 				</a>
 			</li> -->
@@ -150,10 +150,10 @@
 			<div class="col-xs-12">
 				<div class="kt-boxgame-left">
 					@if(!empty($dataFirst))
-						<a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">
+						<a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">
 							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
 						</a>
-						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_top">{{ $dataFirst->title }}</a></strong>
+						<strong><a href="{{ action('SiteNewsController@showDetail', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">{{ $dataFirst->title }}</a></strong>
 						<!-- <p>
 							{{-- getSapo($dataFirst->description, $dataFirst->sapo) --}}
 						</p> -->
@@ -169,12 +169,12 @@
 
 						<?php $url = CommonGame::getUrlGame($value); ?>
 						<div class="kt-boxgame-right-images">
-							<a href="{{ $url }}" target="_top">
+							<a href="{{ $url }}" target="_blank">
 								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
 							</a>
 						</div>
 						<div class="kt-boxgame-right-text">
-							<strong><a href="{{ $url }}" target="_top">{{ $value->name }}</a></strong>
+							<strong><a href="{{ $url }}" target="_blank">{{ $value->name }}</a></strong>
 							<!-- <p>
 								{{-- getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) --}}
 							</p> -->
@@ -187,12 +187,12 @@
 					<div class="col-xs-6">
 						<?php $url = CommonGame::getUrlGame($value); ?>
 						<div class="kt-boxgame-right-images">
-							<a href="{{ $url }}" target="_top">
+							<a href="{{ $url }}" target="_blank">
 								<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
 							</a>
 						</div>
 						<div class="kt-boxgame-right-text">
-							<strong><a href="{{ $url }}" target="_top">{{ $value->name }}</a></strong>
+							<strong><a href="{{ $url }}" target="_blank">{{ $value->name }}</a></strong>
 							<!-- <p>
 								{{-- getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) --}}
 							</p> -->
