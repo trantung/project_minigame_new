@@ -129,6 +129,23 @@
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+
+	ul.kt-boxnews-list {
+		padding-left: 30px;
+	    padding-bottom: 0;
+	    margin-bottom: 0;
+	}
+	ul.kt-boxnews-list li {
+	    list-style: square;
+	    color: #fff;
+	    margin-bottom: 5px;
+	}
+	ul.kt-boxnews-list li a {
+		font-size: 13px;
+	    text-decoration: none;
+	    color: #fff;
+	    line-height: normal;
+	}
 	
 </style>
 <div class="kt-boxgame">
@@ -159,6 +176,13 @@
 						</p> -->
 					@endif
 				</div>
+				<ul class="kt-boxnews-list">
+					@if(!empty($dataSecond))
+						@foreach($dataSecond as $value)
+							<li><a href="{{ action('SlugController@detailData', [$value->slugType, $value->slug]) }}" target="_blank">{{ $value->title }}</a></li>
+						@endforeach
+					@endif
+				</ul>
 			</div>
 		</div>
 		
