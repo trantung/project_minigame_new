@@ -96,8 +96,8 @@
 	    font-weight: bold;
 	    font-size: 16px;
 	    color: #fff;
-	    margin-top: 5px;
-	    margin-bottom: 5px;
+	    margin-top: 10px;
+	    margin-bottom: 10px;
 	    line-height: 18px;
 	}
 	.kt-boxgame-left p {
@@ -105,7 +105,7 @@
 	    color: #fff;
 	    line-height: 16px;
 	    font-size: 13px;
-	    margin-bottom: 5px;
+	    margin-bottom: 10px;
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
