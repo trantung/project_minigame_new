@@ -624,7 +624,7 @@ class CommonGame
 		}
 		//to do: vote, play for gamehtml5 only
 		if($view == 'vote' || $view == 'play') {
-			$games = $games->where('parent_id', GAMEHTML5);
+			$games = $games->whereIn('parent_id', [GAMEHTML5, GAMEFLASH]);
 		}
 		return $games;
 	}
