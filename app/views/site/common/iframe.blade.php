@@ -96,8 +96,8 @@
 	    font-weight: bold;
 	    font-size: 16px;
 	    color: #fff;
-	    margin-top: 3px;
-	    margin-bottom: 3px;
+	    margin-top: 5px;
+	    margin-bottom: 5px;
 	    line-height: 18px;
 	}
 	.kt-boxgame-left p {
@@ -105,7 +105,7 @@
 	    color: #fff;
 	    line-height: 16px;
 	    font-size: 13px;
-	    margin-bottom: 3px;
+	    margin-bottom: 5px;
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
@@ -126,8 +126,8 @@
 	    font-weight: bold;
 	    font-size: 14px;
 	    color: #fff;
-	    margin-top: 5px;
-	    margin-bottom: 5px;
+        margin-top: 3px;
+    	margin-bottom: 3px;
 	}
 	.kt-boxgame-right-text p {
 	    color: #fff;
@@ -143,8 +143,7 @@
 	ul.kt-boxnews-list li {
 	    list-style: square;
 	    color: #fff;
-	    line-height: 16px;
-	    margin-bottom: 3px;
+	    margin-bottom: 5px;
 	}
 	ul.kt-boxnews-list li a {
 		font-size: 13px;
