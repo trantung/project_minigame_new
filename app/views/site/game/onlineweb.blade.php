@@ -17,10 +17,6 @@
 	<div class="playgame">
 		<h1>Game {{ $game->name }}</h1>
 		<div class="playbox">
-			<div class="pbox">
-				<a onclick="$('.pbox').hide()" style="position: absolute; cursor: pointer; right: 20px;">Đóng</a>
-				<a href="http://googleads.g.doubleclick.net/pagead/ads?ad_type=video_text_image_flash&client=ca-games-pub-1198251289541286&description_url=http%3A%2F%2Fgame.kienthuc.net.vn&videoad_start_delay=0&hl=en"></a>
-			</div>
 
 			{{ CommonGame::getLinkGame($game) }}
 
