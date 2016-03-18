@@ -643,8 +643,7 @@ class CommonGame
 				$listGame = Game::whereIn('id', $gameIds)
 					->where('status', ENABLED)
 					->where('start_date', '<=', $now)
-					->where('parent_id', '=', GAMEHTML5)
-					->orWhere('parent_id', '=', GAMEFLASH);
+					->whereIn('parent_id', '=', [GAMEHTML5, GAMEFLASH]);
 			}
 			$listGame = $listGame->orderBy('start_date', 'desc')
 							->limit(6)
