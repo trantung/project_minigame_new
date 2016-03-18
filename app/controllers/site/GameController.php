@@ -514,7 +514,7 @@ class GameController extends SiteController {
 							->take(2)
 							->get();
     	$dataList = Game::where('status', ENABLED)
-						->where('parent_id', '=', GAMEHTML5)
+						// ->where('parent_id', '=', GAMEHTML5)
 			    		// ->whereNotIn('id', [$dataFirst->id])
 						->where('start_date', '<=', $now)
 						->where('index', ACTIVE)
@@ -526,7 +526,7 @@ class GameController extends SiteController {
 		if($dataListCount < $limitGame) {
 			$dataListLimit = $limitGame - $dataListCount;
 			$dataListGame = Game::where('status', ENABLED)
-								->where('parent_id', '=', GAMEHTML5)
+								// ->where('parent_id', '=', GAMEHTML5)
 								->where('start_date', '<=', $now)
 								->where('index', INACTIVE)
 								->orderByRaw("games.index = '0', games.index")
