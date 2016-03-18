@@ -271,8 +271,7 @@ class CommonGame
 					$listGame = Game::whereIn('id', $games)
 						->where('status', ENABLED)
 						->where('start_date', '<=', $now)
-						->where('parent_id', '=', GAMEHTML5)
-						->orWhere('parent_id', '=', GAMEFLASH)
+						->whereIn('parent_id', [GAMEHTML5, GAMEFLASH])
 						->orderBy('id', 'desc')
 						->paginate(PAGINATE_LISTGAME);
 				}
@@ -286,8 +285,7 @@ class CommonGame
 					$listGame = Game::whereIn('id', $games)
 						->where('status', ENABLED)
 						->where('start_date', '<=', $now)
-						->where('parent_id', '=', GAMEHTML5)
-						->orWhere('parent_id', '=', GAMEFLASH);
+						->whereIn('parent_id', [GAMEHTML5, GAMEFLASH]);
 				}
 			}
 			return $listGame;
