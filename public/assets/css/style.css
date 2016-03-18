@@ -1150,6 +1150,7 @@ i.play {
     margin-top: 15px;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
 
 .playgame {
@@ -1930,4 +1931,11 @@ a.seemore i.fa {
 .rss-list ul li a:hover,
 .rss-list ul li a:focus {
     color: #BF282D;
+}
+
+.pbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }
