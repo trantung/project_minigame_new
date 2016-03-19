@@ -58,7 +58,7 @@ class NewsReporterController extends AdminController {
 			$inputNews['user_id'] = Auth::admin()->get()->id;
 			$inputNews['role_id'] = Auth::admin()->get()->role_id;
 			$inputNews['status'] = SCRATCH_PAPER;
-			$inputNes['type'] = INACTIVE;
+			$inputNews['type'] = INACTIVE;
 			$id = CommonNormal::create($inputNews);
 
 			//upload image new
@@ -129,7 +129,7 @@ class NewsReporterController extends AdminController {
 				}
 				$inputNews['user_id'] = Auth::admin()->get()->id;
 				$inputNews['role_id'] = Auth::admin()->get()->role_id;
-				$inputNes['type'] = INACTIVE;
+				$inputNew['type'] = INACTIVE;
 				CommonNormal::update($id, $inputNews);
 
 				//update upload image
