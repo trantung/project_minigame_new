@@ -539,7 +539,7 @@ class GameController extends SiteController {
 			}
 			if (getDevice() == MOBILE) {
 				$dataListGame = Game::where('status', ENABLED)
-					->where('parent_id', '=', GAMEHTML5)
+					->where('parent_id', '!=', GAMEFLASH)
 					->where('start_date', '<=', $now)
 					->where('index', INACTIVE)
 					->orderByRaw("games.index = '0', games.index")
