@@ -300,9 +300,9 @@ class CommonGame
 		$game = $data->games->first();
 		if($game) {
 			if(getDevice() == MOBILE) {
-				if (Cache::has('listGame'.$game->id.$arrange))
+				if (Cache::has('listGameMobile'.$game->id.$arrange))
 				{
-					$listGame = Cache::get('listGame'.$game->id.$arrange);
+					$listGame = Cache::get('listGameMobile'.$game->id.$arrange);
 				} else {
 					$listGame = DB::table('games')
 						->join('types', 'types.id', '=', 'games.type_main')
@@ -327,12 +327,12 @@ class CommonGame
 								->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"));
 					}
 					$listGame = $listGame->get();
-					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
+					Cache::put('listGameMobile'.$game->id.$arrange, $listGame, CACHETIME);
 				}
 			} else {
-				if (Cache::has('listGame'.$game->id.$arrange))
+				if (Cache::has('listGamePC'.$game->id.$arrange))
 				{
-					$listGame = Cache::get('listGame'.$game->id.$arrange);
+					$listGame = Cache::get('listGamePC'.$game->id.$arrange);
 				} else {
 					if (in_array($game->id, [GAMEFLASH, GAMEHTML5])) {
 						$listGame = DB::table('games')
@@ -369,7 +369,7 @@ class CommonGame
 								->orderByRaw(DB::raw("games.weight_number = '0', games.weight_number"));
 					}
 					$listGame = $listGame->get();
-					Cache::put('listGame'.$game->id.$arrange, $listGame, CACHETIME);
+					Cache::put('listGamePC'.$game->id.$arrange, $listGame, CACHETIME);
 				}
 			}
 			return $listGame;
