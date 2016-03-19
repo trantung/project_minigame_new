@@ -221,9 +221,9 @@ class CommonGame
 		if($game) {
 			if($paginate) {
 				if(getDevice() == MOBILE) {
-					$listGame = Game::where('parent_id', $game->id)
+					$listGame = Game::where('parent_id', '!=', GAMEFLASH)
+						->where('parent_id', $game->id)
 						->where('status', ENABLED)
-						->where('parent_id', '!=', GAMEFLASH)
 						->where('start_date', '<=', $now)
 						->orderBy($arrange, 'desc')
 						->paginate(PAGINATE_LISTGAME);
@@ -236,9 +236,9 @@ class CommonGame
 				}
 			} else {
 				if(getDevice() == MOBILE) {
-					$listGame = Game::where('parent_id', $game->id)
+					$listGame = Game::where('parent_id', '!=', GAMEFLASH)
 						->where('status', ENABLED)
-						->where('parent_id', '!=', GAMEFLASH)
+						->where('parent_id', $game->id)
 						->where('start_date', '<=', $now)
 						->orderBy($arrange, 'desc');
 				} else {
@@ -312,10 +312,10 @@ class CommonGame
 								, 'types.name as type_name', 'types.slug as type_slug'
 								, 'category.slug as category_slug')
 						->distinct()
+						->where('games.parent_id', '!=', GAMEFLASH)
 						->where('games.parent_id', $game->id)
 						->whereNull('games.deleted_at')
 						->where('games.status', ENABLED)
-						->where('games.parent_id', '!=', GAMEFLASH)
 						->where('games.start_date', '<=', $now);
 					if($data->arrange == GAME_NEWEST){
 						$listGame = $listGame->orderBy('games.'.$arrange, 'desc');
