@@ -104,7 +104,7 @@
 	    text-align: justify;
 	    color: #fff;
 	    line-height: 16px;
-	    font-size: 13px;
+	    font-size: 12px;
 	    margin-bottom: 10px;
 	}
 	.kt-boxgame-right {
