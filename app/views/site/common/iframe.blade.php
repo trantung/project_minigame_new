@@ -103,9 +103,16 @@
 	.kt-boxgame-left p {
 	    text-align: justify;
 	    color: #fff;
-	    line-height: 16px;
+	    line-height: 14px;
 	    font-size: 12px;
 	    margin-bottom: 10px;
+	    max-height: 98px;
+		overflow: hidden;
+	        /*padding: 0;
+		    font-size: 12px;
+		    line-height: 14px;
+		    max-height: 98px;
+		    overflow: hidden;*/
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
