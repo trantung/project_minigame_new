@@ -1,5 +1,8 @@
 {{ HTML::style('assets/css/bootstrap.min.css') }}
 <style>
+	body {
+		font-family: Arial;
+	}
 	.container {
 	    padding-left: 5px;
 	    padding-right: 5px;
@@ -13,7 +16,6 @@
 	    padding-right: 5px;
 	}
 	.kt-menu {
-		/*background: #E7E7E7;*/
 		background: #a02421;
 	    display: block;
 	    padding-left: 0;

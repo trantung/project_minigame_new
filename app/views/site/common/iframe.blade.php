@@ -1,5 +1,8 @@
 {{ HTML::style('assets/css/bootstrap.min.css') }}
 <style>
+	body {
+		font-family: Arial;
+	}
 	.container {
 	    padding-left: 5px;
 	    padding-right: 5px;
@@ -53,21 +56,12 @@
 	.kt-menu li:last-child a {
 		border-right: none;
 	}
-	@if(getDevice() == COMPUTER)
 	.kt-boxgame {
 	    background: #a02421;
 	    margin: 0 auto;
 	    width: 670px;
 	    height: 410px;
 	}
-	@else
-	.kt-boxgame {
-		background: #a02421;
-	    margin: 0 auto;
-	    width: 100%;
-	    height: auto;
-	}
-	@endif
 	.kt-boxgame-right > .row {
 		margin-bottom: 5px;
 	}
@@ -153,7 +147,7 @@
 	    margin-bottom: 5px;
 	}
 	ul.kt-boxnews-list li a {
-		font-size: 13px;
+		font-size: 12px;
 	    text-decoration: none;
 	    color: #fff;
 	    line-height: normal;
