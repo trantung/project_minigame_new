@@ -73,6 +73,7 @@
 	}
 	.kt-boxgame-left a,
 	.kt-boxgame-right a {
+		font-size: 14px
 		color: #fff;
 		text-decoration: none;
 	}
@@ -94,7 +95,7 @@
 	.kt-boxgame-left strong {
 		display: block;
 	    font-weight: bold;
-	    font-size: 16px;
+	    font-size: 12px;
 	    color: #fff;
 	    margin-top: 10px;
 	    margin-bottom: 10px;
