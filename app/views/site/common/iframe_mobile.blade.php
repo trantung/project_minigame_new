@@ -69,7 +69,7 @@
 	.kt-boxgame-right a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 14px;;
+		font-size: 17px;;
 	}
 	.kt-boxgame-left {
 		/*padding: 15px;*/
