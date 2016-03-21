@@ -93,7 +93,7 @@
     cursor: pointer;
     font-size: 50px;
     position: absolute;
-    top: 30%;
+    top: 40%;
     z-index: 9;
 }
 .nivo-prevNav {
@@ -106,6 +106,7 @@
 .nivo-controlNav {
 	text-align:center;
 	padding: 15px 0;
+	display: none;
 }
 .nivo-controlNav a {
 	cursor:pointer;

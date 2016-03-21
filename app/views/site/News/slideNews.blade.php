@@ -59,12 +59,34 @@
 			                            animSpeed: 200,
 			                            pauseTime: 3000,
 			                            effect: 'slideInLeft',
-			                            controlNav: false,
+			                            controlNav: true,
 			                            manualAdvance: true,
 			                            prevText: '<i class="fa fa-angle-left"></i>',
 	    								nextText: '<i class="fa fa-angle-right"></i>',
 			                        });
 			                    });
+			                    function nivoPrev()
+			                    {
+			                    	var total = {{ count($inputNewSlide) }}
+			                    	var index = parseInt($(".nivo-controlNav .active").attr('rel'));
+			                    	if(index == 0) {
+			                    		var p = total;
+			                    	} else {
+			                    		var p = index;	
+			                    	}
+			                    	parent.location.hash = 'p-' + p;
+			                    }
+			                    function nivoNext()
+			                    {
+			                    	var total = {{ count($inputNewSlide) }}
+			                    	var index = parseInt($(".nivo-controlNav .active").attr('rel'));
+			                    	if(index == total - 1) {
+			                    		var p = 1;
+			                    	} else {
+			                    		var p = index + 2;	
+			                    	}
+			                    	parent.location.hash = 'p-' + p;
+			                    }
 		                    </script>
 							<div class="margin-block clearfix"></div>
 						@endif
