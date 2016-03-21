@@ -141,7 +141,7 @@
 	    margin-bottom: 5px;
 	}
 	ul.kt-boxnews-list li a {
-		font-size: 17px;
+		font-size: 13px;
 	    text-decoration: none;
 	    color: #fff;
 	    line-height: normal;
