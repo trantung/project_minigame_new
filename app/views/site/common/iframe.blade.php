@@ -31,18 +31,20 @@
 	    color: #fff;
 	    cursor: default;
 	    background-color: #a02421;
-	    padding-bottom: 5px;
+	    padding-bottom: 10px;
 	    padding-top: 10px;
 	    border: none;
 	}
 	.kt-menu li a {
 		color: #333;
-    	text-decoration: none;
+	    font-size: 12px;
+	    text-decoration: none;
+	    line-height: 14px;
 	}
 	.kt-menu li:first-child a {
 	    color: #fff;
 	    font-weight: bold;
-	    font-size: 18px;
+	    font-size: 13px;
 	    text-transform: uppercase;
 	}
 	.kt-menu li.kt-type {
@@ -88,7 +90,7 @@
 	.kt-boxgame-left strong {
 		display: block;
 	    font-weight: bold;
-	    font-size: 16px;
+	    font-size: 14px;
 	    color: #fff;
 	    margin-top: 10px;
 	    margin-bottom: 10px;
@@ -131,10 +133,10 @@
     	margin-bottom: 3px;
 	}
 	.kt-boxgame-right-text p {
-	    color: #fff;
+        color: #fff;
 	    font-size: 12px;
-	    line-height: 16px;
-	    margin-bottom: 5px;
+	    line-height: 14px;
+	    margin-bottom: 10px;
 	}
 	ul.kt-boxnews-list {
 		padding-left: 30px;
