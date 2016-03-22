@@ -214,6 +214,7 @@ Route::resource('/resetpassword', 'PasswordController', array('only'=>array('sto
 Route::post('/vote-game', array('uses' => 'GameController@voteGame', 'as' => 'vote-game'));
 Route::post('/count-play', array('uses' => 'GameController@countPlay', 'as' => 'count-play'));
 Route::post('/count-download', array('uses' => 'GameController@countDownload', 'as' => 'count-download'));
+Route::post('/count-view', array('uses' => 'GameController@countView', 'as' => 'count-view'));
 Route::post('/score-gname', array('uses' => 'GameController@score', 'as' => 'score-gname'));
 
 Route::get('/dang-nhap', array('uses' => 'SiteController@login', 'as' => 'login'));

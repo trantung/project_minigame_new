@@ -67,6 +67,7 @@
 			                    });
 			                    function nivoPrev()
 			                    {
+			                    	countView();
 			                    	var total = {{ count($inputNewSlide) }}
 			                    	var index = parseInt($(".nivo-controlNav .active").attr('rel'));
 			                    	if(index == 0) {
@@ -78,6 +79,7 @@
 			                    }
 			                    function nivoNext()
 			                    {
+			                    	countView();
 			                    	var total = {{ count($inputNewSlide) }}
 			                    	var index = parseInt($(".nivo-controlNav .active").attr('rel'));
 			                    	if(index == total - 1) {
@@ -87,6 +89,20 @@
 			                    	}
 			                    	parent.location.hash = 'p-' + p;
 			                    }
+			                    function countView()
+								{
+									$.ajax(
+									{
+										type:'post',
+										url: '{{ url("/count-view") }}',
+										data: {
+											'id': {{ $inputNew->id }}
+										},
+										success: function(data){
+											//
+										},
+									});
+								}
 		                    </script>
 							<div class="margin-block clearfix"></div>
 						@endif

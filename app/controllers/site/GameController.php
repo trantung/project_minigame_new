@@ -555,4 +555,11 @@ class GameController extends SiteController {
 		}
     }
 
+    public function countView()
+    {
+    	$id = Input::get('id');
+    	$news = AdminNew::find($id);
+    	$news->update(['count_view' => $news->count_view + 1]);
+    	return 1;
+    }
 }
