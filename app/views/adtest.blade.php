@@ -12,10 +12,10 @@
 		<div class="playbox">
 			<script type="text/javascript">
 				function removeAdSwf() {
-					document.getElementById("preloader").style.visibility = "block";
+					document.getElementById("preloader").style.visibility = "hidden";
 				}
 				function noAdsReturned() {
-					document.getElementById("preloader").style.visibility = "block";
+					document.getElementById("preloader").style.visibility = "hidden";
 				}
 			</script>
 			<object
@@ -30,7 +30,7 @@
 			    <param name="quality" value="high" />
 			    <param name="bgcolor" value="#ffffff" />
 			    <param name="wmode" value="transparent"></param>
-			    <param name="flashvars" value="adTagUrl=http%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fad_type%3Dvideo_text_image_flash%26client%3Dca-games-pub-1198251289541286%26description_url%3Dhttp%253A%252F%252Fgame.kienthuc.net.vn%26videoad_start_delay%3D0%26hl%3Den">
+			    <param name="flashvars" value="adTagUrl=http://googleads.g.doubleclick.net/pagead/ads?ad_type=video_text_image_flash&client=ca-games-pub-1198251289541286&description_url=http%3A%2F%2Fgame.kienthuc.net.vn&videoad_start_delay=0&hl=en">
 			    <embed src="{{ url('games-flash/datbomtocdo.swf') }}" 
 		          	type="application/x-shockwave-flash" 
 					quality="high" bgcolor="#000000" 
@@ -38,7 +38,7 @@
 					name="preloader" 
 		          	align="middle" allowScriptAccess="always" 
 		          	allowFullScreen="false" 
-		          	flashVars="adTagUrl=http%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fad_type%3Dvideo_text_image_flash%26client%3Dca-games-pub-1198251289541286%26description_url%3Dhttp%253A%252F%252Fgame.kienthuc.net.vn%26videoad_start_delay%3D0%26hl%3Den" 
+		          	flashVars="adTagUrl=http://googleads.g.doubleclick.net/pagead/ads?ad_type=video_text_image_flash&client=ca-games-pub-1198251289541286&description_url=http%3A%2F%2Fgame.kienthuc.net.vn&videoad_start_delay=0&hl=en" 
 		          	pluginspage="http://www.adobe.com/go/getflashplayer" 
 		          	wmode="direct">
 			    </embed>
