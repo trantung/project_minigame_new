@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-		{{ $title= 'test ad' }}
+	{{ $title = 'test ad' }}
 @stop
 
 @section('content')
@@ -13,11 +13,13 @@
 
 			<script type="text/javascript">
 				function removeAdSwf() {
+					console.log(1);
 					document.getElementById("game-ad").innerHTML = "";
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById('game-container').style.display='block';
 				}
 				function noAdsReturned() {
+					console.log(2);
 					document.getElementById("game-ad").innerHTML = "";
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById('game-container').style.display='block';
