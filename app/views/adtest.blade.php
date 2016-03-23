@@ -33,12 +33,12 @@
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById('game-container').style.display='block';
 				}
-				// function noAdsReturned() {
-				// 	console.log(2);
-				// 	document.getElementById("game-ad").innerHTML = "";
-				// 	// document.getElementById("preloader").style.visibility = "hidden";
-				// 	document.getElementById('game-container').style.display='block';
-				// }
+				function noAdsReturned() {
+					console.log(2);
+					document.getElementById("game-ad").innerHTML = "";
+					// document.getElementById("preloader").style.visibility = "hidden";
+					document.getElementById('game-container').style.display='block';
+				}
 			</script>
 
 			<div id="game-ad">
