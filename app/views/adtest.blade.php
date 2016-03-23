@@ -26,7 +26,7 @@
 				align="middle">
 				<param name="allowScriptAccess" value="always" />
 				<param name="allowFullScreen" value="false" />
-			    <param name="movie" value="'.$link.'" type="application/x-shockwave-flash"></param>
+			    <param name="movie" value="{{ url('games-flash/datbomtocdo.swf') }}" type="application/x-shockwave-flash"></param>
 			    <param name="quality" value="high" />
 			    <param name="bgcolor" value="#ffffff" />
 			    <param name="wmode" value="transparent"></param>
