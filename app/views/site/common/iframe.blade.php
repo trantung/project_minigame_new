@@ -65,7 +65,7 @@
 	    height: 410px;
 	}
 	.kt-boxgame-right > .row {
-		margin-bottom: 5px;
+		margin-bottom: 12px;
 	}
 	.kt-boxgame-left a,
 	.kt-boxgame-right a {
