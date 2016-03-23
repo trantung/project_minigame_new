@@ -10,7 +10,14 @@
 
 	<div class="playgame">
 		<div class="playbox">
-			
+			<script type="text/javascript">
+				function removeAdSwf() {
+					document.getElementById("preloader").style.visibility = "hidden";
+				}
+				function noAdsReturned() {
+					document.getElementById("preloader").style.visibility = "hidden";
+				}
+			</script>
 			<object
 				classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 				codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" 
@@ -36,15 +43,6 @@
 		          	wmode="direct">
 			    </embed>
 			</object> 
-			<script type="text/javascript">
-				function removeAdSwf() {
-					document.getElementById("preloader").style.visibility = "hidden";
-				}
-				function noAdsReturned() {
-					document.getElementById("preloader").style.visibility = "hidden";
-				}
-			</script>
-
 		</div>
 	</div>
 
