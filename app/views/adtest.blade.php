@@ -12,10 +12,10 @@
 		<div class="playbox">
 			<script type="text/javascript">
 				function removeAdSwf() {
-					document.getElementById("preloader").style.visibility = "hidden";
+					document.getElementById("preloader").style.visibility = "block";
 				}
 				function noAdsReturned() {
-					document.getElementById("preloader").style.visibility = "hidden";
+					document.getElementById("preloader").style.visibility = "block";
 				}
 			</script>
 			<object
