@@ -14,13 +14,11 @@
 			<script type="text/javascript">
 				function removeAdSwf() {
 					document.getElementById("game-ad").innerHTML = "";
-					// $('#game-container').attr('style', 'display:block;');
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById('game-container').style.display='block';
 				}
 				function noAdsReturned() {
 					document.getElementById("game-ad").innerHTML = "";
-					// $('#game-container').attr('style', 'display:block;');
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById('game-container').style.display='block';
 				}
