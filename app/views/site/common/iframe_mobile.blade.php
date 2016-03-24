@@ -56,7 +56,7 @@
 	}
 	.kt-menu li:last-child a {
 		border-right: none;
-		font-size: 14px;
+		/*font-size: 14px;*/
 	}
 	.kt-boxgame {
 		background: #a02421;
