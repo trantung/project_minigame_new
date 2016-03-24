@@ -2,7 +2,6 @@
 <style>
 	body {
 		font-family: Arial;
-		font-size: 62.5%;
 	}
 	.container {
 	    padding-left: 5px;
@@ -38,13 +37,13 @@
 	}
 	.kt-menu li a {
 		color: #333;
-		font-size: 14px;;
+		font-size: 14px;
     	text-decoration: none;
 	}
 	.kt-menu li:first-child a {
 	    color: #fff;
 	    font-weight: bold;
-	    font-size: 17px;;
+	    font-size: 17px;
 	    text-transform: uppercase;
 	}
 	.kt-menu li.kt-type {
@@ -57,6 +56,7 @@
 	}
 	.kt-menu li:last-child a {
 		border-right: none;
+		font-size: 14px;
 	}
 	.kt-boxgame {
 		background: #a02421;
@@ -71,7 +71,7 @@
 	.kt-boxgame-right a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 18px;;
+		font-size: 17px;
 	}
 	.kt-boxgame-left {
 		/*padding: 15px;*/
@@ -87,7 +87,7 @@
 	.kt-boxgame-left strong {
 		display: block;
 		font-weight: bold;
-		font-size: 14px;;
+		font-size: 14px;
 		color: #fff;
 		margin-top: 5px;
 		margin-bottom: 5px;
@@ -95,7 +95,7 @@
 	.kt-boxgame-left p {
 	    text-align: justify;
 	    color: #fff;
-	    font-size: 14px;;
+	    font-size: 14px;
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
@@ -114,19 +114,19 @@
 	.kt-boxgame-right-text strong {
 		display: block;
 	    font-weight: bold;
-	    font-size: 15px;;
+	    font-size: 14px;
 	    color: #fff;
 	    margin-top: 3px;
 	    margin-bottom: 3px;
 	}
 	.kt-boxgame-right-text p {
 	    color: #fff;
-	    font-size: 14px;;
+	    font-size: 14px;
 	    line-height: 16px;
 	}
 	.kt-boxgame-right-text a {
 		color: #fff;
-		font-size: 15px;;
+	    font-size: 17px;
 	}
 	.kt-content {
 		padding-left: 10px;
@@ -144,7 +144,8 @@
 	    margin-bottom: 5px;
 	}
 	ul.kt-boxnews-list li a {
-		font-size: 15px;
+		font-size: 17px;
+		font-weight: bold;
 	    text-decoration: none;
 	    color: #fff;
 	    line-height: normal;
