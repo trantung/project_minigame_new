@@ -2,6 +2,7 @@
 <style>
 	body {
 		font-family: Arial;
+		font-size: 62.5%;
 	}
 	.container {
 	    padding-left: 5px;
@@ -43,7 +44,7 @@
 	.kt-menu li:first-child a {
 	    color: #fff;
 	    font-weight: bold;
-	    font-size: 14px;;
+	    font-size: 17px;;
 	    text-transform: uppercase;
 	}
 	.kt-menu li.kt-type {
@@ -56,7 +57,6 @@
 	}
 	.kt-menu li:last-child a {
 		border-right: none;
-		font-size: 14px;;
 	}
 	.kt-boxgame {
 		background: #a02421;
@@ -71,7 +71,7 @@
 	.kt-boxgame-right a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 17px;;
+		font-size: 18px;;
 	}
 	.kt-boxgame-left {
 		/*padding: 15px;*/
@@ -143,7 +143,7 @@
 	    margin-bottom: 5px;
 	}
 	ul.kt-boxnews-list li a {
-		font-size: 14px;
+		font-size: 15px;
 	    text-decoration: none;
 	    color: #fff;
 	    line-height: normal;
