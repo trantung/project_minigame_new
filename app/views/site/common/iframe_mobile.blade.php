@@ -114,7 +114,7 @@
 	.kt-boxgame-right-text strong {
 		display: block;
 	    font-weight: bold;
-	    font-size: 14px;;
+	    font-size: 15px;;
 	    color: #fff;
 	    margin-top: 3px;
 	    margin-bottom: 3px;
@@ -126,6 +126,7 @@
 	}
 	.kt-boxgame-right-text a {
 		color: #fff;
+		font-size: 15px;;
 	}
 	.kt-content {
 		padding-left: 10px;
