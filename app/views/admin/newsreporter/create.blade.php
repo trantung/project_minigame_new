@@ -11,7 +11,6 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
-			<!-- form start -->
 			{{ Form::open(array('action' => array('NewsReporterController@store'), 'files'=> true)) }}
 				<div class="box-body">
 					<div class="form-group">
@@ -38,7 +37,6 @@
 							</div>
 						</div>
 					</div>
-					
 					<div class="form-group">
 						<label for="image_url">Ảnh đại diện(640x410)</label>
 						<div class="row">
@@ -82,15 +80,11 @@
 						</div>
 						<div class="col-sm-6"></div>
 					</div>
-
-					<!-- /.box-body -->
 					<div class="box-footer">
-					{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
+						{{ Form::submit('Lưu lại', array('class' => 'btn btn-primary')) }}
 					</div>
-
 				</div>
 			{{ Form::close() }}
-		  	<!-- /.box -->
 	  	</div>
 	</div>
 </div>
