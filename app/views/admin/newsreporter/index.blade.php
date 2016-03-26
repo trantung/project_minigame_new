@@ -38,7 +38,11 @@
 			<tr>
 			  <td>{{ $value->id }}</td>
 			  <td>{{ $value->title }}</td>
-			  <td>{{ TypeNew::find($value->type_new_id)->name }}</td>
+			  @if($typeNew = TypeNew::find($value->type_new_id))
+			  		<td>{{ $typeNew->name }}</td>
+			  @else
+					<td></td>
+			  @endif
 			  <td>{{ NewsManager::getNameStatusIndex($value->status, $value->user_id) }}</td>
 			  <td>{{ statusNewsReporter($value->type) }}</td>
 			  <td>
