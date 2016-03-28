@@ -69,8 +69,8 @@
 				</object>
 			</div>
 			
-			<div id="game-container" style="display:none; margin: 10px auto; width: 670px; height: 430px;">
-				<iframe name="my-iframe" id="my-iframe" width="100%" src="{{ url('games/ai-la-trieu-phu/game.html') }}" height="100%" scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" webkit-playsinline="true" seamless="seamless" style="-webkit-transform: scale(1, 1);
+			<div id="game-container" style="display:none; margin: 10px auto; width: 900px; height: 550px;">
+				<iframe name="my-iframe" id="my-iframe" width="100%" src="{{ url('games/ban-ca-an-xu/game.html') }}" height="100%" scrolling="no" frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" webkit-playsinline="true" seamless="seamless" style="-webkit-transform: scale(1, 1);
 				-o-transform: scale(1, 1);
 				-ms-transform: scale(1, 1);
 				transform: scale(1, 1);
