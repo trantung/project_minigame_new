@@ -18,10 +18,6 @@
 		<h1>Game {{ $game->name }}</h1>
 		<div class="playbox">
 			
-			<!-- http%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fad_type%3Dvideo_text_image_flash%26client%3Dca-games-pub-1198251289541286%26description_url%3Dhttp%3A%2F%2Fgame.kienthuc.net.vn%26videoad_start_delay%3D0%26hl%3Den -->
-
-			<!-- http://googleads.g.doubleclick.net/pagead/ads?ad_type=video_text_image_flash&client=ca-games-pub-1198251289541286&description_url=http%3A%2F%2Fgame.kienthuc.net.vn&videoad_start_delay=0&hl=en -->
-			
 			{{ CommonGame::getLinkGame($game) }}
 
 			@if(getDevice() == COMPUTER)
