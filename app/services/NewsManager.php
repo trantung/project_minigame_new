@@ -30,22 +30,29 @@ class NewsManager
 			if (isset($input['isHot']) && $input['isHot'] != '') {
 				$query = $query->where('is_hot', $input['isHot']);
 			}
-			if (isset($input['type']) && $input['type'] != '') {
+			if (isset($input['type'])) {
 				$query = $query->where('type', $input['type']);
 			}
 
 		});
 		if (Admin::isAdmin() || Admin::isEditor()) {
-			$data = $data->where('status', '!=', SCRATCH_PAPER)
-				->where('status', '!=', REJECT)
-				->where('status', '!=', SEND)
-				->where('status', '!=', BACK)
-				->where('status', '!=', NO_APPROVE)
-				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+			$data = $data->where('status', APPROVE)
+				// ->where('status', '!=', SCRATCH_PAPER)
+				// ->where('status', '!=', REJECT)
+				// ->where('status', '!=', SEND)
+				// ->where('status', '!=', BACK)
+				// ->where('status', '!=', NO_APPROVE)
+				->orderBy('highlight', 'desc')
+				->orderBy('start_date', 'desc')
+				->orderBy($orderBy[0], $orderBy[1])
+				->paginate(PAGINATE);
 		}
 		if (Admin::isReporter()) {
 			$data = $data->whereIn('status', [SCRATCH_PAPER, BACK])
-				->orderBy($orderBy[0], $orderBy[1])->paginate(PAGINATE);
+				->orderBy('highlight', 'desc')
+				->orderBy('start_date', 'desc')
+				->orderBy($orderBy[0], $orderBy[1])
+				->paginate(PAGINATE);
 		}
 		return $data;
 	}

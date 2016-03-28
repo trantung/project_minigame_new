@@ -12,5 +12,9 @@ class AdTestController extends SiteController {
 		return View::make('adtest');
 	}
 
+	public function index2()
+	{
+		return View::make('adtest2');
+	}
 
 }

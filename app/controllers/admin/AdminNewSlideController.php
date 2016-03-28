@@ -10,11 +10,12 @@ class AdminNewSlideController extends AdminController {
 	public function index()
 	{
 		$inputNew = AdminNew::where('type', ACTIVE)
-			->where('status', '!=', SCRATCH_PAPER)
-			->where('status', '!=', REJECT)
-			->where('status', '!=', SEND)
-			->where('status', '!=', BACK)
-			->where('status', '!=', NO_APPROVE)
+			->where('status', APPROVE)
+			// ->where('status', '!=', SCRATCH_PAPER)
+			// ->where('status', '!=', REJECT)
+			// ->where('status', '!=', SEND)
+			// ->where('status', '!=', BACK)
+			// ->where('status', '!=', NO_APPROVE)
 			->orderBy('highlight', 'desc')
 			->orderBy('start_date', 'desc')
 			->orderBy('id', 'desc')->paginate(PAGINATE);
@@ -24,7 +25,7 @@ class AdminNewSlideController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		// $input['type'] = ACTIVE;
+		$input['type'] = ACTIVE;
 		$inputNew = NewsManager::searchNews($input);
 		return View::make('admin.news_slide.index')->with(compact('inputNew'));
 	}

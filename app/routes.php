@@ -195,6 +195,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 // FRONTEND
 Route::get('/adtest', 'AdTestController@index');
+Route::get('/adtest2', 'AdTestController@index2');
 
 Route::get('/rss', 'SiteRssController@index');
 Route::get('/rss/{slug}', 'SiteRssController@rss');
