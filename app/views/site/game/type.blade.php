@@ -18,7 +18,7 @@
 @include('site.common.bar', $breadcrumb)
 
 <div class="box">
-	<h1><a href="{{ url('$type->slug') }}">Game {{ $type->name }} hay nhất</a></h1>
+	<h1><a href="{{ url($type->slug) }}">Game {{ $type->name }} hay nhất</a></h1>
 	<?php
 		$games = CommonGame::boxGameByType($type);
 		$count = ceil(count($games->get())/PAGINATE_BOXGAME);
