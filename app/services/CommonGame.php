@@ -634,12 +634,14 @@ class CommonGame
 					document.getElementById("game-ad").innerHTML = "";
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById("game-container").style.display="block";
+					document.getElementById("my-iframe").contentWindow.location.reload();
 				}
 				function noAdsReturned() {
 					console.log(2);
 					document.getElementById("game-ad").innerHTML = "";
 					// document.getElementById("preloader").style.visibility = "hidden";
 					document.getElementById("game-container").style.display="block";
+					document.getElementById("my-iframe").contentWindow.location.reload();
 				}
 			</script>';
 			// $box = '<div style="margin: 10px auto; width: '.$width.'px; height: '.$height.'px;">
