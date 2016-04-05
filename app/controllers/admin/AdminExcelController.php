@@ -25,7 +25,9 @@ class AdminExcelController extends AdminController {
 
 			    });
 
-			})->store('xlsx', public_path() . '/excels')->export('xlsx');
+			})
+			// ->store('xlsx', public_path() . '/excels')
+			->export('xlsx');
 		    return Redirect::action('AdminExcelController@exportReporterForm')->with('message', 'Đã xuất file');
 		} else {
 			return Redirect::action('AdminExcelController@exportReporterForm')->with('message', 'Không có dữ liệu');
