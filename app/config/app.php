@@ -126,6 +126,7 @@ return array(
 	    'Edisonthk\GoogleOAuth\GoogleOAuthServiceProvider',
 	    // 'Barryvdh\Debugbar\ServiceProvider',
 	    'Jenssegers\Agent\AgentServiceProvider',
+	    'Maatwebsite\Excel\ExcelServiceProvider',
     	
 	),
 
@@ -197,6 +198,7 @@ return array(
 		'GoogleOAuth'     => 'Edisonthk\GoogleOAuth\Facade\GoogleOAuth',
 		// 'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
 		'Agent' 		  => 'Jenssegers\Agent\Facades\Agent',
+		'Excel' 		  => 'Maatwebsite\Excel\Facades\Excel',
 
 	),
 

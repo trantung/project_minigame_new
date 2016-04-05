@@ -180,7 +180,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/user/search', array('uses' =>  'UserController@search', 'as' => 'admin.user.search'));
 	Route::resource('/user', 'UserController');
 
-	
+	Route::get('/exportReporterForm', 'AdminExcelController@exportReporterForm');
+	Route::get('/exportReporterList', 'AdminExcelController@exportReporterList');
 
 });
 
