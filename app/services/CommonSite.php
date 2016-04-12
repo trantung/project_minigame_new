@@ -120,21 +120,40 @@ class CommonSite
         if(!$modelId) {
             $seoMeta = AdminSeo::where('model_name', $modelName)
                     ->first();
-            return $seoMeta;
+            if(isset($seoMeta)) {
+                return $seoMeta;
+            } else {
+                return null;
+            }
         }
         $seoMeta = AdminSeo::where('model_name', $modelName)
                 ->where('model_id', $modelId)
                 ->first();
         if($seoMeta) {
             $meta = $modelName::find($modelId);
+            if($modelName == 'Game') {
+                $type = Type::find($meta->type_main);
+            }
             if($seoMeta->title_site == '') {
-                $seoMeta->title_site = $meta->name;
+                if($modelName == 'Game') {
+                    $seoMeta->title_site = 'Game '.$meta->name.' | Trò Chơi Game '.$type->name;
+                } else {
+                    $seoMeta->title_site = $meta->name;
+                }
             }
             if($seoMeta->description_site == '') {
-                $seoMeta->description_site = limit_text(strip_tags($meta->description), TEXTLENGH_DESCRIPTION);
+                if($modelName == 'Game') {
+                    $seoMeta->title_site = 'Chơi game '.$meta->name.' hay nhất trên điện thoại máy tính, trò chơi '.$type->name.' '.convert_string_vi_to_en($meta->name).' lưu tính điểm tại Game Kiến Thức';
+                } else {
+                    $seoMeta->description_site = limit_text(strip_tags($meta->description), TEXTLENGH_DESCRIPTION);
+                }
             }
             if($seoMeta->keyword_site == '') {
-                $seoMeta->keyword_site = 'Game '.$meta->name.', trò chơi '.$meta->name.', game cho mobile hay nhất tại choinhanh.vn';
+                if($modelName == 'Game') {
+                    $seoMeta->keyword_site = 'chơi game '.$meta->name.', game '.convert_string_vi_to_en($meta->name).', chơi game '.convert_string_vi_to_en($meta->name).', game '.convert_string_vi_to_en($type->name).' 2016';
+                } else {
+                    $seoMeta->keyword_site = 'Game '.$meta->name.', trò chơi '.$meta->name.', game cho mobile hay nhất tại Game Kiến Thức';
+                }
             }
             if($seoMeta->title_fb == '') {
                 $seoMeta->title_fb = $meta->name;
