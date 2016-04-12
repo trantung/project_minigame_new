@@ -565,6 +565,63 @@ class GameController extends SiteController {
 		}
     }
 
+    public function gameCode2()
+    {
+    	if(getDevice() == MOBILE) {
+    		$limitGame = 5;
+    	} else {
+    		$limitGame = 5;
+    	}
+    	$now = Carbon\Carbon::now();
+    	if (getDevice() == COMPUTER) {
+    		$dataList = Game::where('status', ENABLED)
+				->where('start_date', '<=', $now)
+				->where('index', ACTIVE)
+				->orderByRaw("games.index = '0', games.index")
+	    		->orderBy('start_date', 'desc')
+	    		->take($limitGame)
+	    		->get();
+		} else {
+			$dataList = Game::where('status', ENABLED)
+						->where('parent_id', '=', GAMEHTML5)
+						->where('start_date', '<=', $now)
+						->where('index', ACTIVE)
+						->orderByRaw("games.index = '0', games.index")
+			    		->orderBy('start_date', 'desc')
+			    		->take($limitGame)
+			    		->get();
+		}
+		$dataListCount = count($dataList);
+		if($dataListCount < $limitGame) {
+			$dataListLimit = $limitGame - $dataListCount;
+			if (getDevice() == COMPUTER) {
+				$dataListGame = Game::where('status', ENABLED)
+					// ->where('parent_id', '=', GAMEHTML5)
+					->where('start_date', '<=', $now)
+					->where('index', INACTIVE)
+					->orderByRaw("games.index = '0', games.index")
+		    		->orderBy('start_date', 'desc')
+		    		->take($dataListLimit)
+		    		->get();
+			}
+			if (getDevice() == MOBILE) {
+				$dataListGame = Game::where('status', ENABLED)
+					->where('parent_id', '!=', GAMEFLASH)
+					->where('start_date', '<=', $now)
+					->where('index', INACTIVE)
+					->orderByRaw("games.index = '0', games.index")
+		    		->orderBy('start_date', 'desc')
+		    		->take($dataListLimit)
+		    		->get();
+			}
+		}
+		if(getDevice() == COMPUTER) {
+			return View::make('site.common.iframe2')->with(compact('dataList', 'dataListGame'));
+		} else {
+			return View::make('site.common.iframe2_mobile')->with(compact('dataList', 'dataListGame'));
+		}
+    }
+
     public function countView()
     {
     	$id = Input::get('id');

@@ -271,7 +271,10 @@ Route::get('/mini-game', 'GameController@index');
 Route::post('/import-menu', 'GameController@importMenu');
 Route::post('/import-bxh', 'GameController@importBxh');
 
+// box nhung game
 Route::get('/game-code', 'GameController@gameCode');
+// box nhung game ngang
+Route::get('/game-code2', 'GameController@gameCode2');
 
 Route::resource('/', 'SiteIndexController');
 
