@@ -7,11 +7,15 @@ class SlugController extends SiteController {
 		$categoryParent = CategoryParent::findBySlug($slug);
 		$type = Type::findBySlug($slug);
 		$newType = TypeNew::findBySlug($slug);
+		$tag = AdminTag::findBySlug($slug);
 		if($categoryParent || $type) {
 			return self::listGame($slug);
 		}
 		if($newType) {
 			return self::listNews($slug);
+		}
+		if($tag) {
+			return self::listTags($slug);
 		}
 		return Redirect::action('SiteController@returnPage404');
 	}
@@ -27,6 +31,21 @@ class SlugController extends SiteController {
 		//chua check type new
 		if($inputNew) {
 			return self::showDetail($type, $slug);
+		}
+		return Redirect::action('SiteController@returnPage404');
+	}
+
+	public function listTags($slug)
+	{
+		if (Cache::has('tag_'.$slug))
+        {
+            $tag = Cache::get('tag_'.$slug);
+        } else {
+            $tag = AdminTag::findBySlug($slug);
+            Cache::put('tag_'.$slug, $tag, CACHETIME);
+        }
+        if($tag) {
+			return View::make('site.tag.index')->with(compact('tag'));
 		}
 		return Redirect::action('SiteController@returnPage404');
 	}

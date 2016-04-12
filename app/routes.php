@@ -71,6 +71,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/gametype/search', array('uses' => 'GameTypeController@search', 'as' => 'admin.gametype.search'));
 	Route::resource('/gametype', 'GameTypeController');
 
+	Route::resource('/tags', 'AdminTagController');
+
 	Route::resource('/newstype', 'NewsTypeController');
 	Route::resource('/new/paginate', 'AdminPaginateController');
 	Route::post('/news/remove/highLight/{id}', 'NewsController@removeHighLight');

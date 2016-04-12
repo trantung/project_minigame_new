@@ -58,6 +58,7 @@
 		  			<li><a href="{{ action('AdminPaginateController@index') }}"><i class="fa fa-circle-o"></i> Quản lý phân trang tin</a></li>
 					<li><a href="{{ action('AdminSlideController@index') }}"><i class="fa fa-picture-o"></i> Quản lý Slider</a></li>
 					<li><a href="{{ action('AdminExcelController@exportReporterForm') }}"><i class="fa fa-list"></i> Tải danh sách nhuận bút phóng viên</a></li>
+					<li><a href="{{ action('AdminTagController@index') }}"><i class="fa fa-tags"></i> <span>Quản lý Tags</span></a></li>
 				</ul>
 		    </li>
 	    @elseif(Admin::isSeo())

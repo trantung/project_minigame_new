@@ -1,3 +1,11 @@
+<div class="tags">
+	<ul>
+	@foreach($listTags as $value)
+		<li><a href="{{ url($value['slug']) }}">{{ $value['title'] }}</a><span>|</span></li>
+	@endforeach
+	</ul>
+	<div class="clearfix"></div>
+</div>
 <div class="footer">
 	<ul>
 	  <li><a href="{{ url('/') }}" {{ checkActive() }}>Home</a></li>

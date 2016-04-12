@@ -36,8 +36,24 @@ class SiteController extends HomeController {
         		->get();
             Cache::put('menu_top', $menu_top, CACHETIME);
         }
+
+        if (Cache::has('listTags'))
+        {
+            $listTags = Cache::get('listTags');
+        } else {
+			$tags = AdminTag::where('status', ACTIVE)->get();
+			$listTags = [];
+			foreach ($tags as $key => $value) {
+				if (count($value->games) > 0) {
+					$listTags[$key] = $value;
+				}
+			}
+            Cache::put('listTags', $listTags, CACHETIME);
+        }
+
         $logo = AdminLogo::find(1);
         View::share('logo', $logo);
+        View::share('listTags', $listTags);
 		View::share('menu', $menu);
 		View::share('menuHeader', $menuHeader);
 		//View share type new

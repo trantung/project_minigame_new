@@ -64,4 +64,14 @@ class Game extends Eloquent implements SluggableInterface
         return $this->belongsToMany('User', 'game_histories', 'game_id', 'user_id');
     }
 
+    public function gameTags()
+    {
+        return $this->hasMany('GameTag', 'game_id', 'id');
+    }
+
+    public function tags() 
+    {
+        return $this->belongsToMany('AdminTag', 'game_tags', 'game_id', 'tag_id');
+    }
+
 }

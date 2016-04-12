@@ -792,4 +792,44 @@ class CommonGame
 		return $result;
 	}
 
+	public static function boxGameByTag($data, $paginate = null)
+	{
+		$now = Carbon\Carbon::now();
+		$gameIds = AdminTag::find($data->id)->gameTags->lists('game_id');
+		if($gameIds) {
+			if($paginate) {
+				if(getDevice() == MOBILE) {
+					$listGame = Game::whereIn('id', $gameIds)
+						->where('status', ENABLED)
+						->where('parent_id', '=', GAMEHTML5)
+						->where('start_date', '<=', $now)
+						->orderBy('id', 'desc')
+						->paginate(PAGINATE_LISTGAME);
+				} else {
+
+					$listGame = Game::whereIn('id', $gameIds)
+						->where('status', ENABLED)
+						->where('start_date', '<=', $now)
+						->whereIn('parent_id', [GAMEHTML5, GAMEFLASH])
+						->orderBy('id', 'desc')
+						->paginate(PAGINATE_LISTGAME);
+				}
+			} else {
+				if(getDevice() == MOBILE) {
+					$listGame = Game::whereIn('id', $gameIds)
+						->where('status', ENABLED)
+						->where('parent_id', '=', GAMEHTML5)
+						->where('start_date', '<=', $now);
+				} else {
+					$listGame = Game::whereIn('id', $gameIds)
+						->where('status', ENABLED)
+						->where('start_date', '<=', $now);
+						// ->whereIn('parent_id', [GAMEHTML5, GAMEFLASH]);
+				}
+			}
+			return $listGame;
+		}
+		return null;
+	}
+
 }

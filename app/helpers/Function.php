@@ -722,3 +722,11 @@ function listTypeNewsporter()
 			
 		);
 }
+
+function selectStatus()
+{
+	return array(
+		ACTIVE => 'Hiện',
+		INACTIVE => 'Ẩn'
+	);
+}
