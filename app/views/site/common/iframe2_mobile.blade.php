@@ -8,9 +8,9 @@
 	    padding-top: 5px;
 	    padding-bottom: 5px;
 	    margin: 0 auto;
-	    width: 300px;
-	    height: 1258px;
-	    /*min-width: 300px;*/
+	    width: 100%;
+	    height: 790px;
+	    min-width: 300px;
 	}
 	.kt-boxgame-title {
 		background: #fff;
@@ -25,10 +25,12 @@
 		padding-right: 10px;
 	}
 	.kt-boxgame-item {
-	    display: inline-block;
-	    width: 100%;
+        display: inline-block;
+	    width: 48.7%;
 	    vertical-align: top;
 	    padding-top: 15px;
+	    padding-left: 5px;
+	    padding-right: 5px;
 	}
 	.kt-boxgame-right-images {
 		

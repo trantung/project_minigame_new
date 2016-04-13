@@ -568,7 +568,7 @@ class GameController extends SiteController {
     public function gameCode2()
     {
     	if(getDevice() == MOBILE) {
-    		$limitGame = 5;
+    		$limitGame = 4;
     	} else {
     		$limitGame = 5;
     	}
