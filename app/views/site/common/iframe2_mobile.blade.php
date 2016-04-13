@@ -18,6 +18,7 @@
 	}
 	.kt-boxgame-title strong {
 		color: #bf282d;
+		font-size: 17px;
 		text-transform: uppercase;
 	}
 	.kt-boxgame-content {
