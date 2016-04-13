@@ -51,7 +51,7 @@
 	.kt-boxgame-right-text a {
         color: #fff;
 	    text-decoration: none;
-	    font-size: 17px;
+	    font-size: 14px;
 	    text-align: center;
 	    font-weight: bold;
 	}
