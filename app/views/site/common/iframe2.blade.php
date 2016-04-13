@@ -5,8 +5,8 @@
 	}
 	.kt-boxgame {
 		background: #bf282d;
-	    padding-top: 15px;
-	    padding-bottom: 15px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
 	    width: 670px;
 	    height: 170px;
 	    margin: 0 auto;
