@@ -10,7 +10,7 @@
 	    margin: 0 auto;
 	    width: 100%;
 	    height: auto;
-	    max-width: 300px;
+	    min-width: 300px;
 	}
 	.kt-boxgame-title {
 		background: #fff;
