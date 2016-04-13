@@ -8,9 +8,9 @@
 	    padding-top: 5px;
 	    padding-bottom: 5px;
 	    margin: 0 auto;
-	    width: 100%;
-	    height: auto;
-	    min-width: 300px;
+	    width: 300px;
+	    height: 1258px;
+	    /*min-width: 300px;*/
 	}
 	.kt-boxgame-title {
 		background: #fff;
