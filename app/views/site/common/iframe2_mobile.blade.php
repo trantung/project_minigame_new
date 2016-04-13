@@ -1,13 +1,14 @@
 <style>
 	body {
 		font-family: Arial;
+		margin: 0;
 	}
 	.kt-boxgame {
 		background: #bf282d;
-	    padding-top: 15px;
-	    padding-bottom: 15px;
-	    width: 100%;
-	    height: 200px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    width: 300px;
+	    height: auto;
 	    margin: 0 auto;
 	}
 	.kt-boxgame-title {
@@ -20,14 +21,12 @@
 	}
 	.kt-boxgame-content {
 		padding-left: 5px;
-		padding-right: 5px;
+		padding-right: 10px;
 	}
 	.kt-boxgame-item {
 	    display: inline-block;
-	    width: 18.4%;
-	    padding-left: 5px;
+	    width: 100%;
 	    vertical-align: top;
-	    padding-right: 5px;
 	    padding-top: 15px;
 	}
 	.kt-boxgame-right-images {

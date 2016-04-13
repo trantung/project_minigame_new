@@ -1,6 +1,7 @@
 <style>
 	body {
 		font-family: Arial;
+		margin: 0;
 	}
 	.kt-boxgame {
 		background: #bf282d;
