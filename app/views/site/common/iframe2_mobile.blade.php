@@ -21,6 +21,12 @@
 		font-size: 17px;
 		text-transform: uppercase;
 	}
+	.kt-boxgame-title strong a {
+		color: #bf282d;
+		font-size: 17px;
+		text-transform: uppercase;
+		text-decoration: none;
+	}
 	.kt-boxgame-content {
 		padding-left: 5px;
 		padding-right: 10px;
@@ -62,7 +68,7 @@
 </style>
 <div class="kt-boxgame">
 	<div class="kt-boxgame-title">
-		<strong>Game online</strong>
+		<strong><a href="{{ url('/') }}" target="_blank">Game online</a></strong>
 	</div>
 	<div class="clearfix"></div>
 	<div class="kt-boxgame-content">
