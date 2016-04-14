@@ -52,7 +52,7 @@
 						<label for="name">Chuyên mục tin</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('type_new_id', returnList('TypeNew'),null,array('class' => 'form-control' )) }}
+							   {{ Form::select('type_new_id', returnList('TypeNew'), null, array('class' => 'form-control')) }}
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 						<label for="sapo">Mô tả ngắn</label>
 						<div class="row">
 							<div class="col-sm-12">
-								 {{ Form::textarea('sapo', null , array('placeholder' => 'Mô tả ngắn','maxlength' => 250,'rows' => 4,'class' => 'form-control' )) }}
+								 {{ Form::textarea('sapo', null, array('placeholder' => 'Mô tả ngắn', 'maxlength' => 250, 'rows' => 4, 'class' => 'form-control')) }}
 							</div>
 						</div>
 					</div>
@@ -100,7 +100,7 @@
 						<label for="description">Nội dung tin</label>
 						<div class="row">
 							<div class="col-sm-12">
-							   {{ Form::textarea('description', '' , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1')) }}
+							   {{ Form::textarea('description', '', array('class' => 'form-control', "rows"=>6, 'id' => 'editor1')) }}
 							</div>
 						</div>
 					</div>
@@ -109,7 +109,16 @@
 						<label for="name">Chọn trạng thái tin </label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('status', NewsManager::getNameStatusNewCreate(),null,array('class' => 'form-control' )) }}
+							   {{ Form::select('status', NewsManager::getNameStatusNewCreate(), null, array('class' => 'form-control')) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="name">Tin nhạy cảm</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{ Form::select('sensitive', [INACTIVE => 'Không', ACTIVE => 'Có'], null, array('class' => 'form-control')) }}
 							</div>
 						</div>
 					</div>

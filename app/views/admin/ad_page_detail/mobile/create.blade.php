@@ -33,7 +33,15 @@
 							{{ Form::textarea('adsense', null, textParentCategory('code adsense')) }}
 						</div>
 					</div>
-				</div>				
+				</div>
+				<div class="form-group">
+					<label for="name">Adsense 2</label>
+					<div class="row">
+						<div class="col-sm-6">
+							{{ Form::textarea('adsense2', null, textParentCategory('code adsense2')) }}
+						</div>
+					</div>
+				</div>
 				<div class="form-group">
 					<label for="name">Status</label>
 					<div class="row">

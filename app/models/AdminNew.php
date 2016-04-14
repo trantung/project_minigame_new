@@ -14,7 +14,7 @@ class AdminNew extends Eloquent implements SluggableInterface
     protected $fillable = ['type_new_id', 'title', 'description',
     	'image_url', 'start_date', 'slug', 'count_view', 'position', 'weight_number', 'sapo',
         'status','user_id', 'index', 'is_hot', 'role_id',
-        'type', 'author', 'author_money', 'sapo_text', 'highlight'];
+        'type', 'author', 'author_money', 'sapo_text', 'highlight', 'sensitive'];
     protected $dates = ['deleted_at'];
 
     protected $sluggable = array(

@@ -18,7 +18,7 @@
 					<label for="title">Tiêu đề</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{ Form::text('title', $inputNew->title , textParentCategory('Tiêu đề tin')) }}
+						   {{ Form::text('title', $inputNew->title, textParentCategory('Tiêu đề tin')) }}
 						</div>
 					</div>
 				</div>
@@ -51,9 +51,9 @@
 					<div class="row">
 						<div class="col-sm-6">
 							@if(!Admin::isSeo()) 
-						   {{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control' )) }}
+						   {{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id, array('class' => 'form-control')) }}
 						   	@else
-						   	{{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id ,array('class' => 'form-control', 'disabled'=>'true' )) }}
+						   	{{  Form::select('type_new_id', returnList('TypeNew'), $inputNew->type_new_id, array('class' => 'form-control', 'disabled'=>'true')) }}
 						   	@endif
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					<label>Mức ưu tiên</label>
 					<div class="row">
 						<div class="col-sm-6">
-							{{ Form::text('weight_number',  $inputNew->weight_number, textParentCategory('Mức ưu tiên')) }}
+							{{ Form::text('weight_number', $inputNew->weight_number, textParentCategory('Mức ưu tiên')) }}
 						</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 					<label>Trạng thái bài đăng</label>
 					<div class="row">
 						<div class="col-sm-6">
-						   {{  Form::select('status', NewsManager::getNameStatusNewEdit($inputNew->user_id), $inputNew->status,array('class' => 'form-control' )) }}
+						   {{  Form::select('status', NewsManager::getNameStatusNewEdit($inputNew->user_id), $inputNew->status,array('class' => 'form-control')) }}
 						</div>
 					</div>
 				</div>
@@ -87,7 +87,7 @@
 					<div class="row">
 						<div class="col-sm-6">
 							@if(Admin::isSeo())         
-							{{ Form::file('image_url', array('disabled' => 'true' )) }}
+							{{ Form::file('image_url', array('disabled' => 'true')) }}
 							<img class="image_fb" src="{{ url(UPLOADIMG . '/news'.'/'. $inputNew->id . '/' . $inputNew->image_url) }}" />
 							@else
 							{{ Form::file('image_url') }}
@@ -108,7 +108,7 @@
 					<label for="sapo">Mô tả ngắn</label>
 					<div class="row">
 						<div class="col-sm-12">
-						{{ Form::textarea('sapo', $inputNew->sapo , array('placeholder' => 'Mô tả ngắn','maxlength' => 250, 'rows' => 4,'class' => 'form-control' )) }}
+						{{ Form::textarea('sapo', $inputNew->sapo, array('placeholder' => 'Mô tả ngắn', 'maxlength' => 250, 'rows' => 4, 'class' => 'form-control')) }}
 						</div>
 					</div>
 					</div>
@@ -117,13 +117,23 @@
 					<div class="row">
 						<div class="col-sm-12">	 
 							@if(!Admin::isSeo())                 	
-						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1'  )) }}
+						   	{{ Form::textarea('description', $inputNew->description, array('class' => 'form-control', "rows"=>6, 'id' => 'editor1')) }}
 						   	@else                 	
-						   	{{ Form::textarea('description', $inputNew->description  , array('class' => 'form-control',"rows"=>6, 'id' => 'editor1', 'disabled' =>'true'  )) }}
+						   	{{ Form::textarea('description', $inputNew->description, array('class' => 'form-control', "rows"=>6, 'id' => 'editor1', 'disabled' =>'true')) }}
 						   	@endif
 						</div>
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label for="name">Tin nhạy cảm</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{ Form::select('sensitive', [INACTIVE => 'Không', ACTIVE => 'Có'], $inputNew->sensitive, array('class' => 'form-control')) }}
+						</div>
+					</div>
+				</div>
+
 				<div class="row">
 					<div class="col-sm-12">
 						<hr />

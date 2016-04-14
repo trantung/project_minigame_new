@@ -137,6 +137,15 @@
 					</div>
 				</div>
 
+				<div class="form-group">
+					<label for="name">Tin nhạy cảm</label>
+					<div class="row">
+						<div class="col-sm-6">
+						   {{ Form::select('sensitive', [INACTIVE => 'Không', ACTIVE => 'Có'], $inputNew->sensitive, array('class' => 'form-control' )) }}
+						</div>
+					</div>
+				</div>
+
 				<div class="row">
 					<div class="col-sm-12">
 						<hr />

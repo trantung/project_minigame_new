@@ -10,7 +10,7 @@ class Advertise extends Eloquent
     protected $table = 'advertisements';
     protected $fillable = ['image_url', 'image_link', 'position', 
         'status', 'adsense', 'is_mobile', 'weight_number',
-        'model_name', 'model_id', 'relate_id', 'type', 'title'];
+        'model_name', 'model_id', 'relate_id', 'type', 'title', 'adsense2'];
     protected $dates = ['deleted_at'];
 
     public function advertisePositions()

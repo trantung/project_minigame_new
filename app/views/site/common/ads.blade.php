@@ -5,6 +5,10 @@
 @endif
 @if($ads)
 	@foreach($ads as $value)
-		<div class="clearfix center">{{ $value->adsense }}</div>
+		@if($model_name == 'AdminNew')
+			<div class="clearfix center">{{ $value->adsense2 }}</div>
+		@else
+			<div class="clearfix center">{{ $value->adsense }}</div>
+		@endif
 	@endforeach
 @endif

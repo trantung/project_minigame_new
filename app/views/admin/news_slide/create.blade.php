@@ -61,7 +61,7 @@
 						<label for="name">Chuyên mục tin</label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('type_new_id', returnList('TypeNew'),null,array('class' => 'form-control' )) }}
+							   {{ Form::select('type_new_id', returnList('TypeNew'),null,array('class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>
@@ -109,7 +109,16 @@
 						<label for="name">Chọn trạng thái tin </label>
 						<div class="row">
 							<div class="col-sm-6">
-							   {{  Form::select('status', NewsManager::getNameStatusNewCreate(),null,array('class' => 'form-control' )) }}
+							   {{ Form::select('status', NewsManager::getNameStatusNewCreate(),null,array('class' => 'form-control' )) }}
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="name">Tin nhạy cảm</label>
+						<div class="row">
+							<div class="col-sm-6">
+							   {{ Form::select('sensitive', [INACTIVE => 'Không', ACTIVE => 'Có'], null, array('class' => 'form-control' )) }}
 							</div>
 						</div>
 					</div>
