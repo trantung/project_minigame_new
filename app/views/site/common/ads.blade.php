@@ -12,14 +12,14 @@
 					if($new->sensitive = ACTIVE) {
 						$sensitive = ACTIVE;
 					} else {
-						$sensitive = null;
+						$sensitive = INACTIVE;
 					}
 				} else {
-					$sensitive = null;
+					$sensitive = INACTIVE;
 				}
 			}
 		?>
-		@if(isset($sensitive))
+		@if($sensitive == ACTIVE)
 			<div class="clearfix center">{{ $value->adsense2 }}</div>
 		@else
 			<div class="clearfix center">{{ $value->adsense }}</div>
