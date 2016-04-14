@@ -126,6 +126,13 @@ class GameController extends SiteController {
 
 	public function detailGame($type, $slug)
 	{
+		$categoryParent = CategoryParent::where('status', ACTIVE)->lists('slug');
+		if(!in_array('game-'.$type, $categoryParent) && Type::findBySlug($type) == null) {
+			if(AdminTag::findBySlug($type) == null) {
+				return CommonLog::logErrors(ERROR_TYPE_404);
+			}
+		}
+		
 		// http://minigame.de/be-trai/game-ban-ga-hay-va-chan.html
 		if (Cache::has('game_'.$slug))
         {
