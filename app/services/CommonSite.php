@@ -143,7 +143,7 @@ class CommonSite
             }
             if($seoMeta->description_site == '') {
                 if($modelName == 'Game') {
-                    $seoMeta->title_site = 'Chơi game '.$meta->name.' hay nhất trên điện thoại máy tính, trò chơi '.$type->name.' '.convert_string_vi_to_en($meta->name).' lưu tính điểm tại Game Kiến Thức';
+                    $seoMeta->description_site = 'Chơi game '.$meta->name.' hay nhất trên điện thoại máy tính, trò chơi '.$type->name.' '.convert_string_vi_to_en($meta->name).' lưu tính điểm tại Game Kiến Thức';
                 } else {
                     $seoMeta->description_site = limit_text(strip_tags($meta->description), TEXTLENGH_DESCRIPTION);
                 }
