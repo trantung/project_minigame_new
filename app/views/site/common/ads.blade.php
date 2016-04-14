@@ -5,7 +5,19 @@
 @endif
 @if($ads)
 	@foreach($ads as $value)
-		@if($model_name == 'AdminNew')
+		<?php 
+			if($model_name == 'AdminNew') {
+				$new = AdminNew::find($model_id);
+				if($new) {
+					if($new->sensitive = ACTIVE) {
+						$sensitive = ACTIVE;
+					}
+				} else {
+					$sensitive = null;
+				}
+			}
+		?>
+		@if($sensitive)
 			<div class="clearfix center">{{ $value->adsense2 }}</div>
 		@else
 			<div class="clearfix center">{{ $value->adsense }}</div>
