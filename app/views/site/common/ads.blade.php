@@ -17,7 +17,7 @@
 				}
 			}
 		?>
-		@if($sensitive)
+		@if(isset($sensitive))
 			<div class="clearfix center">{{ $value->adsense2 }}</div>
 		@else
 			<div class="clearfix center">{{ $value->adsense }}</div>
