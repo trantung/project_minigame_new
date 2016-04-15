@@ -250,3 +250,5 @@ define('POSITION_MOBILE_GAME_MINI', 27);
 define('ANTS', 1);
 define('GOOGLE_ADSENSE', 2);
 define('LIMIT', 3);
+
+define('FOLDER_GAMECODE', '/gamecode');

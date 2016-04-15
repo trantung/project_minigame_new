@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 {{ HTML::style('assets/css/bootstrap.min.css') }}
 <style>
 	body {

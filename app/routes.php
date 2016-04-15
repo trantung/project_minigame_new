@@ -185,6 +185,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/exportReporterForm', 'AdminExcelController@exportReporterForm');
 	Route::get('/exportReporterList', 'AdminExcelController@exportReporterList');
 
+	Route::get('/exportGameBoxHtml', 'AdminGameBoxController@exportGameBoxHtml');
+
 });
 
 // $games = Game::all();

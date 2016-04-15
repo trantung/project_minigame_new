@@ -98,4 +98,17 @@ class AdminGameBoxController extends AdminController {
 		return Redirect::action('AdminGameBoxController@index')->with('message', 'Đã loại bỏ');
 	}
 
+	public function exportGameBoxHtml()
+	{
+		$gameCode1_pc = CommonGame::gameCode1(1);
+		$gameCode1_mobile = CommonGame::gameCode1();
+		$gameCode2_pc = CommonGame::gameCode2(1);
+		$gameCode2_mobile = CommonGame::gameCode2();
+		file_put_contents(public_path().FOLDER_GAMECODE.'/gamecode1_pc.html', $gameCode1_pc);
+		file_put_contents(public_path().FOLDER_GAMECODE.'/gamecode1_mobile.html', $gameCode1_mobile);
+		file_put_contents(public_path().FOLDER_GAMECODE.'/gamecode2_pc.html', $gameCode2_pc);
+		file_put_contents(public_path().FOLDER_GAMECODE.'/gamecode2_mobile.html', $gameCode2_mobile);
+		return Redirect::action('AdminGameBoxController@index')->with('message', 'Đã lưu');
+	}
+
 }

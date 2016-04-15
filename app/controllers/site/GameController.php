@@ -493,140 +493,20 @@ class GameController extends SiteController {
 
     public function gameCode()
     {
-
-    	if(getDevice() == MOBILE) {
-    		$limitGame = 2;
+    	if(getDevice() == COMPUTER) {
+    		return CommonGame::gameCode1(1);	
     	} else {
-    		$limitGame = 4;
+    		return CommonGame::gameCode1();
     	}
-    	$now = Carbon\Carbon::now();
-    	$dataFirst = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
-			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
-			->where('news.start_date', '<=', $now)
-			->where('type_news.status', ENABLED)
-			->where('news.status', APPROVE)
-			->where('news.index', '!=', INACTIVE)
-			->orderByRaw("news.weight_number = '0', news.weight_number")
-			->orderBy('news.start_date', 'desc')
-			->orderBy('news.id', 'desc')
-			->first();
-		$dataSecond = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
-			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
-			->where('news.start_date', '<=', $now)
-			->where('type_news.status', ENABLED)
-			->where('news.status', APPROVE)
-			->where('news.index', '!=', INACTIVE)
-			->orderByRaw("news.weight_number = '0', news.weight_number")
-			->orderBy('news.start_date', 'desc')
-			->orderBy('news.id', 'desc')
-			->skip(1)
-			->take(2)
-			->get();
-		if (getDevice() == COMPUTER) {
-			$dataList = Game::where('status', ENABLED)
-				->where('start_date', '<=', $now)
-				->where('index', ACTIVE)
-				->orderByRaw("games.index = '0', games.index")
-	    		->orderBy('start_date', 'desc')
-	    		->take($limitGame)
-	    		->get();
-		}
-		if (getDevice() == MOBILE) {
-			$dataList = Game::where('status', ENABLED)
-						->where('parent_id', '=', GAMEHTML5)
-						->where('start_date', '<=', $now)
-						->where('index', ACTIVE)
-						->orderByRaw("games.index = '0', games.index")
-			    		->orderBy('start_date', 'desc')
-			    		->take($limitGame)
-			    		->get();
-		}
-		$dataListCount = count($dataList);
-		if($dataListCount < $limitGame) {
-			$dataListLimit = $limitGame - $dataListCount;
-			if (getDevice() == COMPUTER) {
-				$dataListGame = Game::where('status', ENABLED)
-					// ->where('parent_id', '=', GAMEHTML5)
-					->where('start_date', '<=', $now)
-					->where('index', INACTIVE)
-					->orderByRaw("games.index = '0', games.index")
-		    		->orderBy('start_date', 'desc')
-		    		->take($dataListLimit)
-		    		->get();
-			}
-			if (getDevice() == MOBILE) {
-				$dataListGame = Game::where('status', ENABLED)
-					->where('parent_id', '!=', GAMEFLASH)
-					->where('start_date', '<=', $now)
-					->where('index', INACTIVE)
-					->orderByRaw("games.index = '0', games.index")
-		    		->orderBy('start_date', 'desc')
-		    		->take($dataListLimit)
-		    		->get();
-			}
-		}
-		if(getDevice() == COMPUTER) {
-			return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
-		} else {
-			return View::make('site.common.iframe_mobile')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
-		}
     }
 
     public function gameCode2()
     {
-    	if(getDevice() == MOBILE) {
-    		$limitGame = 4;
+    	if(getDevice() == COMPUTER) {
+    		return CommonGame::gameCode2(1);	
     	} else {
-    		$limitGame = 5;
+    		return CommonGame::gameCode2();
     	}
-    	$now = Carbon\Carbon::now();
-    	if (getDevice() == COMPUTER) {
-    		$dataList = Game::where('status', ENABLED)
-				->where('start_date', '<=', $now)
-				->where('index', ACTIVE)
-				->orderByRaw("games.index = '0', games.index")
-	    		->orderBy('start_date', 'desc')
-	    		->take($limitGame)
-	    		->get();
-		} else {
-			$dataList = Game::where('status', ENABLED)
-						->where('parent_id', '=', GAMEHTML5)
-						->where('start_date', '<=', $now)
-						->where('index', ACTIVE)
-						->orderByRaw("games.index = '0', games.index")
-			    		->orderBy('start_date', 'desc')
-			    		->take($limitGame)
-			    		->get();
-		}
-		$dataListCount = count($dataList);
-		if($dataListCount < $limitGame) {
-			$dataListLimit = $limitGame - $dataListCount;
-			if (getDevice() == COMPUTER) {
-				$dataListGame = Game::where('status', ENABLED)
-					// ->where('parent_id', '=', GAMEHTML5)
-					->where('start_date', '<=', $now)
-					->where('index', INACTIVE)
-					->orderByRaw("games.index = '0', games.index")
-		    		->orderBy('start_date', 'desc')
-		    		->take($dataListLimit)
-		    		->get();
-			}
-			if (getDevice() == MOBILE) {
-				$dataListGame = Game::where('status', ENABLED)
-					->where('parent_id', '!=', GAMEFLASH)
-					->where('start_date', '<=', $now)
-					->where('index', INACTIVE)
-					->orderByRaw("games.index = '0', games.index")
-		    		->orderBy('start_date', 'desc')
-		    		->take($dataListLimit)
-		    		->get();
-			}
-		}
-		if(getDevice() == COMPUTER) {
-			return View::make('site.common.iframe2')->with(compact('dataList', 'dataListGame'));
-		} else {
-			return View::make('site.common.iframe2_mobile')->with(compact('dataList', 'dataListGame'));
-		}
     }
 
     public function countView()

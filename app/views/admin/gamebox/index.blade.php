@@ -15,7 +15,8 @@
 @if(Admin::isAdmin() || Admin::isEditor())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a onclick="updateIndexSelected();" class="btn btn-primary">Loại bỏ khỏi box game nhúng</a>
+		<a onclick="updateIndexSelected();" class="btn btn-danger">Loại bỏ khỏi box game nhúng</a>
+		<a href="{{ action('AdminGameBoxController@exportGameBoxHtml') }}" class="btn btn-primary">Lưu file box game nhúng</a>
 	</div>
 </div>
 @endif
