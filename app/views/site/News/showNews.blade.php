@@ -31,9 +31,9 @@
 					<div class="detail">
 						<strong>{{ $inputNew->sapo_text . $inputNew->sapo }}</strong>
 						@if(getDevice() == COMPUTER)
-							@include('site.common.ads', array('adPosition' => POSITION_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+							@include('site.common.ads', array('adPosition' => POSITION_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
 						@else
-							@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+							@include('site.common.ads', array('adPosition' => POSITION_MOBILE_SAPO, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
 						@endif
 						<div class="clearfix"></div>
 						{{ $inputNew->description }}
@@ -44,7 +44,7 @@
 				</div>
 				<div class="col-sm-4 col-sm-pull-8">
 					@if(getDevice() == MOBILE)
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
 					@endif
 					
 					@include('site.News.relatedNews')
@@ -64,7 +64,7 @@
 	<div class="col-sm-4">
 		<div class="side">
 			@if(getDevice() == COMPUTER)
-				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'limit' => LIMIT))
+				@include('site.common.ads', array('adPosition' => POSITION_RIGHT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive, 'limit' => LIMIT))
 			@endif
 		</div>
 	</div>
