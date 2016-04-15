@@ -69,7 +69,11 @@
 		</div>
 	</div>
 </div>
-
-@include('site.common.gamebox', array('model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+@if(getDevice() == COMPUTER)
+	@include('site.common.ads', array('adPosition' => POSITION_NEWS_GAMES, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
+@else
+	@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_GAMES, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
+@endif
+@include('site.common.new_ads_below', array('model_name' => 'AdminNew', 'model_id' => $inputNew->id))
 
 @stop
