@@ -59,7 +59,11 @@ class AdminNewSlideController extends AdminController {
 	            ->withInput(Input::except('_token'));
         } else {
         	//create news
-        	$inputNews = Input::only('type_new_id', 'title', 'description','start_date', 'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'author', 'author_money', 'highlight');
+        	$inputNews = Input::only('type_new_id', 'title', 
+        		'description','start_date', 
+        		'weight_number', 'position', 'sapo', 'sapo_text', 
+        		'status', 'is_hot', 'author', 
+        		'author_money', 'highlight', 'sensitive');
         	if($inputNews['start_date'] == '') {
         		$inputNews['start_date'] = Carbon\Carbon::now();
         	}
@@ -142,7 +146,8 @@ class AdminNewSlideController extends AdminController {
 			$rules = NewsManager::getRuleByType(ACTIVE);
 			$input = Input::except('_token');
 			$inputNews = Input::only('type_new_id', 'title', 'description','start_date',
-	        		'weight_number', 'position', 'sapo', 'sapo_text', 'status', 'is_hot', 'author', 'author_money');
+	        		'weight_number', 'position', 'sapo', 'sapo_text', 
+	        		'status', 'is_hot', 'author', 'author_money', 'sensitive');
 			$validator = Validator::make($input,$rules);
 			if($validator->fails()) {
 				return Redirect::action('AdminNewSlideController@edit',$id)
