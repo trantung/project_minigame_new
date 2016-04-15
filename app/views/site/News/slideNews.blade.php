@@ -113,7 +113,7 @@
 				</div>
 				<div class="col-sm-3 col-sm-pull-9">
 					@if(getDevice() == MOBILE)
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_RELATED, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
 					@endif
 
 					@include('site.News.relatedNews')
@@ -121,7 +121,7 @@
 					@include('site.News.hotNews')
 
 					@if(getDevice() == MOBILE)
-						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id))
+						@include('site.common.ads', array('adPosition' => POSITION_MOBILE_NEWS_DETAIL_LEFT, 'model_name' => 'AdminNew', 'model_id' => $inputNew->id, 'sensitive' => $inputNew->sensitive))
 					@endif
 				</div>
 			</div>
