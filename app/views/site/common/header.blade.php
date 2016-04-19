@@ -6,23 +6,18 @@
 	<meta property="fb:admins" content="{{ APP_ADMIN }}"/>
 	<title>@yield('title')</title>
 
-	@if(isset($page404))
-		<meta name="robots" content="noindex, nofollow" />
-		<link rel="canonical" href="http://game.kienthuc.net.vn/trang-khong-ton-tai" />
-	@endif
-
 	@if(Request::segment(1) == 'dang-nhap' || Request::segment(1) == 'dang-ky')
 		<meta name="robots" content="noindex, nofollow">
 	@endif
 	{{ canonical() }}
-	@if(isset($seoMeta))
+	@if(isset($page404))
+		<meta name="robots" content="noindex, nofollow" />
+		<link rel="canonical" href="http://game.kienthuc.net.vn/trang-khong-ton-tai" />
+		<meta name="description" content="Trang bạn xem không tồn tại, vui lòng quay trở lại trang chủ Game Kiến Thức để tìm kiếm game mới hay nhất" />
+	@endif
 
-		@if(isset($page404))
-			<meta name="description" content="Trang bạn xem không tồn tại, vui lòng quay trở lại trang chủ Game Kiến Thức để tìm kiếm game mới hay nhất" />
-		@else
-			<meta name="description" content="{{ html_entity_decode($seoMeta->description_site) }}">
-		@endif
-		
+	@if(isset($seoMeta))
+		<meta name="description" content="{{ html_entity_decode($seoMeta->description_site) }}">
 		<meta name="keywords" content="{{ $seoMeta->keyword_site }}">
 
 		<meta property="og:url" content="{{ Request::url() }}" />
