@@ -503,7 +503,8 @@ class GameController extends SiteController {
     public function gameCode2()
     {
     	if(getDevice() == COMPUTER) {
-    		return CommonGame::gameCode2(1);	
+    		return View::make('site.common.iframe2_new');
+    		// return CommonGame::gameCode2(1);	
     	} else {
     		return CommonGame::gameCode2();
     	}

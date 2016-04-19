@@ -30,8 +30,8 @@
 	</script>
 	<div id="demo">
 		<div id="owl-demo" class="owl-carousel">
-			@foreach($slide->images as $image)
-				<div class="itemslide"><img src="{{ url(UPLOAD_IMAGE_SLIDE . '/image'. '/' . $slideId . '/' . $image->image_url) }}" alt=""></div>
+			@foreach($slide->images as $key => $image)
+				<div class="itemslide"><img src="{{ url(UPLOAD_IMAGE_SLIDE . '/image'. '/' . $slideId . '/' . $image->image_url) }}" alt="game {{ convert_string_vi_to_en($game->name) }} hinh anh {{ $key+1 }}" title="game {{ $game->name }} hình ảnh {{ $key+1 }}"></div>
 			@endforeach
 		</div>
 	</div>
