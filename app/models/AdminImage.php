@@ -16,4 +16,17 @@ class AdminImage extends Eloquent
     	return $this->belongsTo('AdminSlide', 'slider_id', 'id');
     }
 
+    public static function convertImageBase64($path)
+    {
+    	// $path = 'myfolder/myimage.png';
+    	$path = url($path);
+    	// dd($path);
+		$type = pathinfo($path, PATHINFO_EXTENSION);
+		// dd($path);
+		$data = file_get_contents($path);
+		// dd($data);
+		$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+		// dd($base64_);
+		return $base64;
+    }
 }
