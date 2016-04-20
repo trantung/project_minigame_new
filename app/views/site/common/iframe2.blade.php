@@ -76,7 +76,7 @@
 				<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
 						<a href="{{ $url }}" target="_blank">
-							<img src="{{ AdminImage::convertImageBase64(UPLOAD_GAME_AVATAR . '/' .  $dataList[0]->image_url) }}" alt="{{ $value->name }}" />
+							<img src="{{ AdminImage::convertImageBase64(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
@@ -91,7 +91,7 @@
 				<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
 						<a href="{{ $url }}" target="_blank">
-							<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+							<img src="{{ AdminImage::convertImageBase64(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">

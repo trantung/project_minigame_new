@@ -100,7 +100,7 @@ class AdminGameBoxController extends AdminController {
 
 	public function exportGameBoxHtml()
 	{
-		return CommonGame::gameCode2(1);
+		// return CommonGame::gameCode2(1);
 		$gameCode1_pc = CommonGame::gameCode1(1);
 		$gameCode1_mobile = CommonGame::gameCode1();
 		$gameCode2_pc = CommonGame::gameCode2(1);
