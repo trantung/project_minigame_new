@@ -277,6 +277,8 @@ Route::post('/import-bxh', 'GameController@importBxh');
 Route::get('/game-code', 'GameController@gameCode');
 // box nhung game ngang
 Route::get('/game-code2', 'GameController@gameCode2');
+Route::get('/api-game-code2-pc', 'GameController@apiGameCode2Pc');
+Route::get('/api-game-code2-mobile', 'GameController@apiGameCode2Mobile');
 
 Route::resource('/', 'SiteIndexController');
 
