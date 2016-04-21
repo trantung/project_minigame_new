@@ -10,7 +10,7 @@
 	    padding-bottom: 5px;
 	    margin: 0 auto;
 	    width: 100%;
-	    height: 790px;
+	    height: 370px;
 	    min-width: 300px;
 	}
 	.kt-boxgame-title {
@@ -34,7 +34,7 @@
 	}
 	.kt-boxgame-item {
         display: inline-block;
-	    width: 48.7%;
+	    width: 45%;
 	    vertical-align: top;
 	    padding-top: 15px;
 	    padding-left: 5px;
