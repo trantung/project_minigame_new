@@ -74,7 +74,7 @@
 	<div class="clearfix"></div>
 	<div class="kt-boxgame-content">
 		@if(!empty($dataList))
-			@foreach($dataList as $key => $value)
+			@foreach($dataList as $value)
 				<?php $url = CommonGame::getUrlGame($value); ?>
 				<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
@@ -89,16 +89,16 @@
 			@endforeach
 		@endif
 		@if(!empty($dataListGame))
-			@foreach($dataListGame as $key => $value)
-				<?php $url = CommonGame::getUrlGame($value); ?>
+			@foreach($dataListGame as $v)
+				<?php $url1 = CommonGame::getUrlGame($v); ?>
 				<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
-						<a href="{{ $url }}" target="_blank">
-							<img src="{{ AdminImage::convertImageBase64(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+						<a href="{{ $url1 }}" target="_blank">
+							<img src="{{ AdminImage::convertImageBase64(UPLOAD_GAME_AVATAR . '/' .  $v->image_url) }}" alt="{{ $v->name }}" />
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
-						<a href="{{ $url }}" target="_blank">{{ $value->name }}</a>
+						<a href="{{ $url1 }}" target="_blank">{{ $v->name }}</a>
 					</div>
 				</div>
 			@endforeach
