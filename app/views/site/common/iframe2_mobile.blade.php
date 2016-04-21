@@ -90,15 +90,15 @@
 		@endif
 		@if(!empty($dataListGame))
 			@foreach($dataListGame as $v)
-				<?php $url = CommonGame::getUrlGame($v); ?>
+				<?php $url1 = CommonGame::getUrlGame($v); ?>
 				<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
-						<a href="{{ $url }}" target="_blank">
+						<a href="{{ $url1 }}" target="_blank">
 							<img src="{{ AdminImage::convertImageBase64(UPLOAD_GAME_AVATAR . '/' .  $v->image_url) }}" alt="{{ $v->name }}" />
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
-						<a href="{{ $url }}" target="_blank">{{ $v->name }}</a>
+						<a href="{{ $url1 }}" target="_blank">{{ $v->name }}</a>
 					</div>
 				</div>
 			@endforeach
