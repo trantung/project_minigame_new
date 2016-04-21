@@ -19,6 +19,9 @@ class AdminImage extends Eloquent
     public static function convertImageBase64($path)
     {
     	// $path = 'myfolder/myimage.png';
+        if ($path == UPLOAD_GAME_AVATAR . '/') {
+            return null;
+        }
     	$path = url($path);
     	// dd($path);
 		$type = pathinfo($path, PATHINFO_EXTENSION);
