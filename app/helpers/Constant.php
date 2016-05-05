@@ -252,3 +252,5 @@ define('GOOGLE_ADSENSE', 2);
 define('LIMIT', 3);
 
 define('FOLDER_GAMECODE', '/gamecode');
+define('LINK_SERVE_UPLOAD', 'http://uploads.im/api?upload');
+
