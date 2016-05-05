@@ -966,26 +966,10 @@ class CommonGame
 		    		->get();
 			}
 		}
-	
-		// foreach ($dataList as $key => $value) {
-		// 	$link = LINK_SERVE_UPLOAD . '=' . 'http://game.kienthuc.net.vn/' . UPLOAD_GAME_AVATAR . '/' .  $value->image_url;
-		// 	$json = file_get_contents($link);
-		// 	$data = json_decode($json, TRUE);
-		// 	$value->image_link = $data['data']['img_url'];
-		// }
 		self::uploadToServe($dataList);
 		if(isset($dataListGame)) {
 			self::uploadToServe($dataListGame);
-			// foreach ($dataListGame as $key => $value) {
-			// 	$link = LINK_SERVE_UPLOAD . '=' . 'http://game.kienthuc.net.vn/' . UPLOAD_GAME_AVATAR . '/' .  $value->image_url;
-			// 	$json = file_get_contents($link);
-			// 	$data = json_decode($json, TRUE);
-			// 	$value->image_link = $data['data']['img_url'];
-			// }
 		}
-		
-
-		//insert img_url into image_link of games table
 		if($pc == 1) {
 			return View::make('site.common.iframe2')->with(compact('dataList', 'dataListGame'));
 		} else {
