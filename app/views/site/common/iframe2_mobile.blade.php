@@ -76,7 +76,7 @@
 													<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
 						<a href="http://game.kienthuc.net.vn/tri-tue/tap-choi-mat-chuoc" target="_blank">
-							<img src="http://188.160.180.82/games/1.jpg" alt="Tập Chơi Mạt Chược">
+							<img src="http://sm.uploads.im/d/Ry0bx.jpg" alt="Tập Chơi Mạt Chược">
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
@@ -86,7 +86,7 @@
 											<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
 						<a href="http://game.kienthuc.net.vn/game-android/dao-vang" target="_blank">
-							<img src="http://188.160.180.82/games/2.jpg" alt="Đào vàng">
+							<img src="http://sm.uploads.im/d/z54cg.png" alt="Đào vàng">
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
@@ -96,7 +96,7 @@
 											<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
 						<a href="http://game.kienthuc.net.vn/game-android/little-commander" target="_blank">
-							<img src="http://188.160.180.82/games/3.jpg" alt="Little Commander ">
+							<img src="http://sm.uploads.im/d/xMFQe.png" alt="Little Commander ">
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
@@ -106,7 +106,7 @@
 											<div class="kt-boxgame-item">
 					<div class="kt-boxgame-right-images">
 						<a href="http://game.kienthuc.net.vn/game-android/ai-la-thanh-troll-2016" target="_blank">
-							<img src="http://188.160.180.82/games/4.jpg" alt="Ai là thánh troll 2016">
+							<img src="http://sl.uploads.im/d/rPeh5.png" alt="Ai là thánh troll 2016">
 						</a>
 					</div>
 					<div class="kt-boxgame-right-text">
