@@ -3,6 +3,16 @@
 	@include('site.common.header')
 	<body>
 
+		{{-- HTML::style('assets/css/font-awesome.min.css') --}}
+		{{-- HTML::style('assets/css/bootstrap.min.css') --}}
+		{{-- HTML::style('assets/css/style.css') --}}
+
+		@include('site.common.style')
+
+		{{ HTML::script('assets/js/jquery-2.1.4.min.js') }}
+		{{ HTML::script('assets/js/bootstrap.min.js') }}
+		{{ HTML::script('assets/js/script.js') }}
+
 		<div class="container">
 			<div class="row">
 

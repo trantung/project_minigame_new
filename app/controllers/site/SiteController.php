@@ -51,7 +51,13 @@ class SiteController extends HomeController {
             Cache::put('listTags', $listTags, CACHETIME);
         }
 
-        $logo = AdminLogo::find(1);
+        if (Cache::has('logo')) {
+        	$logo = Cache::get('logo');
+        } else {
+        	$logo = AdminLogo::find(1);
+        	Cache::put('logo', $logo, CACHETIME);
+        }
+
         View::share('logo', $logo);
         View::share('listTags', $listTags);
 		View::share('menu', $menu);

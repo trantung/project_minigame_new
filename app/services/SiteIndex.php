@@ -24,4 +24,17 @@ class SiteIndex
         }
         return $result;
     }
+
+    public static function getTypeAll()
+    {
+        if (Cache::has('getTypeAll'))
+        {
+            $result = Cache::get('getTypeAll');
+        } else {
+            $result = Type::all();;
+            Cache::put('getTypeAll', $result, CACHETIME);
+        }
+        return $result;
+    }
+
 }

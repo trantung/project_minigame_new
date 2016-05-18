@@ -117,14 +117,17 @@ class CommonSite
 
     public static function getMetaSeo($modelName, $modelId = null)
     {
+        $seoMeta = null;
         if(!$modelId) {
-            $seoMeta = AdminSeo::where('model_name', $modelName)
-                    ->first();
-            if(isset($seoMeta)) {
-                return $seoMeta;
+            if (Cache::has('getMetaSeo_'.$modelName.'_home'))
+            {
+                $seoMeta = Cache::get('getMetaSeo_'.$modelName.'_home');
             } else {
-                return null;
+                $seoMeta = AdminSeo::where('model_name', $modelName)
+                        ->first();
+                Cache::put('getMetaSeo_'.$modelName.'_home', $seoMeta, CACHETIME);
             }
+            return $seoMeta;
         }
         $seoMeta = AdminSeo::where('model_name', $modelName)
                 ->where('model_id', $modelId)

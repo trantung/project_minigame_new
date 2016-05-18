@@ -21,7 +21,7 @@
 	?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			@for($i = 0; $i < $count ; $i ++)
+			@for($i = 0; $i < $count; $i ++)
 				<div class="swiper-slide boxgame">
 					<div class="row">
 					<?php
@@ -65,7 +65,7 @@
 	?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			@for($i = 0; $i < $count ; $i ++)
+			@for($i = 0; $i < $count; $i ++)
 				<div class="swiper-slide boxgame">
 					<div class="row">
 					<?php

@@ -46,7 +46,7 @@
 		</li>
 		<li class="has-sub"><a href=""><span>Mini Game</span></a>
 			<ul>
-				@foreach(Type::all() as $value)
+				@foreach(SiteIndex::getTypeAll() as $value)
 					<li><a href="{{ url('/' . $value->slug) }}"><span>{{ $value->name }}</span></a></li>
 				@endforeach
 			</ul>

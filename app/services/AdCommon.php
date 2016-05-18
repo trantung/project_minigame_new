@@ -156,6 +156,19 @@ class AdCommon
 	public static function getAd($position, $modelName, $modelId, $limit = null)
 	{
 		if($limit) {
+			$cacheName = 'getAd_'.$limit.'_'.$position.'_'.$modelName.'_'.$modelId;
+		} else {
+			$cacheName = 'getAd_take1'.'_'.$position.'_'.$modelName.'_'.$modelId;
+		}
+		if (Cache::has($cacheName)) {
+        	$ad = Cache::get($cacheName);
+        	if($ad) {
+				return $ad;	
+			} else {
+				return NULL;
+			}
+        }
+		if($limit) {
 			$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName))->take($limit)->get();
 		} else {
 			if($modelName == 'CategoryParent') {
@@ -164,6 +177,7 @@ class AdCommon
 				$ad = Advertise::where(array('position' => $position, 'status' => ENABLED, 'model_name' => $modelName))->take(1)->get();
 			}
 		}
+		Cache::put($cacheName, $ad, CACHETIME);
 		if($ad) {
 			return $ad;	
 		} else {

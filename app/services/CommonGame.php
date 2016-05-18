@@ -776,6 +776,12 @@ class CommonGame
 
 	public static function getBoxMiniGame()
 	{
+		$cacheName = 'getBoxMiniGame';
+		if (Cache::has($cacheName)) {
+        	$result = Cache::get($cacheName);
+        	return $result;
+        }
+
 		$result = array();
 		$types = Type::all();
 		if($types) {
@@ -789,6 +795,7 @@ class CommonGame
 				);
 			}
 		}
+		Cache::put($cacheName, $result, CACHETIME);
 		return $result;
 	}
 

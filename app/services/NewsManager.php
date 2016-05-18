@@ -76,6 +76,20 @@ class NewsManager
 	public static function getHomeNews($typeId = null)
 	{
 		if(getDevice() == MOBILE) {
+			$cachePrefix = '_mobile';
+		} else {
+			$cachePrefix = '_pc';
+		}
+		if($typeId) {
+			$cacheName = 'getHomeNews_'.$typeId.$cachePrefix;
+		} else {
+			$cacheName = 'getHomeNews_null'.$cachePrefix;
+		}
+		if (Cache::has($cacheName)) {
+        	$data = Cache::get($cacheName);
+        	return $data;
+        }
+		if(getDevice() == MOBILE) {
 			$limit = HOME_MOBILE_PAGINATE;
 			$offset = LIMIT_HIGHTLIGHT_MOBILE;
 		} else {
@@ -103,11 +117,26 @@ class NewsManager
 				->limit($limit)
 				->offset($offset)
 				->get();
+		Cache::put($cacheName, $data, CACHETIME);
 		return $data;
 	}
 
 	public static function getNewsHighlight($typeId = null)
 	{
+		if(getDevice() == MOBILE) {
+			$cachePrefix = '_mobile';
+		} else {
+			$cachePrefix = '_pc';
+		}
+		if($typeId) {
+			$cacheName = 'getNewsHighlight_'.$typeId.$cachePrefix;
+		} else {
+			$cacheName = 'getNewsHighlight_null'.$cachePrefix;
+		}
+		if (Cache::has($cacheName)) {
+        	$data = Cache::get($cacheName);
+        	return $data;
+        }
 		if(getDevice() == MOBILE) {
 			$limit = LIMIT_HIGHTLIGHT_MOBILE;
 		} else {
@@ -137,6 +166,7 @@ class NewsManager
 				->limit($limit)
 				->get();
 		}
+		Cache::put($cacheName, $data, CACHETIME);
 		return $data;
 	}
 
