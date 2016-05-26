@@ -58,22 +58,22 @@ class CommonLog
 		if(strpos($link, '/index.php/')) {
 			return Redirect::action('SiteController@returnPage404');
 		}
-		$agent = $_SERVER['HTTP_USER_AGENT'];
-		$referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
-		$error = AdminError::where('link', $link)->first();
-		if($error) {
-			$count = $error->count + 1;
-			AdminError::find($error->id)->update(array('count' => $count));
-			AdminErrorLog::create(array('error_id' => $error->id, 'agent' => $agent, 'referer' => $referer));
-		} else {
-			$input = array(
-				'link' => $link,
-				'type' => $type,
-				'count' => 1,
-			);
-			$errorId = CommonNormal::create($input, 'AdminError');
-			AdminErrorLog::create(array('error_id' => $errorId, 'agent' => $agent, 'referer' => $referer));
-		}
+		// $agent = $_SERVER['HTTP_USER_AGENT'];
+		// $referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
+		// $error = AdminError::where('link', $link)->first();
+		// if($error) {
+		// 	$count = $error->count + 1;
+		// 	AdminError::find($error->id)->update(array('count' => $count));
+		// 	AdminErrorLog::create(array('error_id' => $error->id, 'agent' => $agent, 'referer' => $referer));
+		// } else {
+		// 	$input = array(
+		// 		'link' => $link,
+		// 		'type' => $type,
+		// 		'count' => 1,
+		// 	);
+		// 	$errorId = CommonNormal::create($input, 'AdminError');
+		// 	AdminErrorLog::create(array('error_id' => $errorId, 'agent' => $agent, 'referer' => $referer));
+		// }
 		return Redirect::action('SiteController@returnPage404');
 	}
 

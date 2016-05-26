@@ -177,7 +177,7 @@
 				<div class="kt-boxgame-left">
 					@if(!empty($dataFirst))
 						<a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">
-							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
+							<img src="{{ $dataFirst->image_link }}" alt="{{ $dataFirst->title }}" />
 						</a>
 						<strong><a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">{{ $dataFirst->title }}</a></strong>
 						<p>
@@ -201,7 +201,7 @@
 						<div class="row">
 							<div class="col-xs-4 kt-boxgame-right-images">
 								<a href="{{ $url }}" target="_blank">
-									<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+									<img src="{{ $value->image_link }}" alt="{{ $value->name }}" />
 								</a>
 							</div>
 							<div class="col-xs-8 kt-boxgame-right-text">
@@ -219,7 +219,7 @@
 						<div class="row">
 							<div class="col-xs-4 kt-boxgame-right-images">
 								<a href="{{ $url }}" target="_blank">
-									<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+									<img src="{{ $value->image_link }}" alt="{{ $value->name }}" />
 								</a>
 							</div>
 							<div class="col-xs-8 kt-boxgame-right-text">

@@ -17,7 +17,7 @@
 	    padding-right: 5px;
 	}
 	.kt-menu {
-		background: #a02421;
+		background: #E7E7E7;
 	    display: block;
 	    padding-left: 0;
 	    overflow: hidden;
@@ -32,19 +32,20 @@
 	    color: #fff;
 	    cursor: default;
 	    background-color: #a02421;
-	    padding-bottom: 5px;
+	    padding-bottom: 10px;
 	    padding-top: 10px;
 	    border: none;
 	}
 	.kt-menu li a {
 		color: #333;
-		font-size: 14px;
-    	text-decoration: none;
+	    font-size: 12px;
+	    text-decoration: none;
+	    line-height: 14px;
 	}
 	.kt-menu li:first-child a {
 	    color: #fff;
 	    font-weight: bold;
-	    font-size: 17px;
+	    font-size: 13px;
 	    text-transform: uppercase;
 	}
 	.kt-menu li.kt-type {
@@ -57,25 +58,24 @@
 	}
 	.kt-menu li:last-child a {
 		border-right: none;
-		/*font-size: 14px;*/
 	}
 	.kt-boxgame {
-		background: #a02421;
+	    background: #a02421;
 	    margin: 0 auto;
-	    width: 100%;
-	    height: auto;
+	    width: 670px;
+	    height: 410px;
 	}
 	.kt-boxgame-right > .row {
-		margin-bottom: 5px;
+		margin-bottom: 12px;
 	}
 	.kt-boxgame-left a,
 	.kt-boxgame-right a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 17px;
 	}
 	.kt-boxgame-left {
-		/*padding: 15px;*/
+		padding: 15px;
+		padding-bottom: 2px;
 	}
 	.kt-boxgame-left img {
 		width: 100%;
@@ -84,19 +84,32 @@
 		display: block;
 		border-radius: 5px;
 		border: 3px solid #fff;
+		height: 160px;
+	    width: 300px;
+	    margin: 0 auto;
 	}
 	.kt-boxgame-left strong {
 		display: block;
-		font-weight: bold;
-		font-size: 14px;
-		color: #fff;
-		margin-top: 5px;
-		margin-bottom: 5px;
+	    font-weight: bold;
+	    font-size: 14px;
+	    color: #fff;
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+	    line-height: 18px;
 	}
 	.kt-boxgame-left p {
 	    text-align: justify;
 	    color: #fff;
-	    font-size: 14px;
+	    line-height: 14px;
+	    font-size: 12px;
+	    margin-bottom: 10px;
+	    max-height: 98px;
+		overflow: hidden;
+	        /*padding: 0;
+		    font-size: 12px;
+		    line-height: 14px;
+		    max-height: 98px;
+		    overflow: hidden;*/
 	}
 	.kt-boxgame-right {
 		padding: 15px 5px;
@@ -117,23 +130,15 @@
 	    font-weight: bold;
 	    font-size: 14px;
 	    color: #fff;
-	    margin-top: 3px;
-	    margin-bottom: 3px;
+        margin-top: 3px;
+    	margin-bottom: 3px;
 	}
 	.kt-boxgame-right-text p {
-	    color: #fff;
-	    font-size: 14px;
-	    line-height: 16px;
+        color: #fff;
+	    font-size: 12px;
+	    line-height: 14px;
+	    margin-bottom: 10px;
 	}
-	.kt-boxgame-right-text a {
-		color: #fff;
-	    font-size: 17px;
-	}
-	.kt-content {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-
 	ul.kt-boxnews-list {
 		padding-left: 30px;
 	    padding-bottom: 0;
@@ -145,8 +150,7 @@
 	    margin-bottom: 5px;
 	}
 	ul.kt-boxnews-list li a {
-		font-size: 17px;
-		font-weight: bold;
+		font-size: 12px;
 	    text-decoration: none;
 	    color: #fff;
 	    line-height: normal;
@@ -158,27 +162,27 @@
 		<li>
 			<a href="{{ url('/') }}" target="_blank">Game</a>
 		</li>
-		<!-- @foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value) -->
-			<!-- <li class="kt-type">
+		@foreach(Type::whereIn('id', array(6, 11, 4, 7, 9, 5))->get() as $value)
+			<li class="kt-type">
 				<a href="{{ url('/' . $value->slug) }}" target="_blank">
-					{{-- ($value->name) --}}
+					{{ ($value->name) }}
 				</a>
-			</li> -->
-		<!-- @endforeach -->
+			</li>
+		@endforeach
 	</ul>
 	<div class="clearfix"></div>
 	<div class="kt-content">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-6">
 				<div class="kt-boxgame-left">
 					@if(!empty($dataFirst))
 						<a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">
-							<img src="{{ $dataFirst->image_link }}" alt="{{ $dataFirst->title }}" />
+							<img src="{{ url(UPLOADIMG . '/news'.'/'. $dataFirst->id . '/' . $dataFirst->image_url) }}" alt="{{ $dataFirst->title }}" />
 						</a>
 						<strong><a href="{{ action('SlugController@detailData', [$dataFirst->slugType, $dataFirst->slug]) }}" target="_blank">{{ $dataFirst->title }}</a></strong>
-						<!-- <p>
-							{{-- getSapo($dataFirst->description, $dataFirst->sapo) --}}
-						</p> -->
+						<p>
+							{{ getSapo($dataFirst->description, $dataFirst->sapo) }}
+						</p>
 					@endif
 				</div>
 				<ul class="kt-boxnews-list">
@@ -189,46 +193,46 @@
 					@endif
 				</ul>
 			</div>
-		</div>
-		
-		<div class="row">
-			@if(!empty($dataList))
-				@foreach($dataList as $key => $value)
-					<div class="col-xs-6">
-
+			<div class="col-xs-6">
+				<div class="kt-boxgame-right">
+				@if(!empty($dataList))
+					@foreach($dataList as $key => $value)
 						<?php $url = CommonGame::getUrlGame($value); ?>
-						<div class="kt-boxgame-right-images">
-							<a href="{{ $url }}" target="_blank">
-								<img src="{{ $value->image_link }}" alt="{{ $value->name }}" />
-							</a>
+						<div class="row">
+							<div class="col-xs-4 kt-boxgame-right-images">
+								<a href="{{ $url }}" target="_blank">
+									<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+								</a>
+							</div>
+							<div class="col-xs-8 kt-boxgame-right-text">
+								<strong><a href="{{ $url }}" target="_blank">{{ $value->name }}</a></strong>
+								<p>
+									{{ getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) }}
+								</p>
+							</div>
 						</div>
-						<div class="kt-boxgame-right-text">
-							<strong><a href="{{ $url }}" target="_blank">{{ $value->name }}</a></strong>
-							<!-- <p>
-								{{-- getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) --}}
-							</p> -->
-						</div>
-					</div>
-				@endforeach
-			@endif
-			@if(!empty($dataListGame))
-				@foreach($dataListGame as $key => $value)
-					<div class="col-xs-6">
+					@endforeach
+				@endif
+				@if(!empty($dataListGame))
+					@foreach($dataListGame as $key => $value)
 						<?php $url = CommonGame::getUrlGame($value); ?>
-						<div class="kt-boxgame-right-images">
-							<a href="{{ $url }}" target="_blank">
-								<img src="{{ $value->image_link }}" alt="{{ $value->name }}" />
-							</a>
+						<div class="row">
+							<div class="col-xs-4 kt-boxgame-right-images">
+								<a href="{{ $url }}" target="_blank">
+									<img src="{{ url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url) }}" alt="{{ $value->name }}" />
+								</a>
+							</div>
+							<div class="col-xs-8 kt-boxgame-right-text">
+								<strong><a href="{{ $url }}" target="_blank">{{ $value->name }}</a></strong>
+								<p>
+									{{ getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) }}
+								</p>
+							</div>
 						</div>
-						<div class="kt-boxgame-right-text">
-							<strong><a href="{{ $url }}" target="_blank">{{ $value->name }}</a></strong>
-							<!-- <p>
-								{{-- getSapo($value->description, $value->sapo, TEXTLENGH_DESCRIPTION_CODE) --}}
-							</p> -->
-						</div>
-					</div>
-				@endforeach
-			@endif
+					@endforeach
+				@endif
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

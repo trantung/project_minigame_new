@@ -524,6 +524,20 @@ class GameController extends SiteController {
     	return $text;
     }
 
+    public function apiGameCode1Pc()
+    {
+    	$path = public_path().FOLDER_GAMECODE.'/gamecode1_pc.html';
+    	$text = file_get_contents($path);
+    	return $text;
+    }
+    
+    public function apiGameCode1Mobile()
+    {
+    	$path = public_path().FOLDER_GAMECODE.'/gamecode1_mobile.html';
+    	$text = file_get_contents($path);
+    	return $text;
+    }
+
     public function countView()
     {
     	$id = Input::get('id');

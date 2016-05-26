@@ -841,7 +841,6 @@ class CommonGame
 
 	public static function gameCode1($pc = 0)
 	{
-		// if(getDevice() == COMPUTER) {
 		if($pc == 1) {
     		$limitGame = 4;
     	} else {
@@ -849,7 +848,7 @@ class CommonGame
     	}
     	$now = Carbon\Carbon::now();
     	$dataFirst = AdminNew::join('type_news', 'news.type_new_id', '=', 'type_news.id')
-			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
+			->select('news.id as id', 'news.slug as slug', 'type_news.slug as slugType', 'type_news.name as nameType', 'news.title as title', 'news.description as description', 'news.image_url as image_url', 'news.image_link as image_link', 'news.sapo as sapo', 'news.sapo_text as sapo_text', 'news.author as author')
 			->where('news.start_date', '<=', $now)
 			->where('type_news.status', ENABLED)
 			->where('news.status', APPROVE)
@@ -870,7 +869,6 @@ class CommonGame
 			->skip(1)
 			->take(2)
 			->get();
-		// if(getDevice() == COMPUTER) {
 		if($pc == 1) {
 			$dataList = Game::where('status', ENABLED)
 				->where('start_date', '<=', $now)
@@ -892,7 +890,6 @@ class CommonGame
 		$dataListCount = count($dataList);
 		if($dataListCount < $limitGame) {
 			$dataListLimit = $limitGame - $dataListCount;
-			// if(getDevice() == COMPUTER) {
 			if($pc == 1) {
 				$dataListGame = Game::where('status', ENABLED)
 					// ->where('parent_id', '=', GAMEHTML5)
@@ -913,7 +910,11 @@ class CommonGame
 		    		->get();
 			}
 		}
-		// if(getDevice() == COMPUTER) {
+		self::uploadToServe($dataFirst, 1);
+		self::uploadToServe($dataList);
+		if(isset($dataListGame)) {
+			self::uploadToServe($dataListGame);
+		}
 		if($pc == 1) {
 			return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
 		} else {
@@ -923,14 +924,12 @@ class CommonGame
 
 	public static function gameCode2($pc = 0)
 	{
-		// if(getDevice() == COMPUTER) {
 		if($pc == 1) {
     		$limitGame = 5;
     	} else {
     		$limitGame = 4;
     	}
     	$now = Carbon\Carbon::now();
-    	// if(getDevice() == COMPUTER) {
     	if($pc == 1) {
     		$dataList = Game::where('status', ENABLED)
 				->where('start_date', '<=', $now)
@@ -952,7 +951,6 @@ class CommonGame
 		$dataListCount = count($dataList);
 		if($dataListCount < $limitGame) {
 			$dataListLimit = $limitGame - $dataListCount;
-			// if(getDevice() == COMPUTER) {
 			if($pc == 1) {
 				$dataListGame = Game::where('status', ENABLED)
 					// ->where('parent_id', '=', GAMEHTML5)
@@ -983,8 +981,18 @@ class CommonGame
 			return View::make('site.common.iframe2_mobile')->with(compact('dataList', 'dataListGame'));
 		}
 	}
-	public static function uploadToServe($input)
+	public static function uploadToServe($input, $first=null)
 	{
+		//tin tuc
+		if($first) {
+			$link = LINK_SERVE_UPLOAD . '='. url(UPLOADIMG . '/news'.'/'. $input->id . '/' . $input->image_url);
+			$json = file_get_contents($link);
+			$data = json_decode($json, TRUE);
+			$input->image_link = $data['data']['img_url'];
+			$input->update(['image_link' => $data['data']['img_url']]);
+			return $input;
+		}
+		//game
 		foreach ($input as $key => $value) {
 			$link = LINK_SERVE_UPLOAD . '='. url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url);
 			$json = file_get_contents($link);
