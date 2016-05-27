@@ -839,7 +839,7 @@ class CommonGame
 		return null;
 	}
 
-	public static function gameCode1($pc = 0)
+	public static function gameCode1($pc = 0, $uploadIm = null)
 	{
 		if($pc == 1) {
     		$limitGame = 4;
@@ -910,19 +910,28 @@ class CommonGame
 		    		->get();
 			}
 		}
-		self::uploadToServe($dataFirst, 1);
-		self::uploadToServe($dataList);
-		if(isset($dataListGame)) {
-			self::uploadToServe($dataListGame);
-		}
-		if($pc == 1) {
-			return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
+		if($uploadIm != null) {
+			self::uploadToServe($dataFirst, 1);
+			self::uploadToServe($dataList);
+			if(isset($dataListGame)) {
+				self::uploadToServe($dataListGame);
+			}
+			if($pc == 1) {
+				return View::make('site.common.iframe')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
+			} else {
+				return View::make('site.common.iframe_mobile')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
+			}
 		} else {
-			return View::make('site.common.iframe_mobile')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
+			if($pc == 1) {
+				return View::make('site.common.iframe_1')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
+			} else {
+				return View::make('site.common.iframe_mobile_1')->with(compact('dataFirst', 'dataList', 'dataListGame', 'dataSecond'));
+			}
 		}
+		
 	}
 
-	public static function gameCode2($pc = 0)
+	public static function gameCode2($pc = 0, $uploadIm = null)
 	{
 		if($pc == 1) {
     		$limitGame = 5;
@@ -971,34 +980,46 @@ class CommonGame
 		    		->get();
 			}
 		}
-		self::uploadToServe($dataList);
-		if(isset($dataListGame)) {
-			self::uploadToServe($dataListGame);
-		}
-		if($pc == 1) {
-			return View::make('site.common.iframe2')->with(compact('dataList', 'dataListGame'));
+		if($uploadIm != null) {
+			self::uploadToServe($dataList);
+			if(isset($dataListGame)) {
+				self::uploadToServe($dataListGame);
+			}
+			if($pc == 1) {
+				return View::make('site.common.iframe2')->with(compact('dataList', 'dataListGame'));
+			} else {
+				return View::make('site.common.iframe2_mobile')->with(compact('dataList', 'dataListGame'));
+			}
 		} else {
-			return View::make('site.common.iframe2_mobile')->with(compact('dataList', 'dataListGame'));
+			if($pc == 1) {
+				return View::make('site.common.iframe2_1')->with(compact('dataList', 'dataListGame'));
+			} else {
+				return View::make('site.common.iframe2_mobile_1')->with(compact('dataList', 'dataListGame'));
+			}
 		}
 	}
-	public static function uploadToServe($input, $first=null)
+	public static function uploadToServe($input, $dataFirst=null)
 	{
 		//tin tuc
-		if($first) {
+		if(isset($dataFirst)) {
 			$link = LINK_SERVE_UPLOAD . '='. url(UPLOADIMG . '/news'.'/'. $input->id . '/' . $input->image_url);
-			$json = file_get_contents($link);
-			$data = json_decode($json, TRUE);
-			$input->image_link = $data['data']['img_url'];
-			$input->update(['image_link' => $data['data']['img_url']]);
+			$json = @file_get_contents($link);
+			if($json) {
+				$data = json_decode($json, TRUE);
+				$input->image_link = $data['data']['img_url'];
+				$input->update(['image_link' => $data['data']['img_url']]);
+			}
 			return $input;
 		}
 		//game
 		foreach ($input as $key => $value) {
 			$link = LINK_SERVE_UPLOAD . '='. url(UPLOAD_GAME_AVATAR . '/' .  $value->image_url);
-			$json = file_get_contents($link);
-			$data = json_decode($json, TRUE);
-			$value->image_link = $data['data']['img_url'];
-			$value->update(['image_link' => $data['data']['img_url']]);
+			$json = @file_get_contents($link);
+			if($json) {
+				$data = json_decode($json, TRUE);
+				$value->image_link = $data['data']['img_url'];
+				$value->update(['image_link' => $data['data']['img_url']]);
+			}
 		}
 		return $input;
 

@@ -496,17 +496,16 @@ class GameController extends SiteController {
     	if(getDevice() == COMPUTER) {
     		return CommonGame::gameCode1(1);	
     	} else {
-    		return CommonGame::gameCode1();
+    		return CommonGame::gameCode1(0);
     	}
     }
 
     public function gameCode2()
     {
     	if(getDevice() == COMPUTER) {
-    		return View::make('site.common.iframe2_new');
-    		// return CommonGame::gameCode2(1);	
+    		return CommonGame::gameCode2(1);	
     	} else {
-    		return CommonGame::gameCode2();
+    		return CommonGame::gameCode2(0);
     	}
     }
 
